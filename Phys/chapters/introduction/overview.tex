@@ -1,3 +1,63 @@
-These notes present selected foundations of physics with an emphasis on mathematical structure, conceptual clarity, and model-based reasoning. The course starts from mathematical tools and then develops the language of motion, forces, oscillations, waves, electromagnetic phenomena, measurements, cosmology, relativity, and modern physics.
+\section{Purpose of these notes}
 
-Physics uses mathematics to describe patterns in nature, but the meaning of a formula depends on the assumptions behind the model. For this reason, the notes aim to combine equations with interpretation: what quantities represent, how they are measured, when a model applies, and how different parts of the theory fit together.
+These notes were written for students of Computer Science who meet physics not as their main field of study, but as a part of their broader scientific and technical education. For this reason, the purpose of this script is not to reproduce a complete textbook of physics. It is not an encyclopedia, and it is not a catalogue of formulas. Its purpose is more modest, but also more important: to introduce selected parts of physics carefully enough that the reader can understand how physical reasoning works.
+
+Physics is often presented to students as a collection of equations. In such a presentation, learning physics seems to mean remembering formulas and knowing when to substitute numbers into them. This is not the approach of these notes. A formula is not the beginning of understanding. A formula is a compressed statement about a physical model. To understand it, we must know what system is being described, what assumptions have been made, what quantities occur in the formula, what has been neglected, and in what range the formula can be used.
+
+For example, an equation such as
+\[
+F = ma
+\]
+is not only a recipe for calculating force, mass, or acceleration. It expresses a relation between interaction and change of motion. It says something about the system, about the role of mass, about the meaning of acceleration, and about the way in which a simplified model of motion is being constructed. If the symbols are treated only as places where numbers should be inserted, then the physical content of the equation is lost.
+
+One of the main goals of these notes is therefore to teach the reader how to read equations. Reading an equation does not mean pronouncing the symbols. It means understanding what the symbols represent, what kind of dependence is described, which quantities are variable and which are fixed, what happens when one quantity changes, what the limiting cases are, and whether the result makes physical sense. This skill is essential not only in physics, but also in mathematics, engineering, computer science, data analysis, simulation, modelling, and many other technical disciplines.
+
+\section{Mathematics as a tool for understanding}
+
+The reader should not expect these notes to avoid mathematics. Physics without mathematics would lose much of its power. At the same time, mathematics will be used here as a tool for understanding, not as a barrier. We will begin with mathematical preliminaries: functions, graphs, variables, vectors, derivatives, integrals, units, dimensions, and simple equations describing change. These topics will not be developed as an independent mathematics course. They will be introduced only to the extent needed for physical modelling.
+
+The important point is that each mathematical object should carry meaning. A derivative is not only a formal operation; in kinematics it becomes velocity or acceleration, a rate of change of position or velocity. An integral is not only a method of finding an antiderivative; it can describe accumulation, displacement, work, or total effect. A vector is not only an ordered list of numbers; it represents a quantity with magnitude and direction. A graph is not decoration; it is information about behaviour. A differential equation is not only an equation with derivatives; it is often a compact way of saying how a system evolves.
+
+\section{From situation to model and back}
+
+The central method used throughout these notes can be summarized as a movement from a real or simplified situation to an idealized model, then to a mathematical description, then to calculation or simulation, and finally back to interpretation and checking.
+
+We start from a situation in the real world or from a simplified physical scenario. Then we decide what is relevant and what can be neglected. We choose a system, variables, assumptions, and an idealized model. After that, we translate the model into mathematics. We calculate, analyse, or simulate. Finally, we return to physics: we interpret the result, check the units, consider limiting cases, and ask whether the answer makes sense.
+
+This movement is not always linear. In real physical reasoning, we often move back and forth between meaning and mathematics. A calculation may suggest a physical interpretation. A physical idea may suggest a mathematical simplification. A unit check may reveal an error. A limiting case may show that the model is incomplete. A graph may help us understand an equation. A simulation may help us see what a formula predicts. For this reason, the notes will repeatedly return to the same pattern: from physical meaning to mathematical model, and from mathematical result back to physical meaning.
+
+\section{Why kinematics and dynamics matter}
+
+Special attention will be given to kinematics and dynamics. These are not only introductory chapters that must be completed before moving to more advanced topics. They are the backbone of the course. Kinematics introduces position, time, motion, velocity, acceleration, functions of time, and graphical descriptions of change. Dynamics introduces force, interaction, mass, inertia, Newton's laws, equations of motion, initial conditions, and prediction. In these chapters, the reader first encounters the full structure of physical modelling.
+
+Later topics, such as oscillations, waves, energy, fields, or selected ideas from modern physics, should not be seen as disconnected areas. They reuse the same habits of thought. Again and again, we ask: What is the system? What are the relevant quantities? What assumptions are we making? What mathematical relation describes the model? What can be predicted? What does the result mean?
+
+\section{Depth rather than a catalogue of formulas}
+
+The notes deliberately prefer depth over the number of formulas. It is better to understand a small number of fundamental ideas well than to collect many equations without knowing how to use them. For each important topic, we will try to identify the physical situation, build the simplest useful model, state the assumptions, derive or motivate the mathematical description, and interpret the result. Some computations will be simple on purpose. Their role is not to test algebraic endurance, but to reveal structure.
+
+This is especially important because many standard textbooks leave gaps in the reasoning. They often move quickly from a physical description to a formula, or from a formula to a result, assuming that the reader can reconstruct the intermediate steps. These notes should be more explicit. They should show not only what is done, but why it is done. They should make visible the transition from words to equations, from equations to consequences, and from consequences back to interpretation.
+
+\section{Units, dimensions, and checks}
+
+Units and dimensions will play an important role in this process. Checking units is one of the simplest and most powerful ways to test whether a formula or result can be correct. If a calculation gives a time measured in kilograms, something has gone wrong. Dimensional analysis is not a cosmetic detail; it is a basic tool of independent thinking.
+
+Throughout the notes, the reader should learn to ask: What unit should the answer have? Do both sides of the equation have the same dimension? Does the result become larger or smaller in the expected way? What happens in extreme cases? Does the answer make physical sense?
+
+\section{Approximation and idealization}
+
+The notes will also emphasize the role of approximation and idealization. Physics does not describe reality by copying it in all its complexity. Instead, it builds models. We may neglect air resistance, treat a body as a point mass, assume a frictionless surface, use a small-angle approximation, or describe a complicated interaction with a simple force law. Such simplifications are not mistakes if they are made consciously. A model is useful when it captures the relevant structure of a situation and allows us to reason, calculate, predict, and understand. But every model has limits, and those limits must be remembered.
+
+\section{Computational experiments and simulations}
+
+The course will not rely on traditional laboratory experiments. However, experimental thinking will still be present. In many places, the reader may work with computational experiments or simulations. For Computer Science students this is natural and useful. A simple program or an AI-assisted HTML application can simulate a pendulum, projectile motion, oscillations, or waves. Such a simulation can allow us to change parameters, collect artificial measurements, estimate periods or frequencies, compare results with theory, and discuss measurement uncertainty.
+
+A simulation is not reality. It is also a model. But precisely because it is a model, it can make the structure of physical reasoning visible. It allows us to see how assumptions become equations, how equations produce motion, how measurements are extracted, and how predictions are checked. Used correctly, computational experiments can help connect physics, mathematics, programming, and interpretation.
+
+\section{How to study these notes}
+
+The reader should approach these notes actively. Do not only look for final formulas. Ask what problem is being solved. Ask what assumptions are being made. Ask why a given quantity was chosen. Ask what the equation says before using it. Ask whether the answer has the right unit. Ask what would change if the assumptions changed. Ask whether the result is physically reasonable.
+
+The goal of the course is not only to pass an exam. Passing the course is important, but it is not the deepest purpose of the notes. The deeper goal is to develop a way of thinking: to see physics as a disciplined movement between reality, idealization, mathematics, computation, and interpretation. A student who follows this path should become more comfortable with formulas, more careful with assumptions, more aware of the meaning of mathematical models, and more capable of using quantitative reasoning in future technical subjects.
+
+In this sense, physics is not merely another subject to memorize. It is a training ground for modelling. It teaches how to take a complex situation, simplify it without losing what is essential, describe it mathematically, analyse the description, and return to the world with a prediction or explanation. This ability is valuable far beyond physics itself. It is one of the foundations of scientific and technical thinking.
