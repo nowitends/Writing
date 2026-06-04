@@ -1,3 +1,34 @@
+% Document color palette
+\definecolor{ChapterBlue}{HTML}{12355B}
+\definecolor{SectionBlue}{HTML}{1F5F99}
+\definecolor{SubsectionBlue}{HTML}{4F7FA8}
+\definecolor{AccentBlue}{HTML}{D8E9F7}
+
+% Chapter, section, and subsection heading styles
+\titleformat{\chapter}[display]
+    {\normalfont\huge\bfseries\color{ChapterBlue}}
+    {\chaptertitlename\ \thechapter}
+    {0.6em}
+    {}
+
+\titlespacing*{\chapter}{0pt}{-0.5em}{2.0em}
+
+\titleformat{\section}
+    {\normalfont\Large\bfseries\color{SectionBlue}}
+    {\thesection}
+    {0.8em}
+    {}
+
+\titlespacing*{\section}{0pt}{1.8em}{0.8em}
+
+\titleformat{\subsection}
+    {\normalfont\large\bfseries\color{SubsectionBlue}}
+    {\thesubsection}
+    {0.8em}
+    {}
+
+\titlespacing*{\subsection}{0pt}{1.2em}{0.5em}
+
 % Theorem-like environments
 \newtheorem{theorem}{Theorem}[chapter]
 \newtheorem{proposition}{Proposition}[chapter]
@@ -14,24 +45,24 @@
 % Colored boxes
 \newtcolorbox{definitionbox}{
     breakable,
-    colback=blue!3,
-    colframe=blue!60!black,
+    colback=AccentBlue!35,
+    colframe=SectionBlue,
     title=Definition,
     fonttitle=\bfseries
 }
 
 \newtcolorbox{examplebox}{
     breakable,
-    colback=green!3,
-    colframe=green!50!black,
+    colback=blue!2,
+    colframe=SubsectionBlue,
     title=Example,
     fonttitle=\bfseries
 }
 
 \newtcolorbox{remarkbox}{
     breakable,
-    colback=yellow!8,
-    colframe=yellow!50!black,
+    colback=AccentBlue!20,
+    colframe=SubsectionBlue,
     title=Remark,
     fonttitle=\bfseries
 }
@@ -39,7 +70,7 @@
 \newtcolorbox{summarybox}{
     breakable,
     colback=gray!5,
-    colframe=gray!60!black,
+    colframe=ChapterBlue,
     title=Summary,
     fonttitle=\bfseries
 }
