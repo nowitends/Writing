@@ -17,7 +17,7 @@ Let the position of a moving point be \(\mathbf{r}(t)\). Suppose we compare two 
 \]
 
 \begin{center}
-\begin{tikzpicture}[scale=0.85]
+\begin{tikzpicture}[scale=0.85, >={Stealth[length=4.5mm,width=3mm]}]
     \draw[step=1, gray!25, very thin] (-3.6,-0.5) grid (3.6,3.6);
     \draw[->] (-3.7,0) -- (3.9,0) node[right] {$x$};
     \draw[->] (0,-0.5) -- (0,3.9) node[above] {$y$};
@@ -28,9 +28,9 @@ Let the position of a moving point be \(\mathbf{r}(t)\). Suppose we compare two 
     \coordinate (Pone) at ({3*cos(45)},{3*sin(45)});
     \coordinate (Ptwo) at ({3*cos(120)},{3*sin(120)});
 
-    \draw[->, thick, blue!70!black] (O) -- (Pone);
-    \draw[->, thick, red!70!black] (O) -- (Ptwo);
-    \draw[->, very thick, green!55!black] (Pone) -- (Ptwo);
+    \draw[-{Stealth[length=4.5mm,width=3mm]}, line width=0.9pt, blue!70!black] (O) -- (Pone);
+    \draw[-{Stealth[length=4.5mm,width=3mm]}, line width=0.9pt, red!70!black] (O) -- (Ptwo);
+    \draw[-{Stealth[length=5.2mm,width=3.5mm]}, line width=1.2pt, green!55!black] (Pone) -- (Ptwo);
 
     \fill[blue!70!black] (Pone) circle (2pt);
     \fill[red!70!black] (Ptwo) circle (2pt);
