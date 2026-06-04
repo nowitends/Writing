@@ -35,13 +35,13 @@ In two dimensions we write
 The symbol \(\mathbf{r}\) represents the position vector. It points from the origin of the chosen coordinate system to the point whose position we want to describe.
 
 \begin{center}
-\begin{tikzpicture}[scale=0.85]
+\begin{tikzpicture}[scale=0.85, >={Stealth[length=4.5mm,width=3mm]}]
     \draw[step=1, gray!25, very thin] (-0.5,-0.5) grid (5.0,4.5);
     \draw[->] (-0.5,0) -- (5.3,0) node[right] {$x$};
     \draw[->] (0,-0.5) -- (0,4.8) node[above] {$y$};
     \draw[dashed] (3,0) -- (3,2.5);
     \draw[dashed] (0,2.5) -- (3,2.5);
-    \draw[->, thick] (0,0) -- (3,2.5) node[midway, above left] {$\mathbf{r}$};
+    \draw[-{Stealth[length=4.5mm,width=3mm]}, line width=0.9pt] (0,0) -- (3,2.5) node[midway, above left] {$\mathbf{r}$};
     \fill (3,2.5) circle (2pt);
     \node[above right] at (3,2.5) {$P=(x_1,y_1)$};
     \node[below] at (3,0) {$x_1$};
@@ -108,7 +108,7 @@ At \(t=2\),
 Thus one formula describes many positions. It tells us where the point is at each time.
 
 \begin{center}
-\begin{tikzpicture}[x=1.25cm,y=0.72cm]
+\begin{tikzpicture}[x=1.25cm,y=0.72cm, >={Stealth[length=4.5mm,width=3mm]}]
     \draw[step=1, gray!25, very thin] (-0.35,-0.35) grid (3.25,4.75);
     \draw[->] (-0.35,0) -- (3.55,0) node[right] {$x$};
     \draw[->] (0,-0.35) -- (0,4.95) node[above] {$y$};
@@ -119,8 +119,8 @@ Thus one formula describes many positions. It tells us where the point is at eac
     \draw[dashed] (2,0) -- (2,4);
     \draw[dashed] (0,4) -- (2,4);
 
-    \draw[->, thick, blue!70!black] (0,0) -- (1,1);
-    \draw[->, thick, red!70!black] (0,0) -- (2,4);
+    \draw[-{Stealth[length=4.5mm,width=3mm]}, line width=0.9pt, blue!70!black] (0,0) -- (1,1);
+    \draw[-{Stealth[length=4.5mm,width=3mm]}, line width=0.9pt, red!70!black] (0,0) -- (2,4);
 
     \fill[blue!70!black] (1,1) circle (2pt);
     \fill[red!70!black] (2,4) circle (2pt);
