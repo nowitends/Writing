@@ -1,0 +1,368 @@
+\section{Velocity}
+
+\subsection{Why position is not enough}
+
+Knowing the position of a moving point at every time gives a complete description of where the point is. But we often want to describe motion more locally. We want to know how the position is changing at a given moment.
+
+If the position changes a lot during a short time interval, we say that the motion is fast. If the position changes only a little during the same time interval, we say that the motion is slow. If the position changes in a different direction, the motion has a different direction.
+
+Velocity is the mathematical object that describes this local change of position.
+
+\subsection{Average velocity}
+
+Let the position of a moving point be \(\mathbf{r}(t)\). Suppose we compare two moments of time, \(t_1\) and \(t_2\). The change in position is
+
+\[
+\Delta \mathbf{r} = \mathbf{r}(t_2)-\mathbf{r}(t_1).
+\]
+
+The change in time is
+
+\[
+\Delta t = t_2-t_1.
+\]
+
+The average velocity over this time interval is defined as
+
+\[
+\mathbf{v}_{\mathrm{avg}}
+=
+\frac{\Delta \mathbf{r}}{\Delta t}
+=
+\frac{\mathbf{r}(t_2)-\mathbf{r}(t_1)}{t_2-t_1}.
+\]
+
+This is a vector. Its direction is the direction of the displacement \(\Delta \mathbf{r}\), and its magnitude tells us how much displacement occurs per unit time during the interval.
+
+In one dimension, this becomes
+
+\[
+v_{\mathrm{avg}}
+=
+\frac{x(t_2)-x(t_1)}{t_2-t_1}.
+\]
+
+Average velocity depends on the interval. If we choose a large interval, we describe the overall change during that interval. If we choose a smaller interval, we get a more local description.
+
+\subsection{Instantaneous velocity}
+
+To describe the motion at one moment, we take the limit of the average velocity as the time interval becomes very small. This gives instantaneous velocity:
+
+\[
+\mathbf{v}(t)
+=
+\frac{d\mathbf{r}}{dt}.
+\]
+
+If
+
+\[
+\mathbf{r}(t)=(x(t),y(t),z(t)),
+\]
+
+then
+
+\[
+\mathbf{v}(t)
+=
+\left(
+\frac{dx}{dt},
+\frac{dy}{dt},
+\frac{dz}{dt}
+\right).
+\]
+
+In two dimensions,
+
+\[
+\mathbf{v}(t)
+=
+\left(
+\frac{dx}{dt},
+\frac{dy}{dt}
+\right).
+\]
+
+In one dimension,
+
+\[
+v(t)=\frac{dx}{dt}.
+\]
+
+Velocity is therefore the derivative of position with respect to time. This is the first major connection between kinematics and calculus.
+
+\subsection{Velocity as a vector attached to the moving point}
+
+Velocity is a vector quantity. This means that it has magnitude and direction.
+
+At each time \(t\), the point has a position \(\mathbf{r}(t)\) and a velocity \(\mathbf{v}(t)\). It is useful to imagine the velocity vector as attached to the point at its current position.
+
+The velocity vector is tangent to the trajectory. This statement is important. The trajectory tells us the path. The velocity tells us the local direction in which the point is moving along that path.
+
+For example, if a point moves along a circle, the velocity is not directed toward the center of the circle. The velocity is tangent to the circle. The direction of velocity changes from point to point, even if the length of the velocity vector remains constant.
+
+\subsection{Speed}
+
+The magnitude of the velocity vector is called speed:
+
+\[
+v(t)=|\mathbf{v}(t)|.
+\]
+
+This notation can be slightly confusing because the same letter \(v\) is often used for both velocity and speed. In these notes, bold symbols such as \(\mathbf{v}\) denote vectors, while non-bold symbols such as \(v\) may denote magnitudes.
+
+If
+
+\[
+\mathbf{v}(t)=(v_x(t),v_y(t),v_z(t)),
+\]
+
+then
+
+\[
+|\mathbf{v}(t)|
+=
+\sqrt{v_x^2(t)+v_y^2(t)+v_z^2(t)}.
+\]
+
+Speed is not a vector. It is a non-negative number. It tells us how fast the point is moving, but not in which direction.
+
+Velocity tells us both: how fast and in which direction.
+
+\subsection{Example: motion along a line}
+
+Consider the one-dimensional position
+
+\[
+x(t)=x_0+at,
+\]
+
+where \(x_0\) and \(a\) are constants.
+
+The velocity is
+
+\[
+v(t)=\frac{dx}{dt}.
+\]
+
+Therefore
+
+\[
+v(t)=a.
+\]
+
+The velocity is constant. This means that the position changes at the same rate at every time.
+
+If
+
+\[
+x(t)=1+2t,
+\]
+
+then
+
+\[
+v(t)=2.
+\]
+
+The number \(2\) is not only the coefficient in the formula. It is the rate at which position changes with respect to time.
+
+\subsection{Example: motion along a parabola}
+
+Consider
+
+\[
+\mathbf{r}(t)=(t,t^2).
+\]
+
+Then
+
+\[
+x(t)=t,
+\]
+and
+
+\[
+y(t)=t^2.
+\]
+
+The velocity is
+
+\[
+\mathbf{v}(t)
+=
+\left(
+\frac{dx}{dt},
+\frac{dy}{dt}
+\right)
+=
+(1,2t).
+\]
+
+At \(t=0\),
+
+\[
+\mathbf{v}(0)=(1,0).
+\]
+
+At \(t=1\),
+
+\[
+\mathbf{v}(1)=(1,2).
+\]
+
+At \(t=2\),
+
+\[
+\mathbf{v}(2)=(1,4).
+\]
+
+The trajectory is a parabola, but the velocity tells us how the point moves along the parabola. The horizontal component is constant, while the vertical component changes.
+
+This example also shows that a point on a trajectory and a velocity vector are different objects. The point tells us where the body is. The velocity vector tells us how that position is changing at that moment.
+
+\subsection{Example: motion along a circle}
+
+Consider
+
+\[
+\mathbf{r}(t)=(R\cos t,R\sin t).
+\]
+
+The velocity is
+
+\[
+\mathbf{v}(t)
+=
+\frac{d\mathbf{r}}{dt}
+=
+(-R\sin t,R\cos t).
+\]
+
+The speed is
+
+\[
+|\mathbf{v}(t)|
+=
+\sqrt{(-R\sin t)^2+(R\cos t)^2}.
+\]
+
+Thus
+
+\[
+|\mathbf{v}(t)|
+=
+\sqrt{R^2\sin^2 t+R^2\cos^2 t}
+=
+R.
+\]
+
+The speed is constant. However, the velocity vector is not constant, because its direction changes with time.
+
+This is an important point. Constant speed does not mean constant velocity. Velocity is a vector. If the direction changes, the velocity changes.
+
+We can also check that the velocity is tangent to the circle. The position vector is
+
+\[
+\mathbf{r}(t)=(R\cos t,R\sin t),
+\]
+
+and the velocity vector is
+
+\[
+\mathbf{v}(t)=(-R\sin t,R\cos t).
+\]
+
+Their dot product is
+
+\[
+\mathbf{r}(t)\cdot\mathbf{v}(t)
+=
+R\cos t(-R\sin t)+R\sin t(R\cos t).
+\]
+
+Therefore
+
+\[
+\mathbf{r}(t)\cdot\mathbf{v}(t)=0.
+\]
+
+The position vector and velocity vector are perpendicular. Since the position vector points radially outward from the center of the circle, the velocity vector is tangent to the circle.
+
+\subsection{Example: recognizing a special point on a trajectory}
+
+Consider a motion in the plane described by
+
+\[
+\mathbf{r}(t)=(t, -t^2+4t).
+\]
+
+The trajectory is a parabola because
+
+\[
+x=t,
+\]
+
+so
+
+\[
+y=-x^2+4x.
+\]
+
+The velocity is
+
+\[
+\mathbf{v}(t)=
+\left(
+\frac{dx}{dt},
+\frac{dy}{dt}
+\right)
+=
+(1,-2t+4).
+\]
+
+The vertical component of velocity is
+
+\[
+v_y(t)=-2t+4.
+\]
+
+At the highest point of this parabola, the vertical component of velocity should be zero. We solve
+
+\[
+-2t+4=0.
+\]
+
+Thus
+
+\[
+t=2.
+\]
+
+The position at this time is
+
+\[
+\mathbf{r}(2)=(2,-4+8)=(2,4).
+\]
+
+So the highest point is \((2,4)\).
+
+This example shows that velocity is not introduced only to compute another formula. Velocity helps us understand the structure of motion. It can identify special points on a trajectory, such as points where the motion changes from upward to downward.
+
+\subsection{Units of velocity}
+
+Velocity has units of position divided by time. If position is measured in metres and time in seconds, velocity is measured in
+
+\[
+\mathrm{m/s}.
+\]
+
+This follows directly from the definition
+
+\[
+\mathbf{v}(t)=\frac{d\mathbf{r}}{dt}.
+\]
+
+The numerator has the unit of length, and the denominator has the unit of time.
+
+Whenever a velocity is computed, its unit should be checked. If a calculation gives a velocity in metres or seconds instead of metres per second, something has gone wrong.
