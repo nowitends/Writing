@@ -1,0 +1,42 @@
+\section{Cartesian coordinates}
+
+To describe points on a line, in a plane, or in space, we use coordinates. The most common coordinate system is the Cartesian coordinate system.
+
+\begin{center}
+\begin{tabular}{@{}lll@{}}
+\toprule
+Setting & Coordinates & Example \\
+\midrule
+Line & \(x\) & \(2\) \\
+Plane & \((x,y)\) & \((2,3)\) \\
+Space & \((x,y,z)\) & \((1,-2,5)\) \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+This horizontal summary is often more useful than writing the three cases separately. It shows at once how the number of coordinates grows with the dimension.
+
+\begin{center}
+\begin{tikzpicture}[scale=0.75]
+    \draw[step=1, gray!25, very thin] (-0.5,-0.5) grid (4.5,4.5);
+    \draw[->] (-0.5,0) -- (4.8,0) node[right] {$x$};
+    \draw[->] (0,-0.5) -- (0,4.8) node[above] {$y$};
+    \foreach \x in {1,2,3,4} {
+        \draw (\x,0.06) -- (\x,-0.06) node[below] {\x};
+    }
+    \foreach \y in {1,2,3,4} {
+        \draw (0.06,\y) -- (-0.06,\y) node[left] {\y};
+    }
+    \draw[dashed] (2,0) -- (2,3) -- (0,3);
+    \fill (2,3) circle (2pt);
+    \node[above right] at (2,3) {$(2,3)$};
+\end{tikzpicture}
+\end{center}
+
+Coordinates are naturally connected with the way we describe location. A coordinate system gives a mathematical way of saying where something is.
+
+\begin{remarkbox}
+Coordinates are not the point itself. Coordinates depend on a choice of origin, axes, orientation, and units. The same point can have different coordinates in different coordinate systems.
+\end{remarkbox}
+
+Geometry concerns objects such as points, lines, planes, and curves. Coordinates are a method of describing these objects using numbers.
