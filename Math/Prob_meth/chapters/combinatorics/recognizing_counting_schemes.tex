@@ -1,0 +1,47 @@
+\section{How to recognize the counting scheme}
+
+The six formulas in this chapter are easy to confuse if they are memorized as isolated expressions. A safer method is to classify the construction before choosing a formula.
+
+Start with the following questions.
+
+\begin{enumerate}
+    \item Are we arranging all objects, or choosing only \(k\) of them?
+    \item Does order matter?
+    \item Can an object be used more than once?
+    \item Are some objects indistinguishable?
+\end{enumerate}
+
+These questions usually determine the correct scheme.
+
+\[
+\begin{array}{c|c|c|c}
+\text{Situation} & \text{Order} & \text{Repetition} & \text{Formula} \\
+\hline
+\text{arrange all distinct objects} & \text{matters} & \text{no} & n! \\
+\text{arrange a multiset} & \text{matters} & \text{identical objects} & \dfrac{n!}{n_1!\cdots n_r!} \\
+\text{choose ordered }k\text{ objects} & \text{matters} & \text{no} & \dfrac{n!}{(n-k)!} \\
+\text{form ordered }k\text{-tuple} & \text{matters} & \text{yes} & n^k \\
+\text{choose }k\text{-element subset} & \text{does not matter} & \text{no} & \binom{n}{k} \\
+\text{choose multiset of size }k & \text{does not matter} & \text{yes} & \binom{n+k-1}{k}
+\end{array}
+\]
+
+\begin{remarkbox}
+A common mistake is to decide too quickly whether order matters. Ask whether swapping two selected objects creates a genuinely different object. If yes, order matters. If no, order does not matter.
+\end{remarkbox}
+
+\begin{examplebox}
+Suppose we choose three people from ten to form a committee. The word committee suggests that the selected people form a group, not an ordered list. Thus order does not matter, and no person can be chosen twice. The correct scheme is combinations without repetition:
+\[
+\binom{10}{3}.
+\]
+\end{examplebox}
+
+\begin{examplebox}
+Suppose we choose a president, a secretary, and a treasurer from ten people. Now the roles are different, so assigning Alice as president and Bob as secretary is different from assigning Bob as president and Alice as secretary. Order, or more precisely position, matters. No person can hold two roles. The correct scheme is variations without repetition:
+\[
+\frac{10!}{(10-3)!}=10\cdot9\cdot8.
+\]
+\end{examplebox}
+
+The mathematical formulas are compact, but the real skill is translating a verbal description into a construction. Once the construction is understood, the formula usually becomes natural.
