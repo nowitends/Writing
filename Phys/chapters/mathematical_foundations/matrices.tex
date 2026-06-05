@@ -1,24 +1,66 @@
 \section{Matrices}
 
-A matrix is a rectangular array of numbers. For example,
+\begin{definitionbox}
+A matrix is a rectangular array of numbers arranged in rows and columns.
+\end{definitionbox}
+
+For example,
 \[
-A=\begin{pmatrix}
+A=
+\begin{pmatrix}
 1 & 2 \\
 3 & 4
 \end{pmatrix}.
 \]
 
-\begin{center}
-\begin{tabular}{@{}ll@{}}
-\toprule
-Operation & Example \\
-\midrule
-Addition & \(\begin{pmatrix}1&2\\3&4\end{pmatrix}+\begin{pmatrix}5&6\\7&8\end{pmatrix}=\begin{pmatrix}6&8\\10&12\end{pmatrix}\) \\
-Scalar multiplication & \(2\begin{pmatrix}1&2\\3&4\end{pmatrix}=\begin{pmatrix}2&4\\6&8\end{pmatrix}\) \\
-Matrix times vector & \(\begin{pmatrix}1&2\\3&4\end{pmatrix}\begin{pmatrix}x\\y\end{pmatrix}=\begin{pmatrix}x+2y\\3x+4y\end{pmatrix}\) \\
-\bottomrule
-\end{tabular}
-\end{center}
+Matrices can be added when they have the same size:
+\[
+\begin{pmatrix}
+1 & 2 \\
+3 & 4
+\end{pmatrix}
++
+\begin{pmatrix}
+5 & 6 \\
+7 & 8
+\end{pmatrix}
+=
+\begin{pmatrix}
+6 & 8 \\
+10 & 12
+\end{pmatrix}.
+\]
+
+A matrix can be multiplied by a scalar:
+\[
+2
+\begin{pmatrix}
+1 & 2 \\
+3 & 4
+\end{pmatrix}
+=
+\begin{pmatrix}
+2 & 4 \\
+6 & 8
+\end{pmatrix}.
+\]
+
+A matrix can also multiply a vector:
+\[
+\begin{pmatrix}
+1 & 2 \\
+3 & 4
+\end{pmatrix}
+\begin{pmatrix}
+x \\
+y
+\end{pmatrix}
+=
+\begin{pmatrix}
+x+2y \\
+3x+4y
+\end{pmatrix}.
+\]
 
 Matrix multiplication is not the same as ordinary multiplication of numbers. In general,
 \[
