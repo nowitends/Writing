@@ -1,0 +1,50 @@
+\section{Permutations without repetition}
+
+Combinatorics begins with a simple question: in how many different ways can we arrange objects? The word arrange is important. In this section, the order of the objects matters, and each object is used exactly once.
+
+\begin{definitionbox}
+Let \(A\) be a finite set with \(n\) distinct elements. A permutation without repetition of the elements of \(A\) is an ordering of all elements of \(A\), in which every element appears exactly once.
+\end{definitionbox}
+
+For example, if
+\[
+A=\{a,b,c\},
+\]
+then the permutations without repetition are
+\[
+abc,\quad acb,\quad bac,\quad bca,\quad cab,\quad cba.
+\]
+There are six of them.
+
+\begin{center}
+\begin{tikzpicture}[scale=1.05, transform shape]
+\foreach \word/\x/\y in {abc/0/2, acb/3/2, bac/6/2, bca/0/0, cab/3/0, cba/6/0} {
+    \node[draw, rounded corners, fill=blue!4, minimum width=2.0cm, minimum height=0.75cm] at (\x,\y) {$\word$};
+}
+\end{tikzpicture}
+\end{center}
+
+\begin{theorembox}
+The number of permutations without repetition of \(n\) distinct elements is
+\[
+n! = n(n-1)(n-2)\cdots 2\cdot 1.
+\]
+\end{theorembox}
+
+The reason is the multiplication principle. There are \(n\) choices for the first place. After one object has been used, there are \(n-1\) choices for the second place. Then there are \(n-2\) choices for the third place, and so on, until the last place is forced.
+
+Thus the number of possible orderings is
+\[
+n(n-1)(n-2)\cdots 2\cdot 1=n!.
+\]
+
+\begin{examplebox}
+Five books are to be arranged on a shelf. The books are all different. The number of possible arrangements is
+\[
+5!=5\cdot4\cdot3\cdot2\cdot1=120.
+\]
+\end{examplebox}
+
+\begin{remarkbox}
+Use permutations without repetition when all objects are distinct, all objects are used, and order matters.
+\end{remarkbox}
