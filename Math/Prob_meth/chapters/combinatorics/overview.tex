@@ -1,1 +1,32 @@
-This chapter covers the combinatorial methods that are essential for calculating probabilities in a systematic way.
+\section{What combinatorics studies}
+
+Combinatorics is the mathematics of counting possibilities. In this chapter we study how to count arrangements, selections, and structured lists of objects.
+
+The main question is simple to state:
+\[
+\text{How many objects of a given type can be formed?}
+\]
+The answer depends on the rules. Does order matter? Can an object be used more than once? Do we use all objects, or only some of them? These questions lead to different counting schemes.
+
+We will use six basic schemes:
+\[
+\begin{array}{c|c|c}
+\text{scheme} & \text{order matters?} & \text{repetition allowed?} \\
+\hline
+\text{permutations without repetition} & \text{yes} & \text{no} \\
+\text{permutations with repetition} & \text{yes} & \text{yes, through identical objects} \\
+\text{variations without repetition} & \text{yes} & \text{no} \\
+\text{variations with repetition} & \text{yes} & \text{yes} \\
+\text{combinations without repetition} & \text{no} & \text{no} \\
+\text{combinations with repetition} & \text{no} & \text{yes}
+\end{array}
+\]
+
+The goal of the chapter is not only to memorize formulas. The goal is to recognize the structure of a counting problem.
+
+\input{chapters/combinatorics/permutations_without_repetition}
+\input{chapters/combinatorics/permutations_with_repetition}
+\input{chapters/combinatorics/variations_without_repetition}
+\input{chapters/combinatorics/variations_with_repetition}
+\input{chapters/combinatorics/combinations_without_repetition}
+\input{chapters/combinatorics/combinations_with_repetition}
