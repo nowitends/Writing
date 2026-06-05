@@ -3,6 +3,8 @@
 \definecolor{SectionBlue}{HTML}{1F5F99}
 \definecolor{SubsectionBlue}{HTML}{4F7FA8}
 \definecolor{AccentBlue}{HTML}{D8E9F7}
+\definecolor{ExampleGreen}{HTML}{2F7D4A}
+\definecolor{ExampleGreenBack}{HTML}{EEF8F1}
 
 % Chapter, section, and subsection heading styles
 \titleformat{\chapter}[display]
@@ -45,7 +47,7 @@
 % Colored boxes
 \newtcolorbox{definitionbox}{
     breakable,
-    colback=AccentBlue!35,
+    colback=AccentBlue!28,
     colframe=SectionBlue,
     title=Definition,
     fonttitle=\bfseries
@@ -53,16 +55,16 @@
 
 \newtcolorbox{examplebox}{
     breakable,
-    colback=blue!2,
-    colframe=SubsectionBlue,
+    colback=ExampleGreenBack,
+    colframe=ExampleGreen,
     title=Example,
     fonttitle=\bfseries
 }
 
 \newtcolorbox{remarkbox}{
     breakable,
-    colback=AccentBlue!20,
-    colframe=SubsectionBlue,
+    colback=gray!4,
+    colframe=SubsectionBlue!75,
     title=Remark,
     fonttitle=\bfseries
 }
