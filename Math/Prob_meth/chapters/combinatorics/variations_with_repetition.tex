@@ -1,6 +1,8 @@
 \section{Variations with repetition}
 
-In some ordered selections, the same object may be used more than once. Then the number of choices does not decrease from one position to the next.
+In some ordered selections, the same object may be used more than once. Then every position can be filled independently from the same collection of choices. The number of available choices does not decrease after a position is filled.
+
+This is the natural scheme for strings, passwords, codes, sequences of symbols, repeated choices, and any construction in which the same label may appear several times.
 
 \begin{definitionbox}
 Let \(A\) be a finite set with \(n\) distinct elements. A variation with repetition of length \(k\) is an ordered \(k\)-tuple of elements of \(A\), where elements may repeat.
@@ -14,7 +16,7 @@ then the variations with repetition of length \(3\) are
 \[
 aaa,\quad aab,\quad aba,\quad abb,\quad baa,\quad bab,\quad bba,\quad bbb.
 \]
-There are \(8\) of them.
+There are \(8\) of them. The word \(aba\) is different from \(baa\), because order matters. The word \(aaa\) is allowed, because repetition is allowed.
 
 \begin{theorembox}
 The number of variations with repetition of length \(k\) chosen from \(n\) distinct elements is
@@ -28,6 +30,8 @@ There are \(n\) choices for the first position. Because repetition is allowed, t
 \underbrace{n\cdot n\cdots n}_{k\text{ factors}}=n^k.
 \]
 
+The constant number of choices is the signature of repetition. Each position is filled from the full original set.
+
 \begin{examplebox}
 A three-symbol string is formed from the alphabet
 \[
@@ -40,6 +44,13 @@ Symbols may repeat. There are
 such strings.
 \end{examplebox}
 
+\begin{examplebox}
+A lock code has four positions. Each position may contain one of the digits \(0,1,\ldots,9\), and digits may repeat. The number of possible codes is
+\[
+10^4=10000.
+\]
+\end{examplebox}
+
 \begin{remarkbox}
-Use variations with repetition when order matters, there are \(k\) positions, and every position can be filled independently from the same set of \(n\) objects.
+Use variations with repetition when order matters, there are \(k\) positions, and every position can be filled independently from the same set of \(n\) objects. Typical words are: string, password, code, sequence, ordered tuple.
 \end{remarkbox}
