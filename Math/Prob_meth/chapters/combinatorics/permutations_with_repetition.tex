@@ -1,9 +1,11 @@
 \section{Permutations with repetition}
 
-Sometimes we arrange objects, but some of them are indistinguishable. Then counting every formal ordering as different would overcount the possibilities.
+Permutations without repetition assume that all objects are distinct. In many counting problems this is not true. Some objects may look the same, carry the same label, or belong to the same type. Then exchanging two identical objects does not create a new visible arrangement.
+
+The important idea is overcounting. If we temporarily pretend that all objects are distinct, we count too many arrangements. We then divide by the number of internal swaps that cannot be seen in the final result.
 
 \begin{definitionbox}
-A permutation with repetition is an ordering of a multiset, that is, a collection in which some elements may occur more than once.
+A permutation with repetition is an ordering of a multiset, that is, a finite collection in which some elements may occur more than once.
 \end{definitionbox}
 
 For example, the letters in the word
@@ -29,6 +31,8 @@ The number of distinct permutations is
 \]
 \end{theorembox}
 
+The numerator \(n!\) counts arrangements as if every object were distinct. The denominator removes invisible rearrangements inside each group of identical objects. If one kind appears \(n_i\) times, then those \(n_i\) identical copies can be internally rearranged in \(n_i!\) ways without changing the final visible arrangement.
+
 \begin{examplebox}
 How many distinct arrangements are there of the letters in the word \(\text{LEVEL}\)?
 
@@ -38,6 +42,15 @@ There are five letters. The letter \(L\) appears twice, the letter \(E\) appears
 \]
 \end{examplebox}
 
+\begin{examplebox}
+How many distinct strings can be formed from the letters of \(\text{AABBC}\)?
+
+There are five positions. The letter \(A\) appears twice, \(B\) appears twice, and \(C\) appears once. Therefore the number is
+\[
+\frac{5!}{2!2!1!}=30.
+\]
+\end{examplebox}
+
 \begin{remarkbox}
-Use permutations with repetition when all positions are filled, order matters, but some objects are indistinguishable.
+Use permutations with repetition when all positions are filled, order matters, and some objects are indistinguishable. Typical examples are arrangements of letters in a word with repeated letters or arrangements of objects classified by type rather than identity.
 \end{remarkbox}
