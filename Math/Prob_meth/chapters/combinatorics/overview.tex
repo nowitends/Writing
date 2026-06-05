@@ -1,14 +1,43 @@
 \section{What combinatorics studies}
 
-Combinatorics is the mathematics of counting possibilities. In this chapter we study how to count arrangements, selections, and structured lists of objects.
+Combinatorics is the mathematics of counting possibilities. It studies how many objects can be formed when a set of rules is imposed. These objects may be arrangements, lists, selections, strings, words, groups, schedules, routes, or distributions of identical items among different boxes.
 
-The main question is simple to state:
+The central question is simple:
 \[
-\text{How many objects of a given type can be formed?}
+\text{How many objects of this type can be formed?}
 \]
-The answer depends on the rules. Does order matter? Can an object be used more than once? Do we use all objects, or only some of them? These questions lead to different counting schemes.
+The difficulty is not usually arithmetic. The difficulty is recognizing the structure of the construction. Before using a formula, we must understand what is being built.
 
-We will use six basic schemes:
+In this chapter we will not use the language of probability. We will also not start from abstract set theory. Instead, we will build a practical and precise language for counting. Later, this language will be useful in many places, but here it is studied on its own.
+
+\subsection*{Counting as a construction process}
+
+A counting problem should be read as a recipe for constructing objects. For example, suppose we want to form a three-letter code from the letters
+\[
+A,B,C,D.
+\]
+Before counting, we must ask:
+\begin{itemize}
+    \item Does the order of the letters matter?
+    \item May a letter be used more than once?
+    \item Do we use all available letters, or only some of them?
+    \item Are some objects indistinguishable from each other?
+\end{itemize}
+Different answers lead to different counting schemes.
+
+\begin{theorembox}
+\textbf{Multiplication principle.} If a construction is performed in several successive steps, and if there are \(m_1\) choices for the first step, \(m_2\) choices for the second step, and so on up to \(m_k\) choices for the \(k\)-th step, then the total number of possible constructions is
+\[
+m_1m_2\cdots m_k.
+\]
+\end{theorembox}
+
+The multiplication principle is the engine behind most formulas in this chapter. Factorials, powers, binomial coefficients, and stars-and-bars formulas all arise by applying this principle carefully and then correcting for possible overcounting.
+
+\subsection*{The six basic counting schemes}
+
+We will study six basic schemes. They are organized by three questions: whether order matters, whether repetition is allowed, and whether all objects are used or only a fixed number of positions is filled.
+
 \[
 \begin{array}{c|c|c}
 \text{scheme} & \text{order matters?} & \text{repetition allowed?} \\
@@ -22,7 +51,11 @@ We will use six basic schemes:
 \end{array}
 \]
 
-The goal of the chapter is not only to memorize formulas. The goal is to recognize the structure of a counting problem.
+The formulas are important, but the main goal is recognition. A formula used in the wrong situation gives a wrong answer even if the arithmetic is perfect.
+
+\begin{remarkbox}
+When solving a counting problem, do not start by asking which formula you remember. Start by asking what kind of object is being constructed.
+\end{remarkbox}
 
 \input{chapters/combinatorics/permutations_without_repetition}
 \input{chapters/combinatorics/permutations_with_repetition}
