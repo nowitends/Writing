@@ -1,0 +1,82 @@
+\section{Overcounting and equivalent descriptions}
+
+Many combinatorial formulas arise from a two-step idea:
+\begin{enumerate}
+    \item Count descriptions that are easy to construct.
+    \item Divide by the number of descriptions representing the same outcome.
+\end{enumerate}
+
+This is the idea of overcounting.
+
+\begin{definitionbox}
+\textbf{Overcounting} occurs when the same intended outcome is counted more than once because it has several different descriptions.
+\end{definitionbox}
+
+Overcounting is not a mistake if it is controlled. It becomes a method when we know exactly how many times each outcome has been counted.
+
+\begin{examplebox}
+Suppose we want to choose a committee of three people from \(n\) people. The order of names in the committee does not matter.
+
+It is easier first to count ordered selections:
+\[
+n(n-1)(n-2).
+\]
+But each committee of three people has been counted \(3!\) times, because the same three people can be listed in \(3!\) different orders. Therefore the number of committees is
+\[
+\frac{n(n-1)(n-2)}{3!}.
+\]
+\end{examplebox}
+
+The essential idea is not division itself. The essential idea is identifying which descriptions should be treated as the same outcome.
+
+\section{Distinguishable and indistinguishable objects}
+
+Objects are distinguishable if the model treats them as separate individuals. Objects are indistinguishable if only their type matters.
+
+\begin{examplebox}
+The objects
+\[
+R_1,R_2,R_3
+\]
+are three distinguishable red balls. The symbols
+\[
+R,R,R
+\]
+represent three indistinguishable red balls of the same type.
+\end{examplebox}
+
+A physical object may be distinguishable in one model and indistinguishable in another. This depends on the recording rule.
+
+\begin{examplebox}
+An urn contains red and blue balls. If each ball has a label, and labels are recorded, then two red balls are different outcomes. If only colors are recorded, then the red balls are treated as indistinguishable.
+\end{examplebox}
+
+This distinction is crucial in probability. If the physical random mechanism selects labelled balls uniformly, but the sample space records only colors, then the color outcomes may not be equally likely.
+
+\section{Permutations with repeated elements}
+
+When some objects are indistinguishable, a linear arrangement may have several labelled descriptions that represent the same visible arrangement.
+
+Suppose we arrange \(n\) objects, where there are \(n_1\) objects of type 1, \(n_2\) objects of type 2, and so on, with
+\[
+n_1+n_2+\cdots+n_r=n.
+\]
+The number of distinct visible arrangements is
+\[
+\frac{n!}{n_1!n_2!\cdots n_r!}.
+\]
+
+\begin{examplebox}
+The word \(\text{BANANA}\) contains six letters: three \(A\)'s, two \(N\)'s, and one \(B\). If all six positions are arranged, then the number of distinct words is
+\[
+\frac{6!}{3!2!1!}.
+\]
+The division appears because permuting the three \(A\)'s among themselves does not change the visible word, and neither does permuting the two \(N\)'s.
+\end{examplebox}
+
+This formula should be read as an overcounting correction:
+\[
+\text{labelled arrangements}
+\quad \longrightarrow \quad
+\text{visible arrangements}.
+\]
