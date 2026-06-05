@@ -30,26 +30,12 @@ The average velocity of a moving point on the interval \([t_1,t_2]\), with \(t_1
 \]
 \end{definitionbox}
 
-\begin{center}
-\begin{tikzpicture}[scale=0.85, >={Stealth[length=4.5mm,width=3mm]}]
-    \draw[step=1, gray!25, very thin] (-3.6,-0.5) grid (3.6,3.6);
-    \draw[->] (-3.7,0) -- (3.9,0) node[right] {$x$};
-    \draw[->] (0,-0.5) -- (0,3.9) node[above] {$y$};
-    \draw[domain=0:180, smooth, samples=100] plot ({3*cos(\x)},{3*sin(\x)});
-    \coordinate (O) at (0,0);
-    \coordinate (Pone) at ({3*cos(45)},{3*sin(45)});
-    \coordinate (Ptwo) at ({3*cos(120)},{3*sin(120)});
-    \draw[-{Stealth[length=4.5mm,width=3mm]}, line width=0.9pt] (O) -- (Pone);
-    \draw[-{Stealth[length=4.5mm,width=3mm]}, line width=0.9pt] (O) -- (Ptwo);
-    \draw[-{Stealth[length=5.2mm,width=3.5mm]}, line width=1.2pt] (Pone) -- (Ptwo);
-    \fill (Pone) circle (2pt);
-    \fill (Ptwo) circle (2pt);
-    \node[below right] at (1.05,1.05) {$\mathbf{r}(t_1)$};
-    \node[left] at (-0.95,1.55) {$\mathbf{r}(t_2)$};
-    \node[above] at (0.35,2.65) {$\Delta\mathbf{r}$};
-    \node[below left] at (0,0) {$O$};
-\end{tikzpicture}
-\end{center}
+\begin{figure}[htbp]
+\centering
+\input{figures/kinematics/displacement_between_positions}
+\caption{Displacement between two positions of a moving point.}
+\label{fig:kinematics-displacement-between-positions}
+\end{figure}
 
 The average velocity is a vector. Its direction is the direction of the displacement \(\Delta\mathbf{r}\), and its magnitude tells us how much displacement occurs per unit time during the interval. In one dimension,
 \[
@@ -179,24 +165,12 @@ Their dot product is
 so at this point the velocity vector is perpendicular to the position vector.
 \end{examplebox}
 
-\begin{center}
-\begin{tikzpicture}[scale=1.15, >={Stealth[length=4.5mm,width=3mm]}]
-    \draw[step=1, gray!25, very thin] (-2.6,-0.5) grid (2.6,3.2);
-    \draw[->] (-2.7,0) -- (2.9,0) node[right] {$x$};
-    \draw[->] (0,-0.5) -- (0,3.4) node[above] {$y$};
-    \draw (0,0) circle (2);
-    \coordinate (O) at (0,0);
-    \coordinate (P) at (1,{sqrt(3)});
-    \coordinate (Vend) at ({1-sqrt(3)},{sqrt(3)+1});
-    \draw[-{Stealth[length=4.5mm,width=3mm]}, line width=0.9pt] (O) -- (P);
-    \draw[-{Stealth[length=5.2mm,width=3.5mm]}, line width=1.2pt] (P) -- (Vend);
-    \fill (P) circle (2pt);
-    \node[above right] at (P) {$P=(1,\sqrt{3})$};
-    \node[below right] at (0.55,0.75) {$\mathbf{r}$};
-    \node[above left] at (0.25,2.35) {$\mathbf{v}$};
-    \node[below left] at (O) {$O$};
-\end{tikzpicture}
-\end{center}
+\begin{figure}[htbp]
+\centering
+\input{figures/kinematics/circular_velocity_tangent}
+\caption{Velocity tangent to a circular trajectory.}
+\label{fig:kinematics-circular-velocity-tangent}
+\end{figure}
 
 The speed in this circular motion is
 \[
