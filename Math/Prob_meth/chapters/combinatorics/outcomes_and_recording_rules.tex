@@ -1,0 +1,98 @@
+\section{Counting begins with elementary outcomes}
+
+Combinatorics is often presented as a list of formulas. In probability this is dangerous. Before a formula can be used, we must know what one elementary outcome is. A physical experiment does not determine a sample space by itself. The sample space depends on what is recorded.
+
+Suppose that three balls are drawn from a box. If the balls are labelled and the order of drawing is recorded, then an outcome is a sequence of labelled objects. If only the selected balls are recorded, then an outcome is a set. If only the colors are recorded, then labelled balls of the same color may become indistinguishable. If only the number of red balls is recorded, then the outcome is no longer the full draw, but only the value of a random variable.
+
+Thus the first question in a counting problem is not
+\[
+\text{Which formula should be used?}
+\]
+The first question is
+\[
+\text{What is one outcome?}
+\]
+
+\begin{definitionbox}
+An \textbf{elementary outcome} is a complete description of one possible result of an experiment, according to the recording rule chosen for the model.
+\end{definitionbox}
+
+The phrase ``according to the recording rule'' is essential. The same physical situation may produce different mathematical sample spaces if different information is recorded.
+
+\begin{examplebox}
+A box contains three balls labelled \(R_1,R_2,B_1\). Two balls are drawn without replacement.
+
+If order and labels are recorded, then examples of outcomes are
+\[
+(R_1,B_1),\qquad (B_1,R_1),\qquad (R_1,R_2).
+\]
+If only the set of labelled balls is recorded, then examples of outcomes are
+\[
+\{R_1,B_1\},\qquad \{R_1,R_2\}.
+\]
+If only the sequence of colors is recorded, then examples of outcomes are
+\[
+(R,B),\qquad (B,R),\qquad (R,R).
+\]
+If only the number of red balls is recorded, then the possible recorded values are
+\[
+0,1,2.
+\]
+These are not four different answers to the same counting question. They are four different mathematical models of the same physical experiment.
+\end{examplebox}
+
+\begin{remarkbox}
+A counting error often begins before any arithmetic is done. It begins when the outcome type is chosen incorrectly.
+\end{remarkbox}
+
+\section{Recording rules and sample spaces}
+
+A recording rule tells us which differences between physical results are mathematically visible. Some differences are recorded; others are ignored. Once the recording rule is fixed, the sample space is the set of all possible recorded outcomes.
+
+\begin{definitionbox}
+A \textbf{recording rule} is a decision about what information is included in the mathematical outcome and what information is ignored.
+\end{definitionbox}
+
+For finite experiments, the construction usually follows this pattern:
+\[
+\text{physical situation}
+\longrightarrow
+\text{recording rule}
+\longrightarrow
+\text{elementary outcome}
+\longrightarrow
+\text{sample space}.
+\]
+
+The following table shows common outcome types.
+
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+Recording rule & Outcome type & Typical notation \\
+\midrule
+Order is recorded & sequence & \((a_1,a_2,\ldots,a_k)\) \\
+Only membership is recorded & set & \(\{a_1,a_2,\ldots,a_k\}\) \\
+All objects are arranged in a row & linear arrangement & \((a_{\sigma(1)},\ldots,a_{\sigma(n)})\) \\
+Objects are arranged on a circle & circular arrangement & relative order \\
+Only numbers of types are recorded & count vector & \((n_1,n_2,\ldots,n_r)\) \\
+Only a numerical summary is recorded & random variable value & \(X(\omega)\) \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{examplebox}
+A committee of three people is chosen from ten people. If the committee is recorded only as a group, then
+\[
+\{A,B,C\}=\{C,A,B\}.
+\]
+The order of listing the names is irrelevant. The outcome is a set.
+
+If the same three people are assigned the roles of chair, secretary, and treasurer, then
+\[
+(A,B,C)\neq (C,A,B).
+\]
+The outcome is now an ordered assignment of roles.
+\end{examplebox}
+
+The two situations may look similar in everyday language: in both cases three people are selected. But mathematically they are different because the recording rules are different.
