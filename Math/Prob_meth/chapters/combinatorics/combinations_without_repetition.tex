@@ -2,6 +2,8 @@
 
 In combinations, order does not matter. We are interested only in which objects are selected, not in the order in which they are written.
 
+This is a different way of thinking from permutations and variations. In an ordered list, \(ab\) and \(ba\) are different. In an unordered selection, they represent the same choice. The objects are collected into a group, not placed into positions.
+
 \begin{definitionbox}
 Let \(A\) be a finite set with \(n\) distinct elements, and let \(k\leq n\). A combination without repetition of size \(k\) is a \(k\)-element subset of \(A\).
 \end{definitionbox}
@@ -35,12 +37,14 @@ The number of combinations without repetition of size \(k\) chosen from \(n\) di
 
 To see why, first count ordered selections without repetition. There are
 \[
-\frac{n!}{(n-k)!}
+V(n,k)=\frac{n!}{(n-k)!}
 \]
 of them. But each unordered group of \(k\) elements can be ordered in \(k!\) ways. Therefore each combination has been counted \(k!\) times. Dividing by \(k!\) gives
 \[
 \frac{1}{k!}\cdot \frac{n!}{(n-k)!}=\frac{n!}{k!(n-k)!}.
 \]
+
+This division by \(k!\) is not a trick. It removes the internal orderings of the same selected group.
 
 \begin{examplebox}
 From six distinct books, choose three books to take on a trip. The order of choosing does not matter. The number of possible selections is
@@ -49,6 +53,13 @@ From six distinct books, choose three books to take on a trip. The order of choo
 \]
 \end{examplebox}
 
+\begin{examplebox}
+From the set \(\{1,2,3,4,5\}\), choose two numbers. The possible groups are not ordered, so \(\{1,4\}\) and \(\{4,1\}\) are the same group. The number of choices is
+\[
+\binom{5}{2}=10.
+\]
+\end{examplebox}
+
 \begin{remarkbox}
-Use combinations without repetition when order does not matter and no object may be selected more than once.
+Use combinations without repetition when order does not matter and no object may be selected more than once. Typical words are: choose, select, form a group, form a committee, pick a subset.
 \end{remarkbox}
