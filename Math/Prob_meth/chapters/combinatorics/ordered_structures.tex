@@ -1,0 +1,137 @@
+\section{Sequences with repetition}
+
+A sequence with repetition is an ordered list in which each position is filled independently from the same set of symbols.
+
+\begin{definitionbox}
+Let \(S\) be a set with \(n\) elements. A \textbf{sequence of length \(k\) with repetition} over \(S\) is an ordered \(k\)-tuple
+\[
+(a_1,a_2,\ldots,a_k),
+\]
+where each \(a_i\in S\). The same element may occur many times.
+\end{definitionbox}
+
+The number of such sequences is
+\[
+n^k.
+\]
+
+This model is used when:
+\begin{itemize}
+    \item order is recorded,
+    \item each position is chosen separately,
+    \item repetition is allowed,
+    \item the outcome is a full sequence.
+\end{itemize}
+
+Typical examples include PIN codes, repeated coin tosses, repeated die rolls, strings over an alphabet, and repeated selections with replacement.
+
+\begin{examplebox}
+The sample space for three tosses of a coin is
+\[
+\Omega=\{H,T\}^3.
+\]
+It has
+\[
+2^3=8
+\]
+elementary outcomes. Each outcome is a sequence, for example
+\[
+(H,T,H).
+\]
+The outcomes \((H,T,H)\) and \((T,H,H)\) are different because the order of tosses is recorded.
+\end{examplebox}
+
+\section{Ordered selections without repetition}
+
+Sometimes only some objects are chosen, but the order or position of the chosen objects matters.
+
+\begin{definitionbox}
+An \textbf{ordered selection without repetition} of length \(k\) from \(n\) distinct objects is an ordered list of \(k\) different objects chosen from the \(n\) available objects.
+\end{definitionbox}
+
+The number of ordered selections without repetition is
+\[
+P(n,k)=n(n-1)\cdots(n-k+1)=\frac{n!}{(n-k)!}.
+\]
+
+This model is used when:
+\begin{itemize}
+    \item only some objects are selected,
+    \item order or position matters,
+    \item no object may be used twice.
+\end{itemize}
+
+\begin{examplebox}
+Gold, silver, and bronze medals are assigned among \(12\) runners. An outcome is not a set of three runners. It is an ordered triple
+\[
+(\text{gold},\text{silver},\text{bronze}).
+\]
+There are
+\[
+12\cdot 11\cdot 10=P(12,3)
+\]
+possible assignments.
+\end{examplebox}
+
+In some European terminology, ordered selections are called variations. In these notes we use the name ordered selections without repetition, or \(k\)-permutations, because it describes directly what the outcome is.
+
+\section{Arrangements of all objects}
+
+A permutation is an arrangement of all objects in a row.
+
+\begin{definitionbox}
+A \textbf{permutation} of \(n\) distinct objects is a linear arrangement of all \(n\) objects.
+\end{definitionbox}
+
+There are
+\[
+n!
+\]
+permutations of \(n\) distinct objects.
+
+This is a special case of ordered selection without repetition with \(k=n\):
+\[
+P(n,n)=n!.
+\]
+
+\begin{examplebox}
+If \(7\) students are arranged in a line, then one outcome is a complete ordered list of all students. The number of arrangements is
+\[
+7!.
+\]
+\end{examplebox}
+
+Permutations are used when:
+\begin{itemize}
+    \item all objects are used,
+    \item order matters,
+    \item the objects are distinguishable,
+    \item the arrangement is linear.
+\end{itemize}
+
+\section{Circular arrangements}
+
+A circular arrangement is different from a linear arrangement because rotating the whole arrangement does not create a new relative seating order.
+
+\begin{examplebox}
+Suppose four people \(A,B,C,D\) sit around a round table. The linear lists
+\[
+(A,B,C,D),\qquad (B,C,D,A),\qquad (C,D,A,B),\qquad (D,A,B,C)
+\]
+represent the same circular arrangement if only relative positions matter.
+\end{examplebox}
+
+For \(n\) distinct objects placed around a circle, with rotations identified, the number of circular arrangements is
+\[
+(n-1)!.
+\]
+
+One way to see this is to fix one object as a reference point. The remaining \(n-1\) objects can then be arranged around it in
+\[
+(n-1)!
+\]
+ways.
+
+\begin{remarkbox}
+A circular arrangement requires a modelling decision. If seats are numbered or if there is a distinguished position, then rotations may become different outcomes and the linear count may be appropriate.
+\end{remarkbox}
