@@ -3,7 +3,6 @@
 \subsection{The derivative direction}
 
 So far we have moved in one direction:
-
 \[
 \mathbf{r}(t)
 \quad \longrightarrow \quad
@@ -11,45 +10,32 @@ So far we have moved in one direction:
 \quad \longrightarrow \quad
 \mathbf{a}(t).
 \]
-
 This direction uses derivatives:
-
 \[
 \mathbf{v}(t)=\frac{d\mathbf{r}}{dt},
-\]
-and
-\[
-\mathbf{a}(t)=\frac{d\mathbf{v}}{dt}
-=
-\frac{d^2\mathbf{r}}{dt^2}.
+\qquad
+\mathbf{a}(t)=\frac{d\mathbf{v}}{dt}=\frac{d^2\mathbf{r}}{dt^2}.
 \]
 
 If we know position as a function of time, we can compute velocity and acceleration by differentiating. No additional information is needed for this direction. The function \(\mathbf{r}(t)\) already contains all information about the motion.
 
-For example, if
-
+\begin{examplebox}
+If
 \[
 \mathbf{r}(t)=(t,t^2),
 \]
-
 then
-
 \[
 \mathbf{v}(t)=(1,2t),
-\]
-
-and
-
-\[
+\qquad
 \mathbf{a}(t)=(0,2).
 \]
-
 Everything follows by differentiation.
+\end{examplebox}
 
 \subsection{The integral direction}
 
-We can also move in the opposite direction. If we know acceleration, we may want to recover velocity. If we know velocity, we may want to recover position. This direction uses integration:
-
+We can also move in the opposite direction. If we know acceleration, we may want to recover velocity. If we know velocity, we may want to recover position:
 \[
 \mathbf{a}(t)
 \quad \longrightarrow \quad
@@ -57,263 +43,96 @@ We can also move in the opposite direction. If we know acceleration, we may want
 \quad \longrightarrow \quad
 \mathbf{r}(t).
 \]
+This direction uses integration. Integration introduces constants or, equivalently, requires initial conditions. These are not mathematical noise; they represent missing information about the motion.
 
-But integration introduces constants. These constants are not mathematical noise. They represent missing information about the motion.
-
-If
-
+\begin{theorembox}
+If \(\mathbf{v}(t)=d\mathbf{r}/dt\) on an interval containing \([t_0,t]\), then
 \[
-\mathbf{v}(t)=\frac{d\mathbf{r}}{dt},
+\mathbf{r}(t)=\mathbf{r}(t_0)+\int_{t_0}^{t}\mathbf{v}(\tau)\,d\tau.
 \]
-
-then
-
+If \(\mathbf{a}(t)=d\mathbf{v}/dt\) on an interval containing \([t_0,t]\), then
 \[
-\mathbf{r}(t)
-=
-\int \mathbf{v}(t)\,dt.
+\mathbf{v}(t)=\mathbf{v}(t_0)+\int_{t_0}^{t}\mathbf{a}(\tau)\,d\tau.
 \]
+\end{theorembox}
 
-More precisely,
-
-\[
-\mathbf{r}(t)
-=
-\mathbf{r}(t_0)+\int_{t_0}^{t}\mathbf{v}(\tau)\,d\tau.
-\]
-
-The symbol \(\tau\) is used as a dummy variable of integration. The upper limit \(t\) is the time at which we want to find the position. The lower limit \(t_0\) is the initial time.
-
-This formula says that the position at time \(t\) equals the initial position plus the accumulated effect of velocity from \(t_0\) to \(t\).
-
-Similarly, if
-
-\[
-\mathbf{a}(t)=\frac{d\mathbf{v}}{dt},
-\]
-
-then
-
-\[
-\mathbf{v}(t)
-=
-\mathbf{v}(t_0)+\int_{t_0}^{t}\mathbf{a}(\tau)\,d\tau.
-\]
-
-This formula says that the velocity at time \(t\) equals the initial velocity plus the accumulated effect of acceleration from \(t_0\) to \(t\).
+The symbol \(\tau\) is a dummy variable of integration. The upper limit \(t\) is the time at which we want to find the position or velocity. The lower limit \(t_0\) is the initial time.
 
 \subsection{Why initial conditions are necessary}
 
-Suppose we know only that
-
+Knowing how something changes is not the same as knowing its value. Suppose we know only that
 \[
 v(t)=3.
 \]
-
 Then
-
 \[
 x(t)=\int 3\,dt=3t+C.
 \]
-
-The constant \(C\) is not determined by the velocity. It tells us the initial position.
-
-If we know that
-
-\[
-x(0)=2,
-\]
-
-then
-
-\[
-2=3\cdot 0+C,
-\]
-
-so
-
-\[
-C=2.
-\]
-
-Therefore
-
+The constant \(C\) is not determined by the velocity. It tells us the initial position. If \(x(0)=2\), then \(C=2\), so
 \[
 x(t)=3t+2.
 \]
 
-Without the initial condition, we would know the way position changes, but not the actual starting position.
-
-Now suppose we know only that acceleration is constant:
-
+\begin{examplebox}
+Suppose acceleration is constant:
 \[
 a(t)=A.
 \]
-
-Then velocity is
-
+Then
 \[
 v(t)=At+C_1.
 \]
-
-The constant \(C_1\) is determined by the initial velocity. If
-
-\[
-v(0)=v_0,
-\]
-
-then
-
-\[
-C_1=v_0,
-\]
-
-so
-
+If \(v(0)=v_0\), then \(C_1=v_0\), so
 \[
 v(t)=v_0+At.
 \]
-
-To recover position, we integrate again:
-
+Integrating again gives
 \[
-x(t)=\int (v_0+At)\,dt
-=
-v_0t+\frac{1}{2}At^2+C_2.
+x(t)=v_0t+\frac{1}{2}At^2+C_2.
 \]
-
-The constant \(C_2\) is determined by the initial position. If
-
-\[
-x(0)=x_0,
-\]
-
-then
-
-\[
-C_2=x_0.
-\]
-
-Therefore
-
+If \(x(0)=x_0\), then \(C_2=x_0\), and therefore
 \[
 x(t)=x_0+v_0t+\frac{1}{2}At^2.
 \]
+\end{examplebox}
 
-This formula is often presented as a standard kinematic formula. Here we see where it comes from: it is the result of integrating constant acceleration twice and using initial conditions.
+This formula is often presented as a standard kinematic formula. Here it appears as the result of integrating constant acceleration twice and using initial conditions.
 
 \subsection{Vector form}
 
-The same idea works in vector form.
-
-If acceleration is known, then
-
+The same idea works in vector form. If acceleration is known, then
 \[
 \mathbf{v}(t)
 =
 \mathbf{v}(t_0)+\int_{t_0}^{t}\mathbf{a}(\tau)\,d\tau.
 \]
-
 If velocity is known, then
-
 \[
 \mathbf{r}(t)
 =
 \mathbf{r}(t_0)+\int_{t_0}^{t}\mathbf{v}(\tau)\,d\tau.
 \]
 
-If acceleration is constant and equal to \(\mathbf{A}\), then
-
+If acceleration is constant and equal to \(\mathbf{A}\), and if \(t_0=0\), then
 \[
 \mathbf{v}(t)=\mathbf{v}_0+\mathbf{A}t,
 \]
-
-assuming \(t_0=0\). Integrating again gives
-
+and
 \[
 \mathbf{r}(t)=\mathbf{r}_0+\mathbf{v}_0t+\frac{1}{2}\mathbf{A}t^2.
 \]
 
-This is the vector version of the same relation.
-
-\subsection{What is known and what is missing}
-
-It is useful to summarize the logic.
-
-If we know position \(\mathbf{r}(t)\), then we can find velocity and acceleration by differentiation:
-
-\[
-\mathbf{r}(t)
-\longrightarrow
-\mathbf{v}(t)
-\longrightarrow
-\mathbf{a}(t).
-\]
-
-No initial conditions are needed because the position function already contains the full motion.
-
-If we know velocity \(\mathbf{v}(t)\), then we can find acceleration by differentiation. But to find position, we must integrate and we need an initial position:
-
-\[
-\mathbf{v}(t)
-\longrightarrow
-\mathbf{a}(t),
-\]
-
-but
-
-\[
-\mathbf{v}(t)
-\longrightarrow
-\mathbf{r}(t)
-\]
-
-requires \(\mathbf{r}(t_0)\).
-
-If we know acceleration \(\mathbf{a}(t)\), then we can recover velocity and position only by integration. We need initial velocity and initial position:
-
-\[
-\mathbf{a}(t)
-\longrightarrow
-\mathbf{v}(t)
-\longrightarrow
-\mathbf{r}(t),
-\]
-
-but this requires
-
-\[
-\mathbf{v}(t_0)
-\]
-and
-\[
-\mathbf{r}(t_0).
-\]
-
-This is not a technical detail. It expresses an important fact about motion: knowing how something changes is not the same as knowing where it is or what its current value is. To reconstruct the motion, we need both a law of change and initial information.
-
 \subsection{The central structure of kinematics}
 
-The central structure of kinematics is therefore:
-
+The central structure of kinematics is
 \[
-\boxed{
-\mathbf{v}(t)=\frac{d\mathbf{r}}{dt}
-}
+\boxed{\mathbf{v}(t)=\frac{d\mathbf{r}}{dt}}
 \]
-
 and
-
 \[
-\boxed{
-\mathbf{a}(t)=\frac{d\mathbf{v}}{dt}
-=
-\frac{d^2\mathbf{r}}{dt^2}
-}
+\boxed{\mathbf{a}(t)=\frac{d\mathbf{v}}{dt}=\frac{d^2\mathbf{r}}{dt^2}}.
 \]
-
-together with the inverse relations
-
+The inverse relations are
 \[
 \boxed{
 \mathbf{v}(t)
@@ -321,9 +140,7 @@ together with the inverse relations
 \mathbf{v}(t_0)+\int_{t_0}^{t}\mathbf{a}(\tau)\,d\tau
 }
 \]
-
 and
-
 \[
 \boxed{
 \mathbf{r}(t)
@@ -332,15 +149,6 @@ and
 }.
 \]
 
-These formulas should not be treated as isolated recipes. They express the whole logic of kinematics:
+These formulas should not be treated as isolated recipes. They express the logic of kinematics: position describes where the body is, velocity describes how position changes, acceleration describes how velocity changes, and initial conditions supply the information needed when reconstructing motion by integration.
 
-\begin{itemize}
-    \item position describes where the body is,
-    \item velocity describes how position changes,
-    \item acceleration describes how velocity changes,
-    \item derivatives move from position to velocity and acceleration,
-    \item integrals move back from acceleration or velocity to velocity or position,
-    \item initial conditions supply the information lost when differentiating.
-\end{itemize}
-
-This is the mathematical language that will be used again in later chapters. Dynamics will ask why acceleration appears. But before we ask why motion changes, we must first know how to describe motion and its changes precisely.
+Dynamics will ask why acceleration appears. Before that question can be answered, we need the language developed in this chapter: position, velocity, acceleration, derivatives, integrals, and initial conditions.
