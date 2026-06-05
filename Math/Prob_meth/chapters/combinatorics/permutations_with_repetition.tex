@@ -1,0 +1,43 @@
+\section{Permutations with repetition}
+
+Sometimes we arrange objects, but some of them are indistinguishable. Then counting every formal ordering as different would overcount the possibilities.
+
+\begin{definitionbox}
+A permutation with repetition is an ordering of a multiset, that is, a collection in which some elements may occur more than once.
+\end{definitionbox}
+
+For example, the letters in the word
+\[
+AAB
+\]
+are not all distinct. The two letters \(A\) are indistinguishable. The distinct arrangements are
+\[
+AAB,\qquad ABA,\qquad BAA.
+\]
+There are three, not six.
+
+If all three positions were occupied by distinct objects, there would be \(3!\) arrangements. But the two identical \(A\)'s can be swapped without producing a new visible arrangement. Therefore we divide by \(2!\).
+
+\begin{theorembox}
+Suppose a multiset has \(n\) elements in total, with \(n_1\) identical elements of one kind, \(n_2\) identical elements of another kind, and so on, where
+\[
+n_1+n_2+\cdots+n_k=n.
+\]
+The number of distinct permutations is
+\[
+\frac{n!}{n_1!n_2!\cdots n_k!}.
+\]
+\end{theorembox}
+
+\begin{examplebox}
+How many distinct arrangements are there of the letters in the word \(\text{LEVEL}\)?
+
+There are five letters. The letter \(L\) appears twice, the letter \(E\) appears twice, and the letter \(V\) appears once. Hence
+\[
+\frac{5!}{2!2!1!}=\frac{120}{4}=30.
+\]
+\end{examplebox}
+
+\begin{remarkbox}
+Use permutations with repetition when all positions are filled, order matters, but some objects are indistinguishable.
+\end{remarkbox}
