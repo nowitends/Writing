@@ -2,6 +2,12 @@
 
 The last basic scheme combines two ideas: order does not matter, but repetition is allowed. We select a group of objects, and the same kind of object may be selected more than once.
 
+This scheme is less obvious than the previous ones, because the objects we are counting are not naturally written as ordered strings. A selection such as
+\[
+\{a,a,c\}
+\]
+contains two copies of \(a\), no copies of \(b\), and one copy of \(c\). The order in which we write these symbols is irrelevant.
+
 \begin{definitionbox}
 Let \(A\) be a finite set with \(n\) distinct elements. A combination with repetition of size \(k\) is a selection of \(k\) elements from \(A\), where elements may repeat and order does not matter.
 \end{definitionbox}
@@ -16,11 +22,22 @@ and we select \(2\) elements with repetition allowed, then the possible selectio
 \]
 The selections \(\{a,b\}\) and \(\{b,a\}\) are the same, because order does not matter.
 
-A useful way to count such selections is to record only how many times each element is chosen. If the elements are \(a_1,a_2,\ldots,a_n\), then a selection of size \(k\) corresponds to a solution of
+\subsection*{Counting by multiplicities}
+
+A useful way to count such selections is to record only how many times each element is chosen. If the elements are
+\[
+a_1,a_2,\ldots,a_n,
+\]
+then a selection of size \(k\) corresponds to a solution of
 \[
 x_1+x_2+\cdots+x_n=k,
 \]
 where each \(x_i\) is a non-negative integer. The number \(x_i\) tells how many times \(a_i\) is selected.
+
+For example, if \(A=\{a,b,c\}\), then the selection \(\{a,a,c\}\) corresponds to
+\[
+x_a=2,\qquad x_b=0,\qquad x_c=1.
+\]
 
 \begin{theorembox}
 The number of combinations with repetition of size \(k\) chosen from \(n\) distinct elements is
@@ -37,9 +54,16 @@ For example, with \(n=3\) and \(k=5\), the pattern
 \]
 represents
 \[
-x_1=2,\qquad x_2=1,\qquad x_3=2.
+x_1=2,
+\qquad
+x_2=1,
+\qquad
+x_3=2.
 \]
-Altogether there are \(k+n-1\) symbols, and we choose the positions of the \(k\) stars or, equivalently, the positions of the \(n-1\) bars.
+Altogether there are \(k+n-1\) symbols: \(k\) stars and \(n-1\) bars. Choosing the positions of the stars determines the bars, and choosing the positions of the bars determines the stars. Therefore the number of patterns is
+\[
+\binom{k+n-1}{k}=\binom{k+n-1}{n-1}.
+\]
 
 \begin{examplebox}
 A bag is to contain \(4\) candies chosen from \(3\) flavours: vanilla, chocolate, and strawberry. Repetition is allowed, and order does not matter. The number of possible bags is
@@ -48,6 +72,17 @@ A bag is to contain \(4\) candies chosen from \(3\) flavours: vanilla, chocolate
 \]
 \end{examplebox}
 
+\begin{examplebox}
+How many non-negative integer solutions are there to
+\[
+x_1+x_2+x_3+x_4=7?
+\]
+This is the same as distributing \(7\) identical stars among \(4\) boxes. Hence the number of solutions is
+\[
+\binom{7+4-1}{7}=\binom{10}{7}=120.
+\]
+\end{examplebox}
+
 \begin{remarkbox}
-Use combinations with repetition when order does not matter and each type of object may be selected more than once.
+Use combinations with repetition when order does not matter and each type of object may be selected more than once. Typical words are: choose with repetition, distribute identical objects, non-negative integer solutions, multiset.
 \end{remarkbox}
