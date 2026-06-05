@@ -1,0 +1,45 @@
+\section{Matrices}
+
+A matrix is a rectangular array of numbers. For example,
+\[
+A=\begin{pmatrix}
+1 & 2 \\
+3 & 4
+\end{pmatrix}.
+\]
+
+\begin{center}
+\begin{tabular}{@{}ll@{}}
+\toprule
+Operation & Example \\
+\midrule
+Addition & \(\begin{pmatrix}1&2\\3&4\end{pmatrix}+\begin{pmatrix}5&6\\7&8\end{pmatrix}=\begin{pmatrix}6&8\\10&12\end{pmatrix}\) \\
+Scalar multiplication & \(2\begin{pmatrix}1&2\\3&4\end{pmatrix}=\begin{pmatrix}2&4\\6&8\end{pmatrix}\) \\
+Matrix times vector & \(\begin{pmatrix}1&2\\3&4\end{pmatrix}\begin{pmatrix}x\\y\end{pmatrix}=\begin{pmatrix}x+2y\\3x+4y\end{pmatrix}\) \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Matrix multiplication is not the same as ordinary multiplication of numbers. In general,
+\[
+AB \neq BA.
+\]
+This means that the order of multiplication matters.
+
+Matrices are useful because they can represent linear transformations. For example, the matrix
+\[
+R(\theta)=
+\begin{pmatrix}
+\cos\theta & -\sin\theta \\
+\sin\theta & \cos\theta
+\end{pmatrix}
+\]
+represents a rotation in the plane by an angle \(\theta\). If
+\[
+\mathbf{x}=\begin{pmatrix}x\\y\end{pmatrix},
+\]
+then \(R(\theta)\mathbf{x}\) is the rotated vector.
+
+\begin{remarkbox}
+In these notes, matrices will not be developed in detail. The reader should remember the basic idea: matrices organize several numbers and can describe transformations acting on vectors or systems of quantities.
+\end{remarkbox}
