@@ -1,1 +1,0 @@
-write check for Lectures_notes_old_school
