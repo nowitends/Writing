@@ -9,12 +9,16 @@ For example, \(y=x^2\) describes a parabola in the plane.
 Another way is to use a parameter. A parameter is an additional variable that describes how the coordinates are generated.
 
 \begin{definitionbox}
-A parametric curve in the plane can be written as
+A parametric curve in the plane is a mapping
 \[
-\mathbf{r}(t)=(x(t),y(t)).
+\mathbf{r}\colon I\to\mathbb{R}^2,
+\qquad
+\mathbf{r}(t)=(x(t),y(t)),
 \]
-As \(t\) changes, the point \((x(t),y(t))\) moves along the curve.
+where \(I\subseteq\mathbb{R}\) is an interval and \(x,y\colon I\to\mathbb{R}\) are coordinate functions.
 \end{definitionbox}
+
+As \(t\) varies in \(I\), the point \((x(t),y(t))\) traces the curve.
 
 For example, the equations
 \[
@@ -47,5 +51,5 @@ This describes the unit circle, because
 \end{center}
 
 \begin{remarkbox}
-At this stage, \(t\) is only a mathematical parameter. The important idea is that a curve can be described by giving its coordinates as functions of one parameter.
+At this stage, \(t\) is only a mathematical parameter. The important idea is that the coordinates of a moving point are functions of one parameter.
 \end{remarkbox}
