@@ -1,0 +1,39 @@
+\section{The multiplication principle as a construction rule}
+
+Many counting problems can be solved by describing how an outcome is constructed step by step.
+
+\begin{theorembox}
+\textbf{Multiplication principle.} Suppose a construction is performed in \(k\) successive stages. If there are \(m_1\) choices for the first stage, \(m_2\) choices for the second stage, and so on up to \(m_k\) choices for the \(k\)-th stage, then the number of possible complete constructions is
+\[
+m_1m_2\cdots m_k.
+\]
+\end{theorembox}
+
+The multiplication principle is not only a formula. It is a way of reading an outcome as a construction process.
+
+\begin{examplebox}
+A four-digit PIN code is formed from the digits \(0,1,\ldots,9\), and digits may repeat. One outcome is a sequence such as
+\[
+(0,7,7,3).
+\]
+There are \(10\) choices for each position, hence
+\[
+10\cdot 10\cdot 10\cdot 10=10^4
+\]
+possible PIN codes.
+
+The reason is not that the formula \(n^k\) was memorized. The reason is that a PIN code is a sequence of four independent choices from a set of ten symbols.
+\end{examplebox}
+
+\begin{examplebox}
+A three-letter code is formed from the letters \(A,B,C,D\), and letters may not repeat. One outcome is an ordered triple, for example
+\[
+(A,D,B).
+\]
+There are \(4\) choices for the first position, \(3\) for the second, and \(2\) for the third. Therefore the number of codes is
+\[
+4\cdot 3\cdot 2=24.
+\]
+\end{examplebox}
+
+When the same number of choices is available at every stage, powers appear. When the number of choices decreases, falling products appear. When order is later ignored, division appears. Most elementary combinatorial formulas can be understood from these three ideas.
