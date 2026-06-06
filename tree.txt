@@ -67,6 +67,7 @@
 ./mathematical_lectures/basic_mathematics/chapters/systems_of_linear_equations/cramers_rule.tex
 ./mathematical_lectures/basic_mathematics/chapters/systems_of_linear_equations/gaussian_elimination.tex
 ./mathematical_lectures/basic_mathematics/chapters/systems_of_linear_equations/geometric_meaning_of_solutions.tex
+./mathematical_lectures/basic_mathematics/chapters/systems_of_linear_equations/inverse_matrix_method.tex
 ./mathematical_lectures/basic_mathematics/chapters/systems_of_linear_equations/what_systems_describe.tex
 ./mathematical_lectures/basic_mathematics/figures
 ./mathematical_lectures/basic_mathematics/figures/README.md
