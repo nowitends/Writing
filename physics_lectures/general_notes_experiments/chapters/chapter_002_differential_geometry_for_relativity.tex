@@ -1,0 +1,1453 @@
+\chapter{Differential Geometry for General Relativity}
+
+\section{Purpose and Scope}
+
+General relativity is not a theory of forces acting in a fixed Euclidean arena.
+It is a theory in which spacetime itself is represented by a differentiable
+manifold equipped with a Lorentzian metric. Matter and energy determine the
+curvature of this metric, while freely falling bodies move along curves selected
+by the metric connection. For this reason, the mathematical language of general
+relativity is the language of manifolds, tensor fields, connections, geodesics,
+and curvature.
+
+This chapter gives a mathematically precise introduction to the differential
+geometric structures needed before one can state Einstein's field equation in a
+coordinate-independent way. The discussion is intentionally formal, but each
+formal object is also connected to its physical role. The point is not to make
+curvature intuitive by vague analogies. The point is to define the objects
+correctly and then explain how those objects become physical in relativity.
+
+The guiding chain of ideas is
+\[
+\text{smooth manifold}
+\longrightarrow
+\text{tangent spaces}
+\longrightarrow
+\text{tensor fields}
+\longrightarrow
+\text{metric}
+\longrightarrow
+\text{connection}
+\longrightarrow
+\text{curvature}
+\longrightarrow
+\text{Einstein tensor}.
+\]
+A reader who understands this chain understands the mathematical skeleton of
+general relativity.
+
+\begin{remarkbox}
+The word \emph{manifold} should not be interpreted as a surface sitting inside a
+larger Euclidean space. An abstract manifold is a space which locally has
+coordinates, but it does not need an ambient space. In general relativity,
+spacetime is normally treated as an abstract four-dimensional manifold.
+\end{remarkbox}
+
+\clearpage
+
+\section{Topological and Smooth Manifolds}
+
+A manifold is first a topological object. Smoothness is additional structure. It
+is important not to confuse the two levels. Topology tells us which points are
+near which other points; smooth structure tells us which coordinate changes are
+differentiable.
+
+\begin{definitionbox}
+An \emph{\(n\)-dimensional topological manifold} is a topological space \(M\)
+such that:
+\begin{enumerate}
+    \item \(M\) is Hausdorff;
+    \item \(M\) is second countable;
+    \item every point \(p\in M\) has an open neighbourhood \(U\subseteq M\)
+    homeomorphic to an open subset of \(\mathbb{R}^n\).
+\end{enumerate}
+A pair \((U,\varphi)\), where \(U\subseteq M\) is open and
+\(\varphi:U\to \varphi(U)\subseteq \mathbb{R}^n\) is a homeomorphism, is called
+an \emph{coordinate chart}.
+\end{definitionbox}
+
+If \(p\in U\), the coordinate map gives
+\[
+\varphi(p)=(x^1(p),\ldots,x^n(p)).
+\]
+The functions \(x^1,\ldots,x^n\) are the local coordinate functions. They are not
+intrinsic physical quantities. They are labels assigned to events or points by a
+chosen chart.
+
+Two charts \((U,\varphi)\) and \((V,\psi)\) overlap on \(U\cap V\). On the
+overlap, the coordinate transition map is
+\[
+\psi\circ \varphi^{-1}:\varphi(U\cap V)\to \psi(U\cap V).
+\]
+This map expresses the new coordinates as functions of the old coordinates. The
+ability to differentiate tensor fields depends on the differentiability of these
+transition maps.
+
+\begin{definitionbox}
+A \emph{smooth atlas} on \(M\) is a collection of coordinate charts
+\(\{(U_\alpha,\varphi_\alpha)\}\) covering \(M\) such that every transition map
+\[
+\varphi_\beta\circ \varphi_\alpha^{-1}
+\]
+is a \(C^\infty\) diffeomorphism between open subsets of \(\mathbb{R}^n\). A
+\emph{smooth manifold} is a topological manifold together with a maximal smooth
+atlas.
+\end{definitionbox}
+
+In relativity, the smooth structure allows us to write differentiable fields:
+worldlines, vector fields, tensor fields, metrics, connections, and curvature.
+Without this structure, the expression \(\partial g_{\mu\nu}/\partial x^\rho\)
+would have no invariant meaning.
+
+\clearpage
+
+\section{Coordinate Independence and Diffeomorphisms}
+
+The central mathematical discipline in differential geometry is to distinguish
+objects from their coordinate representations. A physical spacetime event is not
+an ordered quadruple of numbers. A coordinate system assigns such quadruples to
+events, but a different coordinate system assigns different quadruples to the
+same events.
+
+\begin{definitionbox}
+Let \(M\) and \(N\) be smooth manifolds. A map \(F:M\to N\) is \emph{smooth} if,
+for every pair of charts \((U,\varphi)\) on \(M\) and \((V,\psi)\) on \(N\) with
+\(F(U)\subseteq V\), the coordinate representation
+\[
+\psi\circ F\circ \varphi^{-1}
+\]
+is a smooth map between open subsets of Euclidean spaces.
+\end{definitionbox}
+
+A diffeomorphism is a smooth bijection with smooth inverse. If
+\(F:M\to N\) is a diffeomorphism, then \(M\) and \(N\) have the same smooth
+structure for all differential-geometric purposes.
+
+In general relativity, diffeomorphisms have a special conceptual role. They
+express the fact that the theory is not tied to a preferred coordinate system.
+The field equations should be equations between geometric objects on a manifold,
+not equations whose meaning depends on one selected coordinate grid.
+
+\begin{remarkbox}
+Coordinate covariance alone is not the same as physical insight. One can write
+bad physics in a covariant notation. The serious point is that the fundamental
+fields in general relativity are geometric objects: the metric, curvature,
+stress-energy tensor, and the maps or curves describing matter.
+\end{remarkbox}
+
+If \(x^\mu\) and \(x^{\mu'}\) are two coordinate systems on an overlap, then a
+coordinate transformation is written locally as
+\[
+x^{\mu'}=x^{\mu'}(x^1,\ldots,x^n).
+\]
+The Jacobian matrix is
+\[
+\frac{\partial x^{\mu'}}{\partial x^\nu}.
+\]
+The transformation rules for vectors, covectors, and tensors are built from this
+Jacobian and its inverse. This is why tensor notation is the correct notation
+for coordinate-independent physics.
+
+\clearpage
+
+\section{Tangent Vectors as Derivations}
+
+In Euclidean space, a tangent vector can be drawn as an arrow. On an abstract
+manifold there is no ambient vector space in which such an arrow naturally
+lives. Therefore the tangent vector must be defined intrinsically.
+
+\begin{definitionbox}
+Let \(M\) be a smooth manifold and let \(p\in M\). A \emph{tangent vector at
+\(p\)} is a linear map
+\[
+X_p:C^\infty(M)\to \mathbb{R}
+\]
+satisfying the Leibniz rule
+\[
+X_p(fh)=f(p)X_p(h)+h(p)X_p(f)
+\]
+for all smooth functions \(f,h\in C^\infty(M)\). The vector space of tangent
+vectors at \(p\) is denoted by \(T_pM\).
+\end{definitionbox}
+
+This definition encodes directional differentiation. A tangent vector is an
+operator which differentiates functions at a point.
+
+In local coordinates \((x^1,\ldots,x^n)\), the coordinate tangent vectors are
+\[
+\left.\frac{\partial}{\partial x^1}\right|_p,
+\ldots,
+\left.\frac{\partial}{\partial x^n}\right|_p.
+\]
+Every tangent vector can be written uniquely as
+\[
+X_p=X^\mu\left.\frac{\partial}{\partial x^\mu}\right|_p,
+\]
+where the Einstein summation convention is used: repeated upper and lower
+indices are summed.
+
+If coordinates are changed from \(x^\mu\) to \(x^{\mu'}\), the coordinate basis
+transforms by the chain rule:
+\[
+\frac{\partial}{\partial x^{\mu'}}
+=
+\frac{\partial x^\nu}{\partial x^{\mu'}}
+\frac{\partial}{\partial x^\nu}.
+\]
+Therefore the components of a vector transform as
+\[
+X^{\mu'}=
+\frac{\partial x^{\mu'}}{\partial x^\nu}X^\nu.
+\]
+The vector itself is invariant; only its coordinate components change.
+
+\clearpage
+
+\section{Cotangent Vectors and Differentials}
+
+The dual space of the tangent space is the cotangent space.
+
+\begin{definitionbox}
+The \emph{cotangent space} at \(p\in M\) is
+\[
+T_p^*M=\operatorname{Hom}(T_pM,\mathbb{R}).
+\]
+Its elements are called \emph{cotangent vectors}, \emph{covectors}, or
+\emph{one-forms} at \(p\).
+\end{definitionbox}
+
+If \((x^1,\ldots,x^n)\) is a coordinate system, the dual basis of \(T_p^*M\) is
+\[
+dx^1|_p,\ldots,dx^n|_p,
+\]
+where
+\[
+dx^\mu\left(\frac{\partial}{\partial x^\nu}\right)=\delta^\mu_{\nu}.
+\]
+Here \(\delta^\mu_{\nu}\) is the Kronecker delta.
+
+For a smooth function \(f\), its differential at \(p\) is the covector
+\[
+df_p:T_pM\to \mathbb{R}
+\]
+defined by
+\[
+df_p(X_p)=X_p(f).
+\]
+In coordinates,
+\[
+df=\frac{\partial f}{\partial x^\mu}dx^\mu.
+\]
+Thus gradients in differential geometry are first naturally covectors, not
+vectors. A metric is needed to convert a covector into a vector.
+
+Under coordinate transformation, a covector \(\omega=\omega_\mu dx^\mu\) has
+components transforming as
+\[
+\omega_{\mu'}=
+\frac{\partial x^\nu}{\partial x^{\mu'}}\omega_\nu.
+\]
+This is the inverse transformation compared with vector components. This is why
+upper and lower indices have different transformation laws.
+
+\clearpage
+
+\section{Tensor Spaces}
+
+A tensor at a point is a multilinear map built from tangent and cotangent
+spaces. Tensors are the natural algebraic objects of coordinate-independent
+physics.
+
+\begin{definitionbox}
+A tensor of type \((r,s)\) at \(p\in M\) is an element of
+\[
+T^r_s(T_pM)=
+\underbrace{T_pM\otimes\cdots\otimes T_pM}_{r\text{ factors}}
+\otimes
+\underbrace{T_p^*M\otimes\cdots\otimes T_p^*M}_{s\text{ factors}}.
+\]
+Equivalently, it may be viewed as a multilinear map with \(r\) covector slots
+and \(s\) vector slots.
+\end{definitionbox}
+
+A type \((1,1)\) tensor can be viewed as a linear map
+\[
+A:T_pM\to T_pM.
+\]
+A type \((0,2)\) tensor is a bilinear form
+\[
+B:T_pM\times T_pM\to \mathbb{R}.
+\]
+A type \((2,0)\) tensor is a bilinear form on covectors.
+
+In coordinates, a tensor of type \((r,s)\) has components
+\[
+T^{\mu_1\cdots\mu_r}{}_{\nu_1\cdots\nu_s}.
+\]
+Under a change of coordinates, each upper index receives a factor
+\(\partial x^{\mu'}/\partial x^\mu\), and each lower index receives a factor
+\(\partial x^\nu/\partial x^{\nu'}\). For example, a type \((1,1)\) tensor
+transforms as
+\[
+A^{\mu'}{}_{\nu'}=
+\frac{\partial x^{\mu'}}{\partial x^\alpha}
+\frac{\partial x^\beta}{\partial x^{\nu'}}
+A^\alpha{}_{\beta}.
+\]
+This transformation law is not a convention. It is what makes the tensor an
+intrinsic object independent of coordinates.
+
+\clearpage
+
+\section{Tensor Fields}
+
+A tensor field assigns a tensor smoothly to each point of a manifold. Physical
+fields in relativity are tensor fields on spacetime.
+
+\begin{definitionbox}
+A \emph{tensor field of type \((r,s)\)} on a smooth manifold \(M\) is a smooth
+assignment
+\[
+p\mapsto T_p\in T^r_s(T_pM).
+\]
+The vector space of smooth type \((r,s)\) tensor fields is often denoted by
+\(\mathcal{T}^r_s(M)\).
+\end{definitionbox}
+
+Examples include:
+\[
+X=X^\mu\frac{\partial}{\partial x^\mu}
+\]
+for a vector field,
+\[
+\omega=\omega_\mu dx^\mu
+\]
+for a one-form, and
+\[
+T=T_{\mu\nu}dx^\mu\otimes dx^\nu
+\]
+for a covariant two-tensor field.
+
+In relativity, the stress-energy tensor \(T_{\mu\nu}\) is a symmetric
+\((0,2)\)-tensor field. The metric \(g_{\mu\nu}\) is also a symmetric
+\((0,2)\)-tensor field, but with a special nondegeneracy and signature property.
+Curvature tensors are built from the metric and its associated connection.
+
+A coordinate expression such as \(T_{00}\) is not by itself a scalar physical
+quantity. It is a component relative to a chosen coordinate basis. Meaningful
+statements must be made either tensorially or by specifying the observer or
+frame relative to which the component is measured.
+
+\clearpage
+
+\section{Vector Fields and Integral Curves}
+
+A vector field may be understood as an infinitesimal flow on a manifold. At each
+point it gives a direction and rate of change.
+
+\begin{definitionbox}
+A \emph{vector field} on \(M\) is a smooth section of the tangent bundle
+\(TM\). In local coordinates it has the form
+\[
+X=X^\mu\frac{\partial}{\partial x^\mu},
+\]
+where the component functions \(X^\mu\) are smooth.
+\end{definitionbox}
+
+An integral curve of \(X\) is a smooth curve \(\gamma:I\to M\) satisfying
+\[
+\dot{\gamma}(t)=X_{\gamma(t)}.
+\]
+In coordinates this becomes the system of ordinary differential equations
+\[
+\frac{dx^\mu}{dt}=X^\mu(x^1(t),\ldots,x^n(t)).
+\]
+The existence and uniqueness theorem for ordinary differential equations implies
+local existence and uniqueness of integral curves for smooth vector fields.
+
+\begin{theorembox}
+Let \(X\) be a smooth vector field on \(M\), and let \(p\in M\). There exists an
+open interval \((-\varepsilon,\varepsilon)\) and a unique integral curve
+\(\gamma\) with \(\gamma(0)=p\), defined at least for sufficiently small time.
+\end{theorembox}
+
+Physically, a vector field can represent a velocity field of a continuous
+medium, a timelike observer congruence, or a generator of a symmetry. In
+relativity, a timelike vector field may represent a family of observers, while a
+Killing vector field represents an infinitesimal spacetime symmetry.
+
+\clearpage
+
+\section{Lie Brackets and Noncommuting Directions}
+
+Vector fields act on smooth functions as derivations. Given two vector fields
+\(X\) and \(Y\), their commutator measures the failure of differentiating first
+along \(X\) and then along \(Y\) to equal differentiating in the opposite order.
+
+\begin{definitionbox}
+The \emph{Lie bracket} of two vector fields \(X\) and \(Y\) is the vector field
+\([X,Y]\) defined by
+\[
+[X,Y](f)=X(Y(f))-Y(X(f))
+\]
+for every smooth function \(f\).
+\end{definitionbox}
+
+If
+\[
+X=X^\mu\partial_\mu,
+\qquad
+Y=Y^\mu\partial_\mu,
+\]
+then
+\[
+[X,Y]^\mu=X^\nu\partial_\nu Y^\mu-Y^\nu\partial_\nu X^\mu.
+\]
+The Lie bracket is bilinear, antisymmetric, and satisfies the Jacobi identity
+\[
+[X,[Y,Z]]+[Y,[Z,X]]+[Z,[X,Y]]=0.
+\]
+
+Coordinate vector fields commute:
+\[
+\left[\frac{\partial}{\partial x^\mu},
+\frac{\partial}{\partial x^\nu}\right]=0.
+\]
+A general frame need not commute. Noncommuting frames are common in physics,
+especially in orthonormal tetrad formalisms, rotating frames, and gauge-theoretic
+formulations.
+
+The Lie bracket is defined without a metric and without a connection. It belongs
+to the differentiable structure of the manifold.
+
+\clearpage
+
+\section{Differential Forms}
+
+Differential forms are antisymmetric covariant tensor fields. They provide the
+natural language for integration on manifolds, orientation, volume forms, and
+field strengths.
+
+\begin{definitionbox}
+A \emph{differential \(k\)-form} on \(M\) is a smooth section of
+\(\Lambda^kT^*M\). Equivalently, it is an antisymmetric covariant tensor field
+of rank \(k\).
+\end{definitionbox}
+
+A one-form is written
+\[
+\alpha=\alpha_\mu dx^\mu.
+\]
+A two-form is written
+\[
+\omega=\frac{1}{2}\omega_{\mu\nu}dx^\mu\wedge dx^\nu,
+\]
+where \(\omega_{\mu\nu}=-\omega_{\nu\mu}\). The wedge product is antisymmetric:
+\[
+dx^\mu\wedge dx^\nu=-dx^\nu\wedge dx^\mu.
+\]
+
+The exterior derivative is a coordinate-independent operator
+\[
+d:\Omega^k(M)\to \Omega^{k+1}(M)
+\]
+satisfying
+\[
+d^2=0.
+\]
+For a function \(f\),
+\[
+df=\partial_\mu f\,dx^\mu.
+\]
+For a one-form \(\alpha=\alpha_\mu dx^\mu\),
+\[
+d\alpha=\frac{1}{2}(\partial_\mu\alpha_\nu-
+\partial_\nu\alpha_\mu)dx^\mu\wedge dx^\nu.
+\]
+
+In electromagnetism, the electromagnetic field strength is naturally a two-form
+\(F\), and the homogeneous Maxwell equations are simply
+\[
+dF=0.
+\]
+This example shows why differential forms are not merely mathematical ornament:
+they are structurally efficient descriptions of physical fields.
+
+\clearpage
+
+\section{Metrics: Riemannian and Lorentzian}
+
+A metric is not merely a device for measuring distances. It is a smoothly varying
+nondegenerate bilinear form on tangent spaces. Its signature determines the
+causal character of vectors.
+
+\begin{definitionbox}
+A \emph{pseudo-Riemannian metric} on a smooth manifold \(M\) is a smooth
+symmetric \((0,2)\)-tensor field \(g\) such that, for every \(p\in M\), the
+bilinear form
+\[
+g_p:T_pM\times T_pM\to \mathbb{R}
+\]
+is nondegenerate.
+\end{definitionbox}
+
+Nondegenerate means that if
+\[
+g_p(X,Y)=0
+\]
+for all \(Y\in T_pM\), then \(X=0\). In coordinates,
+\[
+g=g_{\mu\nu}dx^\mu\otimes dx^\nu,
+\]
+and nondegeneracy means
+\[
+\det(g_{\mu\nu})\neq 0.
+\]
+
+A Riemannian metric is positive definite:
+\[
+g_p(X,X)>0
+\]
+for every nonzero \(X\in T_pM\). A Lorentzian metric on a four-dimensional
+manifold has signature either \((-+++)\) or \((+---)\). In this chapter we use
+the convention \((-+++)\).
+
+For Lorentzian signature, a nonzero tangent vector \(X\) is:
+\[
+\begin{array}{ll}
+\text{timelike} & \text{if } g(X,X)<0,\\
+\text{null or lightlike} & \text{if } g(X,X)=0,\\
+\text{spacelike} & \text{if } g(X,X)>0.
+\end{array}
+\]
+This classification is the mathematical origin of causal structure in general
+relativity.
+
+\clearpage
+
+\section{Line Element and Proper Time}
+
+In coordinates, the metric is often written through the line element
+\[
+ds^2=g_{\mu\nu}dx^\mu dx^\nu.
+\]
+This expression is shorthand for the quadratic form determined by the metric.
+It should not be understood as an equation between infinitesimal numbers in a
+naive sense.
+
+For a smooth curve \(\gamma:\lambda\mapsto x^\mu(\lambda)\), the tangent vector
+has components
+\[
+\dot{x}^\mu=\frac{dx^\mu}{d\lambda}.
+\]
+The squared norm of the tangent is
+\[
+g(\dot{\gamma},\dot{\gamma})
+=g_{\mu\nu}\frac{dx^\mu}{d\lambda}
+\frac{dx^\nu}{d\lambda}.
+\]
+For a timelike curve in signature \((-+++)\), proper time satisfies
+\[
+d\tau^2=-\frac{1}{c^2}ds^2.
+\]
+If units with \(c=1\) are used, then
+\[
+d\tau=\sqrt{-g_{\mu\nu}dx^\mu dx^\nu}.
+\]
+Thus the metric determines the physical time measured by an ideal clock moving
+along a timelike worldline.
+
+For a null curve,
+\[
+ds^2=0.
+\]
+The light cone at a point consists of all null tangent directions. Therefore the
+metric determines which events can be connected by light signals and which
+curves can represent massive particles.
+
+\clearpage
+
+\section{Raising and Lowering Indices}
+
+Because the metric is nondegenerate, it defines an isomorphism between tangent
+and cotangent spaces:
+\[
+\flat:T_pM\to T_p^*M,
+\qquad
+X\mapsto X^\flat,
+\]
+where
+\[
+X^\flat(Y)=g(X,Y).
+\]
+In components,
+\[
+X_\mu=g_{\mu\nu}X^\nu.
+\]
+The inverse metric \(g^{-1}\) has components \(g^{\mu\nu}\) satisfying
+\[
+g^{\mu\alpha}g_{\alpha\nu}=\delta^\mu_\nu.
+\]
+It raises indices:
+\[
+\omega^\mu=g^{\mu\nu}\omega_\nu.
+\]
+
+This operation is not harmless notation. It uses the metric. Without a metric,
+there is no canonical way to identify vectors and covectors.
+
+For a rank-two tensor, one may form mixed components such as
+\[
+T^\mu{}_{\nu}=g^{\mu\alpha}T_{\alpha\nu}.
+\]
+In relativity this is common for the stress-energy tensor, the Ricci tensor, and
+the Einstein tensor. The metric is therefore not simply another tensor field; it
+also controls the algebra of index manipulation.
+
+\clearpage
+
+\section{Volume Element}
+
+A metric determines a natural volume density. If \(g_{\mu\nu}\) is the matrix of
+the metric in coordinates, write
+\[
+g=\det(g_{\mu\nu}).
+\]
+For a Lorentzian metric with signature \((-+++)\), this determinant is negative
+in standard orientations, so the invariant volume element is written as
+\[
+dV_g=\sqrt{|g|}\,d^nx.
+\]
+In four-dimensional spacetime,
+\[
+dV_g=\sqrt{-g}\,d^4x
+\]
+when \(g<0\).
+
+This factor is essential in generally covariant action principles. The
+Einstein-Hilbert action is
+\[
+S_{\mathrm{EH}}=\frac{1}{16\pi G}\int_M R\sqrt{-g}\,d^4x,
+\]
+where \(R\) is the scalar curvature. The factor \(\sqrt{-g}\) makes the
+integral independent of the coordinate system.
+
+If coordinates change from \(x^\mu\) to \(x^{\mu'}\), the coordinate volume form
+changes by the absolute value of the Jacobian determinant, while \(\sqrt{|g|}\)
+changes by the inverse factor. Their product is invariant.
+
+\clearpage
+
+\section{Connections and Covariant Derivatives}
+
+Ordinary partial derivatives of tensor components do not transform tensorially
+under general coordinate changes. A connection corrects this failure and defines
+differentiation of tensor fields along vector fields.
+
+\begin{definitionbox}
+An \emph{affine connection} on a smooth manifold \(M\) is a map
+\[
+\nabla:\mathfrak{X}(M)\times\mathfrak{X}(M)\to\mathfrak{X}(M),
+\qquad
+(X,Y)\mapsto \nabla_XY,
+\]
+satisfying, for smooth functions \(f\) and vector fields \(X,Y,Z\):
+\begin{enumerate}
+    \item \(\nabla_{fX+Y}Z=f\nabla_XZ+\nabla_YZ\);
+    \item \(\nabla_X(Y+Z)=\nabla_XY+\nabla_XZ\);
+    \item \(\nabla_X(fY)=X(f)Y+f\nabla_XY\).
+\end{enumerate}
+\end{definitionbox}
+
+The connection is linear in the direction argument and satisfies a Leibniz rule
+in the field being differentiated.
+
+In a coordinate basis,
+\[
+\nabla_{\partial_\mu}\partial_\nu
+=\Gamma^\rho{}_{\nu\mu}\partial_\rho.
+\]
+Many texts write the lower indices in the order \(\Gamma^\rho{}_{\mu\nu}\) using
+\(\nabla_{\partial_\mu}\partial_\nu=\Gamma^\rho{}_{\mu\nu}\partial_\rho\). In this
+chapter we use the common relativity convention
+\[
+\nabla_\mu V^\rho=\partial_\mu V^\rho+\Gamma^\rho{}_{\mu\nu}V^\nu.
+\]
+The coefficients \(\Gamma^\rho{}_{\mu\nu}\) are the Christoffel symbols of the
+connection in the chosen coordinates.
+
+\clearpage
+
+\section{Covariant Derivative of Tensor Fields}
+
+For a vector field \(V=V^\mu\partial_\mu\), the covariant derivative is
+\[
+\nabla_\mu V^\rho=\partial_\mu V^\rho+\Gamma^\rho{}_{\mu\nu}V^\nu.
+\]
+For a one-form \(\omega=\omega_\nu dx^\nu\), the covariant derivative is
+\[
+\nabla_\mu\omega_\nu=\partial_\mu\omega_\nu-
+\Gamma^\rho{}_{\mu\nu}\omega_\rho.
+\]
+The sign is negative because covectors transform oppositely to vectors.
+
+For a type \((1,1)\) tensor \(A^\rho{}_{\sigma}\),
+\[
+\nabla_\mu A^\rho{}_{\sigma}
+=
+\partial_\mu A^\rho{}_{\sigma}
++\Gamma^\rho{}_{\mu\lambda}A^\lambda{}_{\sigma}
+-\Gamma^\lambda{}_{\mu\sigma}A^\rho{}_{\lambda}.
+\]
+The rule is systematic: add one connection term for each upper index and
+subtract one connection term for each lower index.
+
+The covariant derivative is constructed so that \(\nabla_\mu T^{\alpha\cdots}{}_{\beta\cdots}\)
+transforms as a tensor with one additional lower index. This is the essential
+reason it replaces partial derivatives in curved spacetime.
+
+\begin{remarkbox}
+The Christoffel symbols themselves are not tensor components. They can vanish at
+a chosen point in suitable coordinates, but their derivatives generally cannot
+all be made to vanish. Curvature is built from combinations of first derivatives
+and quadratic products of Christoffel symbols that together transform tensorially.
+\end{remarkbox}
+
+\clearpage
+
+\section{Torsion}
+
+An affine connection has torsion if the antisymmetric part of its action on
+vector fields differs from the Lie bracket.
+
+\begin{definitionbox}
+The \emph{torsion tensor} of a connection \(\nabla\) is the type \((1,2)\)
+tensor field
+\[
+T(X,Y)=\nabla_XY-\nabla_YX-[X,Y].
+\]
+\end{definitionbox}
+
+In a coordinate basis, where \([\partial_\mu,\partial_\nu]=0\), the components are
+\[
+T^\rho{}_{\mu\nu}=\Gamma^\rho{}_{\mu\nu}-\Gamma^\rho{}_{\nu\mu}.
+\]
+The connection is torsion-free precisely when
+\[
+\Gamma^\rho{}_{\mu\nu}=\Gamma^\rho{}_{\nu\mu}
+\]
+in every coordinate chart.
+
+Standard general relativity uses the torsion-free Levi-Civita connection. Some
+extensions of relativity, such as Einstein-Cartan theory, allow torsion and
+relate it to spin density. In the standard theory, however, torsion is set to
+zero, and the gravitational field is represented by curvature of the metric
+connection.
+
+\clearpage
+
+\section{Metric Compatibility}
+
+A connection is compatible with a metric when parallel transport preserves inner
+products.
+
+\begin{definitionbox}
+A connection \(\nabla\) is \emph{metric-compatible} with \(g\) if
+\[
+\nabla g=0.
+\]
+In coordinates this means
+\[
+\nabla_\lambda g_{\mu\nu}=0.
+\]
+\end{definitionbox}
+
+Expanding the coordinate expression gives
+\[
+\nabla_\lambda g_{\mu\nu}
+=
+\partial_\lambda g_{\mu\nu}
+-\Gamma^\rho{}_{\lambda\mu}g_{\rho\nu}
+-\Gamma^\rho{}_{\lambda\nu}g_{\mu\rho}.
+\]
+Thus metric compatibility is
+\[
+\partial_\lambda g_{\mu\nu}
+=
+\Gamma^\rho{}_{\lambda\mu}g_{\rho\nu}
++\Gamma^\rho{}_{\lambda\nu}g_{\mu\rho}.
+\]
+Geometrically, this condition means that lengths and angles, or in Lorentzian
+geometry causal inner products, are preserved under parallel transport.
+
+In relativity, metric compatibility means that the connection used to define
+free fall is consistent with the metric used to define clocks, rulers, and light
+cones. Without compatibility, these structures would not be tied together in the
+standard way.
+
+\clearpage
+
+\section{The Levi-Civita Connection}
+
+The central connection in Riemannian and Lorentzian geometry is the unique
+connection that is both torsion-free and metric-compatible.
+
+\begin{theorembox}
+Let \((M,g)\) be a pseudo-Riemannian manifold. There exists a unique affine
+connection \(\nabla\) such that:
+\[
+T=0,
+\qquad
+\nabla g=0.
+\]
+This connection is called the \emph{Levi-Civita connection} of \(g\).
+\end{theorembox}
+
+In coordinates, its Christoffel symbols are
+\[
+\boxed{
+\Gamma^\rho{}_{\mu\nu}
+=rac{1}{2}g^{\rho\sigma}
+\left(
+\partial_\mu g_{\nu\sigma}
++\partial_\nu g_{\mu\sigma}
+-\partial_\sigma g_{\mu\nu}
+\right).
+}
+\]
+
+This formula follows by writing metric compatibility in three permutations of
+the indices and combining them while using the symmetry
+\(\Gamma^\rho{}_{\mu\nu}=\Gamma^\rho{}_{\nu\mu}\).
+
+The Levi-Civita connection is not an additional independent field once the
+metric is given. In standard general relativity, the metric determines the
+connection, and the connection determines the curvature. Thus the gravitational
+field is encoded in the metric.
+
+\clearpage
+
+\section{Parallel Transport}
+
+Given a connection, one can define what it means for a vector to be transported
+along a curve without changing relative to the connection.
+
+Let \(\gamma:I\to M\) be a smooth curve with tangent vector \(\dot{\gamma}\). A
+vector field \(V(t)\) along \(\gamma\) is parallel if
+\[
+\nabla_{\dot{\gamma}}V=0.
+\]
+In coordinates, this becomes
+\[
+\frac{dV^\rho}{dt}+\Gamma^\rho{}_{\mu\nu}
+\frac{dx^\mu}{dt}V^\nu=0.
+\]
+This is a system of linear ordinary differential equations along the curve.
+
+Parallel transport depends on the path in a curved manifold. If a vector is
+parallel transported around a closed loop, it may return rotated or boosted
+relative to its initial value. This failure of path independence is measured by
+curvature.
+
+In general relativity, parallel transport formalizes comparison of vectors at
+different spacetime points. Since tangent spaces at different points are
+different vector spaces, there is no canonical comparison without additional
+structure. The connection supplies such a comparison.
+
+\clearpage
+
+\section{Geodesics}
+
+A geodesic is a curve whose tangent vector is parallel transported along itself.
+It is the curved-space generalization of a straight line with constant velocity.
+
+\begin{definitionbox}
+A curve \(\gamma:I\to M\) is an \emph{affinely parametrized geodesic} of a
+connection \(\nabla\) if
+\[
+\nabla_{\dot{\gamma}}\dot{\gamma}=0.
+\]
+\end{definitionbox}
+
+In coordinates, this equation is
+\[
+\boxed{
+\frac{d^2x^\rho}{d\lambda^2}
++\Gamma^\rho{}_{\mu\nu}
+\frac{dx^\mu}{d\lambda}
+\frac{dx^\nu}{d\lambda}=0.
+}
+\]
+
+For the Levi-Civita connection of a Lorentzian metric, timelike geodesics are
+the worldlines of freely falling massive test particles, while null geodesics
+are the paths of ideal light rays in geometric optics.
+
+The word \emph{test} is important. A test particle is assumed not to disturb the
+metric appreciably. The geodesic equation describes motion in a given geometry;
+the Einstein equation describes how matter determines that geometry.
+
+\clearpage
+
+\section{Geodesics from a Variational Principle}
+
+For a Riemannian metric, geodesics locally extremize length. In Lorentzian
+geometry, timelike geodesics locally extremize proper time under suitable
+conditions.
+
+Consider the energy functional
+\[
+E[\gamma]=\frac{1}{2}\int_{\lambda_0}^{\lambda_1}
+g_{\mu\nu}(x)
+\frac{dx^\mu}{d\lambda}
+\frac{dx^\nu}{d\lambda}\,d\lambda.
+\]
+The Euler-Lagrange equations for the Lagrangian
+\[
+L=\frac{1}{2}g_{\mu\nu}(x)\dot{x}^\mu\dot{x}^\nu
+\]
+are
+\[
+\frac{d}{d\lambda}\left(g_{\rho\nu}\dot{x}^\nu\right)
+-rac{1}{2}\partial_\rho g_{\mu\nu}\dot{x}^\mu\dot{x}^\nu=0.
+\]
+Expanding the derivative gives
+\[
+g_{\rho\nu}\ddot{x}^\nu
++\partial_\sigma g_{\rho\nu}\dot{x}^\sigma\dot{x}^\nu
+-rac{1}{2}\partial_\rho g_{\mu\nu}\dot{x}^\mu\dot{x}^\nu=0.
+\]
+Multiplying by \(g^{\rho\alpha}\) and symmetrizing the terms in
+\(\dot{x}^\mu\dot{x}^\nu\) yields
+\[
+\ddot{x}^\alpha+\Gamma^\alpha{}_{\mu\nu}
+\dot{x}^\mu\dot{x}^\nu=0.
+\]
+Thus the variational and connection definitions agree for the Levi-Civita
+connection.
+
+\clearpage
+
+\section{Normal Coordinates and the Equivalence Principle}
+
+At any point of a pseudo-Riemannian manifold, one can choose coordinates in
+which the metric takes its flat canonical form and the Christoffel symbols of
+the Levi-Civita connection vanish at that point.
+
+\begin{theorembox}
+Let \((M,g)\) be a pseudo-Riemannian manifold and let \(p\in M\). There exist
+local coordinates around \(p\) such that
+\[
+g_{\mu\nu}(p)=\eta_{\mu\nu},
+\qquad
+\Gamma^\rho{}_{\mu\nu}(p)=0,
+\]
+where \(\eta_{\mu\nu}\) is the diagonal flat metric with the same signature as
+\(g\).
+\end{theorembox}
+
+These are normal coordinates at \(p\). In Lorentzian geometry they are closely
+related to local inertial frames.
+
+However, the first derivatives of the connection cannot generally be made to
+vanish at the same point. The curvature tensor remains. This distinction is
+physically crucial: gravitational acceleration can be transformed away at a
+point by going to a freely falling frame, but tidal effects cannot be eliminated
+if curvature is nonzero.
+
+This is the precise mathematical content behind the local equivalence principle:
+locally at a point, freely falling coordinates remove the connection
+coefficients, but they do not remove curvature.
+
+\clearpage
+
+\section{Curvature as Noncommutation of Covariant Derivatives}
+
+Curvature measures the failure of second covariant derivatives to commute, after
+correcting for the noncommutation of the vector fields themselves.
+
+\begin{definitionbox}
+The \emph{Riemann curvature tensor} of a connection \(\nabla\) is the map
+\[
+R(X,Y)Z=
+\nabla_X\nabla_YZ-
+\nabla_Y\nabla_XZ-
+\nabla_{[X,Y]}Z.
+\]
+\end{definitionbox}
+
+For each pair \((X,Y)\), the map \(Z\mapsto R(X,Y)Z\) is a linear endomorphism
+of the tangent space. In coordinates,
+\[
+R(\partial_\mu,\partial_\nu)\partial_\sigma
+=R^\rho{}_{\sigma\mu\nu}\partial_\rho.
+\]
+With the sign convention used here,
+\[
+\boxed{
+R^\rho{}_{\sigma\mu\nu}
+=
+\partial_\mu\Gamma^\rho{}_{\nu\sigma}
+-
+\partial_\nu\Gamma^\rho{}_{\mu\sigma}
++\Gamma^\rho{}_{\mu\lambda}\Gamma^\lambda{}_{\nu\sigma}
+-\Gamma^\rho{}_{\nu\lambda}\Gamma^\lambda{}_{\mu\sigma}.
+}
+\]
+
+Different books sometimes use the opposite sign convention for the Riemann
+tensor. What matters is internal consistency. The definitions of Ricci tensor,
+scalar curvature, and Einstein tensor must follow the chosen convention.
+
+\clearpage
+
+\section{Curvature and Parallel Transport Around a Loop}
+
+Curvature has a direct geometric interpretation through parallel transport. If a
+vector is parallel transported around a very small coordinate parallelogram
+spanned by coordinate displacements \(\Delta x^\mu\) and \(\Delta x^\nu\), the
+change in the vector is, to leading order,
+\[
+\Delta V^\rho
+\approx
+R^\rho{}_{\sigma\mu\nu}V^\sigma
+\Delta x^\mu\Delta x^\nu.
+\]
+Thus curvature measures the infinitesimal holonomy of the connection.
+
+In flat Euclidean space, parallel transport is path-independent. On a curved
+surface or curved spacetime, path dependence is the rule. The Riemann tensor is
+the local object that encodes this path dependence.
+
+Physically, this is connected to tidal effects. A uniform gravitational field
+can be removed locally by choosing an accelerated or freely falling frame, but
+the relative acceleration of nearby freely falling particles is controlled by
+curvature and cannot be removed by a coordinate transformation.
+
+\clearpage
+
+\section{Algebraic Symmetries of the Riemann Tensor}
+
+For the Levi-Civita connection of a metric, it is useful to lower the first
+index:
+\[
+R_{\rho\sigma\mu\nu}=g_{\rho\lambda}R^\lambda{}_{\sigma\mu\nu}.
+\]
+The Riemann tensor then satisfies the algebraic symmetries
+\[
+R_{\rho\sigma\mu\nu}=-R_{\sigma\rho\mu\nu},
+\]
+\[
+R_{\rho\sigma\mu\nu}=-R_{\rho\sigma\nu\mu},
+\]
+\[
+R_{\rho\sigma\mu\nu}=R_{\mu\nu\rho\sigma},
+\]
+and the first Bianchi identity
+\[
+R_{\rho[\sigma\mu\nu]}=0.
+\]
+The brackets denote antisymmetrization over the enclosed indices.
+
+These identities drastically reduce the number of independent components. In
+\(n\) dimensions, the Riemann tensor of a Levi-Civita connection has
+\[
+\frac{n^2(n^2-1)}{12}
+\]
+independent components. In four dimensions this gives
+\[
+\frac{16(15)}{12}=20.
+\]
+Thus four-dimensional spacetime curvature has twenty independent components at
+a point before field equations impose additional restrictions.
+
+\clearpage
+
+\section{Ricci Tensor and Scalar Curvature}
+
+The Ricci tensor is a contraction of the Riemann tensor. With the convention of
+this chapter, define
+\[
+\operatorname{Ric}_{\sigma\nu}=R^\rho{}_{\sigma\rho\nu}.
+\]
+In index notation this is often written as
+\[
+R_{\mu\nu}=R^\rho{}_{\mu\rho\nu}.
+\]
+The scalar curvature is the trace of the Ricci tensor with the inverse metric:
+\[
+R=g^{\mu\nu}R_{\mu\nu}.
+\]
+The same letter \(R\) is commonly used both for the Riemann curvature operator
+and for the scalar curvature; context and indices determine the meaning.
+
+The Ricci tensor measures part of curvature related to volume distortion and
+geodesic convergence. The full Riemann tensor contains more information than the
+Ricci tensor. In four-dimensional general relativity, the vacuum equation
+\(R_{\mu\nu}=0\) does not imply that the full Riemann tensor is zero. Vacuum
+spacetimes may still contain gravitational waves or tidal curvature.
+
+The scalar curvature is a single number at each point. It is too compressed to
+describe all curvature, but it is central in the Einstein-Hilbert action.
+
+\clearpage
+
+\section{Sectional Curvature and Riemannian Interpretation}
+
+In Riemannian geometry, sectional curvature gives the curvature of a two-plane
+inside a tangent space. Let \(u,v\in T_pM\) be linearly independent. The
+sectional curvature of the plane they span is
+\[
+K(u,v)=
+\frac{g(R(u,v)v,u)}{g(u,u)g(v,v)-g(u,v)^2}.
+\]
+This expression generalizes Gaussian curvature of surfaces.
+
+For a two-dimensional Riemannian manifold, all curvature information is encoded
+by Gaussian curvature. For dimensions three and higher, sectional curvatures for
+all two-planes encode the Riemann tensor.
+
+In Lorentzian geometry, one must be more careful because the denominator may
+vanish for degenerate two-planes involving null directions. Nevertheless, the
+conceptual point survives: curvature is not merely a scalar quantity. It depends
+on directions and planes in tangent space.
+
+In physics this matters because tidal effects depend on directions. Curvature
+can stretch in one spatial direction and compress in another. The Riemann tensor
+keeps this directional information.
+
+\clearpage
+
+\section{Geodesic Deviation}
+
+Geodesic deviation gives the most direct physical interpretation of spacetime
+curvature. Consider a one-parameter family of geodesics with tangent vector
+\(U\) and separation vector \(\xi\). If \(U\) is affinely parametrized, the
+relative acceleration satisfies
+\[
+\boxed{
+\nabla_U\nabla_U\xi=R(U,\xi)U.
+}
+\]
+In components, for a timelike geodesic parametrized by proper time \(\tau\),
+\[
+\frac{D^2\xi^\mu}{d\tau^2}
+=R^\mu{}_{\nu\rho\sigma}U^\nu\xi^\rho U^\sigma,
+\]
+up to the sign convention for \(R\).
+
+This equation states that curvature controls the relative acceleration of nearby
+freely falling particles. This is not a coordinate artifact. It is an invariant
+measurement principle: if a cloud of freely falling particles changes shape due
+to tidal effects, spacetime curvature is being detected.
+
+In a local inertial frame at a point, the Christoffel symbols can be set to zero
+at that point, but the second relative acceleration encoded by geodesic
+deviation remains if the Riemann tensor is nonzero.
+
+\clearpage
+
+\section{The Bianchi Identities}
+
+The first Bianchi identity is algebraic:
+\[
+R^\rho{}_{[\sigma\mu\nu]}=0.
+\]
+For the Levi-Civita connection there is also a differential identity, the second
+Bianchi identity:
+\[
+\nabla_\lambda R^\rho{}_{\sigma\mu\nu}
++
+\nabla_\mu R^\rho{}_{\sigma\nu\lambda}
++
+\nabla_\nu R^\rho{}_{\sigma\lambda\mu}=0.
+\]
+Contracting the second Bianchi identity yields
+\[
+\nabla^\mu\left(R_{\mu\nu}-\frac{1}{2}Rg_{\mu\nu}\right)=0.
+\]
+This contracted identity is one of the structural reasons why the Einstein
+tensor appears in the field equations.
+
+The Bianchi identities are not optional extra equations. They are identities
+satisfied by curvature constructed from the Levi-Civita connection. Their
+physical consequence is connected to local conservation of stress-energy in
+general relativity.
+
+\clearpage
+
+\section{The Einstein Tensor}
+
+The Einstein tensor is defined by
+\[
+\boxed{
+G_{\mu\nu}=R_{\mu\nu}-\frac{1}{2}Rg_{\mu\nu}.
+}
+\]
+It is symmetric because the Ricci tensor and metric are symmetric. By the
+contracted Bianchi identity,
+\[
+\nabla^\mu G_{\mu\nu}=0.
+\]
+This divergence-free property is essential for coupling geometry to matter.
+
+Einstein's field equation, with cosmological constant, is
+\[
+\boxed{
+G_{\mu\nu}+\Lambda g_{\mu\nu}
+=rac{8\pi G}{c^4}T_{\mu\nu}.
+}
+\]
+Here \(T_{\mu\nu}\) is the stress-energy tensor. The left-hand side is geometry;
+the right-hand side is matter and energy.
+
+The equation is not simply a poetic statement that matter curves spacetime. It
+is a precise nonlinear system of partial differential equations for the metric
+components \(g_{\mu\nu}\), because the Ricci tensor contains second derivatives
+of the metric and nonlinear terms in its first derivatives.
+
+\clearpage
+
+\section{Stress-Energy Tensor and Conservation}
+
+The stress-energy tensor represents local energy density, momentum density,
+energy flux, and stress as measured relative to observers or frames. In a local
+orthonormal frame, components have the schematic interpretation
+\[
+T_{00}=\text{energy density},
+\qquad
+T_{0i}=\text{momentum or energy flux},
+\qquad
+T_{ij}=\text{stress components}.
+\]
+These interpretations require a frame. The tensor itself is coordinate
+independent.
+
+The Einstein equation implies
+\[
+\nabla^\mu T_{\mu\nu}=0
+\]
+provided \(\Lambda\) is constant. This is the covariant local conservation law.
+It is not the same as ordinary global conservation of total energy in arbitrary
+curved spacetimes. Global conservation laws require additional structure, such
+as asymptotic flatness or spacetime symmetries.
+
+For a perfect fluid with energy density \(\rho\), pressure \(p\), and four-
+velocity \(u^\mu\), the stress-energy tensor is
+\[
+T_{\mu\nu}=(\rho+p)u_\mu u_\nu+p g_{\mu\nu}
+\]
+in units where \(c=1\), with signature \((-+++)\) and normalization
+\[
+g_{\mu\nu}u^\mu u^\nu=-1.
+\]
+This formula shows how matter models enter the geometric field equation.
+
+\clearpage
+
+\section{Local Frames and Tetrads}
+
+A coordinate basis \(\partial_\mu\) is not usually orthonormal. In relativity it
+is often useful to introduce a local frame \(e_a\), where Latin indices label
+frame components. A tetrad in four dimensions is a basis
+\[
+e_0,e_1,e_2,e_3
+\]
+of each tangent space such that
+\[
+g(e_a,e_b)=\eta_{ab}.
+\]
+Here \(\eta_{ab}=\operatorname{diag}(-1,1,1,1)\) in the chosen convention.
+
+The relation between coordinate and frame components is written
+\[
+e_a=e_a{}^\mu\partial_\mu.
+\]
+The metric can be reconstructed from tetrads by
+\[
+g_{\mu\nu}=\eta_{ab}e^a{}_{\mu}e^b{}_{\nu}.
+\]
+
+Physically, an orthonormal tetrad can represent the measuring frame of a local
+observer: one timelike unit vector and three spacelike unit vectors. Tensor
+components in this frame correspond more directly to measured quantities than
+arbitrary coordinate components.
+
+Tetrads are also important in coupling spinor fields to gravity, because spinors
+are naturally associated with local Lorentz frames rather than directly with
+coordinate frames.
+
+\clearpage
+
+\section{Killing Vector Fields and Symmetries}
+
+A vector field generates an infinitesimal symmetry of the metric if the metric
+does not change along its flow. This is expressed by the Lie derivative.
+
+\begin{definitionbox}
+A vector field \(K\) is a \emph{Killing vector field} of a metric \(g\) if
+\[
+\mathcal{L}_K g=0.
+\]
+Equivalently, for the Levi-Civita connection,
+\[
+\nabla_\mu K_\nu+\nabla_\nu K_\mu=0.
+\]
+\end{definitionbox}
+
+Killing vector fields encode continuous spacetime symmetries. A timelike Killing
+field corresponds to stationarity; a rotational Killing field corresponds to
+rotational symmetry.
+
+Along a geodesic with tangent \(U\), a Killing field gives a conserved quantity:
+\[
+\frac{d}{d\lambda}g(K,U)=0.
+\]
+This follows from the geodesic equation and the Killing equation. In physical
+terms, symmetries generate conserved quantities such as energy and angular
+momentum, when the relevant symmetry exists.
+
+\clearpage
+
+\section{Flatness and Curved Coordinates}
+
+It is important to distinguish nonzero Christoffel symbols from genuine
+curvature. Curvilinear coordinates in flat space can produce nonzero Christoffel
+symbols even though the Riemann tensor is zero.
+
+For example, the Euclidean plane in polar coordinates has metric
+\[
+ds^2=dr^2+r^2d\theta^2.
+\]
+The Christoffel symbols include
+\[
+\Gamma^r{}_{\theta\theta}=-r,
+\qquad
+\Gamma^\theta{}_{r\theta}=\Gamma^\theta{}_{\theta r}=\frac{1}{r}.
+\]
+These do not indicate intrinsic curvature. The Riemann tensor still vanishes.
+
+In general relativity this distinction is essential. A gravitational field is
+not identified with Christoffel symbols alone, because they can be made to vanish
+at a point by choosing local inertial coordinates. Curvature, not the connection
+coefficients by themselves, encodes invariant gravitational tidal effects.
+
+\clearpage
+
+\section{Flat Spacetime as a Lorentzian Manifold}
+
+Special relativity is described by Minkowski spacetime. As a manifold it is
+\(\mathbb{R}^4\), equipped with the Lorentzian metric
+\[
+\eta=-c^2dt^2+dx^2+dy^2+dz^2.
+\]
+In units \(c=1\),
+\[
+ds^2=-dt^2+dx^2+dy^2+dz^2.
+\]
+In standard inertial coordinates, the metric components are constant, so the
+Christoffel symbols vanish:
+\[
+\Gamma^\rho{}_{\mu\nu}=0.
+\]
+Consequently,
+\[
+R^\rho{}_{\sigma\mu\nu}=0.
+\]
+
+However, if one uses accelerated or curvilinear coordinates on Minkowski
+spacetime, Christoffel symbols may become nonzero. The curvature remains zero.
+Thus special relativity is not the absence of all connection coefficients in all
+coordinates; it is the vanishing of the Riemann curvature tensor of the
+Minkowski metric.
+
+\clearpage
+
+\section{Curved Spacetime and Gravity}
+
+In general relativity, the gravitational field is represented by a Lorentzian
+metric \(g\) on a four-dimensional smooth manifold \(M\). The metric determines:
+\begin{enumerate}
+    \item the causal cones;
+    \item proper time along timelike curves;
+    \item spatial distances relative to observers;
+    \item the Levi-Civita connection;
+    \item the geodesics of free particles and light rays;
+    \item the curvature tensors entering the field equations.
+\end{enumerate}
+
+The geometry is dynamical: the metric is not fixed in advance. It is solved from
+Einstein's equation together with matter equations and appropriate initial or
+boundary conditions.
+
+The statement that gravity is curvature should be read carefully. The connection
+controls free-fall equations, while curvature controls invariant tidal effects.
+The metric determines both. Standard general relativity packages these facts in
+the geometry of a Lorentzian manifold.
+
+\clearpage
+
+\section{Initial Data and the Role of Hypersurfaces}
+
+A spacetime can often be studied by splitting it into space plus time. A
+spacelike hypersurface \(\Sigma\subset M\) has an induced Riemannian metric
+\(h\) and extrinsic curvature \(K\). The pair \((h,K)\) forms the geometric part
+of initial data.
+
+The Einstein equation imposes constraint equations on this data. In vacuum,
+these are schematically
+\[
+{}^{(3)}R+K^2-K_{ij}K^{ij}=0,
+\]
+and
+\[
+D_j(K^{ij}-h^{ij}K)=0,
+\]
+where \({}^{(3)}R\) is the scalar curvature of the spatial metric \(h\), and
+\(D\) is its Levi-Civita connection.
+
+This shows that general relativity is not merely a set of four-dimensional
+formulae. It also has an initial value formulation: one may specify suitable
+data on a spatial hypersurface and evolve them, subject to constraints.
+
+This section only indicates the structure. A rigorous treatment requires global
+hyperbolicity, Sobolev spaces, and the analysis of nonlinear hyperbolic systems.
+
+\clearpage
+
+\section{Summary of the Mathematical Pipeline}
+
+The mathematical construction used in general relativity can be summarized as
+follows.
+
+\begin{enumerate}
+    \item A smooth four-dimensional manifold \(M\) represents spacetime as a set
+    of events with differentiable structure.
+    \item Tangent spaces \(T_pM\) contain possible infinitesimal directions at
+    each event.
+    \item Tensor fields provide coordinate-independent physical fields.
+    \item A Lorentzian metric \(g\) classifies directions as timelike, null, or
+    spacelike and determines proper time.
+    \item The metric determines a unique Levi-Civita connection \(\nabla\).
+    \item The connection defines parallel transport and geodesics.
+    \item The Riemann tensor measures curvature as noncommutation of covariant
+    derivatives and path dependence of parallel transport.
+    \item The Ricci tensor and scalar curvature are contractions of the Riemann
+    tensor.
+    \item The Einstein tensor is the divergence-free curvature tensor that
+    couples to stress-energy.
+\end{enumerate}
+
+\begin{summarybox}
+A spacetime model in standard general relativity is a pair \((M,g)\), where
+\(M\) is a smooth four-dimensional manifold and \(g\) is a Lorentzian metric.
+The Levi-Civita connection of \(g\) defines free fall; its curvature defines
+invariant tidal gravity; contractions of that curvature form the Einstein tensor
+\[
+G_{\mu\nu}=R_{\mu\nu}-\frac{1}{2}Rg_{\mu\nu},
+\]
+which appears in the field equation
+\[
+G_{\mu\nu}+\Lambda g_{\mu\nu}=\frac{8\pi G}{c^4}T_{\mu\nu}.
+\]
+\end{summarybox}
