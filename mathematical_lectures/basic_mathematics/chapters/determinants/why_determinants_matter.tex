@@ -1,3 +1,41 @@
 \section{Why determinants matter}
 
-This section will introduce the determinant as a number attached to a square matrix. The goal will be to understand what kind of question the determinant answers, why it is connected with area, volume, orientation, and invertibility, and why it is more than a formula to memorize.
+In the previous chapter we learned how to read matrices and how to perform basic operations on them. We can add matrices, multiply them by numbers, multiply compatible matrices, and recognize simple structures such as the identity matrix or a diagonal matrix. But after learning these operations, a natural question appears.
+
+Are all square matrices equally good?
+
+This question is intentionally vague at first. Mathematics often begins in this way: we notice that some objects behave differently from others, and only later do we find the right words and the right definitions. Consider the following matrices:
+\[
+I=\begin{pmatrix}1&0\\0&1\end{pmatrix},
+\qquad
+A=\begin{pmatrix}2&0\\0&3\end{pmatrix},
+\qquad
+B=\begin{pmatrix}1&2\\2&4\end{pmatrix}.
+\]
+The first matrix is the identity matrix. It preserves everything under multiplication. The second matrix stretches the first coordinate by a factor of \(2\) and the second coordinate by a factor of \(3\). The third matrix is different. Its second row is exactly twice its first row:
+\[
+(2,4)=2(1,2).
+\]
+So the two rows do not contain two independent pieces of information. One row is only a repetition of the other, scaled by a number.
+
+This observation suggests a deeper question. Can a matrix lose information? Can a matrix collapse different inputs into outputs that are no longer distinguishable? Can we detect this collapse by assigning one carefully chosen number to the matrix?
+
+The determinant is such a number.
+
+This statement should not be read as a definition yet. At this stage it is only a promise. We are looking for a number attached to a square matrix, but not just any number. We want a number that reacts to the structure of the matrix. It should notice when rows or columns become dependent. It should distinguish matrices that preserve two-dimensional or three-dimensional structure from matrices that collapse it. It should also help us decide, later, whether a matrix can be inverted.
+
+\begin{remarkbox}
+A determinant is not a summary of all entries of a matrix in the sense of an average or a sum. It is a number designed to detect structural behaviour. In particular, the value \(0\) will become extremely important: it will mean that the matrix has lost a certain kind of independence.
+\end{remarkbox}
+
+There is also a geometric way to think about determinants. A \(2\times2\) matrix can transform the plane. Some matrices stretch areas, some reverse orientation, and some flatten the plane onto a line. The determinant measures this behaviour. In dimension \(2\), its absolute value describes an area scale factor. In dimension \(3\), its absolute value describes a volume scale factor. A determinant equal to zero means that area or volume has been flattened completely.
+
+For the purposes of this course, however, we will not begin from geometry alone. We will move between several viewpoints:
+\begin{itemize}
+\item determinants as numbers computed from square matrices,
+\item determinants as tests for structural collapse,
+\item determinants as tools for recognizing invertibility,
+\item determinants as quantities affected in predictable ways by row operations.
+\end{itemize}
+
+The chapter will therefore follow a path of discovery. First we study small matrices, where the formulas can be seen directly. Then we introduce a systematic method for larger matrices: minors, cofactors, and Laplace expansion. After that we collect the properties that make determinants useful in actual calculation. Finally we connect determinants with singular matrices and prepare the transition to the next chapter, where invertibility becomes the central topic.
