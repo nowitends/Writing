@@ -70,6 +70,7 @@
 ./mathematical_lectures/basic_mathematics/chapters/systems_of_linear_equations/what_systems_describe.tex
 ./mathematical_lectures/basic_mathematics/chapters/vectors_and_coordinates
 ./mathematical_lectures/basic_mathematics/chapters/vectors_and_coordinates/points_and_coordinates.tex
+./mathematical_lectures/basic_mathematics/chapters/vectors_and_coordinates/vector_operations.tex
 ./mathematical_lectures/basic_mathematics/chapters/vectors_and_coordinates/vectors_as_displacements.tex
 ./mathematical_lectures/basic_mathematics/figures
 ./mathematical_lectures/basic_mathematics/figures/README.md
