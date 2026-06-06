@@ -37,6 +37,7 @@
 ./mathematical_lectures/basic_mathematics/chapters/chapter_04_systems_of_linear_equations.tex
 ./mathematical_lectures/basic_mathematics/chapters/chapter_05_vectors_and_coordinates.tex
 ./mathematical_lectures/basic_mathematics/chapters/chapter_06_lines.tex
+./mathematical_lectures/basic_mathematics/chapters/chapter_07_planes.tex
 ./mathematical_lectures/basic_mathematics/chapters/determinants
 ./mathematical_lectures/basic_mathematics/chapters/determinants/determinant_patterns.tex
 ./mathematical_lectures/basic_mathematics/chapters/determinants/determinants_of_small_matrices.tex
