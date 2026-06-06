@@ -30,6 +30,15 @@ shared/macros.tex
 The project-local `macros.tex` files load this shared file so that symbols such
 as `\R`, `\Prob`, `\E`, and `\Var` stay consistent across projects.
 
+Shared LaTeX package setup is kept in:
+
+```text
+shared/preamble.tex
+```
+
+The project-local `preamble.tex` files load this shared file so package choices,
+page layout, hyperlinks, TikZ setup, and typography stay consistent.
+
 ## Build
 
 From a project directory, compile with:

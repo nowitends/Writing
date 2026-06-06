@@ -225,6 +225,15 @@ shared/macros.tex
 The project-local `macros.tex` files should remain thin wrappers that load the
 shared macros file.
 
+For LaTeX package setup shared by all lecture-note projects, edit:
+
+```text
+shared/preamble.tex
+```
+
+The project-local `preamble.tex` files should remain thin wrappers that load the
+shared preamble file.
+
 The agent should not mix these levels unless necessary.
 
 For example, if the task is:
