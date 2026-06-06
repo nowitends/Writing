@@ -47,6 +47,8 @@
 ./mathematical_lectures/basic_mathematics/chapters/determinants/properties_of_determinants.tex
 ./mathematical_lectures/basic_mathematics/chapters/determinants/singularity_and_parameters.tex
 ./mathematical_lectures/basic_mathematics/chapters/determinants/why_determinants_matter.tex
+./mathematical_lectures/basic_mathematics/chapters/integrals
+./mathematical_lectures/basic_mathematics/chapters/integrals/.gitkeep
 ./mathematical_lectures/basic_mathematics/chapters/introduction
 ./mathematical_lectures/basic_mathematics/chapters/introduction/ideas.md
 ./mathematical_lectures/basic_mathematics/chapters/introduction/overview.tex
