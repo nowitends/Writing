@@ -41,6 +41,7 @@
 ./mathematical_lectures/basic_mathematics/chapters/linear_algebra/systems_of_linear_equations.tex
 ./mathematical_lectures/basic_mathematics/chapters/linear_algebra/vectors.tex
 ./mathematical_lectures/basic_mathematics/chapters/matrices
+./mathematical_lectures/basic_mathematics/chapters/matrices/basic_matrix_operations.tex
 ./mathematical_lectures/basic_mathematics/chapters/matrices/what_matrices_are.tex
 ./mathematical_lectures/basic_mathematics/figures
 ./mathematical_lectures/basic_mathematics/figures/README.md
