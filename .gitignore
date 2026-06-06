@@ -8,6 +8,5 @@
 *.synctex.gz
 *.pyc
 .idea/
-.venv
-.python-version
+.venv/
 *.html

@@ -70,6 +70,25 @@ pdflatex main.tex
 
 Some projects also include a local `build.sh` script.
 
+## Lecture PDF Page
+
+The repository includes a minimal MkDocs site that lists direct links to all
+compiled lecture PDFs.
+
+Preview locally:
+
+```bash
+python3 -m venv .venv
+.venv/bin/python -m pip install -r requirements-docs.txt
+.venv/bin/python -m mkdocs serve
+```
+
+Deploy to GitHub Pages:
+
+```bash
+.venv/bin/python -m mkdocs gh-deploy
+```
+
 ## Repository Tree
 
 `tree.txt` is regenerated automatically by GitHub Actions after pushes that change
