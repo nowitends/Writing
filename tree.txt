@@ -40,6 +40,7 @@
 ./mathematical_lectures/basic_mathematics/chapters/determinants/determinants_of_small_matrices.tex
 ./mathematical_lectures/basic_mathematics/chapters/determinants/laplace_expansion.tex
 ./mathematical_lectures/basic_mathematics/chapters/determinants/properties_of_determinants.tex
+./mathematical_lectures/basic_mathematics/chapters/determinants/singularity_and_parameters.tex
 ./mathematical_lectures/basic_mathematics/chapters/determinants/why_determinants_matter.tex
 ./mathematical_lectures/basic_mathematics/chapters/introduction
 ./mathematical_lectures/basic_mathematics/chapters/introduction/ideas.md
