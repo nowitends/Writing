@@ -140,6 +140,7 @@
 ./physics_lectures/general_notes_experiments/chapters
 ./physics_lectures/general_notes_experiments/chapters/README.md
 ./physics_lectures/general_notes_experiments/chapters/chapter_000_template_note.tex
+./physics_lectures/general_notes_experiments/chapters/chapter_001_projectile_motion.tex
 ./physics_lectures/general_notes_experiments/chapters/independent_notes
 ./physics_lectures/general_notes_experiments/chapters/independent_notes/.gitkeep
 ./physics_lectures/general_notes_experiments/figures
