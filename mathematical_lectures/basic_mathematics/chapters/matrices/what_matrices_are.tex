@@ -1,0 +1,41 @@
+\section{What matrices are}
+
+A matrix is a rectangular arrangement of mathematical objects, usually numbers. This description is correct, but it is not yet very informative. If we stop at this description, a matrix looks like a table, and matrix algebra looks like a collection of rules for moving numbers around. In this chapter we will try to see more than that. A matrix is a way of organizing information. It can describe data, relations between quantities, coefficients of equations, or a rule that transforms one vector into another.
+
+The first skill is therefore not calculation, but reading. When we see a matrix, we should ask what its shape is, what its entries represent, and how its rows and columns are meant to be interpreted. The same array of numbers may be only a table in one problem, but in another problem it may describe a transformation, a system of equations, or a geometric operation.
+
+\begin{definitionbox}
+A matrix with \(m\) rows and \(n\) columns is called an \(m\times n\) matrix. It has the form
+\[
+A=
+\begin{pmatrix}
+a_{11} & a_{12} & \cdots & a_{1n}\\
+a_{21} & a_{22} & \cdots & a_{2n}\\
+\vdots & \vdots & \ddots & \vdots\\
+a_{m1} & a_{m2} & \cdots & a_{mn}
+\end{pmatrix}.
+\]
+The entry \(a_{ij}\) is located in row \(i\) and column \(j\).
+\end{definitionbox}
+
+This notation is simple, but it contains an important discipline. The first index tells us where to look vertically, and the second index tells us where to look horizontally. A student who confuses these indices will often make mistakes later when multiplying matrices or describing systems of equations.
+
+\begin{examplebox}
+Consider the matrix
+\[
+M=
+\begin{pmatrix}
+4 & -2 & 0\\
+7 & 1 & 5
+\end{pmatrix}.
+\]
+This is a \(2\times 3\) matrix. The entry \(m_{11}\) is \(4\), the entry \(m_{12}\) is \(-2\), and the entry \(m_{23}\) is \(5\). We are not doing any operation yet. We are only learning to read the object.
+\end{examplebox}
+
+The size of a matrix is part of its identity. A row matrix, a column matrix, and a square matrix may contain similar numbers, but they play different roles. A column matrix can represent a vector. A square matrix can sometimes represent a transformation from a space to itself. A rectangular matrix may describe a relation between two collections of quantities of different sizes.
+
+\begin{definitionbox}
+A matrix is called square if it has the same number of rows and columns. An \(n\times n\) matrix is a square matrix of order \(n\).
+\end{definitionbox}
+
+We will often begin with square matrices because many basic ideas are easiest to see there. However, rectangular matrices are just as important. The point is not to memorize a list of shapes, but to develop the habit of asking: what kind of object am I holding, and what operations make sense for this object?
