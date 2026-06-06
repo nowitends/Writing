@@ -63,6 +63,8 @@
 ./mathematical_lectures/basic_mathematics/chapters/matrix_inversion/invertibility_and_structure.tex
 ./mathematical_lectures/basic_mathematics/chapters/matrix_inversion/matrix_equations.tex
 ./mathematical_lectures/basic_mathematics/chapters/matrix_inversion/meaning_of_inverse_matrix.tex
+./mathematical_lectures/basic_mathematics/chapters/systems_of_linear_equations
+./mathematical_lectures/basic_mathematics/chapters/systems_of_linear_equations/what_systems_describe.tex
 ./mathematical_lectures/basic_mathematics/figures
 ./mathematical_lectures/basic_mathematics/figures/README.md
 ./mathematical_lectures/basic_mathematics/macros.tex
