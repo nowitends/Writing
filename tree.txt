@@ -30,6 +30,7 @@
 ./mathematical_lectures/basic_mathematics/chapters/calculus/limits.tex
 ./mathematical_lectures/basic_mathematics/chapters/chapter_00_introduction.tex
 ./mathematical_lectures/basic_mathematics/chapters/chapter_01_linear_algebra.tex
+./mathematical_lectures/basic_mathematics/chapters/chapter_01_matrices.tex
 ./mathematical_lectures/basic_mathematics/chapters/chapter_02_analytic_geometry.tex
 ./mathematical_lectures/basic_mathematics/chapters/chapter_03_calculus.tex
 ./mathematical_lectures/basic_mathematics/chapters/introduction
