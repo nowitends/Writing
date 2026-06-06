@@ -106,13 +106,12 @@ jobs:
       - name: Build changed lecture PDFs
         if: steps.detect.outputs.projects != ''
         uses: xu-cheng/texlive-action@v3
-        env:
-          PROJECTS_TO_BUILD: ${{ steps.detect.outputs.projects }}
         with:
           texlive_version: latest
           run: |
             set -euo pipefail
-            read -r -a projects <<< "${PROJECTS_TO_BUILD}"
+            projects_to_build='${{ steps.detect.outputs.projects }}'
+            read -r -a projects <<< "${projects_to_build}"
 
             for project in "${projects[@]}"; do
               echo "::group::Building ${project}"
