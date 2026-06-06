@@ -20,7 +20,6 @@
 ./mathematical_lectures/basic_mathematics/build.sh
 ./mathematical_lectures/basic_mathematics/chapters
 ./mathematical_lectures/basic_mathematics/chapters/analytic_geometry
-./mathematical_lectures/basic_mathematics/chapters/analytic_geometry/coordinates.tex
 ./mathematical_lectures/basic_mathematics/chapters/analytic_geometry/lines.tex
 ./mathematical_lectures/basic_mathematics/chapters/analytic_geometry/planes.tex
 ./mathematical_lectures/basic_mathematics/chapters/calculus
