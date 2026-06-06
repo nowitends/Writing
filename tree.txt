@@ -68,7 +68,6 @@
 ./mathematical_lectures/basic_mathematics/chapters/vectors_and_coordinates/dot_product_angles_and_projection.tex
 ./mathematical_lectures/basic_mathematics/chapters/vectors_and_coordinates/length_distance_and_unit_vectors.tex
 ./mathematical_lectures/basic_mathematics/chapters/vectors_and_coordinates/vector_operations.tex
-./mathematical_lectures/basic_mathematics/chapters/vectors_and_coordinates/vectors_as_displacements.tex
 ./mathematical_lectures/basic_mathematics/figures
 ./mathematical_lectures/basic_mathematics/figures/README.md
 ./mathematical_lectures/basic_mathematics/macros.tex
