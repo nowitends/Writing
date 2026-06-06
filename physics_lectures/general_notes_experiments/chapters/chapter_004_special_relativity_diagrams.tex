@@ -1,0 +1,106 @@
+\chapter{Special Relativity: Spacetime Diagram Gallery}
+
+This chapter collects the first locally tested spacetime diagrams for the special
+relativity note.  The diagrams are intentionally simple and robust.  They are
+included as TikZ inputs from the project figure directory and can later be
+refined one by one.
+
+\section{Light Cone and Interval Classification}
+
+The light cone separates timelike, lightlike, and spacelike directions.  With
+our sign convention,
+\[
+\Delta s^2=c^2\Delta t^2-\Delta x^2,
+\]
+timelike separations have \(\Delta s^2>0\), lightlike separations have
+\(\Delta s^2=0\), and spacelike separations have \(\Delta s^2<0\).
+
+\begin{figure}[h!]
+  \centering
+  \input{figures/independent_notes/sr_light_cone_interval}
+  \caption{The light cone and the classification of spacetime intervals.}
+\end{figure}
+
+\clearpage
+
+\section{Lorentz Axes}
+
+A Lorentz boost changes both the time and space axes.  The transformed axes tilt
+toward the light cone.  Rapidity \(\varphi\) is defined by
+\[
+\tanh\varphi=\beta=\frac{v}{c}.
+\]
+
+\begin{figure}[h!]
+  \centering
+  \input{figures/independent_notes/sr_lorentz_axes}
+  \caption{Lorentz-transformed axes in a spacetime diagram.}
+\end{figure}
+
+\clearpage
+
+\section{Relativity of Simultaneity}
+
+The transformation
+\[
+\Delta t'=\gamma\left(\Delta t-\frac{v\Delta x}{c^2}\right)
+\]
+shows that events simultaneous in one frame need not be simultaneous in another
+frame.  In spacetime geometry, this is represented by different simultaneity
+slices.
+
+\begin{figure}[h!]
+  \centering
+  \input{figures/independent_notes/sr_relativity_of_simultaneity}
+  \caption{Two different simultaneity slices for observers in relative motion.}
+\end{figure}
+
+\clearpage
+
+\section{Time Dilation}
+
+Two ticks of one moving clock lie on the same worldline.  The proper time is the
+invariant time measured along that clock's worldline:
+\[
+(c\Delta\tau)^2=(c\Delta t)^2-(\Delta x)^2.
+\]
+This gives
+\[
+\Delta t=\gamma\Delta\tau.
+\]
+
+\begin{figure}[h!]
+  \centering
+  \input{figures/independent_notes/sr_time_dilation_clock}
+  \caption{Time dilation represented by two ticks on a clock worldline.}
+\end{figure}
+
+\clearpage
+
+\section{Length Contraction}
+
+A length measurement compares the positions of both endpoints at the same time
+in the measuring frame.  The resulting contracted length is
+\[
+L=\frac{L_0}{\gamma}.
+\]
+
+\begin{figure}[h!]
+  \centering
+  \input{figures/independent_notes/sr_length_contraction_diagram}
+  \caption{Length contraction from simultaneous endpoint measurements.}
+\end{figure}
+
+\clearpage
+
+\section{Muon Lifetime Geometry}
+
+Muon survival can be described in two equivalent ways.  In the Earth frame, the
+muon's lifetime is dilated.  In the muon frame, the atmospheric distance is
+length-contracted.  Both descriptions refer to the same pair of physical events.
+
+\begin{figure}[h!]
+  \centering
+  \input{figures/independent_notes/sr_muon_lifetime_geometry}
+  \caption{Muon survival described by time dilation or length contraction.}
+\end{figure}
