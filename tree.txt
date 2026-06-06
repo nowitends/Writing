@@ -56,6 +56,8 @@
 ./mathematical_lectures/basic_mathematics/chapters/matrices/row_operations_and_problem_solving.tex
 ./mathematical_lectures/basic_mathematics/chapters/matrices/special_matrices_and_structure.tex
 ./mathematical_lectures/basic_mathematics/chapters/matrices/what_matrices_are.tex
+./mathematical_lectures/basic_mathematics/chapters/matrix_inversion
+./mathematical_lectures/basic_mathematics/chapters/matrix_inversion/meaning_of_inverse_matrix.tex
 ./mathematical_lectures/basic_mathematics/figures
 ./mathematical_lectures/basic_mathematics/figures/README.md
 ./mathematical_lectures/basic_mathematics/macros.tex
