@@ -1,3 +1,206 @@
 \section{The Gauss--Jordan method}
 
-This section will present the Gauss--Jordan method for finding inverse matrices. The guiding idea will be to transform \([A\mid I]\) into \([I\mid A^{-1}]\) using row operations, while carefully explaining why the method works.
+The formula for a \(2\times2\) inverse is useful, but it does not give a practical method for larger matrices. For a \(3\times3\) matrix, and especially for larger matrices, we need a systematic procedure. The most important procedure is the Gauss--Jordan method.
+
+The idea is simple and powerful. If we want to find \(A^{-1}\), we want to transform \(A\) into the identity matrix. Every row operation we apply to \(A\) must also be applied to the identity matrix beside it. When the left side becomes \(I\), the right side becomes \(A^{-1}\).
+
+We write this as an augmented matrix:
+\[
+[A\mid I].
+\]
+The goal is
+\[
+[A\mid I] \longrightarrow [I\mid A^{-1}].
+\]
+
+\begin{remarkbox}
+The method does not work by magic. Row operations correspond to multiplying by elementary matrices. If a sequence of row operations transforms \(A\) into \(I\), then the same sequence transforms \(I\) into the matrix that reverses \(A\), namely \(A^{-1}\).
+\end{remarkbox}
+
+\subsection{A complete \(2\times2\) example}
+
+Let
+\[
+A=\begin{pmatrix}1&2\\3&7\end{pmatrix}.
+\]
+We form the augmented matrix
+\[
+\left[\begin{array}{cc|cc}
+1&2&1&0\\
+3&7&0&1
+\end{array}\right].
+\]
+Our goal is to turn the left block into the identity matrix.
+
+First eliminate the entry below the first pivot:
+\[
+R_2\leftarrow R_2-3R_1.
+\]
+Then
+\[
+\left[\begin{array}{cc|cc}
+1&2&1&0\\
+0&1&-3&1
+\end{array}\right].
+\]
+Now eliminate the entry above the second pivot:
+\[
+R_1\leftarrow R_1-2R_2.
+\]
+This gives
+\[
+\left[\begin{array}{cc|cc}
+1&0&7&-2\\
+0&1&-3&1
+\end{array}\right].
+\]
+The left side is now \(I_2\), so
+\[
+A^{-1}=\begin{pmatrix}7&-2\\-3&1\end{pmatrix}.
+\]
+We verify:
+\[
+\begin{pmatrix}1&2\\3&7\end{pmatrix}
+\begin{pmatrix}7&-2\\-3&1\end{pmatrix}
+=
+\begin{pmatrix}
+7-6&-2+2\\
+21-21&-6+7
+\end{pmatrix}
+=
+\begin{pmatrix}1&0\\0&1\end{pmatrix}.
+\]
+
+\subsection{A complete \(3\times3\) example}
+
+Now consider
+\[
+A=\begin{pmatrix}
+1&1&0\\
+0&1&1\\
+1&0&1
+\end{pmatrix}.
+\]
+We start with
+\[
+\left[\begin{array}{ccc|ccc}
+1&1&0&1&0&0\\
+0&1&1&0&1&0\\
+1&0&1&0&0&1
+\end{array}\right].
+\]
+Use the first row to eliminate the entry below the first pivot:
+\[
+R_3\leftarrow R_3-R_1.
+\]
+Then
+\[
+\left[\begin{array}{ccc|ccc}
+1&1&0&1&0&0\\
+0&1&1&0&1&0\\
+0&-1&1&-1&0&1
+\end{array}\right].
+\]
+Use the second row to eliminate the entry below the second pivot:
+\[
+R_3\leftarrow R_3+R_2.
+\]
+This gives
+\[
+\left[\begin{array}{ccc|ccc}
+1&1&0&1&0&0\\
+0&1&1&0&1&0\\
+0&0&2&-1&1&1
+\end{array}\right].
+\]
+Normalize the third row:
+\[
+R_3\leftarrow \frac12 R_3.
+\]
+Thus
+\[
+\left[\begin{array}{ccc|ccc}
+1&1&0&1&0&0\\
+0&1&1&0&1&0\\
+0&0&1&-\frac12&\frac12&\frac12
+\end{array}\right].
+\]
+Now eliminate the entry above the third pivot in row \(2\):
+\[
+R_2\leftarrow R_2-R_3.
+\]
+We get
+\[
+\left[\begin{array}{ccc|ccc}
+1&1&0&1&0&0\\
+0&1&0&\frac12&\frac12&-\frac12\\
+0&0&1&-\frac12&\frac12&\frac12
+\end{array}\right].
+\]
+Finally eliminate the entry above the second pivot in row \(1\):
+\[
+R_1\leftarrow R_1-R_2.
+\]
+Therefore
+\[
+\left[\begin{array}{ccc|ccc}
+1&0&0&\frac12&-\frac12&\frac12\\
+0&1&0&\frac12&\frac12&-\frac12\\
+0&0&1&-\frac12&\frac12&\frac12
+\end{array}\right].
+\]
+So
+\[
+A^{-1}=\begin{pmatrix}
+\frac12&-\frac12&\frac12\\
+\frac12&\frac12&-\frac12\\
+-\frac12&\frac12&\frac12
+\end{pmatrix}.
+\]
+
+This example is longer than the \(2\times2\) case, but the logic is the same. We create pivots, eliminate entries below and above them, and keep track of every operation on the identity matrix.
+
+\subsection{What if the method fails?}
+
+The Gauss--Jordan method may fail to produce the identity matrix on the left. This happens precisely when the matrix is singular.
+
+\begin{examplebox}
+Let
+\[
+B=\begin{pmatrix}
+1&2\\
+2&4
+\end{pmatrix}.
+\]
+Start with
+\[
+\left[\begin{array}{cc|cc}
+1&2&1&0\\
+2&4&0&1
+\end{array}\right].
+\]
+Apply
+\[
+R_2\leftarrow R_2-2R_1.
+\]
+We obtain
+\[
+\left[\begin{array}{cc|cc}
+1&2&1&0\\
+0&0&-2&1
+\end{array}\right].
+\]
+The left side cannot become the identity matrix, because the second row of the left block is zero. Thus \(B\) has no inverse.
+\end{examplebox}
+
+This is not a failure of the method. It is information. The method reveals that the matrix is singular.
+
+\begin{summarybox}
+The Gauss--Jordan method for finding \(A^{-1}\):
+\begin{enumerate}
+\item Form the augmented matrix \([A\mid I]\).
+\item Use elementary row operations to reduce the left block.
+\item If the left block becomes \(I\), the right block is \(A^{-1}\).
+\item If the left block cannot become \(I\), then \(A\) is not invertible.
+\end{enumerate}
+\end{summarybox}
