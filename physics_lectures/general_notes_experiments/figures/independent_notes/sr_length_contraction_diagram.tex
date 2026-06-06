@@ -1,24 +1,15 @@
-\begin{tikzpicture}[x=1cm,y=1cm,>=stealth]
-    \draw[->] (-0.4,0) -- (5.6,0) node[right] {\(x\)};
-    \draw[->] (0,-0.3) -- (0,4.4) node[above] {\(ct\)};
+\begin{tikzpicture}[x=1cm,y=1cm,>=Stealth]
+  \draw[->] (-0.3,0) -- (5.8,0) node[right] {$x$};
+  \draw[->] (0,-0.2) -- (0,4.5) node[above] {$ct$};
 
-    % worldlines of moving rod endpoints
-    \draw[thick] (0.7,0) -- (2.1,4.2) node[above] {rear end};
-    \draw[thick] (3.2,0) -- (4.6,4.2) node[above] {front end};
+  \draw[thick] (0.8,0.2) -- (2.2,4.2) node[above] {rear end};
+  \draw[thick] (3.1,0.2) -- (4.5,4.2) node[above] {front end};
 
-    % measurement in lab at same t
-    \draw[very thick] (1.37,2.0) -- (3.87,2.0);
-    \fill (1.37,2.0) circle (1.5pt);
-    \fill (3.87,2.0) circle (1.5pt);
-    \node[above] at (2.62,2.0) {lab length \(L=L_0/\gamma\)};
+  \draw[very thick] (1.43,2.0) -- (3.73,2.0);
+  \fill (1.43,2.0) circle (1.4pt);
+  \fill (3.73,2.0) circle (1.4pt);
+  \node[above] at (2.58,2.05) {$L=L_0/\gamma$};
 
-    % proper length slice approximately parallel to x' axis
-    \draw[thick,dashed] (0.98,0.82) -- (3.48,2.02);
-    \node[below right] at (2.35,1.32) {proper slice \(t'=\text{constant}\)};
-
-    \draw[decorate,decoration={brace,amplitude=5pt}] (0.7,-0.08) -- (3.2,-0.08)
-    node[midway,below=6pt] {rest separation in rod frame \(L_0\)};
-
-    \node[align=left,anchor=west] at (0.2,4.05)
-    {A length measurement always compares\\endpoint events that are simultaneous\\in the measuring frame.};
+  \draw[dashed] (1.02,0.82) -- (3.32,2.12);
+  \node[below right] at (2.55,1.55) {$t'=\mathrm{const}$};
 \end{tikzpicture}
