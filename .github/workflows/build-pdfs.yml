@@ -32,19 +32,66 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           ref: ${{ github.ref_name }}
+          fetch-depth: 0
 
-      - name: Build all lecture PDFs
+      - name: Detect projects to build
+        id: detect
+        run: |
+          all_projects=(
+            "mathematical_lectures/basic_mathematics"
+            "mathematical_lectures/probabilistic_methods"
+            "mathematical_lectures/general_notes_experiments"
+            "physics_lectures/physics_basics"
+            "physics_lectures/general_notes_experiments"
+          )
+
+          before="${{ github.event.before }}"
+          after="${{ github.sha }}"
+
+          if [[ "${before}" =~ ^0+$ ]]; then
+            changed_files="$(git ls-tree -r --name-only "${after}")"
+          else
+            changed_files="$(git diff --name-only "${before}" "${after}")"
+          fi
+
+          echo "Changed files:"
+          printf '%s\n' "${changed_files}"
+
+          build_all=false
+          if printf '%s\n' "${changed_files}" | grep -Eq '^shared/|^\.github/workflows/build-pdfs\.yml$'; then
+            build_all=true
+          fi
+
+          if [[ "${build_all}" == "true" ]]; then
+            projects=("${all_projects[@]}")
+          else
+            projects=()
+            for project in "${all_projects[@]}"; do
+              if printf '%s\n' "${changed_files}" | grep -Eq "^${project}/"; then
+                projects+=("${project}")
+              fi
+            done
+          fi
+
+          if [[ "${#projects[@]}" -eq 0 ]]; then
+            echo "No project needs rebuilding."
+            echo "projects=" >> "${GITHUB_OUTPUT}"
+            exit 0
+          fi
+
+          printf 'Projects to build:\n'
+          printf '%s\n' "${projects[@]}"
+          echo "projects=${projects[*]}" >> "${GITHUB_OUTPUT}"
+
+      - name: Build changed lecture PDFs
+        if: steps.detect.outputs.projects != ''
         uses: xu-cheng/texlive-action@v3
+        env:
+          PROJECTS_TO_BUILD: ${{ steps.detect.outputs.projects }}
         with:
           texlive_version: latest
           run: |
-            projects=(
-              "mathematical_lectures/basic_mathematics"
-              "mathematical_lectures/probabilistic_methods"
-              "mathematical_lectures/general_notes_experiments"
-              "physics_lectures/physics_basics"
-              "physics_lectures/general_notes_experiments"
-            )
+            read -r -a projects <<< "${PROJECTS_TO_BUILD}"
 
             for project in "${projects[@]}"; do
               echo "Building ${project}"
@@ -56,17 +103,15 @@ jobs:
             done
 
       - name: Commit changed PDFs
+        if: steps.detect.outputs.projects != ''
+        env:
+          PROJECTS_TO_BUILD: ${{ steps.detect.outputs.projects }}
         run: |
-          pdfs=(
-            "mathematical_lectures/basic_mathematics/main.pdf"
-            "mathematical_lectures/probabilistic_methods/main.pdf"
-            "mathematical_lectures/general_notes_experiments/main.pdf"
-            "physics_lectures/physics_basics/main.pdf"
-            "physics_lectures/general_notes_experiments/main.pdf"
-          )
+          read -r -a projects <<< "${PROJECTS_TO_BUILD}"
 
           changed=()
-          for pdf in "${pdfs[@]}"; do
+          for project in "${projects[@]}"; do
+            pdf="${project}/main.pdf"
             if ! git diff --quiet -- "${pdf}"; then
               changed+=("${pdf}")
             fi
