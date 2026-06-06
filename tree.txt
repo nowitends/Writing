@@ -37,6 +37,7 @@
 ./mathematical_lectures/basic_mathematics/chapters/chapter_09_limits_and_continuity.tex
 ./mathematical_lectures/basic_mathematics/chapters/chapter_10_derivatives_and_function_analysis.tex
 ./mathematical_lectures/basic_mathematics/chapters/chapter_11_integrals.tex
+./mathematical_lectures/basic_mathematics/chapters/chapter_12_applications_of_calculus.tex
 ./mathematical_lectures/basic_mathematics/chapters/determinants
 ./mathematical_lectures/basic_mathematics/chapters/determinants/determinant_patterns.tex
 ./mathematical_lectures/basic_mathematics/chapters/determinants/determinants_of_small_matrices.tex
