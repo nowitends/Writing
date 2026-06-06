@@ -144,7 +144,94 @@ A single source file should usually correspond to a chapter, section, or substan
 
 ---
 
-## 6. Main-file rule
+## 6. Repository organization rules
+
+Shared technical files used by all lecture-note projects live in:
+
+```text
+shared/
+├── preamble.tex
+├── macros.tex
+└── styles.tex
+```
+
+Project-local `preamble.tex`, `macros.tex`, and `styles.tex` files should remain
+thin wrappers that load the corresponding shared files. Do not duplicate shared
+LaTeX setup separately in each project unless the human author explicitly asks
+for a project-specific exception.
+
+Each lecture-note project should keep its course-specific files in predictable
+locations:
+
+```text
+CourseFolder/
+├── chapters/
+├── figures/
+├── problems/
+├── main.tex
+├── preamble.tex
+├── macros.tex
+├── styles.tex
+└── titlepage.tex
+```
+
+Not every project must have every topic folder immediately, but when a category
+is used it should be placed in the appropriate top-level folder.
+
+### 6.1 Figures and diagrams
+
+Lecture-note graphics should be written as TikZ source whenever practical.
+Prefer repository-native TikZ files over external bitmap images for mathematical
+and physics diagrams, plots, geometric sketches, vectors, probability trees, and
+schematic illustrations.
+
+TikZ figures should be stored in the relevant project's `figures/` directory,
+inside a topic-specific subdirectory:
+
+```text
+figures/linear_algebra/matrix_transformation.tex
+figures/calculus/tangent_line.tex
+figures/combinatorics/tree_counting.tex
+figures/kinematics/position_time_graph.tex
+```
+
+Use lowercase `snake_case` names. Avoid vague names such as `diagram.tex`,
+`figure1.tex`, or `new_picture.tex`.
+
+Figures should be included from lecture content files by inputting the TikZ
+source from the project root, for example:
+
+```latex
+\input{figures/kinematics/position_time_graph}
+```
+
+External image formats such as `.png`, `.jpg`, or `.svg` should be used only
+when TikZ is not a good fit, for example for scanned source material or an
+externally produced illustration explicitly requested by the human author.
+
+### 6.2 Problems
+
+Problem sets should live in the relevant project's `problems/` directory. Use
+topic-specific subdirectories when the number of files grows:
+
+```text
+problems/algebra/
+problems/calculus/
+problems/geometry/
+```
+
+Problem files should use meaningful lowercase `snake_case` names, optionally
+prefixed with a two-digit order number.
+
+### 6.3 Generated files
+
+Compiled PDFs may be committed when they are the intended output of a project.
+Temporary LaTeX build artifacts such as `.aux`, `.log`, `.out`, `.toc`, `.fls`,
+`.fdb_latexmk`, and `.synctex.gz` should not be committed.
+
+---
+
+## 7. Main-file rule
 
 Every project must have a `main.tex`.
 
@@ -182,7 +269,7 @@ The agent should normally work on the smallest relevant file.
 
 ---
 
-## 7. Editing discipline
+## 8. Editing discipline
 
 When the human author asks for a change, the agent should first classify the request as one of the following:
 
@@ -264,7 +351,7 @@ and then recompile.
 
 ---
 
-## 8. Incremental work
+## 9. Incremental work
 
 The work should proceed through small, controlled steps.
 
@@ -318,7 +405,7 @@ Change all chapters without asking.
 
 ---
 
-## 9. Compilation rule
+## 10. Compilation rule
 
 After every substantial change, the agent should compile the document.
 
@@ -349,7 +436,7 @@ The agent should not claim that compilation succeeded unless it actually ran the
 
 ---
 
-## 10. Reporting rule
+## 11. Reporting rule
 
 After editing, the agent should report briefly:
 
@@ -380,7 +467,7 @@ If the cause is clear, the agent should fix it and recompile.
 
 ---
 
-## 11. Mathematical writing style
+## 12. Mathematical writing style
 
 The notes should be written in a clear academic style.
 
@@ -417,7 +504,7 @@ Definitions, formulas, examples, and interpretations should be connected by expl
 
 ---
 
-## 12. Mathematical notation
+## 13. Mathematical notation
 
 Mathematical notation should be written using real LaTeX mathematics.
 
@@ -453,7 +540,7 @@ Do not use fake mathematical notation in plain text when proper LaTeX notation i
 
 ---
 
-## 13. Visual style
+## 14. Visual style
 
 The PDF should not look like raw, plain LaTeX output.
 
@@ -487,7 +574,7 @@ Avoid heavy table borders unless explicitly requested.
 
 ---
 
-## 14. Naming conventions
+## 15. Naming conventions
 
 Use English names for folders and files.
 
@@ -522,9 +609,9 @@ Prefer meaningful file names.
 
 ---
 
-## 15. Course-specific writing expectations
+## 16. Course-specific writing expectations
 
-### 15.1 Mathematics
+### 16.1 Mathematics
 
 The mathematics notes should be written as pure mathematical lecture notes.
 
@@ -542,7 +629,7 @@ Avoid unnecessary physics motivation unless explicitly requested.
 
 ---
 
-### 15.2 Probabilistic Methods
+### 16.2 Probabilistic Methods
 
 The probabilistic methods notes should combine mathematical precision with interpretation.
 
@@ -564,7 +651,7 @@ The notes should explain not only formulas, but also what the formulas mean.
 
 ---
 
-### 15.3 Physics
+### 16.3 Physics
 
 The physics notes should combine physical meaning with mathematical formulation.
 
@@ -582,7 +669,7 @@ Equations should not be presented as isolated formulas. They should be explained
 
 ---
 
-## 16. Core rule
+## 17. Core rule
 
 This repository is developed interactively.
 

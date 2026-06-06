@@ -46,6 +46,12 @@ shared/preamble.tex
 The project-local `preamble.tex` files load this shared file so package choices,
 page layout, hyperlinks, TikZ setup, and typography stay consistent.
 
+## Figures
+
+Course figures should be written as TikZ source whenever practical and stored in
+the relevant project's `figures/` directory, preferably inside topic-specific
+subdirectories.
+
 ## Build
 
 From a project directory, compile with:

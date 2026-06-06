@@ -30,6 +30,8 @@
 ./mathematical_lectures/basic_mathematics/chapters/linear_algebra/matrices.tex
 ./mathematical_lectures/basic_mathematics/chapters/linear_algebra/systems_of_linear_equations.tex
 ./mathematical_lectures/basic_mathematics/chapters/linear_algebra/vectors.tex
+./mathematical_lectures/basic_mathematics/figures
+./mathematical_lectures/basic_mathematics/figures/README.md
 ./mathematical_lectures/basic_mathematics/macros.tex
 ./mathematical_lectures/basic_mathematics/main.pdf
 ./mathematical_lectures/basic_mathematics/main.tex
@@ -93,6 +95,8 @@
 ./mathematical_lectures/probabilistic_methods/chapters/pmf_pdf_cdf/overview.tex
 ./mathematical_lectures/probabilistic_methods/chapters/probability_distributions
 ./mathematical_lectures/probabilistic_methods/chapters/probability_distributions/overview.tex
+./mathematical_lectures/probabilistic_methods/figures
+./mathematical_lectures/probabilistic_methods/figures/README.md
 ./mathematical_lectures/probabilistic_methods/macros.tex
 ./mathematical_lectures/probabilistic_methods/main.pdf
 ./mathematical_lectures/probabilistic_methods/main.tex
@@ -175,11 +179,6 @@
 ./physics_lectures/physics_basics/figures/mathematical_foundations/function_graphs.tex
 ./physics_lectures/physics_basics/figures/mathematical_foundations/parametric_unit_circle.tex
 ./physics_lectures/physics_basics/figures/mathematical_foundations/vector_components.tex
-./physics_lectures/physics_basics/figures/tikz
-./physics_lectures/physics_basics/figures/tikz/kinematics
-./physics_lectures/physics_basics/figures/tikz/kinematics/.gitkeep
-./physics_lectures/physics_basics/figures/tikz/kinematics/position_time_graph.tex
-./physics_lectures/physics_basics/figures/tikz/kinematics/velocity_time_graph.tex
 ./physics_lectures/physics_basics/macros.tex
 ./physics_lectures/physics_basics/main.lof
 ./physics_lectures/physics_basics/main.pdf

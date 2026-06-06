@@ -1,31 +1,34 @@
 # Physics figures
 
-This directory stores figures used by the physics lecture notes.
+This directory stores figures used by the physics lecture notes. Prefer TikZ
+source files for course diagrams whenever practical.
 
 Recommended structure:
 
 ```text
 figures/
-├── tikz/   # TikZ source files included or compiled from LaTeX
-├── pdf/    # vector PDF figures generated from TikZ or external tools
-├── svg/    # editable vector graphics
-└── png/    # raster exports, screenshots, or bitmap illustrations
+├── kinematics/
+├── mathematical_foundations/
+├── dynamics/
+└── electromagnetism/
 ```
 
-Each format directory is divided by physics topic, for example `kinematics`, `dynamics`, or `electromagnetism`.
+Each topic directory contains TikZ source files included from the corresponding
+chapter or section.
 
 Suggested naming convention:
 
 ```text
-<topic>_<short_description>.<extension>
+<short_description>.tex
 ```
 
 Examples:
 
 ```text
-kinematics_position_time_graph.tex
-kinematics_projectile_motion.pdf
-dynamics_free_body_diagram.svg
+kinematics/position_vector.tex
+dynamics/free_body_diagram.tex
+electromagnetism/electric_field_lines.tex
 ```
 
-Prefer vector formats (`.tex`, `.pdf`, `.svg`) for lecture notes. Use `.png` only when a raster image is necessary.
+External image formats such as `.png`, `.jpg`, or `.svg` should be used only
+when TikZ is not a good fit.
