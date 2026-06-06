@@ -91,15 +91,23 @@ jobs:
         with:
           texlive_version: latest
           run: |
+            set -euo pipefail
             read -r -a projects <<< "${PROJECTS_TO_BUILD}"
 
             for project in "${projects[@]}"; do
-              echo "Building ${project}"
+              echo "::group::Building ${project}"
               if [[ ! -x "${project}/build.sh" ]]; then
                 echo "Missing executable build script: ${project}/build.sh" >&2
                 exit 1
               fi
               "${project}/build.sh"
+              pdf="${project}/main.pdf"
+              if [[ ! -s "${pdf}" ]]; then
+                echo "Expected PDF was not generated or is empty: ${pdf}" >&2
+                exit 1
+              fi
+              ls -lh "${pdf}"
+              echo "::endgroup::"
             done
 
       - name: Commit changed PDFs
@@ -107,24 +115,39 @@ jobs:
         env:
           PROJECTS_TO_BUILD: ${{ steps.detect.outputs.projects }}
         run: |
+          set -euo pipefail
           read -r -a projects <<< "${PROJECTS_TO_BUILD}"
 
           pdfs=()
           for project in "${projects[@]}"; do
             pdf="${project}/main.pdf"
-            if [[ -f "${pdf}" ]]; then
-              pdfs+=("${pdf}")
+            if [[ ! -s "${pdf}" ]]; then
+              echo "Expected PDF was not generated or is empty: ${pdf}" >&2
+              exit 1
             fi
+            pdfs+=("${pdf}")
           done
 
-          if [[ "${#pdfs[@]}" -eq 0 ]]; then
-            echo "No PDFs were generated."
-            exit 0
-          fi
+          echo "PDF files considered for commit:"
+          printf '%s\n' "${pdfs[@]}"
+          ls -lh "${pdfs[@]}"
 
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add "${pdfs[@]}"
-          git commit -m "Build lecture PDFs" || echo "No changes to commit"
+
+          echo "Git status after PDF build:"
+          git status --short
+          echo "Staged PDF diff stat:"
+          git diff --cached --stat -- "${pdfs[@]}" || true
+
+          if git diff --cached --quiet -- "${pdfs[@]}"; then
+            echo "ERROR: PDF build completed, but no generated PDF changed." >&2
+            echo "This means the build did not update the committed PDF output for the changed project." >&2
+            echo "Check whether main.tex includes the changed source, whether build.sh writes to main.pdf, and whether the expected project was selected." >&2
+            exit 1
+          fi
+
+          git commit -m "Build lecture PDFs"
           git pull --rebase origin "${GITHUB_REF_NAME}"
           git push
