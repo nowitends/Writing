@@ -156,6 +156,7 @@
 ./physics_lectures/general_notes_experiments/figures/independent_notes
 ./physics_lectures/general_notes_experiments/figures/independent_notes/.gitkeep
 ./physics_lectures/general_notes_experiments/figures/independent_notes/projectile_motion_geometry.tex
+./physics_lectures/general_notes_experiments/figures/independent_notes/sr_light_cone_interval.tex
 ./physics_lectures/general_notes_experiments/macros.tex
 ./physics_lectures/general_notes_experiments/main.pdf
 ./physics_lectures/general_notes_experiments/main.tex
