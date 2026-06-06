@@ -1,3 +1,20 @@
-\begin{center}
-\fbox{\parbox{0.82\linewidth}{\centering Spacetime diagram temporarily disabled while TikZ sources are being corrected.}}
-\end{center}
+\begin{tikzpicture}[x=1cm,y=1cm,>=Stealth]
+  \draw[->] (-3.2,0) -- (3.3,0) node[right] {$x$};
+  \draw[->] (0,-0.2) -- (0,3.6) node[above] {$ct$};
+
+  \draw[dashed] (-3,-3) -- (3,3);
+  \draw[dashed] (-3,3) -- (3,-3);
+
+  \fill (0,0) circle (1.4pt) node[below left] {$O$};
+  \fill (1.0,2.2) circle (1.4pt) node[right] {timelike};
+  \fill (2.3,0.9) circle (1.4pt) node[right] {spacelike};
+  \fill (1.5,1.5) circle (1.4pt) node[above left] {lightlike};
+
+  \draw[thick] (0,0) -- (1.0,2.2);
+  \draw[thick] (0,0) -- (2.3,0.9);
+  \draw[thick] (0,0) -- (1.5,1.5);
+
+  \node[align=left,anchor=west] at (1.8,2.9) {light cone\\$x=\pm ct$};
+  \node[anchor=west] at (1.8,0.45) {$\Delta s^2<0$};
+  \node[anchor=west] at (-2.8,2.55) {$\Delta s^2>0$};
+\end{tikzpicture}
