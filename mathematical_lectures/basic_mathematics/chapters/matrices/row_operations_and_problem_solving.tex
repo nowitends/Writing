@@ -1,0 +1,88 @@
+\section{Row operations and problem solving}
+
+Matrices are often used because they allow us to transform a problem without rewriting every sentence of the problem. One of the most important examples is the use of row operations. Row operations will become essential when we solve systems of linear equations, but it is useful to meet them already here.
+
+A row operation changes a matrix in a controlled way. We do not change entries randomly. We perform an operation that has a clear description and a clear purpose.
+
+\begin{definitionbox}
+The basic elementary row operations are:
+\begin{itemize}
+\item swapping two rows,
+\item multiplying a row by a non-zero number,
+\item adding a multiple of one row to another row.
+\end{itemize}
+\end{definitionbox}
+
+The value of row operations is not that they make matrices look different. Their value is that they help reveal structure. For example, they can help us simplify a matrix, detect whether equations are dependent, or prepare a system for solving.
+
+\begin{examplebox}
+Consider the matrix
+\[
+A=
+\begin{pmatrix}
+1 & 2 & -1\\
+2 & 4 & 3\\
+0 & 1 & 5
+\end{pmatrix}.
+\]
+Suppose we replace the second row by the second row minus twice the first row. Then
+\[
+(2,4,3)-2(1,2,-1)=(0,0,5).
+\]
+The new matrix is
+\[
+\begin{pmatrix}
+1 & 2 & -1\\
+0 & 0 & 5\\
+0 & 1 & 5
+\end{pmatrix}.
+\]
+This operation did not merely produce new numbers. It revealed that part of the second row was already explained by the first row, except for the last entry.
+\end{examplebox}
+
+This example should be read slowly. The operation has three layers. First, there is arithmetic. Second, there is a transformation of the row. Third, there is interpretation: the new row tells us something about dependence between rows.
+
+\subsection*{Column vectors as matrices}
+
+A column vector may be viewed as a matrix with one column. This viewpoint will be used constantly in linear algebra. It allows us to write vector equations and matrix equations in the same language.
+
+For instance,
+\[
+u=
+\begin{pmatrix}
+2\\ -1\\ 4
+\end{pmatrix}
+\]
+is a \(3\times 1\) matrix. Its transpose is the row matrix
+\[
+u^{\top}=\begin{pmatrix}2 & -1 & 4\end{pmatrix}.
+\]
+The distinction between a row and a column is not cosmetic. The products \(u^{\top}u\) and \(uu^{\top}\) have different sizes and different meanings:
+\[
+u^{\top}u
+\]
+is a \(1\times 1\) matrix, while
+\[
+u u^{\top}
+\]
+is a \(3\times 3\) matrix.
+
+This is another example of a recurring principle: before calculating, read the shapes.
+
+\subsection*{How to approach matrix exercises}
+
+When solving matrix exercises, the aim is not to rush toward the answer. The answer is only the last line of a process. A good solution should make the process visible.
+
+\begin{summarybox}
+When working with matrices, ask:
+\begin{itemize}
+\item What is the size of each matrix?
+\item Which operations are defined?
+\item Am I adding entries position by position, or multiplying rows by columns?
+\item Does the order of multiplication matter here?
+\item Is there a visible structure that simplifies the problem?
+\item What does the result tell me about the original objects?
+\end{itemize}
+\end{summarybox}
+
+A student who asks these questions is not merely applying a recipe. They are beginning to use matrices as mathematical objects. That is the real purpose of this chapter.
