@@ -1,3 +1,161 @@
 \section{Determinants of small matrices}
 
-This section will develop determinants of \(1\times1\), \(2\times2\), and \(3\times3\) matrices. The aim is to connect the computational rules with the structure of the matrix and with the first geometric meanings of the determinant.
+The determinant is defined only for square matrices. This is already meaningful: we are not attaching this number to every rectangular table. We are studying matrices that can be interpreted as transforming a space into itself, or as square coefficient matrices in systems of equations.
+
+We begin with small cases. This is not only because small cases are easier. Small cases allow us to see the idea before it becomes hidden behind notation.
+
+\subsection{The determinant of a \(1\times1\) matrix}
+
+The simplest square matrix has only one entry:
+\[
+A=\begin{pmatrix}a\end{pmatrix}.
+\]
+There is no structure to compare, no rows to exchange, and no area or volume to measure. The determinant is simply the entry itself:
+\[
+\det A=a.
+\]
+This case looks trivial, but it is useful because larger definitions will reduce determinants to smaller determinants. Eventually, a long computation ends at \(1\times1\) determinants.
+
+\subsection{The determinant of a \(2\times2\) matrix}
+
+Now consider a general \(2\times2\) matrix
+\[
+A=\begin{pmatrix}a&b\\c&d\end{pmatrix}.
+\]
+The determinant is defined by
+\[
+\det A=ad-bc.
+\]
+The formula should be read carefully. We multiply along the main diagonal and subtract the product along the other diagonal:
+\[
+\det\begin{pmatrix}a&b\\c&d\end{pmatrix}=ad-bc.
+\]
+At first this may look like an arbitrary rule. It is not arbitrary. It is a rule that reacts very strongly to dependence between rows or columns.
+
+\begin{examplebox}
+For
+\[
+A=\begin{pmatrix}3&1\\2&5\end{pmatrix}
+\]
+we get
+\[
+\det A=3\cdot5-1\cdot2=15-2=13.
+\]
+The determinant is non-zero. This suggests that the two rows are not repetitions of each other and that the matrix has not collapsed its two-dimensional structure.
+\end{examplebox}
+
+\begin{examplebox}
+For
+\[
+B=\begin{pmatrix}1&2\\3&6\end{pmatrix}
+\]
+we get
+\[
+\det B=1\cdot6-2\cdot3=6-6=0.
+\]
+The second row is three times the first row:
+\[
+(3,6)=3(1,2).
+\]
+Thus the determinant detects that the two rows are dependent.
+\end{examplebox}
+
+This example gives us the first important interpretation: when the determinant of a \(2\times2\) matrix is zero, the two rows or the two columns fail to provide two independent directions of information.
+
+\subsection{What changes the determinant?}
+
+Let us observe how the formula reacts to simple operations. For
+\[
+A=\begin{pmatrix}a&b\\c&d\end{pmatrix}
+\]
+we have
+\[
+\det A=ad-bc.
+\]
+If we exchange the two rows, we obtain
+\[
+A'=\begin{pmatrix}c&d\\a&b\end{pmatrix}.
+\]
+Then
+\[
+\det A'=cb-da=-(ad-bc)=-\det A.
+\]
+So exchanging two rows changes the sign of the determinant.
+
+If the two rows are equal,
+\[
+A=\begin{pmatrix}a&b\\a&b\end{pmatrix},
+\]
+then
+\[
+\det A=ab-ba=0.
+\]
+This is exactly what we should expect: two equal rows certainly do not provide two independent directions.
+
+\begin{remarkbox}
+The determinant is sensitive to order and independence. It changes sign when rows are swapped, and it becomes zero when rows become dependent. These facts will later become general properties for determinants of all sizes.
+\end{remarkbox}
+
+\subsection{The determinant of a \(3\times3\) matrix and Sarrus' rule}
+
+For a \(3\times3\) matrix
+\[
+A=\begin{pmatrix}
+a&b&c\\
+d&e&f\\
+g&h&i
+\end{pmatrix},
+\]
+one useful formula is
+\[
+\det A=aei+bfg+cdh-ceg-bdi-afh.
+\]
+This formula can be remembered using Sarrus' rule. Repeat the first two columns after the matrix:
+\[
+\begin{array}{ccc|cc}
+a&b&c&a&b\\
+d&e&f&d&e\\
+g&h&i&g&h
+\end{array}
+\]
+Then add the products along the three downward diagonals and subtract the products along the three upward diagonals:
+\[
+\det A=(aei+bfg+cdh)-(ceg+bdi+afh).
+\]
+
+\begin{examplebox}
+Let
+\[
+A=\begin{pmatrix}
+1&2&0\\
+-1&3&4\\
+2&0&5
+\end{pmatrix}.
+\]
+Using Sarrus' rule,
+\[
+\det A=(1\cdot3\cdot5+2\cdot4\cdot2+0\cdot(-1)\cdot0)
+-(0\cdot3\cdot2+2\cdot(-1)\cdot5+1\cdot4\cdot0).
+\]
+Hence
+\[
+\det A=(15+16+0)-(0-10+0)=31-(-10)=41.
+\]
+The determinant is non-zero.
+\end{examplebox}
+
+The computation above is mechanical, but it is still worth reading. A non-zero determinant tells us that the rows and columns of the matrix do not collapse into a lower-dimensional structure. Later this will imply that the matrix is invertible.
+
+\begin{remarkbox}
+Sarrus' rule is convenient, but it is special. It works for \(3\times3\) matrices only. It is not a method for \(4\times4\) or larger matrices. For larger matrices we need a more general idea.
+\end{remarkbox}
+
+\subsection{A warning about calculation}
+
+When computing determinants, students often try to memorize many separate rules. A better habit is to ask three questions:
+\begin{itemize}
+\item What is the size of the matrix?
+\item Which method is appropriate for this size and this structure?
+\item Is there visible structure that can simplify the calculation?
+\end{itemize}
+For \(2\times2\) matrices, the formula \(ad-bc\) is usually fastest. For \(3\times3\) matrices, Sarrus' rule may be useful. But as soon as the matrix becomes larger, or as soon as many zeros appear, the method of expansion by minors and cofactors becomes much more important.
