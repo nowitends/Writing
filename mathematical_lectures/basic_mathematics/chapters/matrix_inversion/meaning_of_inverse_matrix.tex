@@ -1,3 +1,113 @@
 \section{The meaning of an inverse matrix}
 
-This section will introduce the inverse matrix as the object that reverses the action of a square matrix. The emphasis will be on the question: when can a matrix operation be undone, and what does it mean to undo it?
+In the previous chapter we learned that the determinant can distinguish between singular and non-singular square matrices. The condition
+\[
+\det A\ne 0
+\]
+means that the matrix has not collapsed its structure. This raises a natural question: if a matrix has not collapsed information, can we reverse its action?
+
+This question leads to the idea of an inverse matrix.
+
+For ordinary numbers, the inverse of a non-zero number \(a\) is the number \(a^{-1}\) such that
+\[
+a a^{-1}=1.
+\]
+For example, the inverse of \(5\) is \(\frac15\), because
+\[
+5\cdot \frac15=1.
+\]
+The number \(1\) is special because multiplication by \(1\) changes nothing. In matrix algebra, the identity matrix plays the same role.
+
+\begin{definitionbox}
+Let \(A\) be a square matrix of order \(n\). A matrix \(B\) is called an inverse of \(A\) if
+\[
+AB=I_n
+\quad \text{and} \quad
+BA=I_n.
+\]
+If such a matrix exists, it is denoted by \(A^{-1}\), and we write
+\[
+AA^{-1}=I_n,
+\qquad
+A^{-1}A=I_n.
+\]
+\end{definitionbox}
+
+The two equations are both important. Matrix multiplication is not generally commutative, so the statements \(AB=I\) and \(BA=I\) are not automatically the same piece of information. The inverse must undo the matrix on both sides.
+
+\begin{remarkbox}
+The notation \(A^{-1}\) does not mean \(\frac1A\). Matrices are not numbers, and matrix division is not defined in the same way as numerical division. The symbol \(A^{-1}\) means: the matrix which reverses the action of \(A\), if such a matrix exists.
+\end{remarkbox}
+
+\subsection{Undoing an operation}
+
+The idea of an inverse is the idea of undoing. If a matrix \(A\) transforms a vector \(x\) into a vector \(y\), then
+\[
+Ax=y.
+\]
+If \(A^{-1}\) exists, we can apply it to both sides:
+\[
+A^{-1}Ax=A^{-1}y.
+\]
+Since \(A^{-1}A=I\), this becomes
+\[
+x=A^{-1}y.
+\]
+Thus the inverse matrix recovers the original vector from the transformed vector.
+
+This explains why singular matrices cannot have inverses. If a matrix collapses different inputs into the same output, then there is no way to recover the original input uniquely. Information has been lost.
+
+\begin{examplebox}
+Consider the diagonal matrix
+\[
+D=\begin{pmatrix}
+2&0\\
+0&3
+\end{pmatrix}.
+\]
+Multiplication by \(D\) doubles the first coordinate and triples the second coordinate:
+\[
+D\begin{pmatrix}x\\y\end{pmatrix}
+=\begin{pmatrix}2x\\3y\end{pmatrix}.
+\]
+To reverse this action, we should divide the first coordinate by \(2\) and the second coordinate by \(3\). Therefore
+\[
+D^{-1}=\begin{pmatrix}
+\frac12&0\\
+0&\frac13
+\end{pmatrix}.
+\]
+Indeed,
+\[
+DD^{-1}=\begin{pmatrix}2&0\\0&3\end{pmatrix}
+\begin{pmatrix}\frac12&0\\0&\frac13\end{pmatrix}
+=\begin{pmatrix}1&0\\0&1\end{pmatrix}=I_2.
+\]
+\end{examplebox}
+
+This example is simple because the matrix is diagonal. Each coordinate is changed independently. More general matrices mix coordinates, so their inverses are harder to find. But the meaning stays the same: an inverse matrix reverses the action of the original matrix.
+
+\subsection{When does an inverse exist?}
+
+The determinant gives the fundamental test.
+
+\begin{theorembox}
+A square matrix \(A\) is invertible if and only if
+\[
+\det A\ne0.
+\]
+If \(\det A=0\), then \(A\) is singular and has no inverse.
+\end{theorembox}
+
+This theorem connects the present chapter with the previous one. Determinants do not merely produce numbers. They answer the structural question of whether a matrix can be reversed.
+
+\begin{summarybox}
+The inverse matrix should be understood through three questions:
+\begin{itemize}
+\item What operation does the original matrix perform?
+\item Has this operation lost information?
+\item If no information was lost, what matrix reverses the operation?
+\end{itemize}
+\end{summarybox}
+
+The rest of this chapter develops methods for finding inverse matrices and for using them correctly.
