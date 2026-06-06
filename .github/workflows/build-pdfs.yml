@@ -1,0 +1,92 @@
+name: Build lecture PDFs
+
+on:
+  push:
+    branches:
+      - "**"
+    paths:
+      - ".github/workflows/build-pdfs.yml"
+      - "shared/**/*.tex"
+      - "mathematical_lectures/**/*.tex"
+      - "mathematical_lectures/**/build.sh"
+      - "physics_lectures/**/*.tex"
+      - "physics_lectures/**/build.sh"
+
+permissions:
+  contents: write
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+concurrency:
+  group: build-pdfs-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-pdfs:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          ref: ${{ github.ref_name }}
+
+      - name: Install LaTeX
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            lmodern \
+            texlive-fonts-recommended \
+            texlive-latex-base \
+            texlive-latex-extra \
+            texlive-pictures
+
+      - name: Build all lecture PDFs
+        run: |
+          projects=(
+            "mathematical_lectures/basic_mathematics"
+            "mathematical_lectures/probabilistic_methods"
+            "mathematical_lectures/general_notes_experiments"
+            "physics_lectures/physics_basics"
+            "physics_lectures/general_notes_experiments"
+          )
+
+          for project in "${projects[@]}"; do
+            echo "Building ${project}"
+            if [[ ! -x "${project}/build.sh" ]]; then
+              echo "Missing executable build script: ${project}/build.sh" >&2
+              exit 1
+            fi
+            "${project}/build.sh"
+          done
+
+      - name: Commit changed PDFs
+        run: |
+          pdfs=(
+            "mathematical_lectures/basic_mathematics/main.pdf"
+            "mathematical_lectures/probabilistic_methods/main.pdf"
+            "mathematical_lectures/general_notes_experiments/main.pdf"
+            "physics_lectures/physics_basics/main.pdf"
+            "physics_lectures/general_notes_experiments/main.pdf"
+          )
+
+          changed=()
+          for pdf in "${pdfs[@]}"; do
+            if ! git diff --quiet -- "${pdf}"; then
+              changed+=("${pdf}")
+            fi
+          done
+
+          if [[ "${#changed[@]}" -eq 0 ]]; then
+            echo "All PDFs are already up to date."
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "${changed[@]}"
+          git commit -m "Build lecture PDFs"
+          git pull --rebase origin "${GITHUB_REF_NAME}"
+          git push

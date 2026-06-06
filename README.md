@@ -75,3 +75,10 @@ Some projects also include a local `build.sh` script.
 `tree.txt` is regenerated automatically by GitHub Actions after pushes that change
 repository contents. The workflow commits the updated `tree.txt` only when the
 generated file differs from the committed version.
+
+## PDF Builds
+
+Lecture `main.pdf` files are rebuilt automatically by GitHub Actions after
+pushes that change LaTeX sources, shared TeX setup, or project build scripts.
+The workflow commits updated PDFs only when the rebuilt files differ from the
+committed versions.

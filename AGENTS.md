@@ -258,6 +258,11 @@ Compiled PDFs may be committed when they are the intended output of a project.
 Temporary LaTeX build artifacts such as `.aux`, `.log`, `.out`, `.toc`, `.fls`,
 `.fdb_latexmk`, and `.synctex.gz` should not be committed.
 
+GitHub Actions includes a workflow that rebuilds lecture `main.pdf` files after
+pushes that change LaTeX sources, shared TeX setup, or project build scripts.
+The workflow commits updated PDFs only when the rebuilt files differ from the
+committed versions.
+
 ---
 
 ## 7. Main-file rule
@@ -458,6 +463,10 @@ or:
 ```
 
 but only if the project already uses such a workflow.
+
+Even though GitHub Actions can rebuild and commit PDFs after a push, the agent
+should still compile locally after substantial source changes whenever possible.
+Local compilation catches LaTeX errors before the changes reach GitHub.
 
 The agent must check the compilation log.
 
