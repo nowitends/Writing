@@ -1,4 +1,4 @@
-# Lectures Notes Old School
+# Lectures Notes Old School!
 
 This repository contains three separate LaTeX lecture-note projects.
 
