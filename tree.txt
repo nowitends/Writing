@@ -64,6 +64,7 @@
 ./mathematical_lectures/basic_mathematics/chapters/matrix_inversion/matrix_equations.tex
 ./mathematical_lectures/basic_mathematics/chapters/matrix_inversion/meaning_of_inverse_matrix.tex
 ./mathematical_lectures/basic_mathematics/chapters/systems_of_linear_equations
+./mathematical_lectures/basic_mathematics/chapters/systems_of_linear_equations/gaussian_elimination.tex
 ./mathematical_lectures/basic_mathematics/chapters/systems_of_linear_equations/geometric_meaning_of_solutions.tex
 ./mathematical_lectures/basic_mathematics/chapters/systems_of_linear_equations/what_systems_describe.tex
 ./mathematical_lectures/basic_mathematics/figures
