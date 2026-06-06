@@ -65,6 +65,8 @@
 ./mathematical_lectures/basic_mathematics/chapters/matrix_inversion/meaning_of_inverse_matrix.tex
 ./mathematical_lectures/basic_mathematics/chapters/planes
 ./mathematical_lectures/basic_mathematics/chapters/planes/.gitkeep
+./mathematical_lectures/basic_mathematics/chapters/sequences_and_functions
+./mathematical_lectures/basic_mathematics/chapters/sequences_and_functions/.gitkeep
 ./mathematical_lectures/basic_mathematics/chapters/systems_of_linear_equations
 ./mathematical_lectures/basic_mathematics/chapters/systems_of_linear_equations/cramers_rule.tex
 ./mathematical_lectures/basic_mathematics/chapters/systems_of_linear_equations/gaussian_elimination.tex
