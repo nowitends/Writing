@@ -210,7 +210,6 @@
 ./mathematical_lectures/probabilistic_methods/chapters
 ./mathematical_lectures/probabilistic_methods/chapters/chapter_00_introduction.tex
 ./mathematical_lectures/probabilistic_methods/chapters/chapter_01_combinatorics.tex
-./mathematical_lectures/probabilistic_methods/chapters/chapter_02_combinatorics.tex
 ./mathematical_lectures/probabilistic_methods/chapters/chapter_02_discovering_formalism.tex
 ./mathematical_lectures/probabilistic_methods/chapters/chapter_02_events_and_probability.tex
 ./mathematical_lectures/probabilistic_methods/chapters/chapter_03_sample_spaces_and_elementary_probability.tex
