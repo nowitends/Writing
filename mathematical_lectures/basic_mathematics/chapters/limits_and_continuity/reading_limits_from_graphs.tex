@@ -1,0 +1,95 @@
+\section{Reading limits from graphs}
+
+Graphs are one of the best ways to understand limits, provided we read them carefully. A graph can show whether values approach one height, whether there is a hole, whether there is a jump, or whether the function grows without bound.
+
+The graph should be read as information about nearby behavior.
+
+\subsection*{Value versus limit on a graph}
+
+The value \(f(a)\) is represented by the point of the graph at \(x=a\), if such a point is included. The limit \(\lim_{x\to a}f(x)\) is represented by the height approached by the graph near \(x=a\).
+
+These may be the same, but they do not have to be the same.
+
+\begin{examplebox}
+Suppose a graph has a hole at \((2,5)\), but near \(x=2\) the curve approaches height \(5\) from both sides. Suppose also that the function has a filled point at \((2,1)\). Then
+\[
+f(2)=1,
+\]
+but
+\[
+\lim_{x\to2}f(x)=5.
+\]
+The function is not continuous at \(2\), because the value and the limit are different.
+\end{examplebox}
+
+This example is one of the most important pictures in the study of continuity. A graph can have a limit at a point even if the value at that point is different.
+
+\subsection*{Reading one-sided limits}
+
+To read
+\[
+\lim_{x\to a^-}f(x),
+\]
+follow the graph toward \(x=a\) from the left. To read
+\[
+\lim_{x\to a^+}f(x),
+\]
+follow the graph toward \(x=a\) from the right.
+
+If the two approached heights agree, the two-sided limit exists. If they do not agree, the two-sided limit does not exist.
+
+\begin{examplebox}
+Suppose that as \(x\) approaches \(3\) from the left, the graph approaches height \(2\). As \(x\) approaches \(3\) from the right, the graph approaches height \(7\). Then
+\[
+\lim_{x\to3^-}f(x)=2,
+\qquad
+\lim_{x\to3^+}f(x)=7.
+\]
+Since these are different,
+\[
+\lim_{x\to3}f(x)
+\]
+does not exist.
+\end{examplebox}
+
+The issue is not the value at \(x=3\). The issue is that the two sides do not approach the same height.
+
+\subsection*{Vertical and horizontal asymptotes}
+
+If the graph grows without bound as \(x\) approaches \(a\), then there may be a vertical asymptote:
+\[
+x=a.
+\]
+For example, if
+\[
+\lim_{x\to a^+}f(x)=\infty,
+\]
+then the graph rises without bound on the right side of \(a\).
+
+If the graph approaches a fixed height as \(x\to\infty\) or \(x\to-\infty\), there may be a horizontal asymptote:
+\[
+y=L.
+\]
+This means that far away, the graph gets close to the line \(y=L\).
+
+\subsection*{What graphs can and cannot prove}
+
+A graph can strongly suggest a limit, and it is an excellent tool for understanding. But a drawn graph may be approximate. If exactness is required, algebraic or theoretical reasoning may be needed.
+
+\begin{remarkbox}
+Use graphs to understand the question and predict the answer. Use algebra or definitions when an exact justification is required.
+\end{remarkbox}
+
+\begin{summarybox}
+When reading limits from a graph, ask:
+\begin{itemize}
+\item What height is approached from the left?
+\item What height is approached from the right?
+\item Is the value at the point included, missing, or different from the limit?
+\item Is there a hole, a jump, or a vertical asymptote?
+\item What happens far to the left or far to the right?
+\item Is the graph exact, or is it only a guide for reasoning?
+\end{itemize}
+\end{summarybox}
+
+Reading limits from graphs is not a separate skill from computing limits. It is another language for the same idea: describing approached behavior.
