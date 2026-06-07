@@ -22,6 +22,7 @@
 ./mathematical_lectures/basic_mathematics/chapters/applications_of_calculus
 ./mathematical_lectures/basic_mathematics/chapters/applications_of_calculus/.gitkeep
 ./mathematical_lectures/basic_mathematics/chapters/applications_of_calculus/calculus_as_a_modelling_tool.tex
+./mathematical_lectures/basic_mathematics/chapters/applications_of_calculus/optimisation_problems.tex
 ./mathematical_lectures/basic_mathematics/chapters/calculus
 ./mathematical_lectures/basic_mathematics/chapters/calculus/continuity.tex
 ./mathematical_lectures/basic_mathematics/chapters/calculus/derivatives.tex
