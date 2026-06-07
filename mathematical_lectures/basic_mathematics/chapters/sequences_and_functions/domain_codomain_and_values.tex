@@ -1,0 +1,134 @@
+\section{Domain, codomain, and values}
+
+The notation
+\[
+f:X\to Y
+\]
+contains more information than it may first seem. It tells us where inputs are taken from and where outputs are expected to live. Before computing with a function, we should learn to read this notation.
+
+\subsection*{Domain and codomain}
+
+In the notation
+\[
+f:X\to Y,
+\]
+the set \(X\) is the domain. It contains the inputs for which the function is defined. The set \(Y\) is the codomain. It is the set in which the outputs are declared to live.
+
+If \(x\in X\), then the value of the function at \(x\) is written
+\[
+f(x).
+\]
+This value belongs to \(Y\):
+\[
+f(x)\in Y.
+\]
+
+\begin{examplebox}
+Let
+\[
+f:\mathbb{R}\to\mathbb{R},
+\qquad
+f(x)=2x-1.
+\]
+The domain is \(\mathbb{R}\). This means every real number is an allowed input. The codomain is also \(\mathbb{R}\). For example,
+\[
+f(4)=2\cdot4-1=7.
+\]
+The input is \(4\), and the output is \(7\).
+\end{examplebox}
+
+The domain is part of the function. Two rules may look the same as formulas but describe different functions if their domains are different.
+
+\begin{examplebox}
+Consider the rule
+\[
+f(x)=x^2.
+\]
+If the domain is \(\mathbb{R}\), then negative numbers, zero, and positive numbers are all allowed inputs. If the domain is \([0,\infty)\), then only non-negative inputs are allowed. The formula is the same, but the function is not the same because the domain has changed.
+\end{examplebox}
+
+\subsection*{Range or image}
+
+The codomain is the declared target set. The range, also called the image, is the set of outputs that are actually obtained.
+
+\begin{definitionbox}
+For a function \(f:X\to Y\), the range or image of \(f\) is the set
+\[
+f(X)=\{f(x):x\in X\}.
+\]
+It consists of all values that the function actually takes.
+\end{definitionbox}
+
+The range may be smaller than the codomain.
+
+\begin{examplebox}
+Let
+\[
+f:\mathbb{R}\to\mathbb{R},
+\qquad
+f(x)=x^2.
+\]
+The codomain is \(\mathbb{R}\), but the range is
+\[
+[0,\infty),
+\]
+because a square is never negative and every non-negative real number is the square of some real number.
+\end{examplebox}
+
+This distinction matters. The codomain is part of how the function is declared. The range is discovered by studying what values the function actually produces.
+
+\subsection*{The function and its values}
+
+A common source of confusion is the difference between \(f\) and \(f(x)\). The symbol \(f\) denotes the whole function. The expression \(f(x)\) denotes the value of the function at the input \(x\).
+
+For the function
+\[
+f(x)=x^2+1,
+\]
+the value at \(3\) is
+\[
+f(3)=10.
+\]
+The value \(10\) is a number. The function \(f\) is not a number; it is the entire assignment rule.
+
+\begin{remarkbox}
+The expression \(f(x)\) should be read as ``the value of \(f\) at \(x\),'' not as another name for the whole function. The function is \(f\). The value at an input is \(f(x)\).
+\end{remarkbox}
+
+\subsection*{Arguments and values}
+
+The input of a function is often called an argument. If we write \(f(2)\), then \(2\) is the argument. If we write \(f(a)\), then \(a\) is the argument. If we write \(f(x+h)\), then the whole expression \(x+h\) is the argument.
+
+This point will become important later. When we substitute into a function, we substitute the entire argument, not only one letter.
+
+\begin{examplebox}
+Let
+\[
+f(x)=x^2.
+\]
+Then
+\[
+f(3)=3^2=9,
+\]
+\[
+f(a)=a^2,
+\]
+and
+\[
+f(x+h)=(x+h)^2.
+\]
+The last expression is not \(x^2+h\). The whole argument \(x+h\) is placed into the rule.
+\end{examplebox}
+
+\begin{summarybox}
+When reading function notation, ask:
+\begin{itemize}
+\item What is the domain?
+\item What is the codomain?
+\item What values are actually obtained?
+\item Am I talking about the whole function \(f\) or one value \(f(x)\)?
+\item What is the entire argument being substituted into the function?
+\end{itemize}
+\end{summarybox}
+
+Careful reading of notation prevents many later mistakes. Functions are not difficult because the symbols are complicated; they become difficult when the roles of the symbols are not read.
