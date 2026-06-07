@@ -1,0 +1,155 @@
+\section{Trigonometric integrals}
+
+Trigonometric integrals require two kinds of reading. First, we should recognize direct derivatives, such as \((\sin x)'=\cos x\). Second, we should know a few identities that rewrite products or powers into simpler forms.
+
+The goal in this section is not to list every possible trigonometric integral. The goal is to learn how to choose a useful transformation.
+
+\subsection*{Direct substitution}
+
+Some trigonometric integrals are simple substitutions.
+
+\begin{examplebox}
+Compute
+\[
+\int \sin^3 x\cos x\,dx.
+\]
+The inside expression is \(\sin x\), and its derivative is \(\cos x\). Let
+\[
+u=\sin x.
+\]
+Then
+\[
+du=\cos x\,dx.
+\]
+The integral becomes
+\[
+\int u^3\,du=\frac{u^4}{4}+C.
+\]
+Therefore
+\[
+\int \sin^3 x\cos x\,dx=\frac{\sin^4 x}{4}+C.
+\]
+\end{examplebox}
+
+The integrand was not difficult after the inside function was recognized.
+
+\subsection*{Using identities}
+
+Products of sines and cosines may require identities. Two useful identities are
+\[
+\sin^2 x=\frac{1-\cos 2x}{2},
+\qquad
+\cos^2 x=\frac{1+\cos 2x}{2}.
+\]
+These are useful for even powers of sine or cosine.
+
+\begin{examplebox}
+Compute
+\[
+\int \sin^2 x\,dx.
+\]
+Use the identity
+\[
+\sin^2 x=\frac{1-\cos 2x}{2}.
+\]
+Then
+\[
+\int \sin^2 x\,dx
+=\frac12\int 1\,dx-\frac12\int \cos 2x\,dx.
+\]
+Since
+\[
+\int \cos 2x\,dx=\frac12\sin 2x,
+\]
+we get
+\[
+\int \sin^2 x\,dx=\frac{x}{2}-\frac{\sin 2x}{4}+C.
+\]
+\end{examplebox}
+
+The identity changed a power into a sum of simpler terms.
+
+\subsection*{Products with different angles}
+
+Products such as \(\sin ax\cos bx\) or \(\cos ax\cos bx\) can be simplified using product-to-sum identities:
+\[
+\sin A\cos B=\frac12\bigl(\sin(A+B)+\sin(A-B)\bigr),
+\]
+\[
+\cos A\cos B=\frac12\bigl(\cos(A+B)+\cos(A-B)\bigr),
+\]
+\[
+\sin A\sin B=\frac12\bigl(\cos(A-B)-\cos(A+B)\bigr).
+\]
+
+\begin{examplebox}
+Compute
+\[
+\int \sin 3x\cos 2x\,dx.
+\]
+Use
+\[
+\sin A\cos B=\frac12(\sin(A+B)+\sin(A-B)).
+\]
+With \(A=3x\), \(B=2x\),
+\[
+\sin 3x\cos 2x=\frac12(\sin 5x+\sin x).
+\]
+Therefore
+\[
+\int \sin 3x\cos 2x\,dx
+=\frac12\int \sin 5x\,dx+\frac12\int \sin x\,dx.
+\]
+Thus
+\[
+\int \sin 3x\cos 2x\,dx
+=-\frac1{10}\cos 5x-\frac12\cos x+C.
+\]
+\end{examplebox}
+
+\subsection*{Tangent and secant patterns}
+
+The derivative of \(\tan x\) is
+\[
+\frac{1}{\cos^2 x}.
+\]
+Therefore expressions containing \(1/\cos^2 x\) often lead to tangent.
+
+\begin{examplebox}
+Compute
+\[
+\int \frac{dx}{2\cos^2 3x}.
+\]
+Rewrite:
+\[
+\int \frac{dx}{2\cos^2 3x}=\frac12\int \frac{1}{\cos^2 3x}\,dx.
+\]
+Let
+\[
+u=3x,
+\qquad
+du=3\,dx.
+\]
+Then
+\[
+\frac12\int \frac{1}{\cos^2 3x}\,dx
+=\frac16\int \frac{1}{\cos^2 u}\,du.
+\]
+Thus
+\[
+\int \frac{dx}{2\cos^2 3x}=\frac16\tan(3x)+C.
+\]
+\end{examplebox}
+
+\begin{summarybox}
+When integrating trigonometric expressions, ask:
+\begin{itemize}
+\item Is there an inside function whose derivative is present?
+\item Can substitution use \(\sin x\), \(\cos x\), or a multiple of \(x\)?
+\item Are even powers present, suggesting half-angle identities?
+\item Is there a product of different angles, suggesting product-to-sum identities?
+\item Does the integrand contain \(1/\cos^2 x\), suggesting tangent?
+\end{itemize}
+\end{summarybox}
+
+Trigonometric integration is largely the art of rewriting the expression until a familiar derivative appears backward.
