@@ -1,0 +1,181 @@
+\section{A line and a plane in space}
+
+A line and a plane in space may intersect in one point, be parallel and disjoint, or the line may lie entirely in the plane. These cases can be detected by combining the parametric equation of the line with the equation of the plane.
+
+Let the line be
+\[
+\ell:P=A+t v,
+\qquad t\in\mathbb{R},
+\]
+and let the plane be
+\[
+\pi:n\cdot(P-P_0)=0.
+\]
+The direction vector of the line is \(v\), and the normal vector of the plane is \(n\).
+
+\subsection*{Direction test}
+
+The dot product
+\[
+n\cdot v
+\]
+tells us how the line direction relates to the plane.
+
+If
+\[
+n\cdot v\ne0,
+\]
+then the line is not parallel to the plane and intersects it in exactly one point.
+
+If
+\[
+n\cdot v=0,
+\]
+then the line direction is perpendicular to the normal vector, so the line direction is parallel to the plane. In this case the line is either contained in the plane or parallel and disjoint from it.
+
+\begin{remarkbox}
+The condition \(n\cdot v=0\) does not by itself say that the line lies in the plane. It says that the direction of the line is parallel to the plane. We must still check a point of the line.
+\end{remarkbox}
+
+\subsection*{Intersection by substitution}
+
+The most direct method is to substitute the parametric equations of the line into the plane equation.
+
+\begin{examplebox}
+Check whether the line
+\[
+\ell:x=1+2t,\qquad y=-1+t,\qquad z=3-t
+\]
+intersects the plane
+\[
+\pi:2x-y+z-4=0.
+\]
+Substitute the line into the plane:
+\[
+2(1+2t)-(-1+t)+(3-t)-4=0.
+\]
+Simplify:
+\[
+2+4t+1-t+3-t-4=0,
+\]
+so
+\[
+2+2t=0.
+\]
+Thus
+\[
+t=-1.
+\]
+Now substitute \(t=-1\) into the line:
+\[
+x=1+2(-1)=-1,
+\]
+\[
+y=-1+(-1)=-2,
+\]
+\[
+z=3-(-1)=4.
+\]
+Therefore the intersection point is
+\[
+(-1,-2,4).
+\]
+\end{examplebox}
+
+The parameter value is not the final answer. It is the value that gives the point of intersection.
+
+\subsection*{Contained or parallel disjoint}
+
+If substitution gives an identity such as
+\[
+0=0,
+\]
+then every point of the line satisfies the plane equation, so the line lies in the plane.
+
+If substitution gives a contradiction such as
+\[
+0=5,
+\]
+then no point of the line satisfies the plane equation, so the line is parallel to the plane and disjoint from it.
+
+\begin{examplebox}
+Let
+\[
+\ell:P=(1,0,0)+t(1,1,0)
+\]
+and
+\[
+\pi:z=0.
+\]
+Every point of the line has \(z=0\), so the line lies in the plane.
+
+Now let
+\[
+\ell:P=(1,0,1)+t(1,1,0)
+\]
+with the same plane \(z=0\). Every point of this line has \(z=1\), so the line is parallel to the plane and disjoint from it.
+\end{examplebox}
+
+The two lines have the same direction. Their position relative to the plane is different.
+
+\subsection*{Parameter-dependent cases}
+
+Sometimes a line or plane depends on a parameter. The same tests still apply, but the answer may depend on the parameter value.
+
+\begin{examplebox}
+Consider
+\[
+\ell(\lambda):x=\lambda+t,\qquad y=1+2t,\qquad z=2-t
+\]
+and
+\[
+\pi:x-(\lambda-1)y+z-3=0.
+\]
+The direction vector of the line is
+\[
+v=(1,2,-1).
+\]
+A normal vector of the plane is
+\[
+n=(1,-(\lambda-1),1)=(1,1-\lambda,1).
+\]
+Compute
+\[
+n\cdot v=1+2(1-\lambda)-1=2-2\lambda.
+\]
+If
+\[
+\lambda\ne1,
+\]
+then \(n\cdot v\ne0\), so the line intersects the plane in one point.
+
+If \(\lambda=1\), then the line direction is parallel to the plane. Substitute \(\lambda=1\) into the line and plane. The plane becomes
+\[
+x+z-3=0.
+\]
+The line becomes
+\[
+x=1+t,\qquad y=1+2t,\qquad z=2-t.
+\]
+Then
+\[
+x+z-3=(1+t)+(2-t)-3=0.
+\]
+This is true for every \(t\). Therefore, for \(\lambda=1\), the line is contained in the plane.
+\end{examplebox}
+
+Parameter problems are not a new method. They are the same method with cases separated carefully.
+
+\begin{summarybox}
+For a line and a plane, ask:
+\begin{itemize}
+\item What is the direction vector of the line?
+\item What is the normal vector of the plane?
+\item Is \(n\cdot v\) zero or non-zero?
+\item If non-zero, what point is obtained by substitution?
+\item If zero, does one point of the line satisfy the plane equation?
+\item Are there parameter values where the relationship changes?
+\end{itemize}
+\end{summarybox}
+
+The line-plane relationship is a direct application of the languages developed in the chapters on lines and planes.
