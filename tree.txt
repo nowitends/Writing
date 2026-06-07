@@ -125,6 +125,7 @@
 ./mathematical_lectures/basic_mathematics/chapters/planes
 ./mathematical_lectures/basic_mathematics/chapters/planes/.gitkeep
 ./mathematical_lectures/basic_mathematics/chapters/planes/normal_and_general_equation_of_a_plane.tex
+./mathematical_lectures/basic_mathematics/chapters/planes/parallel_perpendicular_and_angles.tex
 ./mathematical_lectures/basic_mathematics/chapters/planes/parametric_description_of_planes.tex
 ./mathematical_lectures/basic_mathematics/chapters/planes/planes_through_three_points.tex
 ./mathematical_lectures/basic_mathematics/chapters/planes/what_information_defines_a_plane.tex
