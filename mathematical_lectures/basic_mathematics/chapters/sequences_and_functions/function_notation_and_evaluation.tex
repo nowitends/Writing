@@ -1,0 +1,169 @@
+\section{Function notation and evaluation}
+
+Function notation is compact. This is useful, but it also means that we must read it carefully. Many mistakes with functions are not caused by difficult calculations. They are caused by not reading what is being substituted into the function.
+
+If a function is given by a rule such as
+\[
+f(x)=2x-1,
+\]
+then the letter \(x\) is a placeholder for an input. When we evaluate the function, we replace that placeholder by the chosen argument.
+
+\subsection*{Evaluating at numbers}
+
+To evaluate a function at a number, substitute that number into the rule.
+
+\begin{examplebox}
+Let
+\[
+f(x)=2x-1.
+\]
+Then
+\[
+f(4)=2\cdot4-1=7.
+\]
+Also,
+\[
+f(-3)=2\cdot(-3)-1=-6-1=-7.
+\]
+The notation \(f(4)\) means the value of the function at the input \(4\).
+\end{examplebox}
+
+The parentheses are not decoration. They indicate the argument of the function.
+
+\subsection*{Evaluating at expressions}
+
+The argument of a function does not have to be a number. It may be a letter or a more complicated expression. The rule is the same: replace the input placeholder by the entire argument.
+
+\begin{examplebox}
+Let
+\[
+f(x)=2x-1.
+\]
+Then
+\[
+f(a)=2a-1.
+\]
+Also,
+\[
+f(x+h)=2(x+h)-1=2x+2h-1.
+\]
+The whole expression \(x+h\) is substituted in place of \(x\).
+\end{examplebox}
+
+This habit is especially important in calculus, where expressions such as \(f(x+h)\) appear frequently. If the whole argument is not substituted correctly, later formulas become meaningless.
+
+\begin{examplebox}
+Let
+\[
+g(x)=x^2.
+\]
+Then
+\[
+g(x+h)=(x+h)^2.
+\]
+Expanding,
+\[
+g(x+h)=x^2+2xh+h^2.
+\]
+It would be wrong to write \(g(x+h)=x^2+h\), because the function squares the whole input.
+\end{examplebox}
+
+A function acts on its entire argument. This is one of the simplest and most important rules of function notation.
+
+\subsection*{Different letters, same role}
+
+The letter used in a formula is not sacred. The function
+\[
+f(x)=x^2+1
+\]
+can also be described by writing
+\[
+f(t)=t^2+1.
+\]
+The input letter changed, but the function did not. What matters is the rule: take the input, square it, and add \(1\).
+
+\begin{examplebox}
+If
+\[
+f(x)=x^2+1,
+\]
+then
+\[
+f(t)=t^2+1,
+\qquad
+f(u)=u^2+1,
+\qquad
+f(3)=3^2+1=10.
+\]
+The symbols \(x,t,u\) are placeholders. They indicate where the input goes.
+\end{examplebox}
+
+This does not mean that letters never matter. In a larger expression, each letter may already have a role. The point is only that the name of the input variable is not the function itself.
+
+\subsection*{Functions with named rules}
+
+Sometimes functions are defined without writing \(f(x)=\cdots\) first. For example, we may say: let \(f\) be the function that assigns to each real number its square plus one. This means exactly the same rule:
+\[
+f(x)=x^2+1.
+\]
+
+A verbal description may be just as precise as a formula if it clearly assigns one output to each input.
+
+\begin{examplebox}
+Let \(f\) assign to each positive integer the number of its positive divisors. Then
+\[
+f(1)=1,
+\qquad
+f(2)=2,
+\qquad
+f(6)=4,
+\]
+because \(6\) has the positive divisors \(1,2,3,6\).
+
+This function is not introduced by a simple algebraic formula, but it is still a function.
+\end{examplebox}
+
+\subsection*{Reading equations involving functions}
+
+An equation such as
+\[
+f(x)=0
+\]
+asks for inputs whose output is zero. It is not asking for the function itself to disappear. It asks for the arguments \(x\) at which the value of the function equals zero.
+
+\begin{examplebox}
+Let
+\[
+f(x)=x^2-4.
+\]
+The equation
+\[
+f(x)=0
+\]
+means
+\[
+x^2-4=0.
+\]
+Thus
+\[
+x=-2
+\qquad\text{or}\qquad
+x=2.
+\]
+These are the inputs where the function has value zero.
+\end{examplebox}
+
+This kind of question will reappear often. Zeros of a function, intersections with axes, solutions of equations, and sign changes are all connected to evaluating functions carefully.
+
+\begin{summarybox}
+When evaluating a function, ask:
+\begin{itemize}
+\item What is the rule of the function?
+\item What is the entire argument being substituted?
+\item Am I substituting a number, a letter, or an expression?
+\item Does the function act on the whole argument?
+\item Am I looking for a value \(f(a)\), or solving an equation such as \(f(x)=0\)?
+\end{itemize}
+\end{summarybox}
+
+Function notation becomes manageable when we treat it as careful substitution into a rule.
