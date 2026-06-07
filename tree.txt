@@ -125,6 +125,7 @@
 ./mathematical_lectures/basic_mathematics/chapters/planes
 ./mathematical_lectures/basic_mathematics/chapters/planes/.gitkeep
 ./mathematical_lectures/basic_mathematics/chapters/planes/distance_from_point_to_plane.tex
+./mathematical_lectures/basic_mathematics/chapters/planes/line_and_plane_in_space.tex
 ./mathematical_lectures/basic_mathematics/chapters/planes/normal_and_general_equation_of_a_plane.tex
 ./mathematical_lectures/basic_mathematics/chapters/planes/parallel_perpendicular_and_angles.tex
 ./mathematical_lectures/basic_mathematics/chapters/planes/parametric_description_of_planes.tex
