@@ -1,0 +1,157 @@
+\section{Distance from a point to a line}
+
+The distance from a point to a line is not the distance to an arbitrary point on the line. It is the shortest possible distance. Geometrically, the shortest path from a point to a line is perpendicular to the line.
+
+This is why the normal form of a line is so useful. A normal vector already points in the direction in which this shortest distance is measured.
+
+\subsection*{The geometric idea}
+
+Let a line be given in general form:
+\[
+\ell: Ax+By+C=0.
+\]
+A normal vector to the line is
+\[
+n=(A,B).
+\]
+If a point \(P_0=(x_0,y_0)\) does not lie on the line, then the shortest segment from \(P_0\) to the line is parallel to \(n\). The distance should therefore be measured in the normal direction.
+
+The expression
+\[
+Ax_0+By_0+C
+\]
+tells us how far the point is from satisfying the equation of the line, but it still depends on the length of the normal vector. To obtain the actual distance, we divide by the length of the normal vector:
+\[
+\sqrt{A^2+B^2}.
+\]
+
+\begin{theorembox}
+Let
+\[
+\ell: Ax+By+C=0
+\]
+be a line in the plane, with \((A,B)\ne(0,0)\). The distance from the point \(P_0=(x_0,y_0)\) to \(\ell\) is
+\[
+d(P_0,\ell)=\frac{|Ax_0+By_0+C|}{\sqrt{A^2+B^2}}.
+\]
+\end{theorembox}
+
+The absolute value appears because distance is non-negative. Without the absolute value, the sign tells us on which side of the oriented line the point lies.
+
+\subsection*{Example of the distance formula}
+
+\begin{examplebox}
+Find the distance from the point
+\[
+P_0=(3,1)
+\]
+to the line
+\[
+\ell: 2x-y-4=0.
+\]
+Here
+\[
+A=2,
+\qquad
+B=-1,
+\qquad
+C=-4.
+\]
+Substitute \((x_0,y_0)=(3,1)\):
+\[
+Ax_0+By_0+C=2\cdot3+(-1)\cdot1-4=6-1-4=1.
+\]
+The length of the normal vector is
+\[
+\sqrt{A^2+B^2}=\sqrt{2^2+(-1)^2}=\sqrt5.
+\]
+Therefore
+\[
+d(P_0,\ell)=\frac{|1|}{\sqrt5}=\frac1{\sqrt5}.
+\]
+\end{examplebox}
+
+The computation is short, but it should be interpreted. The point does not satisfy the line equation because substitution gives \(1\), not \(0\). Dividing by \(\sqrt5\) corrects for the length of the normal vector.
+
+\subsection*{Why the denominator is needed}
+
+The equation of a line is not unique. For example,
+\[
+2x-y-4=0
+\]
+and
+\[
+4x-2y-8=0
+\]
+describe the same line. The second equation is obtained by multiplying the first by \(2\).
+
+If we used only \(|Ax_0+By_0+C|\), the value would also be multiplied by \(2\). But the geometric distance should not change. The denominator \(\sqrt{A^2+B^2}\) is multiplied by the same factor, so the ratio remains the same.
+
+\begin{remarkbox}
+The distance formula uses the equation of the line, but the result is geometric. It cannot depend on which equivalent equation we choose.
+\end{remarkbox}
+
+\subsection*{Signed distance and sides of a line}
+
+The expression
+\[
+Ax_0+By_0+C
+\]
+without absolute value has a sign. Points on one side of the line give one sign, and points on the other side give the opposite sign. Points on the line give zero.
+
+A normalized signed quantity is
+\[
+\frac{Ax_0+By_0+C}{\sqrt{A^2+B^2}}.
+\]
+Its absolute value is the distance to the line.
+
+\begin{examplebox}
+For the line
+\[
+\ell: x+y-1=0,
+\]
+consider the points
+\[
+P=(2,0),
+\qquad
+Q=(0,-2).
+\]
+For \(P\),
+\[
+2+0-1=1.
+\]
+For \(Q\),
+\[
+0+(-2)-1=-3.
+\]
+The signs are different, so the points lie on opposite sides of the oriented line.
+\end{examplebox}
+
+This interpretation is useful in geometry and in applications. The equation of a line does more than describe the points on the line. It also separates the plane into two sides.
+
+\subsection*{Distance and projection idea}
+
+There is another way to understand the formula. Choose any point \(A\) on the line. The vector \(P_0-A\) goes from the line to the point. The distance from \(P_0\) to the line is the length of the projection of this vector onto the normal direction.
+
+If \(n=(A,B)\), then a unit normal vector is
+\[
+\frac{n}{\lVert n\rVert}.
+\]
+The signed length of the projection is
+\[
+(P_0-A)\cdot \frac{n}{\lVert n\rVert}.
+\]
+This is the same idea hidden inside the distance formula.
+
+\begin{summarybox}
+When computing distance from a point to a line, ask:
+\begin{itemize}
+\item Is the line written in general form \(Ax+By+C=0\)?
+\item What is the normal vector \((A,B)\)?
+\item What value do I get after substituting the point?
+\item Did I divide by the length of the normal vector?
+\item Does the sign, before taking absolute value, carry side-of-line information?
+\end{itemize}
+\end{summarybox}
+
+The distance formula is not an isolated trick. It is the normal-vector interpretation of a line turned into a measurement.
