@@ -25,6 +25,7 @@
 ./mathematical_lectures/basic_mathematics/chapters/applications_of_calculus/geometric_applications_of_integrals.tex
 ./mathematical_lectures/basic_mathematics/chapters/applications_of_calculus/motion_velocity_and_acceleration.tex
 ./mathematical_lectures/basic_mathematics/chapters/applications_of_calculus/optimisation_problems.tex
+./mathematical_lectures/basic_mathematics/chapters/applications_of_calculus/work_force_and_accumulation.tex
 ./mathematical_lectures/basic_mathematics/chapters/calculus
 ./mathematical_lectures/basic_mathematics/chapters/calculus/continuity.tex
 ./mathematical_lectures/basic_mathematics/chapters/calculus/derivatives.tex
