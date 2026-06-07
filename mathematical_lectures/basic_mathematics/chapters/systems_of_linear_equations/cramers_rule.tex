@@ -1,3 +1,189 @@
 \section{Cramer's rule}
 
-This section will introduce Cramer's rule as a determinant-based method for solving square systems with a non-zero determinant. The emphasis will be on what the rule says, when it applies, and why the condition \(\det A\ne0\) matters.
+Cramer's rule is a method for solving certain square systems of linear equations using determinants. It is not the most efficient method for large systems, but it is conceptually important because it shows a direct connection between determinants and solvability.
+
+The method applies to systems where the number of equations equals the number of unknowns and the coefficient matrix has non-zero determinant.
+
+\subsection*{The two by two case}
+
+Consider the system
+\[
+\begin{cases}
+a x+b y=e,\\
+c x+d y=f.
+\end{cases}
+\]
+The coefficient matrix is
+\[
+A=\begin{pmatrix}
+a&b\\
+c&d
+\end{pmatrix},
+\]
+and its determinant is
+\[
+\det A=ad-bc.
+\]
+If \(\det A\ne0\), the system has exactly one solution.
+
+Cramer's rule says that the solution can be computed by replacing one column of the coefficient matrix at a time by the right-hand side column.
+
+Define
+\[
+A_x=\begin{pmatrix}
+e&b\\
+f&d
+\end{pmatrix},
+\qquad
+A_y=\begin{pmatrix}
+a&e\\
+c&f
+\end{pmatrix}.
+\]
+Then
+\[
+x=\frac{\det A_x}{\det A},
+\qquad
+ y=\frac{\det A_y}{\det A}.
+\]
+
+\begin{remarkbox}
+The denominator \(\det A\) is not a technical detail. If \(\det A=0\), the coefficient matrix is singular, and Cramer's rule does not apply.
+\end{remarkbox}
+
+\subsection*{A worked example}
+
+\begin{examplebox}
+Solve the system
+\[
+\begin{cases}
+2x+y=5,\\
+x-y=1.
+\end{cases}
+\]
+The coefficient matrix is
+\[
+A=\begin{pmatrix}
+2&1\\
+1&-1
+\end{pmatrix}.
+\]
+Its determinant is
+\[
+\det A=2\cdot(-1)-1\cdot1=-2-1=-3.
+\]
+Since \(\det A\ne0\), Cramer's rule applies.
+
+For \(x\), replace the first column by the right-hand side:
+\[
+A_x=\begin{pmatrix}
+5&1\\
+1&-1
+\end{pmatrix}.
+\]
+Then
+\[
+\det A_x=5\cdot(-1)-1\cdot1=-5-1=-6.
+\]
+So
+\[
+x=\frac{\det A_x}{\det A}=\frac{-6}{-3}=2.
+\]
+
+For \(y\), replace the second column:
+\[
+A_y=\begin{pmatrix}
+2&5\\
+1&1
+\end{pmatrix}.
+\]
+Then
+\[
+\det A_y=2\cdot1-5\cdot1=2-5=-3.
+\]
+So
+\[
+y=\frac{\det A_y}{\det A}=\frac{-3}{-3}=1.
+\]
+Thus
+\[
+(x,y)=(2,1).
+\]
+\end{examplebox}
+
+This result should be checked by substitution. We have
+\[
+2\cdot2+1=5,
+\qquad
+2-1=1.
+\]
+Both equations are satisfied.
+
+\subsection*{The general square case}
+
+For a square system
+\[
+Ax=b,
+\]
+where \(A\) is an \(n\times n\) matrix and \(b\) is a column vector, Cramer's rule applies if
+\[
+\det A\ne0.
+\]
+For each unknown \(x_i\), form the matrix \(A_i\) by replacing the \(i\)-th column of \(A\) with \(b\). Then
+\[
+x_i=\frac{\det A_i}{\det A}.
+\]
+
+The rule is elegant, but the number of determinant computations grows quickly. For this reason, Gaussian elimination is usually more practical for larger systems.
+
+\subsection*{Why the determinant condition matters}
+
+The condition
+\[
+\det A\ne0
+\]
+means that the coefficient matrix is invertible. Geometrically and structurally, the equations contain enough independent information to determine one solution.
+
+If
+\[
+\det A=0,
+\]
+then the matrix is singular. This does not automatically mean that the system has no solution. It means that the system cannot have a unique solution determined by Cramer's rule. The system must be analyzed further: it may have no solution or infinitely many solutions.
+
+\begin{examplebox}
+Consider
+\[
+\begin{cases}
+x+y=2,\\
+2x+2y=4.
+\end{cases}
+\]
+The coefficient matrix is
+\[
+A=\begin{pmatrix}
+1&1\\
+2&2
+\end{pmatrix},
+\]
+and
+\[
+\det A=1\cdot2-1\cdot2=0.
+\]
+Cramer's rule does not apply. But the system is not inconsistent. The second equation is twice the first, so there are infinitely many solutions.
+\end{examplebox}
+
+This example is important. A zero determinant means loss of uniqueness, not automatically loss of existence.
+
+\begin{summarybox}
+When using Cramer's rule, ask:
+\begin{itemize}
+\item Is the system square?
+\item What is the coefficient matrix \(A\)?
+\item Is \(\det A\ne0\)?
+\item Which column must be replaced to compute each unknown?
+\item Does the final answer satisfy the original equations?
+\item If \(\det A=0\), what further classification is needed?
+\end{itemize}
+\end{summarybox}
+
+Cramer's rule shows how determinants can solve systems, but it must be used only when its structural condition is satisfied.
