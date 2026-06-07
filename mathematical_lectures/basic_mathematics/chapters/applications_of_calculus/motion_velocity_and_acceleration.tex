@@ -1,0 +1,134 @@
+\section{Motion, velocity, and acceleration}
+
+One of the clearest applications of calculus is motion along a line. If position depends on time, derivatives describe velocity and acceleration. Conversely, integrals can recover velocity and position from acceleration.
+
+Let \(s(t)\) be the position of a particle at time \(t\). Then
+\[
+v(t)=s'(t)
+\]
+is velocity, and
+\[
+a(t)=v'(t)=s''(t)
+\]
+is acceleration.
+
+\subsection*{Velocity and acceleration from position}
+
+\begin{examplebox}
+A particle moves along a line with position
+\[
+s(t)=t^3-6t^2+9t+2,
+\qquad t\ge0.
+\]
+Find velocity and acceleration.
+
+Velocity is the derivative of position:
+\[
+v(t)=s'(t)=3t^2-12t+9.
+\]
+Acceleration is the derivative of velocity:
+\[
+a(t)=v'(t)=6t-12.
+\]
+\end{examplebox}
+
+The formulas are not only calculations. Velocity tells us how position changes. Acceleration tells us how velocity changes.
+
+\subsection*{When does the particle stop?}
+
+A particle stops when its velocity is zero. In the example above,
+\[
+v(t)=3t^2-12t+9=3(t^2-4t+3)=3(t-1)(t-3).
+\]
+Thus
+\[
+v(t)=0
+\]
+when
+\[
+t=1
+\qquad\text{or}\qquad
+ t=3.
+\]
+These are the times when the particle is instantaneously at rest.
+
+\subsection*{Speeding up and slowing down}
+
+A particle speeds up when velocity and acceleration have the same sign. It slows down when they have opposite signs. This is because acceleration then changes velocity in the direction opposite to the motion.
+
+For the example,
+\[
+v(t)=3(t-1)(t-3),
+\qquad
+ a(t)=6(t-2).
+\]
+We inspect the intervals determined by \(t=1,2,3\), with \(t\ge0\):
+\[
+[0,1),\quad (1,2),\quad (2,3),\quad (3,\infty).
+\]
+On each interval we compare the signs of \(v(t)\) and \(a(t)\).
+
+\begin{center}
+\begin{tabular}{llll}
+\toprule
+Interval & sign of \(v\) & sign of \(a\) & behavior \\
+\midrule
+\([0,1)\) & positive & negative & slowing down \\
+\((1,2)\) & negative & negative & speeding up \\
+\((2,3)\) & negative & positive & slowing down \\
+\((3,\infty)\) & positive & positive & speeding up \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+This is a good example of interpretation. The signs matter because velocity carries direction, while speed is the magnitude of velocity.
+
+\subsection*{Recovering motion by integration}
+
+If acceleration is known, then velocity can be recovered by integration. If velocity is known, position can be recovered by integration.
+
+For vertical motion with constant acceleration
+\[
+a(t)=-g,
+\]
+we integrate:
+\[
+v(t)=\int -g\,dt=-gt+C.
+\]
+If the initial velocity is \(v(0)=v_0\), then \(C=v_0\), so
+\[
+v(t)=v_0-gt.
+\]
+Now integrate again:
+\[
+h(t)=\int (v_0-gt)\,dt=v_0t-\frac12gt^2+C_2.
+\]
+If \(h(0)=h_0\), then \(C_2=h_0\), so
+\[
+h(t)=h_0+v_0t-\frac12gt^2.
+\]
+
+The maximum height occurs when velocity becomes zero:
+\[
+v_0-gt=0,
+\qquad
+ t=\frac{v_0}{g}.
+\]
+Substituting into \(h(t)\) gives
+\[
+h_{\max}=h_0+\frac{v_0^2}{2g}.
+\]
+
+\begin{summarybox}
+For motion problems, ask:
+\begin{itemize}
+\item Is position, velocity, or acceleration given?
+\item Do I need to differentiate or integrate?
+\item What initial conditions determine constants of integration?
+\item Does velocity equal zero at stopping or turning points?
+\item Are velocity and acceleration signs the same or opposite?
+\item What does the answer mean physically?
+\end{itemize}
+\end{summarybox}
+
+Motion problems show both directions of calculus: derivatives move from position to velocity and acceleration, while integrals reconstruct motion from rates of change.
