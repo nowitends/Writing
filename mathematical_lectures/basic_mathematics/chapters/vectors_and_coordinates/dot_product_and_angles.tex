@@ -47,7 +47,7 @@ The result is a number. It is not a vector, and it should not be interpreted as 
 
 The dot product of a vector with itself gives the square of its length:
 \[
-v\cdot v=\norm{v}^2.
+v\cdot v=\lVert v\rVert^2.
 \]
 Indeed, if \(v=(v_1,v_2)\), then
 \[
@@ -55,11 +55,11 @@ v\cdot v=v_1^2+v_2^2,
 \]
 while
 \[
-\norm{v}=\sqrt{v_1^2+v_2^2}.
+\lVert v\rVert=\sqrt{v_1^2+v_2^2}.
 \]
 Therefore
 \[
-\norm{v}=\sqrt{v\cdot v}.
+\lVert v\rVert=\sqrt{v\cdot v}.
 \]
 
 This connection is important. It shows that the dot product contains metric information: it knows something about lengths.
@@ -75,7 +75,7 @@ v\cdot v=(-2)^2+5^2=4+25=29.
 \]
 Therefore
 \[
-\norm{v}=\sqrt{29}.
+\lVert v\rVert=\sqrt{29}.
 \]
 \end{examplebox}
 
@@ -83,7 +83,7 @@ Therefore
 
 The deeper geometric meaning of the dot product is expressed by the formula
 \[
-u\cdot v=\norm{u}\norm{v}\cos\theta,
+u\cdot v=\lVert u\rVert\lVert v\rVert\cos\theta,
 \]
 where \(\theta\) is the angle between the non-zero vectors \(u\) and \(v\).
 
@@ -92,12 +92,12 @@ This formula should be read as an interpretation. The dot product is large and p
 \begin{theorembox}
 For non-zero vectors \(u\) and \(v\),
 \[
-\cos\theta=\frac{u\cdot v}{\norm{u}\norm{v}},
+\cos\theta=\frac{u\cdot v}{\lVert u\rVert\lVert v\rVert},
 \]
 where \(\theta\) is the angle between the vectors.
 \end{theorembox}
 
-The denominator \(\norm{u}\norm{v}\) removes the effect of the lengths. What remains is information about direction.
+The denominator \(\lVert u\rVert\lVert v\rVert\) removes the effect of the lengths. What remains is information about direction.
 
 \begin{examplebox}
 Let
