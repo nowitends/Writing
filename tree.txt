@@ -57,6 +57,7 @@
 ./mathematical_lectures/basic_mathematics/chapters/limits_and_continuity/.gitkeep
 ./mathematical_lectures/basic_mathematics/chapters/lines
 ./mathematical_lectures/basic_mathematics/chapters/lines/.gitkeep
+./mathematical_lectures/basic_mathematics/chapters/lines/what_information_defines_a_line.tex
 ./mathematical_lectures/basic_mathematics/chapters/matrices
 ./mathematical_lectures/basic_mathematics/chapters/matrices/basic_matrix_operations.tex
 ./mathematical_lectures/basic_mathematics/chapters/matrices/matrix_multiplication.tex
