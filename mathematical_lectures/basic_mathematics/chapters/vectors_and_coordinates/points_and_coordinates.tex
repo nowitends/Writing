@@ -1,0 +1,99 @@
+\section{Points and coordinates}
+
+Analytic geometry begins with a simple but powerful idea: geometric objects can be described by numbers. A point on a line can be described by one number. A point in a plane can be described by two numbers. A point in space can be described by three numbers. This numerical description allows us to use algebra to answer geometric questions.
+
+The important word here is description. A point is not the same thing as the symbols used to describe it. The symbols depend on a coordinate system. Once a coordinate system is chosen, the symbols become a precise way to say where the point is.
+
+\begin{definitionbox}
+In the plane, a point is usually written as an ordered pair
+\[
+P=(x,y).
+\]
+The first coordinate \(x\) describes horizontal position, and the second coordinate \(y\) describes vertical position. In three-dimensional space, a point is usually written as an ordered triple
+\[
+P=(x,y,z).
+\]
+\end{definitionbox}
+
+The order of the coordinates matters. The points \((2,5)\) and \((5,2)\) are generally different points. The numbers are the same, but their roles are not the same. The first number answers one question, and the second number answers another question.
+
+\begin{examplebox}
+The point
+\[
+P=(3,-2)
+\]
+means the following: starting from the origin, move \(3\) units in the positive horizontal direction and \(2\) units in the negative vertical direction.
+
+The point
+\[
+Q=(-2,3)
+\]
+uses the same two numbers, but in different positions. It describes a different point.
+\end{examplebox}
+
+This is a small example of a general habit that will appear throughout analytic geometry. Before doing a calculation, we should read the object. A pair of numbers is not just a pair of numbers. It is an ordered description of position.
+
+\subsection*{The origin and the coordinate axes}
+
+The origin is the point from which positions are measured. In the plane it is
+\[
+O=(0,0),
+\]
+and in space it is
+\[
+O=(0,0,0).
+\]
+The coordinate axes give directions of measurement. In the plane, the \(x\)-axis records horizontal displacement from the origin, while the \(y\)-axis records vertical displacement. In space, the \(z\)-axis adds a third independent direction.
+
+A coordinate system therefore does two things at once. It gives a point of reference, and it gives directions in which numbers are measured. Without this structure, a coordinate tuple has no geometric meaning.
+
+\begin{remarkbox}
+Coordinates are not only labels. They are labels chosen relative to a system of measurement. Changing the coordinate system may change the coordinates of a point, even though the point itself has not moved.
+\end{remarkbox}
+
+\subsection*{Coordinates as variables}
+
+Sometimes coordinates are fixed numbers. For example,
+\[
+A=(1,4), \qquad B=(-3,2)
+\]
+are particular points. But often coordinates are variables. When we write
+\[
+P=(x,y),
+\]
+we may be describing an arbitrary point in the plane. The letters \(x\) and \(y\) are not yet known numbers. They are placeholders for possible positions.
+
+This distinction is essential. A fixed point is one object. A point with variable coordinates can represent many possible points. Equations will later use this idea. For instance, an equation in \(x\) and \(y\) may describe all points whose coordinates satisfy a certain condition.
+
+\begin{examplebox}
+The expression
+\[
+P=(x,2)
+\]
+does not describe one fixed point unless \(x\) is known. It describes all points whose second coordinate is \(2\). Geometrically, these points lie on a horizontal line.
+
+Similarly,
+\[
+P=(1,y)
+\]
+describes all points whose first coordinate is \(1\). These points lie on a vertical line.
+\end{examplebox}
+
+This example already hints at the main idea of analytic geometry: an algebraic condition can describe a geometric object. The condition \(y=2\) describes a horizontal line. The condition \(x=1\) describes a vertical line. Later we will use more complicated conditions to describe more complicated objects.
+
+\subsection*{Reading before calculating}
+
+The first task in coordinate geometry is not to apply a formula. It is to understand what kind of object is being described.
+
+\begin{summarybox}
+When reading coordinates, ask:
+\begin{itemize}
+\item Am I looking at a fixed point or a point with variable coordinates?
+\item Which coordinate describes which direction?
+\item Is the order of the coordinates important in this problem?
+\item Is an equation describing one point or a whole set of points?
+\item What geometric information is encoded in the algebraic notation?
+\end{itemize}
+\end{summarybox}
+
+The aim is to develop a controlled language. Coordinates allow us to speak about geometry with numbers, but the numbers must be read with care.
