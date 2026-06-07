@@ -1,0 +1,116 @@
+\section{Limits of functions}
+
+A function limit describes what happens to the values \(f(x)\) when the input \(x\) approaches a certain point. The point may or may not belong to the domain of the function. What matters for the limit is the behavior near the point.
+
+We write
+\[
+\lim_{x\to a} f(x)=L
+\]
+when the values \(f(x)\) approach \(L\) as \(x\) approaches \(a\).
+
+\begin{definitionbox}
+The notation
+\[
+\lim_{x\to a} f(x)=L
+\]
+means that the values of \(f(x)\) can be made arbitrarily close to \(L\) by taking \(x\) sufficiently close to \(a\), with \(x\ne a\).
+\end{definitionbox}
+
+The condition \(x\ne a\) is not a technicality. A limit studies nearby values. The value at the point itself is a separate question.
+
+\subsection*{Direct substitution}
+
+Sometimes the limit can be found by direct substitution. This often happens for polynomials and many simple functions.
+
+\begin{examplebox}
+Compute
+\[
+\lim_{x\to3}(x^2+2x-1).
+\]
+The expression is defined and behaves regularly near \(x=3\), so we substitute:
+\[
+3^2+2\cdot3-1=9+6-1=14.
+\]
+Therefore
+\[
+\lim_{x\to3}(x^2+2x-1)=14.
+\]
+\end{examplebox}
+
+Direct substitution is not a rule to use blindly. It is a first test. If it gives a meaningful value and the function behaves regularly, it may solve the problem. If it produces a form such as \(0/0\), more work is needed.
+
+\subsection*{A removable difficulty}
+
+Consider
+\[
+\lim_{x\to3}\frac{x^2-4x+3}{x-3}.
+\]
+Direct substitution gives
+\[
+\frac{9-12+3}{0}=\frac0{0},
+\]
+which is not a number. This form tells us that direct substitution has failed. It does not tell us that the limit does not exist.
+
+Factor the numerator:
+\[
+x^2-4x+3=(x-1)(x-3).
+\]
+For \(x\ne3\),
+\[
+\frac{x^2-4x+3}{x-3}=x-1.
+\]
+Therefore
+\[
+\lim_{x\to3}\frac{x^2-4x+3}{x-3}
+=\lim_{x\to3}(x-1)=2.
+\]
+
+The original expression is not defined at \(x=3\), but near \(3\) it behaves like \(x-1\). The limit reads the nearby behavior.
+
+\subsection*{The meaning of \(0/0\)}
+
+The expression \(0/0\) is called an indeterminate form. It means that the information from direct substitution is insufficient. It is not an answer.
+
+The limit may exist, may fail to exist, or may be infinite. We must transform the expression or analyze it in another way.
+
+\begin{examplebox}
+The limit
+\[
+\lim_{x\to1}\frac{x^2-1}{x-1}
+\]
+gives \(0/0\) by direct substitution. After factoring,
+\[
+\frac{x^2-1}{x-1}=x+1
+\]
+for \(x\ne1\), so the limit is \(2\).
+
+But
+\[
+\lim_{x\to0}\frac{|x|}{x}
+\]
+also cannot be found by direct substitution, and the two-sided limit does not exist because the left and right behaviors are different.
+\end{examplebox}
+
+This is why we must read the situation before choosing a technique.
+
+\subsection*{Limits and graphs}
+
+On a graph, the limit \(\lim_{x\to a} f(x)\) asks what height the graph approaches near \(x=a\). A hole in the graph may not prevent a limit from existing. A jump may prevent a two-sided limit from existing.
+
+\begin{remarkbox}
+The value \(f(a)\) is the height of the graph at \(x=a\), if that point exists. The limit \(\lim_{x\to a}f(x)\) is the height approached by nearby points of the graph.
+\end{remarkbox}
+
+\begin{summarybox}
+When computing a function limit, ask:
+\begin{itemize}
+\item What point is \(x\) approaching?
+\item Is the function defined at nearby points?
+\item Does direct substitution give a meaningful value?
+\item If direct substitution gives \(0/0\), can the expression be simplified?
+\item Is the left-hand behavior the same as the right-hand behavior?
+\item Does the graph suggest a hole, a jump, or an asymptote?
+\end{itemize}
+\end{summarybox}
+
+A function limit is a statement about local behavior. The point itself matters for continuity, but the limit first asks what happens nearby.
