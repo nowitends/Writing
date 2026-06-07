@@ -41,6 +41,7 @@
 ./mathematical_lectures/basic_mathematics/chapters/chapter_12_applications_of_calculus.tex
 ./mathematical_lectures/basic_mathematics/chapters/derivatives_and_function_analysis
 ./mathematical_lectures/basic_mathematics/chapters/derivatives_and_function_analysis/.gitkeep
+./mathematical_lectures/basic_mathematics/chapters/derivatives_and_function_analysis/what_a_derivative_measures.tex
 ./mathematical_lectures/basic_mathematics/chapters/determinants
 ./mathematical_lectures/basic_mathematics/chapters/determinants/determinant_patterns.tex
 ./mathematical_lectures/basic_mathematics/chapters/determinants/determinants_of_small_matrices.tex
