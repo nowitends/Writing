@@ -1,0 +1,103 @@
+\section{Types of discontinuities}
+
+When a function is not continuous at a point, the failure can happen in different ways. Classifying the discontinuity helps us understand what kind of break appears in the graph and whether it can be repaired.
+
+\subsection*{Removable discontinuity}
+
+A removable discontinuity occurs when the limit exists, but the value at the point is missing or does not agree with the limit.
+
+\begin{examplebox}
+Let
+\[
+f(x)=\frac{x^2-4}{x-2},
+\qquad x\ne2.
+\]
+For \(x\ne2\),
+\[
+f(x)=x+2.
+\]
+Therefore
+\[
+\lim_{x\to2}f(x)=4.
+\]
+The function is not defined at \(2\), but if we define \(f(2)=4\), the function becomes continuous there. The discontinuity is removable.
+\end{examplebox}
+
+Graphically, a removable discontinuity is often seen as a hole.
+
+\subsection*{Jump discontinuity}
+
+A jump discontinuity occurs when the left-hand and right-hand limits exist but are different.
+
+\begin{examplebox}
+Let
+\[
+f(x)=
+\begin{cases}
+0, & x<1,\\
+2, & x\ge1.
+\end{cases}
+\]
+Then
+\[
+\lim_{x\to1^-}f(x)=0,
+\qquad
+\lim_{x\to1^+}f(x)=2.
+\]
+The one-sided limits are different, so the two-sided limit does not exist. The function has a jump discontinuity at \(1\).
+\end{examplebox}
+
+A jump cannot be repaired by changing only the value at the point. The two sides approach different heights.
+
+\subsection*{Infinite discontinuity}
+
+An infinite discontinuity occurs when the function grows without bound near a point. This often happens near vertical asymptotes.
+
+\begin{examplebox}
+Consider
+\[
+f(x)=\frac1{x-2}.
+\]
+As \(x\to2^+\), the denominator is small and positive, so
+\[
+f(x)	o\infty.
+\]
+As \(x\to2^-\), the denominator is small and negative, so
+\[
+f(x)	o-\infty.
+\]
+The function has an infinite discontinuity at \(2\), and the line \(x=2\) is a vertical asymptote.
+\end{examplebox}
+
+This is different from a removable discontinuity. There is no finite value that can be assigned at \(x=2\) to make the function continuous.
+
+\subsection*{Oscillatory behavior}
+
+Some functions fail to have a limit because they oscillate more and more rapidly near a point.
+
+\begin{examplebox}
+The function
+\[
+f(x)=\sin\frac1x,
+\qquad x\ne0,
+\]
+oscillates infinitely many times as \(x\to0\). It does not approach one number, so
+\[
+\lim_{x\to0}\sin\frac1x
+\]
+does not exist.
+\end{examplebox}
+
+This kind of example is more advanced than a simple jump, but it teaches an important lesson: a limit requires approaching one value.
+
+\begin{summarybox}
+Common types of discontinuities:
+\begin{itemize}
+\item Removable: the limit exists, but the value is missing or incorrect.
+\item Jump: the left-hand and right-hand limits are different.
+\item Infinite: the function grows without bound near the point.
+\item Oscillatory: the function fails to approach one value because of persistent oscillation.
+\end{itemize}
+\end{summarybox}
+
+A discontinuity is not merely a place where a formula looks difficult. It is a specific kind of failure of continuity.
