@@ -1,0 +1,81 @@
+\section{Antiderivatives and indefinite integrals}
+
+An antiderivative reverses differentiation. If differentiating \(F\) gives \(f\), then integrating \(f\) should recover \(F\), up to a constant.
+
+\begin{definitionbox}
+A function \(F\) is an antiderivative of \(f\) on an interval if
+\[
+F'(x)=f(x)
+\]
+for every \(x\) in that interval.
+\end{definitionbox}
+
+The phrase ``on an interval'' matters. Antiderivatives are usually discussed where the functions involved are defined and behave consistently.
+
+\subsection*{Why the constant appears}
+
+If \(F'(x)=f(x)\), then for every constant \(C\),
+\[
+(F(x)+C)'=F'(x)+0=f(x).
+\]
+Thus one antiderivative gives infinitely many antiderivatives. They differ by constants.
+
+This is why the indefinite integral is written as
+\[
+\int f(x)\,dx=F(x)+C.
+\]
+The constant \(C\) is not decoration. It records the information lost when differentiating.
+
+\begin{examplebox}
+Since
+\[
+\frac{d}{dx}x^3=3x^2,
+\]
+we have
+\[
+\int 3x^2\,dx=x^3+C.
+\]
+The functions \(x^3\), \(x^3+5\), and \(x^3-17\) all have derivative \(3x^2\).
+\end{examplebox}
+
+\subsection*{Checking an integral}
+
+The best way to check an indefinite integral is to differentiate the answer. If the derivative returns the integrand, the antiderivative is correct.
+
+\begin{examplebox}
+Claim:
+\[
+\int (4x^3-2)\,dx=x^4-2x+C.
+\]
+Check by differentiating:
+\[
+\frac{d}{dx}(x^4-2x+C)=4x^3-2.
+\]
+This matches the integrand, so the integral is correct.
+\end{examplebox}
+
+This habit is very useful. Integration techniques can be subtle, but differentiation of the final answer is often straightforward.
+
+\subsection*{Indefinite integrals are families}
+
+The expression
+\[
+\int f(x)\,dx
+\]
+does not represent one function. It represents the family of all antiderivatives of \(f\). The constant \(C\) describes this family.
+
+\begin{remarkbox}
+When the answer to an indefinite integral is written without \(+C\), it is incomplete unless a particular antiderivative has been explicitly requested.
+\end{remarkbox}
+
+\begin{summarybox}
+When working with indefinite integrals, ask:
+\begin{itemize}
+\item What function has the given integrand as its derivative?
+\item Did I include the constant of integration?
+\item Can I check the answer by differentiating?
+\item Is the integral asking for one function or a family of functions?
+\end{itemize}
+\end{summarybox}
+
+Indefinite integration is the systematic search for antiderivatives.
