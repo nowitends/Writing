@@ -1,3 +1,184 @@
 \section{The inverse matrix method}
 
-This section will explain how a system written as \(Ax=b\) can be solved by using \(A^{-1}\), when the inverse exists. The method will be connected with the meaning of an inverse operation rather than presented as a mechanical trick.
+Some systems of linear equations can be solved by using the inverse of the coefficient matrix. This method is based on the matrix equation
+\[
+Ax=b.
+\]
+Here \(A\) is the coefficient matrix, \(x\) is the column vector of unknowns, and \(b\) is the right-hand side vector.
+
+The method is simple in form, but its meaning should be understood carefully. If \(A\) is invertible, then multiplying by \(A^{-1}\) undoes the action of \(A\).
+
+\subsection*{Solving \(Ax=b\)}
+
+Suppose
+\[
+Ax=b
+\]
+and \(A\) is invertible. Multiply both sides on the left by \(A^{-1}\):
+\[
+A^{-1}Ax=A^{-1}b.
+\]
+Since
+\[
+A^{-1}A=I,
+\]
+we get
+\[
+Ix=A^{-1}b.
+\]
+Therefore
+\[
+x=A^{-1}b.
+\]
+
+\begin{theorembox}
+If \(A\) is an invertible square matrix, then the system
+\[
+Ax=b
+\]
+has the unique solution
+\[
+x=A^{-1}b.
+\]
+\end{theorembox}
+
+The word ``invertible'' is essential. If \(A^{-1}\) does not exist, this method cannot be used.
+
+\subsection*{A worked example}
+
+\begin{examplebox}
+Solve
+\[
+\begin{cases}
+2x+y=5,\\
+x+y=3.
+\end{cases}
+\]
+Write the system as
+\[
+\begin{pmatrix}
+2&1\\
+1&1
+\end{pmatrix}
+\begin{pmatrix}
+x\\y
+\end{pmatrix}
+=
+\begin{pmatrix}
+5\\3
+\end{pmatrix}.
+\]
+Thus
+\[
+A=\begin{pmatrix}2&1\\1&1\end{pmatrix},
+\qquad
+b=\begin{pmatrix}5\\3\end{pmatrix}.
+\]
+The determinant is
+\[
+\det A=2\cdot1-1\cdot1=1,
+\]
+so \(A\) is invertible. For a \(2\times2\) matrix,
+\[
+A^{-1}=\begin{pmatrix}1&-1\\-1&2\end{pmatrix}.
+\]
+Therefore
+\[
+\begin{pmatrix}x\\y\end{pmatrix}
+=A^{-1}b
+=
+\begin{pmatrix}1&-1\\-1&2\end{pmatrix}
+\begin{pmatrix}5\\3\end{pmatrix}.
+\]
+Compute the product:
+\[
+\begin{pmatrix}x\\y\end{pmatrix}
+=
+\begin{pmatrix}5-3\\-5+6\end{pmatrix}
+=
+\begin{pmatrix}2\\1\end{pmatrix}.
+\]
+Thus
+\[
+x=2,
+\qquad
+ y=1.
+\]
+\end{examplebox}
+
+The inverse matrix method gives the same result as other correct methods. The difference is the language: here solving means applying the inverse transformation.
+
+\subsection*{Why the method works}
+
+The equation
+\[
+Ax=b
+\]
+can be read as follows: the matrix \(A\) acts on the unknown vector \(x\) and produces the vector \(b\). If \(A\) is invertible, then this action can be reversed. Applying \(A^{-1}\) to \(b\) recovers the original vector \(x\).
+
+This interpretation is important. The formula
+\[
+x=A^{-1}b
+\]
+is not magic. It is the matrix version of undoing an operation.
+
+\subsection*{Connection with determinants}
+
+For a square matrix \(A\), invertibility is equivalent to
+\[
+\det A\ne0.
+\]
+Therefore the inverse matrix method applies exactly when the coefficient matrix has non-zero determinant.
+
+If
+\[
+\det A=0,
+\]
+then \(A^{-1}\) does not exist. The system may have no solution or infinitely many solutions, but it cannot be solved by multiplying by \(A^{-1}\).
+
+\begin{examplebox}
+Consider
+\[
+\begin{cases}
+x+y=2,\\
+2x+2y=4.
+\end{cases}
+\]
+The coefficient matrix is
+\[
+A=\begin{pmatrix}1&1\\2&2\end{pmatrix},
+\]
+and
+\[
+\det A=0.
+\]
+The inverse matrix method cannot be used. However, the system does have solutions: every pair \((x,y)\) satisfying \(x+y=2\) is a solution. There are infinitely many such pairs.
+\end{examplebox}
+
+Again, the failure of invertibility means loss of uniqueness, not automatically inconsistency.
+
+\subsection*{When this method is useful}
+
+The inverse matrix method is conceptually clear, but it is not always the most practical computational method. Finding \(A^{-1}\) can be more work than solving the system directly by elimination.
+
+The method is especially useful when:
+\begin{itemize}
+\item the inverse matrix is already known,
+\item several systems have the same coefficient matrix \(A\) but different right-hand sides,
+\item we want to understand the system as a matrix equation.
+\end{itemize}
+
+For routine computation, Gaussian elimination is usually more flexible.
+
+\begin{summarybox}
+When using the inverse matrix method, ask:
+\begin{itemize}
+\item Can the system be written as \(Ax=b\)?
+\item Is \(A\) square?
+\item Is \(A\) invertible, equivalently \(\det A\ne0\)?
+\item Have I multiplied on the correct side by \(A^{-1}\)?
+\item Does the vector \(A^{-1}b\) satisfy the original system?
+\end{itemize}
+\end{summarybox}
+
+The inverse matrix method is powerful because it connects solving systems with the idea of reversing a linear transformation.
