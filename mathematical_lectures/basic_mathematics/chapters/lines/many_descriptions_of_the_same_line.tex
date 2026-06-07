@@ -1,0 +1,126 @@
+\section{Many descriptions of the same line}
+
+A line is a single geometric object, but it can be described in many algebraic languages. This is not a defect of geometry. It is a strength. Different descriptions make different features visible.
+
+A good student should not ask only: ``What is the formula for a line?'' A better question is: ``Which description of the line is most useful for the question I am trying to answer?''
+
+In this section we collect the most common descriptions of a line in the plane. Later sections will explain them more carefully and show how to move between them.
+
+\subsection*{Vector form}
+
+The vector form is
+\[
+P=A+t v,
+\]
+where \(A\) is a point on the line, \(v\ne0\) is a direction vector, and \(t\in\mathbb{R}\).
+
+This form makes motion along the line visible. It says: start at a point, then move in a fixed direction by an arbitrary amount.
+
+\subsection*{Coordinate parametric form}
+
+If
+\[
+A=(x_0,y_0),
+\qquad
+v=(a,b),
+\]
+then the vector form becomes
+\[
+(x,y)=(x_0,y_0)+t(a,b).
+\]
+Equivalently,
+\[
+x=x_0+ta,
+\qquad
+y=y_0+tb.
+\]
+This is the coordinate parametric form. It is useful when we want to generate points on the line, check membership, or describe a line in space later.
+
+\subsection*{Two-point form}
+
+If a line passes through two distinct points \(A\) and \(B\), then the vector \(B-A\) gives a direction. The line can be written as
+\[
+P=A+t(B-A).
+\]
+This form is useful because two points often occur naturally in geometric problems.
+
+\subsection*{Point-slope form}
+
+For a non-vertical line in the plane, if the line passes through \((x_0,y_0)\) and has slope \(m\), then
+\[
+y-y_0=m(x-x_0).
+\]
+This form makes the slope and one point visible. It is useful in elementary coordinate geometry, but it does not describe vertical lines.
+
+\subsection*{Slope-intercept form}
+
+The form
+\[
+y=mx+b
+\]
+shows the slope \(m\) and the intersection point \((0,b)\) with the \(y\)-axis. It is familiar and convenient, but it is not the most general way to describe a line. A vertical line cannot be written in this form.
+
+\subsection*{Implicit or general form}
+
+The general form of a line in the plane is
+\[
+Ax+By+C=0,
+\]
+where \(A\) and \(B\) are not both zero.
+
+This form is very important. It describes vertical, horizontal, and oblique lines in one language. It is also useful for intersections, side-of-line tests, and distance from a point to a line.
+
+\subsection*{Normal form}
+
+The normal form uses a point \(P_0\) on the line and a normal vector \(n\ne0\), perpendicular to the line:
+\[
+n\cdot(P-P_0)=0.
+\]
+If \(n=(A,B)\), \(P=(x,y)\), and \(P_0=(x_0,y_0)\), this becomes
+\[
+A(x-x_0)+B(y-y_0)=0.
+\]
+After expanding, it becomes an equation of the form
+\[
+Ax+By+C=0.
+\]
+Thus the general form hides a normal vector.
+
+\subsection*{Why so many forms?}
+
+The forms are not separate topics to memorize independently. They are different ways of reading the same object.
+
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+Description & Visible information & Useful for \\
+\midrule
+\(P=A+tv\) & point and direction & movement, parametrization \\
+\(P=A+t(B-A)\) & two points & building a line from points \\
+\(y-y_0=m(x-x_0)\) & point and slope & non-vertical plane lines \\
+\(y=mx+b\) & slope and intercept & quick graphing \\
+\(Ax+By+C=0\) & normal vector hidden in coefficients & intersections, distance \\
+\(n\cdot(P-P_0)=0\) & point and normal vector & perpendicularity, distance \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+This table should not be read as a list of unrelated formulas. It is a map. When a problem gives certain information, one description may be natural. When a problem asks for a certain property, another description may be more useful.
+
+\begin{remarkbox}
+Changing the description of a line is like translating a sentence from one language into another. The meaning should remain the same, but different words may make different parts of the meaning easier to see.
+\end{remarkbox}
+
+\begin{summarybox}
+When choosing a line description, ask:
+\begin{itemize}
+\item Do I need to see a direction vector?
+\item Do I need to use a normal vector?
+\item Do I need to check whether a point lies on the line?
+\item Do I need to compare this line with another line?
+\item Do I need to compute a distance?
+\item Is a special case, such as a vertical line, possible?
+\end{itemize}
+\end{summarybox}
+
+The rest of the chapter develops this map into a working method.
