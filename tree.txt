@@ -85,6 +85,7 @@
 ./mathematical_lectures/basic_mathematics/chapters/planes/.gitkeep
 ./mathematical_lectures/basic_mathematics/chapters/sequences_and_functions
 ./mathematical_lectures/basic_mathematics/chapters/sequences_and_functions/.gitkeep
+./mathematical_lectures/basic_mathematics/chapters/sequences_and_functions/discrete_and_continuous_domains.tex
 ./mathematical_lectures/basic_mathematics/chapters/sequences_and_functions/domain_codomain_and_values.tex
 ./mathematical_lectures/basic_mathematics/chapters/sequences_and_functions/explicit_and_recursive_sequences.tex
 ./mathematical_lectures/basic_mathematics/chapters/sequences_and_functions/function_notation_and_evaluation.tex
