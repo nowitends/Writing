@@ -1,0 +1,86 @@
+\section{What a derivative measures}
+
+The derivative is one of the main ideas of calculus. It measures how a function changes when its input changes. More precisely, it measures the limiting rate of change of the function at a point.
+
+This idea should not be introduced only as a list of rules. Rules are useful later, but first we need to understand what the derivative is trying to describe.
+
+\subsection*{Change in input and change in output}
+
+Let \(f\) be a function. If the input changes from \(a\) to \(a+h\), then the change in input is
+\[
+h.
+\]
+The corresponding change in output is
+\[
+f(a+h)-f(a).
+\]
+The quotient
+\[
+\frac{f(a+h)-f(a)}{h}
+\]
+measures the average rate of change of the function between \(a\) and \(a+h\).
+
+\begin{remarkbox}
+The numerator measures change in the function value. The denominator measures change in the input. The quotient compares these two changes.
+\end{remarkbox}
+
+\subsection*{From average change to instantaneous change}
+
+The average rate of change depends on the size of the interval. To measure the rate of change at one point, we let the interval shrink. This leads to a limit.
+
+\begin{definitionbox}
+The derivative of \(f\) at a point \(a\) is
+\[
+f'(a)=\lim_{h\to0}\frac{f(a+h)-f(a)}{h},
+\]
+provided this limit exists.
+\end{definitionbox}
+
+The derivative is therefore not only a formula. It is a limit of average rates of change.
+
+\begin{examplebox}
+Let
+\[
+f(x)=x^2.
+\]
+At the point \(a\), the difference quotient is
+\[
+\frac{f(a+h)-f(a)}{h}
+=
+\frac{(a+h)^2-a^2}{h}.
+\]
+Expand the numerator:
+\[
+(a+h)^2-a^2=a^2+2ah+h^2-a^2=2ah+h^2.
+\]
+Thus, for \(h\ne0\),
+\[
+\frac{f(a+h)-f(a)}{h}=\frac{2ah+h^2}{h}=2a+h.
+\]
+Taking the limit as \(h\to0\), we get
+\[
+f'(a)=\lim_{h\to0}(2a+h)=2a.
+\]
+So the derivative of \(x^2\) at \(a\) is \(2a\).
+\end{examplebox}
+
+This computation shows why the previous chapter on limits matters. The derivative is born from a limit that initially has the form \(0/0\). We simplify the expression and then take the limit.
+
+\subsection*{Geometric meaning}
+
+On the graph of a function, the average rate of change between two points is the slope of the secant line through those points. As the second point moves closer to the first, the secant line approaches the tangent line.
+
+The derivative \(f'(a)\) is the slope of the tangent line to the graph at \(x=a\), if this tangent line exists.
+
+\begin{summarybox}
+When reading the derivative definition, ask:
+\begin{itemize}
+\item What is the change in input?
+\item What is the change in output?
+\item What average rate of change is being formed?
+\item What happens as the input change tends to zero?
+\item What does the result mean on the graph?
+\end{itemize}
+\end{summarybox}
+
+A derivative measures local change. It turns the visual idea of a tangent slope into a precise limit.
