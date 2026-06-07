@@ -1,0 +1,196 @@
+\section{Vector operations}
+
+Vectors can be added, subtracted, and multiplied by numbers. These operations look algebraic, but each of them has a geometric meaning. If we treat them only as coordinate formulas, we lose much of their value.
+
+The guiding idea is this: vectors describe displacements, and vector operations describe how displacements are combined or changed.
+
+\subsection*{Adding vectors}
+
+Suppose a first displacement moves an object by \(u\), and a second displacement moves it by \(v\). The total displacement is \(u+v\). In coordinates, addition is performed component by component.
+
+\begin{definitionbox}
+For vectors
+\[
+u=(u_1,u_2),
+\qquad
+v=(v_1,v_2),
+\]
+their sum is
+\[
+u+v=(u_1+v_1,\,u_2+v_2).
+\]
+In space, for
+\[
+u=(u_1,u_2,u_3),
+\qquad
+v=(v_1,v_2,v_3),
+\]
+we define
+\[
+u+v=(u_1+v_1,\,u_2+v_2,\,u_3+v_3).
+\]
+\end{definitionbox}
+
+The formula says that horizontal changes add to horizontal changes, vertical changes add to vertical changes, and third-coordinate changes add to third-coordinate changes. We do not mix the roles of the coordinates.
+
+\begin{examplebox}
+Let
+\[
+u=(3,-1),
+\qquad
+v=(-2,5).
+\]
+Then
+\[
+u+v=(3+(-2),\,-1+5)=(1,4).
+\]
+Geometrically, moving by \(u\) and then by \(v\) produces the same final displacement as moving once by \((1,4)\).
+\end{examplebox}
+
+This interpretation explains why vector addition is commutative:
+\[
+u+v=v+u.
+\]
+If the same two displacements are applied, the final total displacement is the same, even though the path used to draw the two arrows may look different.
+
+\subsection*{Subtracting vectors}
+
+Subtraction measures the difference between displacements. If \(u\) and \(v\) are two vectors, then
+\[
+u-v=u+(-v).
+\]
+Here \(-v\) is the vector with the same length and opposite orientation.
+
+\begin{definitionbox}
+For vectors
+\[
+u=(u_1,u_2),
+\qquad
+v=(v_1,v_2),
+\]
+their difference is
+\[
+u-v=(u_1-v_1,\,u_2-v_2).
+\]
+\end{definitionbox}
+
+\begin{examplebox}
+Let
+\[
+u=(4,2),
+\qquad
+v=(1,5).
+\]
+Then
+\[
+u-v=(4-1,\,2-5)=(3,-3).
+\]
+This vector records how the displacement \(v\) must be changed to become the displacement \(u\).
+\end{examplebox}
+
+Subtraction should be read with care. The vectors \(u-v\) and \(v-u\) are opposites:
+\[
+v-u=-(u-v).
+\]
+Changing the order changes the orientation.
+
+\subsection*{Multiplying a vector by a number}
+
+Multiplying a vector by a number changes its scale. If the number is positive, the orientation is preserved. If the number is negative, the orientation is reversed. If the number is zero, the vector collapses to the zero vector.
+
+\begin{definitionbox}
+If
+\[
+u=(u_1,u_2),
+\]
+and \(\lambda\) is a real number, then
+\[
+\lambda u=(\lambda u_1,\,\lambda u_2).
+\]
+In space,
+\[
+\lambda(u_1,u_2,u_3)=(\lambda u_1,\,\lambda u_2,\,\lambda u_3).
+\]
+\end{definitionbox}
+
+\begin{examplebox}
+Let
+\[
+u=(2,-3).
+\]
+Then
+\[
+3u=(6,-9),
+\qquad
+-2u=(-4,6),
+\qquad
+0u=(0,0).
+\]
+The vector \(3u\) points in the same direction as \(u\), but is three times as long. The vector \(-2u\) lies on the same direction line, but points in the opposite direction.
+\end{examplebox}
+
+\subsection*{Parallel vectors}
+
+Scalar multiplication gives a simple way to recognize parallel vectors. Two non-zero vectors are parallel when one is a scalar multiple of the other.
+
+\begin{definitionbox}
+Non-zero vectors \(u\) and \(v\) are parallel if there exists a real number \(\lambda\ne0\) such that
+\[
+v=\lambda u.
+\]
+\end{definitionbox}
+
+\begin{examplebox}
+The vectors
+\[
+u=(2,3),
+\qquad
+v=(6,9)
+\]
+are parallel because
+\[
+v=3u.
+\]
+The vector
+\[
+w=(-4,-6)
+\]
+is also parallel to \(u\), because
+\[
+w=-2u.
+\]
+The negative scalar means that \(w\) points in the opposite orientation along the same direction line.
+\end{examplebox}
+
+This idea will be central in the next chapter. A line can be described by a point and a direction vector. All vectors parallel to that direction vector describe the same direction line, although they may have different lengths or orientations.
+
+\subsection*{The zero vector}
+
+The zero vector is the displacement that changes nothing:
+\[
+0=(0,0)
+\]
+in the plane, and
+\[
+0=(0,0,0)
+\]
+in space.
+
+It is useful, but it must be handled carefully. The zero vector has no direction. For this reason, when we discuss directions or parallelism, we usually require direction vectors to be non-zero.
+
+\begin{remarkbox}
+A zero displacement is meaningful: it says that the starting point and ending point coincide. But it should not be used as a direction vector for a line or a plane, because it does not point anywhere.
+\end{remarkbox}
+
+\begin{summarybox}
+When using vector operations, ask:
+\begin{itemize}
+\item Am I combining displacements or comparing them?
+\item Does scalar multiplication preserve or reverse orientation?
+\item Is a vector being used as a direction?
+\item If so, is it non-zero?
+\item Are two vectors parallel because one is a scalar multiple of the other?
+\end{itemize}
+\end{summarybox}
+
+The purpose of vector operations is not only to produce new coordinates. The purpose is to control displacements, directions, and geometric relationships.
