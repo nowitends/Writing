@@ -1,0 +1,104 @@
+\section{Choosing the right limit method}
+
+This chapter introduced several kinds of limits and several methods for working with them. The purpose is not to create a list of tricks. The purpose is to learn how to recognize what kind of limiting question is being asked and which method makes the behavior visible.
+
+A good limit solution begins by reading the expression.
+
+\subsection*{First identify the type of limit}
+
+Before calculating, ask what kind of input is approaching what.
+
+\begin{itemize}
+\item If the expression is \(\lim_{n\to\infty}a_n\), it is a sequence limit.
+\item If the expression is \(\lim_{x\to a}f(x)\), it is a function limit near a finite point.
+\item If the expression is \(\lim_{x\to a^-}f(x)\) or \(\lim_{x\to a^+}f(x)\), it is a one-sided limit.
+\item If the expression is \(\lim_{x\to\infty}f(x)\), it is a limit at infinity.
+\end{itemize}
+
+Different kinds of limits naturally suggest different tools.
+
+\subsection*{Then try the simplest reading}
+
+For a function limit at a finite point, direct substitution is often the first test. If it gives a meaningful value and the function is continuous there, the limit is found.
+
+If direct substitution gives \(0/0\), do not stop. Try to factor, cancel, rationalize, or use a standard limit.
+
+For a sequence or a limit at infinity, direct substitution is not the right idea. Instead, look for dominant terms and long-term behavior.
+
+\subsection*{A practical guide}
+
+\begin{center}
+\begin{tabular}{ll}
+\toprule
+Situation & Useful method \\
+\midrule
+Polynomial at a finite point & direct substitution \\
+Rational function with non-zero denominator & direct substitution \\
+Form \(0/0\) with polynomials & factor and cancel \\
+Form \(0/0\) with square roots & multiply by the conjugate \\
+Trigonometric expression near \(0\) & use standard trigonometric limits \\
+Rational expression as \(x\to\infty\) or \(n\to\infty\) & divide by dominant power \\
+Different formulas on two sides & compute one-sided limits \\
+Question about continuity & compare \(f(a)\) with \(\lim_{x\to a}f(x)\) \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The table is a guide, not a replacement for thinking. A problem may require more than one step.
+
+\subsection*{A complete reading example}
+
+Consider
+\[
+\lim_{x\to4}\frac{x^2-2x-8}{x^2-9x+20}.
+\]
+First read the type of problem: this is a function limit at a finite point. Try substitution:
+\[
+\frac{16-8-8}{16-36+20}=\frac00.
+\]
+This is indeterminate, so we factor:
+\[
+x^2-2x-8=(x-4)(x+2),
+\]
+\[
+x^2-9x+20=(x-4)(x-5).
+\]
+For \(x\ne4\),
+\[
+\frac{x^2-2x-8}{x^2-9x+20}=\frac{x+2}{x-5}.
+\]
+Now substitute:
+\[
+\frac{4+2}{4-5}=-6.
+\]
+Therefore
+\[
+\lim_{x\to4}\frac{x^2-2x-8}{x^2-9x+20}=-6.
+\]
+
+The important point is the order of thought: identify the type of limit, test direct substitution, recognize \(0/0\), transform the expression, then compute.
+
+\subsection*{Preparing for derivatives}
+
+Limits are not the end of the story. They are the language needed to define derivatives. In the next chapter, we will study expressions such as
+\[
+\lim_{h\to0}\frac{f(x+h)-f(x)}{h}.
+\]
+This is a limit of a quotient. It measures the limiting rate of change of a function.
+
+The work in this chapter prepares that idea. We learned how to read \(f(x+h)\), how to interpret \(h\to0\), and how to handle expressions that initially look like \(0/0\).
+
+\begin{summarybox}
+At the end of this chapter, remember:
+\begin{itemize}
+\item A limit describes approached behavior.
+\item A sequence limit describes what happens as \(n\to\infty\).
+\item A function limit near a point describes what happens as \(x\to a\), with \(x\ne a\).
+\item One-sided limits must agree for a two-sided limit to exist.
+\item Continuity means \(\lim_{x\to a}f(x)=f(a)\).
+\item Indeterminate forms are not answers; they are signals to transform or analyze further.
+\item The method should be chosen from the structure of the expression.
+\end{itemize}
+\end{summarybox}
+
+A limit calculation should always end with interpretation. The final number is important, but the reasoning tells us what behavior the number describes.
