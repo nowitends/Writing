@@ -1,0 +1,145 @@
+\section{Complete function analysis examples}
+
+A complete function analysis combines the tools developed in this chapter. We do not want isolated derivative calculations. We want a coherent description of the function.
+
+The following example shows how the pieces fit together.
+
+\subsection*{A polynomial example}
+
+\begin{examplebox}
+Analyze the function
+\[
+f(x)=x^3-3x.
+\]
+
+\textbf{Domain.} The function is a polynomial, so its domain is
+\[
+\mathbb{R}.
+\]
+
+\textbf{Intercepts.} We factor:
+\[
+f(x)=x(x^2-3).
+\]
+Thus the zeros are
+\[
+x=0,
+\qquad
+x=\sqrt3,
+\qquad
+x=-\sqrt3.
+\]
+
+\textbf{Limits at infinity.} The leading term is \(x^3\). Therefore
+\[
+\lim_{x\to\infty}f(x)=\infty,
+\qquad
+\lim_{x\to-\infty}f(x)=-\infty.
+\]
+There are no horizontal asymptotes.
+
+\textbf{First derivative.} We compute
+\[
+f'(x)=3x^2-3=3(x-1)(x+1).
+\]
+The critical points are
+\[
+x=-1
+\qquad\text{and}\qquad
+x=1.
+\]
+The sign of \(f'\) is positive on \((-\infty,-1)\), negative on \((-1,1)\), and positive on \((1,\infty)\). Therefore \(f\) is increasing, then decreasing, then increasing.
+
+At \(x=-1\), the derivative changes from positive to negative, so there is a local maximum:
+\[
+f(-1)=2.
+\]
+At \(x=1\), the derivative changes from negative to positive, so there is a local minimum:
+\[
+f(1)=-2.
+\]
+
+\textbf{Second derivative.} We compute
+\[
+f''(x)=6x.
+\]
+Thus \(f''(x)<0\) for \(x<0\), and \(f''(x)>0\) for \(x>0\). The graph is concave on \((-\infty,0)\) and convex on \((0,\infty)\). Since the second derivative changes sign at \(0\), there is an inflection point at
+\[
+(0,0).
+\]
+
+\textbf{Conclusion.} The graph starts down on the left, increases to a local maximum at \((-1,2)\), decreases to a local minimum at \((1,-2)\), and then increases to infinity. Its convexity changes at the origin.
+\end{examplebox}
+
+The example is not important because the function is difficult. It is important because it shows the order of analysis. Each step answers a different question.
+
+\subsection*{A rational example}
+
+\begin{examplebox}
+Analyze the basic behavior of
+\[
+f(x)=\frac{x+1}{x-1}.
+\]
+
+\textbf{Domain.} The denominator cannot be zero, so
+\[
+D_f=\mathbb{R}\setminus\{1\}.
+\]
+
+\textbf{Vertical asymptote.} Near \(x=1\), the denominator tends to zero. Since the numerator tends to \(2\), the function grows without bound. Thus
+\[
+x=1
+\]
+is a vertical asymptote.
+
+\textbf{Horizontal asymptote.} For large \(|x|\), the leading terms dominate:
+\[
+\frac{x+1}{x-1}\to1.
+\]
+So
+\[
+y=1
+\]
+is a horizontal asymptote.
+
+\textbf{Derivative.} Using the quotient rule,
+\[
+f'(x)=\frac{1\cdot(x-1)-(x+1)\cdot1}{(x-1)^2}
+=\frac{x-1-x-1}{(x-1)^2}
+=\frac{-2}{(x-1)^2}.
+\]
+Since
+\[
+(x-1)^2>0
+\]
+for every \(x\ne1\), we have
+\[
+f'(x)<0
+\]
+on both intervals of the domain. Therefore the function is decreasing on \((-\infty,1)\) and on \((1,\infty)\).
+
+\textbf{Conclusion.} The graph has a vertical asymptote at \(x=1\), a horizontal asymptote at \(y=1\), and decreases on each interval of its domain.
+\end{examplebox}
+
+This example shows why domain and limits must be studied before or together with derivatives. The derivative alone does not reveal the vertical asymptote unless we already know where the function is not defined.
+
+\subsection*{How to write a final analysis}
+
+A final solution should not be only a list of calculations. It should connect calculations to conclusions. For example, after finding \(f'(x)>0\), state that the function is increasing. After finding a limit at infinity, state the horizontal asymptote. After finding a sign change in \(f''\), state the inflection point.
+
+\begin{summarybox}
+A complete function analysis should usually include:
+\begin{itemize}
+\item domain,
+\item intercepts or zeros, when useful,
+\item limits at boundary points and infinity,
+\item asymptotes,
+\item first derivative and monotonicity,
+\item local extrema,
+\item second derivative and convexity,
+\item inflection points,
+\item a final coherent description of the graph.
+\end{itemize}
+\end{summarybox}
+
+The purpose of function analysis is understanding. Derivatives are tools for that understanding, not the whole story by themselves.
