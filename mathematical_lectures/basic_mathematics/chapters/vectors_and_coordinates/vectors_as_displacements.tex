@@ -1,0 +1,130 @@
+\section{Vectors as displacements}
+
+A point describes a position. A vector describes a displacement. This difference is one of the most important distinctions in analytic geometry.
+
+If we say that a point is \((3,2)\), we are saying where something is. If we say that a vector is \((3,2)\), we are saying how something moves: three units in one coordinate direction and two units in another coordinate direction. The same pair of numbers may appear in both situations, but the meaning is different.
+
+\begin{definitionbox}
+Let
+\[
+A=(a_1,a_2),
+\qquad
+B=(b_1,b_2)
+\]
+be points in the plane. The vector from \(A\) to \(B\) is
+\[
+\overrightarrow{AB}=B-A=(b_1-a_1,\,b_2-a_2).
+\]
+In space, if
+\[
+A=(a_1,a_2,a_3),
+\qquad
+B=(b_1,b_2,b_3),
+\]
+then
+\[
+\overrightarrow{AB}=(b_1-a_1,\,b_2-a_2,\,b_3-a_3).
+\]
+\end{definitionbox}
+
+The formula is simple, but it should be read carefully. We subtract the starting coordinates from the ending coordinates. A displacement is not only about where we end. It is about how we get from one position to another.
+
+\begin{examplebox}
+Let
+\[
+A=(1,4),
+\qquad
+B=(6,2).
+\]
+Then
+\[
+\overrightarrow{AB}=B-A=(6-1,\,2-4)=(5,-2).
+\]
+This means that to move from \(A\) to \(B\), we move \(5\) units in the positive \(x\)-direction and \(2\) units in the negative \(y\)-direction.
+\end{examplebox}
+
+The vector \((5,-2)\) does not remember the absolute position of the starting point. It remembers the displacement. The same displacement could begin somewhere else.
+
+\begin{examplebox}
+Let
+\[
+C=(-3,1),
+\qquad
+D=(2,-1).
+\]
+Then
+\[
+\overrightarrow{CD}=D-C=(2-(-3),\,-1-1)=(5,-2).
+\]
+Thus
+\[
+\overrightarrow{AB}=\overrightarrow{CD},
+\]
+even though the points \(A,B,C,D\) are not the same. The arrows begin in different places, but they describe the same displacement.
+\end{examplebox}
+
+This is why vectors are often called free objects in elementary geometry. A vector can be represented by an arrow, but the arrow may be moved parallel to itself without changing the vector. What matters is direction, length, and orientation, not the particular location of the drawing.
+
+\subsection*{Position vectors}
+
+There is one special way in which points and vectors are connected. If a vector begins at the origin and ends at a point \(P\), then the coordinates of the vector and the coordinates of the point are the same.
+
+If
+\[
+P=(p_1,p_2),
+\]
+then
+\[
+\overrightarrow{OP}=(p_1,p_2),
+\]
+where \(O=(0,0)\).
+
+\begin{remarkbox}
+The equality of coordinates does not mean that points and vectors are the same kind of object. It means that a point can be represented by the vector from the origin to that point. This representation is useful, but the distinction should not be forgotten.
+\end{remarkbox}
+
+This distinction will help us later. A line can be described by starting from one point and moving in a vector direction. A plane can be described by a point and two independent directions, or by a point and one normal vector. In every case, we must know whether an expression describes a position, a displacement, or a direction.
+
+\subsection*{Opposite displacements}
+
+The vector from \(B\) to \(A\) is the opposite of the vector from \(A\) to \(B\):
+\[
+\overrightarrow{BA}=A-B=-(B-A)=-\overrightarrow{AB}.
+\]
+This is not a new formula to memorize. It simply says that going back reverses the displacement.
+
+\begin{examplebox}
+For the points
+\[
+A=(1,4),
+\qquad
+B=(6,2),
+\]
+we found
+\[
+\overrightarrow{AB}=(5,-2).
+\]
+In the opposite direction,
+\[
+\overrightarrow{BA}=A-B=(1-6,\,4-2)=(-5,2).
+\]
+Thus
+\[
+\overrightarrow{BA}=-\overrightarrow{AB}.
+\]
+\end{examplebox}
+
+The sign of a vector therefore carries geometric information. It tells us orientation. The vectors \((5,-2)\) and \((-5,2)\) lie along the same direction line, but they point in opposite directions.
+
+\begin{summarybox}
+When working with vectors as displacements, ask:
+\begin{itemize}
+\item Which point is the starting point?
+\item Which point is the ending point?
+\item Am I describing a position or a displacement?
+\item Would the same displacement be obtained if the arrow were moved elsewhere?
+\item What changes when the direction of the arrow is reversed?
+\end{itemize}
+\end{summarybox}
+
+A vector is not merely a pair or triple of numbers. It is a controlled way of recording movement from one position to another.
