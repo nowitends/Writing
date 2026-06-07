@@ -1,3 +1,137 @@
 \section{Geometric meaning of solutions}
 
-This section will connect systems of linear equations with geometry. In two variables, equations describe lines; in three variables, they describe planes. The solution set is the set of points where all conditions are satisfied at once.
+Linear systems have an algebraic form, but they also have a geometric meaning. This geometric interpretation is often the easiest way to understand why a system may have one solution, no solution, or infinitely many solutions.
+
+The central idea is simple: each equation describes a set of points. The solution set of the system is the intersection of all these sets.
+
+\subsection*{Two variables: lines in the plane}
+
+In two variables, a linear equation
+\[
+ax+by=c
+\]
+usually describes a line in the plane. A system of two linear equations describes two lines, and a solution is a point that lies on both lines.
+
+\begin{examplebox}
+Consider
+\[
+\begin{cases}
+x+y=5,\\
+2x-y=1.
+\end{cases}
+\]
+The first equation describes one line. The second equation describes another line. The pair \((2,3)\) is a solution because the point \((2,3)\) lies on both lines.
+\end{examplebox}
+
+This is the geometric meaning of solving the system: find the common point of the two lines.
+
+\subsection*{One solution}
+
+If two lines in the plane intersect in one point, the system has exactly one solution.
+
+\begin{examplebox}
+The system
+\[
+\begin{cases}
+x+y=5,\\
+2x-y=1
+\end{cases}
+\]
+has exactly one solution. Solving gives
+\[
+x=2,
+\qquad
+y=3.
+\]
+Geometrically, the two lines meet at the point \((2,3)\).
+\end{examplebox}
+
+When a system has exactly one solution, the conditions are independent enough to determine the unknowns completely.
+
+\subsection*{No solution}
+
+If two lines are parallel and distinct, they never meet. Then the system has no solution.
+
+\begin{examplebox}
+Consider
+\[
+\begin{cases}
+x+y=1,\\
+x+y=4.
+\end{cases}
+\]
+The left-hand sides are the same, but the right-hand sides are different. The same expression \(x+y\) cannot equal both \(1\) and \(4\) at the same time.
+
+Geometrically, these are two parallel distinct lines. Therefore the system has no solution.
+\end{examplebox}
+
+A system with no solution is called inconsistent. The equations impose conditions that cannot all be satisfied simultaneously.
+
+\subsection*{Infinitely many solutions}
+
+If two equations describe the same line, then every point on that line is a solution. The system has infinitely many solutions.
+
+\begin{examplebox}
+Consider
+\[
+\begin{cases}
+x+y=3,\\
+2x+2y=6.
+\end{cases}
+\]
+The second equation is just twice the first equation. It gives the same condition, not a new independent condition.
+
+Therefore the solution set is the whole line
+\[
+x+y=3.
+\]
+There are infinitely many solutions, for example \((0,3)\), \((1,2)\), and \((3,0)\).
+\end{examplebox}
+
+This case is not a failure of mathematics. It means that the equations do not contain enough independent information to determine one point.
+
+\subsection*{Three variables: planes in space}
+
+In three variables, a linear equation
+\[
+ax+by+cz=d
+\]
+usually describes a plane in space. A system of linear equations describes the common points of several planes.
+
+Several things may happen:
+\begin{itemize}
+\item three planes may meet at one point,
+\item they may have no common point,
+\item they may share a line,
+\item they may all be the same plane.
+\end{itemize}
+
+The algebraic classification remains the same: one solution, no solution, or infinitely many solutions. The geometry becomes richer because planes can intersect in more ways than lines in the plane.
+
+\subsection*{Reading geometry from algebra}
+
+The algebraic form of a system often reveals the geometric situation. For example, proportional left-hand sides may indicate parallel or identical lines. A contradiction such as
+\[
+0=5
+\]
+means that the conditions cannot all be satisfied. A row of zeros such as
+\[
+0=0
+\]
+means that one equation became redundant.
+
+These patterns will appear naturally during Gaussian elimination.
+
+\begin{summarybox}
+When interpreting a system geometrically, ask:
+\begin{itemize}
+\item What geometric object does each equation describe?
+\item Is the solution set an intersection of lines, planes, or other linear objects?
+\item Do the objects meet in one point?
+\item Are they parallel or inconsistent?
+\item Is one condition a repetition of another condition?
+\item Does the geometry suggest one solution, no solution, or infinitely many solutions?
+\end{itemize}
+\end{summarybox}
+
+The geometric viewpoint does not replace algebraic methods. It explains what those methods are detecting.
