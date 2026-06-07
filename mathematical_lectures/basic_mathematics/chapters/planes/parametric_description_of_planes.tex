@@ -1,0 +1,129 @@
+\section{Parametric description of planes}
+
+The parametric description of a plane is based on movement. A point moves in two independent directions. This is the main difference between the parametrization of a line and the parametrization of a plane.
+
+A line needs one parameter. A plane needs two parameters.
+
+\subsection*{Vector parametric form}
+
+Let \(P_0\) be a point in space and let \(u\) and \(v\) be two non-parallel vectors. The plane through \(P_0\) in the directions \(u\) and \(v\) is
+\[
+P=P_0+s u+t v,
+\qquad s,t\in\mathbb{R}.
+\]
+The parameters \(s\) and \(t\) move independently.
+
+\begin{examplebox}
+Consider the plane
+\[
+P=(2,-1,3)+s(1,0,2)+t(0,3,-1).
+\]
+For \(s=0\), \(t=0\), we get
+\[
+P=(2,-1,3).
+\]
+For \(s=1\), \(t=0\), we move by \((1,0,2)\):
+\[
+P=(3,-1,5).
+\]
+For \(s=0\), \(t=1\), we move by \((0,3,-1)\):
+\[
+P=(2,2,2).
+\]
+All these points lie on the same plane.
+\end{examplebox}
+
+The two direction vectors should not be parallel. If they are parallel, the two-parameter formula does not sweep out a plane; it only moves along one line.
+
+\subsection*{Coordinate parametric form}
+
+If
+\[
+P_0=(x_0,y_0,z_0),
+\qquad
+u=(a_1,a_2,a_3),
+\qquad
+v=(b_1,b_2,b_3),
+\]
+then
+\[
+(x,y,z)=(x_0,y_0,z_0)+s(a_1,a_2,a_3)+t(b_1,b_2,b_3).
+\]
+In coordinate form,
+\[
+x=x_0+sa_1+tb_1,
+\]
+\[
+y=y_0+sa_2+tb_2,
+\]
+\[
+z=z_0+sa_3+tb_3.
+\]
+The same values of \(s\) and \(t\) must be used in all three coordinates.
+
+\subsection*{Checking whether a point lies on a parametric plane}
+
+To check whether a point lies on a parametric plane, we ask whether there exist values of the two parameters that produce the point.
+
+\begin{examplebox}
+Consider
+\[
+(x,y,z)=(1,0,2)+s(1,1,0)+t(0,2,1).
+\]
+Does the point \((3,4,3)\) lie on the plane?
+
+The coordinate equations are
+\[
+x=1+s,
+\qquad
+ y=s+2t,
+\qquad
+ z=2+t.
+\]
+From \(x=3\), we get
+\[
+s=2.
+\]
+From \(z=3\), we get
+\[
+t=1.
+\]
+Then the middle coordinate gives
+\[
+y=s+2t=2+2=4.
+\]
+Therefore \((3,4,3)\) lies on the plane.
+\end{examplebox}
+
+A point belongs to the plane only if all coordinate equations are satisfied by the same pair \((s,t)\).
+
+\subsection*{From parametric form to normal form}
+
+If a plane is given parametrically by
+\[
+P=P_0+s u+t v,
+\]
+then a normal vector can be found by
+\[
+n=u\times v.
+\]
+Then the normal equation is
+\[
+n\cdot(P-P_0)=0.
+\]
+
+This conversion is useful because distances and angles are usually easier to compute from normal vectors.
+
+\begin{summarybox}
+When reading a parametric plane, ask:
+\begin{itemize}
+\item What point anchors the plane?
+\item What are the two direction vectors?
+\item Are the direction vectors non-parallel?
+\item What do the two parameters control?
+\item Can I find a normal vector using a cross product?
+\item Does a given point arise from one common pair of parameter values?
+\end{itemize}
+\end{summarybox}
+
+The parametric form describes a plane by motion. It is the language of two independent directions.
