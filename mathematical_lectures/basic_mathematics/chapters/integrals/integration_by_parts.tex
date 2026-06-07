@@ -1,0 +1,150 @@
+\section{Integration by parts}
+
+Integration by parts is the method that reverses the product rule. It is useful when an integrand is a product of two types of functions and substitution does not directly simplify the expression.
+
+The product rule says
+\[
+(uv)'=u'v+uv'.
+\]
+Rearranging and integrating gives the integration by parts formula.
+
+\begin{theorembox}
+If \(u=u(x)\) and \(v=v(x)\) are differentiable, then
+\[
+\int u\,dv=uv-\int v\,du.
+\]
+Equivalently,
+\[
+\int u(x)v'(x)\,dx=u(x)v(x)-\int v(x)u'(x)\,dx.
+\]
+\end{theorembox}
+
+The method replaces one integral by another. It is useful only if the new integral is simpler.
+
+\subsection*{A first example}
+
+\begin{examplebox}
+Compute
+\[
+\int x e^x\,dx.
+\]
+Choose
+\[
+u=x,
+\qquad
+dv=e^x\,dx.
+\]
+Then
+\[
+du=dx,
+\qquad
+v=e^x.
+\]
+By integration by parts,
+\[
+\int x e^x\,dx=x e^x-\int e^x\,dx.
+\]
+Therefore
+\[
+\int x e^x\,dx=x e^x-e^x+C.
+\]
+\end{examplebox}
+
+The choice of \(u\) matters. We chose \(u=x\) because differentiating it makes it simpler.
+
+\subsection*{Logarithmic functions}
+
+Integration by parts is often useful when a logarithm appears.
+
+\begin{examplebox}
+Compute
+\[
+\int \ln x\,dx,
+\qquad x>0.
+\]
+Although this does not visibly look like a product, we can write
+\[
+\ln x=1\cdot\ln x.
+\]
+Choose
+\[
+u=\ln x,
+\qquad
+dv=dx.
+\]
+Then
+\[
+du=\frac1x\,dx,
+\qquad
+v=x.
+\]
+Thus
+\[
+\int \ln x\,dx=x\ln x-\int x\cdot\frac1x\,dx.
+\]
+So
+\[
+\int \ln x\,dx=x\ln x-\int 1\,dx=x\ln x-x+C.
+\]
+\end{examplebox}
+
+This example shows that a factor of \(1\) may be introduced when it helps us apply the method.
+
+\subsection*{Repeated integration by parts}
+
+Sometimes integration by parts must be applied more than once.
+
+\begin{examplebox}
+Compute
+\[
+\int x^2 e^x\,dx.
+\]
+Choose
+\[
+u=x^2,
+\qquad
+dv=e^x\,dx.
+\]
+Then
+\[
+du=2x\,dx,
+\qquad
+v=e^x.
+\]
+Therefore
+\[
+\int x^2e^x\,dx=x^2e^x-\int 2xe^x\,dx.
+\]
+Now apply integration by parts to \(\int xe^x\,dx\), which was computed earlier:
+\[
+\int xe^x\,dx=xe^x-e^x+C.
+\]
+Thus
+\[
+\int x^2e^x\,dx=x^2e^x-2(xe^x-e^x)+C.
+\]
+So
+\[
+\int x^2e^x\,dx=e^x(x^2-2x+2)+C.
+\]
+\end{examplebox}
+
+The pattern is clear: differentiating the polynomial lowers its degree until the remaining integral is elementary.
+
+\subsection*{Choosing \(u\)}
+
+There is no perfect rule for choosing \(u\), but a useful principle is to choose \(u\) so that differentiating it simplifies the expression. Logarithms, inverse trigonometric functions, and polynomial factors are often good candidates for \(u\).
+
+\begin{summarybox}
+When using integration by parts, ask:
+\begin{itemize}
+\item Does the integrand look like a product?
+\item Which factor becomes simpler when differentiated?
+\item Which factor can be integrated to find \(v\)?
+\item Is the new integral simpler than the original one?
+\item Do I need to apply the method repeatedly?
+\item Can I check the final answer by differentiating?
+\end{itemize}
+\end{summarybox}
+
+Integration by parts is not a formula to apply mechanically. It is a way to move differentiation from one factor to another.
