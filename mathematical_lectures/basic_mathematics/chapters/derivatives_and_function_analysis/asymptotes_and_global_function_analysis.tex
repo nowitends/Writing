@@ -1,0 +1,124 @@
+\section{Asymptotes and global function analysis}
+
+Derivatives describe local change, but function analysis asks for a global picture. We want to understand the domain, intercepts, signs, monotonicity, extrema, convexity, asymptotes, and overall shape of the graph.
+
+No single tool answers all of these questions. A complete analysis combines algebra, limits, and derivatives.
+
+\subsection*{Domain first}
+
+The domain should be found before differentiating. If a function is not defined at certain points, those points may become vertical asymptotes, gaps, or boundaries of intervals.
+
+\begin{examplebox}
+For
+\[
+f(x)=\frac{1}{x-2},
+\]
+the domain is
+\[
+\mathbb{R}\setminus\{2\}.
+\]
+The point \(x=2\) must be treated separately. It is not allowed as an input, and it may create a vertical asymptote.
+\end{examplebox}
+
+Differentiating before reading the domain can hide important structure.
+
+\subsection*{Vertical asymptotes}
+
+A vertical asymptote occurs when the function grows without bound near a finite point. If
+\[
+\lim_{x\to a^-}f(x)=\pm\infty
+\]
+or
+\[
+\lim_{x\to a^+}f(x)=\pm\infty,
+\]
+then the line
+\[
+x=a
+\]
+is a vertical asymptote.
+
+\begin{examplebox}
+For
+\[
+f(x)=\frac{1}{x-2},
+\]
+we have
+\[
+\lim_{x\to2^+}\frac{1}{x-2}=\infty,
+\]
+and
+\[
+\lim_{x\to2^-}\frac{1}{x-2}=-\infty.
+\]
+Thus \(x=2\) is a vertical asymptote.
+\end{examplebox}
+
+Vertical asymptotes are detected by limits, not by derivatives.
+
+\subsection*{Horizontal asymptotes}
+
+Horizontal asymptotes describe long-term behavior. If
+\[
+\lim_{x\to\infty}f(x)=L
+\]
+or
+\[
+\lim_{x\to-\infty}f(x)=L,
+\]
+then
+\[
+y=L
+\]
+is a horizontal asymptote in that direction.
+
+\begin{examplebox}
+Let
+\[
+f(x)=\frac{2x+1}{x-3}.
+\]
+As \(x\to\infty\), the leading terms dominate:
+\[
+\frac{2x+1}{x-3}\to2.
+\]
+Also, as \(x\to-\infty\), the same limit is \(2\). Therefore
+\[
+y=2
+\]
+is a horizontal asymptote.
+\end{examplebox}
+
+Horizontal asymptotes tell us what the graph approaches far away, not necessarily what values it never reaches.
+
+\subsection*{A general analysis plan}
+
+A complete function analysis should be organized. The following order is often useful:
+
+\begin{enumerate}
+\item Find the domain.
+\item Check intercepts and simple values if useful.
+\item Study limits at excluded points and at infinity.
+\item Find vertical and horizontal asymptotes.
+\item Compute the first derivative.
+\item Use the first derivative to determine monotonicity and local extrema.
+\item Compute the second derivative if convexity is required.
+\item Use the second derivative to determine convexity and inflection points.
+\item Combine all information into a coherent graph description.
+\end{enumerate}
+
+This plan is not a rigid algorithm. Some functions require special attention. But it prevents us from looking only at derivatives while ignoring the domain and limits.
+
+\begin{summarybox}
+For global function analysis, ask:
+\begin{itemize}
+\item What is the domain?
+\item What happens near excluded points?
+\item What happens as \(x\to\infty\) and \(x\to-\infty\)?
+\item Where is the function increasing or decreasing?
+\item Where are local extrema?
+\item Where is the function convex or concave?
+\item What graph is consistent with all this information?
+\end{itemize}
+\end{summarybox}
+
+Function analysis is the art of combining many local and global facts into one picture.
