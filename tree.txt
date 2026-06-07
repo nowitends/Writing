@@ -218,6 +218,7 @@
 ./mathematical_lectures/probabilistic_methods/chapters/chapter_03_sample_spaces_and_elementary_probability.tex
 ./mathematical_lectures/probabilistic_methods/chapters/chapter_04_conditional_probability.tex
 ./mathematical_lectures/probabilistic_methods/chapters/chapter_04_discovery_formalism.tex
+./mathematical_lectures/probabilistic_methods/chapters/chapter_05_discrete_random_variables.tex
 ./mathematical_lectures/probabilistic_methods/chapters/chapter_05_pmf_pdf_cdf.tex
 ./mathematical_lectures/probabilistic_methods/chapters/chapter_06_conditional_probability.tex
 ./mathematical_lectures/probabilistic_methods/chapters/chapter_07_data_analysis.tex
