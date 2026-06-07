@@ -87,6 +87,7 @@
 ./mathematical_lectures/basic_mathematics/chapters/sequences_and_functions/.gitkeep
 ./mathematical_lectures/basic_mathematics/chapters/sequences_and_functions/domain_codomain_and_values.tex
 ./mathematical_lectures/basic_mathematics/chapters/sequences_and_functions/function_notation_and_evaluation.tex
+./mathematical_lectures/basic_mathematics/chapters/sequences_and_functions/graphs_as_pictures_of_functions.tex
 ./mathematical_lectures/basic_mathematics/chapters/sequences_and_functions/what_a_function_is.tex
 ./mathematical_lectures/basic_mathematics/chapters/systems_of_linear_equations
 ./mathematical_lectures/basic_mathematics/chapters/systems_of_linear_equations/cramers_rule.tex
