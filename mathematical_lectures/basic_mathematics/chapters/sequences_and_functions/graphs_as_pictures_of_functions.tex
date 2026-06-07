@@ -1,0 +1,151 @@
+\section{Graphs as pictures of functions}
+
+A graph is a picture of a function. More precisely, it is a picture of input-output pairs. If the input is \(x\) and the output is \(f(x)\), then the corresponding point on the graph is
+\[
+(x,f(x)).
+\]
+
+This simple idea is the key to reading graphs. A graph is not a drawing to guess from. It is a geometric representation of values of a function.
+
+\begin{definitionbox}
+Let \(f:D\to\mathbb{R}\), where \(D\subseteq\mathbb{R}\). The graph of \(f\) is the set
+\[
+\{(x,f(x)):x\in D\}.
+\]
+Each point on the graph has first coordinate equal to an input and second coordinate equal to the corresponding output.
+\end{definitionbox}
+
+If the point \((2,5)\) lies on the graph of \(f\), then
+\[
+f(2)=5.
+\]
+If \(f(2)=5\), then \((2,5)\) lies on the graph. These are two ways of saying the same thing.
+
+\subsection*{Reading values from a graph}
+
+To read \(f(a)\) from a graph, we look at the input \(a\) on the horizontal axis and find the height of the graph above that input. That height is the value \(f(a)\).
+
+\begin{examplebox}
+Suppose a graph contains the points
+\[
+(-1,3),
+\qquad
+(0,1),
+\qquad
+(2,5).
+\]
+Then the graph tells us that
+\[
+f(-1)=3,
+\qquad
+f(0)=1,
+\qquad
+f(2)=5.
+\]
+The first coordinate is the input. The second coordinate is the output.
+\end{examplebox}
+
+This reading is basic, but it is not trivial. Many later questions about functions depend on reading coordinates of points on a graph correctly.
+
+\subsection*{Intercepts}
+
+The point where a graph meets the vertical axis has input \(0\). Therefore, if the point exists, it has the form
+\[
+(0,f(0)).
+\]
+This is called the \(y\)-intercept.
+
+A point where the graph meets the horizontal axis has output \(0\). Such points have the form
+\[
+(x,0).
+\]
+They correspond to solutions of the equation
+\[
+f(x)=0.
+\]
+These are called zeros or roots of the function.
+
+\begin{examplebox}
+Let
+\[
+f(x)=x^2-4.
+\]
+The \(y\)-intercept is found by computing
+\[
+f(0)=0^2-4=-4.
+\]
+So the graph meets the \(y\)-axis at
+\[
+(0,-4).
+\]
+The zeros are found from
+\[
+x^2-4=0,
+\]
+so
+\[
+x=-2
+\qquad\text{or}\qquad
+x=2.
+\]
+Thus the graph meets the \(x\)-axis at
+\[
+(-2,0)
+\qquad\text{and}\qquad
+(2,0).
+\]
+\end{examplebox}
+
+The graph and the equation give the same information in different forms. The graph shows the intercepts visually. The equation allows us to compute them exactly.
+
+\subsection*{The vertical line test}
+
+A graph represents a function of \(x\) only if each input \(x\) has at most one output. Visually, this means that no vertical line should intersect the graph more than once.
+
+\begin{theorembox}
+A curve in the plane represents the graph of a function of \(x\) if every vertical line intersects the curve at most once.
+\end{theorembox}
+
+The reason is the definition of a function. One input cannot have two different outputs.
+
+\begin{examplebox}
+A circle is not the graph of a function of \(x\) on its full domain, because many vertical lines meet the circle in two points. For the same value of \(x\), there may be two possible values of \(y\).
+
+This does not mean that circles are not important. It means that a full circle is not the graph of one function \(y=f(x)\).
+\end{examplebox}
+
+\subsection*{Graphs and domains}
+
+The domain of a function is visible in the graph as the set of \(x\)-values for which the graph exists. If there is no point above a certain value of \(x\), then that value is not in the domain.
+
+The range is visible as the set of \(y\)-values reached by the graph.
+
+\begin{examplebox}
+For the function
+\[
+f(x)=\sqrt{x},
+\]
+real outputs exist only for \(x\ge0\). Therefore the graph begins at \(x=0\) and continues to the right. The domain is
+\[
+[0,\infty),
+\]
+and the range is also
+\[
+[0,\infty).
+\]
+\end{examplebox}
+
+\begin{summarybox}
+When reading a graph, ask:
+\begin{itemize}
+\item What input does the horizontal coordinate represent?
+\item What output does the vertical coordinate represent?
+\item What does the point \((a,b)\) say about the value of the function?
+\item Where does the graph meet the axes?
+\item What \(x\)-values belong to the domain?
+\item What \(y\)-values belong to the range?
+\item Does the graph pass the vertical line test?
+\end{itemize}
+\end{summarybox}
+
+A graph should be read as information, not only as a shape.
