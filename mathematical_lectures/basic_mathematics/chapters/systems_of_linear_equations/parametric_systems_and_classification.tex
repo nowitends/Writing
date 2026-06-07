@@ -1,3 +1,244 @@
 \section{Parametric systems and classification}
 
-This section will prepare the study of systems depending on a parameter. The goal will be to classify when a system has one solution, no solution, or infinitely many solutions, and to understand how this classification is reflected in algebraic and geometric structure.
+Some systems contain a parameter. Then the question is not only ``What is the solution?'' but also ``For which parameter values does the structure of the system change?''
+
+This is where determinants, row reduction, and geometric interpretation come together.
+
+\subsection*{The three possible outcomes}
+
+Every linear system has one of the following outcomes:
+\begin{itemize}
+\item exactly one solution,
+\item no solution,
+\item infinitely many solutions.
+\end{itemize}
+
+For a square system
+\[
+Ax=b,
+\]
+one important test is the determinant of \(A\). If
+\[
+\det A\ne0,
+\]
+then \(A\) is invertible and the system has exactly one solution. If
+\[
+\det A=0,
+\]
+then the system does not have a unique solution obtained by inversion. But we must still decide whether it has no solution or infinitely many solutions.
+
+\begin{remarkbox}
+The condition \(\det A=0\) is a warning sign, not a complete answer. It says that uniqueness is lost. It does not by itself decide whether solutions exist.
+\end{remarkbox}
+
+\subsection*{A simple parameter example}
+
+Consider the system
+\[
+\begin{cases}
+x+y=1,\\
+2x+2y=a.
+\end{cases}
+\]
+The left-hand side of the second equation is twice the left-hand side of the first equation. Therefore consistency depends on the right-hand side.
+
+If we multiply the first equation by \(2\), we get
+\[
+2x+2y=2.
+\]
+So for the second equation to describe the same condition, we need
+\[
+a=2.
+\]
+
+If \(a=2\), the two equations describe the same line, and there are infinitely many solutions:
+\[
+x+y=1.
+\]
+If \(a\ne2\), the equations describe parallel distinct lines, and there is no solution.
+
+\begin{summarybox}
+For
+\[
+\begin{cases}
+x+y=1,\\
+2x+2y=a,
+\end{cases}
+\]
+we have:
+\begin{itemize}
+\item if \(a=2\), infinitely many solutions,
+\item if \(a\ne2\), no solution.
+\end{itemize}
+\end{summarybox}
+
+This example shows that a parameter may affect only the right-hand side, but that can still change the solution set completely.
+
+\subsection*{Using determinants to find exceptional values}
+
+Now consider a parameter in the coefficient matrix. Let
+\[
+A(t)=\begin{pmatrix}
+t&1\\
+4&t
+\end{pmatrix}.
+\]
+The determinant is
+\[
+\det A(t)=t^2-4.
+\]
+The exceptional values occur when
+\[
+t^2-4=0,
+\]
+so
+\[
+t=2
+\qquad\text{or}\qquad
+ t=-2.
+\]
+For all other values of \(t\), the matrix is invertible. Therefore any system
+\[
+A(t)x=b
+\]
+has exactly one solution for \(t\ne2\) and \(t\ne-2\).
+
+The exceptional values \(t=2\) and \(t=-2\) require separate analysis. At those values, the determinant test tells us that the system is not uniquely solvable, but not whether it is inconsistent or has infinitely many solutions.
+
+\subsection*{A full classification example}
+
+\begin{examplebox}
+Classify the system depending on the parameter \(a\):
+\[
+\begin{cases}
+x+y=3,\\
+2x+ay=6.
+\end{cases}
+\]
+The coefficient matrix is
+\[
+A(a)=\begin{pmatrix}
+1&1\\
+2&a
+\end{pmatrix}.
+\]
+Its determinant is
+\[
+\det A(a)=a-2.
+\]
+If
+\[
+a\ne2,
+\]
+then \(\det A(a)\ne0\), so the system has exactly one solution.
+
+Now consider the exceptional value \(a=2\). The system becomes
+\[
+\begin{cases}
+x+y=3,\\
+2x+2y=6.
+\end{cases}
+\]
+The second equation is twice the first. Therefore the system has infinitely many solutions.
+
+Thus:
+\begin{itemize}
+\item if \(a\ne2\), the system has exactly one solution,
+\item if \(a=2\), the system has infinitely many solutions.
+\end{itemize}
+\end{examplebox}
+
+The determinant found the value where the structure changes. Row interpretation then classified what happens at that value.
+
+\begin{examplebox}
+Classify the system depending on \(a\):
+\[
+\begin{cases}
+x+y=3,\\
+2x+2y=a.
+\end{cases}
+\]
+The coefficient matrix is
+\[
+A=\begin{pmatrix}
+1&1\\
+2&2
+\end{pmatrix},
+\]
+so
+\[
+\det A=0.
+\]
+There is no value of \(a\) that makes this coefficient matrix invertible. We must compare the equations.
+
+Twice the first equation gives
+\[
+2x+2y=6.
+\]
+Therefore:
+\begin{itemize}
+\item if \(a=6\), the two equations describe the same line, so there are infinitely many solutions,
+\item if \(a\ne6\), the two equations are inconsistent, so there is no solution.
+\end{itemize}
+\end{examplebox}
+
+This example shows that a singular coefficient matrix may still lead to different outcomes depending on the right-hand side.
+
+\subsection*{Parameters and row reduction}
+
+For larger systems, row reduction is often the safest method. It allows us to see contradictions, zero rows, and free variables directly.
+
+A row such as
+\[
+0=0
+\]
+indicates redundancy. A row such as
+\[
+0=5
+\]
+indicates inconsistency. A missing pivot indicates a free variable. These patterns remain valid even when parameters are present.
+
+The difficulty is that some row operations may require dividing by an expression containing a parameter. Before dividing by such an expression, we must consider when it might be zero.
+
+\begin{remarkbox}
+When a parameter appears, do not divide by an expression such as \(a-2\) without asking whether \(a-2=0\) is possible. Parameter values that make a denominator zero are usually exceptional cases and must be treated separately.
+\end{remarkbox}
+
+\subsection*{A classification strategy}
+
+A good solution to a parameter system should not only list parameter values. It should explain why the classification changes.
+
+\begin{summarybox}
+For a square parameter system \(A(t)x=b(t)\), a useful strategy is:
+\begin{enumerate}
+\item Compute \(\det A(t)\).
+\item Solve \(\det A(t)=0\) to find exceptional parameter values.
+\item For non-exceptional values, conclude that there is exactly one solution.
+\item For exceptional values, analyze the system separately using row reduction or equation comparison.
+\item Classify each case as exactly one solution, no solution, or infinitely many solutions.
+\end{enumerate}
+\end{summarybox}
+
+The determinant identifies where uniqueness can fail. Elimination and interpretation decide what happens there.
+
+\subsection*{What the chapter has built}
+
+Systems of linear equations bring together the earlier algebraic tools.
+
+Matrices organize the coefficients. Row operations simplify the system. Determinants detect whether a square coefficient matrix is invertible. Inverse matrices give the formula \(x=A^{-1}b\) when the inverse exists. Cramer's rule gives a determinant-based expression for the solution when \(\det A\ne0\).
+
+These methods are not isolated tricks. They are different ways of reading the same object: a system of linear conditions.
+
+\begin{summarybox}
+At the end of this chapter, remember:
+\begin{itemize}
+\item A system is a set of conditions to be satisfied simultaneously.
+\item The augmented matrix records the coefficients and the right-hand side.
+\item Gaussian elimination is the most flexible method for solving and classifying systems.
+\item If \(\det A\ne0\), a square system \(Ax=b\) has exactly one solution.
+\item If \(\det A=0\), uniqueness is lost, but existence must still be checked.
+\item A linear system may have exactly one solution, no solution, or infinitely many solutions.
+\end{itemize}
+\end{summarybox}
+
+The goal is not only to solve systems. The goal is to understand what the equations say about structure, dependence, and compatibility.
