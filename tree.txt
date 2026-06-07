@@ -56,6 +56,7 @@
 ./mathematical_lectures/basic_mathematics/chapters/limits_and_continuity
 ./mathematical_lectures/basic_mathematics/chapters/limits_and_continuity/.gitkeep
 ./mathematical_lectures/basic_mathematics/chapters/limits_and_continuity/basic_techniques_for_sequence_limits.tex
+./mathematical_lectures/basic_mathematics/chapters/limits_and_continuity/limits_at_infinity.tex
 ./mathematical_lectures/basic_mathematics/chapters/limits_and_continuity/limits_of_functions.tex
 ./mathematical_lectures/basic_mathematics/chapters/limits_and_continuity/limits_of_sequences.tex
 ./mathematical_lectures/basic_mathematics/chapters/limits_and_continuity/one_sided_limits.tex
