@@ -1,0 +1,138 @@
+\section{Second derivative and convexity}
+
+The first derivative tells us whether a function is increasing or decreasing. The second derivative tells us how the first derivative changes. This gives information about the bending of the graph.
+
+If the first derivative is increasing, slopes are becoming larger. If the first derivative is decreasing, slopes are becoming smaller. This is the idea behind convexity and concavity.
+
+\subsection*{The second derivative}
+
+If \(f'\) is differentiable, then the derivative of \(f'\) is called the second derivative of \(f\). It is written
+\[
+f''(x).
+\]
+Thus
+\[
+f''(x)=(f'(x))'.
+\]
+
+\begin{examplebox}
+Let
+\[
+f(x)=x^3-3x.
+\]
+Then
+\[
+f'(x)=3x^2-3.
+\]
+Differentiate again:
+\[
+f''(x)=6x.
+\]
+The second derivative tells us how the slope \(f'(x)\) changes.
+\end{examplebox}
+
+\subsection*{Convexity and concavity}
+
+If \(f''(x)>0\) on an interval, the function is convex there. The graph bends upward. If \(f''(x)<0\), the function is concave there. The graph bends downward.
+
+\begin{theorembox}
+Let \(f\) be twice differentiable on an interval.
+\begin{itemize}
+\item If \(f''(x)>0\) on the interval, then \(f\) is convex on that interval.
+\item If \(f''(x)<0\) on the interval, then \(f\) is concave on that interval.
+\end{itemize}
+\end{theorembox}
+
+This should be connected to slopes. When \(f''>0\), the slopes increase. When \(f''<0\), the slopes decrease.
+
+\begin{examplebox}
+Study the convexity of
+\[
+f(x)=x^3-3x.
+\]
+We have
+\[
+f''(x)=6x.
+\]
+Thus
+\[
+f''(x)<0 \quad\text{for } x<0,
+\]
+and
+\[
+f''(x)>0 \quad\text{for } x>0.
+\]
+Therefore the function is concave on \((-\infty,0)\) and convex on \((0,\infty)\).
+\end{examplebox}
+
+\subsection*{Inflection points}
+
+An inflection point is a point where the graph changes convexity. Usually, this occurs where the second derivative changes sign.
+
+\begin{definitionbox}
+A point \(a\) is an inflection point of \(f\) if the graph of \(f\) changes convexity at \(a\).
+\end{definitionbox}
+
+\begin{examplebox}
+For
+\[
+f(x)=x^3-3x,
+\]
+we found
+\[
+f''(x)=6x.
+\]
+The second derivative changes sign at \(x=0\). Therefore the graph has an inflection point at \(x=0\). The corresponding point on the graph is
+\[
+(0,f(0))=(0,0).
+\]
+\end{examplebox}
+
+The condition \(f''(a)=0\) by itself is not enough. The second derivative must change sign for convexity to change.
+
+\subsection*{Second derivative test for extrema}
+
+The second derivative can sometimes classify critical points.
+
+\begin{theorembox}
+Suppose \(f'(a)=0\).
+\begin{itemize}
+\item If \(f''(a)>0\), then \(f\) has a local minimum at \(a\).
+\item If \(f''(a)<0\), then \(f\) has a local maximum at \(a\).
+\item If \(f''(a)=0\), the test gives no conclusion.
+\end{itemize}
+\end{theorembox}
+
+The test matches the geometric picture. If the graph is convex at a horizontal tangent, it bends upward and forms a local minimum. If it is concave at a horizontal tangent, it bends downward and forms a local maximum.
+
+\begin{examplebox}
+Let
+\[
+f(x)=x^2.
+\]
+Then
+\[
+f'(x)=2x,
+\qquad
+f''(x)=2.
+\]
+The critical point is \(x=0\). Since
+\[
+f''(0)=2>0,
+\]
+there is a local minimum at \(x=0\).
+\end{examplebox}
+
+\begin{summarybox}
+When using the second derivative, ask:
+\begin{itemize}
+\item What is \(f''(x)\)?
+\item Where is \(f''(x)>0\) or \(f''(x)<0\)?
+\item Does the graph change convexity?
+\item Are there inflection points?
+\item Can the second derivative test classify a critical point?
+\item If \(f''(a)=0\), is another test needed?
+\end{itemize}
+\end{summarybox}
+
+The second derivative helps us read the bending of a graph, not only its direction of movement.
