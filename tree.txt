@@ -63,6 +63,7 @@
 ./mathematical_lectures/basic_mathematics/chapters/integrals/.gitkeep
 ./mathematical_lectures/basic_mathematics/chapters/integrals/antiderivatives_and_indefinite_integrals.tex
 ./mathematical_lectures/basic_mathematics/chapters/integrals/basic_integration_rules.tex
+./mathematical_lectures/basic_mathematics/chapters/integrals/integration_by_parts.tex
 ./mathematical_lectures/basic_mathematics/chapters/integrals/substitution_method.tex
 ./mathematical_lectures/basic_mathematics/chapters/integrals/what_an_integral_measures.tex
 ./mathematical_lectures/basic_mathematics/chapters/introduction
