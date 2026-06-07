@@ -1,0 +1,170 @@
+\section{Explicit and recursive sequences}
+
+A sequence is a function on natural-number inputs. To define such a function, we must say how its terms are obtained. There are two common ways to do this: an explicit formula and a recursive definition.
+
+Both are useful, but they answer different practical questions.
+
+\subsection*{Explicit formulas}
+
+An explicit formula gives \(a_n\) directly in terms of \(n\). If we want the tenth term, we substitute \(n=10\). If we want the hundredth term, we substitute \(n=100\).
+
+\begin{definitionbox}
+An explicit formula for a sequence gives the term \(a_n\) directly as an expression depending on the index \(n\).
+\end{definitionbox}
+
+\begin{examplebox}
+Let
+\[
+a_n=3n-2,
+\qquad n\ge1.
+\]
+Then
+\[
+a_1=3\cdot1-2=1,
+\]
+\[
+a_2=3\cdot2-2=4,
+\]
+\[
+a_3=3\cdot3-2=7.
+\]
+The sequence begins
+\[
+1,\;4,\;7,\;10,\;\ldots
+\]
+If we want the tenth term, we compute
+\[
+a_{10}=3\cdot10-2=28.
+\]
+\end{examplebox}
+
+The advantage of an explicit formula is direct access. We can compute a distant term without computing all previous terms.
+
+\subsection*{Recursive definitions}
+
+A recursive definition describes how to obtain the next term from earlier terms. Such a definition needs a starting value. Without a starting value, the sequence is not determined.
+
+\begin{definitionbox}
+A recursive definition of a sequence gives one or more initial terms and a rule for computing later terms from earlier terms.
+\end{definitionbox}
+
+\begin{examplebox}
+Define a sequence by
+\[
+a_1=5,
+\qquad
+a_{n+1}=a_n+2.
+\]
+Then
+\[
+a_1=5,
+\]
+\[
+a_2=a_1+2=7,
+\]
+\[
+a_3=a_2+2=9,
+\]
+\[
+a_4=a_3+2=11.
+\]
+The sequence begins
+\[
+5,\;7,\;9,\;11,\;\ldots
+\]
+\end{examplebox}
+
+The recursive rule says how to move from one term to the next. It does not immediately give \(a_{100}\) unless we either compute many previous terms or find an explicit formula.
+
+\subsection*{Why the initial term matters}
+
+The recurrence relation alone may not define one sequence. It may define a whole family of possible sequences, depending on the starting value.
+
+\begin{examplebox}
+The rule
+\[
+a_{n+1}=a_n+2
+\]
+does not determine a unique sequence by itself.
+
+If \(a_1=1\), the sequence begins
+\[
+1,\;3,\;5,\;7,\;\ldots
+\]
+If \(a_1=10\), the sequence begins
+\[
+10,\;12,\;14,\;16,\;\ldots
+\]
+The recursive rule is the same, but the sequences are different because the starting value is different.
+\end{examplebox}
+
+This is similar to describing motion. A rule for how to move is not enough if we do not know where we start.
+
+\subsection*{Geometric-type recursion}
+
+Some recursions multiply instead of add.
+
+\begin{examplebox}
+Define
+\[
+a_1=3,
+\qquad
+a_{n+1}=2a_n.
+\]
+Then
+\[
+a_1=3,
+\]
+\[
+a_2=2a_1=6,
+\]
+\[
+a_3=2a_2=12,
+\]
+\[
+a_4=2a_3=24.
+\]
+The sequence begins
+\[
+3,\;6,\;12,\;24,\;\ldots
+\]
+Each term is twice the previous one.
+\end{examplebox}
+
+The rule is simple, but the meaning is important. The next value depends on the current value. The sequence is built step by step.
+
+\subsection*{Reading recursive notation}
+
+The expression \(a_{n+1}\) means the term after \(a_n\). If \(n=1\), then \(a_{n+1}=a_2\). If \(n=2\), then \(a_{n+1}=a_3\).
+
+A recurrence relation such as
+\[
+a_{n+1}=a_n+2
+\]
+should be read as a rule that works repeatedly:
+\[
+a_2=a_1+2,
+\qquad
+a_3=a_2+2,
+\qquad
+a_4=a_3+2,
+\]
+and so on.
+
+\begin{remarkbox}
+Recursive notation is compact because one line contains infinitely many instructions. To understand it, expand the first few cases and read what the rule is doing.
+\end{remarkbox}
+
+\begin{summarybox}
+When reading a sequence definition, ask:
+\begin{itemize}
+\item Is the sequence given explicitly or recursively?
+\item If it is explicit, can I compute \(a_n\) directly from \(n\)?
+\item If it is recursive, what is the starting value?
+\item How is the next term obtained from earlier terms?
+\item What are the first few terms?
+\item Does the notation \(a_{n+1}\) refer to the next term after \(a_n\)?
+\end{itemize}
+\end{summarybox}
+
+Explicit and recursive descriptions are two languages for sequences. Each one reveals a different aspect of the same kind of object: a function defined on natural-number inputs.
