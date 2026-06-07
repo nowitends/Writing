@@ -59,6 +59,7 @@
 ./mathematical_lectures/basic_mathematics/chapters/lines/.gitkeep
 ./mathematical_lectures/basic_mathematics/chapters/lines/many_descriptions_of_the_same_line.tex
 ./mathematical_lectures/basic_mathematics/chapters/lines/parametric_description_of_lines.tex
+./mathematical_lectures/basic_mathematics/chapters/lines/two_points_and_direction_vectors.tex
 ./mathematical_lectures/basic_mathematics/chapters/lines/what_information_defines_a_line.tex
 ./mathematical_lectures/basic_mathematics/chapters/matrices
 ./mathematical_lectures/basic_mathematics/chapters/matrices/basic_matrix_operations.tex
