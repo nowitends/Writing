@@ -55,6 +55,7 @@
 ./mathematical_lectures/basic_mathematics/chapters/introduction/overview.tex
 ./mathematical_lectures/basic_mathematics/chapters/limits_and_continuity
 ./mathematical_lectures/basic_mathematics/chapters/limits_and_continuity/.gitkeep
+./mathematical_lectures/basic_mathematics/chapters/limits_and_continuity/what_a_limit_tries_to_describe.tex
 ./mathematical_lectures/basic_mathematics/chapters/lines
 ./mathematical_lectures/basic_mathematics/chapters/lines/.gitkeep
 ./mathematical_lectures/basic_mathematics/chapters/lines/choosing_the_right_description.tex
