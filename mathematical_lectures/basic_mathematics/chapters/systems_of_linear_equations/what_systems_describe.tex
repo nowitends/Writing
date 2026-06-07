@@ -1,3 +1,133 @@
 \section{What systems of linear equations describe}
 
-This section will introduce systems of linear equations as mathematical objects that express several linear conditions at the same time. The aim will be to understand unknowns, equations, coefficients, and solution sets before choosing a method of solution.
+A system of linear equations is not only a collection of equations to solve. It is a collection of conditions that must be satisfied at the same time. Each equation gives one condition. A solution is an assignment of values to the unknowns that satisfies all conditions simultaneously.
+
+This point is important. When we solve a system, we are not solving the equations one after another as separate problems. We are looking for values that make the whole system true.
+
+\begin{examplebox}
+Consider the system
+\[
+\begin{cases}
+x+y=5,\\
+2x-y=1.
+\end{cases}
+\]
+The pair \((2,3)\) satisfies the first equation because
+\[
+2+3=5.
+\]
+But it does not satisfy the second equation, because
+\[
+2\cdot2-3=1.
+\]
+Actually this equality is true, so \((2,3)\) satisfies both equations. Therefore \((2,3)\) is a solution of the system.
+
+The pair \((1,4)\) satisfies the first equation, since \(1+4=5\), but it does not satisfy the second equation, since \(2\cdot1-4=-2\). Therefore \((1,4)\) is not a solution of the system.
+\end{examplebox}
+
+The example should be read slowly. A solution of a system must pass every test in the system. Passing one equation is not enough.
+
+\subsection*{Unknowns, coefficients, and constants}
+
+A linear equation in the unknowns \(x_1,x_2,\ldots,x_n\) has the form
+\[
+a_1x_1+a_2x_2+\cdots+a_nx_n=b.
+\]
+The numbers \(a_1,a_2,\ldots,a_n\) are coefficients. The number \(b\) is the constant term or right-hand side.
+
+A system of linear equations is made of several such equations:
+\[
+\begin{cases}
+a_{11}x_1+a_{12}x_2+\cdots+a_{1n}x_n=b_1,\\
+a_{21}x_1+a_{22}x_2+\cdots+a_{2n}x_n=b_2,\\
+\hspace{2cm}\vdots\\
+a_{m1}x_1+a_{m2}x_2+\cdots+a_{mn}x_n=b_m.
+\end{cases}
+\]
+Here \(m\) is the number of equations and \(n\) is the number of unknowns.
+
+\begin{remarkbox}
+The coefficients describe how the unknowns enter the equations. The right-hand side describes what values the linear combinations must equal. A system compares these two pieces of information.
+\end{remarkbox}
+
+\subsection*{Solution sets}
+
+The solution set of a system is the set of all solutions. Sometimes this set contains one element. Sometimes it is empty. Sometimes it contains infinitely many elements.
+
+These are the three basic possibilities for a linear system:
+\begin{itemize}
+\item exactly one solution,
+\item no solution,
+\item infinitely many solutions.
+\end{itemize}
+
+The goal of solving a system is not only to find numbers. The goal is to determine which of these cases occurs and to describe the solution set accurately.
+
+\subsection*{Matrix form}
+
+Systems of linear equations are naturally connected with matrices. The coefficients form a matrix, the unknowns form a column vector, and the right-hand side forms another column vector.
+
+For example, the system
+\[
+\begin{cases}
+2x+y=5,\\
+x-y=1
+\end{cases}
+\]
+can be written as
+\[
+\begin{pmatrix}
+2&1\\
+1&-1
+\end{pmatrix}
+\begin{pmatrix}
+x\\y
+\end{pmatrix}
+=
+\begin{pmatrix}
+5\\1
+\end{pmatrix}.
+\]
+Using the notation
+\[
+A=\begin{pmatrix}2&1\\1&-1\end{pmatrix},
+\qquad
+x=\begin{pmatrix}x\\y\end{pmatrix},
+\qquad
+b=\begin{pmatrix}5\\1\end{pmatrix},
+\]
+we write the system compactly as
+\[
+Ax=b.
+\]
+
+This notation is not merely shorter. It reveals the structure of the problem. The matrix \(A\) transforms the unknown vector \(x\) into the right-hand side vector \(b\). Solving the system means finding which input vector \(x\), if any, is sent to \(b\).
+
+\subsection*{The augmented matrix}
+
+When solving a system, it is often convenient to write the coefficients and the right-hand side together in an augmented matrix:
+\[
+\left[
+\begin{array}{cc|c}
+2&1&5\\
+1&-1&1
+\end{array}
+\right].
+\]
+The vertical line reminds us that the last column is not another column of coefficients. It is the right-hand side.
+
+The augmented matrix is a compact record of the system. Row operations on this matrix correspond to controlled transformations of the equations.
+
+\begin{summarybox}
+When reading a system of linear equations, ask:
+\begin{itemize}
+\item What are the unknowns?
+\item What are the equations, and what condition does each one impose?
+\item What are the coefficients and right-hand sides?
+\item What would it mean for one assignment to satisfy all equations at once?
+\item Can the system be written as \(Ax=b\)?
+\item What does the augmented matrix record?
+\end{itemize}
+\end{summarybox}
+
+A system of equations should first be read as a structured mathematical object. Only then should we choose a method for solving it.
