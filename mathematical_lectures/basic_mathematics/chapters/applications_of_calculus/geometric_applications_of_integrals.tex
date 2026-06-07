@@ -1,0 +1,143 @@
+\section{Geometric applications of integrals}
+
+Integrals can measure geometric quantities by accumulating small pieces. Area, volume, and length can often be expressed as integrals when the object is described by a function.
+
+The main idea is to cut a complicated object into many thin pieces, approximate each piece by something simple, and then pass to a limit. The integral represents this limiting accumulation.
+
+\subsection*{Area under a graph}
+
+If \(f(x)\ge0\) on \([a,b]\), then
+\[
+\int_a^b f(x)\,dx
+\]
+gives the area under the graph of \(f\) above the \(x\)-axis.
+
+\begin{examplebox}
+A tunnel entrance has the shape of the parabola
+\[
+y=4-x^2.
+\]
+Find the area of the entrance above the \(x\)-axis.
+
+The parabola meets the \(x\)-axis when
+\[
+4-x^2=0,
+\]
+so
+\[
+x=-2
+\qquad\text{or}\qquad
+x=2.
+\]
+The area is
+\[
+A=\int_{-2}^{2}(4-x^2)\,dx.
+\]
+Compute:
+\[
+A=\left[4x-\frac{x^3}{3}\right]_{-2}^{2}.
+\]
+At \(x=2\),
+\[
+4x-\frac{x^3}{3}=8-\frac83=\frac{16}{3}.
+\]
+At \(x=-2\),
+\[
+4x-\frac{x^3}{3}=-8+\frac83=-\frac{16}{3}.
+\]
+Thus
+\[
+A=\frac{16}{3}-\left(-\frac{16}{3}\right)=\frac{32}{3}.
+\]
+\end{examplebox}
+
+The limits of integration are not arbitrary. They come from where the curve meets the axis.
+
+\subsection*{Area of a circle}
+
+The upper semicircle of radius \(R\) centered at the origin is described by
+\[
+y=\sqrt{R^2-x^2},
+\qquad -R\le x\le R.
+\]
+The area of the full circle is twice the area under this upper semicircle:
+\[
+A=2\int_{-R}^{R}\sqrt{R^2-x^2}\,dx.
+\]
+This integral evaluates to
+\[
+\pi R^2.
+\]
+Thus the familiar area formula for a circle can be understood as accumulated vertical slices.
+
+\begin{remarkbox}
+Even familiar formulas can be reinterpreted by integration. The formula \(A=\pi R^2\) is not only memorized geometry; it can also be derived from accumulation.
+\end{remarkbox}
+
+\subsection*{Volumes of solids of revolution}
+
+If a non-negative function \(f\) is rotated around the \(x\)-axis, cross-sections perpendicular to the \(x\)-axis are disks of radius \(f(x)\). The area of each disk is
+\[
+\pi[f(x)]^2.
+\]
+Thus the volume is
+\[
+V=\int_a^b \pi[f(x)]^2\,dx.
+\]
+
+\begin{examplebox}
+A vessel is formed by rotating
+\[
+y=\sqrt{x}
+\]
+around the \(x\)-axis for \(0\le x\le4\). Its volume is
+\[
+V=\int_0^4 \pi(\sqrt{x})^2\,dx.
+\]
+Since \((\sqrt{x})^2=x\),
+\[
+V=\pi\int_0^4 x\,dx
+=\pi\left[\frac{x^2}{2}\right]_0^4
+=8\pi.
+\]
+\end{examplebox}
+
+The formula is simple because each thin slice is approximately a disk.
+
+\subsection*{Arc length}
+
+The length of a curve \(y=f(x)\) on \([a,b]\) is given by
+\[
+L=\int_a^b\sqrt{1+[f'(x)]^2}\,dx.
+\]
+This formula combines derivatives and integrals. The derivative measures local slope; the integral accumulates small pieces of length.
+
+\begin{examplebox}
+Suppose a hanging rope is approximated by
+\[
+f(x)=\frac{1}{10}x^2,
+\qquad -10\le x\le10.
+\]
+Then
+\[
+f'(x)=\frac{x}{5}.
+\]
+The rope length is
+\[
+L=\int_{-10}^{10}\sqrt{1+\frac{x^2}{25}}\,dx.
+\]
+This integral may require a more advanced method to evaluate exactly, but the important modelling step is already clear: slope determines local stretching, and the integral accumulates length.
+\end{examplebox}
+
+\begin{summarybox}
+For geometric integral problems, ask:
+\begin{itemize}
+\item What small pieces are being accumulated?
+\item What are the correct bounds of integration?
+\item Is the integral measuring area, volume, or length?
+\item Is the quantity signed or ordinary geometric size?
+\item Does the formula come from vertical slices, disks, or arc-length pieces?
+\end{itemize}
+\end{summarybox}
+
+Geometric applications show that integration is a method for building whole quantities from infinitesimal pieces.
