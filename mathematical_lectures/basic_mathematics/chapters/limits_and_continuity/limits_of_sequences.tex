@@ -1,0 +1,134 @@
+\section{Limits of sequences}
+
+A sequence is a function whose input is usually a natural number. Therefore the most natural limiting question for a sequence is not what happens near a finite real input. The natural question is what happens when the index becomes larger and larger.
+
+If \((a_n)\) is a sequence, we write
+\[
+\lim_{n\to\infty} a_n=L
+\]
+when the terms of the sequence approach the number \(L\) as \(n\) grows.
+
+\begin{definitionbox}
+We say that a sequence \((a_n)\) converges to \(L\) if the terms \(a_n\) become arbitrarily close to \(L\) for sufficiently large \(n\). We write
+\[
+\lim_{n\to\infty}a_n=L.
+\]
+If no finite limit exists, we say that the sequence diverges.
+\end{definitionbox}
+
+The phrase ``for sufficiently large \(n\)'' is important. A sequence may behave irregularly at the beginning and still have a limit. Limits describe long-term behavior, not the first few terms.
+
+\subsection*{A first convergent sequence}
+
+Consider
+\[
+a_n=\frac1n.
+\]
+The first terms are
+\[
+1,\quad \frac12,\quad \frac13,\quad \frac14,\quad \ldots
+\]
+These terms get closer and closer to \(0\). Therefore
+\[
+\lim_{n\to\infty}\frac1n=0.
+\]
+
+The sequence never actually reaches \(0\), because \(\frac1n>0\) for every natural number \(n\). But reaching the limit is not required. The question is whether the terms approach the limit.
+
+\begin{remarkbox}
+A limit is about approaching, not necessarily about becoming equal. The terms \(1/n\) approach \(0\), even though no term of the sequence is equal to \(0\).
+\end{remarkbox}
+
+\subsection*{Divergence to infinity}
+
+Some sequences do not approach a finite number. For example,
+\[
+a_n=n
+\]
+grows without bound. We write informally
+\[
+\lim_{n\to\infty} n=\infty,
+\]
+meaning that the terms become larger than any fixed bound. This is not convergence to a real number. It is divergence to infinity.
+
+\begin{examplebox}
+The sequence
+\[
+a_n=n^2
+\]
+has terms
+\[
+1,4,9,16,\ldots
+\]
+The terms grow without bound. The sequence does not converge to a finite real number.
+\end{examplebox}
+
+\subsection*{Oscillation}
+
+A sequence may also fail to converge because it oscillates.
+
+\begin{examplebox}
+Consider
+\[
+a_n=(-1)^n.
+\]
+The terms are
+\[
+-1,1,-1,1,\ldots
+\]
+They do not approach one number. The sequence alternates forever between two values. Therefore the sequence diverges.
+\end{examplebox}
+
+Oscillation does not automatically prevent convergence. If the oscillation becomes smaller, a limit may still exist.
+
+\begin{examplebox}
+Consider
+\[
+a_n=\frac{(-1)^n}{n}.
+\]
+The sign alternates, but the size of the terms becomes smaller:
+\[
+\left|\frac{(-1)^n}{n}\right|=\frac1n\to0.
+\]
+Therefore
+\[
+\lim_{n\to\infty}\frac{(-1)^n}{n}=0.
+\]
+\end{examplebox}
+
+The difference between these two examples is the size of the oscillation. In \((-1)^n\), the oscillation never becomes small. In \((-1)^n/n\), the oscillation is squeezed toward \(0\).
+
+\subsection*{Reading sequence limits}
+
+When reading a sequence limit, we should identify the long-term structure of the formula. Does the numerator and denominator grow at comparable rates? Does a power dominate? Does a term go to zero? Does an alternating sign matter?
+
+\begin{examplebox}
+Consider
+\[
+a_n=\frac{n}{n+1}.
+\]
+For large \(n\), the numerator and denominator have almost the same size. Divide numerator and denominator by \(n\):
+\[
+\frac{n}{n+1}=\frac{1}{1+\frac1n}.
+\]
+Since \(\frac1n\to0\), we get
+\[
+\lim_{n\to\infty}\frac{n}{n+1}=1.
+\]
+\end{examplebox}
+
+This calculation should be understood conceptually: the extra \(1\) in the denominator becomes insignificant compared with \(n\) when \(n\) is large.
+
+\begin{summarybox}
+When studying a sequence limit, ask:
+\begin{itemize}
+\item What happens when \(n\) becomes large?
+\item Are the terms approaching a finite number?
+\item Are the terms growing without bound?
+\item Is there oscillation?
+\item If there is oscillation, does its size shrink?
+\item Which part of the formula dominates for large \(n\)?
+\end{itemize}
+\end{summarybox}
+
+A sequence limit describes long-term behavior. The first few terms may help us guess, but the limit is determined by what happens as \(n\) grows without bound.
