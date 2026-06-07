@@ -1,0 +1,86 @@
+\section{What a limit tries to describe}
+
+Limits are one of the central ideas of calculus. They are also one of the first ideas that require a new way of reading mathematical notation. A limit does not ask only what happens at a point. It asks what values are approached near a point, or far along a sequence.
+
+This distinction is essential. The value of a function at a point and the limit of a function at that point are related, but they are not the same question.
+
+\subsection*{Approaching is not the same as arriving}
+
+Consider a function \(f\) and a point \(a\). The expression
+\[
+f(a)
+\]
+asks for the value of the function at the input \(a\). The expression
+\[
+\lim_{x\to a} f(x)
+\]
+asks what value \(f(x)\) approaches when \(x\) approaches \(a\).
+
+The variable \(x\to a\) means that \(x\) gets close to \(a\). It does not mean that \(x=a\). This is why a limit can exist even when the function is not defined at the point.
+
+\begin{examplebox}
+Consider
+\[
+f(x)=\frac{x^2-1}{x-1},
+\qquad x\ne1.
+\]
+The function is not defined at \(x=1\), because the denominator becomes zero. But for \(x\ne1\), we can factor:
+\[
+\frac{x^2-1}{x-1}=\frac{(x-1)(x+1)}{x-1}=x+1.
+\]
+When \(x\) approaches \(1\), the expression \(x+1\) approaches \(2\). Therefore
+\[
+\lim_{x\to1}\frac{x^2-1}{x-1}=2.
+\]
+The limit exists even though \(f(1)\) is not defined.
+\end{examplebox}
+
+This example should be read as a lesson about the question being asked. The limit does not ask what happens after substituting \(x=1\). It asks what values are approached when \(x\) gets close to \(1\).
+
+\subsection*{Limits of sequences and limits of functions}
+
+There are two main limit situations in this chapter.
+
+For a sequence \((a_n)\), we ask what happens to the terms when the index grows:
+\[
+\lim_{n\to\infty} a_n.
+\]
+Here the input is discrete. The index \(n\) runs through natural numbers.
+
+For a function \(f(x)\), we may ask what happens when \(x\) approaches a real number \(a\):
+\[
+\lim_{x\to a} f(x),
+\]
+or when \(x\) grows without bound:
+\[
+\lim_{x\to\infty} f(x).
+\]
+
+The notation is different because the input situation is different. But the common idea is the same: we study what values are approached.
+
+\subsection*{What a limit can tell us}
+
+Limits help us describe behavior that may not be visible from one single value. They allow us to discuss:
+\begin{itemize}
+\item long-term behavior of sequences,
+\item behavior of functions near a point,
+\item holes in graphs,
+\item vertical and horizontal asymptotes,
+\item continuity,
+\item the idea of a derivative in the next chapter.
+\end{itemize}
+
+A limit is therefore not just another calculation. It is a way of reading behavior.
+
+\begin{summarybox}
+When first reading a limit, ask:
+\begin{itemize}
+\item What object is being studied: a sequence or a function?
+\item What input is approaching something?
+\item Is the input approaching a finite point or infinity?
+\item Am I being asked about the value at the point or behavior near the point?
+\item Does direct substitution answer the question, or does it reveal a difficulty?
+\end{itemize}
+\end{summarybox}
+
+The main habit is this: before calculating a limit, read what kind of approaching is being described.
