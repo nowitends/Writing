@@ -1,0 +1,111 @@
+\section{Mixed optimisation models}
+
+Some optimisation problems combine geometry, physics, and cost. The calculus step may be short, but the modelling step can be substantial. These problems are important because they show calculus acting as a reasoning tool rather than as a mechanical procedure.
+
+\subsection*{Minimising material for a cylindrical can}
+
+\begin{examplebox}
+A cylindrical can must have fixed volume \(V\). Find the relation between radius and height that minimises the surface area of the closed can.
+
+Let \(r\) be the radius and \(h\) the height. The volume constraint is
+\[
+\pi r^2h=V.
+\]
+The surface area of a closed cylinder is
+\[
+S=2\pi r^2+2\pi rh.
+\]
+Use the constraint to express \(h\) in terms of \(r\):
+\[
+h=\frac{V}{\pi r^2}.
+\]
+Then
+\[
+S(r)=2\pi r^2+2\pi r\cdot\frac{V}{\pi r^2}
+=2\pi r^2+\frac{2V}{r}.
+\]
+The domain is \(r>0\). Differentiate:
+\[
+S'(r)=4\pi r-\frac{2V}{r^2}.
+\]
+Set \(S'(r)=0\):
+\[
+4\pi r=\frac{2V}{r^2}.
+\]
+Thus
+\[
+4\pi r^3=2V,
+\qquad
+2\pi r^3=V.
+\]
+Using \(V=\pi r^2h\), this becomes
+\[
+2\pi r^3=\pi r^2h,
+\]
+so
+\[
+h=2r.
+\]
+Therefore the material is minimised when the height equals the diameter.
+\end{examplebox}
+
+The final answer is more meaningful as a design relation than as an isolated formula.
+
+\subsection*{A cable cost problem}
+
+A power station is on one side of a river, and a factory is downstream on the opposite side. Cable laid underwater is more expensive than cable laid on land. The question is where the cable should leave the water.
+
+The modelling idea is to choose a variable \(x\) for the horizontal distance from the point directly opposite the station to the landing point on the far bank. Then the underwater length is found by the Pythagorean theorem, while the land length is the remaining downstream distance. A cost function is built from these lengths.
+
+If the river has width \(100\) m and the factory is \(500\) m downstream, and if underwater cable costs twice as much as land cable, then a simplified cost model is
+\[
+C(x)=2\sqrt{x^2+100^2}+(500-x),
+\qquad 0\le x\le500.
+\]
+The factor \(2\) represents the higher underwater cost, while \(500-x\) is the remaining land distance.
+
+To minimise cost, differentiate:
+\[
+C'(x)=2\cdot\frac{x}{\sqrt{x^2+100^2}}-1.
+\]
+Set \(C'(x)=0\):
+\[
+\frac{2x}{\sqrt{x^2+10000}}=1.
+\]
+Thus
+\[
+2x=\sqrt{x^2+10000}.
+\]
+Squaring gives
+\[
+4x^2=x^2+10000,
+\]
+so
+\[
+3x^2=10000,
+\qquad
+x=\frac{100}{\sqrt3}.
+\]
+This value lies in the allowed interval, so it is the optimal landing distance from the point directly opposite the station.
+
+\begin{remarkbox}
+The derivative calculation is short. The main work is choosing the variable and expressing the physical cost as a function.
+\end{remarkbox}
+
+\subsection*{What mixed models teach}
+
+Mixed optimisation problems require careful translation. Geometry may provide distances or areas. Physics may provide rates or costs. Calculus then identifies the optimum.
+
+\begin{summarybox}
+For mixed optimisation models, ask:
+\begin{itemize}
+\item What is the decision variable?
+\item What quantity is being minimised or maximised?
+\item Which geometric formulas are needed?
+\item What constraints reduce the model to one variable?
+\item What interval of values is meaningful?
+\item Does the critical point satisfy the original physical restrictions?
+\end{itemize}
+\end{summarybox}
+
+The value of calculus in applications is that it connects a model to a decision.
