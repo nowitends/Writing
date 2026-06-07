@@ -1,0 +1,109 @@
+\section{Growth, decay, and simple differential models}
+
+Some applications do not give the function directly. Instead, they describe how the function changes. This leads to differential equations: equations involving an unknown function and its derivative.
+
+In this introductory chapter, we only need the simplest idea. If the rate of change is known, integration can recover the function. If the rate of change is proportional to the current value, exponential functions appear naturally.
+
+\subsection*{Rate proportional to the quantity}
+
+A common model says that a quantity grows at a rate proportional to its current size:
+\[
+N'(t)=kN(t).
+\]
+Here \(N(t)\) might represent a population, and \(k\) is a constant. If \(k>0\), the population grows. If \(k<0\), it decays.
+
+A function satisfying this equation is
+\[
+N(t)=N_0e^{kt},
+\]
+where \(N_0=N(0)\) is the initial value.
+
+\begin{examplebox}
+Suppose a bacterial colony grows according to
+\[
+N'(t)=kN(t),
+\qquad
+N(0)=N_0.
+\]
+Then
+\[
+N(t)=N_0e^{kt}.
+\]
+To find the doubling time, solve
+\[
+N(t)=2N_0.
+\]
+Thus
+\[
+N_0e^{kt}=2N_0.
+\]
+Assuming \(N_0>0\), divide by \(N_0\):
+\[
+e^{kt}=2.
+\]
+Take logarithms:
+\[
+kt=\ln2.
+\]
+Therefore the doubling time is
+\[
+t=\frac{\ln2}{k}.
+\]
+\end{examplebox}
+
+The result depends only on \(k\), not on the initial population size. This is a feature of pure exponential growth.
+
+\subsection*{Recovering a function from its derivative}
+
+If a rate of change is given directly, integration recovers the original quantity up to a constant. An initial condition determines that constant.
+
+\begin{examplebox}
+Suppose the velocity of a particle is
+\[
+v(t)=3t^2-4t.
+\]
+Find the position \(s(t)\), assuming \(s(0)=5\).
+
+Since velocity is the derivative of position,
+\[
+s'(t)=v(t)=3t^2-4t.
+\]
+Integrate:
+\[
+s(t)=\int (3t^2-4t)\,dt=t^3-2t^2+C.
+\]
+Use \(s(0)=5\):
+\[
+5=0-0+C,
+\]
+so \(C=5\). Therefore
+\[
+s(t)=t^3-2t^2+5.
+\]
+\end{examplebox}
+
+The constant of integration is not optional. In applications it is determined by initial data.
+
+\subsection*{Reading the model}
+
+A differential equation must be read as a relationship. For example,
+\[
+N'(t)=kN(t)
+\]
+does not give \(N(t)\) immediately. It says that the rate of change of \(N\) at time \(t\) is proportional to the current value of \(N(t)\).
+
+This kind of statement is common in modelling. The derivative expresses a law of change.
+
+\begin{summarybox}
+When reading a simple differential model, ask:
+\begin{itemize}
+\item What quantity is unknown?
+\item What does its derivative represent?
+\item Is the rate given directly or in terms of the quantity itself?
+\item What initial condition determines the constant?
+\item Does the solution grow, decay, or remain constant?
+\item What does the solution mean in the original context?
+\end{itemize}
+\end{summarybox}
+
+Differential models show why derivatives and integrals belong together: derivatives describe laws of change, while integrals and antiderivatives recover quantities from those laws.
