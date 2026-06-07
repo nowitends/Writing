@@ -83,6 +83,7 @@
 ./mathematical_lectures/basic_mathematics/chapters/systems_of_linear_equations/what_systems_describe.tex
 ./mathematical_lectures/basic_mathematics/chapters/vectors_and_coordinates
 ./mathematical_lectures/basic_mathematics/chapters/vectors_and_coordinates/.gitkeep
+./mathematical_lectures/basic_mathematics/chapters/vectors_and_coordinates/dot_product_and_angles.tex
 ./mathematical_lectures/basic_mathematics/chapters/vectors_and_coordinates/length_distance_and_midpoints.tex
 ./mathematical_lectures/basic_mathematics/chapters/vectors_and_coordinates/points_and_coordinates.tex
 ./mathematical_lectures/basic_mathematics/chapters/vectors_and_coordinates/vector_operations.tex
