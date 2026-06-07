@@ -1,0 +1,120 @@
+\section{Continuity at a point}
+
+Continuity connects the value of a function at a point with the behavior of the function near that point. A function is continuous at a point when there is no break between the nearby behavior and the value at the point.
+
+The definition uses limits.
+
+\begin{definitionbox}
+A function \(f\) is continuous at a point \(a\) if all three conditions hold:
+\begin{enumerate}
+\item \(f(a)\) is defined,
+\item \(\displaystyle \lim_{x\to a}f(x)\) exists,
+\item \(\displaystyle \lim_{x\to a}f(x)=f(a)\).
+\end{enumerate}
+\end{definitionbox}
+
+Each condition matters. If the value is missing, the function cannot be continuous at the point. If the limit does not exist, there is no single nearby behavior. If the limit exists but differs from the value, the graph has a mismatch at the point.
+
+\subsection*{A continuous example}
+
+\begin{examplebox}
+Let
+\[
+f(x)=x^2+1.
+\]
+Check continuity at \(a=2\).
+
+First,
+\[
+f(2)=2^2+1=5.
+\]
+Second,
+\[
+\lim_{x\to2}(x^2+1)=5.
+\]
+The limit exists and equals the value of the function. Therefore \(f\) is continuous at \(2\).
+\end{examplebox}
+
+Polynomials are continuous at every real point. This is why direct substitution works for polynomial limits.
+
+\subsection*{A removable discontinuity}
+
+A function may fail to be continuous because the value at one point is missing or incorrect, even though the nearby behavior has a clear limit.
+
+\begin{examplebox}
+Let
+\[
+f(x)=\frac{x^2-25}{x+5}
+\]
+for \(x\ne -5\). The function is not defined at \(-5\). For \(x\ne -5\), factor:
+\[
+\frac{x^2-25}{x+5}=\frac{(x-5)(x+5)}{x+5}=x-5.
+\]
+Therefore
+\[
+\lim_{x\to -5}f(x)=-10.
+\]
+If we define
+\[
+f(-5)=-10,
+\]
+then the function becomes continuous at \(-5\). The discontinuity is removable.
+\end{examplebox}
+
+The word ``removable'' means that a suitable value at the point can repair continuity.
+
+\subsection*{When the value is wrong}
+
+A function may be defined at a point but still fail to be continuous there.
+
+\begin{examplebox}
+Define
+\[
+f(x)=
+\begin{cases}
+\dfrac{x^2-1}{x-1}, & x\ne1,\\
+5, & x=1.
+\end{cases}
+\]
+For \(x\ne1\),
+\[
+\frac{x^2-1}{x-1}=x+1.
+\]
+Thus
+\[
+\lim_{x\to1}f(x)=2.
+\]
+But
+\[
+f(1)=5.
+\]
+Since the limit and the value are different, \(f\) is not continuous at \(1\). If we changed the value to \(f(1)=2\), continuity would be restored.
+\end{examplebox}
+
+This example shows why continuity is not only about having a value. The value must agree with the nearby behavior.
+
+\subsection*{Continuity on intervals}
+
+A function is continuous on an interval if it is continuous at every point of that interval. Many familiar functions have this property on their natural domains.
+
+For example:
+\begin{itemize}
+\item polynomial functions are continuous on \(\mathbb{R}\),
+\item rational functions are continuous wherever the denominator is not zero,
+\item \(\sqrt{x}\) is continuous on \([0,\infty)\),
+\item trigonometric functions such as \(\sin x\) and \(\cos x\) are continuous on \(\mathbb{R}\).
+\end{itemize}
+
+These facts allow many limits to be computed by substitution, but only at points where the function is continuous.
+
+\begin{summarybox}
+To check continuity at \(a\), ask:
+\begin{itemize}
+\item Is \(f(a)\) defined?
+\item Does \(\lim_{x\to a}f(x)\) exist?
+\item Is the limit equal to \(f(a)\)?
+\item If continuity fails, is it because of a missing value, a wrong value, or different one-sided behavior?
+\end{itemize}
+\end{summarybox}
+
+Continuity means agreement between value and nearby behavior. It is the point where limits become a statement about the function itself.
