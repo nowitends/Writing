@@ -1,0 +1,148 @@
+\section{Choosing the right description}
+
+This chapter introduced many descriptions of a line. At first this may seem like too much notation. But the purpose is not to collect formulas. The purpose is to learn how to choose a description that fits the problem.
+
+The same line can be written in several ways. The best form depends on what is known and what is being asked.
+
+\subsection*{When a point and direction are given}
+
+If a problem gives a point and a direction vector, the parametric form is usually the most natural:
+\[
+P=A+t v.
+\]
+It keeps the given information visible. It also makes it easy to generate points and to understand movement along the line.
+
+This form is also the safest first choice in space.
+
+\subsection*{When two points are given}
+
+If a problem gives two distinct points \(A\) and \(B\), first form the direction vector
+\[
+B-A.
+\]
+Then write
+\[
+P=A+t(B-A).
+\]
+From there, if needed, convert to another form.
+
+The important point is that the two given points are not just coordinates to insert into a memorized formula. They define a displacement, and that displacement defines a direction.
+
+\subsection*{When a normal vector is visible}
+
+If a problem gives an equation
+\[
+Ax+By+C=0,
+\]
+then the normal vector
+\[
+n=(A,B)
+\]
+is immediately visible. This form is useful for distance questions, side-of-line questions, and comparisons using normal vectors.
+
+If a point \(P_0\) and a normal vector \(n\) are given, use
+\[
+n\cdot(P-P_0)=0.
+\]
+This is often more meaningful than jumping directly to expanded coordinates.
+
+\subsection*{When slope is useful}
+
+If the line is non-vertical and slope is central to the question, then slope forms may be convenient:
+\[
+y-y_0=m(x-x_0)
+\]
+or
+\[
+y=mx+b.
+\]
+But these forms should be used with awareness. Vertical lines require a different description, such as
+\[
+x=c,
+\]
+or a parametric or general equation.
+
+\subsection*{Which form helps which question?}
+
+The following guide is often useful.
+
+\begin{center}
+\begin{tabular}{ll}
+\toprule
+Question & Useful description \\
+\midrule
+Generate points on the line & parametric form \\
+Line through two points & two-point form, then parametric form \\
+Check whether a point lies on the line & implicit or parametric form \\
+Find an intersection in the plane & general form as a system \\
+Check parallelism & direction vectors or normal vectors \\
+Check perpendicularity & dot product of directions or normals \\
+Compute distance from a point & general form \(Ax+By+C=0\) \\
+Work in space & parametric form \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+This table should not be used mechanically. It is a guide for choosing what to read from the line.
+
+\subsection*{A complete reading example}
+
+Consider the line
+\[
+\ell: 2x-3y+6=0.
+\]
+From this form we immediately read a normal vector:
+\[
+n=(2,-3).
+\]
+A direction vector can be chosen perpendicular to \(n\):
+\[
+v=(3,2),
+\]
+because
+\[
+(2,-3)\cdot(3,2)=6-6=0.
+\]
+To find a point on the line, set \(x=0\). Then
+\[
+-3y+6=0,
+\]
+so
+\[
+y=2.
+\]
+Thus \((0,2)\) lies on the line. A parametric form is
+\[
+P=(0,2)+t(3,2).
+\]
+The same line can therefore be read in two ways:
+\[
+2x-3y+6=0
+\]
+shows the normal vector and is good for distance or side tests, while
+\[
+P=(0,2)+t(3,2)
+\]
+shows a point and direction and is good for motion along the line.
+
+\begin{remarkbox}
+A good solution often changes the description of a line. This is not extra work. It is how we choose the language in which the problem becomes clear.
+\end{remarkbox}
+
+\subsection*{What to remember}
+
+A line is a set of points. Equations and parametrizations are descriptions of that set. The main descriptions are not competitors; they are tools.
+
+\begin{summarybox}
+When working with lines, ask:
+\begin{itemize}
+\item Is the line in the plane or in space?
+\item Am I given a point, two points, a direction vector, or a normal vector?
+\item Which description makes the given information visible?
+\item Which description makes the required property easiest to study?
+\item Am I studying membership, intersection, parallelism, perpendicularity, or distance?
+\item After computing, can I explain what the result means geometrically?
+\end{itemize}
+\end{summarybox}
+
+The most important lesson is not that lines have many formulas. The most important lesson is that each formula reveals a different aspect of the same geometric object.
