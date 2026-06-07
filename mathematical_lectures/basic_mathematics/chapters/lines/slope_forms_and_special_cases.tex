@@ -1,0 +1,174 @@
+\section{Slope forms and special cases}
+
+Many students first meet lines through equations of the form \(y=mx+b\). This form is useful, but it is only one description among several. It works well for non-vertical lines in the plane. It does not describe every line.
+
+The purpose of this section is therefore not to reject slope forms, but to place them correctly. They are convenient when slope is the natural information, but they should not replace the more general geometric understanding of a line.
+
+\subsection*{Slope as a ratio of changes}
+
+For a non-vertical line, the slope measures the ratio of vertical change to horizontal change. If a line has direction vector
+\[
+v=(a,b)
+\]
+with \(a\ne0\), then its slope is
+\[
+m=\frac{b}{a}.
+\]
+This says that when the horizontal coordinate changes by \(a\), the vertical coordinate changes by \(b\).
+
+\begin{examplebox}
+If a line has direction vector
+\[
+v=(4,6),
+\]
+then its slope is
+\[
+m=\frac{6}{4}=\frac32.
+\]
+The vector \((4,6)\) and the vector \((2,3)\) describe the same direction, and both give the same slope.
+\end{examplebox}
+
+Slope is therefore not a new kind of direction. It is a way of encoding direction for non-vertical lines.
+
+\subsection*{Point-slope form}
+
+Suppose a non-vertical line passes through \((x_0,y_0)\) and has slope \(m\). The point-slope form is
+\[
+y-y_0=m(x-x_0).
+\]
+This equation says that every point \((x,y)\) on the line has the same ratio of vertical change to horizontal change relative to \((x_0,y_0)\).
+
+\begin{examplebox}
+Find an equation of the line through \((2,-1)\) with slope \(3\).
+
+Using point-slope form,
+\[
+y-(-1)=3(x-2),
+\]
+so
+\[
+y+1=3x-6.
+\]
+Thus
+\[
+y=3x-7.
+\]
+\end{examplebox}
+
+The computation is short, but the meaning is important. The equation does not simply contain the number \(3\). It says that vertical change is always three times horizontal change.
+
+\subsection*{Slope-intercept form}
+
+If a non-vertical line crosses the \(y\)-axis at \((0,b)\) and has slope \(m\), then its equation is
+\[
+y=mx+b.
+\]
+The number \(b\) is the value of \(y\) when \(x=0\). The number \(m\) describes the slope.
+
+\begin{examplebox}
+The line
+\[
+y=-2x+5
+\]
+has slope \(-2\) and intersects the \(y\)-axis at
+\[
+(0,5).
+\]
+A possible direction vector is
+\[
+v=(1,-2),
+\]
+because when \(x\) increases by \(1\), \(y\) changes by \(-2\).
+\end{examplebox}
+
+This form is good for quick graphing and for reading slope. It is not always the best form for distance, intersections, or vertical lines.
+
+\subsection*{Horizontal lines}
+
+A horizontal line has slope \(0\). Its equation has the form
+\[
+y=c.
+\]
+Every point on the line has the same second coordinate.
+
+For example,
+\[
+y=4
+\]
+describes all points \((x,y)\) with \(y=4\). The first coordinate is free.
+
+In general form, this line is
+\[
+y-4=0.
+\]
+A normal vector is \((0,1)\), and a direction vector is \((1,0)\).
+
+\subsection*{Vertical lines}
+
+A vertical line has the form
+\[
+x=c.
+\]
+Every point on the line has the same first coordinate. Such a line does not have a finite slope and cannot be written as \(y=mx+b\).
+
+For example,
+\[
+x=-2
+\]
+describes all points \((x,y)\) with first coordinate \(-2\). The second coordinate is free.
+
+In general form, this line is
+\[
+x+2=0.
+\]
+A normal vector is \((1,0)\), and a direction vector is \((0,1)\).
+
+\begin{remarkbox}
+The equation \(y=mx+b\) is familiar, but it is not universal. Whenever vertical lines may appear, use a description that can include them, such as parametric form or general form.
+\end{remarkbox}
+
+\subsection*{From slope form to general form}
+
+Every non-vertical line written as
+\[
+y=mx+b
+\]
+can be rewritten in general form:
+\[
+mx-y+b=0.
+\]
+If we prefer integer coefficients, we may multiply by a common denominator.
+
+\begin{examplebox}
+Rewrite
+\[
+y=\frac23x-5
+\]
+in general form. Move all terms to one side:
+\[
+\frac23x-y-5=0.
+\]
+Multiplying by \(3\), we get
+\[
+2x-3y-15=0.
+\]
+A normal vector is therefore
+\[
+n=(2,-3).
+\]
+\end{examplebox}
+
+This example shows again that changing form changes what is visible. The slope form made the slope visible. The general form made the normal vector visible.
+
+\begin{summarybox}
+When using slope forms, ask:
+\begin{itemize}
+\item Is the line definitely non-vertical?
+\item Is slope the most useful information in this problem?
+\item Would a general form make a normal vector visible?
+\item Is the line horizontal or vertical?
+\item Which form avoids unnecessary special cases?
+\end{itemize}
+\end{summarybox}
+
+Slope forms are useful tools, but they should be used with awareness of their limits.
