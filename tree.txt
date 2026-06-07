@@ -61,6 +61,7 @@
 ./mathematical_lectures/basic_mathematics/chapters/determinants/why_determinants_matter.tex
 ./mathematical_lectures/basic_mathematics/chapters/integrals
 ./mathematical_lectures/basic_mathematics/chapters/integrals/.gitkeep
+./mathematical_lectures/basic_mathematics/chapters/integrals/antiderivatives_and_indefinite_integrals.tex
 ./mathematical_lectures/basic_mathematics/chapters/integrals/what_an_integral_measures.tex
 ./mathematical_lectures/basic_mathematics/chapters/introduction
 ./mathematical_lectures/basic_mathematics/chapters/introduction/ideas.md
