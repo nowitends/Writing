@@ -230,6 +230,7 @@
 ./mathematical_lectures/probabilistic_methods/chapters/combinatorics/repetition_and_count_vectors.tex
 ./mathematical_lectures/probabilistic_methods/chapters/combinatorics/unordered_structures.tex
 ./mathematical_lectures/probabilistic_methods/chapters/conditional_probability
+./mathematical_lectures/probabilistic_methods/chapters/conditional_probability/information_changes_the_space.tex
 ./mathematical_lectures/probabilistic_methods/chapters/conditional_probability/overview.tex
 ./mathematical_lectures/probabilistic_methods/chapters/continuous_random_variables
 ./mathematical_lectures/probabilistic_methods/chapters/continuous_random_variables/overview.tex
