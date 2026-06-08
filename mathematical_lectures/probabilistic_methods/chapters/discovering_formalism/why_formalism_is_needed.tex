@@ -1,0 +1,72 @@
+\section{Why formalism has to be discovered}
+
+The previous chapter taught a first lesson: before one counts, one must know what is being counted. The present chapter begins from a closely related but deeper observation. Before one assigns any numerical value to uncertainty, one must know what kind of object a statement about a situation selects.
+
+Mathematics often begins when ordinary language becomes too elastic. In ordinary language we can say things such as
+\[
+\text{the result is favourable},\qquad
+\text{at least one die shows }6,
+\]
+\[
+\text{the first toss is heads},\qquad
+\text{it rains on Wednesday or Friday}.
+\]
+These statements are meaningful, but they are not yet mathematical objects. They have grammar, but not yet structure. To reason with them reliably, we must translate them into something that can be compared, combined, negated, represented, and eventually measured.
+
+The central discovery of this chapter is that a statement about a situation acts as a test on elementary outcomes. An elementary outcome either satisfies the statement or it does not. Therefore a statement selects a set of elementary outcomes. This selected set is what probability theory calls an event.
+
+\begin{remarkbox}
+The formal language is not introduced to make the subject look more abstract. It is introduced because without it we cannot reliably say what is being discussed.
+\end{remarkbox}
+
+At this stage, we are not primarily interested in numerical answers. We are interested in the birth of a language. We want to see how the following chain of ideas appears naturally:
+\[
+\text{situation}
+\longrightarrow
+\text{elementary outcomes}
+\longrightarrow
+\text{statements about outcomes}
+\longrightarrow
+\text{sets of outcomes}
+\longrightarrow
+\text{operations on sets}.
+\]
+Only after this language exists can numerical probability be introduced responsibly.
+
+\section{A first universe of discourse}
+
+Every formal discussion needs a universe in which its statements are interpreted. In our setting, that universe is the set of all elementary outcomes under consideration.
+
+\begin{definitionbox}
+The \textbf{sample space} \(\Omega\) is the set of elementary outcomes that are possible under the recording rule chosen for the situation.
+\end{definitionbox}
+
+In this chapter, \(\Omega\) should be read as a universe of discourse. It tells us what the word ``outcome'' means in the current model. A statement is not evaluated in the air. It is evaluated relative to \(\Omega\).
+
+\begin{examplebox}
+Consider two coin tosses, with order recorded. The sample space is
+\[
+\Omega=\{HH,HT,TH,TT\}.
+\]
+The statement ``exactly one head occurs'' is true for \(HT\) and \(TH\), but false for \(HH\) and \(TT\). Thus the statement selects the set
+\[
+\{HT,TH\}.
+\]
+The selected set is the mathematical object corresponding to the statement.
+\end{examplebox}
+
+The same phrase may select a different set if the sample space changes. For example, if only the number of heads is recorded, then the sample space is
+\[
+\Omega' = \{0,1,2\}.
+\]
+In that model, the statement ``exactly one head occurs'' selects
+\[
+\{1\}.
+\]
+The ordinary sentence is similar, but the formal object is different because the underlying space is different.
+
+\begin{remarkbox}
+Formalism forces us to keep track of the level at which we are speaking. Are we describing the full ordered outcome, a set of visible outcomes, or only a numerical summary? The answer changes the mathematical object.
+\end{remarkbox}
+
+This is the methodological point of the chapter. We do not begin with symbols because symbols are fashionable. We begin with a question: what must be preserved so that reasoning remains honest? The symbols appear as a disciplined way to preserve exactly that structure.
