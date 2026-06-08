@@ -1,6 +1,6 @@
 \section{Sequences with repetition}
 
-A sequence with repetition is an ordered list in which each position is filled independently from the same set of symbols.
+A sequence with repetition is an ordered list in which each position is filled separately from the same set of symbols.
 
 \begin{definitionbox}
 Let \(S\) be a set with \(n\) elements. A \textbf{sequence of length \(k\) with repetition} over \(S\) is an ordered \(k\)-tuple
@@ -10,10 +10,19 @@ Let \(S\) be a set with \(n\) elements. A \textbf{sequence of length \(k\) with 
 where each \(a_i\in S\). The same element may occur many times.
 \end{definitionbox}
 
-The number of such sequences is
+The word ``ordered'' means that positions matter. The first position, the second position, and the third position are different places in the description. The phrase ``with repetition'' means that choosing one symbol at one position does not remove it from later positions.
+
+Now we derive the count. To construct one sequence,
+\begin{itemize}
+    \item choose \(a_1\): there are \(n\) choices;
+    \item choose \(a_2\): there are again \(n\) choices, because repetition is allowed;
+    \item continue in the same way up to \(a_k\): there are \(n\) choices at each position.
+\end{itemize}
+By the multiplication principle, the number of complete sequences is
 \[
-n^k.
+\underbrace{n\cdot n\cdots n}_{k\text{ factors}}=n^k.
 \]
+Thus the formula \(n^k\) is not a separate rule to memorize. It is the multiplication principle applied to \(k\) ordered positions, each with the same \(n\) choices.
 
 This model is used when:
 \begin{itemize}
@@ -26,9 +35,9 @@ This model is used when:
 Typical examples include PIN codes, repeated coin tosses, repeated die rolls, strings over an alphabet, and repeated selections with replacement.
 
 \begin{examplebox}
-The sample space for three tosses of a coin is
+The space of possibilities for three tosses of a coin is
 \[
-\Omega=\{H,T\}^3.
+\{H,T\}^3.
 \]
 It has
 \[
@@ -38,7 +47,13 @@ elementary outcomes. Each outcome is a sequence, for example
 \[
 (H,T,H).
 \]
-The outcomes \((H,T,H)\) and \((T,H,H)\) are different because the order of tosses is recorded.
+The outcomes \((H,T,H)\) and \((T,H,H)\) are different because the order of positions is recorded.
+
+A tree representation shows the same count visually. At the first toss there are \(2\) branches, from each of these there are \(2\) branches for the second toss, and from each of those there are \(2\) branches for the third toss. The tree has
+\[
+2\cdot 2\cdot 2=8
+\]
+terminal branches, one for each complete sequence.
 \end{examplebox}
 
 \section{Ordered selections without repetition}
@@ -49,9 +64,22 @@ Sometimes only some objects are chosen, but the order or position of the chosen 
 An \textbf{ordered selection without repetition} of length \(k\) from \(n\) distinct objects is an ordered list of \(k\) different objects chosen from the \(n\) available objects.
 \end{definitionbox}
 
-The number of ordered selections without repetition is
+To derive the count, construct the ordered list position by position. There are \(n\) choices for the first position. Once the first object has been used, it cannot be used again, so there are \(n-1\) choices for the second position. After two objects have been used, there are \(n-2\) choices for the third position. Continuing in this way, the \(k\)-th position has
 \[
-P(n,k)=n(n-1)\cdots(n-k+1)=\frac{n!}{(n-k)!}.
+n-(k-1)=n-k+1
+\]
+choices.
+Therefore the number of ordered selections without repetition is
+\[
+P(n,k)=n(n-1)(n-2)\cdots(n-k+1).
+\]
+This product can also be written using factorials. Since
+\[
+n!=n(n-1)\cdots(n-k+1)(n-k)(n-k-1)\cdots 1,
+\]
+dividing by \((n-k)!\) removes the unused tail:
+\[
+P(n,k)=\frac{n!}{(n-k)!}.
 \]
 
 This model is used when:
@@ -66,11 +94,10 @@ Gold, silver, and bronze medals are assigned among \(12\) runners. An outcome is
 \[
 (\text{gold},\text{silver},\text{bronze}).
 \]
-There are
+There are \(12\) choices for gold, then \(11\) choices for silver, then \(10\) choices for bronze. Hence the number of possible assignments is
 \[
-12\cdot 11\cdot 10=P(12,3)
+12\cdot 11\cdot 10=P(12,3).
 \]
-possible assignments.
 \end{examplebox}
 
 In some European terminology, ordered selections are called variations. In these notes we use the name ordered selections without repetition, or \(k\)-permutations, because it describes directly what the outcome is.
@@ -83,22 +110,22 @@ A permutation is an arrangement of all objects in a row.
 A \textbf{permutation} of \(n\) distinct objects is a linear arrangement of all \(n\) objects.
 \end{definitionbox}
 
-There are
+This is the special case of an ordered selection without repetition in which all objects are used. Thus \(k=n\), and
+\[
+P(n,n)=n(n-1)(n-2)\cdots 2\cdot 1=n!.
+\]
+So there are
 \[
 n!
 \]
 permutations of \(n\) distinct objects.
-
-This is a special case of ordered selection without repetition with \(k=n\):
-\[
-P(n,n)=n!.
-\]
 
 \begin{examplebox}
 If \(7\) students are arranged in a line, then one outcome is a complete ordered list of all students. The number of arrangements is
 \[
 7!.
 \]
+This is not because \(7!\) is a name attached to the word ``arrangement''. It is because there are \(7\) choices for the first position, \(6\) for the second, \(5\) for the third, and so on until all positions are filled.
 \end{examplebox}
 
 Permutations are used when:
@@ -125,12 +152,10 @@ For \(n\) distinct objects placed around a circle, with rotations identified, th
 \[
 (n-1)!.
 \]
-
-One way to see this is to fix one object as a reference point. The remaining \(n-1\) objects can then be arranged around it in
+One way to see this is to fix one object as a reference point. This does not reduce any real choice; it only chooses one representative from each group of rotated descriptions. Once the reference object is fixed, the remaining \(n-1\) objects can be placed around it in a linear order:
 \[
-(n-1)!
+(n-1)(n-2)\cdots 2\cdot 1=(n-1)!.
 \]
-ways.
 
 \begin{remarkbox}
 A circular arrangement requires a modelling decision. If seats are numbered or if there is a distinguished position, then rotations may become different outcomes and the linear count may be appropriate.
