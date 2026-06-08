@@ -235,6 +235,7 @@
 ./mathematical_lectures/probabilistic_methods/chapters/continuous_random_variables/overview.tex
 ./mathematical_lectures/probabilistic_methods/chapters/discovering_formalism
 ./mathematical_lectures/probabilistic_methods/chapters/discovering_formalism/overview.tex
+./mathematical_lectures/probabilistic_methods/chapters/discovering_formalism/why_formalism_is_needed.tex
 ./mathematical_lectures/probabilistic_methods/chapters/discrete_random_variables
 ./mathematical_lectures/probabilistic_methods/chapters/discrete_random_variables/overview.tex
 ./mathematical_lectures/probabilistic_methods/chapters/empirical_distributions
