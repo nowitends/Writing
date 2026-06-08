@@ -1,0 +1,365 @@
+\section{Information changes the space of reasoning}
+
+The previous chapter taught us how to construct probability models from
+experiments. We learned to identify elementary outcomes, build the sample space
+\(\Omega\), describe events as subsets of \(\Omega\), and assign probabilities
+only after the model has been made explicit.
+
+In this chapter we add a new idea: sometimes probability is not computed from
+the original position of ignorance. Sometimes new information is given. When
+that happens, the question is no longer asked inside the whole sample space.
+The information restricts the set of possibilities that remain compatible with
+what we know.
+
+The central message is:
+\[
+\text{new information changes the space in which we reason.}
+\]
+
+This idea is the conceptual beginning of conditional probability. We shall not
+begin by memorizing a formula. We shall first examine what information does to a
+probability model.
+
+\subsection*{Information removes impossible cases}
+
+Suppose a die is rolled once. Before any information is given, the natural sample
+space is
+\[
+\Omega=\{1,2,3,4,5,6\}.
+\]
+If the die is fair, all six elementary outcomes are equally likely.
+
+Now imagine that someone tells us:
+\[
+\text{the result is even.}
+\]
+This information changes what is still possible. The outcomes
+\[
+1,3,5
+\]
+are no longer compatible with the information. The only outcomes that remain
+possible are
+\[
+2,4,6.
+\]
+Thus we no longer reason inside the whole set \(\Omega\). We reason inside the
+smaller event
+\[
+E=\{2,4,6\}.
+\]
+
+If we now ask
+\[
+\text{what is the probability that the result is greater than }3?
+\]
+we must not count favourable outcomes inside the original six outcomes. The
+information has already told us that the result is even. Therefore the relevant
+possibilities are only
+\[
+2,4,6.
+\]
+Among these, the outcomes greater than \(3\) are
+\[
+4,6.
+\]
+So, after receiving the information that the result is even, the probability of
+``greater than \(3\)'' is obtained by comparing two favourable outcomes with the
+three outcomes still possible.
+
+\begin{remarkbox}
+The old sample space has not disappeared from the model. It still explains what
+the experiment was. But for the new question, after the information is known,
+the active space of reasoning is the event compatible with that information.
+\end{remarkbox}
+
+\subsection*{A question may change its answer after information is given}
+
+Before any information is given, the event
+\[
+A=\{4,5,6\}
+\]
+that the die result is greater than \(3\) has three favourable outcomes out of
+six. In the fair die model, this gives probability \(1/2\).
+
+After the information
+\[
+E=\{2,4,6\}
+\]
+is given, the same verbal question is evaluated in a smaller space. The relevant
+outcomes are no longer
+\[
+1,2,3,4,5,6,
+\]
+but only
+\[
+2,4,6.
+\]
+Inside that restricted space, the event ``greater than \(3\)'' corresponds to
+\[
+A\cap E=\{4,6\}.
+\]
+Thus the answer changes. The event \(A\) itself did not change as a subset of
+\(\Omega\). What changed is the set of outcomes that are still considered
+possible.
+
+This is the basic phenomenon of conditioning: information changes the reference
+space.
+
+\subsection*{Information as restriction to an event}
+
+In probability, information usually has the form
+\[
+\text{we know that }B\text{ occurred.}
+\]
+The event \(B\) then becomes the new space of reasoning. Outcomes outside
+\(B\) are no longer possible under the information.
+
+If we are interested in another event \(A\), we do not ask how much of
+\(\Omega\) belongs to \(A\). We ask how much of the still possible region \(B\)
+also belongs to \(A\). The relevant part is therefore
+\[
+A\cap B.
+\]
+
+The geometry of the situation is:
+\[
+\Omega \quad\text{is the original universe,}
+\]
+\[
+B \quad\text{is the information now known,}
+\]
+\[
+A\cap B \quad\text{is the part of the information region where }A\text{ also holds.}
+\]
+
+\begin{definitionbox}
+To \textbf{condition on information} means to restrict attention to the outcomes
+compatible with that information and then measure the event of interest inside
+that restricted region.
+\end{definitionbox}
+
+This is not yet a computational formula. It is the idea that the formula must
+express.
+
+\subsection*{Two dice: information about the sum}
+
+Consider two fair dice, with order recorded. The original sample space is
+\[
+\Omega=\{(i,j):i,j\in\{1,2,3,4,5,6\}\}.
+\]
+It contains \(36\) ordered pairs.
+
+Let
+\[
+B=\{\text{the sum is }7\}.
+\]
+Explicitly,
+\[
+B=\{(1,6),(2,5),(3,4),(4,3),(5,2),(6,1)\}.
+\]
+Suppose this information is given: the sum is \(7\). Then the six ordered pairs
+above are the only outcomes still compatible with what we know.
+
+Now ask:
+\[
+\text{what is the probability that the first die shows }5?
+\]
+Let
+\[
+A=\{\text{the first die shows }5\}.
+\]
+Inside the whole sample space, \(A\) contains six outcomes:
+\[
+(5,1),(5,2),(5,3),(5,4),(5,5),(5,6).
+\]
+But most of these are irrelevant once we know that the sum is \(7\). Inside the
+restricted space \(B\), the only outcome with first coordinate \(5\) is
+\[
+(5,2).
+\]
+Thus, after the information is known, there is one favourable outcome among the
+six outcomes still possible.
+
+This example shows why one must be careful with the phrase ``the probability of
+\(A\)''. Probability relative to what information? Before knowing the sum, the
+question is evaluated in \(\Omega\). After knowing the sum, the question is
+evaluated in \(B\).
+
+\subsection*{The event is not replaced by the information}
+
+A common misunderstanding is to think that once \(B\) is known, the event \(A\)
+is replaced by \(B\). That is not correct. The event of interest remains \(A\).
+The information is \(B\). The favourable outcomes are those where both things
+are true:
+\[
+A\cap B.
+\]
+
+In the two-dice example:
+\begin{itemize}
+    \item \(B\) says that the sum is \(7\);
+    \item \(A\) says that the first die is \(5\);
+    \item \(A\cap B\) says that the first die is \(5\) and the sum is \(7\).
+\end{itemize}
+
+The information gives the new reference space. The intersection gives the part
+of that reference space where the target event occurs.
+
+\begin{remarkbox}
+Conditioning always involves two roles: the event being asked about and the
+information being conditioned on. Confusing these roles is one of the most
+common sources of wrong answers.
+\end{remarkbox}
+
+\subsection*{Cards: the same card viewed after information}
+
+Draw one card from a standard deck. Suppose the exact card is recorded, so the
+sample space has \(52\) elementary outcomes.
+
+Let
+\[
+A=\{\text{the card is an ace}\}.
+\]
+Before any additional information is given, there are \(4\) aces among \(52\)
+cards.
+
+Now suppose we are told:
+\[
+B=\{\text{the card is a heart}\}.
+\]
+The information reduces the relevant possibilities to the \(13\) hearts. Inside
+this restricted set, only one card is an ace: the ace of hearts. Therefore, once
+we know that the card is a heart, the event ``the card is an ace'' is evaluated
+inside the set of hearts.
+
+Now change the information. Suppose instead we are told:
+\[
+C=\{\text{the card is a face card}\}.
+\]
+The relevant possibilities are now the face cards. Inside that restricted set,
+there are no aces, because aces are not face cards in the usual convention. Thus
+the same event \(A\), ``the card is an ace'', behaves differently under different
+information.
+
+The event \(A\) did not change. The information changed the reference space.
+
+\subsection*{Information may or may not change the probability}
+
+New information restricts the space of reasoning, but it does not always change
+the numerical probability of the event of interest.
+
+For example, draw one card from a standard deck. Let
+\[
+A=\{\text{the card is an ace}\},
+\]
+and let
+\[
+B=\{\text{the card is a heart}\}.
+\]
+Knowing that the card is a heart leaves \(13\) possible cards, one of which is
+an ace. The probability of being an ace inside the hearts is therefore the same
+as the original proportion of aces in the whole deck:
+\[
+\text{one ace among thirteen hearts, just as four aces among fifty-two cards.}
+\]
+In this case the information ``heart'' does not change the probability of
+``ace''.
+
+But if the information is
+\[
+C=\{\text{the card is a face card}\},
+\]
+then the probability of being an ace becomes zero inside the restricted space.
+This information does change the probability.
+
+This observation prepares the idea of independence. Two events are independent
+when learning that one occurred does not change the probability of the other.
+But before defining independence formally, we must first understand what it means
+to update the space of reasoning.
+
+\subsection*{Renormalization: the whole information region becomes certain}
+
+When the information \(B\) is given, the event \(B\) itself becomes certain in
+the new situation. After being told that the die result is even, the statement
+``the die result is even'' has probability \(1\) relative to the information.
+After being told that the card is a heart, the statement ``the card is a heart''
+has probability \(1\) relative to the information.
+
+This means that probabilities inside the restricted region must be rescaled so
+that the whole information region has total probability \(1\). In a uniform
+finite model, this rescaling is easy to see. If \(B\) contains several equally
+likely outcomes, then after we learn \(B\), those outcomes form the new complete
+list of possibilities.
+
+\begin{examplebox}
+A fair die is rolled and we learn that the result is even. The restricted space
+is
+\[
+B=\{2,4,6\}.
+\]
+Inside this new space, the three outcomes \(2,4,6\) are treated as the complete
+possibilities. Therefore the event \(B\) itself has probability \(1\) relative to
+this information, and each of the three remaining outcomes has probability
+\(1/3\) in the restricted uniform model.
+\end{examplebox}
+
+In non-uniform models, the same idea holds, but the remaining probabilities must
+be rescaled proportionally. The original weights outside \(B\) are discarded
+because they correspond to outcomes no longer compatible with the information.
+The weights inside \(B\) are then adjusted so that their total becomes \(1\).
+
+This rescaling principle is the reason the formal definition of conditional
+probability has the structure it has. The numerator must measure the part of the
+information region where the target event occurs. The denominator must measure
+the whole information region, because that whole region becomes the new unit of
+probability.
+
+\subsection*{Why the information must have positive probability}
+
+Conditioning on information only makes sense if the information can occur in the
+model. If \(P(B)=0\), then the instruction ``reason inside \(B\)'' cannot be
+implemented by rescaling probabilities inside \(B\), because there is no positive
+probability mass to rescale.
+
+In finite elementary examples this is easy to understand. Suppose a standard die
+is rolled and someone says:
+\[
+\text{the result is }8.
+\]
+This statement corresponds to the empty event in the die model
+\(\Omega=\{1,2,3,4,5,6\}\). There are no outcomes compatible with it. It cannot
+become a new space of reasoning.
+
+More generally, conditional probability is defined only when the conditioning
+event has positive probability. This condition is not a technical decoration. It
+says that the information must leave a meaningful region in which probability can
+be redistributed.
+
+\subsection*{The conceptual picture}
+
+The logic of conditioning can now be summarized as follows.
+
+\begin{enumerate}
+    \item We begin with a probability model on \(\Omega\).
+    \item We receive information that an event \(B\) occurred.
+    \item Outcomes outside \(B\) are no longer compatible with the information.
+    \item The event \(B\) becomes the new reference space.
+    \item To study another event \(A\), we look at the part of \(B\) where \(A\)
+    is also true, namely \(A\cap B\).
+    \item Probabilities inside \(B\) are rescaled so that \(B\) has total
+    probability \(1\) in the new situation.
+\end{enumerate}
+
+\begin{theorembox}
+The guiding principle of conditional probability is:
+\[
+\text{probability after information is probability inside the event described by that information.}
+\]
+The formal definition in the next section will turn this principle into a
+precise rule.
+\end{theorembox}
+
+The important point is that the formula will not be arbitrary. It must express
+the geometry we have already seen: restrict to the information event, keep only
+the part where the target event also occurs, and renormalize the information
+region so that it becomes the new whole space.
