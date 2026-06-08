@@ -1,0 +1,290 @@
+\section{Partitions and the law of total probability}
+
+Conditional probability becomes especially useful when a problem can be split
+into cases. Many probability questions have the following structure: we want the
+probability of an event \(A\), but the mechanism that produces \(A\) depends on
+which one of several possible background cases occurred.
+
+The mathematical language for such a situation is a partition.
+
+\subsection*{Splitting the sample space into cases}
+
+Suppose the sample space \(\Omega\) is split into events
+\[
+B_1,B_2,\ldots,B_n.
+\]
+These events should represent mutually exclusive and exhaustive cases. Mutually
+exclusive means that no two cases can occur together:
+\[
+B_i\cap B_j=\varnothing\qquad\text{when }i\neq j.
+\]
+Exhaustive means that every possible outcome belongs to one of the cases:
+\[
+B_1\cup B_2\cup\cdots\cup B_n=\Omega.
+\]
+
+\begin{definitionbox}
+A finite collection of events \(B_1,
+\ldots,B_n\) is a \textbf{partition} of
+\(\Omega\) if the events are pairwise disjoint and their union is \(\Omega\). In
+applications of conditional probability, we usually also require
+\[
+P(B_i)>0
+\]
+for each case that appears in a conditional probability.
+\end{definitionbox}
+
+A partition is a disciplined way to say: exactly one of these cases occurs.
+
+\begin{examplebox}
+If a person is selected from a population, the events
+\[
+B_1=\{\text{person is in group 1}\},\quad
+B_2=\{\text{person is in group 2}\},\quad
+B_3=\{\text{person is in group 3}\}
+\]
+form a partition if every person belongs to exactly one of the three groups.
+\end{examplebox}
+
+\subsection*{How an event is split by a partition}
+
+Let \(A\) be any event. If \(B_1,
+\ldots,B_n\) is a partition of \(\Omega\), then
+\(A\) can be split according to the cases:
+\[
+A=(A\cap B_1)\cup(A\cap B_2)\cup\cdots\cup(A\cap B_n).
+\]
+These pieces are disjoint because the \(B_i\)'s are disjoint. Thus the
+probability of \(A\) is the sum of the probabilities of the pieces:
+\[
+P(A)=P(A\cap B_1)+P(A\cap B_2)+\cdots+P(A\cap B_n).
+\]
+
+This identity is just additivity applied after decomposing \(A\) into disjoint
+parts.
+
+\subsection*{Replacing intersections by conditional probabilities}
+
+For each case \(B_i\), the multiplication rule gives
+\[
+P(A\cap B_i)=P(A\mid B_i)P(B_i).
+\]
+Substituting this into the previous sum gives
+\[
+P(A)=P(A\mid B_1)P(B_1)+P(A\mid B_2)P(B_2)+\cdots+P(A\mid B_n)P(B_n).
+\]
+Equivalently,
+\[
+P(A)=\sum_{i=1}^n P(A\mid B_i)P(B_i).
+\]
+
+\begin{theorembox}
+\textbf{Law of total probability.} If \(B_1,
+\ldots,B_n\) is a partition of
+\(\Omega\) and \(P(B_i)>0\), then for every event \(A\),
+\[
+P(A)=\sum_{i=1}^n P(A\mid B_i)P(B_i).
+\]
+\end{theorembox}
+
+The formula says that the total probability of \(A\) is obtained by looking at
+all possible cases. In each case, we multiply the probability of the case by the
+probability of \(A\) inside that case, and then add the contributions.
+
+\begin{remarkbox}
+The law of total probability is not a new mysterious rule. It is additivity over
+a partition, with each piece \(P(A\cap B_i)\) rewritten as
+\(P(A\mid B_i)P(B_i)\).
+\end{remarkbox}
+
+\subsection*{Weighted averages of conditional probabilities}
+
+The expression
+\[
+P(A)=\sum_{i=1}^n P(A\mid B_i)P(B_i)
+\]
+can be read as a weighted average of the conditional probabilities
+\[
+P(A\mid B_1),\ldots,P(A\mid B_n).
+\]
+The weights are
+\[
+P(B_1),\ldots,P(B_n).
+\]
+They are non-negative and add to one because the \(B_i\)'s form a partition:
+\[
+P(B_1)+\cdots+P(B_n)=1.
+\]
+
+This interpretation is useful. If \(A\) is likely in a case that rarely occurs,
+its contribution to the total probability may still be small. If \(A\) is only
+moderately likely in a case that occurs often, its contribution may be large.
+
+\subsection*{Example: choosing one of two coins}
+
+Suppose a box contains two coins. Coin 1 is fair:
+\[
+P(H\mid B_1)=\frac12.
+\]
+Coin 2 is biased toward heads:
+\[
+P(H\mid B_2)=\frac34.
+\]
+A coin is chosen at random, with
+\[
+P(B_1)=P(B_2)=\frac12,
+\]
+and then the chosen coin is tossed once. What is the probability of heads?
+
+Let
+\[
+A=\{\text{heads occurs}\}.
+\]
+The events \(B_1\) and \(B_2\) form a partition of the background mechanism:
+we either chose coin 1 or coin 2. The law of total probability gives
+\[
+P(A)=P(A\mid B_1)P(B_1)+P(A\mid B_2)P(B_2).
+\]
+Thus
+\[
+P(A)=\frac12\cdot\frac12+\frac34\cdot\frac12
+=\frac14+\frac38=\frac58.
+\]
+
+The answer is between \(1/2\) and \(3/4\), because before the toss we do not know
+which coin was chosen. The total probability is the average of the head
+probabilities of the two coins, weighted by the probabilities of choosing them.
+
+\subsection*{Example: urn chosen before drawing}
+
+Suppose one urn is selected first, and then one object is drawn from that urn.
+Urn 1 contains \(3\) red objects and \(1\) blue object. Urn 2 contains \(1\) red
+object and \(4\) blue objects. The probability of choosing urn 1 is \(2/3\), and
+the probability of choosing urn 2 is \(1/3\).
+
+Let
+\[
+A=\{\text{the drawn object is red}\},
+\]
+\[
+B_1=\{\text{urn 1 was chosen}\},\qquad
+B_2=\{\text{urn 2 was chosen}\}.
+\]
+Then
+\[
+P(A\mid B_1)=\frac34,\qquad P(A\mid B_2)=\frac15.
+\]
+The cases \(B_1\) and \(B_2\) form a partition. Therefore
+\[
+P(A)=P(A\mid B_1)P(B_1)+P(A\mid B_2)P(B_2).
+\]
+Substituting the values,
+\[
+P(A)=\frac34\cdot\frac23+\frac15\cdot\frac13.
+\]
+Hence
+\[
+P(A)=\frac12+\frac1{15}=\frac{17}{30}.
+\]
+
+The result is not obtained by averaging the contents of the two urns equally,
+because the urns are not chosen equally. The weights \(2/3\) and \(1/3\) matter.
+
+\subsection*{Example: data table}
+
+Suppose a population consists of two departments. Department 1 contains \(40\%\)
+of the population, and department 2 contains \(60\%\). In department 1, \(70\%\)
+of people use a certain system. In department 2, \(30\%\) use it.
+
+Let
+\[
+A=\{\text{the selected person uses the system}\},
+\]
+\[
+B_1=\{\text{the selected person is in department 1}\},
+\]
+\[
+B_2=\{\text{the selected person is in department 2}\}.
+\]
+Then
+\[
+P(B_1)=0.4,\qquad P(B_2)=0.6,
+\]
+\[
+P(A\mid B_1)=0.7,\qquad P(A\mid B_2)=0.3.
+\]
+Therefore
+\[
+P(A)=0.7\cdot0.4+0.3\cdot0.6=0.28+0.18=0.46.
+\]
+
+The overall usage rate is \(46\%\). It is a weighted average of the department
+usage rates, weighted by department sizes.
+
+\subsection*{Choosing the right partition}
+
+The law of total probability is useful only after the cases have been chosen
+well. A good partition should satisfy three conditions.
+
+First, the cases must be mutually exclusive. If two cases can occur together,
+then adding their contributions may double-count outcomes.
+
+Second, the cases must be exhaustive. If some outcomes are not covered by any
+case, then the sum will miss part of the probability.
+
+Third, the conditional probabilities inside the cases should be meaningful and
+usually easier to understand than the original probability.
+
+\begin{examplebox}
+For a test problem, a natural partition may be
+\[
+B_1=\{\text{person has the condition}\},\qquad
+B_2=\{\text{person does not have the condition}\}.
+\]
+These two events are disjoint and exhaustive. They also match how test accuracy
+is usually described: sensitivity gives \(P(\text{positive}\mid B_1)\), and
+false positive rate gives \(P(\text{positive}\mid B_2)\).
+\end{examplebox}
+
+\subsection*{Common mistake: forgetting the weights}
+
+A common mistake is to average conditional probabilities without using the case
+probabilities. For example, if
+\[
+P(A\mid B_1)=0.9,\qquad P(A\mid B_2)=0.1,
+\]
+one might be tempted to say that \(P(A)=0.5\). This is correct only if
+\[
+P(B_1)=P(B_2)=0.5.
+\]
+If instead
+\[
+P(B_1)=0.1,\qquad P(B_2)=0.9,
+\]
+then
+\[
+P(A)=0.9\cdot0.1+0.1\cdot0.9=0.18.
+\]
+The rare high-probability case contributes less than the common low-probability
+case.
+
+\subsection*{What the law of total probability teaches}
+
+The law of total probability teaches how to assemble a probability from cases.
+The event \(A\) is decomposed into disjoint pieces \(A\cap B_i\). Each piece is
+measured by first entering case \(B_i\), then measuring \(A\) within that case.
+
+\begin{theorembox}
+To use total probability, ask:
+\[
+\text{Which mutually exclusive and exhaustive cases can produce the event?}
+\]
+Then add the case contributions:
+\[
+\text{probability of case}\times\text{probability of event inside case}.
+\]
+\end{theorembox}
+
+This prepares the next idea. If total probability lets us compute the probability
+of an observation from possible causes or cases, Bayes' theorem lets us reverse
+the question: after the observation is known, how likely is each case?
