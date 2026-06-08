@@ -1,0 +1,254 @@
+\section{From an experiment to a sample space}
+
+The previous chapter introduced the formal language of probability: a sample
+space, events as subsets of the sample space, operations on events, and a
+probability assignment. We now use that language in concrete models. The main
+point of the present chapter is methodological:
+\[
+\text{a sample space is not found inside the experiment; it is constructed.}
+\]
+
+A physical or conceptual experiment may be described in ordinary language, but
+ordinary language does not by itself say what the elementary outcomes are. We
+must decide what information is recorded, what distinctions are visible in the
+model, and what distinctions are deliberately ignored.
+
+\begin{definitionbox}
+A \textbf{probabilistic model} begins with a decision about what is recorded. A
+\textbf{sample space} \(\Omega\) is the set of all elementary outcomes under
+that recording rule. A \textbf{probability assignment} then gives probabilities
+to events, that is, to subsets of \(\Omega\).
+\end{definitionbox}
+
+Thus the construction has the following order:
+\[
+\text{experiment}
+\longrightarrow
+\text{recording rule}
+\longrightarrow
+\text{elementary outcome}
+\longrightarrow
+\Omega
+\longrightarrow
+\text{events}
+\longrightarrow
+P.
+\]
+
+The order matters. If we skip the recording rule, then we do not really know
+what one elementary outcome is. If we do not know what one elementary outcome is,
+then we do not know what the sample space is. If we do not know the sample space,
+then symbols such as \(A\subseteq\Omega\) and \(P(A)\) have no precise meaning.
+
+\subsection*{The same physical situation may have different sample spaces}
+
+Consider the instruction:
+\[
+\text{toss a coin twice.}
+\]
+This instruction describes a physical procedure, but it does not yet fully
+describe the mathematical model. Several recording rules are possible.
+
+If we record the full ordered sequence of outcomes, then one elementary outcome
+is a sequence such as \(HT\). The sample space is
+\[
+\Omega_1=\{HH,HT,TH,TT\}.
+\]
+In this model \(HT\neq TH\), because the first position and the second position
+are different pieces of information.
+
+If instead we record only the number of heads, then one elementary outcome is a
+number. The sample space is
+\[
+\Omega_2=\{0,1,2\}.
+\]
+In this model the sequences \(HT\) and \(TH\) are not separate elementary
+outcomes. They both correspond to the same recorded value, namely \(1\).
+
+If we record only whether at least one head appeared, then the sample space is
+\[
+\Omega_3=\{\text{yes},\text{no}\}.
+\]
+This is another legitimate model, but it answers a different question.
+
+\begin{remarkbox}
+The phrase ``the experiment is the same'' can be misleading. The physical action
+may be the same, but the mathematical sample space depends on what is recorded.
+Probability theory does not work directly with the physical action; it works
+with the mathematical description produced from that action.
+\end{remarkbox}
+
+\subsection*{Elementary outcomes are model-dependent}
+
+An elementary outcome is not necessarily the smallest physical object involved.
+It is the smallest complete result according to the model.
+
+\begin{examplebox}
+Suppose a ball is drawn from an urn containing three red balls and two blue
+balls. If the balls are labelled
+\[
+R_1,R_2,R_3,B_1,B_2,
+\]
+and the label is recorded, then the sample space is
+\[
+\Omega=\{R_1,R_2,R_3,B_1,B_2\}.
+\]
+Here the elementary outcomes are individual labelled balls.
+
+If only the colour is recorded, then the sample space is instead
+\[
+\Omega'=\{R,B\}.
+\]
+Here the elementary outcomes are colours, not labelled balls. The two sample
+spaces describe different levels of information.
+\end{examplebox}
+
+The second model is not wrong. It may be exactly the model we need if the
+question is only about colour. But it must be treated honestly: changing the
+recording rule changes the sample space and may also change how probabilities
+are assigned.
+
+\subsection*{The sample space is only half of the model}
+
+After \(\Omega\) has been constructed, we still have to assign probabilities.
+The sample space tells us which elementary outcomes exist in the model. It does
+not automatically say how likely they are.
+
+\begin{examplebox}
+For a single coin toss we may choose
+\[
+\Omega=\{H,T\}.
+\]
+If the coin is modelled as symmetric, then we assign
+\[
+P(H)=P(T)=\frac12.
+\]
+If the coin is modelled as biased toward heads, then we may assign
+\[
+P(H)=p,\qquad P(T)=1-p,\qquad p\neq \frac12.
+\]
+The sample space is the same in both models, but the probability assignment is
+different.
+\end{examplebox}
+
+This distinction is fundamental. A list of possible outcomes is not yet a
+probability model. A probability model requires both:
+\[
+\text{possible outcomes} \quad \text{and} \quad \text{probabilities of events}.
+\]
+
+\subsection*{Uniform and non-uniform assignments}
+
+In a finite sample space
+\[
+\Omega=\{\omega_1,\omega_2,\ldots,\omega_n\},
+\]
+a probability assignment is determined by the probabilities of the elementary
+outcomes:
+\[
+P(\{\omega_1\})=p_1,\quad P(\{\omega_2\})=p_2,\quad \ldots,\quad
+P(\{\omega_n\})=p_n.
+\]
+These numbers must satisfy
+\[
+p_i\geq 0\quad\text{for every }i,
+\]
+and
+\[
+p_1+p_2+\cdots+p_n=1.
+\]
+Then the probability of an event is obtained by adding the probabilities of the
+elementary outcomes contained in that event:
+\[
+P(A)=\sum_{\omega_i\in A}p_i.
+\]
+
+\begin{definitionbox}
+A finite probability model is \textbf{uniform} if all elementary outcomes have
+the same probability. If \(|\Omega|=n\), this means
+\[
+P(\{\omega\})=\frac1n
+\]
+for every \(\omega\in\Omega\).
+\end{definitionbox}
+
+Only in a uniform finite model do we obtain the classical formula
+\[
+P(A)=\frac{|A|}{|\Omega|}.
+\]
+This formula is not the definition of probability in every finite model. It is a
+consequence of the special assumption that all elementary outcomes are equally
+likely.
+
+\begin{remarkbox}
+A common error is to count how many named outcomes appear in a sample space and
+then assume that all names have equal probability. Equal naming is not the same
+as equal probability. Equal probability must come from the mechanism of the
+model or from an explicit modelling assumption.
+\end{remarkbox}
+
+\subsection*{Events are questions asked of the sample space}
+
+Once \(\Omega\) is fixed, an event is a subset of \(\Omega\). Conceptually, an
+event answers a question about the elementary outcome.
+
+\begin{examplebox}
+If a die is rolled and
+\[
+\Omega=\{1,2,3,4,5,6\},
+\]
+then the question
+\[
+\text{is the result even?}
+\]
+selects the event
+\[
+A=\{2,4,6\}.
+\]
+The question
+\[
+\text{is the result at least }5?
+\]
+selects the event
+\[
+B=\{5,6\}.
+\]
+The compound question
+\[
+\text{is the result even and at least }5?
+\]
+selects the event
+\[
+A\cap B=\{6\}.
+\]
+\end{examplebox}
+
+This is why the sample space must be fixed before events are discussed. The same
+sentence can select different sets in different spaces.
+
+\subsection*{A first complete modelling pattern}
+
+When solving elementary probability problems, we shall repeatedly use the
+following pattern.
+
+\begin{enumerate}
+    \item Describe the physical or conceptual experiment.
+    \item State what information is recorded.
+    \item Identify one elementary outcome.
+    \item Construct the sample space \(\Omega\).
+    \item Describe the event or events of interest as subsets of \(\Omega\).
+    \item Decide whether elementary outcomes are equally likely.
+    \item Assign probabilities to elementary outcomes or directly to events.
+    \item Compute the required probability and interpret it in the original situation.
+\end{enumerate}
+
+This pattern may look slow. That is intentional. At the beginning, speed is less
+important than correctness. Most wrong solutions to elementary probability
+problems do not fail because of difficult arithmetic. They fail because the
+sample space, the elementary outcomes, or the probability assignment were never
+made explicit.
+
+\begin{remarkbox}
+The goal of this chapter is not to collect examples. The goal is to learn a
+method: construct the model first, calculate only after the model is clear.
+\end{remarkbox}
