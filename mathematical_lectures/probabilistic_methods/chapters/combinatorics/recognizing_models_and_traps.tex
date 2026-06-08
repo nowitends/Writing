@@ -46,14 +46,10 @@ The letters in \(\text{BANANA}\) are not six distinct letters. The three \(A\)'s
 
 A committee is a set. A medal assignment is an ordered assignment. A group of three athletes and a gold-silver-bronze result are not the same kind of outcome.
 
-\subsection*{Trap 4: assuming all recorded outcomes are equally likely}
+\subsection*{Trap 4: using a representation that records too much}
 
-If labelled balls are selected uniformly but only colors are recorded, then color outcomes may have different probabilities. A smaller recorded sample space does not automatically become equally likely.
+Sometimes an auxiliary representation is more detailed than the intended outcome. For example, ordered lists may be useful for deriving the number of committees, but the committee itself is not an ordered list. If the extra descriptions are not corrected for, the count is too large.
 
-\subsection*{Trap 5: mixing models in one probability computation}
+\subsection*{Trap 5: using a representation that records too little}
 
-In the formula
-\[
-P(A)=\frac{|A|}{|\Omega|},
-\]
-both \(|A|\) and \(|\Omega|\) must be counted using the same outcome type. Do not count ordered draws in one part and unordered hands in the other.
+Sometimes a representation hides distinctions that the model requires. If positions, roles, labels, or order are part of the outcome, then a representation that ignores them gives too small a count. A good representation must preserve exactly the distinctions that the recording rule declares visible.
