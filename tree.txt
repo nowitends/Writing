@@ -249,6 +249,7 @@
 ./mathematical_lectures/probabilistic_methods/chapters/discovering_formalism/why_formalism_is_needed.tex
 ./mathematical_lectures/probabilistic_methods/chapters/discrete_random_variables
 ./mathematical_lectures/probabilistic_methods/chapters/discrete_random_variables/overview.tex
+./mathematical_lectures/probabilistic_methods/chapters/discrete_random_variables/random_variables_as_functions.tex
 ./mathematical_lectures/probabilistic_methods/chapters/empirical_distributions
 ./mathematical_lectures/probabilistic_methods/chapters/empirical_distributions/overview.tex
 ./mathematical_lectures/probabilistic_methods/chapters/introduction
