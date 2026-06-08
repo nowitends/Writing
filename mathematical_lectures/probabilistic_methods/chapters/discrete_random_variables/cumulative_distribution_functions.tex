@@ -1,0 +1,184 @@
+\section{Cumulative distribution functions}
+
+The probability mass function describes a discrete random variable by assigning
+probability to each individual value. There is another fundamental way to encode
+the same information: instead of asking for the probability of exactly one value,
+we ask for the probability that the random variable is at most a given threshold.
+
+\begin{definitionbox}
+Let \(X\) be a random variable. Its \textbf{cumulative distribution function}, or
+\textbf{CDF}, is the function
+\[
+F_X(t)=P(X\leq t),
+\qquad t\in\mathbb{R}.
+\]
+\end{definitionbox}
+
+The CDF accumulates probability from the left. For each real number \(t\), it
+answers the question:
+\[
+\text{how much probability has been accumulated up to }t?
+\]
+
+\subsection*{The CDF in the discrete case}
+
+If \(X\) is discrete with probability mass function \(p_X\), then
+\[
+F_X(t)=\sum_{x\leq t}p_X(x),
+\]
+where the sum is taken over support values \(x\) not exceeding \(t\). Thus the
+CDF is obtained by adding the masses at all values to the left of \(t\).
+
+\begin{remarkbox}
+The PMF answers ``what is the probability of this exact value?'' The CDF answers
+``what is the probability of this value or anything smaller?''
+\end{remarkbox}
+
+\subsection*{Example: one fair die}
+
+Let \(X\) be the result of one fair die roll. Then
+\[
+P(X=k)=\frac16,\qquad k=1,2,3,4,5,6.
+\]
+The CDF is
+\[
+F_X(t)=P(X\leq t).
+\]
+For example,
+\[
+F_X(0.5)=0,
+\]
+because no die result is at most \(0.5\). Also,
+\[
+F_X(1)=\frac16,\qquad F_X(2)=\frac26,\qquad F_X(3.7)=\frac36.
+\]
+The value \(F_X(3.7)\) equals \(3/6\) because the die results not exceeding
+\(3.7\) are \(1,2,3\).
+
+A complete description is
+\[
+F_X(t)=
+\begin{cases}
+0, & t<1,\\
+\frac16, & 1\leq t<2,\\
+\frac26, & 2\leq t<3,\\
+\frac36, & 3\leq t<4,\\
+\frac46, & 4\leq t<5,\\
+\frac56, & 5\leq t<6,\\
+1, & t\geq 6.
+\end{cases}
+\]
+This is a step function. It jumps at the possible values of \(X\).
+
+\subsection*{Jumps and probability masses}
+
+For a discrete random variable, the size of the jump of the CDF at a value \(x\)
+is exactly the probability mass at that value. If the support values are ordered
+as
+\[
+x_1<x_2<x_3<\cdots,
+\]
+then
+\[
+p_X(x_1)=F_X(x_1),
+\]
+and for \(k\geq 2\),
+\[
+p_X(x_k)=F_X(x_k)-F_X(x_{k-1})
+\]
+when there are no support values between \(x_{k-1}\) and \(x_k\).
+
+This means that the PMF and CDF contain the same information in the discrete
+case. The PMF stores the masses directly. The CDF stores their cumulative sums.
+
+\subsection*{Example: indicator random variable}
+
+Let \(I_A\) be the indicator of an event \(A\), and write
+\[
+p=P(A).
+\]
+Then
+\[
+P(I_A=1)=p,\qquad P(I_A=0)=1-p.
+\]
+The CDF is
+\[
+F_{I_A}(t)=
+\begin{cases}
+0, & t<0,\\
+1-p, & 0\leq t<1,\\
+1, & t\geq 1.
+\end{cases}
+\]
+There is a jump of size \(1-p\) at \(0\) and a jump of size \(p\) at \(1\).
+
+\subsection*{Example: sum of two dice}
+
+Let \(S\) be the sum of two fair dice. We know that
+\[
+\operatorname{supp}(S)=\{2,3,\ldots,12\}.
+\]
+For example,
+\[
+F_S(6)=P(S\leq 6).
+\]
+The sums at most \(6\) are \(2,3,4,5,6\). Their counts among the \(36\) ordered
+pairs are
+\[
+1,2,3,4,5.
+\]
+Therefore
+\[
+F_S(6)=\frac{1+2+3+4+5}{36}=\frac{15}{36}=\frac5{12}.
+\]
+Similarly,
+\[
+F_S(7)=\frac{1+2+3+4+5+6}{36}=\frac{21}{36}=\frac7{12}.
+\]
+The difference is
+\[
+F_S(7)-F_S(6)=\frac6{36}=P(S=7).
+\]
+
+\subsection*{Basic properties of a CDF}
+
+Every CDF has three fundamental properties.
+
+First, it is non-decreasing. If \(s<t\), then the event \(\{X\leq s\}\) is
+contained in \(\{X\leq t\}\), so
+\[
+F_X(s)\leq F_X(t).
+\]
+
+Second, it approaches \(0\) far to the left and \(1\) far to the right. In finite
+discrete examples, this is visible immediately: below the smallest support value
+no mass has appeared, and above the largest support value all mass has appeared.
+
+Third, in the discrete case, the CDF is constant between support values and jumps
+at support values.
+
+\subsection*{Why use the CDF?}
+
+The CDF is useful because many probability questions are cumulative:
+\[
+P(X\leq t),\qquad P(X>t),\qquad P(a<X\leq b).
+\]
+Once the CDF is known, these can be computed systematically. For example,
+\[
+P(X>t)=1-F_X(t).
+\]
+If \(a<b\), then
+\[
+P(a<X\leq b)=F_X(b)-F_X(a).
+\]
+For discrete variables, endpoint conventions must be read carefully, but the CDF
+keeps the logic organized.
+
+\begin{theorembox}
+For a discrete random variable, the CDF is the accumulated PMF:
+\[
+F_X(t)=\sum_{x\leq t}p_X(x).
+\]
+It describes the same probability law as the PMF, but from the cumulative point
+of view.
+\end{theorembox}
