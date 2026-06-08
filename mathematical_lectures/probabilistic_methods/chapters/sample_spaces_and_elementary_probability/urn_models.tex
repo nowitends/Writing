@@ -1,0 +1,245 @@
+\section{Urn models}
+
+Urn models are a standard way to study how probability spaces are constructed.
+They are especially useful because one physical setup can be described at
+several levels. We may record the exact labelled object selected from the urn,
+or we may record only a visible type such as colour. We may sample with
+replacement or without replacement. We may record order or ignore order. Each
+choice leads to a different sample space.
+
+\subsection*{One selection from labelled objects}
+
+Suppose an urn contains five labelled objects:
+\[
+R_1,R_2,R_3,B_1,B_2,
+\]
+where the letter records type and the subscript records the label. If one object
+is selected and its label is recorded, then
+\[
+\Omega=\{R_1,R_2,R_3,B_1,B_2\}.
+\]
+If the selection mechanism treats the five labelled objects equally, then each
+has probability \(1/5\).
+
+The event that the selected object is of type \(R\) is
+\[
+A=\{R_1,R_2,R_3\}.
+\]
+Therefore
+\[
+P(A)=\frac35.
+\]
+The event that the selected object is of type \(B\) is
+\[
+A^c=\{B_1,B_2\},
+\]
+so
+\[
+P(A^c)=\frac25.
+\]
+
+\begin{remarkbox}
+In this model, \(R_1\), \(R_2\), and \(R_3\) are different elementary outcomes.
+They have the same type, but the labels are recorded. The event ``type \(R\)''
+is therefore a set of elementary outcomes, not a single elementary outcome.
+\end{remarkbox}
+
+\subsection*{Recording only type}
+
+Now use the same physical urn, but record only the type of the selected object.
+Then the sample space is
+\[
+\Omega'=\{R,B\}.
+\]
+This sample space has two elements, but it is not automatically uniform. The
+probability of type \(R\) is inherited from the three labelled objects of type
+\(R\), and the probability of type \(B\) is inherited from the two labelled
+objects of type \(B\):
+\[
+P(R)=\frac35,\qquad P(B)=\frac25.
+\]
+
+This is the central lesson of the urn model: when several detailed elementary
+outcomes are grouped into one recorded outcome, equal probabilities at the
+detailed level may become unequal probabilities at the aggregated level.
+
+\begin{examplebox}
+Writing
+\[
+P(R)=P(B)=\frac12
+\]
+would describe a different mechanism: one that first chooses a type uniformly.
+It would not describe uniform selection from an urn containing three labelled
+objects of type \(R\) and two labelled objects of type \(B\).
+\end{examplebox}
+
+\subsection*{Two selections with replacement}
+
+Suppose one object is selected, recorded, returned to the urn, and then another
+selection is made. If labels and order are recorded, then one elementary outcome
+is an ordered pair
+\[
+(x_1,x_2),
+\]
+where each coordinate belongs to
+\[
+\{R_1,R_2,R_3,B_1,B_2\}.
+\]
+Because the first selected object is returned, the same label may appear twice.
+Thus
+\[
+\Omega=\{R_1,R_2,R_3,B_1,B_2\}^2,\qquad |\Omega|=25.
+\]
+
+The event that both selected objects have type \(R\) is
+\[
+A=\{(R_i,R_j):i,j\in\{1,2,3\}\}.
+\]
+There are \(3\cdot3=9\) such ordered pairs, so
+\[
+P(A)=\frac9{25}.
+\]
+Equivalently,
+\[
+P(A)=\frac35\cdot\frac35.
+\]
+
+\subsection*{Two selections without replacement}
+
+Now suppose the first selected object is not returned before the second
+selection. If labels and order are recorded, then
+\[
+\Omega=\{(x_1,x_2):x_1,x_2\in\{R_1,R_2,R_3,B_1,B_2\},\ x_1\neq x_2\}.
+\]
+There are
+\[
+5\cdot4=20
+\]
+elementary outcomes.
+
+The event that both selected objects have type \(R\) is
+\[
+A=\{(R_i,R_j): i,j\in\{1,2,3\},\ i\neq j\}.
+\]
+There are \(3\cdot2=6\) such ordered pairs, hence
+\[
+P(A)=\frac6{20}=\frac3{10}.
+\]
+The probability is smaller than in the replacement model because, after one
+object of type \(R\) has been selected, fewer such objects remain available.
+
+\begin{examplebox}
+The event ``one object of each type'' has two ordered forms:
+\[
+(R_i,B_j)\quad\text{or}\quad(B_j,R_i).
+\]
+There are \(3\cdot2=6\) outcomes of the first form and \(2\cdot3=6\) outcomes of
+the second form. Therefore
+\[
+P(\text{one of each type})=\frac{12}{20}=\frac35.
+\]
+\end{examplebox}
+
+\subsection*{Order recorded or ignored}
+
+If two objects are selected without replacement and order is ignored, then an
+elementary outcome is a two-element subset of the five labelled objects:
+\[
+\Omega=\{S\subseteq\{R_1,R_2,R_3,B_1,B_2\}: |S|=2\}.
+\]
+Thus
+\[
+|\Omega|=\binom52=10.
+\]
+
+The event that both selected objects have type \(R\) has
+\[
+\binom32=3
+\]
+favourable subsets, so
+\[
+P(\text{both type }R)=\frac{\binom32}{\binom52}=\frac3{10}.
+\]
+This agrees with the ordered calculation because each unordered pair corresponds
+to exactly two ordered pairs.
+
+\subsection*{Only the number of type \(R\) objects is recorded}
+
+Sometimes we ignore labels and order and record only a count. In two selections
+with replacement, the possible recorded values for the number of type \(R\)
+objects are
+\[
+\Omega'=\{0,1,2\}.
+\]
+The probabilities are not uniform. Since \(P(R)=3/5\) and \(P(B)=2/5\),
+\[
+P(0)=\left(\frac25\right)^2=\frac4{25},
+\]
+\[
+P(1)=2\cdot\frac35\cdot\frac25=\frac{12}{25},
+\]
+\[
+P(2)=\left(\frac35\right)^2=\frac9{25}.
+\]
+The middle value has a factor \(2\) because exactly one type \(R\) object can
+appear in two orders: first or second.
+
+\subsection*{General formula with replacement}
+
+Suppose the urn contains \(r\) labelled objects of type \(R\) and \(b\) labelled
+objects of type \(B\). If one object is selected uniformly and only type is
+recorded, then
+\[
+P(R)=\frac{r}{r+b},\qquad P(B)=\frac{b}{r+b}.
+\]
+
+If \(n\) selections are made with replacement and types are recorded in order,
+then
+\[
+\Omega=\{R,B\}^n.
+\]
+The probability of exactly \(k\) recorded symbols of type \(R\) is
+\[
+\binom nk
+\left(\frac{r}{r+b}\right)^k
+\left(\frac{b}{r+b}\right)^{n-k}.
+\]
+The binomial coefficient counts the positions occupied by type \(R\).
+
+\subsection*{General formula without replacement}
+
+If \(n\) objects are selected without replacement and order is ignored, then the
+total number of possible labelled selections is
+\[
+\binom{r+b}{n}.
+\]
+To obtain exactly \(k\) objects of type \(R\), choose \(k\) from the \(r\) objects
+of type \(R\), and choose \(n-k\) from the \(b\) objects of type \(B\). Thus
+\[
+P(\text{exactly }k\text{ of type }R)
+=
+\frac{\binom rk\binom b{n-k}}{\binom{r+b}{n}}.
+\]
+
+\begin{examplebox}
+If \(r=7\), \(b=5\), and \(n=4\), then the probability of selecting exactly two
+objects of type \(R\), without replacement and ignoring order, is
+\[
+\frac{\binom72\binom52}{\binom{12}{4}}.
+\]
+\end{examplebox}
+
+\subsection*{What urn models teach}
+
+Urn models show that probability depends on both the mechanism and the recorded
+information. A detailed uniform model may become non-uniform after aggregation.
+Replacement keeps the composition of the urn fixed from selection to selection;
+without replacement, the composition changes. Recording order gives sequences;
+ignoring order gives sets or count summaries.
+
+\begin{remarkbox}
+The phrase ``select from an urn'' is not yet a probability model. A complete
+model must say what is recorded, whether replacement occurs, whether order is
+recorded, and whether labelled objects or only their types are treated as
+elementary outcomes.
+\end{remarkbox}
