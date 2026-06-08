@@ -1,0 +1,203 @@
+\section{Variance, standard deviation, and moments}
+
+Expectation describes the center of a probability distribution, but it does not
+describe how spread out the values are. Two random variables may have the same
+expectation and very different variability. Variance is the basic measure of
+spread around the expectation.
+
+Let
+\[
+\mu=\E[X].
+\]
+The quantity
+\[
+X-\mu
+\]
+measures the deviation of \(X\) from its mean. Positive values are above the
+mean; negative values are below the mean.
+
+\subsection*{Why square the deviation?}
+
+One might first try to average the deviations:
+\[
+\E[X-\mu].
+\]
+But by linearity of expectation,
+\[
+\E[X-\mu]=\E[X]-\mu=0.
+\]
+The positive and negative deviations cancel. This does not measure spread.
+
+To avoid cancellation, we square the deviations. Large deviations then contribute
+more strongly, and all contributions are non-negative.
+
+\begin{definitionbox}
+The \textbf{variance} of a random variable \(X\) is
+\[
+\Var(X)=\E[(X-\E[X])^2],
+\]
+provided this expectation exists.
+\end{definitionbox}
+
+For a discrete random variable, this becomes
+\[
+\Var(X)=\sum_{x\in\operatorname{supp}(X)}(x-\mu)^2p_X(x),
+\]
+where \(\mu=\E[X]\).
+
+\subsection*{Standard deviation}
+
+Variance is measured in squared units. If \(X\) is measured in euros, then
+\(\Var(X)\) is measured in squared euros. To return to the original units, we take
+the square root.
+
+\begin{definitionbox}
+The \textbf{standard deviation} of \(X\) is
+\[
+\sigma_X=\sqrt{\Var(X)}.
+\]
+\end{definitionbox}
+
+The standard deviation is a typical scale of deviation from the mean. It is not
+the same as the average absolute distance, but it is one of the most important
+measures of spread in probability and statistics.
+
+\subsection*{A useful computational formula}
+
+The definition
+\[
+\Var(X)=\E[(X-\mu)^2]
+\]
+is conceptually clear. For calculations, another form is often easier. Expand
+the square:
+\[
+(X-\mu)^2=X^2-2\mu X+\mu^2.
+\]
+Taking expectation gives
+\[
+\E[(X-\mu)^2]=\E[X^2-2\mu X+\mu^2].
+\]
+Using linearity,
+\[
+\E[(X-\mu)^2]=\E[X^2]-2\mu\E[X]+\mu^2.
+\]
+Since \(\mu=\E[X]\), we get
+\[
+\E[(X-\mu)^2]=\E[X^2]-2\mu^2+\mu^2.
+\]
+Therefore
+\[
+\Var(X)=\E[X^2]-(\E[X])^2.
+\]
+
+\begin{theorembox}
+For every random variable for which the quantities are defined,
+\[
+\Var(X)=\E[X^2]-(\E[X])^2.
+\]
+\end{theorembox}
+
+This formula should not replace the meaning of variance. It is a computational
+consequence of the definition.
+
+\subsection*{Example: one fair die}
+
+Let \(X\) be the result of one fair die roll. We already know
+\[
+\E[X]=\frac{1+2+3+4+5+6}{6}=\frac72.
+\]
+Now compute
+\[
+\E[X^2]=\frac{1^2+2^2+3^2+4^2+5^2+6^2}{6}.
+\]
+The numerator is
+\[
+1+4+9+16+25+36=91.
+\]
+Thus
+\[
+\E[X^2]=\frac{91}{6}.
+\]
+Therefore
+\[
+\Var(X)=\frac{91}{6}-\left(\frac72\right)^2
+=\frac{91}{6}-\frac{49}{4}.
+\]
+Using denominator \(12\),
+\[
+\Var(X)=\frac{182}{12}-\frac{147}{12}=\frac{35}{12}.
+\]
+The standard deviation is
+\[
+\sigma_X=\sqrt{\frac{35}{12}}.
+\]
+
+\subsection*{Example: an indicator}
+
+Let \(I_A\) be the indicator of an event \(A\), and let
+\[
+p=P(A).
+\]
+Then
+\[
+\E[I_A]=p.
+\]
+Because \(I_A\) takes only the values \(0\) and \(1\), we have
+\[
+I_A^2=I_A.
+\]
+Hence
+\[
+\E[I_A^2]=\E[I_A]=p.
+\]
+Therefore
+\[
+\Var(I_A)=p-p^2=p(1-p).
+\]
+
+This result is important because many counts are sums of indicators. It also
+shows that the variance of a zero-one variable is largest when \(p=1/2\), and
+small when the event is almost impossible or almost certain.
+
+\subsection*{Moments}
+
+Expectations of powers of \(X\) are called moments. The \(k\)-th raw moment is
+\[
+\E[X^k].
+\]
+For a discrete random variable,
+\[
+\E[X^k]=\sum_x x^k p_X(x),
+\]
+provided the sum is defined.
+
+The first raw moment is the expectation:
+\[
+\E[X].
+\]
+The second raw moment \(\E[X^2]\) is used in the computation of variance. Higher
+moments describe further aspects of the shape of the distribution, but in this
+course the most important quantities at this stage are expectation and variance.
+
+\subsection*{Interpreting variance carefully}
+
+Variance is always non-negative because it is the expectation of a square:
+\[
+\Var(X)=\E[(X-\mu)^2]\geq 0.
+\]
+It is zero exactly when \(X\) is constant with probability one. If there is no
+spread, every possible value is equal to the mean.
+
+A larger variance indicates more spread, but it must be interpreted relative to
+the scale of the problem. A variance of \(100\) is large for exam scores out of
+\(10\), but small for yearly income measured in euros.
+
+\begin{summarybox}
+Expectation measures center. Variance measures average squared distance from the
+center. Standard deviation returns this spread to the original units:
+\[
+\sigma_X=\sqrt{\Var(X)}.
+\]
+Together, expectation and variance give the first basic numerical summary of a
+probability law.
+\end{summarybox}
