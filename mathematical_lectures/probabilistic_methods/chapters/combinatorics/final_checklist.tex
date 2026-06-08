@@ -1,6 +1,6 @@
-\section{From combinatorics to probability models}
+\section{What combinatorics teaches here}
 
-The role of combinatorics in this course is not to memorize more formulas. Its role is to build sample spaces and events precisely.
+The role of this chapter is not to memorize more formulas. Its role is to teach how to build and count finite spaces of possibilities. A formula is useful only after the underlying structure has been recognized.
 
 The general workflow is
 \[
@@ -10,24 +10,14 @@ The general workflow is
 \longrightarrow
 \text{elementary outcome}
 \longrightarrow
-\text{sample space}
+\text{space of possibilities}
 \longrightarrow
-\text{event}
-\longrightarrow
-\text{probability}.
+\text{count}.
 \]
 
-In later chapters, many probability distributions will arise by recording only a numerical summary of a richer experiment. For example, in \(n\) Bernoulli trials the full elementary outcome may be a sequence such as
-\[
-(S,F,S,S,F),
-\]
-while the random variable records only the number of successes:
-\[
-X=3.
-\]
-The binomial coefficient appears because many different sequences have the same number of successes.
+Each arrow in this workflow represents a mathematical decision. The same everyday description may lead to different counts if the recording rule changes. The same physical objects may be treated as distinguishable or indistinguishable depending on what is visible in the model. The same collection may be represented as a list, a set, an arrangement, or a count vector.
 
-Thus combinatorics is the bridge between concrete experiments and probability laws. It explains how many elementary outcomes produce the same event, the same count, or the same value of a random variable.
+Good counting therefore has two parts. First, one must construct the correct model. Second, one must justify the count by a construction argument, an overcounting correction, or a representation such as a table, a tree, or a stars-and-bars diagram.
 
 \section{Final checklist}
 
@@ -37,11 +27,12 @@ When solving a counting problem, write down the following before doing arithmeti
     \item What is the physical situation?
     \item What information is recorded?
     \item What is one elementary outcome?
-    \item What is the sample space?
+    \item What is the space of possibilities?
+    \item How can this space be represented: as a list, table, tree, set, tuple, arrangement, or count vector?
     \item Are outcomes sequences, sets, arrangements, or count vectors?
-    \item Are the elementary outcomes equally likely if probability is being computed?
-    \item Which construction or overcounting argument gives the count?
+    \item Does the representation record exactly the distinctions required by the model?
+    \item Which construction, overcounting correction, or bijection gives the count?
     \item What does the final number mean in the original situation?
 \end{enumerate}
 
-This checklist is the main lesson of the chapter. The formulas are useful, but they are useful only when the underlying structure has been discovered first.
+This checklist is the main lesson of the chapter. The formulas are useful, but they are useful only when the underlying structure has been discovered first and the count has been justified.
