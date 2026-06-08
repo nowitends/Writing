@@ -1,0 +1,110 @@
+\section{Statements become events}
+
+Let \(\Omega\) be fixed. A statement about the situation becomes mathematical when we can say exactly for which elementary outcomes it is true. The set of all such outcomes is called an event.
+
+\begin{definitionbox}
+An \textbf{event} is a subset of the sample space \(\Omega\). If \(A\subseteq\Omega\), then \(A\) consists of precisely those elementary outcomes for which a certain statement is true.
+\end{definitionbox}
+
+This definition may look simple, but it is a major conceptual move. It tells us that statements and sets can play the same role once \(\Omega\) has been fixed:
+\[
+\text{statement about the situation}
+\quad\longleftrightarrow\quad
+\text{subset of }\Omega.
+\]
+The statement gives meaning. The subset gives structure.
+
+\begin{examplebox}
+Suppose two dice are rolled and order is recorded. Then
+\[
+\Omega=\{(i,j): i,j\in\{1,2,3,4,5,6\}\}.
+\]
+The statement
+\[
+\text{the sum is }7
+\]
+selects the event
+\[
+A=\{(1,6),(2,5),(3,4),(4,3),(5,2),(6,1)\}.
+\]
+The statement
+\[
+\text{the first die is greater than the second}
+\]
+selects the event
+\[
+B=\{(i,j)\in\Omega:i>j\}.
+\]
+The notation \(B=\{(i,j)\in\Omega:i>j\}\) is not a shortcut for avoiding thought. It records the rule by which membership in the event is decided.
+\end{examplebox}
+
+\section{Representing events as regions}
+
+A set of outcomes can be written as a list, but lists are not always the best representation. When \(\Omega\) has a visible structure, an event should often be represented as a region inside that structure. This is not merely a visual aid. It is a way of seeing relations.
+
+For two dice, the sample space is naturally represented as a \(6\times 6\) table:
+\[
+\begin{array}{c|cccccc}
+ & 1&2&3&4&5&6\\
+\hline
+1&.&.&.&.&.&.\\
+2&.&.&.&.&.&.\\
+3&.&.&.&.&.&.\\
+4&.&.&.&.&.&.\\
+5&.&.&.&.&.&.\\
+6&.&.&.&.&.&.
+\end{array}
+\]
+Each cell represents one ordered pair \((i,j)\). The row records the first die, and the column records the second die.
+
+The event \(B=\{(i,j):i>j\}\) occupies the cells below the diagonal:
+\[
+\begin{array}{c|cccccc}
+ & 1&2&3&4&5&6\\
+\hline
+1&.&.&.&.&.&.\\
+2&X&.&.&.&.&.\\
+3&X&X&.&.&.&.\\
+4&X&X&X&.&.&.\\
+5&X&X&X&X&.&.\\
+6&X&X&X&X&X&.
+\end{array}
+\]
+The diagonal itself corresponds to \(i=j\). The region above the diagonal corresponds to \(i<j\). The geometry of the table reveals the structure of the statement.
+
+\begin{remarkbox}
+A representation is good when it preserves the distinctions relevant to the statement and makes relations visible. A poor representation may hide the structure that the problem is trying to teach.
+\end{remarkbox}
+
+\section{Reading a region as a statement}
+
+The translation works in both directions. A verbal statement selects a set, but a marked set also asks to be interpreted as a statement.
+
+\begin{examplebox}
+In the two-dice table, suppose the marked cells are exactly the diagonal:
+\[
+\begin{array}{c|cccccc}
+ & 1&2&3&4&5&6\\
+\hline
+1&X&.&.&.&.&.\\
+2&.&X&.&.&.&.\\
+3&.&.&X&.&.&.\\
+4&.&.&.&X&.&.\\
+5&.&.&.&.&X&.\\
+6&.&.&.&.&.&X
+\end{array}
+\]
+This region can be described in several equivalent ways:
+\[
+\text{the two dice show the same number},
+\]
+\[
+\text{the first result equals the second result},
+\]
+\[
+\{(i,j)\in\Omega:i=j\}.
+\]
+The ability to move between these descriptions is part of understanding the formalism.
+\end{examplebox}
+
+Students often think that formal notation is a translation from language into symbols. That is only half of the work. One must also be able to read symbols and diagrams back into language. A set without interpretation is mute; a sentence without a set is vague. Mathematics becomes powerful when both sides illuminate each other.
