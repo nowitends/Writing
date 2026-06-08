@@ -1,6 +1,6 @@
 \section{Combinations with repetition}
 
-Sometimes we choose \(k\) objects from \(n\) types, and the same type may be chosen several times. The order of the chosen types is ignored. The outcome is then not a sequence but a vector of counts.
+Sometimes we choose \(k\) objects from \(n\) types, and the same type may be chosen several times. The order of the chosen objects is ignored. The outcome is then not a sequence of choices, but a vector of counts.
 
 \begin{definitionbox}
 A \textbf{combination with repetition} of size \(k\) from \(n\) types is a choice of non-negative integers
@@ -14,12 +14,67 @@ x_1+x_2+\cdots+x_n=k.
 Here \(x_i\) records how many objects of type \(i\) are chosen.
 \end{definitionbox}
 
-The number of such choices is
+The important modelling decision is that the positions of the chosen objects are not recorded. For example, choosing two objects of type \(1\), none of type \(2\), and three of type \(3\) is recorded as
+\[
+(2,0,3),
+\]
+not as an ordered sequence of five choices.
+
+\subsection*{The stars and bars representation}
+
+We derive the formula by representing each count vector visually. Write \(k\) stars to represent the chosen objects and insert \(n-1\) bars to divide the stars into \(n\) groups. The number of stars before the first bar is \(x_1\), the number of stars between the first and second bar is \(x_2\), and so on, until the number of stars after the last bar is \(x_n\).
+
+For example, if \(n=3\) and \(k=5\), the count vector
+\[
+(2,0,3)
+\]
+is represented by
+\[
+**||***.
+\]
+There are two stars before the first bar, no stars between the two bars, and three stars after the second bar. This represents
+\[
+x_1=2,\qquad x_2=0,\qquad x_3=3.
+\]
+
+Conversely, every arrangement of \(k\) stars and \(n-1\) bars determines exactly one count vector. For instance,
+\[
+|***|**
+\]
+represents
+\[
+(0,3,2).
+\]
+This is a one-to-one correspondence:
+\[
+\text{count vectors }(x_1,\ldots,x_n)\text{ with }x_1+\cdots+x_n=k
+\longleftrightarrow
+\text{arrangements of }k\text{ stars and }n-1\text{ bars}.
+\]
+
+Therefore the counting problem becomes a simpler arrangement problem. We have
+\[
+k+(n-1)=n+k-1
+\]
+total positions. To form an arrangement, we only need to decide which \(k\) of these positions contain stars; the remaining \(n-1\) positions will contain bars. Hence the number of arrangements is
+\[
+\binom{n+k-1}{k}.
+\]
+Equivalently, we may choose the \(n-1\) positions of the bars, giving
+\[
+\binom{n+k-1}{n-1}.
+\]
+Thus
 \[
 \binom{n+k-1}{k}=\binom{n+k-1}{n-1}.
 \]
 
-This is often called the stars and bars formula. The idea is to represent the \(k\) chosen objects as stars and use \(n-1\) bars to separate the counts of the \(n\) types.
+\begin{theorembox}
+The number of combinations with repetition of size \(k\) from \(n\) types is
+\[
+\binom{n+k-1}{k}=\binom{n+k-1}{n-1}.
+\]
+\end{theorembox}
 
 \begin{examplebox}
 How many ways are there to choose \(5\) donuts from \(3\) flavors if only the numbers of each flavor matter?
@@ -28,7 +83,15 @@ An outcome is a count vector
 \[
 (x_1,x_2,x_3),\qquad x_1+x_2+x_3=5.
 \]
-The number of outcomes is
+The stars and bars representation uses \(5\) stars and \(2\) bars, so there are \(7\) positions in total. We may choose the \(5\) positions of the stars:
+\[
+\binom{7}{5},
+\]
+or the \(2\) positions of the bars:
+\[
+\binom{7}{2}.
+\]
+Thus the number of possible choices is
 \[
 \binom{3+5-1}{5}=\binom{7}{5}=\binom{7}{2}.
 \]
