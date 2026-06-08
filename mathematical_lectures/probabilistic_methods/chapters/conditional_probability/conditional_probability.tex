@@ -1,0 +1,314 @@
+\section{Conditional probability}
+
+The previous section explained the idea before the formula: when information is
+received, the relevant space of reasoning is restricted. If we know that an
+event \(B\) occurred, then outcomes outside \(B\) are no longer compatible with
+what we know. If we then ask about another event \(A\), the favourable outcomes
+are those in
+\[
+A\cap B.
+\]
+
+We now turn this idea into a precise definition. The definition should not be
+read as an arbitrary rule. It is the mathematical expression of two decisions:
+first restrict to the information event, then rescale so that the information
+event becomes the new whole space.
+
+\subsection*{The finite uniform case first}
+
+Let \(\Omega\) be a finite sample space in which all elementary outcomes are
+equally likely. Suppose we are told that an event \(B\) occurred, and assume
+\(B\) is not empty. After this information, the possible outcomes are the
+elements of \(B\).
+
+If we ask for the probability of \(A\) after knowing \(B\), then only the
+outcomes in \(B\) matter. Among these, the favourable outcomes are precisely the
+elements of
+\[
+A\cap B.
+\]
+Thus, in the finite uniform case, the natural value is
+\[
+\frac{|A\cap B|}{|B|}.
+\]
+
+This expression is not guessed. It is the ordinary uniform probability formula,
+but applied in the restricted space \(B\) instead of the original space
+\(\Omega\).
+
+\begin{examplebox}
+A fair die is rolled. Let
+\[
+A=\{4,5,6\}
+\]
+be the event that the result is greater than \(3\), and let
+\[
+B=\{2,4,6\}
+\]
+be the event that the result is even. If we know \(B\), then the relevant space
+is \(\{2,4,6\}\). Inside this space, the event \(A\) occurs for \(4\) and
+\(6\). Therefore the probability of \(A\) after knowing \(B\) is
+\[
+\frac{2}{3}.
+\]
+This is the ratio \(|A\cap B|/|B|\), because
+\[
+A\cap B=\{4,6\}.
+\]
+\end{examplebox}
+
+\subsection*{From counting to probability mass}
+
+The expression
+\[
+\frac{|A\cap B|}{|B|}
+\]
+works only when the restricted elementary outcomes are equally likely. In a
+general probability model, outcomes may have different probabilities. Then
+counting outcomes is not enough. We must measure probability mass.
+
+The information event \(B\) has probability \(P(B)\). This is the total mass of
+all outcomes compatible with the information. The event \(A\cap B\) has
+probability \(P(A\cap B)\). This is the part of that mass for which the event
+\(A\) also occurs.
+
+After learning \(B\), the whole region \(B\) becomes the new reference space. It
+must therefore have total probability \(1\) in the updated situation. The part
+of \(B\) where \(A\) occurs should occupy the same relative share that it had
+inside \(B\) before rescaling. That relative share is
+\[
+\frac{P(A\cap B)}{P(B)}.
+\]
+
+This gives the definition.
+
+\begin{definitionbox}
+Let \(A\) and \(B\) be events in a probability space, and assume
+\[
+P(B)>0.
+\]
+The \textbf{conditional probability of \(A\) given \(B\)} is
+\[
+P(A\mid B)=\frac{P(A\cap B)}{P(B)}.
+\]
+\end{definitionbox}
+
+The condition \(P(B)>0\) is essential. If the information event has probability
+zero, then it cannot be made into a new probability-one reference region by
+ordinary rescaling.
+
+\subsection*{Why the denominator is \(P(B)\)}
+
+The denominator is not a technical detail. It represents the whole amount of
+probability still compatible with the information. Once we know \(B\), the event
+\(B\) must become certain in the new calculation:
+\[
+P(B\mid B)=1.
+\]
+The definition gives exactly this:
+\[
+P(B\mid B)=\frac{P(B\cap B)}{P(B)}=rac{P(B)}{P(B)}=1.
+\]
+
+Similarly, an event impossible under the information should have conditional
+probability zero. If \(A\cap B=\varnothing\), then
+\[
+P(A\mid B)=\frac{P(\varnothing)}{P(B)}=0.
+\]
+This matches the idea that, once \(B\) is known, an event disjoint from \(B\)
+cannot occur.
+
+\subsection*{Conditional probability as a new probability assignment}
+
+For a fixed event \(B\) with \(P(B)>0\), the rule
+\[
+A\mapsto P(A\mid B)
+\]
+defines a new probability assignment on the original events, but interpreted
+under the information \(B\).
+
+It has the usual properties. First,
+\[
+P(A\mid B)\geq 0,
+\]
+because probabilities are non-negative. Second,
+\[
+P(\Omega\mid B)=\frac{P(\Omega\cap B)}{P(B)}=rac{P(B)}{P(B)}=1.
+\]
+Third, if \(A_1\) and \(A_2\) are disjoint, then
+\[
+P((A_1\cup A_2)\mid B)
+=
+\frac{P((A_1\cup A_2)\cap B)}{P(B)}.
+\]
+Since
+\[
+(A_1\cup A_2)\cap B=(A_1\cap B)\cup(A_2\cap B),
+\]
+and the two pieces on the right are disjoint, additivity gives
+\[
+P((A_1\cup A_2)\mid B)
+=
+\frac{P(A_1\cap B)+P(A_2\cap B)}{P(B)}.
+\]
+Therefore
+\[
+P((A_1\cup A_2)\mid B)=P(A_1\mid B)+P(A_2\mid B).
+\]
+
+This confirms that conditional probability is not a separate kind of arithmetic.
+It is ordinary probability after changing the reference space.
+
+\subsection*{Multiplication rule}
+
+The definition can be rewritten as
+\[
+P(A\cap B)=P(A\mid B)P(B).
+\]
+This is called the multiplication rule. It says: to get the probability that
+both \(A\) and \(B\) occur, first measure the probability of the information
+region \(B\), and then multiply by the probability that \(A\) occurs inside that
+region.
+
+The same intersection can also be read in the opposite order:
+\[
+P(A\cap B)=P(B\mid A)P(A),
+\]
+provided \(P(A)>0\).
+
+Thus
+\[
+P(A\mid B)P(B)=P(B\mid A)P(A).
+\]
+This identity will later become the basis of Bayes' theorem.
+
+\begin{remarkbox}
+The multiplication rule is not an additional assumption. It is the definition of
+conditional probability rearranged. Its usefulness comes from the fact that many
+multi-stage situations are naturally described by first entering one event and
+then asking for another event inside it.
+\end{remarkbox}
+
+\subsection*{Example: drawing two cards without replacement}
+
+Draw two cards from a standard deck without replacement, and record the ordered
+sequence. Let
+\[
+A=\{\text{the first card is an ace}\},
+\]
+and
+\[
+B=\{\text{the second card is an ace}\}.
+\]
+We want to understand the probability that both cards are aces.
+
+First,
+\[
+P(A)=\frac4{52}.
+\]
+If \(A\) has occurred, then one ace has already been removed. There are now
+\(51\) cards left, of which \(3\) are aces. Therefore
+\[
+P(B\mid A)=\frac3{51}.
+\]
+By the multiplication rule,
+\[
+P(A\cap B)=P(A)P(B\mid A)=\frac4{52}\cdot\frac3{51}.
+\]
+
+This calculation is not merely a formula. It follows the physical structure of
+the experiment: first card, then second card after the first card has changed the
+deck.
+
+\subsection*{Example: medical-style testing without Bayes yet}
+
+Suppose a population is divided into two groups: people who have a certain
+condition and people who do not. Let
+\[
+C=\{\text{the person has the condition}\},
+\]
+and let
+\[
+T=\{\text{the test result is positive}\}.
+\]
+The conditional probability
+\[
+P(T\mid C)
+\]
+means: among people with the condition, what proportion test positive?
+
+The conditional probability
+\[
+P(C\mid T)
+\]
+means: among people with a positive test result, what proportion have the
+condition?
+
+These are different questions. They use different reference spaces. The first
+uses \(C\) as the information event. The second uses \(T\) as the information
+event. There is no reason for the two numbers to be equal.
+
+This distinction is one of the main reasons conditional probability must be
+introduced carefully. The vertical bar in \(P(A\mid B)\) is not punctuation. It
+separates the event being measured from the information that defines the new
+space of reasoning.
+
+\subsection*{Conditional probabilities in tables}
+
+Conditional probability can often be read from a table. Suppose a group of
+students is classified by whether they passed an exam and whether they attended
+review sessions:
+\[
+\begin{array}{c|cc|c}
+ & \text{passed} & \text{did not pass} & \text{total}\\
+\hline
+\text{attended} & 36 & 9 & 45\\
+\text{did not attend} & 24 & 31 & 55\\
+\hline
+\text{total} & 60 & 40 & 100
+\end{array}
+\]
+Let
+\[
+A=\{\text{student passed}\},
+\]
+and
+\[
+B=\{\text{student attended}\}.
+\]
+Then \(P(A\mid B)\) is not computed from all \(100\) students. The information
+\(B\) restricts attention to the \(45\) students who attended. Among them,
+\(36\) passed. Thus
+\[
+P(A\mid B)=\frac{36}{45}.
+\]
+
+By contrast,
+\[
+P(B\mid A)=\frac{36}{60},
+\]
+because now the information is that the student passed, and among the \(60\)
+students who passed, \(36\) attended. Again, the two conditional probabilities
+answer different questions.
+
+\subsection*{What this definition teaches}
+
+The definition
+\[
+P(A\mid B)=\frac{P(A\cap B)}{P(B)}
+\]
+should be remembered through its meaning:
+
+\begin{itemize}
+    \item \(B\) is the information that becomes the new reference space;
+    \item \(A\cap B\) is the part of that reference space where the event of
+    interest also occurs;
+    \item division by \(P(B)\) rescales the information region so that it has
+    total probability \(1\).
+\end{itemize}
+
+\begin{theorembox}
+Conditional probability is ordinary probability after the space of reasoning has
+been restricted by information. The formula records this restriction and the
+necessary rescaling.
+\end{theorembox}
