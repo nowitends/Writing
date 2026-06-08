@@ -1,0 +1,335 @@
+\section{Bayes' theorem}
+
+The law of total probability lets us compute the probability of an observation
+by splitting the world into possible cases. Bayes' theorem answers the reverse
+question. After an observation is known, how should we update the probabilities
+of the possible cases?
+
+This is not a separate trick. It is conditional probability applied in the
+reverse direction.
+
+\subsection*{The basic reversal problem}
+
+Suppose \(B\) is a possible background case and \(A\) is an observed event. We
+may know or be able to model
+\[
+P(A\mid B),
+\]
+the probability of observing \(A\) if case \(B\) is true. But after observing
+\(A\), we may want
+\[
+P(B\mid A),
+\]
+the probability that case \(B\) is true given that \(A\) was observed.
+
+These two probabilities are not the same. They use different reference spaces.
+The first reasons inside \(B\). The second reasons inside \(A\).
+
+From the multiplication rule,
+\[
+P(A\cap B)=P(A\mid B)P(B).
+\]
+Also,
+\[
+P(A\cap B)=P(B\mid A)P(A).
+\]
+Since both expressions describe the same intersection, we get
+\[
+P(B\mid A)P(A)=P(A\mid B)P(B).
+\]
+If \(P(A)>0\), then
+\[
+P(B\mid A)=\frac{P(A\mid B)P(B)}{P(A)}.
+\]
+
+\begin{theorembox}
+\textbf{Bayes' theorem, two-event form.} If \(P(A)>0\) and \(P(B)>0\), then
+\[
+P(B\mid A)=\frac{P(A\mid B)P(B)}{P(A)}.
+\]
+\end{theorembox}
+
+This formula says that the updated probability of \(B\) after observing \(A\) is
+proportional to two quantities:
+\begin{itemize}
+    \item how plausible \(B\) was before observing \(A\), namely \(P(B)\);
+    \item how well \(B\) explains the observation \(A\), namely \(P(A\mid B)\).
+\end{itemize}
+
+\subsection*{Why the denominator is often expanded}
+
+In many applications, \(P(A)\) is not known directly. Instead, the observation
+\(A\) can occur under several possible cases. If \(B_1,
+\ldots,B_n\) form a
+partition of \(\Omega\), then the law of total probability gives
+\[
+P(A)=\sum_{i=1}^n P(A\mid B_i)P(B_i).
+\]
+Substituting this into Bayes' theorem gives
+\[
+P(B_j\mid A)=
+\frac{P(A\mid B_j)P(B_j)}
+{\sum_{i=1}^n P(A\mid B_i)P(B_i)}.
+\]
+
+\begin{theorembox}
+\textbf{Bayes' theorem over a partition.} If \(B_1,
+\ldots,B_n\) is a partition
+of \(\Omega\), \(P(B_i)>0\), and \(P(A)>0\), then
+\[
+P(B_j\mid A)=
+\frac{P(A\mid B_j)P(B_j)}
+{\sum_{i=1}^n P(A\mid B_i)P(B_i)}.
+\]
+\end{theorembox}
+
+The denominator is not an arbitrary normalizing term. It is the total probability
+of the observation \(A\), obtained by adding all the ways in which \(A\) can
+occur through the cases \(B_i\).
+
+\subsection*{Prior, likelihood, posterior}
+
+Bayes' theorem is often described using three words.
+
+The number
+\[
+P(B_j)
+\]
+is the \textbf{prior probability} of case \(B_j\). It is the probability before
+observing \(A\).
+
+The number
+\[
+P(A\mid B_j)
+\]
+is the \textbf{likelihood} of the observation under case \(B_j\). It measures how
+compatible the observation is with that case.
+
+The number
+\[
+P(B_j\mid A)
+\]
+is the \textbf{posterior probability}. It is the updated probability of the case
+after observing \(A\).
+
+The logic is:
+\[
+\text{prior}\times\text{likelihood}\quad\longrightarrow\quad\text{posterior after normalization}.
+\]
+The normalization is necessary because the posterior probabilities over all
+cases must add to one.
+
+\subsection*{Example: choosing an urn after observing a colour}
+
+Suppose one of two urns is chosen. Urn 1 is chosen with probability \(2/3\), and
+urn 2 is chosen with probability \(1/3\). Urn 1 contains \(3\) red objects and
+\(1\) blue object. Urn 2 contains \(1\) red object and \(4\) blue objects. One
+object is drawn from the chosen urn, and it is red. Which urn is now more likely
+to have been chosen?
+
+Let
+\[
+B_1=\{\text{urn 1 was chosen}\},\qquad B_2=\{\text{urn 2 was chosen}\},
+\]
+and
+\[
+A=\{\text{the drawn object is red}\}.
+\]
+We have
+\[
+P(B_1)=\frac23,\qquad P(B_2)=\frac13,
+\]
+\[
+P(A\mid B_1)=\frac34,\qquad P(A\mid B_2)=\frac15.
+\]
+First compute the total probability of drawing red:
+\[
+P(A)=P(A\mid B_1)P(B_1)+P(A\mid B_2)P(B_2).
+\]
+Thus
+\[
+P(A)=\frac34\cdot\frac23+\frac15\cdot\frac13
+=\frac12+\frac1{15}=\frac{17}{30}.
+\]
+Now Bayes' theorem gives
+\[
+P(B_1\mid A)=\frac{P(A\mid B_1)P(B_1)}{P(A)}.
+\]
+Therefore
+\[
+P(B_1\mid A)=\frac{\frac34\cdot\frac23}{\frac{17}{30}}
+=\frac{\frac12}{\frac{17}{30}}
+=\frac{15}{17}.
+\]
+Similarly,
+\[
+P(B_2\mid A)=\frac{\frac15\cdot\frac13}{\frac{17}{30}}
+=\frac{\frac1{15}}{\frac{17}{30}}
+=\frac{2}{17}.
+\]
+The posterior probabilities add to one:
+\[
+\frac{15}{17}+\frac{2}{17}=1.
+\]
+
+The red observation strongly supports urn 1 because urn 1 was already more
+likely before the draw and also has a higher red proportion.
+
+\subsection*{Example: diagnostic testing}
+
+Suppose a condition occurs in \(1\%\) of a population:
+\[
+P(C)=0.01,\qquad P(C^c)=0.99.
+\]
+A test has sensitivity \(95\%\), meaning
+\[
+P(T\mid C)=0.95,
+\]
+and false positive rate \(5\%\), meaning
+\[
+P(T\mid C^c)=0.05.
+\]
+Here \(T\) is the event that the test result is positive.
+
+We want
+\[
+P(C\mid T),
+\]
+the probability that a person has the condition after receiving a positive test
+result.
+
+By Bayes' theorem over the partition \(C,C^c\),
+\[
+P(C\mid T)=
+\frac{P(T\mid C)P(C)}{P(T\mid C)P(C)+P(T\mid C^c)P(C^c)}.
+\]
+Substitute the values:
+\[
+P(C\mid T)=
+\frac{0.95\cdot0.01}{0.95\cdot0.01+0.05\cdot0.99}.
+\]
+The numerator is
+\[
+0.0095.
+\]
+The denominator is
+\[
+0.0095+0.0495=0.059.
+\]
+Therefore
+\[
+P(C\mid T)=\frac{0.0095}{0.059}\approx0.161.
+\]
+So the probability is about \(16.1\%\), not \(95\%\).
+
+This example is important because it shows the role of the base rate. A positive
+test result is evidence for the condition, but when the condition is rare, false
+positives may still be numerous among all positive results.
+
+\subsection*{Natural frequency interpretation}
+
+The diagnostic example becomes clearer if we imagine \(10000\) people.
+
+About \(1\%\) have the condition, so approximately
+\[
+100
+\]
+people have it, and
+\[
+9900
+\]
+do not.
+
+Among the \(100\) people with the condition, the test is positive for about
+\[
+0.95\cdot100=95
+\]
+people.
+
+Among the \(9900\) people without the condition, the test is positive for about
+\[
+0.05\cdot9900=495
+\]
+people.
+
+So the total number of positive tests is about
+\[
+95+495=590.
+\]
+Among these, only \(95\) are true positives. Hence
+\[
+P(C\mid T)\approx\frac{95}{590}\approx0.161.
+\]
+This is the same calculation as Bayes' theorem, but written as counts. It often
+makes the denominator easier to understand: the positive tests come from two
+sources, true positives and false positives.
+
+\subsection*{Bayes' theorem as redistribution of probability over cases}
+
+Suppose \(B_1,
+\ldots,B_n\) are possible cases. Before observing \(A\), the
+probability assigned to case \(B_i\) is \(P(B_i)\). After observing \(A\), each
+case receives support proportional to
+\[
+P(A\mid B_i)P(B_i).
+\]
+The product has a clear meaning:
+\[
+P(A\mid B_i)P(B_i)=P(A\cap B_i).
+\]
+It is the probability that case \(B_i\) occurs and produces the observation
+\(A\).
+
+After observing \(A\), all posterior probabilities must add to one. Therefore we
+divide each contribution by the total probability of \(A\):
+\[
+P(A)=\sum_{i=1}^n P(A\mid B_i)P(B_i).
+\]
+This turns the contributions into posterior probabilities.
+
+\subsection*{Common reversal error}
+
+The most common mistake is to confuse
+\[
+P(A\mid B)
+\]
+with
+\[
+P(B\mid A).
+\]
+For example, test sensitivity \(P(T\mid C)\) is not the same as the probability
+of having the condition after a positive test \(P(C\mid T)\). The first uses the
+condition group as the reference space. The second uses the positive-test group
+as the reference space.
+
+Bayes' theorem exists precisely because these two directions are different but
+related through the intersection \(A\cap B\).
+
+\begin{remarkbox}
+Whenever a conditional probability appears, read the phrase after the vertical
+bar first. It tells you the reference space. Then read the event before the bar.
+It tells you what is being measured inside that reference space.
+\end{remarkbox}
+
+\subsection*{What Bayes' theorem teaches}
+
+Bayes' theorem teaches how probability is updated by evidence. It combines three
+ingredients:
+\begin{itemize}
+    \item prior probabilities of the possible cases;
+    \item likelihoods of the observation under those cases;
+    \item normalization by the total probability of the observation.
+\end{itemize}
+
+\begin{theorembox}
+Bayes' theorem is conditional probability used backward. It converts
+\[
+P(\text{observation}\mid\text{case})
+\]
+into
+\[
+P(\text{case}\mid\text{observation}),
+\]
+using the prior probabilities of the cases and the total probability of the
+observation.
+\end{theorembox}
