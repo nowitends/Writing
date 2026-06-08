@@ -1,0 +1,174 @@
+\section{Probability mass functions}
+
+Once a discrete random variable \(X\) has been defined, we want to know how
+probability is distributed among its possible values. This information is encoded
+by the probability mass function.
+
+The basic quantity is
+\[
+P(X=x).
+\]
+This notation is convenient, but it must be read carefully. The expression
+\(X=x\) describes an event in the original sample space:
+\[
+\{X=x\}=\{\omega\in\Omega:X(\omega)=x\}.
+\]
+Thus \(P(X=x)\) means the probability of all elementary outcomes that are mapped
+to the value \(x\).
+
+\begin{definitionbox}
+Let \(X\) be a discrete random variable. Its \textbf{probability mass function}
+\(p_X\) is defined by
+\[
+p_X(x)=P(X=x).
+\]
+For values outside the support, \(p_X(x)=0\).
+\end{definitionbox}
+
+The word mass is used because, in a discrete distribution, probability is
+concentrated on separate values. Each value in the support carries a certain
+amount of probability mass.
+
+\subsection*{The two basic properties}
+
+A probability mass function must satisfy two conditions:
+\[
+p_X(x)\geq 0
+\]
+for every \(x\), and
+\[
+\sum_{x\in\operatorname{supp}(X)}p_X(x)=1.
+\]
+These are not arbitrary requirements. They come from the axioms of probability.
+The events \(\{X=x\}\) for different support values are disjoint, and their union
+is the whole sample space up to events of probability zero.
+
+\begin{remarkbox}
+A proposed formula for a probability mass function is not valid until its values
+are non-negative and sum to \(1\) over the support.
+\end{remarkbox}
+
+\subsection*{Example: indicator of an event}
+
+Let \(A\) be an event and let \(I_A\) be its indicator:
+\[
+I_A(\omega)=
+\begin{cases}
+1, & \omega\in A,\\
+0, & \omega\notin A.
+\end{cases}
+\]
+The support of \(I_A\) is contained in \(\{0,1\}\). Its mass function is
+\[
+p_{I_A}(1)=P(I_A=1)=P(A),
+\]
+and
+\[
+p_{I_A}(0)=P(I_A=0)=P(A^c)=1-P(A).
+\]
+
+Thus an event can be represented as a zero-one random variable. This will be
+important when we study expectations and counts.
+
+\subsection*{Example: sum of two dice}
+
+Let \(S(i,j)=i+j\) be the sum of two fair dice. The sample space has \(36\)
+equally likely ordered pairs. To find \(p_S(s)\), we count how many pairs have
+sum \(s\).
+
+The counts are
+\[
+\begin{array}{c|ccccccccccc}
+s&2&3&4&5&6&7&8&9&10&11&12\\
+\hline
+\#\{(i,j):i+j=s\}&1&2&3&4&5&6&5&4&3&2&1
+\end{array}
+\]
+Therefore
+\[
+\begin{array}{c|ccccccccccc}
+s&2&3&4&5&6&7&8&9&10&11&12\\
+\hline
+p_S(s)&\frac1{36}&\frac2{36}&\frac3{36}&\frac4{36}&\frac5{36}&\frac6{36}&\frac5{36}&\frac4{36}&\frac3{36}&\frac2{36}&\frac1{36}
+\end{array}
+\]
+
+For example,
+\[
+p_S(7)=P(S=7)=\frac6{36}=\frac16.
+\]
+The value \(7\) has the largest probability because it can be produced in the
+largest number of ordered ways.
+
+\subsection*{Example: number of heads in \(n\) tosses}
+
+Toss a coin \(n\) times independently, with
+\[
+P(H)=p,\qquad P(T)=1-p.
+\]
+Let
+\[
+X=\text{the number of heads}.
+\]
+The support is
+\[
+\{0,1,2,\ldots,n\}.
+\]
+For \(X=k\), exactly \(k\) positions among the \(n\) positions must contain heads.
+There are
+\[
+\binom{n}{k}
+\]
+ways to choose those positions. Each sequence with \(k\) heads and \(n-k\) tails
+has probability
+\[
+p^k(1-p)^{n-k}.
+\]
+Hence
+\[
+p_X(k)=P(X=k)=\binom{n}{k}p^k(1-p)^{n-k},\qquad k=0,1,\ldots,n.
+\]
+
+This formula is not just a formula to remember. It contains the whole mechanism:
+choose positions of successes, multiply probabilities along each sequence, and
+sum over all sequences with the same count.
+
+\subsection*{Example: urn model without replacement}
+
+Suppose an urn contains \(K\) objects of type success and \(N-K\) objects of type
+failure. We select \(n\) objects without replacement and ignore order. Let
+\[
+X=\text{the number of successes selected}.
+\]
+If \(X=k\), then we choose \(k\) successes from the \(K\) success objects and
+\(n-k\) failures from the \(N-K\) failure objects. The total number of possible
+samples is \(\binom{N}{n}\). Therefore
+\[
+p_X(k)=P(X=k)=\frac{\binom{K}{k}\binom{N-K}{n-k}}{\binom{N}{n}},
+\]
+for values of \(k\) for which the binomial coefficients are meaningful.
+
+This distribution comes from the mechanism of sampling without replacement. It
+is different from the binomial model because the selections are not independent:
+a success removed from the population changes what remains.
+
+\subsection*{Reading a mass function as a model}
+
+A mass function is a compact description of a probability law. But it should not
+be separated from the mechanism that produced it. When reading or constructing a
+mass function, ask:
+\begin{itemize}
+    \item what is the original experiment?
+    \item what is the random variable?
+    \item what support values are possible?
+    \item which elementary outcomes produce each value?
+    \item how are their probabilities added?
+\end{itemize}
+
+\begin{theorembox}
+For a discrete random variable, the probability mass function is obtained by
+transferring probability from elementary outcomes to numerical values:
+\[
+p_X(x)=P(\{\omega\in\Omega:X(\omega)=x\}).
+\]
+\end{theorembox}
