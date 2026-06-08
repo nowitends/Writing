@@ -1,0 +1,176 @@
+\section{Final checklist}
+
+This chapter developed conditional probability as probability after information
+has changed the active space of reasoning. The central habit is to identify the
+reference space before calculating.
+
+The checklist below summarizes the method.
+
+\subsection*{Step 1: Identify the original model}
+
+Before conditioning, there must be a probability model. Identify:
+\begin{itemize}
+    \item the sample space \(\Omega\);
+    \item the elementary outcomes or relevant events;
+    \item the probability assignment;
+    \item whether the model is uniform or non-uniform.
+\end{itemize}
+
+Conditional probability does not replace model construction. It uses the model
+that has already been built.
+
+\subsection*{Step 2: Identify the information event}
+
+In an expression
+\[
+P(A\mid B),
+\]
+the event after the vertical bar is the information event. It is the event that
+is assumed to have occurred.
+
+Say explicitly:
+\[
+\text{we are now reasoning inside }B.
+\]
+
+Check that
+\[
+P(B)>0.
+\]
+If \(P(B)=0\), the elementary conditional probability formula is not defined.
+
+\subsection*{Step 3: Identify the target event}
+
+The event before the vertical bar is the event being measured. In
+\[
+P(A\mid B),
+\]
+the target event is \(A\). The favourable part of the information region is
+\[
+A\cap B.
+\]
+
+Do not replace \(A\) by \(B\). Do not reverse the order unless the problem asks
+for the reverse conditional probability.
+
+\subsection*{Step 4: Use the definition when conditioning directly}
+
+If the problem asks directly for \(P(A\mid B)\), use
+\[
+P(A\mid B)=\frac{P(A\cap B)}{P(B)}.
+\]
+In a finite uniform model this becomes
+\[
+P(A\mid B)=\frac{|A\cap B|}{|B|}.
+\]
+The denominator is the size or probability of the information region. The
+numerator is the part of that region where the target event also occurs.
+
+\subsection*{Step 5: Use independence only when justified}
+
+Events \(A\) and \(B\) are independent when information about one does not change
+the probability of the other. Algebraically,
+\[
+P(A\cap B)=P(A)P(B).
+\]
+When probabilities are positive, this is equivalent to
+\[
+P(A\mid B)=P(A)
+\]
+and
+\[
+P(B\mid A)=P(B).
+\]
+
+Do not assume independence merely because there are two stages or two
+coordinates. Independence belongs to the probability assignment, not just to the
+notation.
+
+\subsection*{Step 6: Use total probability when cases produce the event}
+
+If an event \(A\) may occur through several mutually exclusive and exhaustive
+cases \(B_1,
+\ldots,B_n\), use the law of total probability:
+\[
+P(A)=\sum_{i=1}^n P(A\mid B_i)P(B_i).
+\]
+Before using it, check:
+\begin{itemize}
+    \item the cases are disjoint;
+    \item the cases cover the whole sample space;
+    \item the conditional probabilities inside the cases are meaningful.
+\end{itemize}
+
+Read the formula as:
+\[
+\text{total probability}=\sum \text{case probability}\times\text{probability inside case}.
+\]
+
+\subsection*{Step 7: Use Bayes' theorem when reversing information}
+
+Use Bayes' theorem when the problem gives or suggests probabilities of the form
+\[
+P(\text{observation}\mid\text{case})
+\]
+but asks for
+\[
+P(\text{case}\mid\text{observation}).
+\]
+
+For a partition \(B_1,
+\ldots,B_n\),
+\[
+P(B_j\mid A)=
+\frac{P(A\mid B_j)P(B_j)}
+{\sum_{i=1}^n P(A\mid B_i)P(B_i)}.
+\]
+
+Remember the roles:
+\begin{itemize}
+    \item \(P(B_j)\) is the prior probability of the case;
+    \item \(P(A\mid B_j)\) is the likelihood of the observation in that case;
+    \item \(P(B_j\mid A)\) is the posterior probability of the case after the
+    observation.
+\end{itemize}
+
+\subsection*{Step 8: Interpret the result}
+
+After computing a conditional probability, translate it back into words.
+
+For example,
+\[
+P(A\mid B)=0.7
+\]
+means:
+\[
+\text{among the outcomes compatible with }B,\text{ the event }A\text{ has probability }0.7.
+\]
+It does not mean that \(B\) was caused by \(A\), nor that \(P(B\mid A)=0.7\).
+
+\subsection*{Compact checklist}
+
+For any problem in this chapter, ask:
+
+\begin{enumerate}
+    \item What is the original probability model?
+    \item What information has been given?
+    \item What event is after the vertical bar?
+    \item What event is before the vertical bar?
+    \item What is the intersection of the target event with the information
+    event?
+    \item Is the conditioning event positive-probability?
+    \item Is independence stated or justified?
+    \item Is there a partition of cases?
+    \item Is the problem asking for a direct conditional probability or a reverse
+    probability requiring Bayes' theorem?
+    \item What does the final number mean in words?
+\end{enumerate}
+
+\begin{theorembox}
+The most important sentence in conditional probability is:
+\[
+\text{the event after the vertical bar is the space in which we now reason.}
+\]
+Once this is clear, the formulas become expressions of that change of reference
+space.
+\end{theorembox}
