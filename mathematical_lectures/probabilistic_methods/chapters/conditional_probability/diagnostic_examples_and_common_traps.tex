@@ -1,0 +1,244 @@
+\section{Diagnostic examples and common traps}
+
+Conditional probability is conceptually simple once the reference space is clear,
+but it is easy to make mistakes when the roles of events are not stated
+explicitly. This section collects common traps and shows how to diagnose them.
+
+The guiding question is always:
+\[
+\text{what is the information, and what is being measured inside that information?}
+\]
+
+\subsection*{Trap 1: confusing \(P(A\mid B)\) with \(P(B\mid A)\)}
+
+The conditional probability
+\[
+P(A\mid B)
+\]
+means that \(B\) is the information and \(A\) is the event measured inside that
+information. The conditional probability
+\[
+P(B\mid A)
+\]
+reverses these roles.
+
+These two numbers are usually different.
+
+\begin{examplebox}
+Let
+\[
+A=\{\text{a person is a mathematics student}\},
+\]
+and
+\[
+B=\{\text{a person takes a probability course}\}.
+\]
+The probability \(P(B\mid A)\) asks: among mathematics students, what proportion
+take a probability course? The probability \(P(A\mid B)\) asks: among students in
+the probability course, what proportion are mathematics students?
+
+These are different reference groups, so the answers need not be the same.
+\end{examplebox}
+
+Diagnostic question:
+\[
+\text{Which event is after the vertical bar?}
+\]
+That event is the new reference space.
+
+\subsection*{Trap 2: ignoring base rates}
+
+Bayesian problems often involve a rare event and an imperfect observation. The
+observation may be strong evidence, but the prior probability still matters.
+Ignoring the prior probability is called ignoring the base rate.
+
+Suppose a condition occurs in \(1\%\) of a population. A test is positive for
+\(99\%\) of people with the condition and for \(5\%\) of people without the
+condition. A positive test does not mean the person has probability \(99\%\) of
+having the condition. The number \(99\%\) is
+\[
+P(\text{positive}\mid\text{condition}).
+\]
+The desired probability after a positive test is
+\[
+P(\text{condition}\mid\text{positive}).
+\]
+These are different.
+
+Diagnostic question:
+\[
+\text{How common was the case before the evidence was observed?}
+\]
+Bayes' theorem combines the prior probability with the likelihood of the
+observation.
+
+\subsection*{Trap 3: treating disjoint events as independent}
+
+If two events cannot occur together, they are disjoint:
+\[
+A\cap B=\varnothing.
+\]
+If both have positive probability, then learning that one occurred makes the
+other impossible. Therefore they are dependent, not independent.
+
+For example, in one die roll, let
+\[
+A=\{\text{the result is even}\}=\{2,4,6\},
+\]
+and
+\[
+B=\{\text{the result is odd}\}=\{1,3,5\}.
+\]
+The events are disjoint. If we know \(B\), then the probability of \(A\) becomes
+zero:
+\[
+P(A\mid B)=0.
+\]
+But before knowing \(B\),
+\[
+P(A)=\frac12.
+\]
+The information changes the probability, so the events are dependent.
+
+Diagnostic question:
+\[
+\text{If one event occurs, does the other become impossible?}
+\]
+If yes, then positive-probability events are not independent.
+
+\subsection*{Trap 4: assuming independence without justification}
+
+Independence is not created by notation. Writing a sample space as a product,
+such as
+\[
+\{H,T\}^2
+\]
+or
+\[
+\{1,2,3,4,5,6\}^2,
+\]
+describes possible ordered outcomes. It does not by itself prove that the stages
+are independent.
+
+Independence is a property of the probability assignment. It says that knowing
+one event occurred does not change the probability of another.
+
+\begin{examplebox}
+A mechanism produces two symbols, each either \(H\) or \(T\). The possible
+outputs are
+\[
+HH,HT,TH,TT.
+\]
+If the mechanism chooses the first symbol fairly and then always repeats it, the
+only outputs with positive probability are \(HH\) and \(TT\). The two positions
+are not independent, even though the notation has two coordinates.
+\end{examplebox}
+
+Diagnostic question:
+\[
+\text{Where in the model is independence stated or justified?}
+\]
+If it is not stated or implied by the mechanism, do not use product rules as if
+it were automatic.
+
+\subsection*{Trap 5: using total probability without a partition}
+
+The law of total probability requires cases that are mutually exclusive and
+exhaustive. If the cases overlap, adding contributions may double-count. If the
+cases do not cover the whole sample space, the sum may miss part of the event.
+
+Before writing
+\[
+P(A)=\sum_i P(A\mid B_i)P(B_i),
+\]
+check that the events \(B_i\) form a partition.
+
+Diagnostic questions:
+\begin{itemize}
+    \item Can two of the cases occur at the same time?
+    \item Is every possible outcome covered by one of the cases?
+    \item Do all conditioning events have positive probability?
+\end{itemize}
+
+\subsection*{Trap 6: forgetting the denominator in Bayes' theorem}
+
+In Bayes' theorem, the denominator is the total probability of the observation.
+It includes all ways the observation can occur. Omitting some cases changes the
+reference space and gives the wrong posterior probability.
+
+For a partition \(B_1,
+\ldots,B_n\), the denominator is
+\[
+P(A)=\sum_i P(A\mid B_i)P(B_i).
+\]
+It is not merely the likelihood under the case we are interested in.
+
+Diagnostic question:
+\[
+\text{What are all possible sources of the observation?}
+\]
+The denominator must include them all.
+
+\subsection*{Trap 7: treating a conditional probability as a causal statement}
+
+If
+\[
+P(A\mid B)>P(A),
+\]
+then \(B\) is informative about \(A\). But this alone does not prove that \(B\)
+causes \(A\). Conditional probability describes how probabilities change under
+information. Causal interpretation requires additional structure.
+
+For example, if students who attend review sessions pass more often, then
+attendance is associated with passing. But from this probability statement alone
+we cannot conclude that attendance caused the higher pass rate. Students who
+attend may differ in other ways.
+
+Diagnostic question:
+\[
+\text{Am I making a probability statement or a causal claim?}
+\]
+These are not the same kind of statement.
+
+\subsection*{Trap 8: conditioning on an event of probability zero}
+
+The elementary formula
+\[
+P(A\mid B)=\frac{P(A\cap B)}{P(B)}
+\]
+requires
+\[
+P(B)>0.
+\]
+If \(P(B)=0\), the denominator vanishes and the formula is not defined.
+
+In finite examples this often corresponds to impossible information. For a die
+roll, conditioning on the event ``the result is \(8\)'' is not meaningful in the
+usual die model because that event is empty.
+
+Diagnostic question:
+\[
+\text{Does the conditioning event have positive probability in this model?}
+\]
+
+\subsection*{A diagnostic workflow}
+
+When a conditional probability problem appears, use the following workflow.
+
+\begin{enumerate}
+    \item Identify the original sample space or probability model.
+    \item Identify the information event: this is the event after the vertical
+    bar.
+    \item Identify the target event: this is the event before the vertical bar.
+    \item Check that the information event has positive probability.
+    \item Replace the active space of reasoning by the information event.
+    \item Locate the target event inside that information event by taking the
+    intersection.
+    \item Decide whether the problem needs direct conditioning, independence,
+    total probability, or Bayes' theorem.
+\end{enumerate}
+
+\begin{theorembox}
+Most mistakes with conditional probability are mistakes about reference spaces.
+Before calculating, say explicitly: ``I am reasoning inside this event.''
+\end{theorembox}
