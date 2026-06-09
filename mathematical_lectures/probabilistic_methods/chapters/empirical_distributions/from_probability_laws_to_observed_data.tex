@@ -1,0 +1,125 @@
+\section{From probability laws to observed data}
+
+The previous chapters studied probability laws as mathematical models. A random
+variable \(X\) had a probability law described by a probability mass function, a
+density function, or a cumulative distribution function. We defined quantities
+such as
+\[
+\E[X],\qquad \Var(X),\qquad \sigma_X,
+\]
+and we interpreted them as properties of the probability model.
+
+This chapter changes the point of view. We now begin with data: a finite list of
+observed values. The central question is not only what model could have produced
+those values, but also how to describe the values that have actually been
+observed.
+
+\begin{summarybox}
+A probability law is an ideal mathematical object. A dataset is a finite list of
+observations. Descriptive statistics are numerical and graphical summaries
+computed from that finite list.
+\end{summarybox}
+
+This distinction is essential. If a model says that
+\[
+X\sim N(0,1),
+\]
+then the model has theoretical expectation \(0\) and theoretical variance \(1\).
+But an observed sample generated from that model might be
+\[
+-0.31,\quad 0.84,\quad 1.12,\quad -1.45,\quad 0.07.
+\]
+The average of these five observed values will not usually be exactly \(0\), and
+their empirical variance will not usually be exactly \(1\). This is not a
+contradiction. The model describes the random mechanism; the sample is one finite
+outcome of that mechanism.
+
+\subsection*{The same words, but a different status}
+
+Many words from the previous chapters appear again:
+\begin{itemize}
+    \item distribution,
+    \item mean,
+    \item variance,
+    \item standard deviation,
+    \item quantile,
+    \item cumulative distribution function.
+\end{itemize}
+
+However, their status changes. Earlier, they were properties of a probability
+law. Now they are summaries computed from data.
+
+For example, the theoretical expectation
+\[
+\E[X]
+\]
+is a property of the random variable \(X\). The sample mean
+\[
+\bar{x}=\frac1n\sum_{i=1}^n x_i
+\]
+is a number computed from observed values
+\[
+x_1,x_2,\ldots,x_n.
+\]
+These two objects are related, but they are not the same object.
+
+\begin{remarkbox}
+A common mistake is to write as if the sample mean \(\bar{x}\) were the same as
+\(\E[X]\). The sample mean is computed from data. The expectation belongs to a
+probability model.
+\end{remarkbox}
+
+\subsection*{Why empirical summaries matter}
+
+Empirical summaries serve several purposes. They help us see the structure of a
+dataset, detect unusual observations, compare groups, and form questions about
+possible probability models. They also prepare the ground for statistical
+inference, where one uses data to reason about an unknown population or an
+unknown model parameter.
+
+At this stage, however, we are not yet proving inferential statements. We are
+learning the language of data description. The goal is to understand what a
+summary measures before using it for estimation or decision making.
+
+\subsection*{A small example}
+
+Suppose the observed waiting times, in minutes, are
+\[
+2.1,\quad 3.4,\quad 1.8,\quad 4.0,\quad 2.7.
+\]
+From these five numbers, we can compute a sample mean, a sample variance, a
+median, and other summaries. We can also make a histogram or an empirical
+cumulative distribution function.
+
+But these five numbers are not themselves an exponential distribution, a normal
+distribution, or any other theoretical distribution. They are data. A theoretical
+model may later be proposed to explain or approximate how such data arise. The
+empirical summaries describe what has been observed.
+
+\subsection*{The guiding comparison}
+
+Throughout this chapter, we repeatedly compare theoretical and empirical objects:
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+Theoretical probability & Empirical data & Interpretation \\
+\midrule
+Probability law of \(X\) & empirical distribution & how mass is assigned \\
+CDF \(F_X\) & empirical CDF \(F_n\) & accumulated probability or proportion \\
+\(\E[X]\) & sample mean \(\bar{x}\) & center \\
+\(\Var(X)\) & sample variance & spread \\
+Theoretical quantile & empirical quantile & probability position \\
+Density & histogram estimate & shape of distribution \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The table is only a guide. It does not say that the empirical object is equal to
+the theoretical object. It says that empirical summaries are data-based
+counterparts of the theoretical concepts developed earlier.
+
+\begin{theorembox}
+The main conceptual task of this chapter is to keep two levels separate while
+understanding their relationship: the level of the probability model and the
+level of the observed sample.
+\end{theorembox}
