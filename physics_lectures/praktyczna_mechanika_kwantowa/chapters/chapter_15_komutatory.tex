@@ -1,8 +1,140 @@
 \chapter{Komutatory}
 
 \section{Czym jest komutator?}
+
+W mechanice kwantowej wielkości fizyczne opisujemy operatorami. Operator nie jest zwykłą liczbą: działa na funkcję falową albo na wektor stanu i przekształca go w nową funkcję albo nowy wektor. Jeżeli mamy dwa operatory \(\hat{A}\) i \(\hat{B}\), to możemy wykonać je w dwóch kolejnościach:
+\[
+    \hat{A}\hat{B}\psi = \hat{A}(\hat{B}\psi),
+    \qquad
+    \hat{B}\hat{A}\psi = \hat{B}(\hat{A}\psi).
+\]
+W ogólności te dwa wyniki nie muszą być takie same. Właśnie tę różnicę mierzy komutator.
+
+\begin{equation}
+    [\hat{A},\hat{B}] = \hat{A}\hat{B}-\hat{B}\hat{A}.
+\end{equation}
+
+Komutator jest więc także operatorem. Nie pytamy tylko, czy \(\hat{A}\hat{B}\) i \(\hat{B}\hat{A}\) wyglądają podobnie formalnie. Pytamy, czy dają ten sam wynik po zadziałaniu na dowolny dopuszczalny stan \(\psi\). Dokładniej:
+\[
+    ([\hat{A},\hat{B}]\psi) = \hat{A}(\hat{B}\psi)-\hat{B}(\hat{A}\psi).
+\]
+Jeżeli dla wszystkich stanów z rozważanej dziedziny zachodzi
+\[
+    [\hat{A},\hat{B}]\psi=0,
+\]
+to mówimy, że operatory komutują. Wtedy kolejność ich działania nie ma znaczenia. Jeżeli wynik jest niezerowy, kolejność jest fizycznie i matematycznie istotna.
+
+Najprostsza intuicja pochodzi z porównania mnożenia przez zmienną i różniczkowania. Niech operator \(\hat{x}\) oznacza mnożenie przez \(x\), a operator \(D\) oznacza pochodną po \(x\):
+\[
+    (\hat{x}\psi)(x)=x\psi(x),
+    \qquad
+    (D\psi)(x)=\frac{d\psi}{dx}.
+\]
+Wtedy
+\[
+    (\hat{x}D\psi)(x)=x\frac{d\psi}{dx},
+\]
+ale
+\[
+    (D\hat{x}\psi)(x)=\frac{d}{dx}\bigl(x\psi(x)\bigr)
+    =\psi(x)+x\frac{d\psi}{dx}.
+\]
+Różnica nie jest zerowa:
+\[
+    ([\hat{x},D]\psi)(x)
+    =x\frac{d\psi}{dx}-\left(\psi(x)+x\frac{d\psi}{dx}\right)
+    =-\psi(x).
+\]
+Zatem
+\[
+    [\hat{x},D]=-1.
+\]
+Ten przykład jest ważny, ponieważ operator pędu w reprezentacji położeniowej jest proporcjonalny właśnie do pochodnej. Stąd komutatory nie są dodatkiem formalnym do mechaniki kwantowej, lecz pojawiają się już w samym języku funkcji falowych.
+
 \section{Komutator jako miara niekompatybilności obserwabli}
+
+Obserwable w mechanice kwantowej reprezentujemy operatorami hermitowskimi. Pomiar obserwabli \(A\) wiążemy z operatorem \(\hat{A}\), jego wartościami własnymi i stanami własnymi. Jeżeli stan \(\psi\) spełnia równanie
+\[
+    \hat{A}\psi=a\psi,
+\]
+to mówimy, że \(\psi\) jest stanem własnym operatora \(\hat{A}\), a \(a\) jest możliwym wynikiem pomiaru obserwabli \(A\) w tym stanie.
+
+Dwa operatory są kompatybilne, jeżeli można sensownie traktować odpowiadające im obserwable jako jednocześnie określone. W praktyce oznacza to, że istnieje baza wspólnych stanów własnych. Wtedy stan może mieć jednocześnie dobrze określoną wartość obserwabli \(A\) i dobrze określoną wartość obserwabli \(B\). Warunkiem algebraicznym tej sytuacji jest komutowanie operatorów:
+\[
+    [\hat{A},\hat{B}]=0.
+\]
+
+Zobaczmy, dlaczego jest to naturalne. Załóżmy, że \(\psi\) jest stanem własnym operatora \(\hat{A}\):
+\[
+    \hat{A}\psi=a\psi.
+\]
+Jeżeli \(\hat{A}\) i \(\hat{B}\) komutują, to
+\[
+    \hat{A}(\hat{B}\psi)
+    =\hat{B}(\hat{A}\psi)
+    =\hat{B}(a\psi)
+    =a(\hat{B}\psi).
+\]
+Oznacza to, że wektor \(\hat{B}\psi\) nadal należy do tej samej podprzestrzeni własnej operatora \(\hat{A}\). W przypadku niezdegenerowanej wartości własnej prowadzi to bezpośrednio do wspólnych stanów własnych. W przypadku degeneracji trzeba dobrać bazę wewnątrz zdegenerowanej podprzestrzeni, ale idea pozostaje ta sama: komutowanie jest warunkiem zgodności dwóch opisów pomiarowych.
+
+Jeżeli natomiast
+\[
+    [\hat{A},\hat{B}]\neq 0,
+\]
+to kolejność działań ma znaczenie. Nie chodzi tylko o techniczny problem rachunkowy. Niezerowy komutator mówi, że operacje odpowiadające dwóm obserwablom nie są neutralne względem siebie. Przygotowanie stanu o dobrze określonej wartości jednej obserwabli może uniemożliwiać jednoczesne przypisanie ostrej wartości drugiej obserwabli.
+
+Ważne jest, aby nie interpretować tego zbyt naiwnie. Niezerowy komutator nie oznacza, że nie wolno mierzyć obu wielkości w ogóle. Oznacza raczej, że nie istnieje zwykły klasyczny opis, w którym obie wielkości mają jednocześnie ostre wartości niezależne od kolejności procedury pomiarowej. To jest jedno z miejsc, w których mechanika kwantowa radykalnie odchodzi od intuicji klasycznej.
+
 \section{Relacja \texorpdfstring{\([\hat{x},\hat{p}_x]=i\hbar\)}{[x,px]=i hbar}}
+
+Najważniejszym komutatorem w jednowymiarowej mechanice kwantowej jest komutator położenia i pędu. W reprezentacji położeniowej operator położenia działa przez mnożenie przez \(x\):
+\[
+    (\hat{x}\psi)(x)=x\psi(x),
+\]
+natomiast operator pędu ma postać różniczkową:
+\[
+    \hat{p}_x=-i\hbar\frac{d}{dx}.
+\]
+Chcemy obliczyć komutator
+\[
+    [\hat{x},\hat{p}_x]=\hat{x}\hat{p}_x-\hat{p}_x\hat{x}.
+\]
+Najbezpieczniej nie liczyć go ``w powietrzu'', lecz zadziałać na dowolną funkcję falową \(\psi(x)\).
+
+Pierwsza kolejność daje
+\[
+    (\hat{x}\hat{p}_x\psi)(x)
+    =x\left(-i\hbar\frac{d\psi}{dx}\right)
+    =-i\hbar x\frac{d\psi}{dx}.
+\]
+Druga kolejność daje
+\[
+    (\hat{p}_x\hat{x}\psi)(x)
+    =-i\hbar\frac{d}{dx}\bigl(x\psi(x)\bigr)
+    =-i\hbar\left(\psi(x)+x\frac{d\psi}{dx}\right).
+\]
+Odejmując te dwa wyniki, otrzymujemy
+\begin{align}
+    ([\hat{x},\hat{p}_x]\psi)(x)
+    &= -i\hbar x\frac{d\psi}{dx}
+    -\left[-i\hbar\left(\psi(x)+x\frac{d\psi}{dx}\right)\right] \\
+    &= i\hbar\psi(x).
+\end{align}
+Ponieważ wynik jest równy \(i\hbar\psi(x)\) dla dowolnej dopuszczalnej funkcji \(\psi\), dostajemy tożsamość operatorową
+\begin{equation}
+    [\hat{x},\hat{p}_x]=i\hbar.
+\end{equation}
+
+Ta relacja jest często nazywana kanoniczną relacją komutacyjną. Trzeba jednak pamiętać, że zapis \(i\hbar\) po prawej stronie oznacza dokładniej \(i\hbar\hat{I}\), gdzie \(\hat{I}\) jest operatorem jednostkowym:
+\[
+    i\hbar\hat{I}\psi=i\hbar\psi.
+\]
+W rachunkach skracamy zapis, ale sens operatorowy pozostaje ważny.
+
+Relacja \([\hat{x},\hat{p}_x]=i\hbar\) mówi, że położenie i pęd są obserwablami niekompatybilnymi. Nie można zbudować mechaniki kwantowej tak, jakby \(x\) i \(p_x\) były zwykłymi liczbami fazowymi znanymi jednocześnie z dowolną dokładnością. W języku tego kursu: operator położenia i operator pędu nie dają się jednocześnie sprowadzić do roli dwóch niezależnych klasycznych etykiet stanu.
+
+Warto również sprawdzić wymiar fizyczny. Lewa strona ma wymiar iloczynu położenia i pędu, czyli wymiar działania. Prawa strona zawiera \(\hbar\), które także ma wymiar działania. Zgodność wymiarów jest prostym, ale ważnym testem poprawności wzoru.
+
 \section{Komutatory z \texorpdfstring{\(\hat{L}^2\)}{L2} i \texorpdfstring{\(\hat{L}_z\)}{Lz}}
 \section{Komutatory w Mathematice: reprezentacja operatorów różniczkowych}
 \section{Co oznacza wynik zerowy?}
