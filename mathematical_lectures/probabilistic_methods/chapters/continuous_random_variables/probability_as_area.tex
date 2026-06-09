@@ -1,0 +1,160 @@
+\section{Probability as area under a density}
+
+A density becomes useful only when it is integrated. The integral collects the
+small contributions of density over an interval. Geometrically, this integral is
+an area under the density curve.
+
+If \(X\) has density \(f_X\), then
+\[
+P(a\leq X\leq b)=\int_a^b f_X(x)\,dx.
+\]
+This formula is the continuous counterpart of adding probability masses in the
+discrete case.
+
+\subsection*{Sums and integrals}
+
+For a discrete random variable, probabilities are obtained by summing masses:
+\[
+P(X\in A)=\sum_{x\in A}p_X(x).
+\]
+For a continuous random variable with density, probabilities are obtained by
+integrating density:
+\[
+P(X\in A)=\int_A f_X(x)\,dx.
+\]
+The two formulas have the same purpose: both accumulate probability over a set of
+values. The difference is the way probability is distributed.
+
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+Case & Local description & Accumulation rule \\
+\midrule
+Discrete & mass \(p_X(x)\) at points & sum masses \\
+Continuous & density \(f_X(x)\) over intervals & integrate density \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection*{Small intervals and local approximation}
+
+Suppose \(f_X\) is continuous near a point \(x\). For a small positive number
+\(h\), the probability of the interval \([x,x+h]\) is
+\[
+P(x\leq X\leq x+h)=\int_x^{x+h}f_X(t)\,dt.
+\]
+If the interval is very short, the density does not change much across it, so
+\[
+\int_x^{x+h}f_X(t)\,dt\approx f_X(x)h.
+\]
+This approximation explains why density can be read as local concentration of
+probability. A larger density means that probability accumulates faster per unit
+length near that point.
+
+The approximation must not be confused with an equality in general. The exact
+probability is the integral. The product \(f_X(x)h\) is a useful local
+approximation when \(h\) is small and the density varies slowly over the
+interval.
+
+\subsection*{Example: constant density}
+
+Let \(X\) be uniformly distributed on \([0,10]\). Then
+\[
+f_X(x)=
+\begin{cases}
+\frac1{10}, & 0\leq x\leq 10,\\
+0, & \text{otherwise}.
+\end{cases}
+\]
+For the interval \([2,7]\),
+\[
+P(2\leq X\leq 7)=\int_2^7 \frac1{10}\,dx=\frac{5}{10}=0.5.
+\]
+The probability is the area of a rectangle whose width is \(5\) and whose height
+is \(1/10\).
+
+For the shorter interval \([2,3]\),
+\[
+P(2\leq X\leq 3)=\int_2^3 \frac1{10}\,dx=0.1.
+\]
+In a constant-density model, probability is proportional to interval length.
+
+\subsection*{Example: increasing density}
+
+Let
+\[
+f_X(x)=
+\begin{cases}
+2x, & 0\leq x\leq 1,\\
+0, & \text{otherwise}.
+\end{cases}
+\]
+The probability of the first half of the interval is
+\[
+P(0\leq X\leq 0.5)=\int_0^{0.5}2x\,dx=0.25.
+\]
+The probability of the second half is
+\[
+P(0.5\leq X\leq 1)=\int_{0.5}^{1}2x\,dx=0.75.
+\]
+The two intervals have the same length, but the second interval receives three
+times as much probability. The reason is not that it contains more points; both
+intervals contain infinitely many points. The reason is that the density is
+larger on the second interval.
+
+\subsection*{Events formed from intervals}
+
+If an event is a union of disjoint intervals, its probability is the sum of the
+corresponding areas. For example, if \(X\) is uniformly distributed on \([0,1]\),
+then
+\[
+P(X\in[0.1,0.2]\cup[0.7,0.9])
+=
+P(0.1\leq X\leq 0.2)+P(0.7\leq X\leq 0.9).
+\]
+The intervals are disjoint, so
+\[
+P(X\in[0.1,0.2]\cup[0.7,0.9])=0.1+0.2=0.3.
+\]
+This is the same additivity principle used in earlier chapters. What changes is
+how the probability of each interval is computed.
+
+\subsection*{Why single points have probability zero}
+
+For a continuous random variable with density \(f_X\), the probability of a
+single point \(a\) is
+\[
+P(X=a)=P(a\leq X\leq a)=\int_a^a f_X(x)\,dx=0.
+\]
+The interval has zero width, so the area is zero.
+
+This argument is precise for random variables described by densities. It is not
+a statement about every possible random variable. Some random variables may have
+both continuous parts and point masses. In this chapter, unless stated
+otherwise, continuous random variables are treated through densities.
+
+\begin{remarkbox}
+For a density model, changing or removing finitely many individual points does
+not change the probability of an interval. Area is not affected by individual
+points.
+\end{remarkbox}
+
+\subsection*{Checking probabilities by geometry}
+
+A useful way to check continuous probability calculations is to compare the area
+with the total area. Since the total area under a density is \(1\), an interval
+cannot have probability larger than \(1\). If a computed interval probability is
+negative or larger than \(1\), something is wrong.
+
+Also, if one interval lies inside another, its probability cannot be larger:
+\[
+[a,b]\subseteq[c,d]
+\quad\Longrightarrow\quad
+P(a\leq X\leq b)\leq P(c\leq X\leq d).
+\]
+This monotonicity comes from the non-negativity of the density.
+
+\begin{summarybox}
+A density describes how probability is spread. An integral accumulates that
+spread over an interval. The probability is the area, not the height.
+\end{summarybox}
