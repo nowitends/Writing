@@ -1,0 +1,173 @@
+\section{Cumulative distribution functions}
+
+The cumulative distribution function is the most universal way to describe a
+real-valued random variable. It works for discrete random variables, continuous
+random variables, and more complicated random variables. In the continuous case,
+it is especially important because probabilities are naturally built from
+intervals.
+
+\begin{definitionbox}
+For a real-valued random variable \(X\), the \textbf{cumulative distribution
+function}, or \textbf{CDF}, is the function \(F_X:\mathbb{R}\to[0,1]\) defined by
+\[
+F_X(x)=P(X\leq x).
+\]
+\end{definitionbox}
+
+The value \(F_X(x)\) is the probability accumulated up to the point \(x\). It
+answers the question: how much probability lies to the left of \(x\)?
+
+\subsection*{CDF from a density}
+
+If \(X\) has density \(f_X\), then
+\[
+F_X(x)=P(X\leq x)=\int_{-\infty}^{x}f_X(t)\,dt.
+\]
+The variable \(t\) is a dummy integration variable. It is used so that \(x\) can
+remain the endpoint of accumulation.
+
+This formula says that the CDF is an accumulated area function. As \(x\) moves to
+the right, more area under the density is included.
+
+\subsection*{Recovering interval probabilities from the CDF}
+
+For \(a<b\), the event \(X\leq b\) can be split into two parts:
+\[
+\{X\leq b\}=\{X\leq a\}\cup\{a<X\leq b\}.
+\]
+These two events are disjoint. Therefore
+\[
+P(X\leq b)=P(X\leq a)+P(a<X\leq b).
+\]
+Rearranging gives
+\[
+P(a<X\leq b)=F_X(b)-F_X(a).
+\]
+For continuous random variables with no point masses, the endpoint convention is
+irrelevant, so we also write
+\[
+P(a\leq X\leq b)=F_X(b)-F_X(a).
+\]
+
+\begin{theorembox}
+For a continuous random variable with CDF \(F_X\), interval probabilities are
+computed by differences:
+\[
+P(a\leq X\leq b)=F_X(b)-F_X(a).
+\]
+\end{theorembox}
+
+\subsection*{Example: uniform distribution on \([0,1]\)}
+
+Let \(X\) be uniformly distributed on \([0,1]\). Its density is
+\[
+f_X(x)=
+\begin{cases}
+1, & 0\leq x\leq 1,\\
+0, & \text{otherwise}.
+\end{cases}
+\]
+For \(x<0\), no probability lies to the left of \(x\), so
+\[
+F_X(x)=0.
+\]
+For \(0\leq x\leq 1\),
+\[
+F_X(x)=\int_0^x1\,dt=x.
+\]
+For \(x>1\), all probability lies to the left of \(x\), so
+\[
+F_X(x)=1.
+\]
+Thus
+\[
+F_X(x)=
+\begin{cases}
+0, & x<0,\\
+x, & 0\leq x\leq 1,\\
+1, & x>1.
+\end{cases}
+\]
+For example,
+\[
+P(0.2\leq X\leq 0.7)=F_X(0.7)-F_X(0.2)=0.7-0.2=0.5.
+\]
+
+\subsection*{Example: triangular density}
+
+Let
+\[
+f_X(x)=
+\begin{cases}
+2x, & 0\leq x\leq 1,\\
+0, & \text{otherwise}.
+\end{cases}
+\]
+For \(0\leq x\leq1\),
+\[
+F_X(x)=\int_0^x2t\,dt=x^2.
+\]
+Therefore
+\[
+F_X(x)=
+\begin{cases}
+0, & x<0,\\
+x^2, & 0\leq x\leq 1,\\
+1, & x>1.
+\end{cases}
+\]
+Then
+\[
+P(0.5\leq X\leq 1)=F_X(1)-F_X(0.5)=1-0.25=0.75.
+\]
+This agrees with the direct integral calculation.
+
+\subsection*{Basic properties of every CDF}
+
+Every CDF has the following properties:
+\begin{itemize}
+    \item \(0\leq F_X(x)\leq1\) for every \(x\);
+    \item \(F_X\) is non-decreasing;
+    \item \(\lim_{x\to-\infty}F_X(x)=0\);
+    \item \(\lim_{x\to\infty}F_X(x)=1\).
+\end{itemize}
+
+For continuous random variables with densities, the CDF is usually continuous.
+If the density is continuous at \(x\), then the derivative of the CDF at \(x\) is
+the density:
+\[
+F_X'(x)=f_X(x).
+\]
+This is an application of the fundamental theorem of calculus.
+
+\begin{remarkbox}
+The density is the rate at which the CDF accumulates probability. A high density
+means that the CDF rises quickly. A low density means that the CDF rises slowly.
+\end{remarkbox}
+
+\subsection*{CDF versus density}
+
+The CDF and density describe the same continuous distribution, but they answer
+different questions.
+
+The density answers a local question: where is probability concentrated per unit
+length? The CDF answers an accumulated question: how much probability has been
+collected up to \(x\)?
+
+For computations, the CDF is often convenient because interval probabilities are
+simple differences:
+\[
+F_X(b)-F_X(a).
+\]
+For interpretation, the density is often convenient because its shape shows where
+probability is concentrated.
+
+\begin{summarybox}
+For a continuous random variable with density \(f_X\),
+\[
+F_X(x)=\int_{-\infty}^{x}f_X(t)\,dt,
+\qquad
+P(a\leq X\leq b)=F_X(b)-F_X(a).
+\]
+The density gives local concentration; the CDF gives accumulated probability.
+\end{summarybox}
