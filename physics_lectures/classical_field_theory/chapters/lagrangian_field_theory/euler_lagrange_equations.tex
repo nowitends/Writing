@@ -1,0 +1,36 @@
+\section{Euler--Lagrange Equations for a Scalar Field}
+
+Suppose the Lagrangian density depends on a scalar field and its first
+derivatives:
+\[
+    \mathcal{L}=\mathcal{L}(\phi,\partial_\mu\phi,x).
+\]
+The stationary action condition gives the field equation
+\[
+    \boxed{
+    \frac{\partial \mathcal{L}}{\partial \phi}
+    -
+    \partial_\mu
+    \left(
+        \frac{\partial \mathcal{L}}
+        {\partial(\partial_\mu\phi)}
+    \right)
+    =0.
+    }
+\]
+This is the field-theoretic Euler--Lagrange equation.
+
+For several fields \(\phi^a\), there is one equation for each field component:
+\[
+    \frac{\partial \mathcal{L}}{\partial \phi^a}
+    -
+    \partial_\mu
+    \left(
+        \frac{\partial \mathcal{L}}
+        {\partial(\partial_\mu\phi^a)}
+    \right)
+    =0.
+\]
+
+The result is usually a partial differential equation rather than an ordinary
+differential equation.

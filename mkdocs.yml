@@ -1,8 +1,8 @@
 site_name: Lecture Notes Old School
 site_description: Direct links to compiled lecture-note PDFs.
-site_url: https://dchorazkiewicz.github.io/Lectures_notes_old_school/
-repo_url: https://github.com/dchorazkiewicz/Lectures_notes_old_school
-repo_name: dchorazkiewicz/Lectures_notes_old_school
+site_url: https://nowitends.github.io/Writing/
+repo_url: https://github.com/nowitends/Writing
+repo_name: nowitends/Writing
 
 theme:
   name: mkdocs

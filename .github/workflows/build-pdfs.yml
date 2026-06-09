@@ -46,6 +46,7 @@ jobs:
             "mathematical_lectures/general_notes_experiments"
             "physics_lectures/physics_basics"
             "physics_lectures/general_notes_experiments"
+            "physics_lectures/classical_field_theory"
           )
 
           if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then

@@ -1,6 +1,6 @@
 # Lectures Notes Old School!
 
-This repository contains five separate LaTeX lecture-note projects.
+This repository contains six separate LaTeX lecture-note projects.
 
 ## Projects
 
@@ -10,6 +10,7 @@ mathematical_lectures/probabilistic_methods
 mathematical_lectures/general_notes_experiments
 physics_lectures/physics_basics
 physics_lectures/general_notes_experiments
+physics_lectures/classical_field_theory
 ```
 
 Each project has its own `main.tex` source file and compiled `main.pdf` output.
