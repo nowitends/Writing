@@ -51,7 +51,11 @@ Zatem
 \]
 Ten przykład jest ważny, ponieważ operator pędu w reprezentacji położeniowej jest proporcjonalny właśnie do pochodnej. Stąd komutatory nie są dodatkiem formalnym do mechaniki kwantowej, lecz pojawiają się już w samym języku funkcji falowych.
 
-\section{Komutator jako miara niekompatybilności obserwabli}
+\begin{summarybox}
+Komutator odpowiada na pytanie: czy dwa działania operatorowe można zamienić miejscami bez zmiany wyniku? Jeżeli odpowiedź brzmi tak, operatory komutują. Jeżeli nie, kolejność działania staje się częścią fizycznej treści problemu.
+\end{summarybox}
+
+\section[Komutator i niekompatybilność obserwabli]{Komutator i niekompatybilność obserwabli}
 
 Obserwable w mechanice kwantowej reprezentujemy operatorami hermitowskimi. Pomiar obserwabli \(A\) wiążemy z operatorem \(\hat{A}\), jego wartościami własnymi i stanami własnymi. Jeżeli stan \(\psi\) spełnia równanie
 \[
@@ -84,6 +88,10 @@ Jeżeli natomiast
 to kolejność działań ma znaczenie. Nie chodzi tylko o techniczny problem rachunkowy. Niezerowy komutator mówi, że operacje odpowiadające dwóm obserwablom nie są neutralne względem siebie. Przygotowanie stanu o dobrze określonej wartości jednej obserwabli może uniemożliwiać jednoczesne przypisanie ostrej wartości drugiej obserwabli.
 
 Ważne jest, aby nie interpretować tego zbyt naiwnie. Niezerowy komutator nie oznacza, że nie wolno mierzyć obu wielkości w ogóle. Oznacza raczej, że nie istnieje zwykły klasyczny opis, w którym obie wielkości mają jednocześnie ostre wartości niezależne od kolejności procedury pomiarowej. To jest jedno z miejsc, w których mechanika kwantowa radykalnie odchodzi od intuicji klasycznej.
+
+\begin{examplebox}
+Dla energii i parzystości w symetrycznej studni potencjału często zachodzi komutowanie odpowiednich operatorów. Możemy wtedy wybierać stany o określonej energii i jednocześnie określonej parzystości. Dla położenia i pędu sytuacja jest inna: operatory nie komutują, więc nie istnieje zwykły stan, który byłby jednocześnie idealnie zlokalizowany i miał idealnie określony pęd.
+\end{examplebox}
 
 \section{Relacja \texorpdfstring{\([\hat{x},\hat{p}_x]=i\hbar\)}{[x,px]=i hbar}}
 
@@ -135,8 +143,197 @@ Relacja \([\hat{x},\hat{p}_x]=i\hbar\) mówi, że położenie i pęd są obserwa
 
 Warto również sprawdzić wymiar fizyczny. Lewa strona ma wymiar iloczynu położenia i pędu, czyli wymiar działania. Prawa strona zawiera \(\hbar\), które także ma wymiar działania. Zgodność wymiarów jest prostym, ale ważnym testem poprawności wzoru.
 
-\section{Komutatory z \texorpdfstring{\(\hat{L}^2\)}{L2} i \texorpdfstring{\(\hat{L}_z\)}{Lz}}
-\section{Komutatory w Mathematice: reprezentacja operatorów różniczkowych}
+\section[Komutatory z L2 i Lz]{Komutatory z \texorpdfstring{\(\hat{L}^2\)}{L2} i \texorpdfstring{\(\hat{L}_z\)}{Lz}}
+
+Komutatory są szczególnie ważne przy opisie momentu pędu. W trzech wymiarach operator orbitalnego momentu pędu zapisujemy symbolicznie jako
+\[
+    \hat{\mathbf{L}}=\hat{\mathbf{r}}\times \hat{\mathbf{p}}.
+\]
+Jego składowe spełniają relacje komutacyjne
+\begin{align}
+    [\hat{L}_x,\hat{L}_y] &= i\hbar \hat{L}_z, \\
+    [\hat{L}_y,\hat{L}_z] &= i\hbar \hat{L}_x, \\
+    [\hat{L}_z,\hat{L}_x] &= i\hbar \hat{L}_y.
+\end{align}
+W zapisie zwartym można to przedstawić jako
+\[
+    [\hat{L}_i,\hat{L}_j]
+    =i\hbar\sum_k \varepsilon_{ijk}\hat{L}_k,
+\]
+gdzie \(\varepsilon_{ijk}\) jest symbolem Levi-Civity. Sens fizyczny jest bardzo ważny: różne składowe momentu pędu nie są jednocześnie kompatybilnymi obserwablami. Nie możemy więc mieć stanu, w którym wszystkie trzy składowe \(L_x\), \(L_y\), \(L_z\) są jednocześnie ostro określone.
+
+Możemy natomiast wprowadzić operator kwadratu momentu pędu:
+\[
+    \hat{L}^2=\hat{L}_x^2+\hat{L}_y^2+\hat{L}_z^2.
+\]
+Ten operator komutuje z każdą składową momentu pędu:
+\[
+    [\hat{L}^2,\hat{L}_x]=0,
+    \qquad
+    [\hat{L}^2,\hat{L}_y]=0,
+    \qquad
+    [\hat{L}^2,\hat{L}_z]=0.
+\]
+Dlatego w praktyce najczęściej wybieramy wspólne stany własne operatorów \(\hat{L}^2\) i \(\hat{L}_z\):
+\begin{align}
+    \hat{L}^2\psi_{lm} &= \hbar^2 l(l+1)\psi_{lm}, \\
+    \hat{L}_z\psi_{lm} &= \hbar m\psi_{lm}.
+\end{align}
+Liczby \(l\) i \(m\) nie są przypadkowymi etykietami. Wynikają z tego, że \(\hat{L}^2\) i \(\hat{L}_z\) można jednocześnie diagonalizować. W atomie wodoru ta struktura prowadzi do liczb kwantowych orbitalnego momentu pędu i jego rzutu na wybraną oś.
+
+Warto zauważyć asymetrię tej sytuacji. Operator \(\hat{L}^2\) mówi o całkowitej długości wektora momentu pędu, a \(\hat{L}_z\) mówi o jednej wybranej składowej. Komutowanie \(\hat{L}^2\) z \(\hat{L}_z\) oznacza, że można jednocześnie znać długość momentu pędu i jego rzut na oś \(z\). Nie oznacza to jednak, że można jednocześnie znać rzuty na wszystkie trzy osie.
+
+\begin{summarybox}
+Dla momentu pędu podstawowy zestaw kompatybilnych obserwabli to zwykle \(\hat{L}^2\) oraz jedna wybrana składowa, najczęściej \(\hat{L}_z\). Pozostałe składowe nie komutują z \(\hat{L}_z\), więc nie mogą mieć jednocześnie ostrych wartości w tym samym stanie.
+\end{summarybox}
+
+\section{Komutatory w Mathematice}
+
+W obliczeniach komputerowych komutator trzeba traktować jako działanie na funkcję, a nie tylko jako formalny symbol. Jest to szczególnie ważne dla operatorów różniczkowych. Jeśli zapiszemy tylko wyrażenia algebraiczne, łatwo zgubić fakt, że pochodna działa także na wszystko, co stoi po jej prawej stronie.
+
+Najprostszy schemat w Mathematice polega na reprezentowaniu operatorów jako funkcji przyjmujących funkcję falową i zwracających nową funkcję. Dla jednowymiarowych operatorów \(\hat{x}\) i \(\hat{p}_x\) można zapisać:
+
+\begin{verbatim}
+Clear[x, hbar, psi]
+
+xOp[f_] := x f
+pOp[f_] := -I hbar D[f, x]
+
+comm[A_, B_][f_] := Simplify[A[B[f]] - B[A[f]]]
+
+comm[xOp, pOp][psi[x]]
+\end{verbatim}
+
+Oczekiwany wynik to
+\[
+    i\hbar\psi(x),
+\]
+czyli komputerowo potwierdzamy relację
+\[
+    [\hat{x},\hat{p}_x]=i\hbar.
+\]
+Taki sposób kodowania jest pedagogicznie dobry, bo wymusza poprawną kolejność działania operatorów. Najpierw operator \(\hat{B}\) działa na funkcję \(f\), potem operator \(\hat{A}\) działa na wynik. Drugi składnik komutatora wykonuje te operacje w odwrotnej kolejności.
+
+Analogicznie można zdefiniować operatory momentu pędu w reprezentacji położeniowej:
+\begin{verbatim}
+Clear[x, y, z, hbar, psi]
+
+Lx[f_] := -I hbar (y D[f, z] - z D[f, y])
+Ly[f_] := -I hbar (z D[f, x] - x D[f, z])
+Lz[f_] := -I hbar (x D[f, y] - y D[f, x])
+
+comm[A_, B_][f_] := Simplify[A[B[f]] - B[A[f]]]
+
+comm[Lx, Ly][psi[x, y, z]]
+\end{verbatim}
+
+Po uproszczeniu wynik powinien odpowiadać działaniu operatora \(i\hbar\hat{L}_z\) na tę samą funkcję. W praktyce warto porównać różnicę
+\begin{verbatim}
+Simplify[comm[Lx, Ly][psi[x, y, z]] - I hbar Lz[psi[x, y, z]]]
+\end{verbatim}
+i sprawdzić, że daje zero.
+
+Ten przykład pokazuje dobrą zasadę pracy z Mathematiką: nie wystarczy zapytać programu o symboliczny wynik. Trzeba jeszcze sprawdzić, czy wynik ma oczekiwaną postać operatorową. Najbezpieczniejszy test polega na działaniu na ogólną funkcję próbną.
+
 \section{Co oznacza wynik zerowy?}
+
+Wynik zerowy komutatora oznacza, że dwa operatory można zamienić miejscami bez zmiany wyniku działania na dowolny stan z rozważanej dziedziny:
+\[
+    [\hat{A},\hat{B}]=0.
+\]
+Matematycznie jest to stwierdzenie o algebrze operatorów. Fizycznie jest to sygnał, że odpowiadające im obserwable mogą być kompatybilne.
+
+Najważniejsze konsekwencje zerowego komutatora są następujące. Po pierwsze, można szukać wspólnych stanów własnych. Po drugie, pomiar jednej obserwabli nie musi niszczyć ostro określonej wartości drugiej obserwabli. Po trzecie, w problemach z symetrią zerowy komutator często oznacza zachowanie pewnej wielkości.
+
+Szczególnie ważny jest przypadek Hamiltonianu. Jeżeli operator \(\hat{A}\) nie zależy jawnie od czasu i
+\[
+    [\hat{H},\hat{A}]=0,
+\]
+to obserwabla \(A\) jest zachowana w czasie. W języku stanów stacjonarnych oznacza to, że możemy jednocześnie klasyfikować stany przez energię i przez wartość obserwabli \(A\). Dlatego w atomie wodoru stany opisuje się nie tylko energią, ale także liczbami kwantowymi związanymi z momentem pędu.
+
+Przykładami zerowych komutatorów są
+\[
+    [\hat{L}^2,\hat{L}_z]=0,
+    \qquad
+    [\hat{H},\hat{L}^2]=0
+\]
+dla potencjału centralnego. Pierwsza relacja pozwala jednocześnie określić \(l\) i \(m\). Druga mówi, że symetria sferyczna pozwala klasyfikować stany według całkowitego momentu pędu.
+
+\begin{remarkbox}
+Wynik zerowy nie oznacza, że operatory są identyczne ani że opisują tę samą wielkość fizyczną. Oznacza tylko, że ich kolejność działania nie ma znaczenia. Dwa różne operatory mogą komutować i nadal odpowiadać różnym obserwablom.
+\end{remarkbox}
+
 \section{Co oznacza wynik niezerowy?}
+
+Wynik niezerowy komutatora oznacza, że kolejność działania operatorów ma znaczenie:
+\[
+    [\hat{A},\hat{B}]\neq 0.
+\]
+W takim przypadku nie możemy traktować obserwabli \(A\) i \(B\) tak, jak traktowalibyśmy dwie zwykłe zmienne klasyczne. Operatory reprezentują procedury działania na stanie, a nie tylko liczby przypisane układowi.
+
+Najważniejszy przykład to położenie i pęd:
+\[
+    [\hat{x},\hat{p}_x]=i\hbar.
+\]
+Niezerowy wynik mówi, że bardzo dokładne przygotowanie położenia i bardzo dokładne przygotowanie pędu nie są niezależnymi procedurami. Im bardziej lokalizujemy cząstkę w przestrzeni, tym silniej rozmywa się informacja o pędzie.
+
+Podobnie składowe momentu pędu nie komutują:
+\[
+    [\hat{L}_x,\hat{L}_y]=i\hbar\hat{L}_z.
+\]
+Nie jest to drobna komplikacja rachunkowa. To informacja, że wybór osi kwantyzacji ma znaczenie. Jeśli opisujemy stan przez dobrze określone \(L_z\), to zwykle nie możemy równocześnie przypisać mu ostrych wartości \(L_x\) i \(L_y\).
+
+Niezerowy komutator często wskazuje też na strukturę algebry symetrii. Dla momentu pędu komutatory składowych nie są przypadkowe: odtwarzają algebrę obrotów. Dlatego komutatory są jednocześnie narzędziem rachunkowym, testem kompatybilności obserwabli i językiem symetrii.
+
+\begin{examplebox}
+Jeśli w obliczeniu otrzymujemy \([\hat{A},\hat{B}]=c\hat{I}\), gdzie \(c\neq 0\), to niekompatybilność jest szczególnie prosta: komutator jest proporcjonalny do operatora jednostkowego. Tak dzieje się dla \(\hat{x}\) i \(\hat{p}_x\). Jeśli natomiast komutator jest innym operatorem, jak dla \(\hat{L}_x\) i \(\hat{L}_y\), to wynik mówi dodatkowo, jaka obserwabla pojawia się jako efekt zamiany kolejności.
+\end{examplebox}
+
 \section{Od komutatorów do zasady nieoznaczoności}
+
+Zasada nieoznaczoności nie jest osobnym postulatem oderwanym od algebry operatorów. Jest bezpośrednio związana z komutatorem. Dla dwóch obserwabli opisanych operatorami hermitowskimi \(\hat{A}\) i \(\hat{B}\) obowiązuje nierówność Robertsona:
+\begin{equation}
+    \Delta A\,\Delta B
+    \geq
+    \frac{1}{2}\left|\left\langle[\hat{A},\hat{B}]\right\rangle\right|.
+\end{equation}
+Tutaj \(\Delta A\) i \(\Delta B\) oznaczają odchylenia standardowe wyników pomiaru, a wartość oczekiwana komutatora jest liczona w rozważanym stanie.
+
+Dla położenia i pędu mamy
+\[
+    [\hat{x},\hat{p}_x]=i\hbar.
+\]
+Wartość oczekiwana prawej strony wynosi
+\[
+    \langle i\hbar\hat{I}\rangle=i\hbar,
+\]
+więc
+\[
+    \Delta x\,\Delta p_x
+    \geq
+    \frac{1}{2}|i\hbar|.
+\]
+Otrzymujemy standardową postać zasady nieoznaczoności Heisenberga:
+\begin{equation}
+    \Delta x\,\Delta p_x \geq \frac{\hbar}{2}.
+\end{equation}
+
+Ta nierówność nie mówi, że aparatura pomiarowa jest niedoskonała. Nie mówi też, że cząstka naprawdę ma jednocześnie dokładne \(x\) i \(p_x\), tylko my nie potrafimy ich poznać. Mówi coś mocniejszego: formalizm kwantowy nie pozwala przygotować stanu, w którym oba rozrzuty byłyby jednocześnie dowolnie małe.
+
+W tym sensie komutator jest mostem między rachunkiem operatorowym a interpretacją fizyczną. Jeżeli komutator dwóch obserwabli jest zerowy, prawa strona nierówności może nie narzucać dolnego ograniczenia. Jeżeli komutator jest niezerowy, pojawia się minimalny iloczyn niepewności.
+
+\begin{summarybox}
+Najważniejszy łańcuch idei w tym rozdziale jest następujący:
+\[
+\begin{aligned}
+    [\hat{A},\hat{B}]
+    &\rightarrow
+    \text{kompatybilność obserwabli} \\
+    &\rightarrow
+    \text{wspólne stany własne albo ich brak} \\
+    &\rightarrow
+    \text{ograniczenia nieoznaczoności}.
+\end{aligned}
+\]
+Dlatego komutatory są jednym z centralnych narzędzi praktycznej mechaniki kwantowej.
+\end{summarybox}
