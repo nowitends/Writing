@@ -1,4 +1,4 @@
-# Lectures Notes Old School!
+# Lectures Notes!
 
 This repository contains eight separate LaTeX lecture-note projects.
 
@@ -26,8 +26,8 @@ it can later be moved into a formal lecture-note project if it matures.
 
 These lecture notes are connected with separate problem repositories:
 
-- [dchorazkiewicz/Math_Problems_Repo](https://github.com/dchorazkiewicz/Math_Problems_Repo)
-- [dchorazkiewicz/Physics_Problems_Repo](https://github.com/dchorazkiewicz/Physics_Problems_Repo)
+- [nowitend/Math_Problems_Repo](https://github.com/nowitends/Math_Problems_Repo)
+- [nowitends/Physics_Problems_Repo](https://github.com/nowitends/Physics_Problems_Repo)
 
 Shared visual styling is kept in:
 
