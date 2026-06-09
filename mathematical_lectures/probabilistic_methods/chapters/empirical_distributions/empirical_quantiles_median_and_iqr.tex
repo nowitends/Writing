@@ -1,0 +1,116 @@
+\section{Empirical quantiles, median, and interquartile range}
+
+Quantiles were introduced for probability distributions through the cumulative
+distribution function. For data, quantiles describe positions in the ordered
+sample. They answer questions such as: where is the middle of the data? Where is
+the lower quarter? Where is the upper quarter?
+
+To discuss empirical quantiles, we first sort the data:
+\[
+x_{(1)}\leq x_{(2)}\leq \cdots \leq x_{(n)}.
+\]
+The parentheses indicate order statistics. The value \(x_{(1)}\) is the smallest
+observation, and \(x_{(n)}\) is the largest observation.
+
+\subsection*{Median}
+
+The median is a value that divides the ordered data into two parts. Roughly half
+of the observations lie at or below the median, and roughly half lie at or above
+it.
+
+For an odd sample size \(n=2m+1\), the median is usually taken as
+\[
+x_{(m+1)}.
+\]
+For an even sample size \(n=2m\), a common convention is to take the average of
+the two middle observations:
+\[
+\frac{x_{(m)}+x_{(m+1)}}{2}.
+\]
+
+For example, for the ordered data
+\[
+1,\quad 2,\quad 2,\quad 3,\quad 100,
+\]
+the median is \(2\). For the ordered data
+\[
+1,\quad 2,\quad 2,\quad 3,
+\]
+a common median is
+\[
+\frac{2+2}{2}=2.
+\]
+
+\subsection*{Median versus mean}
+
+The median and the mean both describe center, but they measure different kinds of
+center. The mean is a balance point and is sensitive to extreme values. The
+median is a positional center and is more resistant to extreme values.
+
+Consider
+\[
+1,\quad 2,\quad 2,\quad 3,\quad 100.
+\]
+The mean is
+\[
+\bar{x}=\frac{108}{5}=21.6,
+\]
+while the median is \(2\). The value \(100\) pulls the mean strongly to the right,
+but it does not move the median beyond the middle observation.
+
+This does not mean that the median is always better. It means that the mean and
+median answer different descriptive questions.
+
+\subsection*{Empirical quantiles}
+
+A \(p\)-quantile of a theoretical distribution is connected with the equation
+\[
+F_X(q_p)=p.
+\]
+For data, the empirical analogue is based on the empirical CDF. An empirical
+\(p\)-quantile is a value below which approximately a proportion \(p\) of the data
+lies.
+
+There are several conventions for empirical quantiles, especially when
+interpolation is used. Different software packages may give slightly different
+answers for small datasets. The conceptual idea is stable: an empirical quantile
+marks a probability position in the ordered sample.
+
+\begin{remarkbox}
+Empirical quantiles are not unique by one universal computational convention.
+When exact numerical agreement matters, the convention used by the software or
+textbook should be stated.
+\end{remarkbox}
+
+\subsection*{Quartiles and interquartile range}
+
+The first quartile \(Q_1\) is an empirical \(0.25\)-quantile. The median \(Q_2\)
+is an empirical \(0.5\)-quantile. The third quartile \(Q_3\) is an empirical
+\(0.75\)-quantile.
+
+The interquartile range is
+\[
+IQR=Q_3-Q_1.
+\]
+It measures the length of the central part of the data, ignoring the lowest and
+highest quarters.
+
+The IQR is often used as a robust measure of spread. It is less sensitive to
+extreme observations than the standard deviation.
+
+\subsection*{Relation to theoretical quantiles}
+
+If a sample is generated from a distribution with theoretical \(p\)-quantile
+\(q_p\), then the empirical \(p\)-quantile may be close to \(q_p\) for a large
+sample. But the empirical quantile is computed from data, while the theoretical
+quantile is defined by the probability law.
+
+For example, in a standard normal model, the theoretical median is \(0\). A
+finite sample from that model will usually have a sample median close to \(0\),
+but not exactly equal to \(0\).
+
+\begin{summarybox}
+Empirical quantiles are positions in the ordered sample. They are data-based
+counterparts of theoretical quantiles. The median describes positional center,
+and the interquartile range describes the spread of the central part of the data.
+\end{summarybox}
