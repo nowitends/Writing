@@ -269,6 +269,7 @@
 ./mathematical_lectures/probabilistic_methods/chapters/empirical_distributions
 ./mathematical_lectures/probabilistic_methods/chapters/empirical_distributions/from_probability_laws_to_observed_data.tex
 ./mathematical_lectures/probabilistic_methods/chapters/empirical_distributions/overview.tex
+./mathematical_lectures/probabilistic_methods/chapters/empirical_distributions/samples_and_observations.tex
 ./mathematical_lectures/probabilistic_methods/chapters/introduction
 ./mathematical_lectures/probabilistic_methods/chapters/introduction/overview.tex
 ./mathematical_lectures/probabilistic_methods/chapters/limit_theorems_and_inference
