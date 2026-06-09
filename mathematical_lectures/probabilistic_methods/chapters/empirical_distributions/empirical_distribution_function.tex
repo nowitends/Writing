@@ -1,0 +1,117 @@
+\section{The empirical distribution function}
+
+The cumulative distribution function of a random variable is
+\[
+F_X(x)=P(X\leq x).
+\]
+It tells us how much model probability lies to the left of \(x\). For a dataset,
+the analogous object is the empirical distribution function. It tells us what
+proportion of the observed data lies to the left of \(x\).
+
+\begin{definitionbox}
+For a dataset \(x_1,\ldots,x_n\), the \textbf{empirical distribution function},
+or \textbf{empirical CDF}, is
+\[
+F_n(x)=\frac1n\sum_{i=1}^n\mathbf{1}_{\{x_i\leq x\}}.
+\]
+\end{definitionbox}
+
+The value \(F_n(x)\) is the proportion of observations not larger than \(x\). It
+is the CDF of the empirical distribution.
+
+\subsection*{A hand calculation}
+
+Consider the dataset
+\[
+2,\quad 4,\quad 4,\quad 7,\quad 9.
+\]
+Here \(n=5\). Let us compute several values of \(F_n\).
+
+For \(x=3\), only the observation \(2\) is at most \(3\), so
+\[
+F_n(3)=\frac15.
+\]
+For \(x=4\), the observations \(2,4,4\) are at most \(4\), so
+\[
+F_n(4)=\frac35.
+\]
+For \(x=8\), the observations \(2,4,4,7\) are at most \(8\), so
+\[
+F_n(8)=\frac45.
+\]
+For \(x=10\), all observations are at most \(10\), so
+\[
+F_n(10)=1.
+\]
+
+\subsection*{Step function interpretation}
+
+The empirical CDF is a step function. It is constant between observed values and
+jumps at observed values. In the example above, it jumps at \(2\), \(4\), \(7\),
+and \(9\). At the value \(4\), it jumps by \(2/5\), because two observations are
+equal to \(4\).
+
+This is the graphical form of the empirical distribution. Each observation
+contributes mass \(1/n\), and the empirical CDF accumulates that mass from left
+to right.
+
+\begin{remarkbox}
+The empirical CDF is always a step function for a finite dataset. The theoretical
+CDF of a continuous model may be smooth, but the empirical CDF of a finite sample
+from that model is still a step function.
+\end{remarkbox}
+
+\subsection*{Comparing \(F_n\) with \(F_X\)}
+
+If the data are generated from a theoretical distribution with CDF \(F_X\), then
+we can compare the empirical CDF \(F_n\) with \(F_X\). The two functions answer
+related but different questions:
+\[
+F_X(x)=P(X\leq x)
+\]
+is a model probability, while
+\[
+F_n(x)=\frac{\#\{i:x_i\leq x\}}{n}
+\]
+is an observed proportion.
+
+For example, if the theoretical model is uniform on \([0,1]\), then
+\[
+F_X(x)=x,
+\qquad 0\leq x\leq1.
+\]
+A sample of size \(20\) from this model gives an empirical CDF with jumps of size
+\(1/20\). It will not usually equal the line \(F_X(x)=x\), but it may be close in
+many places. A larger sample often gives a closer visual approximation.
+
+This observation is important, but at this stage it remains descriptive. Later,
+limit theorems will explain why empirical summaries stabilize under suitable
+assumptions.
+
+\subsection*{Interval proportions from the empirical CDF}
+
+Just as a theoretical CDF gives interval probabilities by differences, the
+empirical CDF gives interval proportions. For \(a<b\),
+\[
+F_n(b)-F_n(a)
+\]
+is the proportion of observations satisfying
+\[
+a<x_i\leq b.
+\]
+Thus
+\[
+F_n(b)-F_n(a)=\frac{\#\{i:a<x_i\leq b\}}{n}.
+\]
+Endpoint conventions matter for empirical data because observations can be
+exactly equal to endpoints. This is different from continuous density models,
+where individual endpoints usually have probability zero.
+
+\begin{summarybox}
+The empirical CDF is
+\[
+F_n(x)=\frac1n\sum_{i=1}^n\mathbf{1}_{\{x_i\leq x\}}.
+\]
+It is the observed proportion of data not exceeding \(x\). It is the data-based
+counterpart of the theoretical CDF \(F_X(x)=P(X\leq x)\).
+\end{summarybox}
