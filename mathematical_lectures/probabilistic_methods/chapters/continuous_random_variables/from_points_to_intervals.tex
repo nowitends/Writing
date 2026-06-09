@@ -1,0 +1,195 @@
+\section{From point probabilities to interval probabilities}
+
+The passage from discrete random variables to continuous random variables is one
+of the most important conceptual changes in elementary probability. In the
+discrete case, probability can be assigned directly to separate values:
+\[
+P(X=x).
+\]
+For example, if \(X\) is the result of one fair die roll, then
+\[
+P(X=4)=\frac16.
+\]
+The value \(4\) carries a positive amount of probability mass.
+
+For many real measurements this picture is no longer appropriate. If \(X\) is a
+waiting time, a height, a temperature, a measurement error, or a lifetime, then
+there are not just a few separated possible values. Between any two possible
+values there are many other possible values. The natural questions are then not
+usually point questions such as
+\[
+P(X=2.0000000000),
+\]
+but interval questions such as
+\[
+P(1.9\leq X\leq 2.1),
+\]
+or
+\[
+P(X>5).
+\]
+
+The purpose of this chapter is to build the correct language for such questions.
+The main idea is simple to state but easy to misunderstand:
+
+\begin{summarybox}
+For a continuous random variable, probability is not concentrated at individual
+points. Probabilities of intervals are the basic objects.
+\end{summarybox}
+
+\subsection*{A first example: choosing a point from an interval}
+
+Imagine that a point is chosen uniformly from the interval \([0,1]\). Let
+\[
+X=\text{the chosen point}.
+\]
+The model says that all subintervals of the same length should have the same
+probability. Therefore the interval \([0.2,0.5]\), whose length is \(0.3\), should
+have probability \(0.3\):
+\[
+P(0.2\leq X\leq 0.5)=0.3.
+\]
+Likewise,
+\[
+P(0.7\leq X\leq 0.9)=0.2.
+\]
+
+Now ask for the probability of one exact point, for instance \(X=0.4\). If that
+point had some positive probability, say \(c>0\), then every other point should
+also have the same probability by uniformity. But the interval \([0,1]\) contains
+infinitely many points. Assigning the same positive mass to every point would
+make the total probability exceed \(1\). The only reasonable value is
+\[
+P(X=0.4)=0.
+\]
+
+This does not mean that the value \(0.4\) is impossible in the ordinary verbal
+sense. The model allows \(0.4\) as a possible value. It means that a single point
+has no length and therefore receives no probability mass in this continuous
+model.
+
+\begin{remarkbox}
+Probability zero does not always mean logical impossibility. In continuous
+models, individual points may have probability zero even though they belong to
+the set of possible values.
+\end{remarkbox}
+
+\subsection*{Why intervals replace points}
+
+In the uniform model on \([0,1]\), probability is proportional to length:
+\[
+P(a\leq X\leq b)=b-a,
+\]
+whenever \(0\leq a\leq b\leq 1\). Thus
+\[
+P(0.1\leq X\leq 0.4)=0.3,
+\]
+while
+\[
+P(0.100\leq X\leq 0.400)=0.300.
+\]
+The number of decimal places used to write the endpoints is irrelevant. What
+matters is the interval itself.
+
+A single point is an interval whose length has collapsed to zero:
+\[
+\{a\}=[a,a].
+\]
+Therefore, in this model,
+\[
+P(X=a)=P(a\leq X\leq a)=a-a=0.
+\]
+This is the first fundamental difference between the discrete and continuous
+cases.
+
+\subsection*{Comparison with a discrete model}
+
+Suppose \(Y\) is the result of one fair die roll. Then the possible values are
+\[
+1,2,3,4,5,6.
+\]
+The probability law is determined by the point probabilities
+\[
+P(Y=k)=\frac16,\qquad k=1,2,3,4,5,6.
+\]
+An event such as \(Y\in\{2,3,4\}\) is handled by adding point masses:
+\[
+P(Y\in\{2,3,4\})=P(Y=2)+P(Y=3)+P(Y=4)=\frac36.
+\]
+
+For the uniform random point \(X\) on \([0,1]\), the corresponding calculation is
+not a sum over points. The event \(0.2\leq X\leq 0.5\) contains infinitely many
+points, but each individual point has probability zero. The event has positive
+probability because the whole interval has positive length:
+\[
+P(0.2\leq X\leq 0.5)=0.5-0.2=0.3.
+\]
+
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+Situation & Basic object & Probability is computed by \\
+\midrule
+Discrete model & Points & Adding probability masses \\
+Continuous model & Intervals & Measuring accumulated density \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The phrase ``accumulated density'' will be made precise in the next sections.
+For now, the key idea is that a continuous probability law spreads probability
+across a continuum of values.
+
+\subsection*{Endpoint conventions}
+
+In discrete probability, the difference between
+\[
+P(Y<4)
+\]
+and
+\[
+P(Y\leq 4)
+\]
+can be important, because the value \(4\) may have positive probability.
+
+In continuous models with no point masses, endpoints do not change interval
+probabilities. For example, if \(X\) is uniformly distributed on \([0,1]\), then
+\[
+P(0.2<X<0.5)=P(0.2\leq X\leq 0.5)=0.3.
+\]
+The only difference between the two events is the possible inclusion of the two
+endpoints \(0.2\) and \(0.5\), and each endpoint has probability zero.
+
+More generally, for the continuous random variables studied in this chapter,
+\[
+P(a<X<b)=P(a\leq X\leq b)=P(a<X\leq b)=P(a\leq X<b).
+\]
+This is convenient, but it should not be used blindly in every probability
+model. It relies on the absence of point masses.
+
+\subsection*{What must be learned again}
+
+The discrete chapter introduced random variables, support, probability mass
+functions, cumulative distribution functions, expectation, variance, moments, and
+classical models. The continuous chapter revisits these ideas, but several
+concepts must be reinterpreted:
+\begin{itemize}
+    \item point probabilities are replaced by interval probabilities;
+    \item probability mass functions are replaced by density functions;
+    \item sums are replaced by integrals;
+    \item probabilities become areas under curves;
+    \item expectation becomes a continuous weighted average;
+    \item quantiles become especially natural because intervals and cumulative
+    probabilities are central.
+\end{itemize}
+
+The conceptual difficulty is not the notation itself. The difficulty is that the
+same symbols can suggest the wrong discrete intuition. For instance, the symbol
+\(f_X(x)\) will describe a density, but \(f_X(x)\) is not usually a probability.
+A height of a curve and an area under a curve are different objects.
+
+\begin{theorembox}
+The continuous case should not be read as the discrete case with more values.
+It is a different way of distributing probability: probability is assigned to
+regions by accumulation, not to individual points by mass.
+\end{theorembox}
