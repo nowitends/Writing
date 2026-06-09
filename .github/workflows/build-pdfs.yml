@@ -46,7 +46,9 @@ jobs:
             "mathematical_lectures/general_notes_experiments"
             "physics_lectures/physics_basics"
             "physics_lectures/general_notes_experiments"
-            "physics_lectures/classical_field_theory"
+            "physics_lectures/classical_field_theory_I"
+            "physics_lectures/classical_field_theory_II"
+            "physics_lectures/praktyczna_mechanika_kwantowa"
           )
 
           if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then

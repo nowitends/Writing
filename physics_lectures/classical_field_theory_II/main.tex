@@ -1,0 +1,53 @@
+\documentclass[11pt,a4paper]{report}
+
+\input{preamble}
+\input{macros}
+\input{styles}
+
+\begin{document}
+
+\hypersetup{pageanchor=false}
+\input{titlepage}
+\clearpage
+\hypersetup{pageanchor=true}
+\pagenumbering{roman}
+\setcounter{tocdepth}{1}
+\tableofcontents
+
+\clearpage
+\pagenumbering{arabic}
+
+\include{chapters/chapter_00_preface}
+
+\part{Symmetry Breaking, Topology, and Nonlinear Fields}
+\include{chapters/chapter_12_spontaneous_symmetry_breaking}
+\include{chapters/chapter_13_solitons_instantons_topological_defects}
+\include{chapters/chapter_14_finite_temperature_and_media}
+
+\part{Geometry and Gravity as Field Theory}
+\include{chapters/chapter_15_curved_spacetime}
+\include{chapters/chapter_16_general_relativity_as_field_theory}
+\include{chapters/chapter_17_first_order_and_geometric_formulations}
+
+\part{Constraints, Boundaries, and Charges}
+\include{chapters/chapter_18_gauge_theories_as_constrained_systems}
+\include{chapters/chapter_19_boundaries_surface_terms_charges}
+\include{chapters/chapter_20_covariant_phase_space}
+
+\part{Classical Field Theory as Preparation for Quantum Field Theory}
+\include{chapters/chapter_21_linearization_normal_modes_quantization_readiness}
+\include{chapters/chapter_22_effective_field_theory_viewpoint}
+\include{chapters/chapter_23_summary_architecture}
+
+\appendix
+\include{chapters/appendix_a_notation_and_conventions}
+\include{chapters/appendix_b_variational_calculus}
+\include{chapters/appendix_c_lie_groups_and_lie_algebras}
+\include{chapters/appendix_d_differential_forms_and_geometry}
+\include{chapters/appendix_e_greens_functions}
+\include{chapters/appendix_f_suggested_problems}
+
+\clearpage
+\listoffigures
+
+\end{document}
