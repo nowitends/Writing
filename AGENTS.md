@@ -20,16 +20,19 @@ The agent should not try to complete or rewrite whole lecture courses unless exp
 
 ## 2. Main projects
 
-The repository contains five LaTeX lecture-note projects:
+The repository contains eight LaTeX lecture-note projects:
 
 ```text
-Lectures_notes_old_school/
+.
 ├── mathematical_lectures/
 │   ├── basic_mathematics/
 │   ├── probabilistic_methods/
 │   └── general_notes_experiments/
 └── physics_lectures/
+    ├── classical_field_theory_I/
+    ├── classical_field_theory_II/
     ├── physics_basics/
+    ├── praktyczna_mechanika_kwantowa/
     └── general_notes_experiments/
 ```
 
@@ -49,6 +52,15 @@ The projects are:
 
 5. `physics_lectures/general_notes_experiments`
    Independent physics notes, models, thought experiments, and larger exploratory ideas.
+
+6. `physics_lectures/classical_field_theory_I`
+   Classical Field Theory I lecture notes.
+
+7. `physics_lectures/classical_field_theory_II`
+   Classical Field Theory II lecture notes.
+
+8. `physics_lectures/praktyczna_mechanika_kwantowa`
+   Practical Quantum Mechanics lecture notes, written in Polish by explicit author request.
 
 Each project should be treated as a separate LaTeX project.
 
@@ -262,6 +274,42 @@ GitHub Actions includes a workflow that rebuilds lecture `main.pdf` files after
 pushes that change LaTeX sources, shared TeX setup, or project build scripts.
 The workflow commits updated PDFs only when the rebuilt files differ from the
 committed versions.
+
+### 6.4 Project idea files
+
+When the human author wants to start a new lecture-note project, they will
+provide a root-level planning file named:
+
+```text
+ideas_name.md
+```
+
+The `name` part should identify the intended project, usually in title-style
+words separated by underscores, for example:
+
+```text
+ideas_Classical_Field_Theory_I.md
+ideas_Quantum_Field_Theory.md
+ideas_Praktyczna_Mechanika_Kwantowa.md
+```
+
+When creating a new project from such a file, the agent should:
+
+1. read the `ideas_name.md` file first and treat it as the source of the table
+   of contents, scope, language, and intended structure;
+2. create a project folder using lowercase `snake_case`, derived from the idea
+   file name without the `ideas_` prefix;
+3. copy the idea file into the new project folder so the project keeps its own
+   local planning document;
+4. create the usual modular LaTeX structure with `main.tex`, `titlepage.tex`,
+   thin wrappers for `preamble.tex`, `macros.tex`, and `styles.tex`,
+   `chapters/`, `figures/`, `problems/`, and `build.sh`;
+5. update repository-level files such as `README.md`, `docs/index.md`,
+   `.github/workflows/build-pdfs.yml`, and `tree.txt`;
+6. compile the new project locally and report the result.
+
+Do not invent a full course structure when an `ideas_name.md` file is present.
+Use the author's idea file as the controlling plan.
 
 ---
 
