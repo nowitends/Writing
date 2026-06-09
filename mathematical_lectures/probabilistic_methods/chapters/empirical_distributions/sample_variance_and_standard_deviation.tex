@@ -1,0 +1,138 @@
+\section{Sample variance and standard deviation}
+
+Theoretical variance \(\Var(X)\) measures spread around the theoretical mean
+\(\E[X]\). For observed data, we need an empirical measure of spread around the
+sample mean \(\bar{x}\).
+
+\begin{definitionbox}
+For a dataset \(x_1,
+\ldots,x_n\) with sample mean \(\bar{x}\), the
+\textbf{empirical variance} is
+\[
+v_n=\frac1n\sum_{i=1}^n (x_i-\bar{x})^2.
+\]
+The corresponding \textbf{empirical standard deviation} is
+\[
+\sqrt{v_n}.
+\]
+\end{definitionbox}
+
+This definition treats the empirical distribution as the object being described.
+Each observed value has empirical mass \(1/n\), so the variance of the empirical
+distribution is exactly
+\[
+\frac1n\sum_{i=1}^n (x_i-\bar{x})^2.
+\]
+
+\subsection*{A small example}
+
+Consider the data
+\[
+2,\quad 4,\quad 4,\quad 7,\quad 9.
+\]
+The sample mean is
+\[
+\bar{x}=5.2.
+\]
+The deviations from the mean are
+\[
+-3.2,\quad -1.2,\quad -1.2,\quad 1.8,\quad 3.8.
+\]
+The squared deviations are
+\[
+10.24,\quad 1.44,\quad 1.44,\quad 3.24,\quad 14.44.
+\]
+Therefore
+\[
+v_n=\frac{10.24+1.44+1.44+3.24+14.44}{5}=\frac{30.8}{5}=6.16.
+\]
+The empirical standard deviation is
+\[
+\sqrt{6.16}\approx 2.48.
+\]
+This number gives a typical scale of spread around the sample mean.
+
+\subsection*{The computational formula}
+
+As in theoretical probability, the empirical variance can also be written as
+\[
+v_n=\frac1n\sum_{i=1}^n x_i^2-\bar{x}^{\,2}.
+\]
+This formula is useful for computation, but the definition
+\[
+v_n=\frac1n\sum_{i=1}^n (x_i-\bar{x})^2
+\]
+explains the meaning: empirical variance is the average squared distance from
+the sample mean.
+
+\subsection*{The denominator \(n-1\)}
+
+Many statistics books and software tools use another quantity:
+\[
+s^2=\frac1{n-1}\sum_{i=1}^n (x_i-\bar{x})^2.
+\]
+This is often called the \textbf{sample variance}. Its square root \(s\) is often
+called the \textbf{sample standard deviation}.
+
+The difference between \(v_n\) and \(s^2\) is the denominator. The denominator
+\(n\) describes the spread of the empirical distribution itself. The denominator
+\(n-1\) appears naturally in statistical inference, where the goal is to estimate
+the unknown variance of a population from a random sample.
+
+At this descriptive stage, the important point is not to pretend that the two
+formulas are the same. They answer closely related but different questions:
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+Quantity & Formula & Main role \\
+\midrule
+Empirical variance & \(\frac1n\sum (x_i-\bar{x})^2\) & describes this dataset \\
+Corrected sample variance & \(\frac1{n-1}\sum (x_i-\bar{x})^2\) & used for inference \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The corrected version will become more important later, when sample statistics
+are treated as random variables and their behaviour under repeated sampling is
+studied.
+
+\begin{remarkbox}
+When using software, always check which convention is being used. Some functions
+divide by \(n\), while others divide by \(n-1\).
+\end{remarkbox}
+
+\subsection*{Sample variance versus theoretical variance}
+
+The theoretical variance
+\[
+\Var(X)
+\]
+belongs to a probability model. It is computed using the distribution of \(X\).
+The empirical variance
+\[
+v_n
+\]
+is computed from observed values.
+
+If a sample is generated from a model with variance \(\sigma^2\), then empirical
+or corrected sample variance may be close to \(\sigma^2\) for large samples under
+suitable assumptions. But for a finite sample, equality should not be expected.
+
+\subsection*{What spread means in data}
+
+A small empirical standard deviation means that the observed values are clustered
+near their sample mean. A large empirical standard deviation means that the
+observed values are more spread out. The scale must be interpreted in the units
+of the data.
+
+For example, a standard deviation of \(2\) minutes may be large for a process
+that usually lasts \(5\) minutes, but small for a process that usually lasts
+\(300\) minutes. Spread is meaningful only relative to context.
+
+\begin{summarybox}
+Empirical variance measures spread in the observed data. The denominator \(n\)
+gives the variance of the empirical distribution; the denominator \(n-1\) gives a
+corrected sample variance used later for inference. Both are data-based
+counterparts of the theoretical variance \(\Var(X)\), not the same object as
+\(\Var(X)\) itself.
+\end{summarybox}
