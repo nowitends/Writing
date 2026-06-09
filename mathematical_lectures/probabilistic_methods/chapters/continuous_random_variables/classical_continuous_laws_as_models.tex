@@ -1,0 +1,172 @@
+\section{Classical continuous laws as modelling tools}
+
+Classical continuous distributions should not be learned as isolated formulas.
+Each distribution is a mathematical model for a certain kind of random
+phenomenon. The formula for the density is important, but the modelling idea is
+more important: what mechanism or structure does the distribution represent?
+
+This section introduces several important continuous laws at an interpretive
+level. The aim is not to exhaust all their properties, but to understand why such
+models appear and what questions they help answer.
+
+\subsection*{Uniform distribution}
+
+A random variable has a uniform distribution on \([a,b]\) if probability is spread
+evenly over the interval. Its density is
+\[
+f_X(x)=
+\begin{cases}
+\frac1{b-a}, & a\leq x\leq b,\\
+0, & \text{otherwise}.
+\end{cases}
+\]
+The total area is
+\[
+\int_a^b\frac1{b-a}\,dx=1.
+\]
+For any subinterval \([c,d]\subseteq[a,b]\),
+\[
+P(c\leq X\leq d)=\frac{d-c}{b-a}.
+\]
+Thus probability is proportional to length.
+
+The uniform distribution is appropriate when the model assumes that no region of
+the interval is favoured over another. This assumption should be justified by the
+context; it should not be used simply because the interval is known.
+
+\subsection*{Exponential distribution}
+
+The exponential distribution is commonly used to model waiting times. Its density
+with rate parameter \(\lambda>0\) is
+\[
+f_X(x)=
+\begin{cases}
+\lambda e^{-\lambda x}, & x\geq0,\\
+0, & x<0.
+\end{cases}
+\]
+The density is largest at \(0\) and decreases as \(x\) increases. This means that
+short waiting times are more likely than long waiting times, although long waits
+remain possible.
+
+The CDF is
+\[
+F_X(x)=1-e^{-\lambda x},\qquad x\geq0.
+\]
+Therefore
+\[
+P(X>t)=1-F_X(t)=e^{-\lambda t}.
+\]
+The parameter \(\lambda\) controls the scale of the waiting time. Larger
+\(\lambda\) means that the density decreases more quickly and waiting times tend
+to be shorter.
+
+The exponential distribution is closely connected with the idea of a constant
+instantaneous rate. In later applications, it appears as a model for time until a
+random event occurs under a stable rate assumption.
+
+\subsection*{Normal distribution}
+
+The normal distribution is one of the central continuous models. Its density has
+the form
+\[
+f_X(x)=\frac1{\sigma\sqrt{2\pi}}
+\exp\left(-\frac{(x-
+\mu)^2}{2\sigma^2}\right),
+\qquad x\in\mathbb{R},
+\]
+where \(\mu\in\mathbb{R}\) and \(\sigma>0\).
+
+The parameter \(\mu\) is the center of the distribution, and \(\sigma\) controls
+its spread. The density is symmetric around \(\mu\). Values close to \(\mu\) have
+higher density than values far away from \(\mu\).
+
+The normal distribution is used when many small sources of variation combine or
+when a distribution is approximately symmetric and bell-shaped. Its deeper
+importance comes from limit theorems, especially the central limit theorem. This
+connection will be developed later; for now, the normal distribution should be
+read as a smooth, symmetric model for continuous variation.
+
+\begin{remarkbox}
+The normal density has no elementary antiderivative. Probabilities for normal
+random variables are usually computed using tables, software, or standardized
+normal distribution functions.
+\end{remarkbox}
+
+\subsection*{Gamma distribution}
+
+The gamma distribution is a flexible model on \([0,\infty)\). It is often used for
+positive quantities such as waiting times, lifetimes, or accumulated amounts. One
+common parametrization has density
+\[
+f_X(x)=\frac{\lambda^\alpha}{\Gamma(\alpha)}x^{\alpha-1}e^{-\lambda x},
+\qquad x>0,
+\]
+where \(\alpha>0\) is a shape parameter and \(\lambda>0\) is a rate parameter.
+Here \(\Gamma(\alpha)\) is the gamma function, which generalizes factorials.
+
+When \(\alpha=1\), the gamma distribution becomes the exponential distribution.
+For larger shape parameters, the density can rise from zero, reach a peak, and
+then decay. This makes the gamma family more flexible than the exponential
+family.
+
+A useful interpretation is that certain gamma distributions model the waiting
+time until several events have occurred, not just the first one. Thus the gamma
+law extends the waiting-time idea behind the exponential distribution.
+
+\subsection*{Beta distribution}
+
+The beta distribution is a flexible family of distributions on \([0,1]\). Its
+density has the form
+\[
+f_X(x)=\frac{1}{B(\alpha,\beta)}x^{\alpha-1}(1-x)^{\beta-1},
+\qquad 0<x<1,
+\]
+where \(\alpha>0\) and \(\beta>0\). The constant \(B(\alpha,\beta)\) normalizes
+the density so that the total area is \(1\).
+
+The beta distribution is useful for modelling proportions, probabilities, and
+other quantities constrained between \(0\) and \(1\). Depending on the parameters,
+the density can be concentrated near \(0\), near \(1\), near the middle, or even
+near both endpoints.
+
+For example, the uniform distribution on \([0,1]\) is a special beta
+distribution with \(\alpha=1\) and \(\beta=1\). In that case,
+\[
+f_X(x)=1,
+\qquad 0<x<1.
+\]
+
+\subsection*{Choosing a model}
+
+A distribution should be chosen because its assumptions match the phenomenon
+being modelled. The following questions are useful:
+\begin{itemize}
+    \item What values are possible? Are they all real numbers, only positive
+    numbers, or values between \(0\) and \(1\)?
+    \item Is the distribution expected to be symmetric or skewed?
+    \item Are extreme values plausible or very unlikely?
+    \item Is the variable a measurement, a waiting time, a proportion, or an
+    accumulated quantity?
+    \item Which assumptions justify the chosen family?
+\end{itemize}
+
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+Distribution & Support & Typical modelling idea \\
+\midrule
+Uniform & bounded interval & no region favoured \\
+Exponential & \([0,\infty)\) & waiting time to first event \\
+Normal & \(\mathbb{R}\) & symmetric continuous variation \\
+Gamma & \([0,\infty)\) & positive waiting or accumulated quantity \\
+Beta & \([0,1]\) & proportion or probability-like quantity \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{summarybox}
+Classical continuous laws are modelling tools. Their densities are formulas, but
+the formulas should be connected to support, shape, parameters, and the mechanism
+or interpretation that makes the model appropriate.
+\end{summarybox}
