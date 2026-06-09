@@ -1,0 +1,106 @@
+\section{Final checklist}
+
+This chapter introduced continuous random variables as probability models in
+which probability is spread over intervals rather than concentrated at individual
+points. The following checklist summarizes the ideas that should be understood
+before moving on.
+
+\subsection*{Conceptual understanding}
+
+You should be able to explain the following points in words:
+\begin{itemize}
+    \item why a continuous random variable can satisfy \(P(X=x)=0\) for every
+    individual value \(x\), while still taking values in a whole interval;
+    \item why probabilities of intervals, not probabilities of individual
+    points, are the fundamental objects in continuous models;
+    \item why a density value \(f_X(x)\) is not usually a probability;
+    \item why probability is represented by area under a density curve;
+    \item why changing endpoints usually does not change probabilities in
+    continuous density models;
+    \item how the continuous case parallels the discrete case, and where the
+    analogy must be treated carefully.
+\end{itemize}
+
+\subsection*{Definitions and formulas}
+
+You should know the meaning of the following formulas:
+\[
+P(a\leq X\leq b)=\int_a^b f_X(x)\,dx,
+\]
+\[
+\int_{-\infty}^{\infty}f_X(x)\,dx=1,
+\]
+\[
+F_X(x)=P(X\leq x)=\int_{-\infty}^x f_X(t)\,dt,
+\]
+\[
+P(a\leq X\leq b)=F_X(b)-F_X(a),
+\]
+\[
+\E[X]=\int_{-\infty}^{\infty}x f_X(x)\,dx,
+\]
+\[
+\Var(X)=\E[(X-\E[X])^2]=\E[X^2]-(\E[X])^2.
+\]
+
+You should also remember that these formulas require the relevant integrals to
+exist. In particular, expectation and variance are not guaranteed to be finite
+for every possible distribution.
+
+\subsection*{Typical tasks}
+
+After studying this chapter, you should be able to:
+\begin{itemize}
+    \item check whether a proposed function is a valid density;
+    \item compute interval probabilities by integrating a density;
+    \item compute interval probabilities by using a CDF;
+    \item derive a CDF from a density in simple examples;
+    \item recover a density from a differentiable CDF;
+    \item compute expectation and variance for simple continuous distributions;
+    \item find quantiles by solving \(F_X(q_p)=p\) when the CDF is strictly
+    increasing;
+    \item interpret the support, shape, and parameters of a continuous model.
+\end{itemize}
+
+\subsection*{Common mistakes}
+
+The most common mistakes in this topic are not algebraic; they are conceptual.
+Avoid the following errors:
+\begin{itemize}
+    \item treating \(f_X(x)\) as if it were \(P(X=x)\);
+    \item thinking that a density cannot be larger than \(1\);
+    \item forgetting to check that the total area under a density is \(1\);
+    \item using sums where integrals are needed;
+    \item assuming that probability zero always means impossibility;
+    \item confusing the expectation with the most likely value or with the
+    median;
+    \item choosing a classical distribution by name without checking whether its
+    support and modelling assumptions match the situation.
+\end{itemize}
+
+\subsection*{Questions for self-explanation}
+
+A good test of understanding is whether you can answer the following questions
+without immediately searching for a formula:
+\begin{enumerate}
+    \item If \(P(X=x)=0\) for every \(x\), how can \(X\) still have total
+    probability \(1\)?
+    \item What is the difference between the height of a density and the area
+    under a density?
+    \item Why does \(P(a<X<b)=P(a\leq X\leq b)\) for the density models studied
+    here?
+    \item How is a CDF built from a density?
+    \item How is an interval probability read from a CDF?
+    \item Why is expectation an average even though no point has positive
+    probability?
+    \item What does variance measure geometrically or intuitively?
+    \item What modelling situation might suggest a uniform, exponential, normal,
+    gamma, or beta distribution?
+\end{enumerate}
+
+\begin{summarybox}
+The essential message of the chapter is this: in continuous probability, point
+probabilities disappear, but probability itself does not disappear. It is
+accumulated over intervals as area under a density, and the familiar ideas of
+distribution, expectation, variance, and quantiles are rebuilt using integrals.
+\end{summarybox}
