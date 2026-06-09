@@ -1,0 +1,114 @@
+\section{Computer-generated samples}
+
+Computer-generated samples are useful because they let us study data when the
+underlying probability model is known. In real data analysis, the true model is
+usually unknown. In simulation, we choose the model ourselves and then observe
+what finite samples from that model look like.
+
+This makes simulation an important learning tool. It helps us see the difference
+between a theoretical distribution and the empirical summaries computed from one
+finite sample.
+
+\subsection*{What simulation does}
+
+Suppose we ask a computer to generate
+\[
+X_1,X_2,\ldots,X_n
+\]
+from a standard normal distribution. The model has
+\[
+\E[X]=0,
+\qquad
+\Var(X)=1.
+\]
+After generation, we obtain observed values
+\[
+x_1,x_2,\ldots,x_n.
+\]
+From these values we compute
+\[
+\bar{x},
+\qquad
+v_n,
+\qquad
+F_n,
+\]
+and draw a histogram.
+
+The sample mean will usually be close to \(0\) for large \(n\), but it will not
+usually be exactly \(0\). The histogram may resemble the normal density, but it
+will not be identical. The empirical CDF may resemble the normal CDF, but it will
+be a step function.
+
+\subsection*{A basic Python-style workflow}
+
+A typical computational experiment has the following structure:
+\begin{verbatim}
+import numpy as np
+
+sample = np.random.normal(loc=0, scale=1, size=1000)
+sample_mean = np.mean(sample)
+sample_std = np.std(sample)
+q1, median, q3 = np.quantile(sample, [0.25, 0.5, 0.75])
+\end{verbatim}
+
+The commands are not the main point. The mathematical point is that the computer
+creates one finite sample from a specified model, and then the empirical
+summaries describe that sample.
+
+\subsection*{Changing the sample size}
+
+One of the most useful experiments is to compare samples of different sizes. For
+example, generate samples from the same distribution with
+\[
+n=20,\qquad n=100,\qquad n=1000.
+\]
+For each sample, compute the sample mean, draw a histogram, and plot the
+empirical CDF.
+
+Typically, small samples look irregular. Larger samples often display the shape
+of the underlying distribution more clearly. The sample mean often gets closer to
+the theoretical expectation, and the empirical CDF often gets closer to the
+theoretical CDF.
+
+This is an observed pattern, not yet a proof. Later chapters will explain it
+using the law of large numbers and related limit results.
+
+\subsection*{Comparing several models}
+
+Simulation also helps compare different probability models. For example:
+\begin{itemize}
+    \item samples from a uniform distribution tend to fill an interval evenly;
+    \item samples from a normal distribution tend to cluster near the center and
+    produce a bell-shaped histogram;
+    \item samples from an exponential distribution are non-negative and often
+    right-skewed;
+    \item samples from a beta distribution lie between \(0\) and \(1\) and can
+    take many shapes depending on the parameters.
+\end{itemize}
+
+Seeing these samples makes the earlier theoretical distributions less abstract.
+The density describes the ideal shape. The simulated sample shows one finite
+realization from that ideal model.
+
+\subsection*{Simulation is not proof}
+
+A computer experiment can suggest a pattern, illustrate a definition, or reveal a
+mistake in intuition. It does not replace mathematical proof. For instance, if
+we generate many samples and see their means close to \(0\), this supports the
+idea that sample means tend to stabilize, but it does not prove the law of large
+numbers.
+
+Simulation is best used together with definitions and theory:
+\begin{itemize}
+    \item definitions tell us what to compute;
+    \item simulation shows how the computations behave in examples;
+    \item theory explains why the behaviour occurs under assumptions.
+\end{itemize}
+
+\begin{summarybox}
+Computer-generated samples help connect probability models with empirical data.
+They show how histograms, empirical CDFs, sample means, variances, and quantiles
+behave for finite samples from known distributions. Simulation illustrates
+mathematics; it does not replace mathematical justification.
+\end{summarybox}
