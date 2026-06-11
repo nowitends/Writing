@@ -1,12 +1,132 @@
 \chapter{Różne profile potencjałów}
 
+\begin{summarybox}
+Prostokątne studnie i bariery są bardzo użyteczne, ale stanowią tylko pierwszy
+model. W rzeczywistych układach potencjał może zmieniać się płynnie, skośnie,
+parabolicznie, okresowo albo w sposób zadany numerycznie. Ten rozdział pokazuje,
+jak myśleć o różnych profilach potencjału, jak rysować je razem z funkcją falową
+i jak interpretować obszary oscylacji, zaniku oraz interferencji.
+\end{summarybox}
+
 \section{Dlaczego prostokątna bariera to tylko pierwszy model?}
+
+Prostokątna bariera jest wygodna, ponieważ równanie Schrödingera można rozwiązać analitycznie w każdym obszarze. Potencjał ma wtedy stałą wartość, a funkcja falowa jest kombinacją fal płaskich albo wykładników rzeczywistych. To daje jasne wzory na transmisję, odbicie i warunki zszywania.
+
+W rzeczywistych układach potencjały rzadko są idealnie prostokątne. Pole elektryczne może przechylić barierę. Ładunki w materiale mogą wygładzić krawędzie. Pułapka może być w przybliżeniu paraboliczna. Potencjał krystaliczny może być okresowy i przypominać funkcję kosinusową. Dlatego trzeba umieć przejść od prostych modeli kawałkami stałych do profili bardziej ogólnych.
+
+Najważniejsze pytanie pozostaje takie samo: jak zachowuje się funkcja falowa w obszarach, gdzie energia jest większa albo mniejsza od potencjału? Lokalnie porównujemy \(E\) z \(V(x)\). Tam, gdzie \(E>V(x)\), rozwiązanie ma charakter oscylacyjny. Tam, gdzie \(E<V(x)\), rozwiązanie ma charakter zanikający albo narastający.
+
 \section{Potencjał prostokątno-trójkątny}
+
+Potencjał prostokątno-trójkątny pojawia się, gdy do bariery dodamy zewnętrzne pole elektryczne. W najprostszym przybliżeniu bariera nie jest już pozioma, lecz nachylona:
+\begin{equation}
+    V(x)=V_0-Fx
+\end{equation}
+w pewnym przedziale. Parametr \(F\) opisuje nachylenie potencjału. W kontekście elektronu w polu elektrycznym jest związany z natężeniem pola.
+
+Taki profil jest ważny w zjawisku tunelowania polowego. Jeśli bariera jest przechylona, cząstka może tunelować przez efektywnie cieńszy fragment bariery. Klasycznie nadal istnieje obszar zabroniony, ale jego szerokość zależy od energii oraz od nachylenia potencjału.
+
+W takim problemie rozwiązania analityczne mogą wymagać funkcji Airy'ego. W kursie praktycznym często wystarczy podejście numeryczne: dzielimy potencjał na wiele cienkich prostokątnych warstw i stosujemy macierze przejścia albo rozwiązujemy równanie różniczkowe numerycznie.
+
 \section{Potencjał trapezowy}
+
+Potencjał trapezowy jest wygładzoną albo przechyloną wersją bariery prostokątnej. Może mieć płaski fragment oraz skośne zbocza. Schematycznie można go traktować jako model bariery, której wysokość zmienia się z położeniem.
+
+Taki model jest bardziej realistyczny dla struktur półprzewodnikowych pod napięciem. Wtedy pasma energetyczne materiałów nie układają się poziomo, ale przechylają się pod wpływem pola elektrycznego. Tunelowanie przez barierę trapezową może być znacznie silniejsze niż przez barierę prostokątną o tej samej maksymalnej wysokości.
+
+W praktyce numerycznej potencjał trapezowy można przybliżyć schodkami. Dzielimy przedział na \(N\) cienkich warstw, w każdej warstwie przyjmujemy potencjał stały i stosujemy macierz propagacji dla tej warstwy. Im większe \(N\), tym lepiej przybliżamy profil ciągły.
+
 \section{Potencjał paraboliczny}
+
+Potencjał paraboliczny ma postać
+\begin{equation}
+    V(x)=\frac{1}{2}m\omega^2x^2.
+\end{equation}
+Jest to potencjał oscylatora harmonicznego. Będzie omawiany osobno, ale już tutaj warto zauważyć, że paraboliczny profil potencjału jest lokalnym przybliżeniem wielu minimów potencjału.
+
+Jeżeli potencjał ma minimum w punkcie \(x_0\), to w pobliżu tego minimum często można go rozwinąć w szereg Taylora:
+\begin{equation}
+    V(x)\approx V(x_0)+\frac{1}{2}V''(x_0)(x-x_0)^2.
+\end{equation}
+Pierwsza pochodna znika w minimum, a wyraz kwadratowy dominuje dla małych wychyleń. Dlatego oscylator harmoniczny pojawia się w fizyce tak często.
+
+Dla potencjału parabolicznego funkcje falowe stanów związanych nie są sinusami ani prostymi wykładnikami. Mają postać gaussowską pomnożoną przez wielomiany Hermite'a. Ten przypadek pokazuje, że zmiana profilu potencjału zmienia całkowicie rodzinę funkcji własnych.
+
 \section{Potencjał kosinusowy}
+
+Potencjał kosinusowy jest prostym modelem potencjału periodycznego:
+\begin{equation}
+    V(x)=V_0\cos\left(\frac{2\pi x}{d}\right).
+\end{equation}
+Jest gładszy niż model Kroniga--Penneya, ale opisuje tę samą ideę: powtarzalność w przestrzeni. Dla takiego potencjału również oczekujemy stanów Blocha i pasm energetycznych.
+
+Potencjał kosinusowy jest użyteczny w modelach sieci optycznych, elektronów w periodycznym polu oraz w dydaktycznych symulacjach przejścia od cząstki swobodnej do cząstki w krysztale. Gdy \(V_0\) jest małe, potencjał tylko lekko zaburza energię cząstki swobodnej. Gdy \(V_0\) jest duże, minima potencjału zaczynają zachowywać się jak oddzielne studnie połączone tunelowaniem.
+
 \section{Kwantowy „pryzmat”}
+
+Przez kwantowy „pryzmat” będziemy rozumieć profil potencjału, który rozdziela fale o różnych energiach albo różnych liczbach falowych podobnie jak klasyczny pryzmat rozdziela światło o różnych długościach fali. Nie chodzi o standardową nazwę jednego konkretnego układu, lecz o obrazową intuicję: potencjał może działać selektywnie na różne składniki fali.
+
+Jeżeli pakiet falowy zawiera wiele energii, to każdy składnik energii może mieć inną transmisję i inną fazę po przejściu przez strukturę. Po przejściu przez barierę albo układ barier pakiet może zmienić kształt. W tym sensie struktura potencjału filtruje i rozprasza składniki kwantowe.
+
+To przygotowuje do bardziej zaawansowanych tematów: filtrów energetycznych, rezonansowych struktur tunelowych i transportu w nanoukładach.
+
 \section{Zszywanie rozwiązań numerycznych}
+
+Dla potencjału ogólnego nie zawsze mamy proste rozwiązanie analityczne. Jedną z metod jest przybliżenie potencjału przez wiele małych odcinków o stałej wartości. W każdym odcinku rozwiązanie jest znane, a na granicach stosujemy zszywanie. To prowadzi do metody macierzy przejścia dla profilu schodkowego.
+
+Inna metoda polega na bezpośrednim rozwiązaniu równania Schrödingera jako równania różniczkowego:
+\begin{equation}
+    -\frac{\hbar^2}{2m}\frac{d^2\psi}{dx^2}+V(x)\psi=E\psi.
+\end{equation}
+W Mathematice można użyć \texttt{NDSolve}, jeśli znane są odpowiednie warunki początkowe albo brzegowe. Trzeba jednak pamiętać, że równanie stacjonarne z warunkami brzegowymi często jest problemem własnym, a nie zwykłym problemem początkowym.
+
+\begin{remarkbox}
+Numeryczne rozwiązanie równania Schrödingera wymaga kontroli fizycznej: normalizacji, warunków brzegowych, zachowania w obszarach zabronionych i stabilności wyniku przy zmianie kroku siatki.
+\end{remarkbox}
+
 \section{Wykres profilu potencjału razem z funkcją falową}
+
+Wykres samej funkcji falowej bywa mylący, jeśli nie pokazujemy potencjału. W modelach jednowymiarowych bardzo dobrą praktyką jest rysowanie \(V(x)\) i \(\psi(x)\) albo \(|\psi(x)|^2\) na tym samym wykresie lub na dwóch zsynchronizowanych wykresach.
+
+Taki wykres pozwala od razu zobaczyć, gdzie fala oscyluje, gdzie zanika i gdzie zmienia długość fali. Jeśli lokalna energia kinetyczna jest duża, fala ma krótszą długość. Jeśli energia zbliża się do potencjału, długość fali rośnie. W obszarze zabronionym oscylacja przechodzi w zanik.
+
+Przykładowy schemat w Mathematice:
+\begin{verbatim}
+Plot[{V[x], psi[x], Abs[psi[x]]^2}, {x, xmin, xmax},
+ PlotLegends -> {"V(x)", "psi(x)", "|psi(x)|^2"}]
+\end{verbatim}
+W praktyce często trzeba przeskalować potencjał albo rysować go na osobnej osi, bo \(V(x)\) i \(\psi(x)\) mają różne jednostki.
+
 \section{\texorpdfstring{\(\operatorname{Re}\psi\)}{Re psi}, \texorpdfstring{\(\operatorname{Im}\psi\)}{Im psi} i \texorpdfstring{\(|\psi|^2\)}{|psi|^2}}
+
+Dla stanów rozproszeniowych funkcja falowa jest zwykle zespolona. Rysowanie tylko części rzeczywistej może prowadzić do błędnej interpretacji. Część rzeczywista pokazuje tylko jeden rzut zespolonej amplitudy.
+
+Warto rysować trzy wielkości:
+\begin{align}
+    \operatorname{Re}\psi(x),\\
+    \operatorname{Im}\psi(x),\\
+    |\psi(x)|^2.
+\end{align}
+Pierwsze dwie pokazują strukturę fazową fali. Trzecia ma bezpośrednią interpretację probabilistyczną jako gęstość prawdopodobieństwa dla stanu znormalizowanego albo względna intensywność dla stanu rozproszeniowego.
+
+Jeżeli \(|\psi|^2\) ma maksimum w pewnym obszarze struktury, oznacza to, że fala jest tam wzmacniana. W podwójnych barierach takie maksimum w studni środkowej jest znakiem rezonansu.
+
 \section{Interpretacja: gdzie fala zwalnia, gdzie zanika, gdzie interferuje?}
+
+Profil potencjału mówi, jak lokalnie zachowuje się fala. Tam, gdzie \(E>V(x)\), lokalna liczba falowa jest rzeczywista:
+\begin{equation}
+    k(x)=\frac{\sqrt{2m(E-V(x))}}{\hbar}.
+\end{equation}
+Tam fala oscyluje. Im większe \(E-V(x)\), tym większe \(k(x)\), a więc krótsza długość fali.
+
+Tam, gdzie \(E<V(x)\), lokalny parametr zaniku wynosi
+\begin{equation}
+    \kappa(x)=\frac{\sqrt{2m(V(x)-E)}}{\hbar}.
+\end{equation}
+Tam fala ma charakter zanikający. Im większe \(V(x)-E\), tym szybszy zanik.
+
+Interferencja pojawia się wtedy, gdy istnieją fale biegnące w obie strony. W strukturach z wieloma granicami odbicia wielokrotne mogą prowadzić do maksimów i minimów transmisji. Dlatego analiza potencjału nie kończy się na porównaniu \(E\) z \(V(x)\). Trzeba jeszcze rozumieć fazy, odbicia i warunki brzegowe.
+
+\begin{summarybox}
+Różne profile potencjału uczą, że mechanika kwantowa nie sprowadza się do kilku wzorów dla prostokątnych barier. Najważniejsze jest rozpoznanie lokalnego charakteru fali: oscylacja, zanik, zmiana fazy i interferencja. Te idee pozostają poprawne także wtedy, gdy profil potencjału jest gładki albo zadany numerycznie.
+\end{summarybox}
