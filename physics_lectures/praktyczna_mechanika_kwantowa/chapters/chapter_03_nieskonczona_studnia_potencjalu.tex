@@ -3,15 +3,261 @@
 \begin{summarybox}
 Pierwszy model laboratoryjny: wyprowadzenie poziomów energetycznych, funkcji
 własnych, normalizacji oraz wykresów \(\psi_n(x)\) i \(|\psi_n(x)|^2\).
+Nieskończona studnia potencjału jest najprostszym miejscem, w którym widać,
+że kwantowanie energii nie jest dodatkiem interpretacyjnym, lecz skutkiem
+równania różniczkowego i warunków brzegowych.
 \end{summarybox}
 
 \section{Sytuacja fizyczna: cząstka uwięziona w pudełku}
+
+Rozważamy cząstkę o masie \(m\), która może poruszać się tylko w pewnym skończonym przedziale. Poza tym przedziałem potencjał jest nieskończenie duży. Fizycznie oznacza to idealne, nieprzenikalne ściany. Matematycznie oznacza to, że funkcja falowa musi znikać na ścianach i poza nimi.
+
+Najczęściej używamy modelu
+\[
+V(x)=
+\begin{cases}
+0, & 0<x<a,\\
+\infty, & x\leq 0\ \text{lub}\ x\geq a.
+\end{cases}
+\]
+Wewnątrz studni cząstka jest swobodna, bo \(V(x)=0\). Nie znaczy to jednak, że jej energia może być dowolna. Ograniczenie przestrzenne wymusza szczególne kształty funkcji falowej, a te kształty wymuszają dyskretne energie.
+
+Ten model jest idealizacją. Prawdziwe ściany potencjału nie są nieskończone. Mimo to nieskończona studnia jest bardzo ważna: uczy, jak warunki brzegowe wybierają dozwolone rozwiązania, i daje prosty punkt odniesienia dla kropek kwantowych, nanostruktur oraz modeli elektronów w ograniczonych obszarach.
+
 \section{Dwie konwencje studni: \texorpdfstring{\(x\in[0,a]\)}{x in [0,a]} oraz \texorpdfstring{\(x\in[-a/2,a/2]\)}{x in [-a/2,a/2]}}
+
+Istnieją dwie popularne konwencje położenia studni. Pierwsza używa przedziału
+\[
+0\leq x\leq a.
+\]
+Druga używa przedziału symetrycznego
+\[
+-\frac{a}{2}\leq x\leq \frac{a}{2}.
+\]
+Obie opisują tę samą fizykę, jeśli szerokość studni wynosi \(a\). Różnią się tylko wyborem początku układu współrzędnych.
+
+W przedziale \([0,a]\) naturalne funkcje własne mają postać sinusów:
+\[
+\psi_n(x)=\sqrt{\frac{2}{a}}\sin\left(\frac{n\pi x}{a}\right),
+\qquad n=1,2,3,\ldots
+\]
+W przedziale symetrycznym wygodniej mówić o parzystości: część stanów jest parzysta, a część nieparzysta. Pojawiają się wtedy funkcje typu cosinusowego i sinusowego.
+
+W tym rozdziale najpierw użyjemy konwencji \([0,a]\), bo prowadzi do najkrótszego rachunku. Potem wrócimy do konwencji symetrycznej, aby zobaczyć, jak widać parzystość stanów.
+
+\begin{remarkbox}
+Zmiana konwencji położenia studni nie zmienia energii. Energia zależy od szerokości \(a\), a nie od tego, gdzie ustawimy początek osi \(x\).
+\end{remarkbox}
+
 \section{Stacjonarne równanie Schrödingera}
+
+Wewnątrz studni potencjał jest równy zero, więc stacjonarne równanie Schrödingera ma postać
+\begin{equation}
+-\frac{\hbar^2}{2m}\frac{d^2\psi}{dx^2}=E\psi.
+\end{equation}
+Przekształcamy je do postaci
+\begin{equation}
+\frac{d^2\psi}{dx^2}+k^2\psi=0,
+\end{equation}
+gdzie
+\begin{equation}
+k^2=\frac{2mE}{\hbar^2}.
+\end{equation}
+Ogólne rozwiązanie wewnątrz studni jest kombinacją sinusa i cosinusa:
+\begin{equation}
+\psi(x)=A\sin(kx)+B\cos(kx).
+\end{equation}
+Stałe \(A\), \(B\) oraz dozwolone wartości \(k\) nie są jeszcze znane. Wyznaczą je warunki brzegowe.
+
+Na tym etapie rachunek wygląda jak klasyczne równanie falowe. Różnica pojawia się przy interpretacji i przy warunkach brzegowych: tylko niektóre długości fali mieszczą się w pudełku w sposób zgodny z zerowaniem funkcji falowej na ścianach.
+
 \section{Warunki brzegowe i kwantowanie energii}
+
+Dla studni \([0,a]\) funkcja falowa musi spełniać
+\begin{equation}
+\psi(0)=0,
+\qquad
+\psi(a)=0.
+\end{equation}
+Pierwszy warunek daje
+\[
+\psi(0)=A\sin 0+B\cos 0=B=0.
+\]
+Zostaje więc
+\[
+\psi(x)=A\sin(kx).
+\]
+Drugi warunek daje
+\[
+\psi(a)=A\sin(ka)=0.
+\]
+Nie interesuje nas rozwiązanie \(A=0\), bo oznaczałoby brak cząstki. Musi więc zachodzić
+\begin{equation}
+\sin(ka)=0.
+\end{equation}
+Stąd
+\begin{equation}
+ka=n\pi,
+\qquad n=1,2,3,\ldots
+\end{equation}
+czyli
+\begin{equation}
+k_n=\frac{n\pi}{a}.
+\end{equation}
+Ponieważ \(E=\hbar^2 k^2/(2m)\), otrzymujemy dozwolone energie
+\begin{equation}
+E_n=\frac{n^2\pi^2\hbar^2}{2ma^2},
+\qquad n=1,2,3,\ldots
+\end{equation}
+
+To jest pierwszy zasadniczy wynik: energia cząstki w pudełku jest skwantowana. Nie wstawiliśmy kwantowania ręcznie. Ono wyszło z równania Schrödingera i warunków brzegowych.
+
+\begin{summarybox}
+Warunki brzegowe \(\psi(0)=0\) i \(\psi(a)=0\) wymuszają \(k_n=n\pi/a\). Dlatego energie są dyskretne i rosną jak \(n^2\).
+\end{summarybox}
+
 \section{Funkcje własne i ich normalizacja}
+
+Dla każdego \(n\) funkcja własna ma postać
+\[
+\psi_n(x)=A_n\sin\left(\frac{n\pi x}{a}\right).
+\]
+Stałą \(A_n\) wyznaczamy z warunku normalizacji:
+\begin{equation}
+\int_0^a |\psi_n(x)|^2\,dx=1.
+\end{equation}
+Dostajemy
+\[
+1=|A_n|^2\int_0^a \sin^2\left(\frac{n\pi x}{a}\right)dx.
+\]
+Dla całkowitego \(n\) zachodzi
+\[
+\int_0^a \sin^2\left(\frac{n\pi x}{a}\right)dx=\frac{a}{2}.
+\]
+Jeżeli wybieramy \(A_n\) rzeczywiste i dodatnie, to
+\begin{equation}
+A_n=\sqrt{\frac{2}{a}}.
+\end{equation}
+Ostatecznie
+\begin{equation}
+\psi_n(x)=\sqrt{\frac{2}{a}}\sin\left(\frac{n\pi x}{a}\right),
+\qquad 0<x<a.
+\end{equation}
+Poza studnią funkcja falowa jest równa zero.
+
+Funkcje te są ortonormalne:
+\begin{equation}
+\int_0^a \psi_n(x)\psi_m(x)\,dx=\delta_{nm}.
+\end{equation}
+Oznacza to, że różne stany energetyczne są wzajemnie ortogonalne i mogą tworzyć bazę do rozwijania bardziej ogólnych stanów w pudełku.
+
 \section{Parzystość funkcji falowych}
+
+W konwencji symetrycznej \([-a/2,a/2]\) dobrze widać parzystość funkcji falowych. Warunki brzegowe mają wtedy postać
+\[
+\psi\left(-\frac{a}{2}\right)=0,
+\qquad
+\psi\left(\frac{a}{2}\right)=0.
+\]
+Rozwiązania można podzielić na parzyste i nieparzyste.
+
+Stany parzyste mają postać cosinusową:
+\begin{equation}
+\psi(x)=C\cos(kx),
+\end{equation}
+a stany nieparzyste mają postać sinusową:
+\begin{equation}
+\psi(x)=C\sin(kx).
+\end{equation}
+Parzystość oznacza odpowiednio
+\[
+\psi(-x)=\psi(x)
+\]
+albo
+\[
+\psi(-x)=-\psi(x).
+\]
+
+Fizyka pozostaje taka sama jak w konwencji \([0,a]\). Zmienia się tylko wygoda opisu. Jeżeli potencjał jest symetryczny względem zera, wybór przedziału symetrycznego pozwala natychmiast klasyfikować stany według parzystości.
+
+\begin{remarkbox}
+Parzystość jest prostym przykładem symetrii. Jeżeli potencjał jest symetryczny, to rozwiązania równania Schrödingera można wybrać jako parzyste albo nieparzyste.
+\end{remarkbox}
+
 \section{Poziomy energetyczne w eV}
+
+W zastosowaniach wygodnie wyrażać energię w elektronowoltach. Wzór
+\[
+E_n=\frac{n^2\pi^2\hbar^2}{2ma^2}
+\]
+pokazuje trzy ważne zależności. Po pierwsze, energia rośnie jak \(n^2\). Po drugie, maleje jak \(a^{-2}\). Po trzecie, maleje wraz ze wzrostem masy cząstki.
+
+Dla elektronu w studni o szerokości rzędu nanometra energie mogą być rzędu elektronowoltów. To tłumaczy, dlaczego efekty kwantowego ograniczenia są tak ważne w nanostrukturach. Jeśli szerokość pudełka zwiększymy dziesięć razy, energia spadnie sto razy.
+
+W Mathematice można szybko policzyć poziomy energetyczne na przykład tak:
+\begin{verbatim}
+hbar = 1.054571817*10^-34;
+me = 9.1093837015*10^-31;
+eV = 1.602176634*10^-19;
+a = 1*10^-9;
+
+E[n_] := n^2 Pi^2 hbar^2/(2 me a^2)/eV
+Table[{n, N[E[n]]}, {n, 1, 5}]
+\end{verbatim}
+
+Taki rachunek należy zawsze sprawdzić wymiarowo. Jeśli \(a\) jest podane w metrach, masa w kilogramach, a \(\hbar\) w jednostkach SI, to wynik przed podzieleniem przez \(eV\) jest w dżulach.
+
 \section{Wizualizacja \texorpdfstring{\(\psi_n(x)\)}{psi_n(x)} oraz \texorpdfstring{\(|\psi_n(x)|^2\)}{|psi_n(x)|^2}}
+
+Wykres funkcji falowej pokazuje znak i węzły stanu. Wykres \(|\psi_n(x)|^2\) pokazuje gęstość prawdopodobieństwa. Dla \(n=1\) funkcja falowa nie ma węzła wewnątrz studni. Dla \(n=2\) ma jeden węzeł wewnętrzny, dla \(n=3\) dwa węzły i tak dalej.
+
+Przykładowy kod w Mathematice:
+\begin{verbatim}
+a = 1;
+psi[n_, x_] := Sqrt[2/a] Sin[n Pi x/a]
+
+Plot[Evaluate[Table[psi[n, x], {n, 1, 4}]], {x, 0, a},
+ PlotLegends -> Table["n=" <> ToString[n], {n, 1, 4}],
+ AxesLabel -> {"x", "psi_n(x)"}]
+
+Plot[Evaluate[Table[psi[n, x]^2, {n, 1, 4}]], {x, 0, a},
+ PlotLegends -> Table["n=" <> ToString[n], {n, 1, 4}],
+ AxesLabel -> {"x", "|psi_n(x)|^2"}]
+\end{verbatim}
+
+W interpretacji fizycznej trzeba uważać: ujemna wartość \(\psi_n(x)\) nie oznacza ujemnego prawdopodobieństwa. Prawdopodobieństwo jest związane z modułem kwadratowym. Znak funkcji falowej ma jednak znaczenie przy superpozycjach i interferencji.
+
 \section{Zależność energii od szerokości studni}
+
+Najbardziej charakterystyczna zależność ma postać
+\begin{equation}
+E_n\propto \frac{1}{a^2}.
+\end{equation}
+Im ciaśniej ograniczamy cząstkę, tym większa jest jej minimalna energia. To jest konkretna realizacja intuicji związanej z zasadą nieoznaczoności: mała niepewność położenia wymusza większą niepewność pędu, a więc większą energię kinetyczną.
+
+Dla stanu podstawowego
+\begin{equation}
+E_1=\frac{\pi^2\hbar^2}{2ma^2}.
+\end{equation}
+Jeżeli \(a\) zmniejszymy dwukrotnie, energia wzrośnie czterokrotnie. Jeśli \(a\) zmniejszymy dziesięciokrotnie, energia wzrośnie stukrotnie.
+
+To zachowanie jest jednym z powodów, dla których nanoskala jest fizycznie szczególna. Zmiana rozmiaru układu może przesuwać poziomy energetyczne na tyle silnie, że zmienia własności optyczne i transportowe materiału.
+
 \section{Masa efektywna i przykład GaAs}
+
+W półprzewodnikach elektron w krysztale często zachowuje się tak, jakby miał inną masę niż elektron swobodny. Nazywamy ją masą efektywną i oznaczamy \(m^*\). W prostym modelu studni wzór na energię przyjmuje wtedy postać
+\begin{equation}
+E_n=\frac{n^2\pi^2\hbar^2}{2m^*a^2}.
+\end{equation}
+
+Dla GaAs masa efektywna elektronu w paśmie przewodnictwa jest znacznie mniejsza od masy elektronu swobodnego, często używa się przybliżenia
+\[
+m^*\approx 0.067m_e.
+\]
+Ponieważ energia jest odwrotnie proporcjonalna do masy, mniejsza masa efektywna oznacza większe odstępy między poziomami energetycznymi dla tej samej szerokości studni.
+
+To pokazuje, dlaczego ten sam model matematyczny może opisywać różne układy fizyczne: zmieniamy parametry, takie jak masa efektywna i szerokość studni, a otrzymujemy inny zakres energii. Właśnie dlatego nieskończona studnia potencjału jest podstawowym modelem roboczym dla struktur kwantowych.
+
+\begin{summarybox}
+Nieskończona studnia potencjału pokazuje w najczystszej postaci trzy idee: warunki brzegowe wymuszają kwantowanie, funkcje własne tworzą bazę stanów, a energia rośnie jak \(n^2/a^2\). Ten prosty model będzie punktem odniesienia dla skończonej studni, tunelowania i struktur półprzewodnikowych.
+\end{summarybox}
