@@ -1,10 +1,202 @@
 \chapter{Równania transcendentalne i metoda Newtona--Raphsona}
 
+\begin{summarybox}
+W mechanice kwantowej bardzo szybko trafiamy na równania, których nie da się
+rozwiązać przez proste przekształcenia algebraiczne. Skończona studnia
+potencjału, rezonanse w barierach i warunki kwantowania często prowadzą do
+równań transcendentalnych. Ten rozdział pokazuje, jak takie równania rozumieć,
+rysować, rozwiązywać numerycznie i dokumentować w Mathematice.
+\end{summarybox}
+
 \section{Dlaczego równania kwantowe często nie mają prostych rozwiązań?}
+
+W najprostszym modelu nieskończonej studni potencjału warunek brzegowy prowadził do równania
+\[
+    \sin(ka)=0,
+\]
+więc natychmiast dostawaliśmy
+\[
+    k_n=\frac{n\pi}{a}.
+\]
+To był przypadek wyjątkowo prosty. W skończonej studni potencjału pojawiają się już równania typu
+\begin{equation}
+    z\tan z=\sqrt{z_0^2-z^2},
+\end{equation}
+\begin{equation}
+    -z\cot z=\sqrt{z_0^2-z^2}.
+\end{equation}
+Nie da się ich rozwiązać przez elementarne operacje algebraiczne. Nie wystarczy przenieść składników na jedną stronę i wyliczyć \(z\). Trzeba znaleźć pierwiastki numerycznie.
+
+Takie równania nazywamy transcendentalnymi, ponieważ zawierają funkcje takie jak \(\sin\), \(\cos\), \(\tan\), \(\exp\), logarytmy albo ich kombinacje z wielomianami. W praktyce kwantowej to nie jest wyjątek, ale norma. Warunki zszywania funkcji falowej, warunki rezonansu i równania dyspersyjne często przyjmują właśnie taką postać.
+
+\begin{remarkbox}
+Równanie transcendentalne nie jest „gorsze” od równania algebraicznego. Jest po prostu równaniem, którego rozwiązania zwykle trzeba analizować jakościowo i numerycznie.
+\end{remarkbox}
+
 \section{Równanie \texorpdfstring{\(\tan x=x\)}{tan x = x} jako laboratorium numeryczne}
+
+Dobrym modelem testowym jest równanie
+\begin{equation}
+    \tan x=x.
+\end{equation}
+Ma ono oczywiste rozwiązanie \(x=0\), ale ma też nieskończenie wiele niezerowych rozwiązań. Funkcja \(\tan x\) ma asymptoty, więc proste szukanie pierwiastków może prowadzić do błędów.
+
+Zapisujemy równanie w postaci
+\begin{equation}
+    f(x)=\tan x-x=0.
+\end{equation}
+Pierwszym krokiem nie powinno być uruchomienie algorytmu, ale narysowanie funkcji. W Mathematice:
+\begin{verbatim}
+f[x_] := Tan[x] - x
+Plot[f[x], {x, -10, 10}, PlotRange -> {-20, 20}]
+\end{verbatim}
+Wykres pokazuje, gdzie można spodziewać się zer i gdzie znajdują się asymptoty. Bez tego łatwo pomylić skok funkcji w pobliżu asymptoty z przecięciem osi.
+
+Lepszy wykres można ograniczyć do jednego przedziału między asymptotami. Na przykład dla pierwiastka dodatniego większego od zera warto badać przedziały położone między kolejnymi asymptotami tangensa.
+
 \section{Iteracja Newtona--Raphsona}
+
+Metoda Newtona--Raphsona służy do znajdowania pierwiastków równania
+\begin{equation}
+    f(x)=0.
+\end{equation}
+Jeżeli znamy przybliżenie \(x_n\), to następne przybliżenie definiujemy przez
+\begin{equation}
+    x_{n+1}=x_n-\frac{f(x_n)}{f'(x_n)}.
+\end{equation}
+Geometrycznie jest to przecięcie stycznej do wykresu \(f(x)\) w punkcie \(x_n\) z osią \(x\).
+
+Dla równania \(\tan x=x\) mamy
+\begin{equation}
+    f(x)=\tan x-x,
+\end{equation}
+\begin{equation}
+    f'(x)=\sec^2 x-1=\tan^2 x.
+\end{equation}
+Iteracja Newtona ma więc postać
+\begin{equation}
+    x_{n+1}=x_n-\frac{\tan x_n-x_n}{\tan^2 x_n}.
+\end{equation}
+
+W Mathematice można ją zaimplementować ręcznie:
+\begin{verbatim}
+Clear[f, fp, newtonStep]
+f[x_] := Tan[x] - x
+fp[x_] := D[Tan[u] - u, u] /. u -> x
+newtonStep[x_] := x - f[x]/fp[x]
+
+NestList[newtonStep, 4.5, 8]
+\end{verbatim}
+Wynikiem jest lista kolejnych przybliżeń. Taka lista jest dydaktycznie lepsza niż samo końcowe rozwiązanie, bo pokazuje proces zbieżności.
+
+\begin{summarybox}
+Metoda Newtona--Raphsona jest szybka, gdy punkt startowy jest dobry i pochodna nie jest bliska zeru. Nie jest jednak magiczna: może zbiegać do innego pierwiastka albo w ogóle nie zbiegać.
+\end{summarybox}
+
 \section{Precyzja obliczeń: \texttt{SetPrecision} i \texttt{WorkingPrecision}}
+
+W obliczeniach numerycznych trzeba odróżniać dokładność wyniku od liczby cyfr wyświetlonych na ekranie. Mathematica może pokazać wiele cyfr, ale nie wszystkie muszą być znaczące.
+
+Polecenie \texttt{SetPrecision} nadaje liczbie określoną precyzję:
+\begin{verbatim}
+SetPrecision[1.0, 50]
+\end{verbatim}
+Trzeba jednak uważać: jeśli liczba \texttt{1.0} była już liczbą maszynową, to dodatkowe cyfry mogą być tylko sztucznie dopisane. Lepszym punktem startowym jest liczba dokładna:
+\begin{verbatim}
+SetPrecision[1, 50]
+\end{verbatim}
+
+W funkcjach numerycznych, takich jak \texttt{FindRoot}, można użyć opcji \texttt{WorkingPrecision}:
+\begin{verbatim}
+FindRoot[Tan[x] == x, {x, 4.5}, WorkingPrecision -> 50]
+\end{verbatim}
+W problemach kwantowych wysoka precyzja bywa potrzebna przy wąskich rezonansach albo przy różnicy dwóch prawie równych liczb. Nie należy jednak bezmyślnie zwiększać precyzji. Najpierw trzeba zrozumieć, czy problem jest źle uwarunkowany, czy po prostu źle ustawiony.
+
 \section{Porównanie własnej implementacji z \texttt{FindRoot}}
+
+Własna implementacja metody Newtona jest ważna dydaktycznie, bo pokazuje mechanizm algorytmu. W praktyce wygodniej używać \texttt{FindRoot}. Porównanie obu metod jest dobrym testem poprawności.
+
+Przykład:
+\begin{verbatim}
+f[x_] := Tan[x] - x
+fp[x_] := D[Tan[u] - u, u] /. u -> x
+newtonStep[x_] := x - f[x]/fp[x]
+
+manual = Last[NestList[newtonStep, 4.5, 10]]
+builtin = x /. FindRoot[f[x] == 0, {x, 4.5}]
+{manual, builtin, manual - builtin}
+\end{verbatim}
+Jeśli różnica jest mała, własna implementacja działa dla danego przypadku. Jeśli różnica jest duża, trzeba sprawdzić punkt startowy, liczbę iteracji, pochodną oraz przedział, w którym znajduje się pierwiastek.
+
+\begin{examplebox}
+Dobry raport numeryczny nie powinien mówić tylko: „użyto \texttt{FindRoot}”. Powinien podać funkcję, punkt startowy, znaleziony pierwiastek, wartość reszty \(f(x_*)\) oraz krótki test stabilności wyniku.
+\end{examplebox}
+
 \section{Dobór punktu startowego}
+
+Metoda Newtona jest metodą lokalną. To znaczy, że jej zachowanie zależy od punktu startowego. Dla funkcji z wieloma pierwiastkami różne punkty startowe mogą prowadzić do różnych rozwiązań.
+
+Dobra procedura jest następująca:
+\begin{enumerate}
+    \item narysować funkcję albo obie strony równania,
+    \item zidentyfikować przedziały zawierające pierwiastki,
+    \item wybrać punkt startowy wewnątrz właściwego przedziału,
+    \item sprawdzić, czy wynik rzeczywiście leży w tym przedziale,
+    \item obliczyć resztę \(f(x_*)\).
+\end{enumerate}
+
+W problemie skończonej studni potencjału punkty startowe należy wybierać osobno dla stanów parzystych i nieparzystych. Nie wolno ślepo uruchamiać \texttt{FindRoot} dla przypadkowej listy punktów, bo można wielokrotnie znaleźć ten sam pierwiastek albo trafić w okolice asymptoty.
+
+W Mathematice można zrobić prostą tabelę startów:
+\begin{verbatim}
+starts = {1.0, 4.5, 7.7, 10.9};
+roots = x /. (FindRoot[f[x] == 0, {x, #}] & /@ starts)
+DeleteDuplicates[roots, Abs[#1 - #2] < 10^-8 &]
+\end{verbatim}
+Taki kod wymaga kontroli. Automatyzacja nie zastępuje oglądania wykresu.
+
 \section{Zbieżność, brak zbieżności i fałszywe rozwiązania}
+
+Metoda Newtona może zawieść na kilka sposobów. Jeśli pochodna \(f'(x_n)\) jest bardzo mała, krok Newtona może być ogromny. Jeśli funkcja ma asymptoty, iteracja może przeskoczyć do zupełnie innego przedziału. Jeśli punkt startowy jest źle dobrany, algorytm może zbiec do pierwiastka, którego wcale nie szukaliśmy.
+
+Dlatego po znalezieniu rozwiązania trzeba zawsze obliczyć resztę:
+\begin{equation}
+    |f(x_*)|.
+\end{equation}
+Mała reszta jest warunkiem koniecznym, ale nie zawsze wystarczającym. Trzeba jeszcze sprawdzić, czy rozwiązanie ma sens fizyczny. Dla skończonej studni potencjału energia musi spełniać
+\[
+    0<E<V_0.
+\]
+Dla rezonansu trzeba sprawdzić, czy maksimum transmisji nie jest artefaktem zbyt rzadkiego próbkowania energii.
+
+\begin{remarkbox}
+Fałszywe rozwiązanie numeryczne często wygląda bardzo przekonująco: ma dużo cyfr i zostało zwrócone przez profesjonalny program. Dlatego liczby zawsze trzeba kontrolować fizycznie.
+\end{remarkbox}
+
 \section{Jak dokumentować obliczenie numeryczne?}
+
+Obliczenie numeryczne powinno być odtwarzalne. W notatniku należy zapisać nie tylko końcowy wynik, ale także funkcję, parametry, jednostki, punkt startowy, precyzję i test poprawności.
+
+Minimalny zapis wyniku powinien zawierać:
+\begin{enumerate}
+    \item równanie, które rozwiązujemy,
+    \item wartości parametrów fizycznych,
+    \item metodę numeryczną,
+    \item punkt startowy albo przedział poszukiwań,
+    \item znalezione rozwiązanie,
+    \item resztę równania,
+    \item interpretację fizyczną.
+\end{enumerate}
+
+Przykładowy fragment notatnika:
+\begin{verbatim}
+root = x /. FindRoot[f[x] == 0, {x, 4.5}, WorkingPrecision -> 40]
+residual = Abs[f[root]]
+{root, residual}
+\end{verbatim}
+
+W raporcie nie wystarczy wkleić kodu. Trzeba dopisać zdanie interpretacyjne, na przykład: „Znaleziony pierwiastek odpowiada pierwszemu niezerowemu rozwiązaniu równania \(\tan x=x\) w przedziale między kolejnymi asymptotami tangensa”.
+
+\begin{summarybox}
+Równania transcendentalne są normalnym elementem mechaniki kwantowej. Poprawna praca z nimi wymaga trzech rzeczy: zrozumienia wykresu funkcji, świadomego wyboru metody numerycznej oraz fizycznej kontroli otrzymanego pierwiastka.
+\end{summarybox}
