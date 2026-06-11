@@ -1,12 +1,169 @@
 \chapter{Supersieci i model Kroniga--Penneya}
 
+\begin{summarybox}
+Model Kroniga--Penneya jest jednym z najprostszych mostów między mechaniką
+kwantową w jednym wymiarze a fizyką ciała stałego. Pokazuje, jak z powtarzającej
+się sekwencji studni i barier powstają pasma dozwolone oraz przerwy energetyczne.
+W tym rozdziale przechodzimy od pojedynczej bariery do potencjału periodycznego,
+wprowadzamy warunek Blocha i pokazujemy, jak numerycznie rysować relację
+pasmową.
+\end{summarybox}
+
 \section{Od pojedynczej bariery do potencjału periodycznego}
+
+Pojedyncza bariera potencjału pozwalała pytać o odbicie i transmisję. Podwójna bariera pokazała rezonanse. Naturalnym następnym krokiem jest układ wielu powtarzających się barier i studni. Taki układ nazywamy potencjałem periodycznym.
+
+Najprostsza idea jest następująca: zamiast jednej bariery rozważamy nieskończony ciąg jednakowych komórek. Każda komórka składa się ze studni i bariery. Potencjał spełnia warunek
+\begin{equation}
+    V(x+d)=V(x),
+\end{equation}
+gdzie \(d\) jest okresem struktury.
+
+Fizycznie taki model jest uproszczonym opisem elektronu w krysztale albo w sztucznej supersieci półprzewodnikowej. W prawdziwym krysztale potencjał jest trójwymiarowy i bardziej złożony, ale już model jednowymiarowy pokazuje najważniejszą ideę: energia elektronu nie musi przyjmować dowolnych wartości. Pojawiają się pasma energii dozwolonych i przerwy zabronione.
+
+\begin{remarkbox}
+Pasma energetyczne nie są wprowadzane ręcznie. Powstają z równania Schrödingera, periodyczności potencjału i warunku Blocha.
+\end{remarkbox}
+
 \section{Studnia plus bariera jako komórka elementarna}
+
+W modelu prostokątnym jedna komórka elementarna może mieć postać
+\[
+V(x)=
+\begin{cases}
+0, & 0<x<w,\\
+V_0, & w<x<d,
+\end{cases}
+\]
+gdzie \(w\) jest szerokością studni, \(b=d-w\) szerokością bariery, a \(d\) okresem supersieci.
+
+W każdym obszarze o stałym potencjale funkcja falowa jest kombinacją fal biegnących w prawo i w lewo. Możemy więc użyć formalizmu macierzy przejścia z poprzedniego rozdziału. Jedna komórka ma swoją macierz
+\begin{equation}
+    M_{\mathrm{cell}}.
+\end{equation}
+Jeśli znamy tę macierz, to znamy wpływ jednej komórki na amplitudy falowe. Cała nieskończona struktura jest zbudowana przez powtarzanie tej samej macierzy.
+
+Dla skończonej liczby komórek, na przykład \(N\), całkowita macierz byłaby w przybliżeniu potęgą macierzy komórki:
+\begin{equation}
+    M_N=(M_{\mathrm{cell}})^N.
+\end{equation}
+Dla struktury nieskończonej wygodniej użyć symetrii translacyjnej i warunku Blocha.
+
 \section{Warunek Blocha}
+
+Jeżeli potencjał jest periodyczny,
+\[
+    V(x+d)=V(x),
+\]
+to rozwiązania równania Schrödingera można wybrać w postaci Blocha:
+\begin{equation}
+    \psi_k(x)=e^{ikx}u_k(x),
+\end{equation}
+gdzie funkcja \(u_k(x)\) ma tę samą periodyczność co potencjał:
+\begin{equation}
+    u_k(x+d)=u_k(x).
+\end{equation}
+Równoważnie można zapisać
+\begin{equation}
+    \psi_k(x+d)=e^{ikd}\psi_k(x).
+\end{equation}
+Wielkość \(k\) nazywamy wektorem falowym Blocha albo quasi-pędem. Nie jest to zwykła liczba falowa swobodnej cząstki, ale parametr opisujący zmianę fazy przy przesunięciu o jedną komórkę.
+
+Dla macierzy jednej komórki warunek Blocha prowadzi do równania własnego
+\begin{equation}
+    M_{\mathrm{cell}}\mathbf{c}=e^{ikd}\mathbf{c}.
+\end{equation}
+Ponieważ wyznacznik typowej macierzy transferu jest równy jeden, wartości własne mają postać \(e^{ikd}\) oraz \(e^{-ikd}\). Stąd wynika warunek
+\begin{equation}
+    \cos(kd)=\frac{1}{2}\operatorname{Tr}M_{\mathrm{cell}}.
+\end{equation}
+To jest centralny wzór praktyczny tego rozdziału.
+
 \section{Relacja dyspersji \texorpdfstring{\(E(k)\)}{E(k)}}
+
+Relacja dyspersji mówi, jakie energie są dozwolone dla danego wektora Blocha \(k\). Z warunku
+\begin{equation}
+    \cos(kd)=\frac{1}{2}\operatorname{Tr}M_{\mathrm{cell}}(E)
+\end{equation}
+widzimy, że prawa strona zależy od energii, a lewa od \(k\). Dla danej energii \(E\) stan Blocha istnieje wtedy, gdy prawa strona mieści się w zakresie wartości funkcji cosinus:
+\begin{equation}
+    -1\leq \frac{1}{2}\operatorname{Tr}M_{\mathrm{cell}}(E)\leq 1.
+\end{equation}
+Jeżeli ten warunek jest spełniony, energia należy do pasma dozwolonego. Jeśli nie, energia leży w przerwie energetycznej.
+
+W idealnym modelu Kroniga--Penneya z prostokątnymi barierami można wyprowadzić jawne równanie dyspersji. Jednak dla celów obliczeniowych często wygodniej jest zbudować macierz komórki i badać ślad tej macierzy numerycznie.
+
 \section{Pasma dozwolone i przerwy energetyczne}
+
+Pasma dozwolone są zakresami energii, dla których istnieją rozciągłe stany Blocha. Przerwy energetyczne są zakresami energii, dla których nie istnieją stany propagujące w nieskończonej strukturze periodycznej.
+
+Fizycznie przerwy powstają przez interferencję fal odbitych od powtarzających się elementów struktury. Dla pewnych długości fali odbicia od kolejnych komórek wzmacniają się i blokują propagację. Jest to kwantowy odpowiednik zjawisk dyfrakcyjnych i interferencyjnych.
+
+\begin{summarybox}
+W pojedynczej barierze pytamy o liczbę \(T(E)\). W potencjale periodycznym pytamy, czy energia \(E\) należy do pasma dozwolonego, czy do przerwy energetycznej.
+\end{summarybox}
+
 \section{Numeryczne wyznaczanie energii dla zadanych wartości wektora falowego}
+
+W Mathematice można zdefiniować funkcję
+\begin{verbatim}
+F[E_] := Tr[Mcell[E]]/2
+\end{verbatim}
+a następnie rozwiązywać równanie
+\begin{verbatim}
+F[E] == Cos[k d]
+\end{verbatim}
+dla różnych wartości \(k\). Schematycznie:
+\begin{verbatim}
+kValues = Subdivide[-Pi/d, Pi/d, 100];
+energies = Table[
+  E /. FindRoot[F[E] == Cos[k d], {E, Estart}],
+  {k, kValues}
+];
+ListPlot[Transpose[{kValues, energies}]]
+\end{verbatim}
+W praktyce trzeba pilnować punktów startowych. Dla różnych pasm potrzebne są różne punkty startowe energii. Dlatego często najpierw skanuje się funkcję \(F(E)\), znajduje przedziały spełniające \(|F(E)|\leq 1\), a dopiero potem rozwiązuje równanie dla konkretnych wartości \(k\).
+
 \section{Rola szerokości studni i bariery}
+
+Parametry geometryczne komórki silnie wpływają na strukturę pasmową. Jeśli bariery są bardzo wysokie albo szerokie, sąsiednie studnie słabo się komunikują. Wtedy pasma stają się wąskie, a poziomy przypominają dyskretne poziomy pojedynczej studni.
+
+Jeśli bariery są niskie albo cienkie, funkcje falowe łatwiej przenikają między komórkami. Pasma stają się szersze. W języku fizyki ciała stałego oznacza to większą ruchliwość stanów wzdłuż struktury.
+
+Szerokość studni kontroluje położenie poziomów lokalnych, z których tworzą się pasma. Szerokość bariery kontroluje sprzężenie między sąsiednimi studniami. To rozróżnienie jest bardzo użyteczne przy projektowaniu prostych nanostruktur.
+
 \section{Wykres pasmowy jako wynik fizyczny, nie dekoracja}
+
+Wykres \(E(k)\) nie jest tylko ilustracją. Jest wynikiem fizycznym. Z jego kształtu można odczytać szerokość pasm, położenie przerw energetycznych i krzywiznę pasma. Krzywizna pasma jest związana z masą efektywną:
+\begin{equation}
+    \frac{1}{m^*}\sim \frac{d^2E}{dk^2}.
+\end{equation}
+To znaczy, że wykres pasmowy mówi, jak cząstka zachowuje się dynamicznie w strukturze periodycznej.
+
+Dobry wykres pasmowy powinien mieć podpisane osie, podany zakres pierwszej strefy Brillouina oraz jasne rozróżnienie między kolejnymi pasmami. Dla jednowymiarowego modelu pierwsza strefa Brillouina ma zwykle postać
+\begin{equation}
+    -\frac{\pi}{d}\leq k\leq \frac{\pi}{d}.
+\end{equation}
+
 \section{Kontrola: symetria względem \texorpdfstring{\(k=0\)}{k=0}}
+
+Dla prostego potencjału periodycznego bez pola magnetycznego relacja dyspersji powinna być parzysta względem \(k=0\):
+\begin{equation}
+    E(k)=E(-k).
+\end{equation}
+To jest podstawowy test poprawności obliczeń. Jeśli numerycznie otrzymany wykres nie ma tej symetrii, trzeba sprawdzić definicję macierzy komórki, kolejność mnożenia macierzy i jednostki.
+
+Drugim testem jest okresowość w przestrzeni odwrotnej. W pełnym opisie Blocha wartości \(k\) różniące się o wektor sieci odwrotnej opisują równoważne stany. W jednowymiarowym modelu naturalnym okresem w przestrzeni \(k\) jest
+\begin{equation}
+    G=\frac{2\pi}{d}.
+\end{equation}
+
 \section{Od supersieci do fizyki ciała stałego}
+
+Supersieć jest sztucznym, kontrolowanym odpowiednikiem kryształu. Zamiast atomów mamy warstwy materiałów, studnie i bariery. Mimo uproszczeń pojawiają się te same idee: periodyczność, stany Blocha, pasma energetyczne i przerwy zabronione.
+
+Model Kroniga--Penneya jest dlatego ważny dydaktycznie. Nie opisuje całej złożoności prawdziwego ciała stałego, ale pokazuje mechanizm powstawania pasm. Po zrozumieniu tego modelu łatwiej przejść do elektronów w sieci krystalicznej, grafenu, struktur półprzewodnikowych i kropek kwantowych.
+
+\begin{summarybox}
+Model Kroniga--Penneya pokazuje, że powtarzalność potencjału zmienia problem pojedynczej bariery w problem pasm energetycznych. To jest pierwszy krok od mechaniki kwantowej jednowymiarowych modeli do fizyki ciała stałego.
+\end{summarybox}
