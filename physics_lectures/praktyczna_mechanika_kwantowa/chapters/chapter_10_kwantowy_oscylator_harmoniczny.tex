@@ -1,12 +1,177 @@
 \chapter{Kwantowy oscylator harmoniczny}
 
+\begin{summarybox}
+Oscylator harmoniczny jest jednym z centralnych modeli mechaniki kwantowej.
+Pojawia się wszędzie tam, gdzie potencjał można przybliżyć parabolą w pobliżu
+minimum: w drganiach molekuł, fononach, polach kwantowych, pułapkach i modelach
+lokalnych stanów związanych. Ten rozdział wprowadza Hamiltonian oscylatora,
+widmo energii, funkcje własne, wielomiany Hermite'a oraz interpretację ogonów
+kwantowych poza klasycznymi punktami zwrotnymi.
+\end{summarybox}
+
 \section{Dlaczego oscylator harmoniczny jest fundamentalny?}
+
+Oscylator harmoniczny jest fundamentalny nie dlatego, że każdy układ fizyczny jest idealną sprężyną, lecz dlatego, że wiele potencjałów w pobliżu stabilnego minimum wygląda jak parabola. Jeżeli potencjał ma minimum w punkcie \(x_0\), to możemy rozwinąć go w szereg Taylora:
+\begin{equation}
+    V(x)=V(x_0)+\frac{1}{2}V''(x_0)(x-x_0)^2+\ldots
+\end{equation}
+Pierwsza pochodna znika w minimum, więc pierwszy nietrywialny wkład jest kwadratowy. Po przesunięciu zera energii i początku układu współrzędnych otrzymujemy potencjał
+\begin{equation}
+    V(x)=\frac{1}{2}m\omega^2x^2.
+\end{equation}
+
+Z tego powodu oscylator harmoniczny jest lokalnym modelem małych drgań. Jest też jednym z niewielu nietrywialnych układów kwantowych, które można rozwiązać dokładnie. Dzięki temu stanowi laboratorium dla funkcji falowych, widma dyskretnego, operatorów kreacji i anihilacji oraz wielomianów specjalnych.
+
 \section{Hamiltonian oscylatora}
+
+Klasyczna energia oscylatora harmonicznego jest sumą energii kinetycznej i potencjalnej:
+\begin{equation}
+    H=\frac{p^2}{2m}+\frac{1}{2}m\omega^2x^2.
+\end{equation}
+W mechanice kwantowej przechodzimy do operatorów
+\begin{equation}
+    \hat{x}=x,
+    \qquad
+    \hat{p}=-i\hbar\frac{d}{dx}.
+\end{equation}
+Hamiltonian ma więc postać
+\begin{equation}
+    \hat{H}= -\frac{\hbar^2}{2m}\frac{d^2}{dx^2}+\frac{1}{2}m\omega^2x^2.
+\end{equation}
+
+Warto zwrócić uwagę na różnicę względem studni potencjału. W studni potencjał był stały wewnątrz przedziału, a ograniczenie pochodziło z warunków brzegowych. W oscylatorze potencjał rośnie gładko wraz z \(|x|\), więc cząstka jest uwięziona bez twardych ścian.
+
 \section{Równanie Schrödingera dla oscylatora}
+
+Stacjonarne równanie Schrödingera ma postać
+\begin{equation}
+    \left[-\frac{\hbar^2}{2m}\frac{d^2}{dx^2}+\frac{1}{2}m\omega^2x^2\right]\psi(x)=E\psi(x).
+\end{equation}
+Jest to równanie różniczkowe drugiego rzędu z potencjałem rosnącym do nieskończoności dla \(|x|\to\infty\). Dlatego stany związane muszą być normalizowalne:
+\begin{equation}
+    \int_{-\infty}^{\infty}|\psi(x)|^2\,dx=1.
+\end{equation}
+
+Wygodnie wprowadzić bezwymiarową zmienną
+\begin{equation}
+    \xi=\sqrt{\frac{m\omega}{\hbar}}x.
+\end{equation}
+Wtedy naturalna długość oscylatora wynosi
+\begin{equation}
+    x_0=\sqrt{\frac{\hbar}{m\omega}}.
+\end{equation}
+Ta długość określa skalę przestrzenną stanu podstawowego.
+
 \section{Wartości własne energii}
+
+Energie oscylatora harmonicznego są dane wzorem
+\begin{equation}
+    E_n=\hbar\omega\left(n+\frac{1}{2}\right),
+    \qquad
+    n=0,1,2,\ldots
+\end{equation}
+To widmo jest równoodległe. Różnica między kolejnymi poziomami wynosi
+\begin{equation}
+    E_{n+1}-E_n=\hbar\omega.
+\end{equation}
+Najniższa energia nie jest równa zero, lecz
+\begin{equation}
+    E_0=\frac{1}{2}\hbar\omega.
+\end{equation}
+Nazywamy ją energią zerową. Jest to jedna z najważniejszych różnic między oscylatorem klasycznym i kwantowym. Klasycznie cząstka mogłaby spoczywać w minimum potencjału z energią równą zero. Kwantowo taki stan byłby niezgodny z zasadą nieoznaczoności: dokładne położenie w minimum i zerowy pęd nie mogą być jednocześnie ostro określone.
+
+\begin{summarybox}
+Oscylator harmoniczny ma równoodległe poziomy energii, ale nie zaczyna od zera. Energia stanu podstawowego wynosi \(\hbar\omega/2\).
+\end{summarybox}
+
 \section{Funkcje własne i wielomiany Hermite'a}
+
+Funkcje własne oscylatora harmonicznego można zapisać jako
+\begin{equation}
+    \psi_n(x)=N_n H_n(\xi)e^{-\xi^2/2},
+    \qquad
+    \xi=\sqrt{\frac{m\omega}{\hbar}}x.
+\end{equation}
+Tutaj \(H_n\) są wielomianami Hermite'a, a \(N_n\) jest stałą normalizacyjną. Dokładnie:
+\begin{equation}
+    \psi_n(x)=\left(\frac{m\omega}{\pi\hbar}\right)^{1/4}\frac{1}{\sqrt{2^n n!}}H_n(\xi)e^{-\xi^2/2}.
+\end{equation}
+
+Pierwsze wielomiany Hermite'a są następujące:
+\begin{align}
+    H_0(\xi)&=1,\\
+    H_1(\xi)&=2\xi,\\
+    H_2(\xi)&=4\xi^2-2,\\
+    H_3(\xi)&=8\xi^3-12\xi.
+\end{align}
+Czynnik gaussowski zapewnia zanik funkcji falowej dla dużych \(|x|\), a wielomian Hermite'a wprowadza węzły kolejnych stanów wzbudzonych.
+
 \section{Parzystość stanów oscylatora}
+
+Potencjał oscylatora jest parzysty:
+\begin{equation}
+    V(-x)=V(x).
+\end{equation}
+Dlatego funkcje własne można wybrać jako parzyste albo nieparzyste. Stan \(n=0\) jest parzysty, stan \(n=1\) jest nieparzysty, stan \(n=2\) znowu parzysty itd. Ogólnie:
+\begin{equation}
+    \psi_n(-x)=(-1)^n\psi_n(x).
+\end{equation}
+
+Parzystość jest widoczna bezpośrednio w wielomianach Hermite'a: \(H_n\) jest parzysty dla parzystego \(n\) i nieparzysty dla nieparzystego \(n\). Ta własność jest bardzo wygodna przy obliczaniu całek. Na przykład całka funkcji nieparzystej po przedziale symetrycznym znika.
+
 \section{Wykresy funkcji falowych i gęstości prawdopodobieństwa}
+
+W Mathematice funkcje własne oscylatora można rysować za pomocą wbudowanej funkcji \texttt{HermiteH}. Przykładowy kod w jednostkach bezwymiarowych:
+\begin{verbatim}
+psi[n_, x_] := 1/Sqrt[2^n n! Sqrt[Pi]] HermiteH[n, x] Exp[-x^2/2]
+Plot[Evaluate[Table[psi[n, x], {n, 0, 4}]], {x, -4, 4}]
+\end{verbatim}
+Gęstości prawdopodobieństwa rysujemy jako
+\begin{verbatim}
+Plot[Evaluate[Table[psi[n, x]^2, {n, 0, 4}]], {x, -4, 4}]
+\end{verbatim}
+
+Dla stanów wzbudzonych liczba węzłów rośnie. Stan \(n\) ma \(n\) miejsc zerowych. To jest ważny wzorzec: wyższa energia oznacza bardziej oscylacyjną funkcję falową.
+
 \section{Klasyczne punkty zwrotne a ogony kwantowe}
+
+Dla klasycznego oscylatora o energii \(E_n\) punkty zwrotne spełniają
+\begin{equation}
+    E_n=\frac{1}{2}m\omega^2x^2.
+\end{equation}
+Stąd
+\begin{equation}
+    x_{\mathrm{cl}}=\pm\sqrt{\frac{2E_n}{m\omega^2}}.
+\end{equation}
+Klasyczna cząstka nie może wyjść poza te punkty, bo miałaby ujemną energię kinetyczną. Kwantowa funkcja falowa ma jednak niezerowe ogony poza klasycznymi punktami zwrotnymi.
+
+To jest analogiczne do tunelowania. Obszar poza punktem zwrotnym jest klasycznie zabroniony, ale funkcja falowa nie znika natychmiast. Zanika gładko. Dlatego oscylator harmoniczny jest dobrym miejscem, aby zobaczyć kwantową różnicę między zakazem klasycznym a zanikiem amplitudy.
+
 \section{Odtworzenie historycznego wykresu Schrödingera}
+
+Historyczne wykresy funkcji własnych oscylatora pokazują potencjał paraboliczny, poziomy energii oraz funkcje falowe umieszczone na wysokościach odpowiadających energiom. Taki wykres jest bardzo dydaktyczny: widać jednocześnie geometrię potencjału, kwantowanie energii i kształt stanów.
+
+W Mathematice można zbudować taki wykres, przesuwając funkcję falową o wartość energii:
+\begin{verbatim}
+energy[n_] := n + 1/2
+Plot[Evaluate[Table[energy[n] + 0.3 psi[n, x], {n, 0, 5}]], {x, -4, 4}]
+\end{verbatim}
+Do tego warto dodać wykres potencjału \(V(x)=x^2/2\) w tych samych jednostkach bezwymiarowych. Wtedy studenci widzą, które części funkcji falowej leżą poza klasycznymi punktami zwrotnymi.
+
 \section{Porównanie: studnia potencjału vs oscylator harmoniczny}
+
+Nieskończona studnia i oscylator harmoniczny są dwoma podstawowymi modelami stanów związanych. W studni potencjał jest płaski wewnątrz i nieskończony na brzegach. W oscylatorze potencjał rośnie gładko i nie ma twardych ścian.
+
+W studni energie rosną jak
+\begin{equation}
+    E_n\sim n^2.
+\end{equation}
+W oscylatorze rosną liniowo:
+\begin{equation}
+    E_n\sim n+\frac{1}{2}.
+\end{equation}
+W studni funkcje własne są sinusami albo cosinusami. W oscylatorze są gaussowsko tłumionymi wielomianami Hermite'a. Oba modele pokazują kwantowanie, ale mechanizm geometryczny jest inny.
+
+\begin{summarybox}
+Oscylator harmoniczny jest modelem lokalnych małych drgań i jednym z najważniejszych dokładnie rozwiązywalnych układów kwantowych. Jego widmo jest równoodległe, funkcje własne zawierają wielomiany Hermite'a, a ogony funkcji falowej poza klasycznymi punktami zwrotnymi pokazują kwantowy charakter ruchu.
+\end{summarybox}
