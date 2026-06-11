@@ -3,14 +3,198 @@
 \begin{remarkbox}
 Ten rozdział ustala techniczny język kursu: notatnik Mathematica ma działać jak
 zeszyt laboratoryjny, w którym kod, wykres i interpretacja są częścią jednego
-rozumowania.
+rozumowania. Celem nie jest nauczenie wszystkich funkcji programu, lecz
+wyrobienie nawyku: każdy wynik symboliczny, numeryczny i graficzny musi mieć
+sens fizyczny.
 \end{remarkbox}
 
 \section{Notatnik Mathematica jako zeszyt laboratoryjny}
+
+W tym kursie Mathematica nie jest dodatkiem do rachunków wykonywanych na papierze. Będziemy używać jej jako laboratorium mechaniki kwantowej: miejsca, w którym zapisujemy równania, testujemy granice przybliżeń, rysujemy funkcje falowe, sprawdzamy normalizację i porównujemy wynik z intuicją fizyczną.
+
+Dobry notatnik powinien być czytelny po kilku tygodniach. Oznacza to, że kod nie może być tylko zbiorem przypadkowych komórek. Każde obliczenie powinno mieć krótki opis, jasne oznaczenie parametrów i komentarz interpretacyjny. Minimalny schemat pracy wygląda tak:
+\begin{enumerate}
+    \item zapisujemy problem fizyczny,
+    \item definiujemy parametry i jednostki,
+    \item wykonujemy obliczenie symboliczne albo numeryczne,
+    \item rysujemy wynik,
+    \item sprawdzamy wymiar, zakres i zachowanie graniczne,
+    \item zapisujemy wniosek fizyczny.
+\end{enumerate}
+
+W mechanice kwantowej szczególnie łatwo pomylić poprawny formalnie wykres z poprawną interpretacją. Wykres funkcji falowej \(\psi(x)\) nie jest trajektorią cząstki. Wykres \(|\psi(x)|^2\) nie jest siłą ani energią, lecz gęstością prawdopodobieństwa. Mathematica pomoże nam liczyć, ale nie zastąpi decyzji, co wynik oznacza.
+
+\begin{summarybox}
+Notatnik Mathematica ma być zapisem rozumowania, a nie tylko miejscem wykonania kodu. Kod, wzór, wykres i komentarz fizyczny powinny występować razem.
+\end{summarybox}
+
 \section{Definiowanie funkcji, parametrów i jednostek}
+
+Najczęstszy błąd początkujących polega na tym, że zaczynają od obliczeń, zanim ustalą symbole. W Mathematice warto najpierw wyczyścić nazwy i dopiero potem definiować funkcje oraz parametry:
+\begin{verbatim}
+Clear[x, a, n, hbar, m]
+psi[n_, x_] := Sqrt[2/a] Sin[n Pi x/a]
+\end{verbatim}
+
+Podkreślenie w definicji \texttt{n\_} oznacza wzorzec argumentu. Zapis
+\begin{verbatim}
+psi[n_, x_] := ...
+\end{verbatim}
+definiuje funkcję dwóch argumentów. Natomiast pojedynczy znak równości i podwójny znak równości mają inne znaczenia:
+\begin{verbatim}
+a = 1          (* przypisanie wartości *)
+a == 1         (* równanie albo test logiczny *)
+\end{verbatim}
+
+W obliczeniach fizycznych jednostki są częścią problemu. Mathematica pozwala używać systemu jednostek, ale w prostych obliczeniach często wystarczy konsekwentnie stosować SI. Przykładowo:
+\begin{verbatim}
+hbar = 1.054571817*10^-34;   (* J s *)
+me = 9.1093837015*10^-31;    (* kg *)
+eV = 1.602176634*10^-19;     (* J *)
+a = 1*10^-9;                 (* m *)
+\end{verbatim}
+
+Jeżeli wynik energii jest najpierw w dżulach, to przejście do elektronowoltów wykonujemy przez dzielenie przez \texttt{eV}. Trzeba rozumieć, co robimy: \(1\,\mathrm{eV}\) jest jednostką energii, czyli określoną liczbą dżuli.
+
+\begin{examplebox}
+Dla cząstki w nieskończonej studni potencjału można zdefiniować energię jako
+\begin{verbatim}
+E[n_] := n^2 Pi^2 hbar^2/(2 me a^2)/eV
+Table[{n, N[E[n]]}, {n, 1, 4}]
+\end{verbatim}
+Tabela daje poziomy energetyczne w elektronowoltach, jeśli \texttt{hbar}, \texttt{me} i \texttt{a} zostały podane w jednostkach SI.
+\end{examplebox}
+
 \section{Rachunek symboliczny: \texttt{Simplify}, \texttt{FullSimplify}, \texttt{Assumptions}}
+
+Rachunek symboliczny jest jedną z największych zalet Mathematiki. Możemy różniczkować, całkować, upraszczać wyrażenia i sprawdzać równania własne operatorów. Trzeba jednak pamiętać, że program nie zna naszych założeń fizycznych, jeśli mu ich nie podamy.
+
+Polecenie \texttt{Simplify} próbuje uprościć wyrażenie:
+\begin{verbatim}
+Simplify[Sin[n Pi]]
+\end{verbatim}
+Bez założeń Mathematica może nie wiedzieć, że \(n\) jest liczbą całkowitą. Dlatego zapisujemy:
+\begin{verbatim}
+Simplify[Sin[n Pi], Assumptions -> Element[n, Integers]]
+\end{verbatim}
+Wtedy wynik powinien być równy zero.
+
+Polecenie \texttt{FullSimplify} wykonuje szersze poszukiwanie postaci uproszczonej. Bywa skuteczniejsze, ale może być wolniejsze i czasami przekształca wyrażenia do formy mniej czytelnej fizycznie. W pracy dydaktycznej warto najpierw używać \texttt{Simplify}, a po \texttt{FullSimplify} sprawdzić, czy otrzymana postać nadal jest interpretowalna.
+
+Typowy test równania własnego ma postać:
+\begin{verbatim}
+Clear[x, a, n]
+psi[n_, x_] := Sqrt[2/a] Sin[n Pi x/a]
+H[f_] := -(hbar^2/(2 m)) D[f, {x, 2}]
+En[n_] := n^2 Pi^2 hbar^2/(2 m a^2)
+
+Simplify[H[psi[n, x]] - En[n] psi[n, x],
+  Assumptions -> Element[n, PositiveIntegers] && a > 0]
+\end{verbatim}
+Jeśli wynik jest zerem, to sprawdziliśmy, że \(\psi_n\) jest funkcją własną operatora Hamiltona dla nieskończonej studni.
+
 \section{Rachunek numeryczny: \texttt{N}, \texttt{SetPrecision}, \texttt{FindRoot}, \texttt{NSolve}, \texttt{NDSolve}}
+
+Nie każdy problem mechaniki kwantowej da się rozwiązać symbolicznie. W praktyce bardzo często trzeba znaleźć pierwiastki równań transcendentalnych, rozwiązać równanie różniczkowe numerycznie albo porównać wartości dla konkretnych parametrów.
+
+Polecenie \texttt{N} zamienia wynik dokładny na przybliżenie numeryczne:
+\begin{verbatim}
+N[Pi]
+N[Pi, 30]
+\end{verbatim}
+Polecenie \texttt{SetPrecision} pozwala kontrolować precyzję liczb, ale nie naprawia informacji utraconej przez wcześniejsze użycie liczb maszynowych. Dlatego jeśli chcemy wysokiej precyzji, trzeba ją wprowadzać od początku.
+
+Równania algebraiczne rozwiązujemy często przez \texttt{Solve} albo \texttt{NSolve}. Równania wymagające punktu startowego można rozwiązywać przez \texttt{FindRoot}:
+\begin{verbatim}
+FindRoot[Cos[x] == x, {x, 1}]
+\end{verbatim}
+Ważne jest, że \texttt{FindRoot} może znaleźć inne rozwiązanie dla innego punktu startowego albo nie znaleźć żadnego, jeśli punkt startowy jest źle dobrany.
+
+Do równań różniczkowych używamy \texttt{NDSolve}. W mechanice kwantowej pojawi się to przy zależnym od czasu równaniu Schrödingera oraz przy modelach, dla których rozwiązanie analityczne jest niewygodne.
+
+\begin{remarkbox}
+Wynik numeryczny bez kontroli parametrów, precyzji i zakresu nie jest jeszcze wynikiem fizycznym. Jest tylko liczbą zwróconą przez program.
+\end{remarkbox}
+
 \section{Wykresy: \texttt{Plot}, \texttt{ListPlot}, \texttt{DensityPlot}, \texttt{DensityPlot3D}, \texttt{Manipulate}}
+
+Wykres jest narzędziem interpretacji. W mechanice kwantowej szczególnie często rysujemy funkcje falowe, gęstości prawdopodobieństwa, poziomy energetyczne i zależności parametrów. Podstawowe polecenie to \texttt{Plot}:
+\begin{verbatim}
+Plot[Sin[x], {x, 0, 2 Pi}]
+\end{verbatim}
+
+Dla kilku funkcji warto dodać legendę i opisy osi:
+\begin{verbatim}
+Plot[Evaluate[Table[psi[n, x], {n, 1, 4}]], {x, 0, a},
+ PlotLegends -> Table["n=" <> ToString[n], {n, 1, 4}],
+ AxesLabel -> {"x", "psi_n(x)"}]
+\end{verbatim}
+
+Dane dyskretne rysujemy przez \texttt{ListPlot}. Mapy dwuwymiarowe można pokazywać przez \texttt{DensityPlot}, a trójwymiarowe rozkłady przez \texttt{DensityPlot3D}. Interaktywne badanie zależności od parametru umożliwia \texttt{Manipulate}:
+\begin{verbatim}
+Manipulate[
+ Plot[Sqrt[2/a] Sin[n Pi x/a], {x, 0, a}, PlotRange -> All],
+ {n, 1, 6, 1}, {a, 0.5, 3}
+]
+\end{verbatim}
+
+Dobry wykres musi mieć podpisane osie, sensowny zakres i fizycznie czytelną skalę. Wykres bez skali może wyglądać efektownie, ale często nie mówi nic konkretnego.
+
 \section{Praca z liczbami zespolonymi}
+
+Mechanika kwantowa używa liczb zespolonych na poziomie podstawowym. W Mathematice jednostkę urojoną zapisujemy jako \texttt{I}. Na przykład:
+\begin{verbatim}
+Exp[I phi]
+ComplexExpand[Exp[I phi]]
+\end{verbatim}
+Polecenie \texttt{ComplexExpand} zakłada zwykle, że zmienne są rzeczywiste, i przekształca wyrażenia do postaci z sinusami i cosinusami.
+
+Sprzężenie zespolone zapisujemy przez \texttt{Conjugate}. Moduł kwadratowy amplitudy można zapisać jako
+\begin{verbatim}
+Conjugate[psi[x]] psi[x]
+\end{verbatim}
+albo dla konkretnych wyrażeń przez
+\begin{verbatim}
+Abs[z]^2
+\end{verbatim}
+Trzeba jednak uważać: jeśli Mathematica nie wie, które symbole są rzeczywiste, może nie uprościć wyniku tak, jak oczekujemy.
+
+Faza funkcji falowej jest fizycznie subtelna. Globalna faza stanu zwykle nie zmienia prawdopodobieństw, ale względna faza między składnikami superpozycji może zmieniać interferencję. Dlatego nie wolno automatycznie usuwać czynników zespolonych tylko dlatego, że nie widać ich w \(|\psi|^2\) pojedynczego składnika.
+
 \section{Najczęstsze błędy: brak założeń, złe jednostki, złe zakresy, nieczytelne wykresy}
+
+W pracy z Mathematicą najczęściej pojawiają się cztery rodzaje błędów.
+
+Pierwszy to brak założeń. Program nie wie, że \(a>0\), \(n\) jest liczbą całkowitą, a masa jest dodatnia, jeśli mu tego nie powiemy. Dlatego wiele uproszczeń wymaga jawnego \texttt{Assumptions}.
+
+Drugi to złe jednostki. Jeśli szerokość studni jest w nanometrach, ale wpiszemy ją jako \texttt{a = 1} bez przeliczenia na metry, wynik energii w SI będzie błędny o ogromny czynnik.
+
+Trzeci to zły zakres wykresu. Funkcja falowa studni \([0,a]\) powinna być rysowana w przedziale \([0,a]\). Rysowanie jej poza obszarem fizycznym może sugerować fałszywą interpretację.
+
+Czwarty to nieczytelny wykres. Brak podpisów osi, brak legendy i źle dobrany \texttt{PlotRange} potrafią ukryć najważniejszą informację.
+
+\begin{summarybox}
+Błąd w notatniku Mathematica rzadko wygląda jak katastrofa. Częściej wygląda jak elegancki wynik, któremu zabrakło założeń, jednostek albo interpretacji.
+\end{summarybox}
+
 \section{Jak sprawdzać wynik kodu fizycznie?}
+
+Każdy wynik obliczeń powinien przejść kilka prostych testów. Pierwszy test to wymiar. Energia musi mieć wymiar energii, funkcja falowa w jednym wymiarze ma wymiar \(1/\sqrt{\mathrm{length}}\), a prawdopodobieństwo jest bezwymiarowe.
+
+Drugi test to zachowanie graniczne. Jeśli szerokość studni \(a\) rośnie, energia powinna maleć. Jeśli masa rośnie, energia też powinna maleć. Jeżeli program zwraca odwrotną zależność, prawdopodobnie popełniliśmy błąd.
+
+Trzeci test to normalizacja. Dla funkcji falowej stanu związanego powinniśmy sprawdzić
+\[
+\int |\psi(x)|^2\,dx=1.
+\]
+W Mathematice można to zrobić bezpośrednio:
+\begin{verbatim}
+Integrate[psi[n, x]^2, {x, 0, a},
+ Assumptions -> Element[n, PositiveIntegers] && a > 0]
+\end{verbatim}
+
+Czwarty test to porównanie z prostym przypadkiem znanym analitycznie. Zanim zaufamy skomplikowanemu modelowi numerycznemu, powinniśmy uruchomić kod dla sytuacji, której rozwiązanie znamy. Nieskończona studnia potencjału będzie właśnie takim testem kontrolnym dla wielu późniejszych rachunków.
+
+\begin{summarybox}
+Mathematica liczy szybko, ale odpowiedzialność za sens wyniku pozostaje po stronie fizyka. Dlatego każdy wynik sprawdzamy przez wymiar, granice, normalizację, wykres i porównanie z przypadkiem kontrolnym.
+\end{summarybox}
