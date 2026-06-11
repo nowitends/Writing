@@ -3,14 +3,202 @@
 \begin{remarkbox}
 Ten rozdział wprowadza minimalny słownik mechaniki kwantowej potrzebny przed
 rozwiązywaniem konkretnych modeli: funkcję falową, interpretację Borna,
-normalizację i wartości oczekiwane.
+normalizację i wartości oczekiwane. Od tego momentu nie pytamy już tylko,
+jak wygląda równanie, lecz także: co właściwie oznacza jego rozwiązanie?
 \end{remarkbox}
 
 \section{Funkcja falowa jako obiekt matematyczny i fizyczny}
+
+Podstawowym obiektem opisu w nierelatywistycznej mechanice kwantowej jest funkcja falowa. W jednym wymiarze zapisujemy ją jako
+\[
+    \psi(x,t),
+\]
+gdzie \(x\) oznacza położenie, a \(t\) czas. Matematycznie jest to funkcja zespolona. Oznacza to, że dla każdego punktu przestrzeni i czasu przypisuje liczbę zespoloną:
+\[
+    \psi(x,t)\in\mathbb{C}.
+\]
+Fizycznie nie interpretujemy bezpośrednio samej liczby \(\psi(x,t)\) jako obserwowalnej wielkości. Funkcja falowa jest raczej nośnikiem informacji o stanie układu.
+
+W wielu zadaniach będziemy rozdzielać zależność przestrzenną i czasową. Dla stanów stacjonarnych piszemy często
+\[
+    \Psi(x,t)=\psi(x)e^{-iEt/\hbar}.
+\]
+Część \(\psi(x)\) opisuje kształt przestrzenny stanu, natomiast czynnik \(e^{-iEt/\hbar}\) opisuje ewolucję fazy w czasie. Ponieważ moduł tego czynnika czasowego jest równy jeden, gęstość prawdopodobieństwa stanu stacjonarnego nie zmienia się w czasie:
+\[
+    |\Psi(x,t)|^2=|\psi(x)|^2.
+\]
+
+Funkcja falowa musi spełniać pewne warunki matematyczne. W typowych problemach jednowymiarowych wymagamy, aby była jednoznaczna, skończona, całkowalna z kwadratem i zgodna z warunkami brzegowymi narzuconymi przez potencjał. Nie są to ozdobne warunki techniczne. Każdy z nich ma sens fizyczny: stan nie może przewidywać nieskończonego prawdopodobieństwa ani wieloznacznego wyniku pomiaru.
+
+\begin{summarybox}
+Funkcja falowa nie jest klasyczną trajektorią cząstki. Jest matematycznym opisem stanu, z którego wyliczamy prawdopodobieństwa wyników pomiarów.
+\end{summarybox}
+
 \section{Interpretacja Borna: \texorpdfstring{\(|\psi(x)|^2\)}{|psi(x)|^2}}
+
+Najważniejszy krok interpretacyjny wykonuje reguła Borna. W jednym wymiarze wielkość
+\[
+    |\psi(x,t)|^2
+\]
+interpretujemy jako gęstość prawdopodobieństwa znalezienia cząstki w pobliżu punktu \(x\) w chwili \(t\). Ściślej mówiąc, prawdopodobieństwo znalezienia cząstki w przedziale \([a,b]\) wynosi
+\begin{equation}
+    P(a\leq x\leq b)=\int_a^b |\psi(x,t)|^2\,dx.
+\end{equation}
+
+Warto zauważyć słowo ``gęstość''. Sama wartość \(|\psi(x,t)|^2\) w jednym punkcie nie jest jeszcze prawdopodobieństwem. Prawdopodobieństwo otrzymujemy dopiero przez całkowanie po przedziale. Jest to analogiczne do gęstości masy albo gęstości ładunku: gęstość mówi, ile przypada na mały fragment przestrzeni.
+
+Ponieważ \(\psi\) jest zespolona, jej moduł kwadratowy liczymy jako
+\[
+    |\psi|^2=\psi^*\psi,
+\]
+gdzie \(\psi^*\) oznacza sprzężenie zespolone. To bardzo ważne: funkcja falowa może mieć fazę, która nie jest widoczna bezpośrednio w \(|\psi|^2\), ale faza może wpływać na interferencję i na wartości oczekiwane operatorów zawierających pochodne.
+
+\begin{examplebox}
+Jeżeli w pewnym obszarze \(|\psi(x)|^2\) jest duże, to cząstka ma dużą szansę zostać tam wykryta. Nie oznacza to jednak, że cząstka porusza się po wykresie \(|\psi|^2\). Wykres pokazuje rozkład prawdopodobieństwa wyników pomiaru położenia, a nie tor ruchu.
+\end{examplebox}
+
 \section{Normalizacja funkcji falowej}
+
+Jeżeli cząstka na pewno znajduje się gdzieś na osi \(x\), to całkowite prawdopodobieństwo znalezienia jej w całej przestrzeni musi wynosić jeden:
+\begin{equation}
+    \int_{-\infty}^{\infty}|\psi(x,t)|^2\,dx=1.
+\end{equation}
+Ten warunek nazywamy normalizacją funkcji falowej.
+
+Często najpierw znajdujemy funkcję, która spełnia równanie Schrödingera, ale nie jest jeszcze znormalizowana. Wtedy zapisujemy ją w postaci
+\[
+    \psi(x)=A f(x),
+\]
+gdzie \(A\) jest stałą normalizacyjną. Warunek normalizacji daje
+\[
+    1=\int |A f(x)|^2\,dx=|A|^2\int |f(x)|^2\,dx.
+\]
+Jeżeli wybieramy \(A\) rzeczywiste i dodatnie, to
+\begin{equation}
+    A=\frac{1}{\sqrt{\int |f(x)|^2\,dx}}.
+\end{equation}
+Granice całkowania zależą od problemu: dla cząstki w całej przestrzeni całkujemy od \(-\infty\) do \(\infty\), a dla cząstki w pudełku tylko po obszarze, w którym funkcja falowa jest dopuszczalna.
+
+\begin{examplebox}
+Niech cząstka znajduje się w przedziale \(0\leq x\leq a\), a funkcja ma postać
+\[
+    \psi(x)=A\sin\left(\frac{\pi x}{a}\right).
+\]
+Warunek normalizacji daje
+\[
+    1=A^2\int_0^a \sin^2\left(\frac{\pi x}{a}\right)dx
+    =A^2\frac{a}{2}.
+\]
+Stąd
+\[
+    A=\sqrt{\frac{2}{a}}.
+\]
+Ten wynik pojawi się ponownie w modelu nieskończonej studni potencjału.
+\end{examplebox}
+
 \section{Wartości oczekiwane}
+
+Mechanika kwantowa zwykle nie przewiduje pojedynczego wyniku pomiaru z absolutną pewnością. Przewiduje rozkład prawdopodobieństwa oraz wielkości statystyczne tego rozkładu. Najważniejszą z nich jest wartość oczekiwana.
+
+Dla położenia w jednym wymiarze wartość oczekiwana wynosi
+\begin{equation}
+    \langle x\rangle=\int_{-\infty}^{\infty} x |\psi(x,t)|^2\,dx.
+\end{equation}
+Jest to średni wynik pomiaru położenia otrzymany po bardzo wielu identycznie przygotowanych eksperymentach. Nie musi to być punkt, w którym cząstka ``naprawdę siedzi''. Jest to średnia statystyczna wyników pomiaru.
+
+Dla dowolnej obserwabli reprezentowanej przez operator \(\hat{A}\) wartość oczekiwana ma postać
+\begin{equation}
+    \langle A\rangle
+    =\int \psi^*(x,t)\,\hat{A}\psi(x,t)\,dx.
+\end{equation}
+Dla pędu, gdzie
+\[
+    \hat{p}_x=-i\hbar\frac{d}{dx},
+\]
+otrzymujemy
+\begin{equation}
+    \langle p_x\rangle
+    =\int \psi^*(x,t)\left(-i\hbar\frac{d}{dx}\right)\psi(x,t)\,dx.
+\end{equation}
+Ten wzór wygląda mniej intuicyjnie niż wzór na \(\langle x\rangle\), ale jest naturalny: pęd jest w reprezentacji położeniowej operatorem różniczkowym, więc musi działać na funkcję falową.
+
+\begin{remarkbox}
+Kolejność w wyrażeniu \(\psi^*\hat{A}\psi\) ma znaczenie. Operator \(\hat{A}\) działa na funkcję po swojej prawej stronie. Nie należy traktować go jak zwykłej liczby, którą można przesunąć w dowolne miejsce całki.
+\end{remarkbox}
+
 \section{Niepewność pomiaru obserwabli}
+
+Sama wartość oczekiwana nie mówi wszystkiego o stanie. Dwa różne rozkłady mogą mieć tę samą średnią, ale zupełnie inną szerokość. Dlatego wprowadzamy niepewność, czyli odchylenie standardowe wyników pomiaru.
+
+Dla obserwabli \(A\) definiujemy
+\begin{equation}
+    \Delta A=\sqrt{\langle A^2\rangle-\langle A\rangle^2}.
+\end{equation}
+Dla położenia mamy więc
+\begin{equation}
+    \Delta x=\sqrt{\langle x^2\rangle-\langle x\rangle^2},
+\end{equation}
+gdzie
+\[
+    \langle x^2\rangle=\int x^2|\psi(x,t)|^2\,dx.
+\]
+
+Jeżeli \(\Delta x\) jest małe, funkcja falowa jest silnie zlokalizowana w przestrzeni. Jeżeli \(\Delta x\) jest duże, możliwe wyniki pomiaru położenia są szeroko rozrzucone. Analogicznie \(\Delta p_x\) mierzy rozrzut wyników pomiaru pędu.
+
+Niepewność nie jest tutaj deklaracją o niedoskonałości aparatury. Jest własnością stanu kwantowego. Nawet idealny pomiar wykonywany na identycznie przygotowanych stanach może dawać różne wyniki, jeżeli stan nie jest stanem własnym mierzonej obserwabli.
+
 \section{Warunki brzegowe i ich sens fizyczny}
+
+Warunki brzegowe mówią, jakie zachowanie funkcji falowej jest dopuszczalne na granicach obszaru ruchu albo w punktach, gdzie zmienia się potencjał. W prostych modelach są one równie ważne jak samo równanie różniczkowe.
+
+Dla nieskończonej studni potencjału cząstka nie może znajdować się poza przedziałem. Jeżeli ściany studni są w punktach \(x=0\) i \(x=a\), to funkcja falowa musi spełniać
+\begin{equation}
+    \psi(0)=0,
+    \qquad
+    \psi(a)=0.
+\end{equation}
+Te dwa warunki wymuszają dyskretne energie. Właśnie z warunków brzegowych bierze się kwantowanie w najprostszym modelu pudełka.
+
+Dla skończonych skoków potencjału zwykle wymagamy ciągłości funkcji falowej i jej pochodnej:
+\begin{equation}
+    \psi_1(x_0)=\psi_2(x_0),
+    \qquad
+    \psi_1'(x_0)=\psi_2'(x_0),
+\end{equation}
+o ile masa cząstki jest taka sama po obu stronach granicy. Te warunki oznaczają, że funkcja falowa nie może mieć fizycznie sztucznego skoku, jeśli potencjał nie jest nieskończenie osobliwy.
+
+\begin{summarybox}
+Równanie Schrödingera bez warunków brzegowych jest niepełnym zadaniem. Dopiero równanie plus warunki brzegowe wybierają dopuszczalne funkcje falowe i dopuszczalne energie.
+\end{summarybox}
+
 \section{Stany związane i stany rozproszeniowe}
-\section{Co oznacza „rozwiązanie równania Schrödingera”?}
+
+W mechanice kwantowej często odróżniamy stany związane od stanów rozproszeniowych. Stan związany opisuje cząstkę uwięzioną w pewnym obszarze przestrzeni. Jego funkcja falowa jest normalizowalna:
+\begin{equation}
+    \int_{-\infty}^{\infty}|\psi(x)|^2\,dx<\infty.
+\end{equation}
+Po dobraniu stałej normalizacyjnej całka może być równa jeden.
+
+Typowym przykładem stanu związanego jest elektron w atomie wodoru albo cząstka w studni potencjału. Energia stanów związanych jest często dyskretna. Oznacza to, że układ może przyjmować tylko wybrane poziomy energetyczne.
+
+Stany rozproszeniowe opisują cząstkę nadlatującą z daleka, oddziałującą z potencjałem i odlatującą. Takie stany często przypominają fale płaskie i nie są normalizowalne do jedynki w całej przestrzeni. Zamiast zwykłej normalizacji probabilistycznej stosuje się wtedy inne konwencje, na przykład normalizację do strumienia albo do delty Diraca.
+
+\begin{remarkbox}
+Nie każda funkcja falowa w praktyce musi być normalizowalna w zwykłym sensie. Dla stanów rozproszeniowych używa się idealizacji matematycznych, które są bardzo wygodne, ale trzeba pamiętać, że fizyczny pakiet falowy powinien dać się znormalizować.
+\end{remarkbox}
+
+\section{Co oznacza ``rozwiązanie równania Schrödingera''?}
+
+Rozwiązać równanie Schrödingera nie znaczy tylko znaleźć jakąś funkcję spełniającą równanie różniczkowe. W praktyce pełne rozwiązanie problemu kwantowego obejmuje kilka kroków.
+
+Najpierw określamy potencjał \(V(x)\) i obszar ruchu. Następnie zapisujemy równanie Schrödingera. Dla stanów stacjonarnych w jednym wymiarze ma ono postać
+\begin{equation}
+    -\frac{\hbar^2}{2m}\frac{d^2\psi}{dx^2}+V(x)\psi=E\psi.
+\end{equation}
+Potem rozwiązujemy równanie w każdym obszarze, w którym potencjał ma prostą postać. Następnie narzucamy warunki brzegowe i warunki zszycia. Dopiero wtedy otrzymujemy dopuszczalne energie i odpowiadające im funkcje falowe.
+
+Na końcu trzeba wykonać interpretację fizyczną: znormalizować funkcję falową, narysować \(\psi(x)\) oraz \(|\psi(x)|^2\), policzyć wartości oczekiwane i sprawdzić, czy wynik ma sens wymiarowy oraz graniczny. W tym kursie będziemy traktować te kroki jako jedną całość.
+
+\begin{summarybox}
+Praktyczne rozwiązanie problemu kwantowego to nie tylko algebra. To pełny łańcuch: równanie, warunki brzegowe, normalizacja, wykres, prawdopodobieństwo i interpretacja fizyczna.
+\end{summarybox}
