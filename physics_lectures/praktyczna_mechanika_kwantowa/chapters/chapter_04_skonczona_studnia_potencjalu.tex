@@ -1,12 +1,230 @@
 \chapter{Skończona studnia potencjału}
 
+\begin{summarybox}
+Skończona studnia potencjału jest pierwszym modelem, w którym ściany nie są
+idealne. Funkcja falowa nie urywa się na brzegu studni, lecz wnika do obszaru
+klasycznie zabronionego i zanika wykładniczo. Dzięki temu model pokazuje,
+skąd biorą się równania transcendentalne, stany parzyste i nieparzyste oraz
+numeryczne wyznaczanie poziomów energetycznych.
+\end{summarybox}
+
 \section{Różnica między studnią nieskończoną i skończoną}
+
+W poprzednim rozdziale ściany studni były nieskończenie wysokie. Oznaczało to warunki brzegowe
+\[
+    \psi(0)=0,\qquad \psi(a)=0.
+\]
+W modelu skończonym ściany mają skończoną wysokość. Cząstka jest nadal głównie uwięziona wewnątrz studni, ale funkcja falowa może częściowo wnikać w obszar bariery. To jest już efekt bez klasycznego odpowiednika: klasyczna cząstka o energii mniejszej od wysokości bariery nie może wejść do obszaru bariery, natomiast kwantowa funkcja falowa może tam być niezerowa.
+
+Wygodnie używać symetrycznej konwencji
+\[
+V(x)=
+\begin{cases}
+0, & |x|<\frac{a}{2},\\
+V_0, & |x|\geq \frac{a}{2},
+\end{cases}
+\]
+gdzie \(a\) jest szerokością studni, a \(V_0>0\) jej wysokością względem wnętrza. Stany związane spełniają
+\[
+0<E<V_0.
+\]
+Dla takich energii rozwiązanie wewnątrz studni jest oscylacyjne, a poza studnią zanikające.
+
+\begin{remarkbox}
+Istnieje też konwencja, w której wewnątrz studni przyjmuje się \(V=-V_0\), a poza studnią \(V=0\). Obie konwencje są równoważne po przesunięciu zera energii. W tym rozdziale używamy konwencji \(V=0\) wewnątrz i \(V=V_0\) na zewnątrz.
+\end{remarkbox}
+
 \section{Rozwiązania oscylacyjne wewnątrz studni}
+
+W obszarze \(|x|<a/2\) potencjał jest równy zero. Stacjonarne równanie Schrödingera ma postać
+\begin{equation}
+    -\frac{\hbar^2}{2m}\frac{d^2\psi}{dx^2}=E\psi.
+\end{equation}
+Wprowadzamy
+\begin{equation}
+    k=\frac{\sqrt{2mE}}{\hbar}.
+\end{equation}
+Wtedy równanie przyjmuje postać
+\[
+    \psi''+k^2\psi=0,
+\]
+a ogólne rozwiązanie wewnątrz studni jest kombinacją
+\begin{equation}
+    \psi_{\mathrm{in}}(x)=A\cos(kx)+B\sin(kx).
+\end{equation}
+Ponieważ potencjał jest symetryczny, wygodniej od razu rozdzielić rozwiązania na parzyste i nieparzyste. Dla stanów parzystych używamy
+\[
+    \psi_{\mathrm{in}}(x)=A\cos(kx),
+\]
+a dla stanów nieparzystych
+\[
+    \psi_{\mathrm{in}}(x)=B\sin(kx).
+\]
+Taki podział upraszcza rachunek, bo wystarczy zszywać rozwiązanie na prawej granicy \(x=a/2\). Lewa granica jest wtedy automatycznie obsłużona przez symetrię.
+
 \section{Rozwiązania zanikające w barierze}
+
+Poza studnią mamy \(V(x)=V_0\), a dla stanu związanego \(E<V_0\). Równanie Schrödingera ma wtedy postać
+\begin{equation}
+    -\frac{\hbar^2}{2m}\frac{d^2\psi}{dx^2}+V_0\psi=E\psi.
+\end{equation}
+Po przekształceniu dostajemy
+\begin{equation}
+    \psi''-\kappa^2\psi=0,
+    \qquad
+    \kappa=\frac{\sqrt{2m(V_0-E)}}{\hbar}.
+\end{equation}
+Rozwiązania mają charakter wykładniczy. Po prawej stronie studni, dla \(x>a/2\), wybieramy rozwiązanie zanikające:
+\begin{equation}
+    \psi_{\mathrm{out}}(x)=C e^{-\kappa x}.
+\end{equation}
+Czynnik stały można też zapisać wygodniej jako
+\[
+    \psi_{\mathrm{out}}(x)=C e^{-\kappa(x-a/2)}.
+\]
+Po lewej stronie wybieramy rozwiązanie zanikające dla \(x\to -\infty\). Rozwiązania rosnące wykładniczo odrzucamy, bo prowadziłyby do nienormalizowalnej funkcji falowej.
+
+\begin{summarybox}
+Wewnątrz studni funkcja falowa oscyluje, a w obszarze bariery zanika wykładniczo. To odróżnia skończoną studnię od nieskończonej, gdzie funkcja falowa poza studnią jest dokładnie zerowa.
+\end{summarybox}
+
 \section{Warunki zszywania funkcji falowej}
+
+Dla skończonego skoku potencjału funkcja falowa i jej pochodna muszą być ciągłe na granicy. Na prawej granicy \(x=a/2\) wymagamy
+\begin{equation}
+    \psi_{\mathrm{in}}\left(\frac{a}{2}\right)=
+    \psi_{\mathrm{out}}\left(\frac{a}{2}\right),
+\end{equation}
+\begin{equation}
+    \psi'_{\mathrm{in}}\left(\frac{a}{2}\right)=
+    \psi'_{\mathrm{out}}\left(\frac{a}{2}\right).
+\end{equation}
+
+Dla stanu parzystego mamy wewnątrz \(A\cos(kx)\), a na zewnątrz \(C e^{-\kappa(x-a/2)}\). Warunki zszycia dają
+\[
+    A\cos\left(\frac{ka}{2}\right)=C,
+\]
+\[
+    -Ak\sin\left(\frac{ka}{2}\right)=-\kappa C.
+\]
+Po podzieleniu drugiego równania przez pierwsze otrzymujemy
+\begin{equation}
+    k\tan\left(\frac{ka}{2}\right)=\kappa.
+\end{equation}
+
+Dla stanu nieparzystego wewnątrz mamy \(B\sin(kx)\). Analogiczny rachunek prowadzi do
+\begin{equation}
+    -k\cot\left(\frac{ka}{2}\right)=\kappa.
+\end{equation}
+To są warunki kwantowania energii dla skończonej studni.
+
 \section{Równania transcendentalne dla energii}
+
+Dla nieskończonej studni warunek brzegowy prowadził do prostego wzoru
+\[
+    k_n=\frac{n\pi}{a}.
+\]
+Dla skończonej studni sytuacja jest trudniejsza. Energia występuje jednocześnie w \(k\) i w \(\kappa\):
+\[
+    k=\frac{\sqrt{2mE}}{\hbar},
+    \qquad
+    \kappa=\frac{\sqrt{2m(V_0-E)}}{\hbar}.
+\]
+Równania
+\begin{align}
+    k\tan\left(\frac{ka}{2}\right)&=\kappa, \\
+    -k\cot\left(\frac{ka}{2}\right)&=\kappa
+\end{align}
+nie dają się zwykle rozwiązać elementarnie. Nazywamy je równaniami transcendentalnymi.
+
+Wygodnie wprowadzić zmienne bezwymiarowe
+\begin{equation}
+    z=\frac{ka}{2},
+    \qquad
+    z_0=\frac{a}{2}\frac{\sqrt{2mV_0}}{\hbar}.
+\end{equation}
+Wtedy
+\begin{equation}
+    \frac{\kappa a}{2}=\sqrt{z_0^2-z^2}.
+\end{equation}
+Równania przyjmują postać
+\begin{align}
+    z\tan z &= \sqrt{z_0^2-z^2} \qquad \text{stany parzyste},\\
+    -z\cot z &= \sqrt{z_0^2-z^2} \qquad \text{stany nieparzyste}.
+\end{align}
+Po znalezieniu dozwolonego \(z\) energia wynosi
+\begin{equation}
+    E=\frac{2\hbar^2 z^2}{ma^2}.
+\end{equation}
+
 \section{Parzyste i nieparzyste stany związane}
+
+Symetria potencjału względem \(x=0\) pozwala wybrać funkcje własne o określonej parzystości. Stan podstawowy jest parzysty: nie ma węzła w środku studni i ma największą amplitudę w okolicy \(x=0\). Następny stan jest nieparzysty: przechodzi przez zero w środku studni. Kolejne stany zmieniają parzystość naprzemiennie.
+
+W skończonej studni stany związane istnieją tylko do pewnego maksimum energii poniżej \(V_0\). Im wyższy stan, tym funkcja falowa silniej wnika w bariery. Dla energii bliskich \(V_0\) parametr \(\kappa\) jest mały, więc zanik poza studnią jest powolny.
+
+\begin{remarkbox}
+Parzystość nie jest dodatkowym postulatem. Wynika z symetrii potencjału. Jeśli potencjał spełnia \(V(-x)=V(x)\), to funkcje własne można wybrać jako parzyste albo nieparzyste.
+\end{remarkbox}
+
 \section{Numeryczne szukanie poziomów energetycznych}
+
+Równania transcendentalne najlepiej rozwiązywać numerycznie. W Mathematice można zdefiniować funkcje dla stanów parzystych i nieparzystych:
+\begin{verbatim}
+Clear[z, z0]
+feven[z_, z0_] := z Tan[z] - Sqrt[z0^2 - z^2]
+fodd[z_, z0_] := -z Cot[z] - Sqrt[z0^2 - z^2]
+\end{verbatim}
+Następnie można użyć \texttt{FindRoot} w odpowiednich przedziałach. Trzeba uważać na asymptoty tangensa i cotangensa. Dobry punkt startowy powinien leżeć w przedziale, w którym szukamy konkretnego pierwiastka.
+
+Przykładowy schemat:
+\begin{verbatim}
+z0val = 8;
+FindRoot[feven[z, z0val] == 0, {z, 1}]
+FindRoot[fodd[z, z0val] == 0, {z, 2}]
+\end{verbatim}
+W praktyce warto najpierw narysować obie strony równania albo samą funkcję, której zera szukamy:
+\begin{verbatim}
+Plot[feven[z, z0val], {z, 0.01, z0val}, PlotRange -> {-20, 20}]
+\end{verbatim}
+Dopiero po obejrzeniu wykresu wybieramy punkty startowe.
+
 \section{Liczba stanów związanych a głębokość studni}
+
+Skończona studnia ma skończoną liczbę stanów związanych. To odróżnia ją od studni nieskończonej, która ma nieskończenie wiele poziomów energetycznych. Liczba stanów zależy od bezwymiarowego parametru \(z_0\):
+\[
+    z_0=\frac{a}{2}\frac{\sqrt{2mV_0}}{\hbar}.
+\]
+Im większe \(a\), \(m\) albo \(V_0\), tym większe \(z_0\), a więc tym więcej stanów związanych mieści się w studni.
+
+Intuicyjnie: szeroka i głęboka studnia może pomieścić wiele długości fali. Płytka albo bardzo wąska studnia mieści niewiele stanów. W jednym wymiarze skończona atrakcyjna studnia zawsze ma przynajmniej jeden stan związany, ale liczba wyższych stanów zależy od głębokości i szerokości.
+
+\begin{examplebox}
+Jeśli zwiększamy wysokość bariery \(V_0\), poziomy energetyczne przesuwają się w stronę poziomów studni nieskończonej. Jednocześnie pojawiają się nowe stany związane, których wcześniej nie było.
+\end{examplebox}
+
 \section{Wizualizacja funkcji falowych dla skończonej liczby stanów}
+
+Funkcje falowe skończonej studni mają trzy charakterystyczne części: oscylację wewnątrz studni oraz dwa zanikające ogony poza nią. Dla stanów parzystych lewy i prawy ogon mają ten sam znak. Dla stanów nieparzystych mają znaki przeciwne.
+
+Wizualizacja powinna pokazywać także granice studni. Bez zaznaczenia punktów \(x=-a/2\) i \(x=a/2\) trudno zobaczyć, gdzie kończy się obszar klasycznie dozwolony. W Mathematice można budować wykresy kawałkami przy użyciu \texttt{Piecewise}, na przykład osobno dla rozwiązań wewnętrznych i zewnętrznych.
+
+Najważniejsza rzecz do sprawdzenia na wykresie: funkcja falowa i jej pochodna powinny być ciągłe na granicy. Jeśli wykres pokazuje załamanie amplitudy albo skok, to warunki zszywania zostały źle zastosowane.
+
 \section{Kontrola wyniku: granica głębokiej studni}
+
+Każdy wynik dla skończonej studni powinien przejść test graniczny. Gdy \(V_0\to\infty\), skończona studnia powinna przejść w studnię nieskończoną. Wtedy ogony zanikające poza studnią stają się coraz krótsze, a warunki brzegowe zbliżają się do
+\[
+    \psi\left(-\frac{a}{2}\right)=0,
+    \qquad
+    \psi\left(\frac{a}{2}\right)=0.
+\]
+Energie powinny zbliżać się do
+\begin{equation}
+    E_n^{(\infty)}=\frac{n^2\pi^2\hbar^2}{2ma^2}.
+\end{equation}
+Dla skończonej studni energie stanów związanych są zwykle mniejsze niż odpowiadające energie studni nieskończonej, ponieważ cząstka ma efektywnie więcej miejsca: funkcja falowa wnika poza formalną szerokość studni.
+
+\begin{summarybox}
+Skończona studnia potencjału jest pierwszym modelem, w którym pełny problem kwantowy wymaga rachunku jakościowego i numerycznego. Trzeba rozumieć postać rozwiązań, warunki zszywania, parzystość, równania transcendentalne i kontrolę graniczną. To przygotowuje bezpośrednio do tunelowania i barier potencjału.
+\end{summarybox}
