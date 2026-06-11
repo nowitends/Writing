@@ -1,12 +1,167 @@
 \chapter{Wielomiany ortogonalne w mechanice kwantowej}
 
+\begin{summarybox}
+Wielomiany ortogonalne pojawiają się w mechanice kwantowej nie jako ozdobna
+matematyka, lecz jako naturalne części funkcji własnych operatorów. Wielomiany
+Hermite'a opisują oscylator harmoniczny, Legendre'a i stowarzyszone Legendre'a
+pojawiają się przy momencie pędu i harmonikach sferycznych, a Laguerre'a w
+problemie atomu wodoru. Ten rozdział porządkuje najważniejsze rodziny i pokazuje,
+jak pracować z nimi w Mathematice.
+\end{summarybox}
+
 \section{Skąd biorą się wielomiany specjalne?}
+
+Wielomiany specjalne pojawiają się wtedy, gdy równanie różniczkowe ma symetrię i warunki brzegowe wybierające tylko niektóre rozwiązania. W mechanice kwantowej funkcje falowe często są iloczynem prostego czynnika, na przykład gaussowskiego albo wykładniczego, oraz wielomianu.
+
+Przykład oscylatora harmonicznego ma postać
+\begin{equation}
+    \psi_n(x)=N_n H_n(\xi)e^{-\xi^2/2}.
+\end{equation}
+Wielomian nie jest dodatkiem estetycznym. To on odpowiada za węzły funkcji falowej i numer stanu wzbudzonego.
+
+W problemach z symetrią sferyczną separacja zmiennych prowadzi do funkcji kątowych i radialnych. Część kątowa wiąże się z wielomianami Legendre'a, a część radialna atomu wodoru z wielomianami Laguerre'a. Zatem wielomiany specjalne są śladem symetrii i warunków normalizacji.
+
 \section{Wielomiany Hermite'a}
+
+Wielomiany Hermite'a pojawiają się w kwantowym oscylatorze harmonicznym. Można je zdefiniować przez wzór Rodriguesa
+\begin{equation}
+    H_n(x)=(-1)^n e^{x^2}\frac{d^n}{dx^n}e^{-x^2}.
+\end{equation}
+Pierwsze wielomiany to
+\begin{align}
+    H_0(x)&=1,\\
+    H_1(x)&=2x,\\
+    H_2(x)&=4x^2-2,\\
+    H_3(x)&=8x^3-12x.
+\end{align}
+
+W oscylatorze harmonicznym funkcje własne są ortogonalne z wagą gaussowską. Odpowiada temu relacja
+\begin{equation}
+    \int_{-\infty}^{\infty}H_m(x)H_n(x)e^{-x^2}\,dx=0
+    \qquad \text{dla } m\neq n.
+\end{equation}
+Waga \(e^{-x^2}\) nie jest przypadkowa: pochodzi z gaussowskiego czynnika w funkcji falowej oscylatora.
+
 \section{Wielomiany Legendre'a}
+
+Wielomiany Legendre'a pojawiają się przy problemach o symetrii sferycznej. Są rozwiązaniami równania Legendre'a
+\begin{equation}
+    \frac{d}{dx}\left[(1-x^2)\frac{dP_l}{dx}\right]+l(l+1)P_l(x)=0.
+\end{equation}
+Pierwsze wielomiany to
+\begin{align}
+    P_0(x)&=1,\\
+    P_1(x)&=x,\\
+    P_2(x)&=\frac{1}{2}(3x^2-1),\\
+    P_3(x)&=\frac{1}{2}(5x^3-3x).
+\end{align}
+
+Ich ortogonalność ma postać
+\begin{equation}
+    \int_{-1}^{1}P_l(x)P_{l'}(x)\,dx=0
+    \qquad \text{dla } l\neq l'.
+\end{equation}
+W mechanice kwantowej argumentem często jest \(x=\cos\theta\), gdzie \(\theta\) jest kątem biegunowym. Dlatego wielomiany Legendre'a są naturalnie związane z ruchem kątowym.
+
 \section{Wielomiany Laguerre'a}
+
+Wielomiany Laguerre'a oraz stowarzyszone wielomiany Laguerre'a pojawiają się w części radialnej atomu wodoru. Standardowe wielomiany Laguerre'a można zdefiniować przez wzór Rodriguesa
+\begin{equation}
+    L_n(x)=\frac{e^x}{n!}\frac{d^n}{dx^n}\left(e^{-x}x^n\right).
+\end{equation}
+Pierwsze z nich to
+\begin{align}
+    L_0(x)&=1,\\
+    L_1(x)&=1-x,\\
+    L_2(x)&=\frac{1}{2}(x^2-4x+2).
+\end{align}
+
+W atomie wodoru występują wielomiany stowarzyszone, ponieważ część radialna równania zawiera dodatkowe potęgi promienia i zależy od orbitalnej liczby kwantowej. Ogólny obraz jest podobny do oscylatora: czynnik wykładniczy zapewnia zanik, potęga promienia kontroluje zachowanie przy \(r=0\), a wielomian wprowadza węzły radialne.
+
 \section{Wielomiany Czebyszewa}
+
+Wielomiany Czebyszewa są mniej bezpośrednio związane z podstawowymi modelami mechaniki kwantowej omawianymi w tym kursie, ale są bardzo ważne numerycznie. Wielomiany pierwszego rodzaju spełniają
+\begin{equation}
+    T_n(\cos\theta)=\cos(n\theta).
+\end{equation}
+Pierwsze wielomiany to
+\begin{align}
+    T_0(x)&=1,\\
+    T_1(x)&=x,\\
+    T_2(x)&=2x^2-1,\\
+    T_3(x)&=4x^3-3x.
+\end{align}
+
+W praktyce numerycznej wielomiany Czebyszewa są użyteczne do aproksymacji funkcji, rozwinięć spektralnych i stabilnych metod obliczeniowych. W mechanice kwantowej pojawiają się między innymi w metodach propagacji czasowej i aproksymacji operatorów.
+
 \section{Ortogonalność jako struktura fizyczna}
+
+Ortogonalność wielomianów przekłada się na ortogonalność stanów kwantowych. Jeśli \(\psi_m\) i \(\psi_n\) są różnymi funkcjami własnymi hermitowskiego operatora Hamiltona, to zwykle spełniają
+\begin{equation}
+    \int \psi_m^*(x)\psi_n(x)\,dx=0
+    \qquad \text{dla } m\neq n.
+\end{equation}
+Wielomiany specjalne często pojawiają się razem z wagą, na przykład \(e^{-x^2}\) dla Hermite'a. Wtedy ortogonalność samych wielomianów z wagą odpowiada ortogonalności pełnych funkcji falowych.
+
+To jest fizycznie ważne. Ortogonalne stany są rozróżnialne jako różne stany własne obserwabli. Dzięki ortogonalności możemy rozwijać ogólny stan jako kombinację stanów bazowych.
+
+\begin{summarybox}
+Ortogonalność nie jest tylko własnością całek. W mechanice kwantowej oznacza niezależność stanów i pozwala budować bazy przestrzeni Hilberta.
+\end{summarybox}
+
 \section{Wbudowane funkcje Mathematiki}
+
+Mathematica ma wbudowane funkcje dla najważniejszych rodzin wielomianów specjalnych:
+\begin{verbatim}
+HermiteH[n, x]
+LegendreP[l, x]
+LaguerreL[n, x]
+ChebyshevT[n, x]
+\end{verbatim}
+Dzięki temu można szybko generować wzory, wykresy i całki ortogonalności.
+
+Przykład:
+\begin{verbatim}
+Table[HermiteH[n, x], {n, 0, 5}]
+Plot[Evaluate[Table[HermiteH[n, x] Exp[-x^2/2], {n, 0, 4}]], {x, -4, 4}]
+\end{verbatim}
+Warto jednak pamiętać, że sama funkcja specjalna to nie zawsze pełna funkcja falowa. W oscylatorze potrzebny jest jeszcze czynnik gaussowski i normalizacja.
+
 \section{Jednolinijkowe generowanie rodzin wielomianów}
+
+Do szybkiego przeglądu rodziny wielomianów można użyć konstrukcji \texttt{Table}. Na przykład:
+\begin{verbatim}
+Table[LegendreP[l, x], {l, 0, 6}]
+\end{verbatim}
+Albo wykres porównawczy:
+\begin{verbatim}
+Plot[Evaluate[Table[LegendreP[l, x], {l, 0, 5}]], {x, -1, 1}]
+\end{verbatim}
+
+Dla wielomianów Hermite'a sensowniej rysować pełne funkcje oscylatora, ponieważ same wielomiany szybko rosną i nie pokazują fizycznego zaniku funkcji falowej:
+\begin{verbatim}
+psi[n_, x_] := 1/Sqrt[2^n n! Sqrt[Pi]] HermiteH[n, x] Exp[-x^2/2]
+Plot[Evaluate[Table[psi[n, x], {n, 0, 5}]], {x, -5, 5}]
+\end{verbatim}
+
 \section{Wykresy porównawcze}
+
+Wykresy porównawcze są użyteczne, jeśli pokazują strukturę, a nie tylko kolorową rodzinę krzywych. Dla Hermite'a warto zaznaczać liczbę węzłów. Dla Legendre'a warto pokazywać zachowanie na przedziale \([-1,1]\). Dla Laguerre'a warto pamiętać, że argument zwykle jest nieujemny.
+
+Przy porównywaniu rodzin wielomianów należy pilnować dziedzin i wag ortogonalności:
+\begin{itemize}
+    \item Hermite: przedział \((-\infty,\infty)\), waga \(e^{-x^2}\),
+    \item Legendre: przedział \([-1,1]\), waga \(1\),
+    \item Laguerre: przedział \([0,\infty)\), waga \(e^{-x}\),
+    \item Czebyszew: przedział \([-1,1]\), waga \(1/\sqrt{1-x^2}\).
+\end{itemize}
+
 \section{Powiązanie z oscylatorem, atomem wodoru i momentem pędu}
+
+Najważniejsze powiązania w mechanice kwantowej są następujące. Wielomiany Hermite'a pojawiają się w oscylatorze harmonicznym. Wielomiany Legendre'a i stowarzyszone Legendre'a pojawiają się w części kątowej problemów sferycznych, szczególnie przy momencie pędu i harmonikach sferycznych. Wielomiany Laguerre'a pojawiają się w części radialnej atomu wodoru.
+
+To oznacza, że wielomiany specjalne są mapą symetrii problemu. Geometria jednowymiarowego oscylatora prowadzi do Hermite'a. Geometria sfery prowadzi do Legendre'a. Radialna część problemu Coulomba prowadzi do Laguerre'a.
+
+\begin{summarybox}
+Wielomiany ortogonalne są technicznym językiem funkcji własnych. Nie trzeba traktować ich jako oderwanej matematyki: każda rodzina pojawia się dlatego, że określone równanie Schrödingera, symetria i warunki normalizacji wybierają właśnie taką strukturę.
+\end{summarybox}
