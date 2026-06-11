@@ -1,12 +1,183 @@
 \chapter{Bariery potencjału i tunelowanie}
 
+\begin{summarybox}
+Bariera potencjału jest pierwszym modelem, w którym mechanika kwantowa naprawdę
+zrywa z intuicją klasyczną. Cząstka o energii mniejszej od wysokości bariery
+może przejść na drugą stronę, choć klasycznie byłoby to niemożliwe. To zjawisko
+nazywamy tunelowaniem. W tym rozdziale wyprowadzamy współczynniki odbicia i
+transmisji, omawiamy przypadki \(E<V_0\) oraz \(E>V_0\), a także przygotowujemy
+język potrzebny do macierzy przejścia i rezonansowego tunelowania.
+\end{summarybox}
+
 \section{Cząstka padająca na barierę}
+
+Rozważamy jednowymiarową barierę prostokątną
+\[
+V(x)=
+\begin{cases}
+0, & x<0,\\
+V_0, & 0\leq x\leq a,\\
+0, & x>a.
+\end{cases}
+\]
+Cząstka nadlatuje z lewej strony. W obszarze przed barierą może istnieć fala padająca i fala odbita. W obszarze za barierą, jeśli nie ma źródła fali z prawej strony, pozostaje tylko fala transmitowana.
+
+Klasycznie odpowiedź jest prosta. Jeśli \(E>V_0\), cząstka przechodzi przez barierę, choć zmienia prędkość w jej wnętrzu. Jeśli \(E<V_0\), cząstka odbija się, bo nie ma wystarczającej energii, aby wejść na barierę. Mechanika kwantowa daje inną odpowiedź: nawet dla \(E<V_0\) funkcja falowa w barierze nie znika, lecz zanika wykładniczo. Dzięki temu po prawej stronie może pojawić się niezerowa fala transmitowana.
+
+\begin{remarkbox}
+Tunelowanie nie oznacza, że cząstka „pożycza energię” i wspina się klasycznie na barierę. W opisie stacjonarnym energia pozostaje ustalona. Zmienia się natomiast charakter rozwiązania równania Schrödingera w obszarze klasycznie zabronionym.
+\end{remarkbox}
+
 \section{Fala padająca, odbita i transmitowana}
+
+W obszarze I, czyli dla \(x<0\), potencjał jest równy zero. Dla energii \(E>0\) liczba falowa wynosi
+\[
+    k=\frac{\sqrt{2mE}}{\hbar}.
+\]
+Funkcja falowa ma postać
+\begin{equation}
+    \psi_I(x)=A e^{ikx}+B e^{-ikx}.
+\end{equation}
+Pierwszy składnik opisuje falę biegnącą w prawo, czyli falę padającą. Drugi opisuje falę biegnącą w lewo, czyli falę odbitą.
+
+W obszarze III, dla \(x>a\), zakładamy tylko falę biegnącą w prawo:
+\begin{equation}
+    \psi_{III}(x)=F e^{ikx}.
+\end{equation}
+Nie dodajemy składnika \(G e^{-ikx}\), ponieważ nie zakładamy fali nadchodzącej z prawej strony.
+
+W obszarze bariery sytuacja zależy od energii. Dla \(E<V_0\) wprowadzamy
+\[
+    \kappa=\frac{\sqrt{2m(V_0-E)}}{\hbar}.
+\]
+Wtedy rozwiązanie wewnątrz bariery ma postać
+\begin{equation}
+    \psi_{II}(x)=C e^{\kappa x}+D e^{-\kappa x}.
+\end{equation}
+Nie należy automatycznie wyrzucać składnika rosnącego, ponieważ bariera ma skończoną szerokość. Oba składniki są potrzebne do spełnienia warunków zszywania na dwóch granicach.
+
 \section{Współczynniki odbicia \texorpdfstring{\(R\)}{R} i transmisji \texorpdfstring{\(T\)}{T}}
+
+Współczynnik odbicia \(R\) mówi, jaka część strumienia prawdopodobieństwa wraca na lewą stronę. Współczynnik transmisji \(T\) mówi, jaka część przechodzi na prawą stronę.
+
+Dla identycznych obszarów po lewej i prawej stronie bariery mamy
+\begin{equation}
+    R=\left|\frac{B}{A}\right|^2,
+    \qquad
+    T=\left|\frac{F}{A}\right|^2.
+\end{equation}
+Jeśli potencjał po lewej i prawej stronie jest taki sam, zachodzi
+\begin{equation}
+    R+T=1.
+\end{equation}
+Jest to zasada zachowania strumienia prawdopodobieństwa.
+
+Jeżeli liczby falowe po obu stronach są różne, definicja \(T\) musi uwzględniać stosunek strumieni, a więc czynnik proporcjonalny do \(k_{\mathrm{right}}/k_{\mathrm{left}}\). W tym rozdziale trzymamy się symetrycznego przypadku, żeby nie zaciemniać głównej idei.
+
+\begin{summarybox}
+Amplitudy \(A,B,F\) nie są jeszcze prawdopodobieństwami. Prawdopodobieństwa przejścia i odbicia otrzymujemy ze strumieni albo, w najprostszym symetrycznym przypadku, z kwadratów modułów stosunków amplitud.
+\end{summarybox}
+
 \section{Tunelowanie dla \texorpdfstring{\(E<V_0\)}{E<V0}}
+
+Dla energii mniejszej od wysokości bariery rozwiązanie wewnątrz bariery nie jest oscylacyjne, lecz wykładnicze. Po rozwiązaniu układu równań zszywania otrzymuje się dla prostokątnej bariery wzór
+\begin{equation}
+    T=\frac{1}{1+\frac{V_0^2\sinh^2(\kappa a)}{4E(V_0-E)}}.
+\end{equation}
+Tutaj
+\begin{equation}
+    \kappa=\frac{\sqrt{2m(V_0-E)}}{\hbar}.
+\end{equation}
+Ten wzór pokazuje dwie kluczowe zależności. Po pierwsze, transmisja maleje bardzo szybko ze wzrostem szerokości bariery \(a\). Po drugie, transmisja maleje, gdy rośnie \(\kappa\), czyli gdy bariera jest wysoka albo energia cząstki jest dużo mniejsza od \(V_0\).
+
+Dla grubej bariery, gdy \(\kappa a\gg 1\), dominująca zależność ma postać wykładniczą:
+\begin{equation}
+    T\sim e^{-2\kappa a}.
+\end{equation}
+To jest najważniejsza intuicja tunelowania: małe zwiększenie szerokości bariery może ogromnie zmniejszyć prawdopodobieństwo przejścia.
+
 \section{Przypadek \texorpdfstring{\(E>V_0\)}{E>V0}}
+
+Dla energii większej od wysokości bariery fala wewnątrz bariery znowu jest oscylacyjna. Definiujemy
+\begin{equation}
+    q=\frac{\sqrt{2m(E-V_0)}}{\hbar}.
+\end{equation}
+Współczynnik transmisji dla prostokątnej bariery można zapisać jako
+\begin{equation}
+    T=\frac{1}{1+\frac{V_0^2\sin^2(qa)}{4E(E-V_0)}}.
+\end{equation}
+Widać coś ważnego: nawet jeśli \(E>V_0\), transmisja nie musi być równa jeden. Może pojawić się odbicie kwantowe. Klasycznie cząstka przeszłaby przez obszar bariery bez odbicia, ale fala kwantowa odbija się częściowo na granicach, bo zmienia się jej liczba falowa.
+
+Dla pewnych energii, gdy
+\begin{equation}
+    qa=n\pi,
+\end{equation}
+otrzymujemy \(\sin(qa)=0\), a więc \(T=1\). Jest to prosta wersja warunku interferencji konstruktywnej wewnątrz bariery.
+
 \section{Zależność transmisji od szerokości bariery}
+
+Najbardziej charakterystyczną cechą tunelowania jest zależność od szerokości bariery. Dla \(E<V_0\) transmisja jest w przybliżeniu proporcjonalna do
+\[
+    e^{-2\kappa a}.
+\]
+Jeżeli zwiększymy szerokość bariery dwukrotnie, transmisja nie maleje dwukrotnie, lecz wykładniczo. To dlatego tunelowanie jest widoczne w skali atomowej i nanometrowej, ale zanika dla obiektów makroskopowych.
+
+W Mathematice można porównać kilka szerokości bariery:
+\begin{verbatim}
+Tbelow[E_, V0_, a_, m_] := 1/(1 + (V0^2 Sinh[kappa[E,V0,m] a]^2)/
+   (4 E (V0 - E)))
+\end{verbatim}
+W praktyce trzeba konsekwentnie dobrać jednostki. Najbezpieczniej wykonywać rachunek w SI, a dopiero wynik energii przeliczać na elektronowolty.
+
 \section{Sens fizyczny wykładniczego tłumienia}
+
+W obszarze klasycznie zabronionym energia kinetyczna w sensie klasycznym byłaby ujemna:
+\[
+    E-V_0<0.
+\]
+W równaniu Schrödingera prowadzi to do urojonej liczby falowej. Zamiast czynnika oscylacyjnego \(e^{ikx}\) pojawia się czynnik wykładniczy \(e^{-\kappa x}\). To nie jest matematyczna sztuczka, lecz istota tunelowania.
+
+Im większe \(\kappa\), tym szybciej fala zanika w barierze. Parametr \(1/\kappa\) można traktować jako charakterystyczną długość zaniku. Jeżeli bariera jest znacznie grubsza niż ta długość, transmisja będzie bardzo mała.
+
+\begin{remarkbox}
+Tunelowanie nie mówi, że cząstka ma klasyczną trajektorię przez barierę. Mówi, że rozwiązanie równania falowego ma niezerowy ogon po drugiej stronie bariery.
+\end{remarkbox}
+
 \section{Praca z funkcjami zespolonymi w Mathematice}
+
+Problemy rozpraszania prawie zawsze prowadzą do funkcji zespolonych. W Mathematice trzeba jawnie kontrolować sprzężenia, moduły i założenia. Dla amplitudy transmisji \(t\) współczynnik transmisji zapisujemy jako
+\begin{verbatim}
+T = ComplexExpand[Conjugate[t] t]
+\end{verbatim}
+albo, jeśli \(t\) jest już wartością numeryczną,
+\begin{verbatim}
+T = Abs[t]^2
+\end{verbatim}
+
+Przy wyrażeniach symbolicznych \texttt{Abs[t]^2} nie zawsze uprości się tak, jak oczekujemy, bo Mathematica nie wie automatycznie, które parametry są rzeczywiste i dodatnie. Wtedy pomagają założenia:
+\begin{verbatim}
+Simplify[expr, Assumptions -> {E > 0, V0 > E, a > 0, m > 0}]
+\end{verbatim}
+
 \section{Wykresy \texorpdfstring{\(T(E)\)}{T(E)} dla kilku szerokości bariery}
+
+Wykres \(T(E)\) jest jednym z najlepszych sposobów zrozumienia tunelowania. Dla \(E<V_0\) transmisja jest mała, ale niezerowa. Dla \(E\) bliskiego \(V_0\) zwykle rośnie. Dla \(E>V_0\) może oscylować z powodu interferencji wewnątrz bariery.
+
+Przykładowy schemat w Mathematice:
+\begin{verbatim}
+Plot[Evaluate[Table[Tbelow[E, V0, a, m], {a, {1, 2, 3}}]],
+ {E, 0.01 V0, 0.99 V0},
+ PlotLegends -> {"a=1", "a=2", "a=3"},
+ AxesLabel -> {"E", "T(E)"}]
+\end{verbatim}
+Taki wykres natychmiast pokazuje, że szerokość bariery jest parametrem krytycznym. Drobna zmiana szerokości może zmienić transmisję o rzędy wielkości.
+
 \section{Interpretacja: czego nie wolno rozumieć klasycznie?}
+
+Największy błąd interpretacyjny polega na tym, że próbuje się opowiadać tunelowanie językiem klasycznej trajektorii. Cząstka nie „przeciska się” przez barierę jak kulka przez dziurę. Nie ma też w prostym sensie dobrze określonego toru pod barierą. Poprawny opis dotyczy funkcji falowej, amplitud i prawdopodobieństwa transmisji.
+
+Tunelowanie jest konsekwencją trzech faktów: funkcja falowa spełnia równanie różniczkowe, na granicach musi być zszyta, a w obszarze klasycznie zabronionym rozwiązanie zanika, ale nie musi natychmiast być zerowe. Jeśli bariera jest skończona, ogon funkcji falowej może dotrzeć na drugą stronę.
+
+\begin{summarybox}
+Bariera potencjału pokazuje, że mechanika kwantowa jest teorią amplitud, a nie ukrytych klasycznych torów. Współczynnik transmisji wynika z rozwiązania równania Schrödingera i warunków zszywania, a nie z klasycznej decyzji, czy cząstka ma „dość energii”, aby wejść na barierę.
+\end{summarybox}
