@@ -1,12 +1,198 @@
 \chapter{Metoda macierzy przejścia}
 
+\begin{summarybox}
+Metoda macierzy przejścia jest praktycznym językiem opisu jednowymiarowych
+struktur kwantowych złożonych z wielu odcinków o stałym potencjale. Zamiast
+ręcznie zszywać funkcję falową na każdej granicy, zapisujemy cały problem jako
+iloczyn macierzy. Dzięki temu można szybko modelować bariery, studnie,
+podwójne bariery, rezonansowe tunelowanie i proste nanostruktury
+półprzewodnikowe.
+\end{summarybox}
+
 \section{Po co wprowadzać macierze przejścia?}
+
+W poprzednich rozdziałach rozwiązywaliśmy problemy kawałkami. W każdym obszarze o stałym potencjale funkcja falowa miała prostą postać, a na granicach narzucaliśmy ciągłość funkcji falowej oraz jej pochodnej. Dla jednej bariery jest to jeszcze wykonalne ręcznie. Dla kilku barier rachunek szybko staje się nieczytelny.
+
+Metoda macierzy przejścia porządkuje ten rachunek. W każdym obszarze piszemy funkcję falową jako sumę fali biegnącej w prawo i fali biegnącej w lewo:
+\begin{equation}
+    \psi_j(x)=A_j e^{ik_j x}+B_j e^{-ik_j x}.
+\end{equation}
+Współczynniki \(A_j\) i \(B_j\) tworzą wektor amplitud:
+\begin{equation}
+    \mathbf{c}_j=egin{pmatrix}A_j\\ B_j\end{pmatrix}.
+\end{equation}
+Cały problem polega na znalezieniu związku między amplitudami po lewej i po prawej stronie struktury:
+\begin{equation}
+    \mathbf{c}_{\mathrm{left}}=M\mathbf{c}_{\mathrm{right}}.
+\end{equation}
+Macierz \(M\) zawiera informację o wszystkich granicach i wszystkich odcinkach propagacji.
+
+\begin{remarkbox}
+Metoda macierzy przejścia nie jest nową fizyką. Jest zwartym sposobem zapisu tych samych warunków ciągłości, które stosowaliśmy wcześniej ręcznie.
+\end{remarkbox}
+
 \section{Jedna granica potencjału jako macierz}
+
+Rozważmy granicę między dwoma obszarami o stałych potencjałach. Po lewej stronie liczba falowa wynosi \(k_1\), po prawej \(k_2\). Dla granicy w punkcie \(x=0\) zapisujemy
+\begin{equation}
+    \psi_1(x)=A_1e^{ik_1x}+B_1e^{-ik_1x},
+\end{equation}
+\begin{equation}
+    \psi_2(x)=A_2e^{ik_2x}+B_2e^{-ik_2x}.
+\end{equation}
+Warunki ciągłości w punkcie \(x=0\) są następujące:
+\begin{align}
+    A_1+B_1 &= A_2+B_2,\\
+    k_1(A_1-B_1) &= k_2(A_2-B_2).
+\end{align}
+Możemy zapisać je macierzowo jako
+\begin{equation}
+    \begin{pmatrix}A_1\\ B_1\end{pmatrix}
+    =I_{12}
+    \begin{pmatrix}A_2\\ B_2\end{pmatrix},
+\end{equation}
+gdzie macierz granicy ma postać
+\begin{equation}
+    I_{12}=\frac{1}{2}
+    \begin{pmatrix}
+    1+\frac{k_2}{k_1} & 1-\frac{k_2}{k_1}\\
+    1-\frac{k_2}{k_1} & 1+\frac{k_2}{k_1}
+    \end{pmatrix}.
+\end{equation}
+Jeżeli masa efektywna zmienia się na granicy, warunek na pochodną trzeba zmodyfikować. Wtedy ciągła jest nie sama pochodna, lecz wielkość związana z prądem prawdopodobieństwa. W najprostszym przypadku stałej masy powyższa postać wystarcza.
+
 \section{Propagacja w obszarze stałego potencjału}
+
+Jeżeli w danym obszarze potencjał jest stały, to fale po prostu zbierają fazę. Dla odcinka o długości \(d\) i liczbie falowej \(k\) mamy
+\begin{equation}
+    A(x+d)=A(x)e^{ikd},
+    \qquad
+    B(x+d)=B(x)e^{-ikd}.
+\end{equation}
+Odpowiada temu macierz propagacji
+\begin{equation}
+    P(k,d)=
+    \begin{pmatrix}
+    e^{ikd} & 0\\
+    0 & e^{-ikd}
+    \end{pmatrix}.
+\end{equation}
+
+Jeżeli energia jest mniejsza od potencjału w danym obszarze, liczba falowa staje się urojona. Wtedy piszemy \(k=i\kappa\), a czynniki fazowe przechodzą w czynniki wykładnicze. Formalizm macierzowy nadal działa, ale interpretacja zmienia się z propagacji oscylacyjnej na narastanie i zanikanie w obszarze klasycznie zabronionym.
+
+\begin{summarybox}
+Granica potencjału miesza amplitudy fal biegnących w prawo i w lewo. Odcinek stałego potencjału nie miesza amplitud, lecz nadaje im fazy.
+\end{summarybox}
+
 \section{Pojedyncza bariera w formalizmie macierzowym}
+
+Dla pojedynczej bariery potencjału mamy trzy obszary: lewy obszar swobodny, barierę i prawy obszar swobodny. Całkowita macierz przejścia jest iloczynem macierzy granic i propagacji:
+\begin{equation}
+    M=I_{12}P(k_2,d)I_{23}.
+\end{equation}
+Tutaj \(d\) jest szerokością bariery, \(k_1\) i \(k_3\) odpowiadają obszarom zewnętrznym, a \(k_2\) odpowiada wnętrzu bariery. Dla bariery w jednorodnym materiale często mamy \(k_1=k_3\).
+
+Zakładamy falę padającą z lewej strony. Wtedy po lewej stronie mamy falę padającą i odbitą, a po prawej tylko falę transmitowaną:
+\begin{equation}
+    \mathbf{c}_{\mathrm{left}}=egin{pmatrix}1\\ r\end{pmatrix},
+    \qquad
+    \mathbf{c}_{\mathrm{right}}=egin{pmatrix}t\\ 0\end{pmatrix}.
+\end{equation}
+Jeżeli
+\begin{equation}
+    \mathbf{c}_{\mathrm{left}}=M\mathbf{c}_{\mathrm{right}},
+\end{equation}
+to dla typowej konwencji otrzymujemy
+\begin{equation}
+    t=\frac{1}{M_{11}},
+    \qquad
+    r=\frac{M_{21}}{M_{11}}.
+\end{equation}
+Współczynnik transmisji dla identycznych obszarów zewnętrznych wynosi
+\begin{equation}
+    T=|t|^2.
+\end{equation}
+Jeśli liczby falowe po lewej i prawej stronie są różne, trzeba uwzględnić iloraz prędkości grupowych albo strumieni prawdopodobieństwa.
+
 \section{Podwójna bariera potencjału}
+
+Podwójna bariera składa się z dwóch barier oddzielonych studnią. Jest to jeden z najważniejszych modeli w nanofizyce, ponieważ pokazuje rezonansowe tunelowanie. Całkowita macierz ma postać iloczynu kolejnych granic i propagacji, na przykład
+\begin{equation}
+    M=I_{12}P(k_2,b)I_{23}P(k_3,w)I_{34}P(k_4,b)I_{45}.
+\end{equation}
+Tutaj \(b\) oznacza szerokość bariery, a \(w\) szerokość studni między barierami. Indeksy oznaczają kolejne obszary potencjału.
+
+Fizycznie środkowa studnia działa jak rezonator falowy. Dla pewnych energii fala wielokrotnie odbita między barierami interferuje konstruktywnie. Wtedy transmisja przez całą strukturę może być bliska jedności, nawet jeśli każda pojedyncza bariera osobno silnie tłumi transmisję.
+
+\begin{remarkbox}
+Podwójna bariera nie jest po prostu „dwa razy trudniejszą” pojedynczą barierą. Między barierami pojawiają się rezonanse, których nie ma w pojedynczej barierze.
+\end{remarkbox}
+
 \section{Rezonansowe tunelowanie}
+
+Rezonansowe tunelowanie zachodzi wtedy, gdy energia cząstki pasuje do quasi-związanego stanu w obszarze między barierami. Wtedy współczynnik transmisji \(T(E)\) ma ostre maksimum. Dla idealnie symetrycznej struktury maksimum może osiągać wartość
+\begin{equation}
+    T(E)=1.
+\end{equation}
+Nie oznacza to, że bariery zniknęły. Oznacza to, że interferencja fal odbitych i transmitowanych dokładnie kompensuje odbicie całej struktury.
+
+Wykres \(T(E)\) dla podwójnej bariery ma zwykle postać serii pików. Położenie pików zależy głównie od szerokości studni między barierami, a szerokość pików zależy od grubości i wysokości barier. Grubsze bariery dają węższe rezonanse, ponieważ quasi-związany stan dłużej „żyje” w studni.
+
 \section{Funkcja falowa w warunku \texorpdfstring{\(T(E)=1\)}{T(E)=1}}
+
+W energii rezonansowej fala w obszarze między barierami może mieć dużą amplitudę. Gęstość prawdopodobieństwa \(|\psi(x)|^2\) koncentruje się wtedy w środkowej studni. To jest przestrzenny obraz rezonansu: cząstka przez pewien czas zachowuje się tak, jakby była uwięziona między barierami, mimo że stan jako całość jest stanem rozproszeniowym.
+
+Dla \(T(E)=1\) fala odbita po lewej stronie zanika, czyli \(r=0\). Funkcja falowa po lewej jest wtedy sumą tylko fali padającej, a po prawej tylko fali transmitowanej. Wewnątrz struktury nadal mogą istnieć duże amplitudy fal biegnących w obie strony. To właśnie interferencja tych składników powoduje brak odbicia na zewnątrz.
+
 \section{Część rzeczywista, część urojona i \texorpdfstring{\(|\psi|^2\)}{|psi|^2}}
+
+Funkcja falowa w problemie rozpraszania jest zwykle zespolona. Możemy rysować jej część rzeczywistą, część urojoną oraz moduł kwadratowy. Każdy z tych wykresów mówi coś innego.
+
+Część rzeczywista i urojona pokazują fazę oraz oscylacyjny charakter fali. Nie są jednak osobno gęstościami prawdopodobieństwa. Fizycznie najważniejszy dla położenia jest moduł kwadratowy:
+\begin{equation}
+    |\psi(x)|^2=\psi^*(x)\psi(x).
+\end{equation}
+W strukturach rezonansowych wykres \(|\psi|^2\) pokazuje, gdzie fala jest wzmacniana. Dla rezonansu maksimum często pojawia się wewnątrz środkowej studni.
+
+\begin{summarybox}
+W problemach tunelowania sama transmisja \(T(E)\) mówi, ile fali przechodzi przez strukturę. Wykres \(|\psi(x)|^2\) mówi, gdzie fala przebywa wewnątrz struktury.
+\end{summarybox}
+
 \section{Numeryczne wyszukiwanie energii rezonansowych}
+
+W Mathematice można zbudować macierz całkowitą jako iloczyn macierzy granic i propagacji. Schematycznie:
+\begin{verbatim}
+I12[k1_, k2_] := 1/2 {{1 + k2/k1, 1 - k2/k1},
+                      {1 - k2/k1, 1 + k2/k1}}
+
+P[k_, d_] := {{Exp[I k d], 0}, {0, Exp[-I k d]}}
+
+Mtotal[E_] := I12[k1[E], k2[E]].P[k2[E], b].
+              I12[k2[E], k3[E]].P[k3[E], w].
+              I12[k3[E], k4[E]].P[k4[E], b].
+              I12[k4[E], k5[E]]
+
+T[E_] := Abs[1/Mtotal[E][[1, 1]]]^2
+Plot[T[E], {E, Emin, Emax}]
+\end{verbatim}
+Piki transmisji można znaleźć przez szukanie maksimów funkcji \(T(E)\). W praktyce najpierw rysujemy wykres, a dopiero potem stosujemy \texttt{FindMaximum} lub szukanie miejsc, w których \(1-T(E)\) jest minimalne.
+
+Trzeba uważać na jednostki. Jeśli energia jest w elektronowoltach, a długości w nanometrach, wszystkie stałe muszą być dobrane konsekwentnie albo przeliczone do SI. Inaczej piki mogą pojawić się w zupełnie fałszywych miejscach.
+
 \section{Modelowanie nanostruktur półprzewodnikowych}
+
+Metoda macierzy przejścia jest naturalnym narzędziem do modelowania jednowymiarowych nanostruktur: studni kwantowych, wielobarier, supersieci i prostych heterostruktur półprzewodnikowych. W takich układach potencjał efektywny często zmienia się skokowo między warstwami materiału.
+
+W modelu półprzewodnikowym trzeba jednak pamiętać o masie efektywnej. Jeżeli masa efektywna różni się w różnych warstwach, warunki zszywania należy zmodyfikować. Standardowo zachowuje się ciągłość funkcji falowej oraz odpowiednio przeskalowanej pochodnej:
+\begin{equation}
+    \psi_1=\psi_2,
+    \qquad
+    \frac{1}{m_1^*}\frac{d\psi_1}{dx}
+    =
+    \frac{1}{m_2^*}\frac{d\psi_2}{dx}.
+\end{equation}
+Ten warunek zapewnia poprawne zachowanie prądu prawdopodobieństwa na granicy materiałów.
+
+\begin{summarybox}
+Metoda macierzy przejścia zamienia problem wielu granic potencjału w problem mnożenia macierzy. Jest szczególnie użyteczna tam, gdzie ręczne zszywanie funkcji falowej byłoby długie i podatne na błędy: w barierach wielowarstwowych, podwójnych barierach i nanostrukturach półprzewodnikowych.
+\end{summarybox}
