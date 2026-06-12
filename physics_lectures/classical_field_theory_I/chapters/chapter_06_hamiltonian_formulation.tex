@@ -1,12 +1,531 @@
 \chapter{Hamiltonian Formulation of Field Theory}
 
+\begin{remarkbox}
+The Hamiltonian formulation rewrites field theory as dynamics on phase space.
+It is less manifestly relativistic than the Lagrangian formulation, because it
+chooses a time coordinate, but it reveals the canonical variables, Poisson
+brackets, constraints, gauge freedom, and the role of energy as the generator of
+time evolution.
+\end{remarkbox}
+
 \section{Canonical Momenta for Fields}
+
+The Lagrangian formulation treats fields and their spacetime derivatives in a
+nearly symmetric way. The Hamiltonian formulation begins by separating time from
+space. We write spacetime coordinates as
+\[
+    x^\mu=(t,\vect{x}),
+\]
+and denote the time derivative of a field by
+\[
+    \dot{\phi}^A(t,\vect{x})=\partial_t\phi^A(t,\vect{x}).
+\]
+For a first-order Lagrangian density
+\[
+    \mathcal{L}=\mathcal{L}(\phi^A,\dot{\phi}^A,\partial_i\phi^A,t,\vect{x}),
+\]
+the canonical momentum conjugate to \(\phi^A\) is defined by
+\[
+    \pi_A(t,\vect{x})
+    =\frac{\partial\mathcal{L}}{\partial\dot{\phi}^A(t,\vect{x})}.
+\]
+Thus each field component \(\phi^A\) has a conjugate momentum density
+\(\pi_A\).
+
+\begin{definitionbox}
+The \emph{canonical momentum} conjugate to a field \(\phi^A\) is
+\[
+    \pi_A=\frac{\partial\mathcal{L}}{\partial\dot{\phi}^A}.
+\]
+It is a density on space and is evaluated at the same time and spatial point as
+\(\phi^A\).
+\end{definitionbox}
+
+For a real scalar field with
+\[
+    \mathcal{L}
+    =\frac{1}{2}(\partial_t\phi)^2
+     -\frac{1}{2}|\nabla\phi|^2
+     -V(\phi),
+\]
+the canonical momentum is simply
+\[
+    \pi=\frac{\partial\mathcal{L}}{\partial\dot\phi}=\dot\phi.
+\]
+This example is regular: the velocity \(\dot\phi\) can be recovered from the
+momentum \(\pi\).
+
+The situation is not always so simple. If the definition of the momenta cannot
+be inverted to express all velocities in terms of fields and momenta, the theory
+has constraints. Gauge theories and generally covariant theories almost always
+have this feature. The Hamiltonian formalism is therefore not merely an
+alternative notation; it is the natural language for understanding constraints
+and gauge redundancy.
+
 \section{Legendre Transform and Hamiltonian Density}
+
+In mechanics, the Hamiltonian is obtained from the Lagrangian by a Legendre
+transform:
+\[
+    H(q,p,t)=p_i\dot q^i-L(q,\dot q,t),
+\]
+where the velocities are expressed in terms of \((q,p)\). In field theory, the
+same idea is applied pointwise in space. The Hamiltonian density is
+\[
+    \mathcal{H}
+    =\pi_A\dot\phi^A-\mathcal{L}.
+\]
+After the velocities have been expressed in terms of \(\phi^A\), \(\pi_A\), and
+spatial derivatives of \(\phi^A\), the Hamiltonian is
+\[
+    H=\int d^d x\,\mathcal{H}.
+\]
+
+The Legendre transform is valid in its simplest form only if the Hessian matrix
+with respect to the velocities is nondegenerate:
+\[
+    W_{AB}
+    =\frac{\partial^2\mathcal{L}}
+    {\partial\dot\phi^A\partial\dot\phi^B}.
+\]
+If \(W_{AB}\) is invertible, the momenta determine the velocities locally. If it
+is not invertible, the theory is singular and constraints appear.
+
+\begin{definitionbox}
+A field theory is \emph{regular} if the Legendre transform from velocities
+\(\dot\phi^A\) to momenta \(\pi_A\) is locally invertible. It is \emph{singular}
+if this transform is degenerate. Singular theories require constraints in the
+Hamiltonian formulation.
+\end{definitionbox}
+
+For the real scalar field,
+\[
+    \pi=\dot\phi.
+\]
+Therefore
+\[
+\begin{aligned}
+    \mathcal{H}
+    &=\pi\dot\phi-\mathcal{L} \\
+    &=\pi^2-\left[\frac{1}{2}\pi^2
+      -\frac{1}{2}|\nabla\phi|^2-V(\phi)\right].
+\end{aligned}
+\]
+Thus
+\[
+    \mathcal{H}
+    =\frac{1}{2}\pi^2+\frac{1}{2}|\nabla\phi|^2+V(\phi).
+\]
+This is the energy density of the scalar field.
+
+\begin{examplebox}
+For a free massive scalar field,
+\[
+    V(\phi)=\frac{1}{2}m^2\phi^2,
+\]
+the Hamiltonian is
+\[
+    H=\int d^d x\left[
+        \frac{1}{2}\pi^2
+        +\frac{1}{2}|\nabla\phi|^2
+        +\frac{1}{2}m^2\phi^2
+    \right].
+\]
+This Hamiltonian is positive for real fields and suitable boundary conditions.
+\end{examplebox}
+
 \section{Equal-Time Poisson Brackets}
+
+The Hamiltonian formulation requires a notion of Poisson bracket. For fields,
+the canonical Poisson brackets are imposed at equal time. The fundamental
+brackets are
+\[
+    \{\phi^A(t,\vect{x}),\phi^B(t,\vect{y})\}=0,
+\]
+\[
+    \{\pi_A(t,\vect{x}),\pi_B(t,\vect{y})\}=0,
+\]
+and
+\[
+    \{\phi^A(t,\vect{x}),\pi_B(t,\vect{y})\}
+    =\delta^A{}_B\delta^{(d)}(\vect{x}-\vect{y}).
+\]
+The delta distribution appears because there is one canonical degree of freedom
+at each spatial point.
+
+More generally, for two functionals \(F[\phi,\pi]\) and \(G[\phi,\pi]\), the
+field-theoretic Poisson bracket is
+\[
+    \{F,G\}
+    =\int d^d x\left(
+        \frac{\delta F}{\delta\phi^A(\vect{x})}
+        \frac{\delta G}{\delta\pi_A(\vect{x})}
+        -
+        \frac{\delta F}{\delta\pi_A(\vect{x})}
+        \frac{\delta G}{\delta\phi^A(\vect{x})}
+    \right).
+\]
+This is the infinite-dimensional analogue of the mechanical formula
+\[
+    \{F,G\}
+    =\frac{\partial F}{\partial q^i}\frac{\partial G}{\partial p_i}
+    -\frac{\partial F}{\partial p_i}\frac{\partial G}{\partial q^i}.
+\]
+
+\begin{definitionbox}
+The \emph{equal-time Poisson bracket} is the canonical Poisson bracket on the
+space of fields \(\phi^A(t,\vect{x})\) and conjugate momenta
+\(\pi_A(t,\vect{x})\) at a fixed time \(t\).
+\end{definitionbox}
+
+Equal-time brackets are not manifestly Lorentz covariant, because one has chosen
+a time coordinate and a family of spatial hypersurfaces. This is the price paid
+for a canonical description. The reward is that time evolution, constraints, and
+canonical quantization become transparent.
+
 \section{Hamilton's Equations for Fields}
+
+Once the Hamiltonian is known, time evolution is generated by Poisson brackets.
+For any functional \(F[\phi,\pi,t]\), one has
+\[
+    \frac{dF}{dt}=\{F,H\}+\frac{\partial F}{\partial t}.
+\]
+Applying this to the basic fields gives Hamilton's equations:
+\[
+    \dot\phi^A(t,\vect{x})
+    =\frac{\delta H}{\delta\pi_A(t,\vect{x})},
+\]
+and
+\[
+    \dot\pi_A(t,\vect{x})
+    =-\frac{\delta H}{\delta\phi^A(t,\vect{x})}.
+\]
+These equations are equivalent to the Euler--Lagrange equations when the
+Legendre transform is regular.
+
+For the real scalar field,
+\[
+    H=\int d^d x\left[
+        \frac{1}{2}\pi^2
+        +\frac{1}{2}|\nabla\phi|^2
+        +V(\phi)
+    \right].
+\]
+The first Hamilton equation gives
+\[
+    \dot\phi=\frac{\delta H}{\delta\pi}=\pi.
+\]
+The second gives
+\[
+    \dot\pi=-\frac{\delta H}{\delta\phi}.
+\]
+To compute the functional derivative, vary the Hamiltonian:
+\[
+    \delta H=\int d^d x\left[
+        \pi\delta\pi+
+        \nabla\phi\cdot\nabla\delta\phi+
+        V'(\phi)\delta\phi
+    \right].
+\]
+After integrating the gradient term by parts and assuming the boundary term
+vanishes,
+\[
+    \delta H=\int d^d x\left[
+        \pi\delta\pi+
+        (-\nabla^2\phi+V'(\phi))\delta\phi
+    \right].
+\]
+Therefore
+\[
+    \frac{\delta H}{\delta\phi}=-\nabla^2\phi+V'(\phi),
+\]
+and
+\[
+    \dot\pi=\nabla^2\phi-V'(\phi).
+\]
+Using \(\pi=\dot\phi\), we obtain
+\[
+    \ddot\phi-\nabla^2\phi+V'(\phi)=0,
+\]
+which is the Euler--Lagrange equation for the scalar field.
+
+\begin{examplebox}
+For \(V(\phi)=m^2\phi^2/2\), Hamilton's equations imply
+\[
+    \ddot\phi-\nabla^2\phi+m^2\phi=0,
+\]
+that is,
+\[
+    (\Box+m^2)\phi=0.
+\]
+\end{examplebox}
+
 \section{Phase Space of a Field Theory}
+
+The configuration space of a field theory is a space of field configurations
+\(\phi^A(\vect{x})\). The phase space is the space of pairs
+\[
+    (\phi^A(\vect{x}),\pi_A(\vect{x})).
+\]
+Thus a point of phase space specifies both the field profile and its canonical
+momentum profile at one time.
+
+This phase space is infinite-dimensional. In mechanics, a system with
+\(n\) generalized coordinates has a \(2n\)-dimensional phase space with
+coordinates \((q^i,p_i)\). In field theory, the spatial point \(\vect{x}\) plays
+the role of a continuous label, so phase space consists of functions rather than
+finite tuples of numbers.
+
+The canonical symplectic structure is encoded in the equal-time Poisson
+brackets. Equivalently, one may write the canonical symplectic form formally as
+\[
+    \Omega=\int d^d x\,\delta\pi_A(\vect{x})\wedge\delta\phi^A(\vect{x}).
+\]
+Here \(\delta\) denotes the exterior derivative on the infinite-dimensional
+space of fields, not a spacetime variation. This notation is more advanced but
+useful: it emphasizes that Hamiltonian field theory is symplectic geometry on
+an infinite-dimensional space.
+
+\begin{remarkbox}
+A field-theoretic phase space is not the same thing as spacetime. Spacetime is
+the domain on which fields are defined. Phase space is the space of all possible
+instantaneous field and momentum configurations.
+\end{remarkbox}
+
+In a well-posed Hamiltonian evolution problem, initial data define a point in
+phase space, and Hamilton's equations define a trajectory through phase space.
+This is the canonical version of the initial-value problem for fields.
+
 \section{Constraints: First Encounter}
+
+A constraint is a relation among canonical variables that must hold on the
+allowed phase space. Constraints arise when the canonical momenta are not all
+independent. This happens when the Legendre transform is degenerate.
+
+A simple diagnostic is the Hessian matrix
+\[
+    W_{AB}
+    =\frac{\partial^2\mathcal{L}}
+    {\partial\dot\phi^A\partial\dot\phi^B}.
+\]
+If \(W_{AB}\) has zero modes, then not all velocities can be solved in terms of
+momenta. The momentum definitions imply relations
+\[
+    \chi_m(\phi,\pi)\approx 0.
+\]
+The symbol \(\approx\) is Dirac's weak equality. It means that the equation holds
+on the constraint surface, but should not necessarily be imposed before Poisson
+brackets are computed.
+
+\begin{definitionbox}
+A \emph{constraint} is a relation \(\chi(\phi,\pi)\approx 0\) that restricts the
+allowed canonical data. The set of points satisfying all constraints is called
+the constraint surface.
+\end{definitionbox}
+
+Electromagnetism gives the standard example. The Maxwell Lagrangian density is
+\[
+    \mathcal{L}=-\frac{1}{4}F_{\mu\nu}F^{\mu\nu}.
+\]
+The field component \(A_0\) has no time derivative in \(F_{\mu\nu}\) in the same
+way as the spatial components. Its canonical momentum is
+\[
+    \pi^0=\frac{\partial\mathcal{L}}{\partial\dot A_0}=0.
+\]
+This is a constraint:
+\[
+    \pi^0\approx 0.
+\]
+It reflects the fact that \(A_0\) is not an ordinary propagating degree of
+freedom. It is tied to Gauss's law and gauge freedom.
+
 \section{Primary and Secondary Constraints}
+
+Constraints that arise directly from the definition of the canonical momenta are
+called primary constraints. If
+\[
+    \chi_m(\phi,\pi)\approx 0
+\]
+is a primary constraint, it must remain true during time evolution. Therefore
+one imposes the consistency condition
+\[
+    \dot\chi_m\approx 0.
+\]
+Using the Hamiltonian, this becomes
+\[
+    \{\chi_m,H\}\approx 0,
+\]
+or, more generally, a condition involving the total Hamiltonian.
+
+The total Hamiltonian includes the canonical Hamiltonian plus primary
+constraints multiplied by arbitrary functions called Lagrange multipliers:
+\[
+    H_T=H_c+\int d^d x\,u^m(\vect{x})\chi_m(\vect{x}).
+\]
+The functions \(u^m\) are not determined by the Legendre transform. Their
+presence signals that the evolution may not be unique until gauge freedom is
+fixed.
+
+The consistency condition may lead to three possibilities:
+\begin{enumerate}
+    \item it may be automatically satisfied;
+    \item it may determine some Lagrange multipliers;
+    \item it may produce new constraints, called secondary constraints.
+\end{enumerate}
+
+In electromagnetism, the primary constraint \(\pi^0\approx0\) leads, through
+consistency, to Gauss's law as a secondary constraint:
+\[
+    \partial_i\pi^i-J^0\approx0,
+\]
+up to sign conventions. This is the Hamiltonian form of the electric charge
+constraint.
+
+\begin{remarkbox}
+The distinction between primary and secondary constraints is procedural, not
+physical. Primary constraints arise from the momentum definitions; secondary
+constraints arise from demanding preservation of constraints under time
+evolution.
+\end{remarkbox}
+
+The systematic treatment of constraints is known as Dirac's constraint
+algorithm. This course only needs the first conceptual layer: constraints are
+not optional extra equations. They are part of the canonical structure of
+singular Lagrangian systems.
+
 \section{Gauge Freedom and Degenerate Legendre Transform}
+
+Gauge freedom and degeneracy of the Legendre transform are closely related. If a
+Lagrangian has a local gauge symmetry, then some apparent field components do
+not represent independent physical degrees of freedom. This redundancy appears
+in the Hamiltonian formulation as constraints.
+
+The intuitive reason is simple. Gauge-related configurations describe the same
+physical state. Therefore the Lagrangian cannot assign independent physical
+velocities to all field components. Some directions in velocity space correspond
+not to physical motion but to motion along gauge orbits. Along such directions,
+the Legendre transform is degenerate.
+
+Constraints are often classified as first class or second class. A constraint is
+first class if its Poisson bracket with all constraints vanishes on the
+constraint surface. Schematically,
+\[
+    \{\chi_m,\chi_n\}\approx0.
+\]
+First-class constraints generate gauge transformations. Second-class constraints
+do not generate gauge freedom; instead, they remove variables in a different
+way and require replacing Poisson brackets by Dirac brackets.
+
+\begin{definitionbox}
+A \emph{first-class constraint} has weakly vanishing Poisson brackets with all
+constraints. First-class constraints are associated with gauge transformations.
+A \emph{second-class constraint} is a constraint that fails this condition.
+\end{definitionbox}
+
+For gauge theories, the true physical phase space is not the full constraint
+surface. One must also identify points related by gauge transformations. In
+words,
+\[
+    \text{physical phase space}
+    =\frac{\text{constraint surface}}{\text{gauge transformations}}.
+\]
+This quotient viewpoint is essential in advanced field theory, gauge theory,
+and gravity.
+
 \section{Energy as a Generator of Time Evolution}
+
+In Hamiltonian mechanics, the Hamiltonian generates time evolution. The same is
+true in field theory. If \(F[\phi,\pi,t]\) is a phase-space functional, then
+\[
+    \frac{dF}{dt}=\{F,H\}+\frac{\partial F}{\partial t}
+\]
+for regular theories. Thus the Hamiltonian is not merely the numerical energy;
+it is the generator of time translations on phase space.
+
+For the basic fields,
+\[
+    \dot\phi^A=\{\phi^A,H\},
+    \qquad
+    \dot\pi_A=\{\pi_A,H\}.
+\]
+These are Hamilton's equations in bracket form. They show that the Hamiltonian
+vector field associated with \(H\) gives the dynamical flow on phase space.
+
+If the Hamiltonian has no explicit time dependence and the boundary conditions
+allow the relevant integrations by parts, then
+\[
+    \frac{dH}{dt}=\{H,H\}=0.
+\]
+Thus energy is conserved. This is the Hamiltonian expression of time-translation
+symmetry.
+
+\begin{examplebox}
+For the free scalar field, the Hamiltonian
+\[
+    H=\int d^d x\left[
+        \frac{1}{2}\pi^2
+        +\frac{1}{2}|\nabla\phi|^2
+        +\frac{1}{2}m^2\phi^2
+    \right]
+\]
+generates the Klein--Gordon evolution through the equal-time Poisson brackets.
+\end{examplebox}
+
+In constrained systems, the generator of time evolution is the total Hamiltonian
+\(H_T\), not merely the canonical Hamiltonian. The arbitrary multipliers in
+\(H_T\) encode gauge freedom. Therefore Hamiltonian evolution in a gauge theory
+is unique only up to gauge transformations.
+
 \section{Comparison with the Lagrangian Formulation}
+
+The Lagrangian and Hamiltonian formulations describe the same classical dynamics
+when the Legendre transform is regular and boundary conditions are handled
+properly. However, they emphasize different structures.
+
+The Lagrangian formulation is manifestly spacetime-oriented. It is usually the
+best language for relativistic covariance, action principles, Noether's
+theorems, path integrals, and coupling to geometry. A typical Lagrangian action
+has the compact form
+\[
+    S[\phi]=\int \mathcal{L}(\phi^A,\partial_\mu\phi^A,x)\,d^{d+1}x.
+\]
+The Euler--Lagrange equations follow from varying \(S\).
+
+The Hamiltonian formulation is phase-space-oriented. It requires a choice of
+time coordinate and describes evolution of canonical data
+\[
+    (\phi^A(\vect{x}),\pi_A(\vect{x})).
+\]
+Its central objects are the Hamiltonian, Poisson brackets, constraints, and
+canonical transformations. It is the natural starting point for canonical
+quantization, constraint analysis, and the study of generators.
+
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+Feature & Lagrangian formulation & Hamiltonian formulation \\
+\midrule
+Basic variables & \(\phi^A,\partial_\mu\phi^A\) & \(\phi^A,\pi_A\) \\
+Central object & action \(S\) & Hamiltonian \(H\) \\
+Dynamics & Euler--Lagrange equations & Hamilton's equations \\
+Geometry & spacetime/covariant & phase space/canonical \\
+Symmetries & Noether currents & generators via Poisson brackets \\
+Gauge theories & variational identities & constraints and gauge orbits \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Neither formulation is intrinsically superior. The Lagrangian formulation makes
+covariance and the action principle transparent. The Hamiltonian formulation
+makes the phase-space structure and constraints transparent. A mature use of
+classical field theory requires both.
+
+\begin{summarybox}
+The Hamiltonian formulation begins by choosing a time coordinate, defining
+canonical momenta, and performing a Legendre transform. For regular theories it
+leads to a Hamiltonian density, equal-time Poisson brackets, and Hamilton's
+equations. For singular theories it reveals constraints, gauge freedom, and the
+need for Dirac's constraint analysis. The Hamiltonian is both energy and the
+generator of time evolution, provided the boundary conditions make the generator
+well defined.
+\end{summarybox}
