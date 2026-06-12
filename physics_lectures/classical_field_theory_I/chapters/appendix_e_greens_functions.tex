@@ -1,8 +1,217 @@
 \chapter{Green's Functions}
 
+\begin{remarkbox}
+Green's functions are the response functions of linear differential equations.
+They convert differential equations with sources into integral formulas. In field
+theory they appear as retarded responses, advanced responses, static potentials,
+and, after quantization, propagators.
+\end{remarkbox}
+
 \section{Green's Functions for Ordinary Differential Equations}
+
+Consider a linear differential operator \(L\) acting on functions of one
+variable. A Green's function \(G(x,y)\) satisfies
+\[
+    L_xG(x,y)=\delta(x-y),
+\]
+where \(L_x\) means that \(L\) acts on the \(x\)-dependence. If one wants to
+solve
+\[
+    Lf(x)=s(x),
+\]
+then formally
+\[
+    f(x)=\int dy\,G(x,y)s(y)
+\]
+provided the boundary conditions are correctly encoded in \(G\).
+
+The boundary conditions are part of the definition. The same differential
+operator can have different Green's functions for Dirichlet, Neumann, periodic,
+retarded, or advanced boundary conditions.
+
+\begin{definitionbox}
+A Green's function is an inverse kernel for a linear differential operator,
+subject to specified boundary or causality conditions.
+\end{definitionbox}
+
+As a simple example, for
+\[
+    -\frac{d^2}{dx^2}G(x,y)=\delta(x-y)
+\]
+on an interval, the Green's function depends on what is required at the endpoints.
+Thus it is misleading to speak of ``the'' Green's function without specifying the
+problem.
+
 \section{Green's Functions for Partial Differential Equations}
+
+For a linear partial differential equation
+\[
+    L\phi(x)=J(x),
+\]
+a Green's function satisfies
+\[
+    L_xG(x,y)=\delta^{(D)}(x-y),
+\]
+where \(D=d+1\) is the spacetime dimension or \(D=d\) for a purely spatial
+problem. The solution is formally
+\[
+    \phi(x)=\int d^D y\,G(x,y)J(y).
+\]
+
+If the operator is translation invariant, then
+\[
+    G(x,y)=G(x-y).
+\]
+In that case Fourier transform is often the most efficient tool. If
+\[
+    L(\partial)G(x)=\delta^{(D)}(x),
+\]
+then in momentum space one has
+\[
+    L(ik)\widetilde{G}(k)=1,
+\]
+so
+\[
+    \widetilde{G}(k)=\frac{1}{L(ik)}.
+\]
+Poles of \(\widetilde{G}(k)\) encode the characteristic modes of the differential
+operator.
+
+\begin{remarkbox}
+The formal inverse \(1/L(ik)\) is not yet a full Green's function. One must also
+specify how poles are treated. That prescription encodes causality or boundary
+conditions.
+\end{remarkbox}
+
 \section{Retarded, Advanced, and Feynman-Type Green's Functions}
+
+For hyperbolic equations, different Green's functions encode different causal
+conditions. The retarded Green's function satisfies
+\[
+    G_{\mathrm{ret}}(x-y)=0
+\]
+unless \(x\) lies in or on the future light cone of \(y\). It gives causal
+response to past sources:
+\[
+    \phi(x)=\int d^D y\,G_{\mathrm{ret}}(x-y)J(y).
+\]
+
+The advanced Green's function satisfies the opposite support condition. It is
+nonzero only when \(x\) lies in or on the past light cone of \(y\). It is useful
+mathematically but usually not used for causal initial-value evolution.
+
+In quantum field theory, the Feynman propagator appears. It is not simply the
+classical retarded Green's function. It implements time ordering and a specific
+pole prescription. Formally, for a scalar field it is associated with
+\[
+    \frac{1}{k^2-m^2+i\epsilon}
+\]
+up to metric and Fourier conventions.
+
+\begin{definitionbox}
+Retarded Green's functions encode causal response. Advanced Green's functions
+encode anti-causal response. Feynman-type Green's functions encode time-ordered
+quantum propagation.
+\end{definitionbox}
+
 \section{Green's Functions for the Wave Equation}
+
+The massless wave equation with source is
+\[
+    \Box\phi=J,
+\]
+where
+\[
+    \Box=\partial_t^2-\nabla^2.
+\]
+A Green's function satisfies
+\[
+    \Box G(x-y)=\delta^{(d+1)}(x-y).
+\]
+The retarded Green's function gives the field produced by sources in the past.
+In three spatial dimensions, the retarded solution has support on the light cone.
+This reflects sharp propagation at the speed of light.
+
+For a source \(J\), the retarded solution is schematically
+\[
+    \phi_{\mathrm{ret}}(x)=\int d^{d+1}y\,G_{\mathrm{ret}}(x-y)J(y).
+\]
+If initial data are also present, the full solution is the sum of the homogeneous
+solution determined by initial data and a particular solution determined by the
+source.
+
+\begin{remarkbox}
+A Green's function solves the inhomogeneous problem with a point source. General
+sources are handled by superposition, but only because the differential equation
+is linear.
+\end{remarkbox}
+
 \section{Green's Functions for the Klein--Gordon Equation}
+
+The sourced Klein--Gordon equation is
+\[
+    (\Box+m^2)\phi=J.
+\]
+A Green's function satisfies
+\[
+    (\Box_x+m^2)G(x-y)=\delta^{(d+1)}(x-y).
+\]
+In Fourier representation, one formally writes
+\[
+    G(x)=\int\frac{d^{d+1}k}{(2\pi)^{d+1}}\,
+    \frac{e^{-ik_\mu x^\mu}}{-k_\mu k^\mu+m^2}
+\]
+with a pole prescription.
+
+The massive case differs from the massless wave equation in two important ways.
+First, the dispersion relation is
+\[
+    \omega^2=|\vect{k}|^2+m^2.
+\]
+Second, the static Green's function in three spatial dimensions decays
+exponentially:
+\[
+    G_{\mathrm{static}}(r)\propto\frac{e^{-mr}}{r}.
+\]
+This is the Yukawa behavior. The length scale is
+\[
+    \ell_m=\frac{1}{m}.
+\]
+
+In the massless limit,
+\[
+    \frac{e^{-mr}}{r}\longrightarrow\frac{1}{r}.
+\]
+Thus a massive field has short-range static response, while a massless field has
+long-range static response.
+
 \section{Physical Interpretation as Response to Sources}
+
+The most useful physical interpretation of a Green's function is response to a
+point source. If
+\[
+    L_xG(x,y)=\delta(x-y),
+\]
+then \(G(x,y)\) is the field at \(x\) produced by a unit source placed at \(y\),
+with the specified boundary or causal prescription.
+
+For a general source \(J(y)\), linearity gives
+\[
+    \phi(x)=\int dy\,G(x,y)J(y).
+\]
+This says that the field is a superposition of responses to infinitesimal point
+sources.
+
+In electromagnetism, retarded Green's functions give retarded potentials. In
+scalar field theory, they give causal response to scalar sources. In boundary
+value problems, Green's functions encode how boundaries influence fields. In
+quantum field theory, propagators encode how disturbances and correlations are
+transmitted.
+
+\begin{summarybox}
+A Green's function is an inverse kernel for a linear differential operator plus a
+choice of boundary or causal prescription. Retarded Green's functions describe
+causal response, static Green's functions describe potentials, and the
+Klein--Gordon Green's function displays the difference between massive
+short-range response and massless long-range response.
+\end{summarybox}
