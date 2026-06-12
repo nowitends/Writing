@@ -1,10 +1,313 @@
 \chapter{Differential Forms and Geometry}
 
+\begin{remarkbox}
+Differential forms provide a compact language for integration, Stokes' theorem,
+Maxwell theory, Yang--Mills theory, and geometric field theories. This appendix
+collects the minimal definitions and identities used in the notes.
+\end{remarkbox}
+
 \section{Forms and Exterior Derivative}
+
+A \(p\)-form on a manifold is an antisymmetric covariant tensor field of degree
+\(p\). In coordinates,
+\[
+    \alpha=\frac{1}{p!}\alpha_{\mu_1\cdots\mu_p}
+    dx^{\mu_1}\wedge\cdots\wedge dx^{\mu_p}.
+\]
+A zero-form is an ordinary function. A one-form is
+\[
+    A=A_\mu dx^\mu.
+\]
+A two-form is
+\[
+    F=\frac{1}{2}F_{\mu\nu}dx^\mu\wedge dx^\nu.
+\]
+
+The exterior derivative maps \(p\)-forms to \((p+1)\)-forms:
+\[
+    d:\Omega^p(M)\to\Omega^{p+1}(M).
+\]
+For a function \(f\),
+\[
+    df=\partial_\mu f\,dx^\mu.
+\]
+For a one-form \(A=A_\mu dx^\mu\),
+\[
+    dA=\frac{1}{2}(\partial_\mu A_\nu-\partial_\nu A_\mu)
+    dx^\mu\wedge dx^\nu.
+\]
+The fundamental identity is
+\[
+    d^2=0.
+\]
+
+\begin{definitionbox}
+The exterior derivative is the coordinate-independent derivative on differential
+forms. Its defining structural property is \(d^2=0\).
+\end{definitionbox}
+
+The identity \(d^2=0\) is the geometric origin of many homogeneous field
+equations, including the Bianchi identity \(dF=0\) in electromagnetism when
+\(F=dA\).
+
 \section{Wedge Product}
+
+The wedge product combines a \(p\)-form and a \(q\)-form into a \((p+q)\)-form:
+\[
+    \wedge:\Omega^p(M)\times\Omega^q(M)\to\Omega^{p+q}(M).
+\]
+It is graded-antisymmetric:
+\[
+    \alpha\wedge\beta=(-1)^{pq}\beta\wedge\alpha
+\]
+for \(\alpha\in\Omega^p(M)\) and \(\beta\in\Omega^q(M)\). In particular,
+\[
+    dx^\mu\wedge dx^\nu=-dx^\nu\wedge dx^\mu.
+\]
+Therefore
+\[
+    dx^\mu\wedge dx^\mu=0
+\]
+with no sum.
+
+The exterior derivative satisfies the graded Leibniz rule:
+\[
+    d(\alpha\wedge\beta)=d\alpha\wedge\beta+(-1)^p\alpha\wedge d\beta
+\]
+for \(\alpha\in\Omega^p(M)\).
+
+For Lie-algebra-valued forms, the wedge product also includes multiplication in
+the Lie algebra or matrix algebra. Thus for a connection one-form \(A\), the
+expression
+\[
+    A\wedge A
+\]
+contains both form antisymmetry and noncommuting matrix multiplication.
+
 \section{Hodge Dual}
+
+The Hodge dual maps \(p\)-forms in \(n\) dimensions to \((n-p)\)-forms:
+\[
+    \star:\Omega^p(M)\to\Omega^{n-p}(M).
+\]
+It depends on the metric and orientation. In components, for a \(p\)-form
+\(\alpha\), the dual has components built using the Levi-Civita tensor and the
+metric.
+
+In four-dimensional electromagnetism, the field strength is a two-form
+\[
+    F=\frac{1}{2}F_{\mu\nu}dx^\mu\wedge dx^\nu,
+\]
+and its Hodge dual is again a two-form:
+\[
+    \star F=\frac{1}{2}\widetilde{F}_{\mu\nu}dx^\mu\wedge dx^\nu.
+\]
+The source-free Maxwell equations can be written compactly as
+\[
+    dF=0,
+    \qquad
+    d\star F=0.
+\]
+With sources, one writes schematically
+\[
+    d\star F=\star J.
+\]
+
+\begin{remarkbox}
+Unlike the exterior derivative, the Hodge dual is not purely topological. It
+requires a metric. This is why equations involving \(\star\) know about causal
+or metric structure.
+\end{remarkbox}
+
 \section{Stokes' Theorem}
+
+Stokes' theorem is the central integration theorem for forms. If \(\alpha\) is
+an \((n-1)\)-form on an \(n\)-dimensional oriented region \(\Omega\), then
+\[
+    \int_\Omega d\alpha=\int_{\partial\Omega}\alpha.
+\]
+This is the common geometric origin of the fundamental theorem of calculus,
+Green's theorem, Gauss's theorem, and the ordinary Stokes theorem of vector
+calculus.
+
+In variational calculus, integration by parts is a local expression of Stokes'
+theorem. For example,
+\[
+    \int_\Omega d^{d+1}x\,\partial_\mu V^\mu
+    =\int_{\partial\Omega}d\Sigma_\mu V^\mu.
+\]
+Boundary terms in field theory are therefore not artificial. They are required
+by Stokes' theorem.
+
+\begin{definitionbox}
+Stokes' theorem converts a bulk integral of an exterior derivative into a
+boundary integral:
+\[
+    \int_\Omega d\alpha=\int_{\partial\Omega}\alpha.
+\]
+\end{definitionbox}
+
+This theorem is also the reason why total derivative terms can affect boundary
+charges while leaving local bulk equations unchanged.
+
 \section{Connections and Curvature}
+
+A connection allows one to differentiate fields that carry internal or geometric
+indices in a way compatible with local frame changes. In Abelian gauge theory,
+the connection is the electromagnetic potential
+\[
+    A=A_\mu dx^\mu.
+\]
+The curvature is
+\[
+    F=dA.
+\]
+
+In non-Abelian gauge theory, the connection is Lie-algebra-valued:
+\[
+    A=A_\mu^aT_a dx^\mu.
+\]
+The curvature is
+\[
+    F=dA+gA\wedge A.
+\]
+In components,
+\[
+    F_{\mu\nu}=\partial_\mu A_\nu-\partial_\nu A_\mu+g[A_\mu,A_\nu].
+\]
+
+The covariant exterior derivative of a Lie-algebra-valued form \(X\) is
+schematically
+\[
+    DX=dX+g[A,X],
+\]
+with signs depending on the form degree. In components for an adjoint-valued
+field,
+\[
+    D_\mu X=\partial_\mu X+g[A_\mu,X].
+\]
+
+\begin{definitionbox}
+The curvature of a connection is the field strength. It measures the failure of
+covariant derivatives to commute:
+\[
+    [D_\mu,D_\nu]=gF_{\mu\nu}
+\]
+when acting on a field in the relevant representation.
+\end{definitionbox}
+
 \section{Bianchi Identities}
+
+For electromagnetism,
+\[
+    F=dA.
+\]
+Therefore
+\[
+    dF=d^2A=0.
+\]
+This is the Abelian Bianchi identity and gives the homogeneous Maxwell equations.
+
+For a non-Abelian connection,
+\[
+    F=dA+gA\wedge A.
+\]
+The Bianchi identity is covariant:
+\[
+    DF=0.
+\]
+In components,
+\[
+    D_{[\lambda}F_{\mu\nu]}=0.
+\]
+This is not an equation of motion. It follows from the definition of curvature.
+
+Bianchi identities also appear in geometry. For the Riemann curvature tensor,
+the differential Bianchi identity is
+\[
+    \nabla_{[\lambda}R_{\mu\nu]\rho}{}^\sigma=0.
+\]
+After contractions it leads to
+\[
+    \nabla_\mu G^{\mu\nu}=0,
+\]
+where \(G^{\mu\nu}\) is the Einstein tensor.
+
 \section{Applications to Maxwell and Yang--Mills Theory}
+
+Maxwell theory in form notation is especially compact. The field strength is
+\[
+    F=dA.
+\]
+The homogeneous equations are
+\[
+    dF=0.
+\]
+The inhomogeneous equations are
+\[
+    d\star F=\star J.
+\]
+The action is
+\[
+    S[A]=-rac{1}{2}\int F\wedge\star F
+\]
+up to conventional normalizations.
+
+Yang--Mills theory replaces \(F=dA\) by
+\[
+    F=dA+gA\wedge A.
+\]
+The action is
+\[
+    S[A]=-rac{1}{2}\int \langle F\wedge\star F\rangle.
+\]
+The equation of motion is
+\[
+    D\star F=\star J,
+\]
+and the Bianchi identity is
+\[
+    DF=0.
+\]
+
+The form notation makes the analogy between Maxwell and Yang--Mills theory
+transparent. The difference is that the non-Abelian theory uses a covariant
+exterior derivative and a curvature with a quadratic connection term.
+
 \section{Applications to Gravity}
+
+Gravity can also be written geometrically using connections and curvature. In
+ordinary differential geometry, the Levi-Civita connection defines covariant
+derivatives compatible with the metric and torsion-free condition. Its curvature
+is the Riemann tensor.
+
+In first-order formulations of gravity, one uses a coframe \(e^a\) and a spin
+connection \(\omega^{ab}\). The torsion two-form is
+\[
+    T^a=de^a+\omega^a{}_b\wedge e^b,
+\]
+and the curvature two-form is
+\[
+    R^{ab}=d\omega^{ab}+\omega^a{}_c\wedge\omega^{cb}.
+\]
+The Bianchi identities become
+\[
+    DT^a=R^a{}_b\wedge e^b,
+\]
+and
+\[
+    DR^{ab}=0.
+\]
+
+These formulas show that gauge theory and gravity share a geometric language:
+connections, curvature, covariant derivatives, Bianchi identities, and boundary
+terms. The physical interpretation differs, but the mathematical pattern is the
+same.
+
+\begin{summarybox}
+Differential forms package many field-theory structures into compact geometric
+form. Electromagnetism is \(F=dA\), Yang--Mills theory is
+\(F=dA+gA\wedge A\), Bianchi identities are curvature identities, and Stokes'
+theorem explains why boundary terms are unavoidable in variational principles
+and charge constructions.
+\end{summarybox}
