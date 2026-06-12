@@ -1,39 +1,45 @@
 \section{Models, Assumptions, Equations, and Interpretation}
 
-An equation is never the whole theory by itself. A field equation becomes a
-physical model only after one specifies the field, the domain, the assumptions,
-the interpretation of the variables, and the class of allowed solutions.
+A field equation is not a theory by itself. It becomes physics only after we say
+what the field represents, what assumptions were made, what domain is being
+studied, what boundary or initial data are allowed, and which quantities are
+observable. Without that surrounding interpretation, an equation is only a
+formal object.
 
-For instance, the wave equation
-\[
-    \frac{\partial^2 \phi}{\partial t^2}
-    -
-    c^2 \Delta \phi
-    =
-    0
-\]
-may describe small vibrations of a string, sound waves in an idealized medium,
-or a simple relativistic scalar field after a change of notation. The same
-formal equation can therefore represent different physics. The interpretation
-comes from what \(\phi\) means, what \(c\) means, what the domain is, and what
-approximations led to the equation.
+The same mathematical equation may occur in different physical settings. The
+wave equation may describe a vibrating string, sound in an idealized medium, a
+small perturbation of a field around equilibrium, or a massless relativistic
+scalar field. The equation alone does not tell us which one is meant. The model
+does.
 
-Throughout these notes, a model will be read through four layers:
+This is why the notes repeatedly move between four layers:
 \[
-\text{assumptions}
-\longrightarrow
-\text{mathematical variables}
-\longrightarrow
-\text{field equations}
-\longrightarrow
-\text{physical interpretation}.
+    \text{assumptions}
+    \longrightarrow
+    \text{fields}
+    \longrightarrow
+    \text{equations}
+    \longrightarrow
+    \text{interpretation}.
 \]
-This order matters. If the assumptions are changed, the same equation may no
-longer be appropriate. If the interpretation is changed, the same symbols may
-refer to different observables.
+The order is important. Assumptions decide what is ignored. Fields decide what
+kind of data the model assigns to spacetime. Equations decide how that data is
+constrained and evolves. Interpretation tells us what the solutions mean.
+
+A useful example is electromagnetism. One can write Maxwell's equations as four
+vector equations, or more compactly as equations for the tensor \(F_{\mu\nu}\),
+or geometrically as equations for a two-form. These are not three different
+physical theories. They are three ways of organizing the same model. However,
+once the potential \(A_\mu\) is introduced, gauge freedom appears. Then one must
+understand the difference between a change of physical field and a change of
+description.
 
 \begin{summarybox}
-The goal is not only to manipulate field equations. The goal is to understand
-what each equation says, what it ignores, which quantities it conserves, and
-which physical questions it can answer.
+The goal of these notes is not only to manipulate equations. The goal is to read
+a field theory as a model: what it assumes, what its variables mean, how its
+equations work, what it conserves, and what questions it can answer.
 \end{summarybox}
+
+A technically correct calculation can still be physically empty if the symbols
+are not interpreted. Conversely, a clear physical idea needs formalism when it is
+to become precise. The course is about learning to move in both directions.
