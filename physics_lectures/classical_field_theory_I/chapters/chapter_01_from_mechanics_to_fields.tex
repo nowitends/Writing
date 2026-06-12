@@ -2,14 +2,417 @@
 
 \begin{remarkbox}
 This chapter explains how the finite-dimensional language of classical
-mechanics becomes the infinite-dimensional language of fields.
+mechanics becomes the infinite-dimensional language of fields. The main idea is
+simple but profound: a field is not one coordinate depending on time, but a
+continuous family of coordinates, one for each point of space.
 \end{remarkbox}
 
 \section{Generalized Coordinates in Classical Mechanics}
+
+Classical mechanics begins with the motion of bodies. In its most elementary
+form, one describes a particle by its position as a function of time,
+\[
+    \vect{x}(t) = (x^1(t),x^2(t),x^3(t)).
+\]
+This description is already a function: the position is assigned to every time
+at which the motion is considered. However, the number of independent
+configuration variables at each time is finite. A single particle in three
+spatial dimensions has three coordinates. A system of \(N\) particles has
+\(3N\) coordinates.
+
+The language of generalized coordinates abstracts away from the particular
+choice of Cartesian coordinates. Instead of writing all particle positions
+explicitly, one introduces coordinates
+\[
+    q^1(t),q^2(t),\ldots,q^n(t),
+\]
+where \(n\) is the number of degrees of freedom of the mechanical system. These
+coordinates may be distances, angles, normal mode amplitudes, or any other
+variables that describe the configuration of the system.
+
+The important point is that the configuration at a fixed time is represented by
+a point
+\[
+    q(t) = (q^1(t),\ldots,q^n(t))
+\]
+in an \(n\)-dimensional configuration space. The motion of the system is then a
+curve in this configuration space.
+
+\begin{definitionbox}
+The \emph{configuration space} of a mechanical system is the space of all
+possible instantaneous configurations of the system. If the system has
+\(n\) generalized coordinates, a configuration is represented locally by a point
+\((q^1,\ldots,q^n)\).
+\end{definitionbox}
+
+In the Lagrangian formulation, the dynamics is encoded in a Lagrangian
+\[
+    L(q,\dot q,t),
+\]
+where \(\dot q^i=dq^i/dt\). The action is the functional
+\[
+    S[q] = \int_{t_1}^{t_2} L(q(t),\dot q(t),t)\,dt.
+\]
+The physical trajectories are selected by the variational principle
+\[
+    \delta S = 0,
+\]
+for variations of the path that keep the endpoints fixed. This gives the
+Euler--Lagrange equations
+\[
+    \frac{d}{dt}\left(\frac{\partial L}{\partial \dot q^i}\right)
+    - \frac{\partial L}{\partial q^i}=0,
+    \qquad i=1,\ldots,n.
+\]
+
+This structure will reappear almost unchanged in field theory. The difference
+is that the finite list of coordinates \(q^i(t)\) will be replaced by fields
+such as \(\phi(t,\vect{x})\). The ordinary derivative with respect to time will
+be supplemented by spatial derivatives, and the ordinary Lagrangian \(L\) will
+be replaced by a Lagrangian density \(\mathcal{L}\).
+
 \section{Systems with Finitely Many Degrees of Freedom}
+
+A system has finitely many degrees of freedom when its instantaneous state can
+be described by finitely many independent numbers. A double pendulum, a finite
+chain of masses and springs, a rigid body, or a finite electrical circuit are
+examples of such systems.
+
+For a system of \(N\) coupled oscillators arranged in a line, one may introduce
+coordinates
+\[
+    q_1(t),q_2(t),\ldots,q_N(t),
+\]
+where \(q_i(t)\) is the displacement of the \(i\)-th oscillator from equilibrium.
+A typical Lagrangian has the form
+\[
+    L = \sum_{i=1}^{N} \frac{m}{2}\dot q_i^2
+        - \sum_{i=1}^{N} \frac{k}{2}(q_{i+1}-q_i)^2,
+\]
+with suitable boundary conventions. The first term describes kinetic energy;
+the second describes elastic energy stored in relative displacements.
+
+This example already contains the seed of field theory. The label \(i\) tells us
+where the oscillator is located in the chain. If the oscillators are separated
+by a distance \(a\), the position of the \(i\)-th oscillator is
+\[
+    x_i = i a.
+\]
+The coordinate \(q_i(t)\) may therefore be viewed as the value of a discrete
+field at the lattice point \(x_i\):
+\[
+    q_i(t) \approx \phi(t,x_i).
+\]
+
+\begin{examplebox}
+A finite chain of masses is not yet a field theory, because it has only
+finitely many degrees of freedom. Nevertheless, it is the most useful bridge to
+field theory: it shows how a spatially distributed system may be described by
+one dynamical variable at each position.
+\end{examplebox}
+
+The equations of motion of a finite chain are ordinary differential equations.
+For example, away from the endpoints one obtains equations of the schematic
+form
+\[
+    m\ddot q_i = k(q_{i+1}-2q_i+q_{i-1}).
+\]
+The expression on the right-hand side is a discrete second derivative. This is
+why the continuum limit of such a system naturally produces partial
+differential equations.
+
 \section{The Continuum Limit}
+
+The continuum limit is the passage from a very large number of discrete degrees
+of freedom to a field with continuously many degrees of freedom. The basic idea
+is to let the spacing \(a\) between neighbouring points become small while the
+number of points becomes large.
+
+For the chain of oscillators, we introduce a field \(\phi(t,x)\) such that
+\[
+    q_i(t) \approx \phi(t,x_i),
+    \qquad x_i = ia.
+\]
+Then the finite difference
+\[
+    \frac{q_{i+1}-q_i}{a}
+\]
+approximates the spatial derivative
+\[
+    \partial_x \phi(t,x).
+\]
+Similarly,
+\[
+    \frac{q_{i+1}-2q_i+q_{i-1}}{a^2}
+\]
+approximates the second spatial derivative
+\[
+    \partial_x^2 \phi(t,x).
+\]
+Thus an equation of motion involving nearest-neighbour couplings becomes, in an
+appropriate limit, a differential equation for \(\phi(t,x)\).
+
+The passage from sums to integrals is equally important. A discrete sum over
+oscillators becomes an integral over space:
+\[
+    \sum_i a\, f(x_i) \longrightarrow \int f(x)\,dx.
+\]
+In mechanics, the action has the form
+\[
+    S[q] = \int L\,dt.
+\]
+In field theory, the action has the form
+\[
+    S[\phi] = \int \mathcal{L}(\phi,\partial_t\phi,\partial_x\phi,t,x)\,dt\,dx.
+\]
+In higher dimensions this becomes
+\[
+    S[\phi] = \int \mathcal{L}(\phi,\partial_\mu\phi,x)\,d^{d+1}x,
+\]
+where \(d\) is the number of spatial dimensions and \(d+1\) is the dimension of
+spacetime.
+
+\begin{remarkbox}
+The continuum limit is not merely the replacement of sums by integrals. It also
+changes the type of mathematics. Finite-dimensional configuration spaces are
+replaced by spaces of functions, and ordinary differential equations are
+replaced by partial differential equations.
+\end{remarkbox}
+
+A simple example is the wave equation. Starting from a chain of coupled
+oscillators and taking the continuum limit, one obtains an equation of the form
+\[
+    \partial_t^2 \phi - c^2\partial_x^2\phi = 0,
+\]
+where \(c\) is the wave speed. This equation does not describe the motion of one
+particle. It describes the evolution of a whole spatial profile.
+
 \section{Fields as Infinite-Dimensional Dynamical Systems}
+
+A field assigns a value to every point of space, or more generally to every
+point of spacetime. For a real scalar field in space, a configuration at time
+\(t\) is a function
+\[
+    \phi_t : \vect{x} \mapsto \phi(t,\vect{x}).
+\]
+Thus the instantaneous configuration is not a finite tuple of numbers, but an
+entire function.
+
+This is the precise sense in which field theory is infinite-dimensional. In a
+mechanical system with coordinates \(q^i(t)\), the index \(i\) runs over a finite
+set. In a field theory, the role of the index is partly played by the spatial
+point \(\vect{x}\), which ranges over a continuum.
+
+One may write the analogy informally as
+\[
+    q^i(t) \quad \longrightarrow \quad \phi(t,\vect{x}).
+\]
+The discrete label \(i\) is replaced by a continuous label \(\vect{x}\). The
+velocity \(\dot q^i(t)\) becomes the time derivative \(\partial_t\phi(t,\vect{x})\).
+The interaction between neighbouring degrees of freedom produces spatial
+derivatives such as \(\nabla\phi\) or \(\Delta\phi\).
+
+\begin{definitionbox}
+A \emph{classical field} is a classical dynamical variable whose value depends
+on spacetime position. A field configuration at a fixed time is a function on
+space, and the time evolution of the field is the evolution of that function.
+\end{definitionbox}
+
+The configuration space of a field theory is therefore a space of functions. For
+example, the configuration space of a real scalar field may be thought of as a
+suitable space of functions
+\[
+    \phi : \mathbb{R}^d \to \mathbb{R}.
+\]
+The word ``suitable'' hides analytic details: one may need fields to be smooth,
+square-integrable, rapidly decreasing, periodic, or compatible with boundary
+conditions. These details matter in advanced treatments. At this stage, the
+main point is conceptual: a field theory is a dynamical system whose
+configuration space is infinite-dimensional.
+
 \section{Examples: String, Membrane, Fluid Density, Electromagnetic Field}
+
+Field theory is not limited to fundamental particle physics. It appears whenever
+one studies quantities distributed over space and changing in time.
+
+\subsection*{Vibrating string}
+
+A vibrating string may be described by a displacement field
+\[
+    y(t,x),
+\]
+where \(x\) labels the position along the string and \(y\) is the transverse
+displacement. The field equation is, in the simplest approximation,
+\[
+    \partial_t^2 y - c^2\partial_x^2 y = 0.
+\]
+The physical meaning is direct: the acceleration of a small piece of the string
+is determined by the curvature of the string profile.
+
+\subsection*{Membrane}
+
+A membrane has two spatial labels. Its displacement may be written as
+\[
+    z(t,x,y),
+\]
+and its dynamics may involve equations such as
+\[
+    \partial_t^2 z - c^2(\partial_x^2 z + \partial_y^2 z)=0.
+\]
+The field now depends on time and two spatial coordinates.
+
+\subsection*{Fluid density}
+
+A fluid may be described by fields such as mass density \(\rho(t,\vect{x})\),
+velocity \(\vect{v}(t,\vect{x})\), and pressure \(p(t,\vect{x})\). These fields
+are not optional decorations; they are the natural variables because a fluid has
+properties at each point in space.
+
+The continuity equation
+\[
+    \partial_t \rho + \nabla\cdot(\rho\vect{v}) = 0
+\]
+expresses local conservation of mass. It says that density changes in a region
+when mass flows into or out of that region.
+
+\subsection*{Electromagnetic field}
+
+Electromagnetism is the central example of a fundamental classical field theory.
+The electric and magnetic fields
+\[
+    \vect{E}(t,\vect{x}), \qquad \vect{B}(t,\vect{x})
+\]
+assign vectors to every point of space and time. Maxwell's equations determine
+how these fields are produced by charges and currents and how they propagate.
+
+In relativistic notation, the electromagnetic field is described by the
+antisymmetric field strength tensor \(F_{\mu\nu}\), or equivalently by a gauge
+potential \(A_\mu\). This course will return to electromagnetism as the first
+major example of a relativistic gauge field theory.
+
+\begin{examplebox}
+The same mathematical pattern appears in very different physical systems:
+strings, membranes, fluids, elastic media, electromagnetic fields, and gauge
+fields. The details differ, but the structural idea is the same: the dynamical
+variables are functions on space or spacetime.
+\end{examplebox}
+
 \section{Initial Data and Boundary Data}
+
+A field equation usually has many solutions. To select a particular solution,
+one must specify appropriate data. For evolution equations, the most common data
+are initial data: the field and enough time derivatives at an initial time.
+
+For the wave equation
+\[
+    \partial_t^2\phi - c^2\Delta\phi = 0,
+\]
+one typically specifies
+\[
+    \phi(0,\vect{x}) = f(\vect{x}),
+    \qquad
+    \partial_t\phi(0,\vect{x}) = g(\vect{x}).
+\]
+The first function gives the initial profile. The second gives the initial
+velocity profile. Together they determine the later evolution, under suitable
+conditions.
+
+Boundary data are also essential when the spatial domain has a boundary. For a
+field on an interval \([0,L]\), one may impose fixed endpoint conditions
+\[
+    \phi(t,0)=0,
+    \qquad
+    \phi(t,L)=0,
+\]
+or periodic boundary conditions
+\[
+    \phi(t,0)=\phi(t,L).
+\]
+Different boundary conditions describe different physical systems and lead to
+different spectra of allowed modes.
+
+\begin{remarkbox}
+Initial conditions select a history from many possible histories. Boundary
+conditions define the physical problem itself: they say what kind of system the
+field lives on and how it interacts with the edge of its domain.
+\end{remarkbox}
+
+Boundary terms will become especially important in the variational principle.
+When deriving field equations from an action, integrations by parts produce
+terms on the boundary. A variational principle is well-defined only when those
+terms vanish or are cancelled by appropriate boundary contributions.
+
 \section{Locality and Causality}
+
+Most classical field theories used in physics are local. Locality means that the
+equations of motion at a point involve the field and finitely many of its
+derivatives at that same point, not the values of the field everywhere else.
+For example, the wave equation
+\[
+    \partial_t^2\phi - c^2\Delta\phi = 0
+\]
+is local because it relates derivatives of \(\phi\) at the same spacetime point.
+
+A nonlocal equation would involve expressions such as
+\[
+    \int K(\vect{x},\vect{y})\phi(t,\vect{y})\,d^d y,
+\]
+where the value of the equation at \(\vect{x}\) depends directly on field values
+at many other points \(\vect{y}\). Nonlocal models exist and can be useful, but
+locality is the organizing principle of standard classical field theory.
+
+\begin{definitionbox}
+A field equation is \emph{local} if the equation at a spacetime point depends
+only on the values of the fields and a finite number of their derivatives at
+that same point.
+\end{definitionbox}
+
+In relativistic theories, locality is closely connected with causality. Signals
+and disturbances should not propagate faster than light. The causal structure of
+Minkowski spacetime divides directions into timelike, lightlike, and spacelike.
+A relativistic field equation should respect this structure.
+
+The wave equation illustrates the idea. If a disturbance is created at one
+point, it propagates with finite speed. In relativistic theories this speed is
+bounded by the speed of light. This requirement is one reason why relativistic
+field theories are naturally formulated on spacetime rather than on space alone.
+
 \section{What Makes a Theory a Field Theory?}
+
+A theory is a field theory when its fundamental dynamical variables are fields
+and its equations determine how those fields vary over space and time. The
+following features are typical.
+
+\begin{enumerate}
+    \item The configuration at a fixed time is a function, or a collection of
+    functions, on space.
+    \item The action is usually an integral of a Lagrangian density over
+    spacetime.
+    \item The equations of motion are usually partial differential equations.
+    \item The theory has local degrees of freedom, meaning that different
+    regions of space can carry different field values.
+    \item Boundary conditions and initial data are part of the mathematical and
+    physical specification of the problem.
+\end{enumerate}
+
+The transition from mechanics to field theory may therefore be summarized as
+\[
+    \text{finite coordinates } q^i(t)
+    \quad \longrightarrow \quad
+    \text{fields } \phi^A(t,\vect{x}),
+\]
+where \(A\) labels the type or component of the field. For example, a scalar
+field has one component, a vector field has several components, and a gauge
+field carries spacetime and possibly internal indices.
+
+\begin{remarkbox}
+The slogan ``a field is infinitely many coupled oscillators'' is useful but not
+complete. It captures the continuum of degrees of freedom, but a full field
+theory also includes locality, boundary conditions, symmetries, conservation
+laws, and often relativistic spacetime structure.
+\end{remarkbox}
+
+This chapter has introduced the conceptual bridge from mechanics to fields. The
+next chapter develops the mathematical language needed to work with fields:
+indices, tensors, derivatives, differential forms, variations, distributions,
+and spacetime notation.
