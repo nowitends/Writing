@@ -1,15 +1,589 @@
 \chapter{Gauge Fields and Yang--Mills Theory}
 
+\begin{remarkbox}
+Yang--Mills theory is the non-Abelian generalization of electromagnetism. The
+main new feature is that the gauge field itself carries charge and therefore
+interacts with itself. Mathematically, the electromagnetic potential is replaced
+by a Lie-algebra-valued connection, and the field strength becomes its curvature.
+\end{remarkbox}
+
 \section{From Electromagnetism to Non-Abelian Gauge Fields}
+
+Electromagnetism is a gauge theory with gauge group \(U(1)\). Its gauge
+potential is a one-form
+\[
+    A=A_\mu dx^\mu,
+\]
+and its field strength is
+\[
+    F=dA.
+\]
+In components,
+\[
+    F_{\mu\nu}=\partial_\mu A_\nu-\partial_\nu A_\mu.
+\]
+Because \(U(1)\) is Abelian, there is no commutator term.
+
+Yang--Mills theory starts from the same idea but replaces \(U(1)\) by a general
+Lie group \(G\), such as \(SU(2)\) or \(SU(3)\). The gauge potential is no longer
+an ordinary real-valued one-form. It is a Lie-algebra-valued one-form,
+\[
+    A=A_\mu dx^\mu,
+    \qquad
+    A_\mu=A_\mu^a T_a,
+\]
+where \(T_a\) are generators of the Lie algebra \(\mathfrak{g}\) of \(G\).
+
+In this chapter we use an anti-Hermitian generator convention,
+\[
+    [T_a,T_b]=f_{ab}{}^c T_c,
+\]
+with real structure constants \(f_{ab}{}^c\). With this convention, the gauge
+coupling appears in the covariant derivative as
+\[
+    D_\mu=\partial_\mu+gA_\mu.
+\]
+Other texts often use Hermitian generators and write factors of \(i\). The
+physics is the same, but signs and factors of \(i\) move between definitions.
+
+\begin{definitionbox}
+A \emph{Yang--Mills field} is a gauge field whose potential takes values in a
+non-Abelian Lie algebra. Its field strength contains both derivative terms and a
+commutator term.
+\end{definitionbox}
+
+The essential jump from electromagnetism to Yang--Mills theory is therefore
+\[
+    F=dA
+    \qquad\longrightarrow\qquad
+    F=dA+gA\wedge A.
+\]
+The second term is absent in Abelian electromagnetism and is responsible for the
+self-interaction of non-Abelian gauge fields.
+
 \section{Lie Groups and Lie Algebras: Minimal Toolkit}
+
+A Lie group is a group that is also a smooth manifold. Its elements can be
+multiplied and inverted smoothly. A Lie algebra is the tangent space to the Lie
+group at the identity, equipped with a bracket. For a matrix group, the bracket
+is the commutator.
+
+Let \(G\) be a Lie group and \(\mathfrak{g}\) its Lie algebra. A basis of
+\(\mathfrak{g}\) will be denoted by \(T_a\). The Lie bracket is
+\[
+    [T_a,T_b]=f_{ab}{}^cT_c.
+\]
+The constants \(f_{ab}{}^c\) are the structure constants. They are antisymmetric
+in the lower indices:
+\[
+    f_{ab}{}^c=-f_{ba}{}^c.
+\]
+They also satisfy the Jacobi identity,
+\[
+    [T_a,[T_b,T_c]]+[T_b,[T_c,T_a]]+[T_c,[T_a,T_b]]=0.
+\]
+In components this gives
+\[
+    f_{ab}{}^d f_{dc}{}^e
+    +f_{bc}{}^d f_{da}{}^e
+    +f_{ca}{}^d f_{db}{}^e=0.
+\]
+
+\begin{examplebox}
+For \(SU(2)\), the Lie algebra is three-dimensional and the structure constants
+are proportional to the Levi-Civita symbol:
+\[
+    f_{ab}{}^c=\epsilon_{ab}{}^c
+\]
+in a standard normalization. This is why \(SU(2)\) gauge theory has three gauge
+potentials \(A_\mu^1,A_\mu^2,A_\mu^3\).
+\end{examplebox}
+
+Yang--Mills theory also requires an invariant inner product on the Lie algebra.
+For matrix groups this is often built from a trace. We write schematically
+\[
+    \langle X,Y\rangle=-\operatorname{tr}(XY)
+\]
+for anti-Hermitian matrices, up to a conventional normalization. The invariance
+condition is
+\[
+    \langle [Z,X],Y\rangle+\langle X,[Z,Y]\rangle=0.
+\]
+This property allows us to build gauge-invariant actions from expressions such
+as \(\langle F_{\mu\nu},F^{\mu\nu}\rangle\).
+
 \section{Gauge Connection}
+
+The gauge potential of Yang--Mills theory is best understood as a connection.
+In coordinates it is written
+\[
+    A_\mu=A_\mu^aT_a.
+\]
+The role of a connection is to define a covariant derivative for fields that
+transform under the gauge group.
+
+Suppose a matter field \(\psi\) takes values in a representation space of
+\(G\). The gauge covariant derivative is
+\[
+    D_\mu\psi=\partial_\mu\psi+gA_\mu\psi,
+\]
+where \(A_\mu\) acts on \(\psi\) through the chosen representation. The ordinary
+derivative \(\partial_\mu\psi\) does not transform covariantly under local gauge
+transformations. The connection term corrects this failure.
+
+Under a local gauge transformation
+\[
+    U(x)\in G,
+\]
+the matter field transforms as
+\[
+    \psi\longrightarrow \psi'=U\psi.
+\]
+We demand that the covariant derivative transform in the same way:
+\[
+    D'_\mu\psi'=U D_\mu\psi.
+\]
+This requirement determines the transformation law of the connection:
+\[
+    A'_\mu=U A_\mu U^{-1}-\frac{1}{g}(\partial_\mu U)U^{-1}.
+\]
+
+\begin{definitionbox}
+A \emph{gauge connection} is a Lie-algebra-valued one-form \(A=A_\mu dx^\mu\)
+whose transformation law makes the covariant derivative transform covariantly
+under local gauge transformations.
+\end{definitionbox}
+
+For an infinitesimal gauge transformation
+\[
+    U=1+\alpha+O(\alpha^2),
+    \qquad
+    \alpha=\alpha^aT_a,
+\]
+the connection transforms as
+\[
+    \delta_\alpha A_\mu=-\frac{1}{g}\partial_\mu\alpha+[\alpha,A_\mu].
+\]
+Equivalently,
+\[
+    \delta_\alpha A_\mu=-\frac{1}{g}D_\mu\alpha,
+\]
+where the covariant derivative in the adjoint representation is
+\[
+    D_\mu\alpha=\partial_\mu\alpha+g[A_\mu,\alpha].
+\]
+
 \section{Curvature / Field Strength}
+
+The Yang--Mills field strength is the curvature of the connection. In
+differential-form notation,
+\[
+    F=dA+gA\wedge A.
+\]
+In components,
+\[
+    F_{\mu\nu}=\partial_\mu A_\nu-\partial_\nu A_\mu+g[A_\mu,A_\nu].
+\]
+Writing
+\[
+    F_{\mu\nu}=F_{\mu\nu}^aT_a,
+\]
+we get
+\[
+    F_{\mu\nu}^a
+    =\partial_\mu A_\nu^a-\partial_\nu A_\mu^a
+     +g f_{bc}{}^a A_\mu^b A_\nu^c.
+\]
+The final term is the non-Abelian term. It is zero for an Abelian Lie algebra.
+
+The field strength also appears as the commutator of covariant derivatives. If
+\[
+    D_\mu=\partial_\mu+gA_\mu,
+\]
+then
+\[
+    [D_\mu,D_\nu]\psi=gF_{\mu\nu}\psi.
+\]
+Thus curvature measures the failure of covariant derivatives to commute.
+
+\begin{theorembox}
+The field strength of a Yang--Mills connection is
+\[
+    F_{\mu\nu}=\partial_\mu A_\nu-\partial_\nu A_\mu+g[A_\mu,A_\nu].
+\]
+The commutator term is responsible for the self-interaction of non-Abelian gauge
+fields.
+\end{theorembox}
+
+This equation should be compared with electromagnetism:
+\[
+    F_{\mu\nu}^{U(1)}=\partial_\mu A_\nu-\partial_\nu A_\mu.
+\]
+The difference is not cosmetic. In Yang--Mills theory, even the free-looking
+field strength is nonlinear in the potential.
+
 \section{Gauge Transformations}
+
+The finite gauge transformation of the connection is
+\[
+    A'_\mu=U A_\mu U^{-1}-\frac{1}{g}(\partial_\mu U)U^{-1}.
+\]
+The field strength transforms covariantly:
+\[
+    F'_{\mu\nu}=U F_{\mu\nu} U^{-1}.
+\]
+This is the non-Abelian analogue of gauge invariance. Notice the difference:
+in electromagnetism the field strength itself is gauge invariant, while in
+Yang--Mills theory it is gauge covariant.
+
+A trace or invariant inner product of two field strengths is gauge invariant.
+Indeed,
+\[
+    \operatorname{tr}(F'_{\mu\nu}F'^{\mu\nu})
+    =\operatorname{tr}(UF_{\mu\nu}U^{-1}UF^{\mu\nu}U^{-1})
+    =\operatorname{tr}(F_{\mu\nu}F^{\mu\nu}).
+\]
+This is why the Yang--Mills action is built from a trace or invariant inner
+product.
+
+\begin{remarkbox}
+In a non-Abelian theory, the potential \(A_\mu\) is gauge-dependent, and the
+field strength \(F_{\mu\nu}\) is gauge-covariant rather than gauge-invariant.
+Gauge-invariant observables must be built by contracting group indices in an
+invariant way or by using nonlocal objects such as Wilson loops.
+\end{remarkbox}
+
+An infinitesimal gauge transformation gives
+\[
+    \delta_\alpha F_{\mu\nu}=[\alpha,F_{\mu\nu}].
+\]
+Thus \(F_{\mu\nu}\) rotates in the adjoint representation of the gauge group.
+
 \section{Covariant Derivative}
+
+The covariant derivative depends on the representation of the field it acts on.
+For a matter field \(\psi\) in a representation \(R\),
+\[
+    D_\mu\psi=\partial_\mu\psi+gA_\mu^a R(T_a)\psi.
+\]
+For a Lie-algebra-valued field \(X=X^aT_a\), such as \(F_{\mu\nu}\), the
+covariant derivative is taken in the adjoint representation:
+\[
+    D_\mu X=\partial_\mu X+g[A_\mu,X].
+\]
+In components,
+\[
+    (D_\mu X)^a=\partial_\mu X^a+g f_{bc}{}^a A_\mu^b X^c.
+\]
+
+The purpose of the covariant derivative is not only to preserve notation. It
+ensures that equations transform homogeneously under local gauge transformations.
+For example, the Yang--Mills equation will have the covariant form
+\[
+    D_\mu F^{\mu\nu}=J^\nu.
+\]
+Both sides transform in the adjoint representation.
+
+\begin{definitionbox}
+The adjoint covariant derivative of a Lie-algebra-valued field \(X\) is
+\[
+    D_\mu X=\partial_\mu X+g[A_\mu,X].
+\]
+It replaces the ordinary derivative whenever the object being differentiated
+carries non-Abelian gauge charge.
+\end{definitionbox}
+
+In Abelian theory, the commutator vanishes and the adjoint covariant derivative
+reduces to the ordinary derivative. This is another way to see why Maxwell
+theory is structurally simpler than Yang--Mills theory.
+
 \section{Yang--Mills Action}
+
+The Yang--Mills Lagrangian density is
+\[
+    \mathcal{L}_{\mathrm{YM}}
+    =-\frac{1}{4}\langle F_{\mu\nu},F^{\mu\nu}\rangle.
+\]
+In a component normalization where
+\[
+    \langle T_a,T_b\rangle=\delta_{ab},
+\]
+this becomes
+\[
+    \mathcal{L}_{\mathrm{YM}}
+    =-\frac{1}{4}F_{\mu\nu}^aF^{a\mu\nu}.
+\]
+The action is
+\[
+    S_{\mathrm{YM}}[A]
+    =-\frac{1}{4}\int d^{d+1}x\,F_{\mu\nu}^aF^{a\mu\nu}.
+\]
+
+The action is gauge invariant because the field strength transforms
+covariantly and the inner product on the Lie algebra is invariant. It is also
+Lorentz invariant because all spacetime indices are contracted.
+
+\begin{definitionbox}
+The \emph{Yang--Mills action} is
+\[
+    S_{\mathrm{YM}}[A]
+    =-\frac{1}{4}\int d^{d+1}x\,F_{\mu\nu}^aF^{a\mu\nu}.
+\]
+It is the natural non-Abelian generalization of the Maxwell action.
+\end{definitionbox}
+
+Expanding the field strength shows that the Yang--Mills action contains terms
+quadratic, cubic, and quartic in \(A_\mu\). Schematically,
+\[
+    F^2\sim (\partial A)^2+g(\partial A)A^2+g^2A^4.
+\]
+Thus non-Abelian gauge fields self-interact even without matter.
+
 \section{Yang--Mills Equations}
+
+Varying the Yang--Mills action gives the Yang--Mills field equations. The
+variation of the curvature is
+\[
+    \delta F_{\mu\nu}=D_\mu\delta A_\nu-D_\nu\delta A_\mu.
+\]
+Using antisymmetry of \(F^{\mu\nu}\), the variation of the action is
+\[
+    \delta S_{\mathrm{YM}}
+    =-\frac{1}{2}\int d^{d+1}x\,\langle F^{\mu\nu},\delta F_{\mu\nu}\rangle
+    =-\int d^{d+1}x\,\langle F^{\mu\nu},D_\mu\delta A_\nu\rangle.
+\]
+After integrating by parts covariantly and discarding the boundary term, one
+obtains
+\[
+    \delta S_{\mathrm{YM}}
+    =\int d^{d+1}x\,\langle D_\mu F^{\mu\nu},\delta A_\nu\rangle.
+\]
+Therefore the vacuum Yang--Mills equation is
+\[
+    D_\mu F^{\mu\nu}=0.
+\]
+In components,
+\[
+    (D_\mu F^{\mu\nu})^a
+    =\partial_\mu F^{a\mu\nu}
+     +g f_{bc}{}^a A_\mu^b F^{c\mu\nu}=0.
+\]
+
+With matter, the equation becomes
+\[
+    D_\mu F^{\mu\nu}=J^\nu,
+\]
+where \(J^\nu\) is a Lie-algebra-valued matter current. Consistency requires a
+covariant conservation law,
+\[
+    D_\nu J^\nu=0,
+\]
+rather than the ordinary conservation law \(\partial_\nu J^\nu=0\).
+
+\begin{theorembox}
+The source-free Yang--Mills equation is
+\[
+    D_\mu F^{\mu\nu}=0.
+\]
+It is nonlinear because both \(D_\mu\) and \(F_{\mu\nu}\) depend on the gauge
+potential \(A_\mu\).
+\end{theorembox}
+
+This equation is the non-Abelian analogue of the source-free Maxwell equation
+\[
+    \partial_\mu F^{\mu\nu}=0.
+\]
+The ordinary derivative has been replaced by the gauge covariant derivative.
+
 \section{Bianchi Identity}
+
+The Yang--Mills field strength satisfies the covariant Bianchi identity
+\[
+    D_{[\lambda}F_{\mu\nu]}=0.
+\]
+Equivalently,
+\[
+    D_\lambda F_{\mu\nu}
+    +D_\mu F_{\nu\lambda}
+    +D_\nu F_{\lambda\mu}=0.
+\]
+In differential-form notation, this is
+\[
+    DF=0,
+\]
+where \(D\) is the exterior covariant derivative.
+
+This identity follows from the definition of curvature and the Jacobi identity
+for covariant derivatives. Since
+\[
+    [D_\mu,D_\nu]=gF_{\mu\nu},
+\]
+the Jacobi identity
+\[
+    [D_\lambda,[D_\mu,D_\nu]]
+    +[D_\mu,[D_\nu,D_\lambda]]
+    +[D_\nu,[D_\lambda,D_\mu]]=0
+\]
+leads directly to the Bianchi identity.
+
+\begin{remarkbox}
+The Bianchi identity is not an equation of motion. It holds identically for any
+connection because the field strength is a curvature. The Yang--Mills equation
+comes from varying the action; the Bianchi identity comes from geometry.
+\end{remarkbox}
+
+For an Abelian gauge field, \(D\) reduces to \(d\), and the Bianchi identity
+becomes
+\[
+    dF=0,
+\]
+which is the homogeneous Maxwell equation.
+
 \section{Self-Interaction of Gauge Fields}
+
+The most important physical difference between Abelian and non-Abelian gauge
+fields is self-interaction. In Maxwell theory, the field strength is linear in
+\(A_\mu\). Therefore the free Maxwell action is quadratic in \(A_\mu\), and the
+vacuum equations are linear.
+
+In Yang--Mills theory,
+\[
+    F_{\mu\nu}=\partial_\mu A_\nu-\partial_\nu A_\mu+g[A_\mu,A_\nu].
+\]
+The commutator term makes the field strength nonlinear in the gauge potential.
+Consequently, the action contains interaction terms even without matter.
+Schematically,
+\[
+    \mathcal{L}_{\mathrm{YM}}
+    \sim (\partial A)^2+g(\partial A)A^2+g^2A^4.
+\]
+The cubic and quartic terms describe gauge-field self-interactions.
+
+\begin{examplebox}
+Gluons in quantum chromodynamics are quanta of an \(SU(3)\) Yang--Mills field.
+Unlike photons in Abelian electromagnetism, gluons carry non-Abelian color
+charge. This is the quantum version of the classical fact that Yang--Mills gauge
+fields interact with themselves.
+\end{examplebox}
+
+Classically, self-interaction means that Yang--Mills waves do not simply pass
+through one another by linear superposition. The field equations are nonlinear,
+and the gauge field acts as a source for itself.
+
 \section{Energy-Momentum Tensor of Yang--Mills Fields}
+
+The Yang--Mills stress-energy tensor is the natural non-Abelian generalization
+of the electromagnetic one:
+\[
+    T^{\mu\nu}
+    =-\langle F^{\mu\rho},F^\nu{}_{\rho}\rangle
+     +\frac{1}{4}\eta^{\mu\nu}\langle F_{\rho\sigma},F^{\rho\sigma}\rangle.
+\]
+In component notation with \(\langle T_a,T_b\rangle=\delta_{ab}\),
+\[
+    T^{\mu\nu}
+    =-F^{a\mu\rho}F^{a\nu}{}_{\rho}
+     +\frac{1}{4}\eta^{\mu\nu}F_{\rho\sigma}^aF^{a\rho\sigma}.
+\]
+In vacuum, on shell,
+\[
+    \partial_\mu T^{\mu\nu}=0.
+\]
+This is ordinary spacetime energy-momentum conservation, not a gauge-covariant
+conservation law, because \(T^{\mu\nu}\) is gauge invariant and has no free Lie
+algebra index.
+
+The energy density is positive for compact gauge groups with positive invariant
+inner product. In analogy with electromagnetism, one may decompose the field
+strength into non-Abelian electric and magnetic fields,
+\[
+    E_i^a=F_{0i}^a,
+\]
+and
+\[
+    B_i^a=\frac{1}{2}\epsilon_{ijk}F_{jk}^a
+\]
+up to sign conventions. Then the energy density has the schematic form
+\[
+    \mathcal{E}=\frac{1}{2}\left(E_i^aE_i^a+B_i^aB_i^a\right).
+\]
+
+\begin{definitionbox}
+The Yang--Mills stress-energy tensor is gauge invariant and measures the energy,
+momentum, and stresses carried by the non-Abelian gauge field. It is quadratic in
+\(F_{\mu\nu}\), but because \(F_{\mu\nu}\) itself is nonlinear in \(A_\mu\), it
+contains nonlinear gauge-field interactions.
+\end{definitionbox}
+
+This tensor is the source that a Yang--Mills field would contribute to the
+Einstein equations if coupled to gravity.
+
 \section{Classical Meaning of Non-Abelian Charge}
+
+In electromagnetism, charge is a single conserved number associated with a
+global \(U(1)\) symmetry. In a non-Abelian gauge theory, charge takes values in a
+Lie algebra or in a representation of the gauge group. It has components,
+\[
+    Q=Q^aT_a.
+\]
+These components do not represent independent Abelian charges. They rotate into
+one another under gauge transformations.
+
+Matter currents in Yang--Mills theory are Lie-algebra-valued:
+\[
+    J^\mu=J^{a\mu}T_a.
+\]
+Their conservation law is covariant:
+\[
+    D_\mu J^\mu=0.
+\]
+This means that non-Abelian charge is transported with parallel transport in the
+internal gauge space. Ordinary derivatives are not sufficient because the
+internal frame itself can vary from point to point.
+
+\begin{remarkbox}
+A non-Abelian charge is not just a list of separately conserved numbers. It is a
+geometric object in internal space whose components depend on the choice of gauge
+frame. Gauge-covariant conservation replaces ordinary componentwise conservation.
+\end{remarkbox}
+
+This is the classical seed of a major quantum distinction. In non-Abelian gauge
+theories, the gauge bosons themselves carry the charge to which they couple.
+This is why the gauge field participates directly in the dynamics of its own
+charge distribution.
+
 \section{Comparison: Abelian vs Non-Abelian Theory}
+
+The difference between Maxwell theory and Yang--Mills theory can be summarized
+as follows.
+
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+Feature & Abelian \(U(1)\) & Non-Abelian Yang--Mills \\
+\midrule
+Gauge group & commutative & noncommutative \\
+Potential & real-valued \(A_\mu\) & Lie-algebra-valued \(A_\mu^aT_a\) \\
+Field strength & \(\partial_\mu A_\nu-\partial_\nu A_\mu\) & \(\partial_\mu A_\nu-\partial_\nu A_\mu+g[A_\mu,A_\nu]\) \\
+Gauge transformation of \(F\) & invariant & covariant \\
+Equation of motion & \(\partial_\mu F^{\mu\nu}=J^\nu\) & \(D_\mu F^{\mu\nu}=J^\nu\) \\
+Gauge-field self-interaction & absent & present \\
+Charge conservation & \(\partial_\mu J^\mu=0\) & \(D_\mu J^\mu=0\) \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The Abelian theory is linear in the absence of sources. The non-Abelian theory
+is nonlinear even in vacuum. This single difference has enormous consequences:
+self-interactions, nontrivial classical solutions, confinement in quantum
+chromodynamics, and a much richer gauge structure.
+
+\begin{summarybox}
+Yang--Mills theory generalizes electromagnetism by replacing the Abelian
+\(U(1)\) gauge group with a non-Abelian Lie group \(G\). The gauge potential is a
+Lie-algebra-valued connection, the field strength is
+\(F=dA+gA\wedge A\), and the action is
+\(-\frac{1}{4}\int F_{\mu\nu}^aF^{a\mu\nu}\,d^{d+1}x\). The field equations are
+\(D_\mu F^{\mu\nu}=J^\nu\), and the non-Abelian commutator term makes the gauge
+field self-interacting.
+\end{summarybox}
