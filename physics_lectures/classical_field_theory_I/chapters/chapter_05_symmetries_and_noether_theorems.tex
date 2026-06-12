@@ -1,13 +1,591 @@
 \chapter{Symmetries and Noether's Theorems}
 
+\begin{remarkbox}
+Symmetry is not only a visual property of a solution. In field theory, symmetry
+is a structural property of the action. Noether's theorems explain why this
+matters: continuous global symmetries lead to conserved currents, while local
+symmetries reveal redundancies and identities among the field equations.
+\end{remarkbox}
+
 \section{Continuous Symmetries in Field Theory}
+
+A symmetry is a transformation that preserves the physical content of a theory.
+In the action formulation, the most useful definition is that a transformation
+is a symmetry if it leaves the action invariant, possibly up to a boundary term.
+For fields \(\phi^A(x)\), a continuous transformation can be written as
+\[
+    \phi^A(x) \longrightarrow \phi'^A(x)
+    = \phi^A(x)+\varepsilon\Delta\phi^A(x)+O(\varepsilon^2),
+\]
+where \(\varepsilon\) is a small parameter and \(\Delta\phi^A\) is the
+infinitesimal change of the field.
+
+The transformation is continuous because it is connected to the identity: when
+\(\varepsilon=0\), nothing changes. This is the situation covered by Noether's
+first theorem. Discrete symmetries, such as parity or charge conjugation, are
+important, but they do not directly produce conserved currents in the same way.
+
+For a local Lagrangian density
+\[
+    \mathcal{L}=\mathcal{L}(\phi^A,\partial_\mu\phi^A,x),
+\]
+the action is
+\[
+    S[\phi]=\int_\Omega \mathcal{L}\,d^{d+1}x.
+\]
+A continuous symmetry is present if the transformation changes the Lagrangian
+density by at most a total derivative:
+\[
+    \delta\mathcal{L}=\partial_\mu K^\mu.
+\]
+Then the action changes only by a boundary contribution,
+\[
+    \delta S=\int_{\partial\Omega}K^\mu n_\mu\,d\Sigma.
+\]
+Under suitable boundary conditions, this is zero.
+
+\begin{definitionbox}
+A \emph{continuous variational symmetry} is an infinitesimal transformation of
+fields and possibly coordinates for which the Lagrangian density changes by a
+total derivative:
+\[
+    \delta\mathcal{L}=\partial_\mu K^\mu.
+\]
+\end{definitionbox}
+
+The phrase ``up to a total derivative'' is essential. Many physically important
+symmetries leave the action invariant without leaving the Lagrangian density
+strictly unchanged. The boundary term may be irrelevant for local equations of
+motion, but it can be important for charges and boundary physics.
+
 \section{Internal and Spacetime Symmetries}
+
+Symmetries in field theory come in two broad types. Internal symmetries act on
+the field values without moving spacetime points. Spacetime symmetries act on
+the coordinates and therefore also on the arguments of the fields.
+
+An internal symmetry has the schematic form
+\[
+    \phi^A(x)\longrightarrow \phi'^A(x)=R^A{}_B\phi^B(x),
+\]
+where \(R^A{}_B\) acts on field components. For example, a complex scalar field
+may have a global \(U(1)\) symmetry
+\[
+    \phi(x)\longrightarrow e^{i\alpha}\phi(x).
+\]
+The spacetime point \(x\) is not changed. Only the internal phase of the field
+is changed.
+
+A spacetime symmetry changes the coordinates:
+\[
+    x^\mu\longrightarrow x'^\mu=x^\mu+\varepsilon\xi^\mu(x).
+\]
+Translations, rotations, Lorentz boosts, and scale transformations are examples.
+For a scalar field, the transformed field satisfies
+\[
+    \phi'(x')=\phi(x).
+\]
+If one compares fields at the same coordinate value \(x\), the infinitesimal
+change contains the derivative of the field:
+\[
+    \delta\phi(x)=-\varepsilon\xi^\mu\partial_\mu\phi(x).
+\]
+
+\begin{examplebox}
+A spacetime translation by a constant vector \(a^\mu\) sends
+\[
+    x^\mu\longrightarrow x'^\mu=x^\mu+a^\mu.
+\]
+For a scalar field, this corresponds to the infinitesimal field variation
+\[
+    \delta\phi=-a^\mu\partial_\mu\phi.
+\]
+The associated conserved quantities are energy and momentum.
+\end{examplebox}
+
+Internal and spacetime symmetries may coexist. The Standard Model, for example,
+uses spacetime Poincare symmetry together with internal gauge symmetries. Even
+in purely classical field theory, the distinction is crucial: internal
+symmetries usually lead to charges such as electric charge, while spacetime
+symmetries lead to energy, momentum, and angular momentum.
+
 \section{Noether's First Theorem}
+
+Noether's first theorem states that every continuous global variational symmetry
+of the action gives a conserved current. We now derive the basic formula for
+fields \(\phi^A\) with a first-order Lagrangian density
+\[
+    \mathcal{L}=\mathcal{L}(\phi^A,\partial_\mu\phi^A,x).
+\]
+
+The variation of the Lagrangian density is
+\[
+    \delta\mathcal{L}
+    =\frac{\partial\mathcal{L}}{\partial\phi^A}\delta\phi^A
+    +\frac{\partial\mathcal{L}}{\partial(\partial_\mu\phi^A)}
+      \partial_\mu\delta\phi^A.
+\]
+Integrating the second term by parts at the density level gives
+\[
+\begin{aligned}
+    \delta\mathcal{L}
+    ={}&\left[
+    \frac{\partial\mathcal{L}}{\partial\phi^A}
+    -\partial_\mu\left(
+        \frac{\partial\mathcal{L}}{\partial(\partial_\mu\phi^A)}
+    \right)\right]\delta\phi^A \\
+    &+\partial_\mu\left(
+        \frac{\partial\mathcal{L}}{\partial(\partial_\mu\phi^A)}
+        \delta\phi^A
+    \right).
+\end{aligned}
+\]
+The expression in square brackets is the Euler--Lagrange derivative. Denote it
+by
+\[
+    E_A(\mathcal{L})
+    =\frac{\partial\mathcal{L}}{\partial\phi^A}
+    -\partial_\mu\left(
+        \frac{\partial\mathcal{L}}{\partial(\partial_\mu\phi^A)}
+    \right).
+\]
+Then
+\[
+    \delta\mathcal{L}
+    =E_A(\mathcal{L})\delta\phi^A
+    +\partial_\mu\Theta^\mu(\phi,\delta\phi),
+\]
+where
+\[
+    \Theta^\mu(\phi,\delta\phi)
+    =\frac{\partial\mathcal{L}}{\partial(\partial_\mu\phi^A)}\delta\phi^A
+\]
+is the symplectic-potential current density for this simple first-order theory.
+
+If the transformation is a symmetry, then
+\[
+    \delta\mathcal{L}=\partial_\mu K^\mu.
+\]
+Therefore
+\[
+    E_A(\mathcal{L})\delta\phi^A
+    +\partial_\mu\Theta^\mu
+    =\partial_\mu K^\mu.
+\]
+Rearranging gives
+\[
+    \partial_\mu J^\mu=-E_A(\mathcal{L})\delta\phi^A,
+\]
+where
+\[
+    J^\mu=\Theta^\mu-K^\mu.
+\]
+On shell, \(E_A(\mathcal{L})=0\), so
+\[
+    \partial_\mu J^\mu=0.
+\]
+
+\begin{theorembox}
+\textbf{Noether's first theorem.} For every continuous global variational
+symmetry of the action, there exists a current \(J^\mu\) whose divergence
+vanishes on shell:
+\[
+    \partial_\mu J^\mu=0.
+\]
+The associated charge is conserved under suitable boundary conditions.
+\end{theorembox}
+
+This theorem is one of the central structural results of theoretical physics.
+It turns symmetry into conservation. Time translation symmetry gives energy
+conservation. Space translation symmetry gives momentum conservation. Rotational
+symmetry gives angular momentum conservation. Internal phase symmetry gives
+charge conservation.
+
 \section{Conserved Currents and Conserved Charges}
+
+A conserved current is a vector field \(J^\mu\) satisfying
+\[
+    \partial_\mu J^\mu=0.
+\]
+Writing \(J^\mu=(\rho,\vect{J})\), this equation becomes
+\[
+    \partial_t\rho+\nabla\cdot\vect{J}=0.
+\]
+This is a local conservation law. It says that the density \(\rho\) changes in a
+region only because the current \(\vect{J}\) flows through the boundary of that
+region.
+
+The associated charge on a constant-time slice \(\Sigma_t\) is
+\[
+    Q(t)=\int_{\Sigma_t}J^0(t,\vect{x})\,d^d x.
+\]
+Its time derivative is
+\[
+    \frac{dQ}{dt}=\int_{\Sigma_t}\partial_tJ^0\,d^d x
+    =-\int_{\Sigma_t}\partial_iJ^i\,d^d x.
+\]
+Using the divergence theorem,
+\[
+    \frac{dQ}{dt}=-\int_{\partial\Sigma_t}J^i n_i\,d\Sigma.
+\]
+Thus the charge is conserved if the flux through the boundary vanishes:
+\[
+    \frac{dQ}{dt}=0.
+\]
+
+\begin{definitionbox}
+A \emph{conserved charge} is the spatial integral of the time component of a
+conserved current:
+\[
+    Q=\int_{\Sigma_t}J^0\,d^d x.
+\]
+It is time-independent if the current has no net flux through the boundary of
+space.
+\end{definitionbox}
+
+The distinction between local and global conservation is important. The
+equation \(\partial_\mu J^\mu=0\) is local. It holds point by point. The
+conservation of \(Q\) is global and depends on boundary conditions. A locally
+conserved current may still produce a time-dependent charge in a finite region
+if current flows across the boundary.
+
 \section{Energy, Momentum, and Angular Momentum}
+
+Spacetime translations lead to energy and momentum. If the Lagrangian density
+has no explicit dependence on spacetime coordinates, then it is invariant under
+translations
+\[
+    x^\mu\longrightarrow x^\mu+a^\mu.
+\]
+The corresponding conserved object is the stress-energy tensor
+\(T^\mu{}_{\nu}\), satisfying
+\[
+    \partial_\mu T^\mu{}_{\nu}=0
+\]
+on shell.
+
+The conserved four-momentum is
+\[
+    P_\nu=\int_{\Sigma_t}T^0{}_{\nu}\,d^d x.
+\]
+The component associated with time translations is the energy. The components
+associated with spatial translations are the momenta.
+
+Rotations and Lorentz boosts lead to angular momentum and boost charges. The
+corresponding current has the schematic form
+\[
+    M^{\mu\rho\sigma}
+    =x^\rho T^{\mu\sigma}-x^\sigma T^{\mu\rho}+S^{\mu\rho\sigma},
+\]
+where \(S^{\mu\rho\sigma}\) is a possible spin contribution. For scalar fields,
+the spin term is absent. For vector and spinor fields, it is generally present.
+
+The conservation law is
+\[
+    \partial_\mu M^{\mu\rho\sigma}=0.
+\]
+The associated charges are
+\[
+    J^{\rho\sigma}=\int_{\Sigma_t}M^{0\rho\sigma}\,d^d x.
+\]
+Spatial components describe ordinary angular momentum; mixed time-space
+components describe Lorentz boost generators.
+
+\begin{remarkbox}
+Energy, momentum, and angular momentum are not separate miracles. They are the
+Noether charges of spacetime symmetries: time translations, space translations,
+rotations, and Lorentz boosts.
+\end{remarkbox}
+
+This perspective is more powerful than memorizing conserved quantities one by
+one. Once the action and the symmetry are known, Noether's theorem tells us what
+kind of conservation law to expect.
+
 \section{Stress-Energy Tensor: Canonical Form}
+
+For a collection of fields \(\phi^A\) with Lagrangian density
+\(\mathcal{L}(\phi^A,\partial_\mu\phi^A)\) and no explicit coordinate dependence,
+the canonical stress-energy tensor is
+\[
+    T^\mu{}_{\nu}
+    =\frac{\partial\mathcal{L}}{\partial(\partial_\mu\phi^A)}
+      \partial_\nu\phi^A
+    -\delta^\mu{}_{\nu}\mathcal{L}.
+\]
+With the sign conventions used here, this tensor satisfies
+\[
+    \partial_\mu T^\mu{}_{\nu}=0
+\]
+on shell.
+
+Let us check the structure. The first term is built from the momentum conjugate
+to \(\partial_\mu\phi^A\) and the derivative \(\partial_\nu\phi^A\). The second
+term subtracts the Lagrangian density when \(\mu=\nu\). This is the direct field
+theory analogue of the mechanical relation between energy, momenta, velocities,
+and the Lagrangian.
+
+For a real scalar field
+\[
+    \mathcal{L}=\frac{1}{2}\partial_\rho\phi\partial^\rho\phi-V(\phi),
+\]
+one has
+\[
+    \frac{\partial\mathcal{L}}{\partial(\partial_\mu\phi)}=\partial^\mu\phi.
+\]
+Therefore
+\[
+    T^\mu{}_{\nu}=\partial^\mu\phi\,\partial_\nu\phi
+    -\delta^\mu{}_{\nu}\mathcal{L}.
+\]
+With both indices raised, this is commonly written as
+\[
+    T^{\mu\nu}=\partial^\mu\phi\,\partial^\nu\phi-\eta^{\mu\nu}\mathcal{L}.
+\]
+
+\begin{examplebox}
+For the real scalar field, the energy density is
+\[
+    T^{00}=\frac{1}{2}(\partial_t\phi)^2
+    +\frac{1}{2}|\nabla\phi|^2+V(\phi).
+\]
+This is positive for potentials bounded below, as expected for a stable scalar
+field theory.
+\end{examplebox}
+
+The canonical stress-energy tensor is not always symmetric, and it is not always
+gauge invariant. This is not a contradiction. It means that the canonical tensor
+is not always the final or most physical stress-energy tensor.
+
 \section{Improvement Terms}
+
+A conserved current is not unique. If \(J^\mu\) is conserved, then
+\[
+    J'^\mu=J^\mu+\partial_\nu B^{[\mu\nu]}
+\]
+is also conserved, because
+\[
+    \partial_\mu\partial_\nu B^{[\mu\nu]}=0
+\]
+for antisymmetric \(B^{[\mu\nu]}=-B^{[\nu\mu]}\). The added term is called an
+improvement term.
+
+The same phenomenon occurs for the stress-energy tensor. One may add a total
+divergence that does not change the local conservation law but changes the
+local expression for the tensor:
+\[
+    T'^{\mu\nu}=T^{\mu\nu}+\partial_\rho B^{\rho\mu\nu},
+\]
+with suitable antisymmetry in the indices of \(B\). Under appropriate boundary
+conditions, the integrated charges remain the same.
+
+Improvement terms are not merely cosmetic. They can make the stress-energy
+tensor symmetric, gauge invariant, or better adapted to coupling with gravity.
+For example, the Belinfante--Rosenfeld procedure combines the canonical
+stress-energy tensor with spin-current terms to produce a symmetric tensor.
+
+\begin{remarkbox}
+Noether currents are defined up to improvement terms. Therefore one should not
+attach too much physical meaning to a particular local representative of a
+current without specifying boundary conditions and the class of allowed
+improvements.
+\end{remarkbox}
+
+This ambiguity is a preview of a deeper issue: conserved charges are often more
+robust than local current representatives. In gauge theory and gravity, the
+boundary part of a current can become the most important part of the charge.
+
 \section{Noether's Second Theorem and Gauge Symmetries}
+
+Noether's first theorem concerns global symmetries depending on finitely many
+constant parameters. Noether's second theorem concerns local symmetries depending
+on arbitrary functions. Gauge symmetries are the main example.
+
+A simple gauge transformation in electromagnetism is
+\[
+    A_\mu\longrightarrow A_\mu+\partial_\mu\lambda,
+\]
+where \(\lambda(x)\) is an arbitrary function. The field strength
+\[
+    F_{\mu\nu}=\partial_\mu A_\nu-\partial_\nu A_\mu
+\]
+is unchanged:
+\[
+    \delta F_{\mu\nu}=0.
+\]
+Therefore the Maxwell action is gauge invariant.
+
+The key point is that \(\lambda(x)\) is arbitrary. A gauge symmetry is not an
+ordinary physical transformation from one distinct state to another. It is a
+redundancy in the description. Two gauge-related configurations represent the
+same physical field configuration.
+
+Noether's second theorem says that local gauge symmetries imply identities among
+the Euler--Lagrange equations. Schematically, if
+\[
+    \delta_\lambda\phi^A=R^A(\lambda,\partial\lambda,\ldots)
+\]
+is a gauge symmetry with arbitrary \(\lambda(x)\), then the field equations
+cannot be independent. There must be a differential identity among them.
+
+In electromagnetism, the field equation is
+\[
+    \partial_\mu F^{\mu\nu}=J^\nu.
+\]
+Taking \(\partial_\nu\) of both sides gives
+\[
+    \partial_\nu\partial_\mu F^{\mu\nu}=\partial_\nu J^\nu.
+\]
+The left-hand side vanishes identically because \(F^{\mu\nu}\) is antisymmetric
+and partial derivatives commute. Thus
+\[
+    \partial_\nu J^\nu=0.
+\]
+This expresses charge conservation as a consistency condition of the gauge field
+equation.
+
+\begin{theorembox}
+\textbf{Noether's second theorem.} Local gauge symmetries imply differential
+identities among the Euler--Lagrange equations. These identities reflect the
+redundancy of the description and are not ordinary conservation laws of the
+same type as those produced by global symmetries.
+\end{theorembox}
+
+This distinction is essential. A global symmetry usually produces a physical
+charge. A gauge symmetry usually signals that some variables are redundant and
+that constraints are present.
+
 \section{Global vs Local Symmetries}
+
+A global symmetry depends on constant parameters. For example,
+\[
+    \phi\longrightarrow e^{i\alpha}\phi
+\]
+with constant \(\alpha\) is a global \(U(1)\) symmetry. Noether's first theorem
+then gives a conserved current and a conserved charge.
+
+A local symmetry depends on arbitrary functions. For example,
+\[
+    \phi(x)\longrightarrow e^{i\alpha(x)}\phi(x)
+\]
+with arbitrary \(\alpha(x)\) is a local phase transformation. To make such a
+symmetry compatible with derivatives, one introduces a gauge field and replaces
+ordinary derivatives by covariant derivatives:
+\[
+    \partial_\mu\phi\longrightarrow D_\mu\phi.
+\]
+
+The relation between global and local symmetries is subtle. A global symmetry is
+often associated with a conserved charge. A local symmetry is usually a
+redundancy. However, boundary conditions can convert part of a gauge symmetry
+into a genuine physical transformation at the boundary. This is why gauge
+charges and asymptotic symmetries play such an important role in modern field
+theory and gravity.
+
+\begin{definitionbox}
+A \emph{global symmetry} has parameters that are constant over spacetime. A
+\emph{local symmetry} has parameters that are arbitrary functions of spacetime.
+Global symmetries usually generate conserved charges; local symmetries usually
+express redundancies and constraints.
+\end{definitionbox}
+
+The safest rule is this: global symmetries act on physical states, while gauge
+symmetries identify different descriptions of the same physical state. Boundary
+conditions and charges can complicate this rule, but it is the correct starting
+point.
+
 \section{Physical Meaning of Conservation Laws}
+
+A conservation law is not merely the statement that a number does not change.
+The local equation
+\[
+    \partial_\mu J^\mu=0
+\]
+expresses a balance between density and flux. In nonrelativistic notation,
+\[
+    \partial_t\rho+\nabla\cdot\vect{J}=0.
+\]
+This says that charge cannot disappear at a point; it can only flow from one
+place to another.
+
+Energy conservation means that energy can move, transform between forms, or flow
+through boundaries, but it is not locally created or destroyed if the relevant
+symmetry assumptions hold. Momentum conservation expresses spatial homogeneity.
+Angular momentum conservation expresses rotational symmetry. Electric charge
+conservation expresses global phase symmetry.
+
+The assumptions matter. If a Lagrangian has explicit time dependence, energy
+need not be conserved. If space translation symmetry is broken by an external
+background, momentum need not be conserved. If charge flows through the boundary
+of the region under study, the charge inside that region need not be constant.
+
+\begin{remarkbox}
+Noether's theorem does not say that every quantity is conserved. It says that a
+specific conservation law follows from a specific continuous symmetry of the
+action, under specified boundary conditions.
+\end{remarkbox}
+
+This is why the action formulation is so economical. Instead of deriving every
+conservation law separately from the equations of motion, one studies the
+symmetries of the action and lets Noether's theorem organize the results.
+
 \section{Examples and Common Misinterpretations}
+
+\subsection*{Complex scalar field and phase symmetry}
+
+For a complex scalar field with Lagrangian density
+\[
+    \mathcal{L}=\partial_\mu\phi^*\partial^\mu\phi-m^2\phi^*\phi,
+\]
+there is a global \(U(1)\) symmetry
+\[
+    \phi\longrightarrow e^{i\alpha}\phi,
+    \qquad
+    \phi^*\longrightarrow e^{-i\alpha}\phi^*.
+\]
+The infinitesimal variations are
+\[
+    \delta\phi=i\alpha\phi,
+    \qquad
+    \delta\phi^*=-i\alpha\phi^*.
+\]
+The associated Noether current is, up to the conventional normalization,
+\[
+    J^\mu=i(\phi\partial^\mu\phi^*-\phi^*\partial^\mu\phi).
+\]
+On shell,
+\[
+    \partial_\mu J^\mu=0.
+\]
+This is the classical origin of charge conservation for a charged scalar field.
+
+\subsection*{Misinterpretation: every symmetry gives a new particle}
+
+Noether's theorem says that a continuous global symmetry gives a conserved
+current. It does not say that every symmetry directly gives a new particle. The
+relationship between symmetries and particles belongs to quantum field theory
+and depends on representation theory, spontaneous symmetry breaking, and the
+spectrum of the theory.
+
+\subsection*{Misinterpretation: gauge symmetry is an ordinary physical motion}
+
+Gauge symmetry is primarily a redundancy. Gauge-related configurations describe
+the same physical state. This is why gauge fixing is allowed and why gauge
+symmetries lead to constraints. Nevertheless, transformations that do not vanish
+at a boundary can generate physical charges. This is a boundary-sensitive
+refinement, not a contradiction.
+
+\subsection*{Misinterpretation: total derivatives never matter}
+
+Total derivatives do not change the bulk Euler--Lagrange equations under
+suitable assumptions. But they can change boundary terms, canonical structures,
+and charges. Therefore total derivatives are harmless only after the boundary
+problem has been specified.
+
+\begin{summarybox}
+Noether's first theorem turns continuous global symmetries into conserved
+currents and charges. Spacetime translations give energy and momentum; rotations
+and Lorentz transformations give angular momentum and boost charges; internal
+symmetries give internal charges. Noether's second theorem explains why local
+gauge symmetries imply identities and constraints rather than ordinary physical
+motions. Conservation laws are local balance equations plus boundary conditions.
+\end{summarybox}
