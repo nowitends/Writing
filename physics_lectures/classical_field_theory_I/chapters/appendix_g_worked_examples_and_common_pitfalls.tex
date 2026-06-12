@@ -1,0 +1,283 @@
+\chapter{Worked Examples and Common Pitfalls}
+
+\begin{remarkbox}
+This appendix is designed as a bridge between reading the notes and doing field
+theory independently. It collects worked calculations and common mistakes that
+recur throughout classical field theory.
+\end{remarkbox}
+
+\section{Worked Example: Scalar Field Equation from the Action}
+
+Consider the real scalar action
+\[
+    S[\phi]=\int d^{d+1}x\left(
+        \frac{1}{2}\partial_\mu\phi\partial^\mu\phi - V(\phi)
+    \right).
+\]
+The variation is
+\[
+    \delta S=\int d^{d+1}x\left(
+        \partial_\mu\phi\partial^\mu\delta\phi - V'(\phi)\delta\phi
+    \right).
+\]
+Integrating the first term by parts gives
+\[
+    \int d^{d+1}x\,\partial_\mu\phi\partial^\mu\delta\phi
+    =-\int d^{d+1}x\,\partial_\mu\partial^\mu\phi\,\delta\phi
+    +\text{boundary term}.
+\]
+If the boundary term vanishes, then
+\[
+    \delta S=-\int d^{d+1}x\,\left(\Box\phi+V'(\phi)\right)\delta\phi.
+\]
+Since \(\delta\phi\) is arbitrary in the bulk, the Euler--Lagrange equation is
+\[
+    \Box\phi+V'(\phi)=0.
+\]
+For
+\[
+    V(\phi)=\frac{1}{2}m^2\phi^2,
+\]
+this becomes
+\[
+    (\Box+m^2)\phi=0.
+\]
+
+\begin{remarkbox}
+Common mistake: forgetting the boundary term. The bulk equation follows only
+after the boundary term has been made harmless by boundary conditions, falloff
+conditions, or an additional boundary term in the action.
+\end{remarkbox}
+
+\section{Worked Example: Noether Current of a Complex Scalar Field}
+
+The free complex scalar field has Lagrangian density
+\[
+    \mathcal{L}=\partial_\mu\phi^*\partial^\mu\phi-m^2\phi^*\phi.
+\]
+It is invariant under the global phase transformation
+\[
+    \phi\longrightarrow e^{i\alpha}\phi,
+    \qquad
+    \phi^*\longrightarrow e^{-i\alpha}\phi^*.
+\]
+For infinitesimal \(\alpha\), remove the common parameter and write
+\[
+    \Delta\phi=i\phi,
+    \qquad
+    \Delta\phi^*=-i\phi^*.
+\]
+The derivatives of the Lagrangian are
+\[
+    \frac{\partial\mathcal{L}}{\partial(\partial_\mu\phi)}=\partial^\mu\phi^*,
+    \qquad
+    \frac{\partial\mathcal{L}}{\partial(\partial_\mu\phi^*)}=\partial^\mu\phi.
+\]
+Therefore the Noether current is
+\[
+\begin{aligned}
+    J^\mu
+    &=\partial^\mu\phi^*(i\phi)+\partial^\mu\phi(-i\phi^*) \\
+    &=i(\phi\partial^\mu\phi^*-\phi^*\partial^\mu\phi).
+\end{aligned}
+\]
+On shell,
+\[
+    \partial_\mu J^\mu=0.
+\]
+The corresponding charge is
+\[
+    Q=\int d^d x\,J^0.
+\]
+
+\begin{remarkbox}
+Common mistake: confusing a global phase symmetry with a gauge symmetry. A global
+symmetry has a constant parameter and usually gives a conserved Noether charge. A
+gauge symmetry has an arbitrary function as parameter and represents redundancy
+of description; its charges require more careful boundary analysis.
+\end{remarkbox}
+
+\section{Worked Example: Maxwell Equation from the Action}
+
+Start with
+\[
+    S[A]=\int d^4x\left(-\frac{1}{4}F_{\mu\nu}F^{\mu\nu}-J_\mu A^\mu\right),
+\]
+where
+\[
+    F_{\mu\nu}=\partial_\mu A_\nu-\partial_\nu A_\mu.
+\]
+The variation of the field strength is
+\[
+    \delta F_{\mu\nu}=\partial_\mu\delta A_\nu-\partial_\nu\delta A_\mu.
+\]
+Using antisymmetry of \(F^{\mu\nu}\),
+\[
+    \delta\left(-\frac{1}{4}F_{\mu\nu}F^{\mu\nu}\right)
+    =-F^{\mu\nu}\partial_\mu\delta A_\nu.
+\]
+Integrating by parts gives
+\[
+    \delta S=\int d^4x\left(\partial_\mu F^{\mu\nu}-J^\nu\right)\delta A_\nu
+    +\text{boundary term}.
+\]
+Thus the field equation is
+\[
+    \partial_\mu F^{\mu\nu}=J^\nu.
+\]
+
+Gauge invariance of the source term requires
+\[
+    \partial_\mu J^\mu=0.
+\]
+Indeed, under \(A_\mu\to A_\mu+\partial_\mu\chi\),
+\[
+    \delta S_{\mathrm{int}}
+    =-\int d^4x\,J^\mu\partial_\mu\chi
+    =\int d^4x\,\chi\partial_\mu J^\mu+\text{boundary term}.
+\]
+
+\begin{remarkbox}
+Common mistake: treating the potential \(A_\mu\) as directly observable. The
+field strength \(F_{\mu\nu}\) is gauge invariant in Abelian theory; the potential
+contains redundancy.
+\end{remarkbox}
+
+\section{Worked Example: Why the Dirac Equation Squares to Klein--Gordon}
+
+Let the free Dirac equation be
+\[
+    (i\gamma^\mu\partial_\mu-m)\psi=0.
+\]
+Apply the operator \((i\gamma^\nu\partial_\nu+m)\) from the left:
+\[
+    (i\gamma^\nu\partial_\nu+m)(i\gamma^\mu\partial_\mu-m)\psi=0.
+\]
+Expanding gives
+\[
+    -\gamma^\nu\gamma^\mu\partial_\nu\partial_\mu\psi-m^2\psi=0,
+\]
+because the cross terms cancel. Since \(\partial_\nu\partial_\mu\) is symmetric
+in \(\mu,\nu\), only the anticommutator part of \(\gamma^\nu\gamma^\mu\) matters:
+\[
+    \gamma^\nu\gamma^\mu\partial_\nu\partial_\mu
+    =\frac{1}{2}\{\gamma^\nu,\gamma^\mu\}\partial_\nu\partial_\mu
+    =\eta^{\nu\mu}\partial_\nu\partial_\mu
+    =\Box.
+\]
+Therefore
+\[
+    (\Box+m^2)\psi=0.
+\]
+Each component of a free Dirac spinor satisfies the Klein--Gordon equation, but
+the Dirac equation contains additional first-order spinor information.
+
+\begin{remarkbox}
+Common mistake: saying that the Dirac equation is simply the square root of the
+Klein--Gordon equation and stopping there. It is more than that: it also carries
+a spinor representation of the Lorentz group and a conserved positive Dirac
+current.
+\end{remarkbox}
+
+\section{Common Pitfall: Equation Without Model}
+
+An equation becomes a physical model only after its variables and assumptions are
+specified. The expression
+\[
+    \partial_t^2\phi-c^2\nabla^2\phi=0
+\]
+may describe a string, sound, a scalar perturbation, or an idealized relativistic
+wave. The formal equation alone does not tell us what \(\phi\) means, what
+\(c\) represents, or what boundary conditions are allowed.
+
+A safe reading checklist is:
+\begin{enumerate}
+    \item identify the field;
+    \item identify the domain;
+    \item identify the parameters and dimensions;
+    \item identify initial and boundary data;
+    \item identify the symmetries;
+    \item identify the conserved quantities;
+    \item identify what is gauge and what is physical.
+\end{enumerate}
+
+\section{Common Pitfall: Sign Conventions}
+
+Metric signature changes signs. Fourier conventions change signs. Gauge-coupling
+conventions change signs. Gamma-matrix conventions change signs. The same theory
+can look different in two books because the conventions differ.
+
+For these notes the default convention is
+\[
+    \eta_{\mu\nu}=\operatorname{diag}(+1,-1,-1,-1),
+    \qquad
+    \Box=\partial_t^2-\nabla^2.
+\]
+With this convention the Klein--Gordon equation is
+\[
+    (\Box+m^2)\phi=0.
+\]
+Before comparing formulas with another source, check the signature and Fourier
+convention first.
+
+\section{Common Pitfall: Local Conservation vs Conserved Charge}
+
+A local conservation law has the form
+\[
+    \partial_\mu J^\mu=0.
+\]
+In space-plus-time notation this is
+\[
+    \partial_t\rho+\nabla\cdot\vect{J}=0.
+\]
+The charge in a region \(R\) is
+\[
+    Q_R(t)=\int_R d^d x\,\rho(t,\vect{x}).
+\]
+Its time derivative is
+\[
+    \frac{dQ_R}{dt}=-\int_{\partial R}\vect{J}\cdot d\vect{S}.
+\]
+Thus a locally conserved current does not imply that the charge inside every
+finite region is constant. It implies that charge changes only by flux through
+the boundary. Total charge is conserved only when the boundary flux vanishes or
+when the region is all space with suitable falloff.
+
+\section{Common Pitfall: Gauge Choice vs Physics}
+
+A gauge condition is a choice of description, not an additional physical law. For
+example,
+\[
+    \partial_\mu A^\mu=0
+\]
+is the Lorenz gauge, while
+\[
+    \nabla\cdot\vect{A}=0
+\]
+is the Coulomb gauge. These conditions restrict the representative \(A_\mu\), not
+the physical electromagnetic field itself.
+
+Gauge-invariant or gauge-covariant quantities carry the physical content. In
+Abelian electromagnetism, \(F_{\mu\nu}\) is gauge invariant. In non-Abelian gauge
+theory, \(F_{\mu\nu}\) transforms covariantly, and gauge-invariant quantities are
+constructed by traces, invariant inner products, or suitable nonlocal objects.
+
+\section{Common Pitfall: Classical Spinor Field vs Fermion}
+
+The Dirac equation can be treated as a classical relativistic field equation, but
+fermions are quantum objects. The physical spin-statistics connection and
+anticommutation relations belong to quantum field theory. In a classical action
+formalism, spinor components are often treated as Grassmann-valued variables to
+prepare for quantization.
+
+The safe statement is this: the classical Dirac action, Lorentz covariance,
+current conservation, and gauge coupling can be studied classically. The full
+interpretation of the Dirac field as a fermion field is quantum.
+
+\begin{summarybox}
+Most technical errors in classical field theory come from a small number of
+sources: ignoring boundary terms, confusing global and gauge symmetries, changing
+sign conventions without noticing, mistaking gauge choices for physics, and
+forgetting that an equation is not a complete model until its variables,
+assumptions, and boundary data have been specified.
+\end{summarybox}
