@@ -1,32 +1,45 @@
 \section{How to Read a Field Equation}
 
-A field equation should be read locally first. A typical equation relates the
-field and its derivatives at a point. For example, an equation of the form
+A field equation should first be read as a local statement. It relates the value
+of a field and its derivatives at a point, or in an arbitrarily small
+neighborhood of that point. This locality is one of the defining ideas of field
+theory. What happens here is controlled by the field here and by how it changes
+nearby.
+
+For example, an equation such as
 \[
-    \partial_\mu \partial^\mu \phi + m^2 \phi = 0
+    (\Box+m^2)\phi=0
 \]
-states that the local curvature of the field configuration, in spacetime, is
-related to the local value of the field itself.
+is not merely a compact formula. It says that time variation, spatial variation,
+and the local value of the field balance one another. When \(m=0\), the equation
+has the character of wave propagation. When \(m\neq0\), the field also has a
+local restoring term. The parameter \(m\) therefore changes the physical behavior
+of solutions.
 
-Several questions should be asked whenever a new field equation appears.
-
+Whenever a new field equation appears, the following questions should be asked
+before doing calculations:
 \begin{enumerate}
-    \item What is the unknown field?
+    \item What is the unknown field, and what kind of object is it?
     \item What is the domain: space, spacetime, or a curved manifold?
-    \item Which derivatives appear, and what do they measure?
-    \item What constants or parameters occur, and what are their dimensions?
+    \item Which derivatives appear, and what local behavior do they measure?
+    \item What constants occur, and what are their dimensions?
     \item What initial or boundary data are needed?
     \item Does the equation come from an action principle?
-    \item Which symmetries and conservation laws does it have?
+    \item Which symmetries and conservation laws does the equation express?
+    \item Which quantities are gauge-invariant or physically observable?
 \end{enumerate}
 
-This habit prevents a common mistake: treating field equations as isolated
-formulas. In physics, an equation is a compressed statement about a model. It
-must be unpacked.
+This habit prevents a common mistake: treating equations as isolated formulas.
+In physics, an equation is compressed information about a model. It must be
+unpacked.
 
 \begin{examplebox}
-Maxwell's equations are not only four equations for \(\vect{E}\) and
-\(\vect{B}\). They also encode locality, charge conservation, gauge structure,
-propagation of electromagnetic waves, and the coupling between fields and
-sources.
+Maxwell's equations are not only equations for \(\vect{E}\) and \(\vect{B}\).
+They encode charge conservation, propagation of electromagnetic waves, gauge
+redundancy, local energy flow, and the coupling between fields and sources.
 \end{examplebox}
+
+A good field theorist does not only solve equations. They ask what the equation
+is allowed to mean. What has been idealized? What is held fixed? What counts as a
+source? Which transformations change the physical state, and which merely change
+the description? These questions are as important as the algebra.
