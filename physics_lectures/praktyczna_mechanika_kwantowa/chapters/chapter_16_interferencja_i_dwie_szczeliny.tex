@@ -1,10 +1,159 @@
 \chapter{Interferencja i doświadczenie z dwiema szczelinami}
 
+\begin{summarybox}
+Doświadczenie z dwiema szczelinami jest najkrótszą drogą do sedna mechaniki
+kwantowej. Nie sumujemy prawdopodobieństw, lecz amplitudy. Dopiero potem bierzemy
+moduł kwadratu. Z tego powodu pojawiają się prążki interferencyjne nawet wtedy,
+gdy cząstki docierają do ekranu pojedynczo. Ten rozdział porządkuje pojęcie
+superpozycji amplitud, model dwóch szczelin, wiele szczelin, obraz 2D i warunki,
+które niszczą interferencję.
+\end{summarybox}
+
 \section{Superpozycja amplitud, nie prawdopodobieństw}
+
+Najważniejsza zasada interferencji kwantowej brzmi: jeśli istnieje kilka nierozróżnialnych dróg prowadzących do tego samego zdarzenia, to sumujemy amplitudy, a nie prawdopodobieństwa. Dopiero po zsumowaniu amplitud liczymy moduł kwadratu.
+
+Jeżeli do punktu na ekranie prowadzą dwie amplitudy \(\psi_1\) i \(\psi_2\), to całkowita amplituda wynosi
+\begin{equation}
+    \psi=\psi_1+\psi_2.
+\end{equation}
+Prawdopodobieństwo jest proporcjonalne do
+\begin{equation}
+    |\psi|^2=|\psi_1+\psi_2|^2.
+\end{equation}
+Po rozwinięciu dostajemy
+\begin{equation}
+    |\psi|^2=|\psi_1|^2+|\psi_2|^2+\psi_1^*\psi_2+\psi_2^*\psi_1.
+\end{equation}
+Dwa ostatnie składniki są składnikami interferencyjnymi. To one odróżniają mechanikę kwantową od prostego dodawania klasycznych prawdopodobieństw.
+
+Jeśli zapisujemy amplitudy jako
+\begin{equation}
+    \psi_1=Ae^{i\phi_1},
+    \qquad
+    \psi_2=Ae^{i\phi_2},
+\end{equation}
+to
+\begin{equation}
+    |\psi_1+\psi_2|^2=2A^2\left[1+\cos(\phi_2-\phi_1)\right].
+\end{equation}
+Maksima i minima zależą od różnicy faz.
+
 \section{Dwie szczeliny jako model interferencji}
+
+W doświadczeniu z dwiema szczelinami fala pada na przesłonę z dwoma otworami. Za przesłoną amplituda w punkcie ekranu jest sumą wkładów od obu szczelin:
+\begin{equation}
+    \psi(P)=\psi_A(P)+\psi_B(P).
+\end{equation}
+Jeżeli odległości od szczelin do punktu \(P\) wynoszą \(r_A\) i \(r_B\), to w prostym modelu faza jest proporcjonalna do drogi:
+\begin{equation}
+    \psi_A\sim e^{ikr_A},
+    \qquad
+    \psi_B\sim e^{ikr_B}.
+\end{equation}
+Różnica faz wynosi
+\begin{equation}
+    \Delta\phi=k(r_B-r_A)=\frac{2\pi}{\lambda}(r_B-r_A).
+\end{equation}
+Maksima interferencyjne pojawiają się, gdy
+\begin{equation}
+    r_B-r_A=m\lambda,
+\end{equation}
+a minima, gdy
+\begin{equation}
+    r_B-r_A=\left(m+\frac{1}{2}\right)\lambda.
+\end{equation}
+
+W przybliżeniu dalekiego ekranu, dla szczelin odległych o \(d\), różnica dróg jest około
+\begin{equation}
+    \Delta r\approx d\sin\theta.
+\end{equation}
+Warunek maksimów ma wtedy postać
+\begin{equation}
+    d\sin\theta=m\lambda.
+\end{equation}
+
 \section{Pojedyncza szczelina jako granica}
+
+Pojedyncza szczelina też daje obraz falowy, ale nie ma dwóch oddzielnych dróg punktowych. Zamiast dwóch amplitud mamy ciągły rozkład amplitud po szerokości szczeliny. Obraz dyfrakcyjny pojedynczej szczeliny można traktować jako interferencję wkładów pochodzących z różnych punktów tej samej szczeliny.
+
+Dla szczeliny o szerokości \(a\) minima dyfrakcyjne pojawiają się w przybliżeniu wtedy, gdy
+\begin{equation}
+    a\sin\theta=m\lambda,
+    \qquad m=\pm1,\pm2,\ldots
+\end{equation}
+Dla dwóch szczelin obraz rzeczywisty jest iloczynem dwóch efektów: szerokiej obwiedni dyfrakcyjnej od pojedynczej szczeliny oraz drobniejszych prążków interferencyjnych od odległości między szczelinami.
+
 \section{Trzy szczeliny i więcej szczelin}
+
+Jeżeli mamy \(N\) szczelin, całkowita amplituda jest sumą \(N\) amplitud:
+\begin{equation}
+    \psi=\sum_{j=1}^N \psi_j.
+\end{equation}
+Dla jednakowych szczelin i regularnych odstępów fazy tworzą ciąg geometryczny. Wynikiem są znacznie ostrzejsze maksima niż w przypadku dwóch szczelin.
+
+Dla wielu szczelin zaczynamy przechodzić od prostego doświadczenia interferencyjnego do dyfrakcji na siatce. Warunek głównych maksimów pozostaje podobny:
+\begin{equation}
+    d\sin\theta=m\lambda,
+\end{equation}
+ale maksima stają się węższe i lepiej rozdzielone. To jest ta sama idea, która później pojawia się przy sieciach krystalicznych i przestrzeni odwrotnej.
+
 \section{Szczeliny punktowe w 2D}
+
+W modelu dwuwymiarowym można traktować szczeliny jako punktowe źródła fal. Jeśli szczeliny znajdują się w punktach \(\mathbf{r}_1\) i \(\mathbf{r}_2\), a punkt obserwacji to \(\mathbf{r}\), amplitudę można modelować jako
+\begin{equation}
+    \psi(\mathbf{r})=A_1e^{ik|\mathbf{r}-\mathbf{r}_1|}+A_2e^{ik|\mathbf{r}-\mathbf{r}_2|}.
+\end{equation}
+W bardziej realistycznym modelu w 2D pojawia się także czynnik zależny od odległości, ale dla zobaczenia prążków najważniejsza jest różnica faz.
+
+W Mathematice można zbudować prosty model:
+\begin{verbatim}
+r1 = {-d/2, 0};
+r2 = { d/2, 0};
+amp[x_, y_] := Exp[I k Norm[{x, y} - r1]] + Exp[I k Norm[{x, y} - r2]]
+prob[x_, y_] := Abs[amp[x, y]]^2
+DensityPlot[prob[x, y], {x, -5, 5}, {y, 0.1, 10}]
+\end{verbatim}
+Taki wykres pokazuje mapę intensywności, czyli \(|\psi(x,y)|^2\).
+
 \section{Prążki interferencyjne jako mapa \texorpdfstring{\(|\psi(x,y)|^2\)}{|psi(x,y)|^2}}
+
+Prążki interferencyjne nie są śladami klasycznych torów cząstek. Są mapą gęstości prawdopodobieństwa wykrycia cząstki na ekranie:
+\begin{equation}
+    P(x,y)\propto |\psi(x,y)|^2.
+\end{equation}
+Jasne prążki odpowiadają miejscom, gdzie amplitudy dodają się konstruktywnie. Ciemne prążki odpowiadają miejscom, gdzie amplitudy wygaszają się destrukcyjnie.
+
+Jeżeli cząstki wysyłamy pojedynczo, każde zdarzenie detekcji jest punktowe. Jednak po wielu zdarzeniach rozkład punktów zaczyna odtwarzać wzór \(|\psi|^2\). To jest jedno z najważniejszych przesłań doświadczenia: pojedyncza detekcja jest lokalna, ale statystyka wielu detekcji ujawnia falową amplitudę.
+
+\begin{summarybox}
+W doświadczeniu z dwiema szczelinami fala nie oznacza rozmytej kulki. Fala oznacza amplitudę prawdopodobieństwa, której moduł kwadratowy daje statystyczny rozkład wyników detekcji.
+\end{summarybox}
+
 \section{Co niszczy interferencję?}
+
+Interferencja wymaga nierozróżnialności dróg. Jeśli układ zawiera informację, przez którą szczelinę przeszła cząstka, składnik interferencyjny zanika. Może się to stać przez pomiar, oddziaływanie ze środowiskiem albo splątanie z detektorem.
+
+W prostym języku: jeśli mamy tylko alternatywy amplitudowe, sumujemy amplitudy. Jeśli mamy klasycznie rozróżnialne alternatywy z dostępną informacją o drodze, sumujemy prawdopodobieństwa:
+\begin{equation}
+    P=|\psi_1|^2+|\psi_2|^2.
+\end{equation}
+Brakuje wtedy wyrazów
+\begin{equation}
+    \psi_1^*\psi_2+\psi_2^*\psi_1,
+\end{equation}
+więc nie ma prążków interferencyjnych.
+
+To zjawisko jest blisko związane z dekoherencją. Środowisko może przechowywać informację o drodze nawet wtedy, gdy człowiek jej nie odczytuje. Interferencja zależy od fizycznej dostępności informacji, nie od psychologicznej wiedzy obserwatora.
+
 \section{Interpretacja: fala prawdopodobieństwa a pojedyncze zdarzenia}
+
+Doświadczenie z dwiema szczelinami zmusza do rozdzielenia dwóch poziomów opisu. Po pierwsze, funkcja falowa ewoluuje jak amplituda falowa i może interferować sama ze sobą. Po drugie, wynik detekcji pojedynczej cząstki jest lokalnym zdarzeniem.
+
+Nie należy mówić, że elektron jest małą kulką lecącą jedną szczeliną, jeśli eksperyment zachowuje interferencję. Nie należy też mówić, że elektron jest klasyczną falą rozlaną jako ładunek po całym ekranie. Poprawny opis kwantowy mówi o amplitudach, prawdopodobieństwach i zdarzeniach pomiarowych.
+
+Najkrótsze streszczenie brzmi: jeśli drogi są nierozróżnialne, dodają się amplitudy i pojawia się interferencja. Jeśli drogi są rozróżnialne, dodają się prawdopodobieństwa i interferencja znika.
+
+\begin{summarybox}
+Interferencja kwantowa jest konsekwencją superpozycji amplitud. Dwie szczeliny uczą, że prawdopodobieństwo nie jest podstawową wielkością dodawaną w pierwszym kroku. Najpierw dodają się amplitudy, a dopiero potem liczymy moduł kwadratu.
+\end{summarybox}
