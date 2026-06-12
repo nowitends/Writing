@@ -1,9 +1,275 @@
 \chapter{Notation and Conventions}
 
+\begin{remarkbox}
+This appendix collects the notational conventions used throughout the notes. It
+is not a substitute for the main text. Its purpose is to make signs, indices,
+Fourier conventions, differential-form notation, and gamma-matrix conventions
+explicit in one place.
+\end{remarkbox}
+
 \section{Metric Signatures}
+
+Throughout these notes, unless stated otherwise, flat Minkowski spacetime is
+written with the mostly-minus convention
+\[
+    \eta_{\mu\nu}=\operatorname{diag}(+1,-1,-1,-1).
+\]
+Thus the invariant interval is
+\[
+    ds^2=\eta_{\mu\nu}dx^\mu dx^\nu=dt^2-d\vect{x}^{\,2}.
+\]
+The square of a four-vector \(p^\mu=(E,\vect{p})\) is
+\[
+    p_\mu p^\mu=E^2-|\vect{p}|^2.
+\]
+For a massive relativistic excitation,
+\[
+    p_\mu p^\mu=m^2.
+\]
+
+Partial derivatives are denoted by
+\[
+    \partial_\mu=\frac{\partial}{\partial x^\mu}.
+\]
+With the mostly-minus metric,
+\[
+    \partial^0=\partial_0=\partial_t,
+    \qquad
+    \partial^i=-\partial_i.
+\]
+The d'Alembert operator is
+\[
+    \Box=\partial_\mu\partial^\mu=\partial_t^2-\nabla^2.
+\]
+
+\begin{definitionbox}
+The convention used in these notes is
+\[
+    \eta_{\mu\nu}=\operatorname{diag}(+---),
+    \qquad
+    \Box=\partial_t^2-\nabla^2.
+\]
+Changing signature changes several signs in field equations and actions.
+\end{definitionbox}
+
+Curved spacetime metrics are usually denoted by \(g_{\mu\nu}\). In that case,
+indices are raised and lowered with \(g^{\mu\nu}\) and \(g_{\mu\nu}\), and the
+volume density is \(\sqrt{|g|}\,d^{d+1}x\), where \(g=\det(g_{\mu\nu})\).
+
 \section{Index Conventions}
+
+Greek indices usually denote spacetime indices:
+\[
+    \mu,\nu,\rho,\sigma=0,1,2,3.
+\]
+Latin indices from the middle of the alphabet usually denote spatial indices:
+\[
+    i,j,k=1,2,3.
+\]
+Internal indices are often written as
+\[
+    a,b,c=1,\ldots,\dim\mathfrak{g}
+\]
+for a Lie algebra \(\mathfrak{g}\). Field-component labels may be written as
+\(A,B,C\).
+
+The Einstein summation convention is used: repeated upper-lower index pairs are
+summed over. For example,
+\[
+    A_\mu B^\mu=\sum_{\mu=0}^3 A_\mu B^\mu.
+\]
+Dummy indices may be renamed. Free indices must match on both sides of an
+equation. For instance,
+\[
+    \partial_\mu F^{\mu\nu}=J^\nu
+\]
+is an equation with one free index \(\nu\). The index \(\mu\) is summed.
+
+For Euclidean spatial vectors, bold notation is used:
+\[
+    \vect{x},\qquad \vect{E},\qquad \vect{B}.
+\]
+The Euclidean dot product is written
+\[
+    \vect{a}\cdot\vect{b}=a_i b_i.
+\]
+
 \section{Units and Dimensions}
+
+Most field-theory formulas are written in natural units,
+\[
+    c=\hbar=1.
+\]
+In these units, time and length have the same dimension, and mass, energy,
+frequency, and inverse length have the same dimension. For example,
+\[
+    [m]=[E]=[\omega]=[L^{-1}].
+\]
+
+The action is dimensionless in units \(\hbar=1\):
+\[
+    [S]=1.
+\]
+Therefore the Lagrangian density in \(D=d+1\) spacetime dimensions has mass
+dimension
+\[
+    [\mathcal{L}]=D.
+\]
+For a real scalar field with kinetic term
+\[
+    \frac{1}{2}\partial_\mu\phi\partial^\mu\phi,
+\]
+one obtains
+\[
+    [\phi]=\frac{D-2}{2}.
+\]
+In four spacetime dimensions, \([\phi]=1\).
+
+Dimensional analysis is not a decorative check. It is often the fastest way to
+find missing constants, wrong powers, or inconsistent interaction terms.
+
 \section{Fourier Transform Conventions}
+
+For spatial Fourier transforms, a common convention used in these notes is
+\[
+    f(\vect{x})=\int\frac{d^d k}{(2\pi)^d}\,\widetilde{f}(\vect{k})
+    e^{i\vect{k}\cdot\vect{x}},
+\]
+with inverse
+\[
+    \widetilde{f}(\vect{k})=\int d^d x\,f(\vect{x})e^{-i\vect{k}\cdot\vect{x}}.
+\]
+For spacetime plane waves, we often write
+\[
+    e^{-ik_\mu x^\mu}=e^{-i\omega t+i\vect{k}\cdot\vect{x}}.
+\]
+With the mostly-minus convention,
+\[
+    k_\mu x^\mu=\omega t-\vect{k}\cdot\vect{x}.
+\]
+
+For the Klein--Gordon equation,
+\[
+    (\Box+m^2)\phi=0,
+\]
+plane waves obey
+\[
+    \omega^2=|\vect{k}|^2+m^2.
+\]
+
+\begin{remarkbox}
+Fourier conventions vary from book to book. The placement of signs in the
+exponential and factors of \(2\pi\) must always be checked before comparing
+propagators or Green's functions across references.
+\end{remarkbox}
+
 \section{Levi-Civita Symbols and Tensors}
+
+The three-dimensional Levi-Civita symbol is denoted by \(\epsilon_{ijk}\), with
+\[
+    \epsilon_{123}=+1.
+\]
+It is antisymmetric in all indices. The cross product is
+\[
+    (\vect{a}\times\vect{b})_i=\epsilon_{ijk}a_jb_k.
+\]
+
+In four dimensions, the Levi-Civita symbol is chosen as
+\[
+    \epsilon^{0123}=+1
+\]
+unless stated otherwise. Care is required when lowering indices in Lorentzian
+signature. With the mostly-minus metric, signs may change when all indices are
+lowered.
+
+The dual electromagnetic field strength is
+\[
+    \widetilde{F}^{\mu\nu}=\frac{1}{2}\epsilon^{\mu\nu\rho\sigma}F_{\rho\sigma}.
+\]
+Useful Lorentz invariants are
+\[
+    F_{\mu\nu}F^{\mu\nu}=2(|\vect{B}|^2-|\vect{E}|^2),
+\]
+and, with the conventions of these notes,
+\[
+    F_{\mu\nu}\widetilde{F}^{\mu\nu}=-4\vect{E}\cdot\vect{B}.
+\]
+
 \section{Differential Form Conventions}
+
+A \(p\)-form is written as
+\[
+    \alpha=\frac{1}{p!}\alpha_{\mu_1\cdots\mu_p}
+    dx^{\mu_1}\wedge\cdots\wedge dx^{\mu_p}.
+\]
+The wedge product is antisymmetric:
+\[
+    dx^\mu\wedge dx^\nu=-dx^\nu\wedge dx^\mu.
+\]
+The exterior derivative satisfies
+\[
+    d^2=0.
+\]
+
+For electromagnetism,
+\[
+    A=A_\mu dx^\mu,
+    \qquad
+    F=dA.
+\]
+For non-Abelian gauge theory,
+\[
+    F=dA+gA\wedge A.
+\]
+The Abelian Bianchi identity is
+\[
+    dF=0,
+\]
+while the Yang--Mills Bianchi identity is
+\[
+    DF=0.
+\]
+
 \section{Gamma Matrix Conventions}
+
+Gamma matrices satisfy
+\[
+    \{\gamma^\mu,\gamma^\nu\}=2\eta^{\mu\nu}\mathbb{I}.
+\]
+With the mostly-minus convention,
+\[
+    (\gamma^0)^2=\mathbb{I},
+    \qquad
+    (\gamma^i)^2=-\mathbb{I}.
+\]
+The Dirac adjoint is
+\[
+    \bar\psi=\psi^\dagger\gamma^0.
+\]
+The free Dirac equation is
+\[
+    (i\gamma^\mu\partial_\mu-m)\psi=0.
+\]
+The Dirac current is
+\[
+    j^\mu=\bar\psi\gamma^\mu\psi.
+\]
+
+In four spacetime dimensions,
+\[
+    \gamma^5=i\gamma^0\gamma^1\gamma^2\gamma^3,
+\]
+and the chiral projectors are
+\[
+    P_L=\frac{1}{2}(\mathbb{I}-\gamma^5),
+    \qquad
+    P_R=\frac{1}{2}(\mathbb{I}+\gamma^5).
+\]
+
+\begin{summarybox}
+The global convention of these notes is mostly-minus signature, natural units,
+Einstein summation, \(\Box=\partial_t^2-\nabla^2\), and gamma matrices satisfying
+\(\{\gamma^\mu,\gamma^\nu\}=2\eta^{\mu\nu}\mathbb{I}\). Whenever comparing with a
+different reference, check metric signature, Fourier signs, gauge-coupling
+conventions, and gamma-matrix conventions first.
+\end{summarybox}
