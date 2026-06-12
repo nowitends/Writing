@@ -1,11 +1,428 @@
 \chapter{Complex Scalar Field and Internal Symmetry}
 
+\begin{remarkbox}
+A complex scalar field is the simplest field theory with a nontrivial internal
+symmetry. It can be understood as two real scalar fields, but its complex form
+makes a global \(U(1)\) phase symmetry manifest. Noether's theorem then gives a
+conserved current and charge. By promoting the phase symmetry from global to
+local, one is naturally led to the gauge covariant derivative and to coupling
+with electromagnetism.
+\end{remarkbox}
+
 \section{Complex Field as Two Real Fields}
+
+A complex scalar field is a function
+\[
+    \phi : M \to \mathbb{C}.
+\]
+It may be decomposed into two real fields,
+\[
+    \phi=\frac{1}{\sqrt{2}}(\phi_1+i\phi_2),
+    \qquad
+    \phi^*=\frac{1}{\sqrt{2}}(\phi_1-i\phi_2),
+\]
+where \(\phi_1\) and \(\phi_2\) are real scalar fields. The factor
+\(1/\sqrt{2}\) is conventional and gives convenient normalizations.
+
+The free complex scalar field is described by the Lagrangian density
+\[
+    \mathcal{L}
+    =\partial_\mu\phi^*\partial^\mu\phi-m^2\phi^*\phi.
+\]
+In terms of \(\phi_1\) and \(\phi_2\), this becomes
+\[
+    \mathcal{L}
+    =\frac{1}{2}\partial_\mu\phi_1\partial^\mu\phi_1
+     +\frac{1}{2}\partial_\mu\phi_2\partial^\mu\phi_2
+     -\frac{1}{2}m^2\phi_1^2
+     -\frac{1}{2}m^2\phi_2^2.
+\]
+Thus a free complex scalar field is equivalent to two real scalar fields with
+the same mass.
+
+\begin{definitionbox}
+A \emph{complex scalar field} is a scalar field with complex values. As a real
+field theory it contains two real scalar degrees of freedom, which may be taken
+as the real and imaginary parts of the field.
+\end{definitionbox}
+
+The complex notation is not merely aesthetic. It makes the internal rotation
+between \(\phi_1\) and \(\phi_2\) transparent. This internal rotation is the
+origin of the conserved \(U(1)\) charge.
+
+The Euler--Lagrange equations may be obtained by treating \(\phi\) and \(\phi^*\)
+as independent variables during the variation. Varying with respect to
+\(\phi^*\) gives
+\[
+    (\Box+m^2)\phi=0.
+\]
+Varying with respect to \(\phi\) gives the complex conjugate equation
+\[
+    (\Box+m^2)\phi^*=0.
+\]
+Equivalently, \(\phi_1\) and \(\phi_2\) each satisfy the real Klein--Gordon
+equation.
+
 \section{Global \texorpdfstring{\(U(1)\)}{U(1)} Symmetry}
+
+The free complex scalar Lagrangian is invariant under constant phase rotations
+\[
+    \phi\longrightarrow e^{i\alpha}\phi,
+    \qquad
+    \phi^*\longrightarrow e^{-i\alpha}\phi^*,
+\]
+where \(\alpha\) is a real constant. This is a global \(U(1)\) symmetry.
+
+For infinitesimal \(\alpha\),
+\[
+    e^{i\alpha}=1+i\alpha+O(\alpha^2),
+\]
+so the field variations are
+\[
+    \delta\phi=i\alpha\phi,
+    \qquad
+    \delta\phi^*=-i\alpha\phi^*.
+\]
+The derivatives transform in the same way:
+\[
+    \delta(\partial_\mu\phi)=i\alpha\partial_\mu\phi,
+    \qquad
+    \delta(\partial_\mu\phi^*)=-i\alpha\partial_\mu\phi^*.
+\]
+Substituting these variations into
+\[
+    \mathcal{L}
+    =\partial_\mu\phi^*\partial^\mu\phi-m^2\phi^*\phi
+\]
+shows that
+\[
+    \delta\mathcal{L}=0.
+\]
+Thus the symmetry is exact and leaves the Lagrangian density itself invariant,
+not merely up to a total derivative.
+
+\begin{definitionbox}
+The group \(U(1)\) is the group of complex phases \(e^{i\alpha}\). A global
+\(U(1)\) symmetry acts by multiplying the field by a constant phase at every
+spacetime point.
+\end{definitionbox}
+
+In terms of the two real fields, this symmetry is an internal rotation:
+\[
+    \begin{pmatrix}\phi_1\\ \phi_2\end{pmatrix}
+    \longrightarrow
+    \begin{pmatrix}
+    \cos\alpha & -\sin\alpha\\
+    \sin\alpha & \cos\alpha
+    \end{pmatrix}
+    \begin{pmatrix}\phi_1\\ \phi_2\end{pmatrix}.
+\]
+It is called internal because it rotates field components into one another
+without rotating physical space.
+
 \section{Conserved Current and Charge}
+
+Noether's theorem associates a conserved current with the global \(U(1)\)
+symmetry. Since
+\[
+    \mathcal{L}=\partial_\mu\phi^*\partial^\mu\phi-m^2\phi^*\phi,
+\]
+we have
+\[
+    \frac{\partial\mathcal{L}}{\partial(\partial_\mu\phi)}=\partial^\mu\phi^*,
+    \qquad
+    \frac{\partial\mathcal{L}}{\partial(\partial_\mu\phi^*)}=\partial^\mu\phi.
+\]
+Using the infinitesimal variations without the common parameter \(\alpha\),
+\[
+    \Delta\phi=i\phi,
+    \qquad
+    \Delta\phi^*=-i\phi^*,
+\]
+the Noether current is
+\[
+    J^\mu
+    =\frac{\partial\mathcal{L}}{\partial(\partial_\mu\phi)}\Delta\phi
+     +\frac{\partial\mathcal{L}}{\partial(\partial_\mu\phi^*)}\Delta\phi^*.
+\]
+Therefore
+\[
+    J^\mu=i\phi\partial^\mu\phi^*-i\phi^*\partial^\mu\phi.
+\]
+Equivalently,
+\[
+    J^\mu=i(\phi\partial^\mu\phi^*-\phi^*\partial^\mu\phi).
+\]
+Some authors use the opposite sign convention. The convention is not important
+as long as the definition of charge is used consistently.
+
+On shell,
+\[
+    \partial_\mu J^\mu=0.
+\]
+The conserved charge is
+\[
+    Q=\int d^d x\,J^0.
+\]
+Using \(\partial^0=\partial_t\), one has
+\[
+    J^0=i(\phi\dot\phi^*-\phi^*\dot\phi).
+\]
+Thus
+\[
+    Q=i\int d^d x\,(\phi\dot\phi^*-\phi^*\dot\phi).
+\]
+
+\begin{theorembox}
+The global phase symmetry of the complex scalar field gives the conserved
+Noether current
+\[
+    J^\mu=i(\phi\partial^\mu\phi^*-\phi^*\partial^\mu\phi),
+    \qquad
+    \partial_\mu J^\mu=0
+\]
+on solutions of the field equations.
+\end{theorembox}
+
+This current is the classical precursor of charge current for a charged scalar
+field. In a quantum theory, the corresponding charge counts particles and
+antiparticles with opposite signs. In the classical theory, it measures the
+oriented internal rotation carried by the field configuration.
+
 \section{Coupling to an External Electromagnetic Potential}
+
+A charged scalar field can be coupled to a prescribed electromagnetic potential
+\(A_\mu(x)\). At first, we treat \(A_\mu\) as an external background, not as a
+dynamical field. The guiding principle is that ordinary derivatives should be
+replaced by covariant derivatives:
+\[
+    \partial_\mu\phi\longrightarrow D_\mu\phi.
+\]
+For a field of charge \(q\), a common convention is
+\[
+    D_\mu\phi=(\partial_\mu+iqA_\mu)\phi.
+\]
+The complex conjugate field transforms with the opposite charge, so
+\[
+    D_\mu\phi^*=(\partial_\mu-iqA_\mu)\phi^*.
+\]
+
+The Lagrangian density becomes
+\[
+    \mathcal{L}
+    =(D_\mu\phi)^*D^\mu\phi-m^2\phi^*\phi.
+\]
+Here
+\[
+    (D_\mu\phi)^*=D_\mu\phi^*
+\]
+with the above convention. Expanding the covariant derivative shows that the
+background field couples to the scalar current and also introduces a term
+quadratic in \(A_\mu\).
+
+\begin{remarkbox}
+The electromagnetic potential does not couple to a real scalar field in the same
+minimal way, because a real scalar field has no continuous phase that can carry
+\(U(1)\) charge. Charged scalar matter is naturally complex.
+\end{remarkbox}
+
+If \(A_\mu\) is fixed externally, the scalar field evolves in a prescribed
+electromagnetic background. If \(A_\mu\) is dynamical, one must add the Maxwell
+term to the action and vary with respect to both \(\phi\) and \(A_\mu\).
+
 \section{Local Phase Symmetry}
+
+The global phase symmetry uses a constant parameter \(\alpha\). A local phase
+transformation allows the parameter to depend on spacetime:
+\[
+    \phi(x)\longrightarrow \phi'(x)=e^{i\alpha(x)}\phi(x).
+\]
+If one uses ordinary derivatives, the derivative transforms as
+\[
+    \partial_\mu\phi'(x)
+    =e^{i\alpha(x)}\partial_\mu\phi(x)
+     +i(\partial_\mu\alpha)e^{i\alpha(x)}\phi(x).
+\]
+The second term prevents \(\partial_\mu\phi\) from transforming in the same way
+as \(\phi\). Therefore the free Lagrangian with ordinary derivatives is not
+invariant under local phase transformations.
+
+The remedy is to introduce a gauge field \(A_\mu\) whose transformation cancels
+the extra derivative of \(\alpha\). With the convention
+\[
+    D_\mu=\partial_\mu+iqA_\mu,
+\]
+one takes
+\[
+    A_\mu\longrightarrow A'_\mu=A_\mu-\frac{1}{q}\partial_\mu\alpha.
+\]
+Then
+\[
+    D'_\mu\phi'=e^{i\alpha}D_\mu\phi.
+\]
+This is the defining covariance property of the gauge covariant derivative.
+
+\begin{definitionbox}
+A \emph{local phase symmetry} is a transformation with spacetime-dependent phase
+\(\alpha(x)\). It requires a gauge field because ordinary derivatives of the
+field do not transform covariantly under local phase rotations.
+\end{definitionbox}
+
+This is the conceptual origin of gauge theory: demanding local internal symmetry
+forces the introduction of a compensating connection-like field.
+
 \section{Minimal Coupling}
+
+Minimal coupling is the prescription
+\[
+    \partial_\mu\longrightarrow D_\mu=\partial_\mu+iqA_\mu.
+\]
+Applied to the free complex scalar field, it gives
+\[
+    \mathcal{L}_{\mathrm{matter}}
+    =(D_\mu\phi)^*D^\mu\phi-m^2\phi^*\phi.
+\]
+If the electromagnetic field is dynamical, the full scalar electrodynamics
+Lagrangian is
+\[
+    \mathcal{L}
+    =-\frac{1}{4}F_{\mu\nu}F^{\mu\nu}
+     +(D_\mu\phi)^*D^\mu\phi-m^2\phi^*\phi,
+\]
+where
+\[
+    F_{\mu\nu}=\partial_\mu A_\nu-\partial_\nu A_\mu.
+\]
+This theory is invariant under
+\[
+    \phi\longrightarrow e^{i\alpha(x)}\phi,
+    \qquad
+    A_\mu\longrightarrow A_\mu-\frac{1}{q}\partial_\mu\alpha.
+\]
+
+\begin{examplebox}
+The replacement \(\partial_\mu\to D_\mu\) is not an arbitrary trick. It is forced
+by the requirement that derivatives of charged fields transform covariantly
+under local phase rotations.
+\end{examplebox}
+
+The word minimal means that one introduces the gauge field through the derivative
+and does not add extra higher-order or nonminimal terms such as
+\(F_{\mu\nu}F^{\mu\nu}\phi^*\phi\). Such terms can be considered in effective
+field theories, but they are not part of the minimal coupling prescription.
+
 \section{Gauge Covariant Derivative}
+
+The gauge covariant derivative is designed to transform like the field itself:
+\[
+    D'_\mu\phi'=e^{i\alpha}D_\mu\phi.
+\]
+This property ensures that
+\[
+    (D_\mu\phi)^*D^\mu\phi
+\]
+is invariant under local \(U(1)\) transformations. The mass term
+\[
+    m^2\phi^*\phi
+\]
+is also invariant, because the phase cancels between \(\phi\) and \(\phi^*\).
+
+The commutator of two covariant derivatives gives the field strength. With
+\[
+    D_\mu=\partial_\mu+iqA_\mu,
+\]
+one finds
+\[
+    [D_\mu,D_\nu]\phi=iqF_{\mu\nu}\phi.
+\]
+Thus the electromagnetic field strength measures the noncommutativity of gauge
+covariant derivatives.
+
+\begin{definitionbox}
+For a charged scalar field, the gauge covariant derivative is
+\[
+    D_\mu\phi=(\partial_\mu+iqA_\mu)\phi.
+\]
+Its commutator satisfies
+\[
+    [D_\mu,D_\nu]\phi=iqF_{\mu\nu}\phi.
+\]
+\end{definitionbox}
+
+This formula is the Abelian prototype of Yang--Mills theory. In non-Abelian
+gauge theory, the gauge potential and the field strength take values in a Lie
+algebra, and the commutator term becomes structurally essential.
+
 \section{Physical Meaning of Charge}
+
+In the complex scalar theory, charge is the Noether charge associated with
+internal phase rotations. The field has a two-dimensional internal plane
+spanned by \(\phi_1\) and \(\phi_2\). A charged configuration carries a sense of
+rotation in that internal plane.
+
+Using
+\[
+    \phi=\frac{1}{\sqrt{2}}(\phi_1+i\phi_2),
+\]
+the charge density can be written in terms of real fields as
+\[
+    J^0=\phi_2\dot\phi_1-\phi_1\dot\phi_2,
+\]
+up to the overall sign convention chosen for \(J^\mu\). This is analogous to
+angular momentum in the internal \((\phi_1,\phi_2)\)-plane.
+
+\begin{remarkbox}
+A complex scalar field is not ``more mysterious'' than two real scalar fields.
+What is new is the internal rotational symmetry between them. The conserved
+charge is the Noether charge of that internal rotation.
+\end{remarkbox}
+
+When the field is coupled to electromagnetism, this internal charge becomes the
+source of the electromagnetic field. In scalar electrodynamics, varying the
+action with respect to \(A_\mu\) gives Maxwell equations with a matter current
+constructed from \(\phi\) and \(D_\mu\phi\).
+
 \section{Charged Scalar Field as a Classical Field Theory}
+
+The charged scalar field provides the simplest classical model of matter coupled
+to a gauge field. Its dynamical variables are
+\[
+    \phi,\qquad \phi^*,\qquad A_\mu.
+\]
+The action is
+\[
+    S=\int d^{d+1}x\left[
+        -\frac{1}{4}F_{\mu\nu}F^{\mu\nu}
+        +(D_\mu\phi)^*D^\mu\phi
+        -m^2\phi^*\phi
+    \right].
+\]
+The scalar field equation is
+\[
+    D_\mu D^\mu\phi+m^2\phi=0,
+\]
+with the complex conjugate equation for \(\phi^*\). The gauge field equation has
+the form
+\[
+    \partial_\mu F^{\mu\nu}=j^\nu,
+\]
+where the matter current is obtained by varying the matter action with respect
+to \(A_\nu\).
+
+This theory illustrates several themes that will recur in the next chapters:
+\begin{enumerate}
+    \item internal symmetry produces charge;
+    \item local symmetry requires a gauge field;
+    \item the gauge potential is not itself gauge invariant;
+    \item the field strength is gauge invariant in the Abelian theory;
+    \item the covariant derivative is the correct derivative for charged fields.
+\end{enumerate}
+
+\begin{summarybox}
+The complex scalar field is equivalent to two real scalar fields but displays a
+natural global \(U(1)\) symmetry. Noether's theorem gives a conserved current
+and charge. Promoting the phase symmetry to a local symmetry forces the
+introduction of a gauge field and the covariant derivative
+\(D_\mu=\partial_\mu+iqA_\mu\). This is the simplest route from scalar field
+theory to electromagnetism and, ultimately, to Yang--Mills gauge theory.
+\end{summarybox}
