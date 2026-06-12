@@ -1,12 +1,440 @@
 \chapter{The Action Principle for Fields}
 
+\begin{remarkbox}
+The action principle is the central organizing idea of classical field theory.
+Instead of postulating a differential equation directly, one postulates an
+action functional. The field equations are then obtained by demanding that the
+action be stationary under arbitrary allowed variations of the fields.
+\end{remarkbox}
+
 \section{The Action Functional}
+
+In classical mechanics, the action is a functional of a path \(q(t)\):
+\[
+    S[q]=\int_{t_1}^{t_2}L(q,\dot q,t)\,dt.
+\]
+A physical trajectory is selected by the condition
+\[
+    \delta S=0
+\]
+for variations of the path that obey the chosen endpoint conditions.
+
+In field theory, the dynamical variable is not a finite list of coordinates but
+a field, or a collection of fields,
+\[
+    \phi^A(x),
+\]
+where \(A\) labels the components or species of the field. The action is a
+functional of the entire field configuration:
+\[
+    S[\phi]=\int_\Omega \mathcal{L}(\phi^A,\partial_\mu\phi^A,x)\,d^{d+1}x.
+\]
+Here \(\Omega\) is the spacetime region under consideration, and
+\(\mathcal{L}\) is the Lagrangian density.
+
+\begin{definitionbox}
+An \emph{action functional} assigns a number to each allowed field
+configuration. In a local first-order field theory it usually has the form
+\[
+    S[\phi]=\int_\Omega \mathcal{L}(\phi^A,\partial_\mu\phi^A,x)\,d^{d+1}x.
+\]
+\end{definitionbox}
+
+The word functional is important. A function takes numbers as input and returns
+a number. A functional takes a function as input and returns a number. The action
+therefore depends on the entire history of the field over a spacetime region,
+not merely on the value of the field at one point.
+
+The principle of stationary action states that the physical fields are those
+for which the first-order change of the action vanishes:
+\[
+    \delta S=0.
+\]
+This condition is not a minimum principle in general. The action may have a
+minimum, a maximum, or a saddle point. The correct statement is stationarity.
+
 \section{Lagrangian Density}
+
+The Lagrangian density is the local quantity from which the action is built. If
+space and time are separated, the ordinary Lagrangian is obtained by integrating
+the Lagrangian density over space:
+\[
+    L(t)=\int d^d x\,\mathcal{L}(t,\vect{x}).
+\]
+Then
+\[
+    S=\int dt\,L(t)=\int dt\int d^d x\,\mathcal{L}.
+\]
+
+For a real scalar field in flat spacetime, a standard Lagrangian density is
+\[
+    \mathcal{L}=\frac{1}{2}\partial_\mu\phi\partial^\mu\phi
+    -\frac{1}{2}m^2\phi^2.
+\]
+The first term is the kinetic-gradient term, and the second term is a mass term.
+Using the mostly-minus convention, the first term expands as
+\[
+    \frac{1}{2}\partial_\mu\phi\partial^\mu\phi
+    =\frac{1}{2}(\partial_t\phi)^2-\frac{1}{2}|\nabla\phi|^2.
+\]
+Thus the Lagrangian density contains a time-derivative part and a spatial-gradient
+part with opposite signs.
+
+A more general scalar-field Lagrangian often has the form
+\[
+    \mathcal{L}=\frac{1}{2}\partial_\mu\phi\partial^\mu\phi - V(\phi),
+\]
+where \(V(\phi)\) is the potential energy density. For example,
+\[
+    V(\phi)=\frac{1}{2}m^2\phi^2+\frac{\lambda}{4}\phi^4
+\]
+leads to a nonlinear scalar field equation.
+
+\begin{remarkbox}
+The Lagrangian density is not unique. Different Lagrangian densities can give
+the same bulk field equations if they differ by a total derivative. However,
+they may still differ in their boundary terms, canonical variables, and charges.
+\end{remarkbox}
+
+A Lagrangian density should be built from quantities compatible with the
+symmetries one wants the theory to have. In relativistic field theory, this
+usually means building Lorentz scalars by contracting all spacetime indices. In
+gauge theory, it also means building expressions compatible with gauge symmetry.
+
 \section{Variational Principle for Fields}
+
+To vary a field, one considers a one-parameter family of field configurations
+\[
+    \phi^A_\varepsilon(x)=\phi^A(x)+\varepsilon\eta^A(x),
+\]
+where \(\varepsilon\) is a small parameter and \(\eta^A(x)\) is an arbitrary
+allowed variation. The variation of the field is
+\[
+    \delta\phi^A(x)=\eta^A(x).
+\]
+The variation of a derivative is
+\[
+    \delta(\partial_\mu\phi^A)=\partial_\mu(\delta\phi^A).
+\]
+
+The first variation of the action is defined by
+\[
+    \delta S
+    =\left.\frac{d}{d\varepsilon}S[\phi_\varepsilon]\right|_{\varepsilon=0}.
+\]
+For a first-order local Lagrangian density,
+\[
+    \mathcal{L}=\mathcal{L}(\phi^A,\partial_\mu\phi^A,x),
+\]
+we obtain
+\[
+    \delta S
+    =\int_\Omega\left(
+        \frac{\partial\mathcal{L}}{\partial\phi^A}\delta\phi^A
+        +\frac{\partial\mathcal{L}}{\partial(\partial_\mu\phi^A)}
+        \delta(\partial_\mu\phi^A)
+    \right)d^{d+1}x.
+\]
+Using \(\delta(\partial_\mu\phi^A)=\partial_\mu\delta\phi^A\), this becomes
+\[
+    \delta S
+    =\int_\Omega\left(
+        \frac{\partial\mathcal{L}}{\partial\phi^A}\delta\phi^A
+        +\frac{\partial\mathcal{L}}{\partial(\partial_\mu\phi^A)}
+        \partial_\mu\delta\phi^A
+    \right)d^{d+1}x.
+\]
+The repeated field label \(A\) and spacetime index \(\mu\) are summed over.
+
+The second term contains a derivative of the variation. To isolate
+\(\delta\phi^A\), we integrate by parts:
+\[
+\begin{aligned}
+    \delta S
+    ={}&\int_\Omega\left[
+        \frac{\partial\mathcal{L}}{\partial\phi^A}
+        -\partial_\mu\left(
+            \frac{\partial\mathcal{L}}{\partial(\partial_\mu\phi^A)}
+        \right)
+    \right]\delta\phi^A\,d^{d+1}x \\
+    &+\int_{\partial\Omega}
+        \frac{\partial\mathcal{L}}{\partial(\partial_\mu\phi^A)}
+        \delta\phi^A n_\mu\,d\Sigma.
+\end{aligned}
+\]
+The first integral is the bulk variation. The second is the boundary variation.
+
 \section{Euler--Lagrange Equations for Fields}
+
+If the boundary term vanishes under the chosen class of variations, then the
+stationarity condition \(\delta S=0\) implies that the bulk coefficient of each
+independent \(\delta\phi^A\) must vanish. This gives the Euler--Lagrange
+equations for fields:
+\[
+    \frac{\partial\mathcal{L}}{\partial\phi^A}
+    -\partial_\mu\left(
+        \frac{\partial\mathcal{L}}{\partial(\partial_\mu\phi^A)}
+    \right)=0.
+\]
+Equivalently,
+\[
+    \partial_\mu\left(
+        \frac{\partial\mathcal{L}}{\partial(\partial_\mu\phi^A)}
+    \right)
+    -\frac{\partial\mathcal{L}}{\partial\phi^A}=0.
+\]
+Both conventions are common; they differ only by multiplying the equation by
+\(-1\).
+
+\begin{definitionbox}
+The \emph{Euler--Lagrange equation for a field} is the differential equation
+obtained by setting the first variation of the action to zero for arbitrary
+allowed variations of the field.
+\end{definitionbox}
+
+In functional-derivative notation, the same statement is
+\[
+    \frac{\delta S}{\delta\phi^A}=0.
+\]
+For a first-order local Lagrangian density,
+\[
+    \frac{\delta S}{\delta\phi^A}
+    =\frac{\partial\mathcal{L}}{\partial\phi^A}
+    -\partial_\mu\left(
+        \frac{\partial\mathcal{L}}{\partial(\partial_\mu\phi^A)}
+    \right).
+\]
+This compact notation is useful, but it should not hide the boundary term that
+appears during the derivation.
+
 \section{Boundary Conditions in the Variational Principle}
+
+The variational principle is incomplete until its boundary conditions are
+specified. The integration by parts produces the boundary contribution
+\[
+    \int_{\partial\Omega}
+        \frac{\partial\mathcal{L}}{\partial(\partial_\mu\phi^A)}
+        \delta\phi^A n_\mu\,d\Sigma.
+\]
+A common choice is to fix the fields on the boundary:
+\[
+    \delta\phi^A|_{\partial\Omega}=0.
+\]
+Then the boundary term vanishes, and the bulk Euler--Lagrange equations follow.
+
+This choice is not the only possible one. One may instead impose falloff
+conditions at infinity, periodic boundary conditions, Neumann-type boundary
+conditions, or add boundary terms to the action so that the total variation is
+well-defined. The correct choice depends on the physical problem.
+
+\begin{examplebox}
+For a vibrating string on an interval \([0,L]\), fixed endpoints correspond to
+\[
+    \delta\phi(t,0)=\delta\phi(t,L)=0.
+\]
+Free endpoints lead to different boundary conditions. The same bulk equation
+can therefore describe different physical systems depending on the boundary
+conditions.
+\end{examplebox}
+
+Boundary terms become especially important in gauge theory and gravity. In such
+systems, surface terms may carry conserved charges, fluxes, or edge degrees of
+freedom. For now, the essential point is that the action principle always
+contains both a bulk statement and a boundary statement.
+
 \section{Total Derivatives and Equivalent Lagrangians}
+
+Suppose two Lagrangian densities differ by a total derivative:
+\[
+    \mathcal{L}'=\mathcal{L}+\partial_\mu K^\mu.
+\]
+Then the corresponding actions differ by a boundary term:
+\[
+    S'[\phi]-S[\phi]
+    =\int_\Omega\partial_\mu K^\mu\,d^{d+1}x
+    =\int_{\partial\Omega}K^\mu n_\mu\,d\Sigma.
+\]
+Therefore \(\mathcal{L}\) and \(\mathcal{L}'\) give the same bulk
+Euler--Lagrange equations when the boundary term does not contribute to the
+variation.
+
+This is the precise sense in which two Lagrangians may be called equivalent.
+They are equivalent for the bulk equations under a specified class of boundary
+conditions. They are not necessarily equivalent as complete variational
+principles if the boundary is physically relevant.
+
+\begin{remarkbox}
+The phrase ``up to a total derivative'' should always be read with care. It is
+safe for deriving local bulk equations under suitable boundary assumptions. It
+is not automatically safe for conserved charges, Hamiltonian generators,
+asymptotic symmetries, or gravitational actions.
+\end{remarkbox}
+
+A simple mechanical analogue is adding a total time derivative to a Lagrangian:
+\[
+    L'(q,\dot q,t)=L(q,\dot q,t)+\frac{dF(q,t)}{dt}.
+\]
+The action changes by
+\[
+    F(q(t_2),t_2)-F(q(t_1),t_1),
+\]
+which does not affect the Euler--Lagrange equations if the endpoints are fixed.
+Field theory is the spacetime version of the same idea.
+
 \section{On-Shell and Off-Shell Statements}
+
+A field configuration is said to be on shell if it satisfies the equations of
+motion. It is off shell if it is an arbitrary field configuration not assumed to
+satisfy those equations.
+
+For example, for a scalar field with equation
+\[
+    (\Box+m^2)\phi=0,
+\]
+an on-shell field satisfies this differential equation. An off-shell field is
+any sufficiently regular function \(\phi(x)\) in the configuration space of the
+theory.
+
+\begin{definitionbox}
+An identity or formula is \emph{on shell} if it holds after imposing the field
+equations. It is \emph{off shell} if it holds without using the field equations.
+\end{definitionbox}
+
+This distinction is fundamental. The variational formula for \(\delta S\) is an
+off-shell statement. The Euler--Lagrange equations are obtained by demanding
+stationarity and then setting the bulk functional derivative to zero. A
+conservation law may hold only on shell, while a symmetry of the action is often
+an off-shell statement.
+
+The notation
+\[
+    \frac{\delta S}{\delta\phi^A}=0
+\]
+therefore defines the shell: it specifies the subspace of field configurations
+that solve the equations of motion.
+
 \section{Worked Example: Real Scalar Field}
+
+Consider the real scalar field action in flat spacetime:
+\[
+    S[\phi]=\int \left(
+        \frac{1}{2}\partial_\mu\phi\partial^\mu\phi
+        -\frac{1}{2}m^2\phi^2
+    \right)d^{d+1}x.
+\]
+The Lagrangian density is
+\[
+    \mathcal{L}
+    =\frac{1}{2}\partial_\mu\phi\partial^\mu\phi
+    -\frac{1}{2}m^2\phi^2.
+\]
+We compute
+\[
+    \frac{\partial\mathcal{L}}{\partial\phi}=-m^2\phi.
+\]
+The derivative with respect to \(\partial_\mu\phi\) is
+\[
+    \frac{\partial\mathcal{L}}{\partial(\partial_\mu\phi)}=\partial^\mu\phi.
+\]
+The Euler--Lagrange equation is therefore
+\[
+    -m^2\phi-\partial_\mu\partial^\mu\phi=0.
+\]
+Multiplying by \(-1\), we obtain
+\[
+    (\Box+m^2)\phi=0.
+\]
+This is the Klein--Gordon equation.
+
+\begin{examplebox}
+For \(m=0\), the equation becomes
+\[
+    \Box\phi=0,
+\]
+which is the relativistic wave equation. For \(m\neq 0\), the field has a mass
+scale and the dispersion relation becomes \(\omega^2=|\vect{k}|^2+m^2\).
+\end{examplebox}
+
+If the Lagrangian density is instead
+\[
+    \mathcal{L}=\frac{1}{2}\partial_\mu\phi\partial^\mu\phi - V(\phi),
+\]
+then the field equation is
+\[
+    \Box\phi+\frac{dV}{d\phi}=0.
+\]
+This form will be useful for interacting scalar field models.
+
 \section{Worked Example: Wave Equation from an Action}
+
+The ordinary wave equation in one spatial dimension can be obtained from the
+action
+\[
+    S[\phi]=\int dt\,dx\,
+    \frac{1}{2}\left[(\partial_t\phi)^2-c^2(\partial_x\phi)^2\right].
+\]
+Here the Lagrangian density is
+\[
+    \mathcal{L}=\frac{1}{2}(\partial_t\phi)^2
+    -\frac{c^2}{2}(\partial_x\phi)^2.
+\]
+There is no explicit dependence on \(\phi\), so
+\[
+    \frac{\partial\mathcal{L}}{\partial\phi}=0.
+\]
+The derivatives with respect to the field derivatives are
+\[
+    \frac{\partial\mathcal{L}}{\partial(\partial_t\phi)}=\partial_t\phi,
+    \qquad
+    \frac{\partial\mathcal{L}}{\partial(\partial_x\phi)}=-c^2\partial_x\phi.
+\]
+The Euler--Lagrange equation gives
+\[
+    \partial_t(\partial_t\phi)+\partial_x(-c^2\partial_x\phi)=0.
+\]
+Thus
+\[
+    \partial_t^2\phi-c^2\partial_x^2\phi=0.
+\]
+This is the wave equation.
+
+This example shows the physical meaning of the two terms in the Lagrangian
+density. The term \((\partial_t\phi)^2/2\) is associated with kinetic energy,
+while \(c^2(\partial_x\phi)^2/2\) is associated with the elastic cost of spatial
+variation. The sign difference between them is what gives a hyperbolic evolution
+equation rather than an elliptic equation.
+
 \section{Physical Interpretation of Field Equations}
+
+The Euler--Lagrange equations are not just formal consequences of calculus of
+variations. They express local balance laws for distributed degrees of freedom.
+In a mechanical system, the equation of motion balances inertia against forces.
+In a field theory, the equation balances time evolution, spatial gradients,
+sources, and self-interactions.
+
+For the scalar field equation
+\[
+    \Box\phi+\frac{dV}{d\phi}=0,
+\]
+the operator \(\Box\) describes propagation through spacetime, while
+\(dV/d\phi\) describes the local restoring force or self-interaction coming from
+the potential. For the wave equation,
+\[
+    \partial_t^2\phi-c^2\partial_x^2\phi=0,
+\]
+the acceleration of the field is determined by the curvature of its spatial
+profile.
+
+The action viewpoint also explains why field equations are so tightly connected
+to symmetries. Once the dynamics is encoded in an action, transformations of the
+fields and coordinates can be studied by asking whether they leave the action
+invariant. This is the starting point of Noether's theorem, which is the subject
+of the next chapter.
+
+\begin{summarybox}
+The action principle turns field dynamics into variational calculus. A local
+Lagrangian density defines an action; varying the action gives a bulk term and a
+boundary term; the vanishing of the bulk term gives the Euler--Lagrange field
+equations. Boundary conditions are part of the variational problem, and total
+derivatives must be interpreted relative to those boundary conditions.
+\end{summarybox}
