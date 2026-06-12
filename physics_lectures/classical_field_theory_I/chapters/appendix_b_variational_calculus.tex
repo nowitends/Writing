@@ -1,9 +1,288 @@
 \chapter{Variational Calculus for Fields}
 
+\begin{remarkbox}
+The variational calculus of fields is the technical engine behind the action
+principle, Euler--Lagrange equations, Noether currents, stress-energy tensors,
+and boundary terms. This appendix collects the core manipulations in one place.
+\end{remarkbox}
+
 \section{Variation of a Functional}
+
+A functional assigns a number to an entire field configuration. The basic action
+functional has the form
+\[
+    S[\phi]=\int_\Omega d^{d+1}x\,\mathcal{L}(\phi^A,\partial_\mu\phi^A,x).
+\]
+A variation is defined by considering a one-parameter family of fields
+\[
+    \phi^A_\varepsilon=\phi^A+\varepsilon\eta^A,
+\]
+where \(\eta^A\) is an arbitrary test variation satisfying whatever boundary
+conditions are appropriate. The first variation is
+\[
+    \delta S[\phi;\eta]
+    =\left.\frac{d}{d\varepsilon}S[\phi+\varepsilon\eta]\right|_{\varepsilon=0}.
+\]
+
+For a first-order Lagrangian density,
+\[
+    \delta S
+    =\int_\Omega d^{d+1}x\left(
+        \frac{\partial\mathcal{L}}{\partial\phi^A}\delta\phi^A
+        +\frac{\partial\mathcal{L}}{\partial(\partial_\mu\phi^A)}
+        \delta(\partial_\mu\phi^A)
+    \right).
+\]
+Since variation and partial differentiation commute,
+\[
+    \delta(\partial_\mu\phi^A)=\partial_\mu\delta\phi^A.
+\]
+Thus
+\[
+    \delta S
+    =\int_\Omega d^{d+1}x\left(
+        \frac{\partial\mathcal{L}}{\partial\phi^A}\delta\phi^A
+        +\frac{\partial\mathcal{L}}{\partial(\partial_\mu\phi^A)}
+        \partial_\mu\delta\phi^A
+    \right).
+\]
+
 \section{Integration by Parts}
+
+The fundamental step is integration by parts:
+\[
+    \frac{\partial\mathcal{L}}{\partial(\partial_\mu\phi^A)}
+    \partial_\mu\delta\phi^A
+    =\partial_\mu\left(
+        \frac{\partial\mathcal{L}}{\partial(\partial_\mu\phi^A)}
+        \delta\phi^A
+    \right)
+    -\partial_\mu\left(
+        \frac{\partial\mathcal{L}}{\partial(\partial_\mu\phi^A)}
+    \right)\delta\phi^A.
+\]
+Substituting into \(\delta S\) gives
+\[
+\begin{aligned}
+    \delta S
+    ={}&\int_\Omega d^{d+1}x\left[
+        \frac{\partial\mathcal{L}}{\partial\phi^A}
+        -\partial_\mu\left(
+            \frac{\partial\mathcal{L}}{\partial(\partial_\mu\phi^A)}
+        \right)
+    \right]\delta\phi^A \\
+    &+\int_\Omega d^{d+1}x\,\partial_\mu\left(
+        \frac{\partial\mathcal{L}}{\partial(\partial_\mu\phi^A)}
+        \delta\phi^A
+    \right).
+\end{aligned}
+\]
+Using Gauss's theorem, the second term becomes a boundary integral:
+\[
+    \int_{\partial\Omega} d\Sigma_\mu\,
+    \frac{\partial\mathcal{L}}{\partial(\partial_\mu\phi^A)}
+    \delta\phi^A.
+\]
+
+The bulk coefficient of \(\delta\phi^A\) defines the Euler--Lagrange derivative:
+\[
+    E_A(\mathcal{L})
+    =\frac{\partial\mathcal{L}}{\partial\phi^A}
+     -\partial_\mu\left(
+        \frac{\partial\mathcal{L}}{\partial(\partial_\mu\phi^A)}
+     \right).
+\]
+The Euler--Lagrange equations are
+\[
+    E_A(\mathcal{L})=0.
+\]
+
+\begin{theorembox}
+For a first-order local action, stationarity under variations with vanishing
+boundary term gives
+\[
+    \frac{\partial\mathcal{L}}{\partial\phi^A}
+    -\partial_\mu\left(
+        \frac{\partial\mathcal{L}}{\partial(\partial_\mu\phi^A)}
+    \right)=0.
+\]
+\end{theorembox}
+
 \section{Boundary Terms}
+
+Boundary terms are not mistakes. They decide which variational problem is being
+posed. The general first variation can be written schematically as
+\[
+    \delta S=\int_\Omega d^{d+1}x\,E_A(\mathcal{L})\delta\phi^A
+    +\int_{\partial\Omega}d\Sigma_\mu\,\Theta^\mu(\phi,\delta\phi).
+\]
+For first-order theories,
+\[
+    \Theta^\mu(\phi,\delta\phi)
+    =\frac{\partial\mathcal{L}}{\partial(\partial_\mu\phi^A)}\delta\phi^A.
+\]
+
+Common ways to control boundary terms include:
+\begin{enumerate}
+    \item requiring \(\delta\phi^A=0\) on \(\partial\Omega\), called Dirichlet
+    boundary conditions;
+    \item imposing boundary conditions on normal derivatives or momenta;
+    \item adding a boundary term to the action so that the desired boundary data
+    define a well-posed variational principle;
+    \item requiring sufficiently fast falloff at infinity.
+\end{enumerate}
+
+A total derivative added to the Lagrangian density,
+\[
+    \mathcal{L}\longrightarrow \mathcal{L}+\partial_\mu K^\mu,
+\]
+does not change the bulk Euler--Lagrange equations, but it changes the boundary
+term. Therefore it can change canonical momenta, Noether charges, and the correct
+boundary conditions.
+
+\begin{remarkbox}
+A statement such as ``total derivatives do not matter'' is incomplete. They do
+not change bulk equations under appropriate assumptions, but they can matter for
+boundaries, charges, and Hamiltonian generators.
+\end{remarkbox}
+
 \section{Functional Derivatives}
+
+The functional derivative is defined by
+\[
+    \delta F[\phi]
+    =\int d^{d+1}x\,\frac{\delta F}{\delta\phi^A(x)}\delta\phi^A(x).
+\]
+For the action,
+\[
+    \frac{\delta S}{\delta\phi^A(x)}=E_A(\mathcal{L})(x)
+\]
+when boundary terms are discarded or controlled.
+
+A basic identity is
+\[
+    \frac{\delta\phi^A(y)}{\delta\phi^B(x)}
+    =\delta^A{}_B\delta^{(d+1)}(y-x).
+\]
+For example, if
+\[
+    F[\phi]=\int d^d x\,\frac{1}{2}\phi(x)^2,
+\]
+then
+\[
+    \delta F=\int d^d x\,\phi(x)\delta\phi(x),
+\]
+so
+\[
+    \frac{\delta F}{\delta\phi(x)}=\phi(x).
+\]
+If
+\[
+    F[\phi]=\int d^d x\,\frac{1}{2}|\nabla\phi|^2,
+\]
+then
+\[
+    \delta F=\int d^d x\,\nabla\phi\cdot\nabla\delta\phi
+    =-\int d^d x\,\nabla^2\phi\,\delta\phi
+\]
+up to a boundary term. Hence
+\[
+    \frac{\delta F}{\delta\phi(x)}=-\nabla^2\phi(x).
+\]
+
 \section{Variation with Constraints}
+
+Sometimes variations are constrained. A simple finite-dimensional analogy is the
+method of Lagrange multipliers. In field theory, suppose one wants to extremize
+\(S[\phi]\) subject to
+\[
+    C[\phi]=0.
+\]
+One introduces a multiplier \(\lambda\) and varies
+\[
+    S_\lambda[\phi]=S[\phi]+\lambda C[\phi].
+\]
+For local constraints
+\[
+    C(x,\phi,\partial\phi)=0,
+\]
+one uses a multiplier field \(\lambda(x)\):
+\[
+    S_\lambda[\phi,\lambda]
+    =S[\phi]+\int d^{d+1}x\,\lambda(x)C(x,\phi,\partial\phi).
+\]
+Variation with respect to \(\lambda\) imposes the constraint, while variation
+with respect to \(\phi\) gives modified field equations.
+
+Constraints also arise in Hamiltonian field theory when the Legendre transform
+is degenerate. In that setting, constraints are equations on phase space, such
+as
+\[
+    \chi(\phi,\pi)\approx0.
+\]
+They must be handled with Dirac's constraint algorithm.
+
 \section{Variation with Respect to the Metric}
+
+The stress-energy tensor can be obtained by varying the matter action with
+respect to the metric. A common convention is
+\[
+    T_{\mu\nu}=-\frac{2}{\sqrt{|g|}}\frac{\delta S_{\mathrm{matter}}}{\delta g^{\mu\nu}}.
+\]
+Equivalently,
+\[
+    \delta S_{\mathrm{matter}}
+    =-\frac{1}{2}\int d^{d+1}x\,\sqrt{|g|}\,T_{\mu\nu}\delta g^{\mu\nu}.
+\]
+The variation of the determinant is
+\[
+    \delta\sqrt{|g|}=-\frac{1}{2}\sqrt{|g|}\,g_{\mu\nu}\delta g^{\mu\nu}.
+\]
+Also,
+\[
+    \delta g_{\mu\nu}=-g_{\mu\rho}g_{\nu\sigma}\delta g^{\rho\sigma}.
+\]
+
+For a scalar field in curved spacetime,
+\[
+    S=-\int d^{d+1}x\sqrt{|g|}\left(
+        \frac{1}{2}g^{\mu\nu}\partial_\mu\phi\partial_\nu\phi+V(\phi)
+    \right)
+\]
+with sign conventions adjusted to the chosen metric convention. Varying with
+respect to \(g^{\mu\nu}\) gives the Hilbert stress-energy tensor.
+
 \section{Common Variational Identities}
+
+Useful identities include
+\[
+    \delta(AB)=(\delta A)B+A(\delta B),
+\]
+\[
+    \delta(A^{-1})=-A^{-1}(\delta A)A^{-1},
+\]
+for an invertible matrix \(A\), and
+\[
+    \delta\det A=(\det A)\operatorname{tr}(A^{-1}\delta A).
+\]
+For gauge theory,
+\[
+    \delta F_{\mu\nu}=D_\mu\delta A_\nu-D_\nu\delta A_\mu
+\]
+in the non-Abelian case, while in the Abelian case
+\[
+    \delta F_{\mu\nu}=\partial_\mu\delta A_\nu-\partial_\nu\delta A_\mu.
+\]
+For the Dirac field,
+\(\psi\) and \(\bar\psi\) are varied independently:
+\[
+    \delta\bar\psi\neq (\delta\psi)^\dagger\gamma^0
+\]
+inside the variational calculation.
+
+\begin{summarybox}
+The core variational pattern is always the same: vary the action, integrate by
+parts, separate bulk terms from boundary terms, impose boundary conditions or add
+boundary counterterms, and read off the Euler--Lagrange equations from the bulk
+coefficient of arbitrary variations.
+\end{summarybox}
