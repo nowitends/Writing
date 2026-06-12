@@ -2,16 +2,498 @@
 
 \begin{remarkbox}
 This chapter collects the mathematical tools needed before the action principle
-for fields can be used cleanly.
+for fields can be used cleanly. The goal is not to give a complete course in
+geometry or analysis, but to fix the language that will be used throughout the
+notes: fields, indices, derivatives, integrals, distributions, variations,
+functional derivatives, boundary terms, and Lorentzian notation.
 \end{remarkbox}
 
 \section{Scalar, Vector, Tensor, and Spinor Fields}
+
+A classical field is a quantity assigned to points of space or spacetime. The
+simplest example is a real scalar field
+\[
+    \phi : M \to \mathbb{R},
+\]
+where \(M\) is the space or spacetime on which the theory is defined. A scalar
+field has one value at each point and does not carry a direction or an index.
+In ordinary language, a temperature distribution \(T(t,\vect{x})\) is a scalar
+field. In relativistic field theory, the Klein--Gordon field \(\phi(x)\) is the
+basic example.
+
+A vector field assigns a vector to each point. In three-dimensional space one
+may write
+\[
+    \vect{v}(t,\vect{x}) = v^1(t,\vect{x})\vect{e}_1
+    + v^2(t,\vect{x})\vect{e}_2
+    + v^3(t,\vect{x})\vect{e}_3.
+\]
+The velocity field of a fluid and the electric field \(\vect{E}(t,\vect{x})\)
+are familiar examples. In relativistic notation, vector fields are written with
+spacetime indices, for example \(A_\mu(x)\) or \(V^\mu(x)\).
+
+Tensor fields assign tensors to each point. A rank-two tensor field may be
+written as \(T^{\mu\nu}(x)\), \(T_{\mu\nu}(x)\), or \(T^\mu{}_{\nu}(x)\),
+depending on the position of the indices. The electromagnetic field strength
+\(F_{\mu\nu}\), the metric tensor \(g_{\mu\nu}\), and the stress-energy tensor
+\(T^{\mu\nu}\) are all tensor fields.
+
+Spinor fields are more subtle. They are not ordinary vectors, although they
+also have components. Spinors are objects whose transformation law is tied to
+the spin representation of the Lorentz group. The Dirac field \(\psi(x)\) is the
+main example. In this course, spinors will be introduced only after the scalar
+and gauge-field examples are understood.
+
+\begin{definitionbox}
+A \emph{field type} specifies what kind of object is assigned to each point:
+a scalar, vector, tensor, spinor, or a collection of such objects. The field
+equations must be compatible with the transformation properties of that object.
+\end{definitionbox}
+
+The notation \(\phi^A(x)\) is often useful. The label \(A\) may represent one
+component, many tensor indices, an internal symmetry index, or a spinor index.
+With this convention, many formulas can be written once and then applied to a
+large class of fields.
+
 \section{Coordinates, Indices, and Summation Convention}
+
+Coordinates label points. In nonrelativistic field theory one often separates
+time and space,
+\[
+    (t,\vect{x}) = (t,x^1,x^2,x^3).
+\]
+In relativistic field theory, it is convenient to combine them into spacetime
+coordinates
+\[
+    x^\mu = (x^0,x^1,x^2,x^3),
+\]
+where \(x^0\) denotes the time coordinate, often \(ct\) or simply \(t\) in units
+where \(c=1\). Greek indices such as \(\mu,\nu,\rho\) usually run over spacetime
+values \(0,1,2,3\). Latin spatial indices such as \(i,j,k\) usually run over
+\(1,2,3\).
+
+The Einstein summation convention will be used throughout the notes: whenever
+an index appears once upstairs and once downstairs in the same term, summation
+over that index is understood. Thus
+\[
+    A_\mu B^\mu
+\]
+means
+\[
+    \sum_{\mu=0}^{3} A_\mu B^\mu.
+\]
+Similarly,
+\[
+    T^\mu{}_{\nu}V^\nu
+\]
+means that the index \(\nu\) is summed over, while \(\mu\) remains a free index.
+
+\begin{definitionbox}
+An index is \emph{free} if it appears in the final expression and is not summed
+over. An index is \emph{dummy} if it is summed over. Dummy indices may be renamed;
+free indices may not.
+\end{definitionbox}
+
+For example,
+\[
+    A_\mu B^\mu = A_\nu B^\nu
+\]
+because \(\mu\) and \(\nu\) are dummy indices. But
+\[
+    T^\mu{}_{\nu}V^\nu
+\]
+is not the same kind of object as
+\[
+    T^\rho{}_{\nu}V^\nu,
+\]
+unless one also changes the name of the free index consistently. The free index
+labels the component of the resulting vector.
+
+Indices are not decoration. They encode the tensorial type of a formula. A
+valid tensor equation must have the same free indices on both sides. For
+example,
+\[
+    \partial_\mu F^{\mu\nu} = J^\nu
+\]
+is consistent because both sides carry the free index \(\nu\). The expression
+\(\partial_\mu F^{\mu\nu}=J_\mu\), by contrast, would not be a valid tensor
+equation as written, because the free indices do not match.
+
 \section{Partial Derivatives and Functional Dependence}
+
+Fields depend on spacetime coordinates. For a scalar field \(\phi(x)\), the
+partial derivative is written as
+\[
+    \partial_\mu \phi = \frac{\partial \phi}{\partial x^\mu}.
+\]
+The collection \(\partial_\mu\phi\) is the gradient of the scalar field in
+spacetime notation. Higher derivatives are written as
+\[
+    \partial_\mu\partial_\nu \phi.
+\]
+When the coordinates are ordinary flat coordinates and the fields are smooth,
+partial derivatives commute:
+\[
+    \partial_\mu\partial_\nu\phi = \partial_\nu\partial_\mu\phi.
+\]
+
+In a Lagrangian field theory, the Lagrangian density usually depends on the
+fields and their first derivatives:
+\[
+    \mathcal{L}=\mathcal{L}(\phi^A,\partial_\mu\phi^A,x).
+\]
+The symbol \(x\) at the end allows explicit coordinate dependence. Many
+important theories have no explicit coordinate dependence, in which case
+spacetime translation symmetry leads to energy-momentum conservation.
+
+It is important to distinguish ordinary dependence from functional dependence.
+The expression \(\mathcal{L}(\phi,\partial_\mu\phi,x)\) is a function of the
+local variables \(\phi(x)\), \(\partial_\mu\phi(x)\), and \(x\). The action
+\[
+    S[\phi] = \int \mathcal{L}(\phi,\partial_\mu\phi,x)\,d^{d+1}x
+\]
+is a functional: it takes an entire field configuration \(\phi\) and returns a
+number.
+
+\begin{examplebox}
+For a real scalar field in flat spacetime, a standard Lagrangian density is
+\[
+    \mathcal{L}
+    = \frac{1}{2}\partial_\mu\phi\,\partial^\mu\phi
+      - \frac{1}{2}m^2\phi^2.
+\]
+This expression is local: at each spacetime point it depends only on \(\phi\) and
+its first derivatives at that same point.
+\end{examplebox}
+
 \section{Differential Forms: A Minimal Introduction}
+
+Differential forms provide a compact language for integration, Stokes' theorem,
+and gauge fields. A zero-form is just a function. A one-form is an object that
+can be written locally as
+\[
+    \alpha = \alpha_\mu dx^\mu.
+\]
+A two-form has the form
+\[
+    \omega = \frac{1}{2}\omega_{\mu\nu}dx^\mu\wedge dx^\nu,
+\]
+where \(\wedge\) is the wedge product. The wedge product is antisymmetric:
+\[
+    dx^\mu\wedge dx^\nu = -dx^\nu\wedge dx^\mu.
+\]
+This antisymmetry is why the components of a two-form satisfy
+\(\omega_{\mu\nu}=-\omega_{\nu\mu}\).
+
+The exterior derivative maps \(p\)-forms to \((p+1)\)-forms. For a function
+\(f\),
+\[
+    df = \partial_\mu f\,dx^\mu.
+\]
+For a one-form \(A=A_\mu dx^\mu\),
+\[
+    dA = \frac{1}{2}(\partial_\mu A_\nu-\partial_\nu A_\mu)
+    dx^\mu\wedge dx^\nu.
+\]
+This is the natural form-language version of an antisymmetric field strength.
+In electromagnetism one writes
+\[
+    F=dA,
+\]
+where \(A\) is the electromagnetic potential one-form and \(F\) is the field
+strength two-form.
+
+A crucial identity is
+\[
+    d^2=0.
+\]
+Applied to electromagnetism, this gives
+\[
+    dF = d(dA)=0,
+\]
+which is the geometric form of the homogeneous Maxwell equations.
+
+\begin{remarkbox}
+Differential forms are not introduced here for elegance alone. They make the
+boundary structure of field theory visible. The formula \(d^2=0\), Stokes'
+theorem, and the compact expression \(F=dA\) are the natural language of gauge
+fields.
+\end{remarkbox}
+
 \section{Integration on Space and Spacetime}
+
+A field theory action is usually an integral over spacetime. In \(d\) spatial
+dimensions, the spacetime integration measure is written as
+\[
+    d^{d+1}x = dx^0\,dx^1\cdots dx^d.
+\]
+For a relativistic theory in four spacetime dimensions, one often writes
+\[
+    S[\phi] = \int \mathcal{L}\,d^4x.
+\]
+If one separates time and space, the same integral is written as
+\[
+    S[\phi] = \int dt\int d^d x\,\mathcal{L}.
+\]
+
+The Lagrangian density \(\mathcal{L}\) should not be confused with the
+Lagrangian \(L\). The relation is
+\[
+    L(t) = \int d^d x\,\mathcal{L}(t,\vect{x}).
+\]
+Thus the action may be written either as
+\[
+    S = \int L(t)\,dt
+\]
+or as
+\[
+    S = \int \mathcal{L}\,dt\,d^d x.
+\]
+
+When the spacetime region has a boundary, one must keep track of boundary
+integrals. In ordinary vector calculus, the divergence theorem says that
+\[
+    \int_\Omega \nabla\cdot\vect{J}\,d^d x
+    = \int_{\partial\Omega} \vect{J}\cdot\vect{n}\,d\Sigma.
+\]
+In spacetime notation, an analogous statement is
+\[
+    \int_\Omega \partial_\mu J^\mu\,d^{d+1}x
+    = \int_{\partial\Omega} J^\mu n_\mu\,d\Sigma.
+\]
+This is the reason total derivative terms are often said to become boundary
+terms.
+
 \section{Delta Functions and Distributions}
+
+The Dirac delta is not an ordinary function. It is a distribution defined by
+its action under an integral:
+\[
+    \int_{-\infty}^{\infty}\delta(x-a)f(x)\,dx = f(a).
+\]
+In \(d\) spatial dimensions,
+\[
+    \int \delta^{(d)}(\vect{x}-\vect{y})f(\vect{x})\,d^d x
+    = f(\vect{y}).
+\]
+The delta distribution is used to represent point sources, Green's functions,
+and functional derivatives.
+
+Point charge density, for example, can be written as
+\[
+    \rho(\vect{x}) = q\,\delta^{(3)}(\vect{x}-\vect{x}_0),
+\]
+meaning that the total charge is localized at \(\vect{x}_0\). Indeed,
+\[
+    \int \rho(\vect{x})\,d^3x = q.
+\]
+
+Derivatives of delta distributions are defined by integration by parts. In one
+dimension,
+\[
+    \int \delta'(x-a)f(x)\,dx = -f'(a),
+\]
+assuming boundary terms vanish. This rule is essential when manipulating
+Green's functions and variational derivatives.
+
+\begin{definitionbox}
+A \emph{distribution} is an object defined by how it acts under an integral
+against smooth test functions. The Dirac delta is the distribution that extracts
+the value of a test function at a point.
+\end{definitionbox}
+
 \section{Variations of Fields}
+
+A variation of a field is an infinitesimal change of the field configuration.
+For a scalar field one writes
+\[
+    \phi(x) \longrightarrow \phi(x)+\varepsilon\eta(x),
+\]
+where \(\varepsilon\) is a small parameter and \(\eta(x)\) is an arbitrary test
+variation. The variation of the field is
+\[
+    \delta\phi(x)=\eta(x).
+\]
+The variation of a derivative is the derivative of the variation:
+\[
+    \delta(\partial_\mu\phi)=\partial_\mu(\delta\phi).
+\]
+This simple identity is the mechanism behind the Euler--Lagrange equations for
+fields.
+
+For an action
+\[
+    S[\phi]=\int \mathcal{L}(\phi,\partial_\mu\phi,x)\,d^{d+1}x,
+\]
+the first variation is
+\[
+    \delta S
+    = \int \left(
+        \frac{\partial\mathcal{L}}{\partial\phi}\delta\phi
+        + \frac{\partial\mathcal{L}}{\partial(\partial_\mu\phi)}
+          \delta(\partial_\mu\phi)
+    \right)d^{d+1}x.
+\]
+Using \(\delta(\partial_\mu\phi)=\partial_\mu\delta\phi\), one obtains
+\[
+    \delta S
+    = \int \left(
+        \frac{\partial\mathcal{L}}{\partial\phi}\delta\phi
+        + \frac{\partial\mathcal{L}}{\partial(\partial_\mu\phi)}
+          \partial_\mu\delta\phi
+    \right)d^{d+1}x.
+\]
+The second term is then integrated by parts. This produces a bulk term and a
+boundary term. The bulk term gives the field equation; the boundary term tells
+us what must be assumed or added for the variational principle to be well
+defined.
+
 \section{Functional Derivatives}
+
+A functional derivative measures how a functional changes when the value of a
+field changes at a point. For a functional \(F[\phi]\), the functional derivative
+is defined by
+\[
+    \delta F
+    = \int \frac{\delta F}{\delta\phi(x)}\,\delta\phi(x)\,d^{d+1}x,
+\]
+up to boundary terms and under the chosen class of variations.
+
+The simplest example is
+\[
+    F[\phi] = \int f(x)\phi(x)\,d^{d+1}x.
+\]
+Then
+\[
+    \delta F = \int f(x)\delta\phi(x)\,d^{d+1}x,
+\]
+so
+\[
+    \frac{\delta F}{\delta\phi(x)} = f(x).
+\]
+A second important identity is
+\[
+    \frac{\delta\phi(y)}{\delta\phi(x)} = \delta^{(d+1)}(y-x).
+\]
+This is the field-theoretic analogue of
+\(\partial q^j/\partial q^i=\delta^j_i\).
+
+For a local action of the form
+\[
+    S[\phi]=\int \mathcal{L}(\phi,\partial_\mu\phi,x)\,d^{d+1}x,
+\]
+the functional derivative is
+\[
+    \frac{\delta S}{\delta\phi}
+    = \frac{\partial\mathcal{L}}{\partial\phi}
+      - \partial_\mu\left(
+        \frac{\partial\mathcal{L}}{\partial(\partial_\mu\phi)}
+      \right),
+\]
+provided the boundary term is handled appropriately. The Euler--Lagrange
+equation is then simply
+\[
+    \frac{\delta S}{\delta\phi}=0.
+\]
+For several fields \(\phi^A\), one has one equation for each field component:
+\[
+    \frac{\delta S}{\delta\phi^A}=0.
+\]
+
 \section{Boundary Terms and the Meaning of ``Up to a Total Derivative''}
+
+Boundary terms are not a technical nuisance. They are one of the main structural
+features of field theory. Consider a total derivative in spacetime,
+\[
+    \partial_\mu K^\mu.
+\]
+Its integral over a spacetime region \(\Omega\) is
+\[
+    \int_\Omega \partial_\mu K^\mu\,d^{d+1}x
+    = \int_{\partial\Omega} K^\mu n_\mu\,d\Sigma.
+\]
+Thus adding a total derivative to the Lagrangian density changes the action by a
+boundary term:
+\[
+    \mathcal{L}' = \mathcal{L}+\partial_\mu K^\mu.
+\]
+The bulk Euler--Lagrange equations are unchanged, but the variational principle,
+canonical momenta, conserved charges, and boundary conditions may change.
+
+This is the precise meaning of the phrase ``up to a total derivative.'' It does
+not mean that the term is zero. It means that the term does not affect the bulk
+field equations under the assumed boundary conditions. If the boundary is
+physically important, the term may become essential.
+
+\begin{remarkbox}
+A total derivative is harmless only after the boundary problem has been stated.
+In theories with boundaries, asymptotic regions, gauge symmetry, gravity, or
+conserved charges, boundary terms often contain physical information.
+\end{remarkbox}
+
+In the variational derivation, the characteristic integration by parts is
+\[
+    \int_\Omega P^\mu\partial_\mu\delta\phi\,d^{d+1}x
+    = -\int_\Omega (\partial_\mu P^\mu)\delta\phi\,d^{d+1}x
+      + \int_{\partial\Omega} P^\mu n_\mu\delta\phi\,d\Sigma.
+\]
+The first term contributes to the Euler--Lagrange equation. The second is the
+boundary term. One may remove it by fixing \(\delta\phi=0\) on the boundary, by
+choosing falloff conditions, or by adding compensating boundary terms to the
+action.
+
 \section{Lorentzian Geometry Needed for Field Theory}
+
+Relativistic field theory is formulated on spacetime. The simplest spacetime is
+Minkowski spacetime, equipped with the metric \(\eta_{\mu\nu}\). In these notes
+we will mostly use the signature
+\[
+    \eta_{\mu\nu}=\operatorname{diag}(+1,-1,-1,-1),
+\]
+unless stated otherwise. With this convention,
+\[
+    ds^2 = \eta_{\mu\nu}dx^\mu dx^\nu
+    = (dx^0)^2 - (dx^1)^2 - (dx^2)^2 - (dx^3)^2.
+\]
+The metric is used to raise and lower indices:
+\[
+    V_\mu = \eta_{\mu\nu}V^\nu,
+    \qquad
+    V^\mu = \eta^{\mu\nu}V_\nu.
+\]
+It is also used to form Lorentz-invariant contractions, such as
+\[
+    V_\mu V^\mu.
+\]
+
+The derivative with a raised index is defined by
+\[
+    \partial^\mu = \eta^{\mu\nu}\partial_\nu.
+\]
+The d'Alembert operator is
+\[
+    \Box = \partial_\mu\partial^\mu.
+\]
+With the above signature this becomes
+\[
+    \Box = \partial_t^2 - \nabla^2
+\]
+in units where \(c=1\). The Klein--Gordon equation may then be written compactly
+as
+\[
+    (\Box + m^2)\phi=0.
+\]
+
+In curved spacetime, the metric becomes a field \(g_{\mu\nu}(x)\), partial
+derivatives are replaced by covariant derivatives, and the volume element is
+modified. For much of Classical Field Theory I, however, the main stage will be
+flat Minkowski spacetime. Curved spacetime will appear later as a natural
+extension and as a bridge toward gravity.
+
+\begin{summarybox}
+The mathematical transition from mechanics to field theory is the transition
+from coordinates \(q^i(t)\) to fields \(\phi^A(x)\), from ordinary derivatives to
+spacetime derivatives, from a Lagrangian \(L\) to a Lagrangian density
+\(\mathcal{L}\), and from finite-dimensional derivatives to functional
+derivatives. Boundary terms are part of the structure, not an afterthought.
+\end{summarybox}
