@@ -1,12 +1,322 @@
 \chapter{Suggested Problems}
 
+\begin{remarkbox}
+These problems are designed to accompany the notes. They are not meant to be a
+separate problem book. Their purpose is to force active use of the definitions,
+variational principles, conservation laws, and examples developed in the main
+chapters.
+\end{remarkbox}
+
 \section{Variational Principle}
+
+\begin{enumerate}
+    \item Derive the Euler--Lagrange equation for a real scalar field with
+    Lagrangian density
+    \[
+        \mathcal{L}=\frac{1}{2}\partial_\mu\phi\partial^\mu\phi-V(\phi).
+    \]
+    Carefully identify the boundary term.
+
+    \item Consider the Lagrangian density
+    \[
+        \mathcal{L}=\frac{1}{2}(\partial_t\phi)^2
+        -\frac{c^2}{2}(\partial_x\phi)^2.
+    \]
+    Derive the wave equation and state what boundary conditions make the
+    variational principle well posed on a finite interval.
+
+    \item Show that adding a total derivative
+    \[
+        \mathcal{L}\longrightarrow \mathcal{L}+\partial_\mu K^\mu
+    \]
+    does not change the Euler--Lagrange equations, but changes the boundary term
+    in the first variation.
+
+    \item Let
+    \[
+        S[q]=\int_{t_1}^{t_2}dt\left(\frac{1}{2}m\dot q^2-V(q)\right).
+    \]
+    Derive Newton's equation from the variational principle and compare the
+    calculation with the field-theory derivation.
+
+    \item For a theory with two real fields \(\phi\) and \(\chi\), derive the
+    Euler--Lagrange equations for
+    \[
+        \mathcal{L}=\frac{1}{2}\partial_\mu\phi\partial^\mu\phi
+        +\frac{1}{2}\partial_\mu\chi\partial^\mu\chi
+        -V(\phi,\chi).
+    \]
+\end{enumerate}
+
 \section{Noether Currents}
+
+\begin{enumerate}
+    \item For a massless real scalar field with
+    \[
+        \mathcal{L}=\frac{1}{2}\partial_\mu\phi\partial^\mu\phi,
+    \]
+    show that the constant shift symmetry
+    \[
+        \phi\longrightarrow \phi+a
+    \]
+    gives the conserved current \(J^\mu=\partial^\mu\phi\).
+
+    \item For a complex scalar field with
+    \[
+        \mathcal{L}=\partial_\mu\phi^*\partial^\mu\phi-m^2\phi^*\phi,
+    \]
+    derive the Noether current associated with global \(U(1)\) phase rotations.
+
+    \item Derive the canonical stress-energy tensor for a real scalar field and
+    verify that it is conserved on shell when the Lagrangian density has no
+    explicit spacetime dependence.
+
+    \item Show explicitly that the conservation equation
+    \[
+        \partial_\mu J^\mu=0
+    \]
+    implies conservation of
+    \[
+        Q(t)=\int d^d x\,J^0(t,\vect{x})
+    \]
+    when the flux through spatial infinity vanishes.
+
+    \item Explain why a gauge symmetry should not be interpreted in exactly the
+    same way as a global symmetry. Use electromagnetism as the example.
+\end{enumerate}
+
 \section{Scalar Fields}
+
+\begin{enumerate}
+    \item Starting from
+    \[
+        (\Box+m^2)\phi=0,
+    \]
+    insert a plane wave ansatz and derive the dispersion relation
+    \[
+        \omega^2=|\vect{k}|^2+m^2.
+    \]
+
+    \item Compute the phase velocity and group velocity of a massive
+    Klein--Gordon mode. Discuss the limits \(|\vect{k}|\gg m\) and
+    \(|\vect{k}|\ll m\).
+
+    \item For
+    \[
+        V(\phi)=\frac{1}{2}m^2\phi^2+\frac{\lambda}{4}\phi^4,
+    \]
+    determine for which signs of \(m^2\) and \(\lambda\) the potential is bounded
+    below.
+
+    \item For the double-well potential
+    \[
+        V(\phi)=\frac{\lambda}{4}(\phi^2-v^2)^2,
+    \]
+    find the vacua and compute the mass squared of small fluctuations around
+    each vacuum.
+
+    \item Consider a static source coupled to a massive scalar field. Explain why
+    the static response is short-ranged and identify the length scale.
+\end{enumerate}
+
 \section{Electromagnetism}
+
+\begin{enumerate}
+    \item Starting from
+    \[
+        \vect{E}=-\nabla\Phi-\partial_t\vect{A},
+        \qquad
+        \vect{B}=\nabla\times\vect{A},
+    \]
+    show that the two homogeneous Maxwell equations are automatically satisfied.
+
+    \item Prove that the gauge transformation
+    \[
+        \vect{A}\longrightarrow \vect{A}+\nabla\chi,
+        \qquad
+        \Phi\longrightarrow \Phi-\partial_t\chi
+    \]
+    leaves \(\vect{E}\) and \(\vect{B}\) unchanged.
+
+    \item Vary the Maxwell action
+    \[
+        S[A]=\int d^4x\left(-\frac{1}{4}F_{\mu\nu}F^{\mu\nu}-J_\mu A^\mu\right)
+    \]
+    and derive
+    \[
+        \partial_\mu F^{\mu\nu}=J^\nu.
+    \]
+
+    \item Show that gauge invariance of the source coupling requires
+    \[
+        \partial_\mu J^\mu=0.
+    \]
+
+    \item Derive the wave equation for \(\vect{E}\) and \(\vect{B}\) in vacuum and
+    show that electromagnetic waves are transverse.
+\end{enumerate}
+
 \section{Yang--Mills Theory}
+
+\begin{enumerate}
+    \item For a non-Abelian gauge field
+    \[
+        A_\mu=A_\mu^aT_a,
+    \]
+    derive the component expression
+    \[
+        F_{\mu\nu}^a=\partial_\mu A_\nu^a-\partial_\nu A_\mu^a
+        +g f_{bc}{}^aA_\mu^bA_\nu^c.
+    \]
+
+    \item Show that if the Lie algebra is Abelian, the Yang--Mills field strength
+    reduces to the Maxwell field strength.
+
+    \item Starting from
+    \[
+        S_{\mathrm{YM}}=-\frac{1}{4}\int d^{d+1}x\,F_{\mu\nu}^aF^{a\mu\nu},
+    \]
+    derive the source-free Yang--Mills equation
+    \[
+        D_\mu F^{\mu\nu}=0.
+    \]
+
+    \item Verify the Bianchi identity
+    \[
+        D_{[\lambda}F_{\mu\nu]}=0
+    \]
+    using the Jacobi identity for covariant derivatives.
+
+    \item Explain in words why non-Abelian gauge fields self-interact while the
+    electromagnetic field does not self-interact at the classical Maxwell level.
+\end{enumerate}
+
 \section{Spinor Fields}
+
+\begin{enumerate}
+    \item Using the Clifford algebra
+    \[
+        \{\gamma^\mu,\gamma^\nu\}=2\eta^{\mu\nu}\mathbb{I},
+    \]
+    show that the Dirac equation implies the Klein--Gordon equation for each
+    component of \(\psi\).
+
+    \item Derive the Dirac equation by varying
+    \[
+        \mathcal{L}_{\mathrm{D}}=\bar\psi(i\gamma^\mu\partial_\mu-m)\psi
+    \]
+    with respect to \(\bar\psi\).
+
+    \item Derive the adjoint Dirac equation by varying with respect to \(\psi\).
+
+    \item Verify directly that
+    \[
+        j^\mu=\bar\psi\gamma^\mu\psi
+    \]
+    is conserved on shell.
+
+    \item Show that minimal electromagnetic coupling gives
+    \[
+        (i\gamma^\mu D_\mu-m)\psi=0.
+    \]
+    Explain how local \(U(1)\) symmetry determines the form of \(D_\mu\).
+\end{enumerate}
+
 \section{Spontaneous Symmetry Breaking}
+
+\begin{enumerate}
+    \item Analyze the minima of
+    \[
+        V(\phi)=\frac{\lambda}{4}(\phi^2-v^2)^2.
+    \]
+    Explain why the potential is symmetric but an individual vacuum need not be.
+
+    \item Expand \(\phi=v+\eta\) around one vacuum of the double-well potential
+    and compute the quadratic part of the Lagrangian for \(\eta\).
+
+    \item For a complex scalar field with potential
+    \[
+        V(\phi)=\lambda(\phi^*\phi-v^2/2)^2,
+    \]
+    describe the set of vacua geometrically.
+
+    \item Explain the difference between explicit symmetry breaking and
+    spontaneous symmetry breaking.
+\end{enumerate}
+
 \section{Solitons}
+
+\begin{enumerate}
+    \item For a static real scalar field in one spatial dimension, show that the
+    energy functional is
+    \[
+        E[\phi]=\int dx\left(\frac{1}{2}(\partial_x\phi)^2+V(\phi)\right).
+    \]
+
+    \item For the double-well potential, explain why finite-energy configurations
+    must approach vacua as \(x\to\pm\infty\).
+
+    \item Define a topological sector for the one-dimensional double-well model
+    using the limiting values of \(\phi\) at spatial infinity.
+
+    \item Explain why a configuration connecting \(-v\) at one end to \(+v\) at
+    the other end cannot be continuously deformed into the trivial vacuum while
+    keeping finite-energy boundary behavior.
+\end{enumerate}
+
 \section{Gravity as Field Theory}
+
+\begin{enumerate}
+    \item Compare the role of the metric \(g_{\mu\nu}\) in gravity with the role of
+    a scalar field \(\phi\) in scalar field theory. What makes gravity special?
+
+    \item Starting from the idea that matter couples to the metric through the
+    stress-energy tensor, explain the meaning of
+    \[
+        T_{\mu\nu}=-\frac{2}{\sqrt{|g|}}\frac{\delta S_{\mathrm{matter}}}{\delta g^{\mu\nu}}.
+    \]
+
+    \item In first-order language, define the torsion two-form
+    \[
+        T^a=de^a+\omega^a{}_b\wedge e^b
+    \]
+    and curvature two-form
+    \[
+        R^{ab}=d\omega^{ab}+\omega^a{}_c\wedge\omega^{cb}.
+    \]
+    Compare these expressions with Yang--Mills curvature.
+
+    \item Explain why diffeomorphism invariance is more subtle than an ordinary
+    internal gauge symmetry.
+\end{enumerate}
+
 \section{Boundaries and Charges}
+
+\begin{enumerate}
+    \item Starting from a conserved current
+    \[
+        \partial_\mu J^\mu=0,
+    \]
+    derive the relation between the time derivative of the charge in a spatial
+    region and the flux through the boundary.
+
+    \item Give an example where a current is locally conserved but the charge in a
+    finite region changes with time.
+
+    \item Explain why boundary terms in the variation of the action matter for
+    defining Hamiltonian generators.
+
+    \item For electromagnetism, explain why gauge transformations that do not
+    vanish at the boundary may be associated with charges.
+
+    \item Discuss the statement: ``The physical charge is often more robust than
+    the local representative of the Noether current.'' Use improvement terms as
+    part of the explanation.
+\end{enumerate}
+
+\begin{summarybox}
+The problems in this appendix are intended to reinforce the central skills of
+classical field theory: varying actions, controlling boundary terms, deriving
+currents, identifying symmetries, reading physical content from field equations,
+and distinguishing local equations from global charges.
+\end{summarybox}
