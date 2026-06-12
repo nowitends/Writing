@@ -1,10 +1,411 @@
 \chapter{Special Relativity and Spacetime Formulation}
 
+\begin{remarkbox}
+Classical field theory becomes structurally clear when it is written on
+spacetime rather than on space plus time separately. This chapter introduces the
+relativistic language needed for the rest of the course: Minkowski spacetime,
+Lorentz transformations, four-vectors, tensors, proper time, causality,
+covariant equations, and invariant actions.
+\end{remarkbox}
+
 \section{Minkowski Spacetime}
+
+Special relativity is built on the idea that space and time are not independent
+backgrounds. They form a single four-dimensional spacetime. A point of
+spacetime is called an event and is labelled by coordinates
+\[
+    x^\mu = (x^0,x^1,x^2,x^3).
+\]
+In units where \(c=1\), one usually takes \(x^0=t\). If the speed of light is
+kept explicit, one often writes \(x^0=ct\).
+
+The geometric structure of flat relativistic spacetime is encoded in the
+Minkowski metric. In these notes we use the mostly-minus convention
+\[
+    \eta_{\mu\nu}=\operatorname{diag}(+1,-1,-1,-1).
+\]
+The spacetime interval between neighbouring events is
+\[
+    ds^2 = \eta_{\mu\nu}dx^\mu dx^\nu
+    = dt^2 - d\vect{x}^{\,2}
+\]
+in units \(c=1\). With \(c\) explicit, this becomes
+\[
+    ds^2 = c^2dt^2-d\vect{x}^{\,2}.
+\]
+
+The interval is not a Euclidean distance. Its sign has physical meaning. A
+separation is timelike if \(ds^2>0\), lightlike if \(ds^2=0\), and spacelike if
+\(ds^2<0\). Timelike separated events can lie on the worldline of a massive
+particle. Lightlike separated events can be connected by a light ray. Spacelike
+separated events cannot influence each other by any signal travelling at or
+below the speed of light.
+
+\begin{definitionbox}
+\emph{Minkowski spacetime} is the flat spacetime of special relativity. It is
+equipped with the metric \(\eta_{\mu\nu}\), which defines the invariant interval
+\(ds^2=\eta_{\mu\nu}dx^\mu dx^\nu\).
+\end{definitionbox}
+
+The key difference between Euclidean geometry and Minkowski geometry is that
+the metric has mixed signs. This is not a minor convention. It is the algebraic
+origin of light cones, causal structure, relativistic wave equations, and the
+classification of particles by mass.
+
 \section{Lorentz Transformations}
+
+A Lorentz transformation is a linear change of inertial coordinates that
+preserves the Minkowski interval. If
+\[
+    x'^\mu = \Lambda^\mu{}_{\nu}x^\nu,
+\]
+then \(\Lambda^\mu{}_{\nu}\) is Lorentz if
+\[
+    \eta_{\rho\sigma}\Lambda^\rho{}_{\mu}\Lambda^\sigma{}_{\nu}
+    = \eta_{\mu\nu}.
+\]
+Equivalently, in matrix notation,
+\[
+    \Lambda^T\eta\Lambda=\eta.
+\]
+This is the relativistic analogue of the condition \(R^TR=I\) for rotations in
+Euclidean space, but with the Euclidean metric replaced by the Minkowski metric.
+
+A standard boost in the \(x^1\)-direction has the form
+\[
+\begin{aligned}
+    t' &= \gamma(t-vx^1),\\
+    x'^1 &= \gamma(x^1-vt),\\
+    x'^2 &= x^2,\\
+    x'^3 &= x^3,
+\end{aligned}
+\]
+where
+\[
+    \gamma = \frac{1}{\sqrt{1-v^2}}
+\]
+in units \(c=1\). This transformation mixes time and space. That mixing is why
+relativistic field theory should be formulated on spacetime from the beginning.
+
+\begin{examplebox}
+For a boost in the \(x^1\)-direction, one can check directly that
+\[
+    t'^2-(x'^1)^2-(x'^2)^2-(x'^3)^2
+    = t^2-(x^1)^2-(x^2)^2-(x^3)^2.
+\]
+The coordinates change, but the interval does not.
+\end{examplebox}
+
+The set of Lorentz transformations forms the Lorentz group, usually denoted
+\(O(1,3)\). The transformations continuously connected to the identity and
+preserving the direction of time form the proper orthochronous Lorentz group
+\(SO^+(1,3)\). Most local relativistic field theories are built to transform
+naturally under this group.
+
 \section{Four-Vectors and Tensors}
+
+A four-vector is an object whose components transform under Lorentz
+transformations in the same way as spacetime coordinates:
+\[
+    V'^\mu = \Lambda^\mu{}_{\nu}V^\nu.
+\]
+Examples include the displacement \(dx^\mu\), the four-momentum \(p^\mu\), and
+the four-current \(J^\mu\). A covector transforms with the inverse matrix, and
+is usually written with a lower index:
+\[
+    W'_\mu = (\Lambda^{-1})^\nu{}_{\mu}W_\nu.
+\]
+The metric converts vectors into covectors:
+\[
+    V_\mu = \eta_{\mu\nu}V^\nu.
+\]
+
+The contraction of a vector and a covector is Lorentz invariant:
+\[
+    W_\mu V^\mu = W'_\mu V'^\mu.
+\]
+Similarly, the squared norm of a four-vector is
+\[
+    V_\mu V^\mu.
+\]
+For four-momentum,
+\[
+    p^\mu=(E,\vect{p})
+\]
+in units \(c=1\), the invariant relation is
+\[
+    p_\mu p^\mu = E^2-\vect{p}^{\,2}=m^2.
+\]
+This is the relativistic energy-momentum relation.
+
+Tensors generalize vectors by carrying more indices. A rank-two tensor
+\(T^{\mu\nu}\) transforms as
+\[
+    T'^{\mu\nu}
+    = \Lambda^\mu{}_{\rho}\Lambda^\nu{}_{\sigma}T^{\rho\sigma}.
+\]
+The electromagnetic field strength \(F_{\mu\nu}\) is an antisymmetric rank-two
+tensor. The stress-energy tensor \(T^{\mu\nu}\) is a rank-two tensor encoding
+energy density, momentum density, energy flux, and stresses.
+
+\begin{definitionbox}
+A relativistic equation is \emph{covariant} if both sides transform in the same
+way under Lorentz transformations. Covariance ensures that the equation has the
+same geometric content in all inertial frames.
+\end{definitionbox}
+
+A useful rule is that a valid tensor equation must have the same free indices on
+both sides. For example,
+\[
+    \partial_\mu F^{\mu\nu}=J^\nu
+\]
+is a valid vector equation, because the free index \(\nu\) appears on both
+sides. The equation represents four component equations, but it is written in a
+form that makes Lorentz covariance manifest.
+
 \section{Proper Time, Worldlines, and Causal Structure}
+
+The history of a point particle is a curve in spacetime, called a worldline:
+\[
+    x^\mu=x^\mu(\lambda),
+\]
+where \(\lambda\) is a parameter along the curve. For a massive particle, one
+can use proper time \(\tau\) as the parameter. Proper time is defined by
+\[
+    d\tau^2 = ds^2
+\]
+for timelike curves in units \(c=1\). Thus
+\[
+    d\tau^2 = dt^2-d\vect{x}^{\,2}.
+\]
+If \(\vect{v}=d\vect{x}/dt\), then
+\[
+    d\tau = dt\sqrt{1-\vect{v}^{\,2}}
+    = \frac{dt}{\gamma}.
+\]
+Proper time is the time measured by a clock moving along the worldline.
+
+The four-velocity is defined as
+\[
+    u^\mu = \frac{dx^\mu}{d\tau}.
+\]
+It satisfies
+\[
+    u_\mu u^\mu = 1
+\]
+with our signature convention. The four-momentum is
+\[
+    p^\mu = m u^\mu,
+\]
+and therefore
+\[
+    p_\mu p^\mu=m^2.
+\]
+
+Causal structure is encoded by light cones. At each event, the light cone
+separates possible future-directed timelike and lightlike directions from
+spacelike directions. Relativistic field equations must respect this structure:
+physical disturbances should propagate inside or on the light cone, not outside
+it.
+
+\begin{remarkbox}
+The light cone is not an optical illustration added to spacetime. It is the
+causal skeleton of relativistic physics. Hyperbolic field equations, retarded
+Green's functions, and relativistic signal propagation are all organized around
+this structure.
+\end{remarkbox}
+
+For field theory, worldlines are less fundamental than fields over spacetime,
+but they remain useful. Sources, detectors, observers, and particles moving in
+external fields are often represented by worldlines interacting with spacetime
+fields.
+
 \section{Relativistic Notation for Fields}
+
+A relativistic field is written as a function of spacetime coordinates:
+\[
+    \phi(x) = \phi(x^0,x^1,x^2,x^3).
+\]
+For a scalar field, Lorentz transformations act by changing the argument:
+\[
+    \phi'(x')=\phi(x).
+\]
+Equivalently,
+\[
+    \phi'(x)=\phi(\Lambda^{-1}x).
+\]
+This means that the scalar value attached to a spacetime event is independent
+of the coordinate system used to describe that event.
+
+A vector field \(A_\mu(x)\) transforms both in its argument and in its index:
+\[
+    A'_\mu(x')=(\Lambda^{-1})^\nu{}_{\mu}A_\nu(x).
+\]
+A tensor field transforms with one Lorentz matrix for each index. Spinor fields
+transform with spinor representations rather than ordinary vector
+representations; this will be discussed later in the chapter on the Dirac
+field.
+
+The derivative operator is written as
+\[
+    \partial_\mu = \frac{\partial}{\partial x^\mu}.
+\]
+Raising the index gives
+\[
+    \partial^\mu=\eta^{\mu\nu}\partial_\nu.
+\]
+The d'Alembert operator is
+\[
+    \Box=\partial_\mu\partial^\mu.
+\]
+With our signature and \(c=1\), this is
+\[
+    \Box=\partial_t^2-\nabla^2.
+\]
+
+A relativistic scalar field equation can therefore be written compactly as
+\[
+    (\Box+m^2)\phi=0.
+\]
+This is the Klein--Gordon equation. Its compact form displays its Lorentz
+covariance: \(\Box\) is a Lorentz-invariant differential operator, and \(m^2\) is
+a scalar parameter.
+
 \section{Covariant and Non-Covariant Forms of Equations}
+
+A covariant equation is written in a way that makes its transformation
+properties clear. A non-covariant equation may describe the same physics, but it
+hides the spacetime structure by separating time and space.
+
+For example, the Klein--Gordon equation can be written covariantly as
+\[
+    (\Box+m^2)\phi=0.
+\]
+In components, using \(\Box=\partial_t^2-\nabla^2\), the same equation is
+\[
+    \partial_t^2\phi-\nabla^2\phi+m^2\phi=0.
+\]
+The second form is useful for solving initial-value problems, but the first form
+makes Lorentz covariance manifest.
+
+Maxwell's equations provide an even stronger example. In vector notation they
+are
+\[
+\begin{aligned}
+    \nabla\cdot\vect{E} &= \rho,\\
+    \nabla\cdot\vect{B} &= 0,\\
+    \nabla\times\vect{E} + \partial_t\vect{B} &= 0,\\
+    \nabla\times\vect{B} - \partial_t\vect{E} &= \vect{J},
+\end{aligned}
+\]
+in units adapted to the chosen conventions. In covariant notation these become
+\[
+    \partial_\mu F^{\mu\nu}=J^\nu,
+    \qquad
+    \partial_{[\lambda}F_{\mu\nu]}=0.
+\]
+The second equation can also be written as
+\[
+    dF=0
+\]
+in differential-form notation.
+
+\begin{examplebox}
+A non-covariant form is often better for calculation in a chosen frame. A
+covariant form is better for understanding the structure of the theory. In good
+relativistic field theory, both descriptions are available and equivalent.
+\end{examplebox}
+
+Covariance does not mean that all components look numerically the same in every
+frame. It means that the equation as a geometric statement is frame-independent.
+The components change, but the tensorial relation remains valid.
+
 \section{Invariant Actions}
+
+The action principle is the central organizing principle of this course. In a
+relativistic field theory, the action should be a Lorentz scalar. This means
+that its value should not depend on the inertial coordinate system used to
+compute it.
+
+For a scalar field, a standard action is
+\[
+    S[\phi]=\int \mathcal{L}\,d^4x,
+\]
+with
+\[
+    \mathcal{L}
+    = \frac{1}{2}\partial_\mu\phi\partial^\mu\phi
+      -\frac{1}{2}m^2\phi^2.
+\]
+The term \(\partial_\mu\phi\partial^\mu\phi\) is a Lorentz scalar because the
+index \(\mu\) is contracted. The term \(\phi^2\) is also a scalar. Therefore the
+Lagrangian density is a scalar, and the action is invariant under Lorentz
+transformations.
+
+More generally, relativistic Lagrangian densities are built by contracting all
+spacetime indices. For electromagnetism, the basic invariant is
+\[
+    F_{\mu\nu}F^{\mu\nu}.
+\]
+The Maxwell action in vacuum is proportional to
+\[
+    S[A]= -\frac{1}{4}\int F_{\mu\nu}F^{\mu\nu}\,d^4x.
+\]
+The factor \(-1/4\) is conventional, but useful: it gives standard normalizations
+for the equations of motion and energy density.
+
+\begin{definitionbox}
+A relativistic action is \emph{Lorentz invariant} if it is unchanged under
+Lorentz transformations. In practice, this is achieved by building the
+Lagrangian density from Lorentz scalars and integrating over the invariant
+spacetime volume element.
+\end{definitionbox}
+
+In flat spacetime, \(d^4x\) is invariant under proper Lorentz transformations
+because \(|\det\Lambda|=1\). In curved spacetime, the invariant volume element
+is no longer simply \(d^4x\), but \(\sqrt{|g|}\,d^4x\), where \(g\) is the
+determinant of the metric. This generalization will become important when field
+theory is coupled to gravity.
+
 \section{Why Relativistic Field Theory Is Natural}
+
+Relativistic field theory is not just classical mechanics rewritten with more
+indices. It is the natural framework for local physics compatible with special
+relativity.
+
+First, special relativity treats space and time as parts of one structure.
+Therefore a local dynamical variable should naturally be a function on
+spacetime:
+\[
+    \phi=\phi(x).
+\]
+Second, causality restricts how disturbances may propagate. Relativistic field
+equations must respect the light-cone structure of Minkowski spacetime. Third,
+energy and momentum form a four-vector, and conservation laws are naturally
+written as divergence equations such as
+\[
+    \partial_\mu T^{\mu\nu}=0.
+\]
+
+Fourth, interactions that are local in spacetime are naturally described by
+local Lagrangian densities. A typical action has the form
+\[
+    S=\int \mathcal{L}(\phi^A,\partial_\mu\phi^A,x)\,d^4x.
+\]
+This expression says that the total action is assembled from local spacetime
+contributions. That locality is one of the deepest structural assumptions of
+classical and quantum field theory.
+
+Finally, the same language prepares the transition to quantum field theory. The
+objects that will later be quantized are not particle trajectories, but fields,
+actions, symmetries, currents, and propagators. Classical relativistic field
+theory is therefore the structural bridge between classical mechanics and
+quantum field theory.
+
+\begin{summarybox}
+Special relativity turns field theory into spacetime geometry. Fields are
+functions or tensorial objects on Minkowski spacetime; equations should be
+Lorentz covariant; actions should be Lorentz invariant; and causal propagation
+is organized by the light cone. This is the natural language for scalar fields,
+electromagnetism, Yang--Mills theory, spinor fields, and eventually gravity.
+\end{summarybox}
