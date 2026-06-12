@@ -1,10 +1,160 @@
 \chapter{Wartości oczekiwane i niepewności pomiarowe}
 
+\begin{summarybox}
+Mechanika kwantowa nie przewiduje zwykle pojedynczego wyniku pomiaru z absolutną
+pewnością. Przewiduje rozkład możliwych wyników, ich średnie oraz rozrzuty. Ten
+rozdział porządkuje pojęcia obserwabli, wartości oczekiwanej, wariancji i
+niepewności pomiarowej oraz pokazuje, jak liczyć \(\Delta x\), \(\Delta p\) i
+iloczyn \(\Delta x\Delta p\) na przykładzie cząstki w nieskończonej studni.
+\end{summarybox}
+
 \section{Obserwabla jako operator}
+
+W mechanice klasycznej wielkości fizyczne, takie jak położenie, pęd czy energia, traktujemy jako funkcje zmiennych fazowych. W mechanice kwantowej obserwable reprezentowane są przez operatory. Położenie w reprezentacji położeniowej działa przez mnożenie:
+\begin{equation}
+    \hat{x}\psi(x)=x\psi(x),
+\end{equation}
+a pęd przez różniczkowanie:
+\begin{equation}
+    \hat{p}_x\psi(x)=-i\hbar\frac{d\psi}{dx}.
+\end{equation}
+Energia układu opisywana jest przez Hamiltonian \(\hat{H}\).
+
+Operator obserwabli powinien być hermitowski, ponieważ wyniki pomiarów są liczbami rzeczywistymi. Hermitowskość oznacza, że dla dopuszczalnych funkcji falowych zachodzi
+\begin{equation}
+    \int \psi^*(\hat{A}\phi)\,dx
+    =
+    \int (\hat{A}\psi)^*\phi\,dx.
+\end{equation}
+Ta własność gwarantuje rzeczywistość wartości oczekiwanych i dobrą strukturę stanów własnych.
+
 \section{Wartość oczekiwana \texorpdfstring{\(\langle \hat{A}\rangle\)}{<A>}}
+
+Wartość oczekiwana obserwabli \(A\) w stanie \(\psi\) jest dana wzorem
+\begin{equation}
+    \langle \hat{A}\rangle
+    =\int \psi^*(x)\hat{A}\psi(x)\,dx.
+\end{equation}
+Granice całkowania zależą od problemu. Dla całej osi całkujemy od \(-\infty\) do \(\infty\), a dla studni od \(0\) do \(a\) albo po innym dopuszczalnym przedziale.
+
+Dla położenia otrzymujemy
+\begin{equation}
+    \langle x\rangle=\int x|\psi(x)|^2\,dx.
+\end{equation}
+Dla pędu:
+\begin{equation}
+    \langle p_x\rangle
+    =\int \psi^*(x)\left(-i\hbar\frac{d}{dx}\right)\psi(x)\,dx.
+\end{equation}
+W tym drugim wzorze operator działa na funkcję po swojej prawej stronie. Nie wolno przesuwać go jak zwykłej liczby.
+
+\begin{remarkbox}
+Wartość oczekiwana nie oznacza najczęstszego wyniku pojedynczego pomiaru. Oznacza średnią po bardzo wielu pomiarach wykonanych na identycznie przygotowanych stanach.
+\end{remarkbox}
+
 \section{Niepewność \texorpdfstring{\(\Delta A\)}{Delta A}}
+
+Niepewność obserwabli \(A\) definiujemy jako odchylenie standardowe rozkładu wyników pomiaru:
+\begin{equation}
+    \Delta A=\sqrt{\langle \hat{A}^2\rangle-\langle \hat{A}\rangle^2}.
+\end{equation}
+Jeżeli \(\Delta A=0\), to stan jest stanem własnym obserwabli \(A\) i pomiar daje jedną wartość z pewnością. Jeżeli \(\Delta A\neq 0\), wyniki pomiaru są rozrzucone.
+
+Dla położenia:
+\begin{equation}
+    \Delta x=\sqrt{\langle x^2\rangle-\langle x\rangle^2}.
+\end{equation}
+Dla pędu:
+\begin{equation}
+    \Delta p_x=\sqrt{\langle \hat{p}_x^2\rangle-\langle \hat{p}_x\rangle^2}.
+\end{equation}
+
 \section{Przykład: położenie w nieskończonej studni}
+
+Rozważmy nieskończoną studnię potencjału na przedziale \(0<x<a\). Funkcje własne mają postać
+\begin{equation}
+    \psi_n(x)=\sqrt{\frac{2}{a}}\sin\left(\frac{n\pi x}{a}\right).
+\end{equation}
+Ponieważ gęstość prawdopodobieństwa jest symetryczna względem środka studni, oczekujemy
+\begin{equation}
+    \langle x\rangle=\frac{a}{2}.
+\end{equation}
+Można to policzyć bezpośrednio:
+\begin{equation}
+    \langle x\rangle=\int_0^a x\frac{2}{a}\sin^2\left(\frac{n\pi x}{a}\right)dx=\frac{a}{2}.
+\end{equation}
+
+Do niepewności potrzebujemy jeszcze \(\langle x^2\rangle\):
+\begin{equation}
+    \langle x^2\rangle
+    =\int_0^a x^2\frac{2}{a}\sin^2\left(\frac{n\pi x}{a}\right)dx
+    =a^2\left(\frac{1}{3}-\frac{1}{2n^2\pi^2}\right).
+\end{equation}
+Stąd
+\begin{equation}
+    \Delta x
+    =a\sqrt{\frac{1}{12}-\frac{1}{2n^2\pi^2}}.
+\end{equation}
+
+W Mathematice można to sprawdzić tak:
+\begin{verbatim}
+psi[n_, x_] := Sqrt[2/a] Sin[n Pi x/a]
+meanX[n_] := Integrate[x psi[n, x]^2, {x, 0, a}, Assumptions -> {a > 0, n \[Element] Integers, n > 0}]
+meanX2[n_] := Integrate[x^2 psi[n, x]^2, {x, 0, a}, Assumptions -> {a > 0, n \[Element] Integers, n > 0}]
+Simplify[Sqrt[meanX2[n] - meanX[n]^2]]
+\end{verbatim}
+
 \section{Przykład: pęd w nieskończonej studni}
+
+Dla tej samej funkcji falowej średni pęd wynosi zero:
+\begin{equation}
+    \langle p_x\rangle=0.
+\end{equation}
+Nie oznacza to, że cząstka „stoi”. Oznacza to, że stan stacjonarny w studni jest superpozycją składników pędowych biegnących w prawo i w lewo, których średni pęd się znosi.
+
+Operator kwadratu pędu ma postać
+\begin{equation}
+    \hat{p}_x^2=-\hbar^2\frac{d^2}{dx^2}.
+\end{equation}
+Ponieważ \(\psi_n\) jest funkcją własną tego operatora, mamy
+\begin{equation}
+    \langle p_x^2\rangle=\left(\frac{n\pi\hbar}{a}\right)^2.
+\end{equation}
+Skoro \(\langle p_x\rangle=0\), dostajemy
+\begin{equation}
+    \Delta p_x=\frac{n\pi\hbar}{a}.
+\end{equation}
+
 \section{Iloczyn \texorpdfstring{\(\Delta x\Delta p\)}{Delta x Delta p}}
+
+Dla nieskończonej studni otrzymujemy
+\begin{equation}
+    \Delta x\Delta p_x
+    =\hbar n\pi\sqrt{\frac{1}{12}-\frac{1}{2n^2\pi^2}}.
+\end{equation}
+Dla \(n=1\) jest to liczba większa niż \(\hbar/2\), zgodnie z zasadą nieoznaczoności Heisenberga:
+\begin{equation}
+    \Delta x\Delta p_x\geq \frac{\hbar}{2}.
+\end{equation}
+
+Ogólnie, dla dwóch obserwabli \(A\) i \(B\), zachodzi relacja
+\begin{equation}
+    \Delta A\Delta B\geq \frac{1}{2}\left|\langle [\hat{A},\hat{B}]\rangle\right|.
+\end{equation}
+Dla \(\hat{x}\) i \(\hat{p}_x\) mamy \([\hat{x},\hat{p}_x]=i\hbar\), więc dostajemy klasyczną postać relacji nieoznaczoności.
+
 \section{Granica klasyczna a niezerowa niepewność}
+
+W granicy dużych liczb kwantowych rozkłady kwantowe mogą coraz bardziej przypominać rozkłady klasyczne. Nie oznacza to jednak, że niepewności znikają. Wysoko wzbudzone stany w studni mają wiele oscylacji i niezerowe rozrzuty zarówno położenia, jak i pędu.
+
+Granica klasyczna polega raczej na tym, że względne efekty kwantowe stają się mniej widoczne w porównaniu ze skalą całego problemu. Wartości oczekiwane i rozkłady zaczynają odtwarzać zachowanie średnie znane z klasyki, ale struktura probabilistyczna pozostaje.
+
 \section{Interpretacja statystyczna, nie błąd aparatury}
+
+Niepewność \(\Delta A\) nie jest błędem przyrządu pomiarowego. Jest własnością stanu kwantowego. Nawet idealne urządzenie, mierzące idealnie przygotowane kopie tego samego stanu, może dawać rozrzucone wyniki.
+
+To rozróżnienie jest kluczowe. Błąd aparatury można zmniejszać przez lepszą technikę eksperymentalną. Niepewność kwantowa wynika z samej struktury stanu i z algebry operatorów. Dlatego relacja \(\Delta x\Delta p_x\geq \hbar/2\) nie jest komentarzem o niedoskonałych mikroskopach, lecz twierdzeniem o możliwych stanach kwantowych.
+
+\begin{summarybox}
+Wartości oczekiwane opisują średnie wyniki wielu pomiarów, a niepewności opisują rozrzut tych wyników. Niepewność kwantowa jest własnością stanu, nie zwykłym błędem aparatury. Właśnie dlatego położenie i pęd nie mogą być jednocześnie dowolnie ostre.
+\end{summarybox}
