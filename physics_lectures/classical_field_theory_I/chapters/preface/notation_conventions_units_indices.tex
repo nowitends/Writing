@@ -1,30 +1,42 @@
-\section{Notation, Conventions, Units, and Index Language}
+\section{Notation as a Language}
 
-These notes use standard mathematical notation for fields and their derivatives.
-Spatial vectors are written in boldface, for example \(\vect{x}\) and
-\(\vect{E}\). Spacetime indices are usually Greek:
+Field theory needs notation, but notation is not the subject. Symbols are useful
+only when they make structure visible. Index notation, differential forms,
+Fourier modes, covariant derivatives, and gamma matrices are introduced in these
+notes because they help us say something clearly about fields.
+
+The reader should not try to memorize every convention at once. At the beginning,
+it is enough to know what kind of object is being discussed. Is it a scalar, a
+vector, a tensor, a spinor, or a gauge potential? Does an index label spacetime,
+space, an internal symmetry, or a component of a multiplet? Most mistakes in
+field theory come from mixing these roles.
+
+Spatial vectors are written in boldface, for example \(\vect{x}\), \(\vect{E}\),
+and \(\vect{B}\). Spacetime indices are usually Greek, such as
+\(\mu,\nu,\rho,\sigma\), while spatial indices are usually Latin, such as
+\(i,j,k\). Internal indices for Lie algebras are often written as \(a,b,c\). The
+same letter should not be read mechanically; it should be read as part of the
+object's transformation meaning.
+
+Repeated indices are summed when the Einstein convention is used. Thus an
+expression such as
 \[
-    \mu,\nu,\rho,\sigma = 0,1,2,3.
+    \partial_\mu F^{\mu\nu}=J^\nu
 \]
-Spatial indices are usually Latin:
-\[
-    i,j,k = 1,2,3.
-\]
-Repeated upper and lower indices are summed when index notation is used.
+contains one summed index, \(\mu\), and one free index, \(\nu\). The free index
+tells us that this is a family of equations, one for each value of \(\nu\).
 
-The derivative \(\partial_\mu\) denotes differentiation with respect to the
-coordinate \(x^\mu\). In relativistic notation, field equations are often
-written so that their transformation properties under Lorentz transformations
-are visible. When the metric is needed, the convention will be stated before it
-is used.
-
-Units are part of the physics. Sometimes constants such as \(c\), \(\hbar\), or
-\(\varepsilon_0\) will be displayed explicitly to clarify dimensions. In more
-theoretical sections, natural units may be used to simplify formulas. The text
-will indicate when such simplifications are made.
+Units are also part of the language. In more physical examples, constants such
+as \(c\), \(\hbar\), or electromagnetic constants may be displayed to clarify
+dimensions. In more theoretical sections, natural units may be used to reduce
+clutter. The point is not to hide dimensions, but to avoid letting constants
+obscure the structure being studied.
 
 \begin{remarkbox}
-Index notation is a language, not a decoration. It records which objects are
-scalars, vectors, covectors, tensors, and densities. A formula with indices
-should be read together with its transformation meaning.
+Notation should be read semantically. An index is not decoration; it tells us how
+an object transforms, what it can be contracted with, and what kind of equation
+is being written.
 \end{remarkbox}
+
+Detailed conventions are collected in Appendix A. The main text introduces only
+what is needed at the moment it becomes useful.
