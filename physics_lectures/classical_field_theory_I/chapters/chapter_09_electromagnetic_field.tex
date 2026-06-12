@@ -1,15 +1,637 @@
 \chapter{Electromagnetic Field}
 
+\begin{remarkbox}
+Electromagnetism is the prototype of gauge field theory. It contains all the
+central ideas that later reappear in Yang--Mills theory: potentials, gauge
+freedom, field strength, an action principle, coupling to conserved matter
+currents, constraints, propagating transverse degrees of freedom, local energy
+and momentum, waves, and radiation.
+\end{remarkbox}
+
 \section{Maxwell Equations in Vector Form}
+
+In units where the electric and magnetic constants are absorbed into the
+definitions of fields and sources, Maxwell's equations are
+\[
+    \nabla\cdot\vect{E}=\rho,
+\]
+\[
+    \nabla\cdot\vect{B}=0,
+\]
+\[
+    \nabla\times\vect{E}+\partial_t\vect{B}=0,
+\]
+and
+\[
+    \nabla\times\vect{B}-\partial_t\vect{E}=\vect{J}.
+\]
+Here \(\rho\) is the charge density and \(\vect{J}\) is the current density.
+The first and fourth equations contain sources. The second and third are
+homogeneous equations and express the absence of magnetic monopoles and the
+Faraday induction law.
+
+The equations imply charge conservation. Taking the divergence of
+\[
+    \nabla\times\vect{B}-\partial_t\vect{E}=\vect{J}
+\]
+gives
+\[
+    \nabla\cdot\vect{J}
+    =\nabla\cdot(\nabla\times\vect{B})-\partial_t(\nabla\cdot\vect{E}).
+\]
+Since \(\nabla\cdot(\nabla\times\vect{B})=0\) and
+\(\nabla\cdot\vect{E}=\rho\), one obtains
+\[
+    \partial_t\rho+\nabla\cdot\vect{J}=0.
+\]
+Thus Maxwell's equations are consistent only with locally conserved charge.
+
+\begin{definitionbox}
+The electromagnetic field is described by an electric field \(\vect{E}\) and a
+magnetic field \(\vect{B}\) satisfying Maxwell's equations. In relativistic
+field theory these fields are not independent objects but components of a
+single antisymmetric spacetime tensor.
+\end{definitionbox}
+
+The vector form is physically transparent and useful for calculations in a
+chosen inertial frame. Its limitation is that Lorentz covariance is hidden. The
+covariant formulation reveals that electric and magnetic fields are frame-dependent
+parts of a single electromagnetic field strength.
+
 \section{Electromagnetic Potentials}
+
+The homogeneous Maxwell equations can be solved by introducing potentials. The
+equation
+\[
+    \nabla\cdot\vect{B}=0
+\]
+implies, at least locally in a topologically simple region, that
+\[
+    \vect{B}=\nabla\times\vect{A},
+\]
+where \(\vect{A}\) is the vector potential. Substituting this into Faraday's law
+\[
+    \nabla\times\vect{E}+\partial_t\vect{B}=0
+\]
+gives
+\[
+    \nabla\times\left(\vect{E}+\partial_t\vect{A}\right)=0.
+\]
+Therefore there exists a scalar potential \(\Phi\) such that
+\[
+    \vect{E}+\partial_t\vect{A}=-\nabla\Phi.
+\]
+Thus
+\[
+    \vect{E}=-\nabla\Phi-\partial_t\vect{A},
+    \qquad
+    \vect{B}=\nabla\times\vect{A}.
+\]
+
+The potentials are naturally combined into the four-potential
+\[
+    A^\mu=(\Phi,\vect{A}).
+\]
+With the mostly-minus metric convention,
+\[
+    A_\mu=(\Phi,-\vect{A}).
+\]
+The electromagnetic field strength tensor is then defined by
+\[
+    F_{\mu\nu}=\partial_\mu A_\nu-\partial_\nu A_\mu.
+\]
+This definition automatically incorporates the homogeneous Maxwell equations.
+
+\begin{remarkbox}
+The potentials are not merely calculational conveniences. In the action
+formulation, the potential \(A_\mu\), not \(\vect{E}\) and \(\vect{B}\)
+separately, is the fundamental field variable.
+\end{remarkbox}
+
+The price of using potentials is redundancy: many different potentials describe
+the same electric and magnetic fields. This redundancy is gauge freedom.
+
 \section{Gauge Freedom}
+
+The electric and magnetic fields are unchanged under the transformation
+\[
+    \vect{A}\longrightarrow \vect{A}'=\vect{A}+\nabla\chi,
+\]
+\[
+    \Phi\longrightarrow \Phi'=\Phi-\partial_t\chi,
+\]
+where \(\chi(t,\vect{x})\) is an arbitrary smooth function. Indeed,
+\[
+    \vect{B}'=\nabla\times\vect{A}'
+    =\nabla\times\vect{A}+\nabla\times\nabla\chi
+    =\vect{B},
+\]
+and
+\[
+\begin{aligned}
+    \vect{E}'
+    &=-\nabla\Phi'-\partial_t\vect{A}' \\
+    &=-\nabla(\Phi-\partial_t\chi)-\partial_t(\vect{A}+\nabla\chi) \\
+    &=-\nabla\Phi-\partial_t\vect{A}
+    =\vect{E}.
+\end{aligned}
+\]
+In covariant notation, this is
+\[
+    A_\mu\longrightarrow A'_\mu=A_\mu+\partial_\mu\chi.
+\]
+Then
+\[
+    F'_{\mu\nu}=\partial_\mu A'_\nu-\partial_\nu A'_\mu=F_{\mu\nu}.
+\]
+
+\begin{definitionbox}
+A \emph{gauge transformation} of the electromagnetic potential is
+\[
+    A_\mu\longrightarrow A_\mu+\partial_\mu\chi.
+\]
+It changes the potential but leaves the field strength \(F_{\mu\nu}\) unchanged.
+\end{definitionbox}
+
+Gauge freedom means that the potential contains more components than physical
+degrees of freedom. This is not a defect. It is the organizing principle of the
+theory. The redundant description makes locality and Lorentz covariance
+compatible with the existence of massless spin-one radiation.
+
 \section{Maxwell Theory from an Action}
+
+The free electromagnetic action is
+\[
+    S[A]=\int d^{d+1}x\,\mathcal{L}_{\mathrm{EM}},
+\]
+with
+\[
+    \mathcal{L}_{\mathrm{EM}}
+    =-\frac{1}{4}F_{\mu\nu}F^{\mu\nu}.
+\]
+In four spacetime dimensions this is the standard Lorentz-invariant Maxwell
+Lagrangian density. The factor \(-1/4\) gives the conventional normalization of
+the equations of motion.
+
+Let us vary the action. Since
+\[
+    \delta F_{\mu\nu}=\partial_\mu\delta A_\nu-\partial_\nu\delta A_\mu,
+\]
+one finds, using antisymmetry of \(F^{\mu\nu}\),
+\[
+    \delta\mathcal{L}_{\mathrm{EM}}
+    =-\frac{1}{2}F^{\mu\nu}\delta F_{\mu\nu}
+    =-F^{\mu\nu}\partial_\mu\delta A_\nu.
+\]
+After integration by parts,
+\[
+    \delta S
+    =\int d^{d+1}x\,\partial_\mu F^{\mu\nu}\delta A_\nu
+    +\text{boundary term}.
+\]
+For variations that make the boundary term vanish, the field equation is
+\[
+    \partial_\mu F^{\mu\nu}=0.
+\]
+This is Maxwell's equation in vacuum.
+
+If an external conserved current \(J^\mu\) is present, one adds the interaction
+term
+\[
+    \mathcal{L}_{\mathrm{int}}=-J_\mu A^\mu.
+\]
+The field equation becomes
+\[
+    \partial_\mu F^{\mu\nu}=J^\nu.
+\]
+
+\begin{theorembox}
+The Maxwell action
+\[
+    S[A]=\int d^{d+1}x\left(-\frac{1}{4}F_{\mu\nu}F^{\mu\nu}-J_\mu A^\mu\right)
+\]
+gives the sourced Maxwell equation
+\[
+    \partial_\mu F^{\mu\nu}=J^\nu
+\]
+provided the external current is conserved and boundary terms are controlled.
+\end{theorembox}
+
+Gauge invariance of the source term requires current conservation. Under
+\(A_\mu\to A_\mu+\partial_\mu\chi\),
+\[
+    \delta S_{\mathrm{int}}
+    =-\int d^{d+1}x\,J^\mu\partial_\mu\chi
+    =\int d^{d+1}x\,\chi\partial_\mu J^\mu
+    +\text{boundary term}.
+\]
+Thus gauge invariance requires
+\[
+    \partial_\mu J^\mu=0.
+\]
+
 \section{Field Strength Tensor \texorpdfstring{\(F_{\mu\nu}\)}{Fmunu}}
+
+The electromagnetic field strength is the antisymmetric tensor
+\[
+    F_{\mu\nu}=\partial_\mu A_\nu-\partial_\nu A_\mu.
+\]
+It has six independent components in four spacetime dimensions. These components
+are the three electric and three magnetic components.
+
+With the conventions
+\[
+    A^\mu=(\Phi,\vect{A}),
+    \qquad
+    A_\mu=(\Phi,-\vect{A}),
+\]
+one has
+\[
+    F_{0i}=E_i.
+\]
+The purely spatial components encode the magnetic field. A common convention is
+\[
+    F_{ij}=-\epsilon_{ijk}B_k,
+\]
+with signs depending on the precise placement of indices and the convention for
+\(\epsilon_{ijk}\). What is invariant is the tensorial object \(F_{\mu\nu}\), not
+a particular matrix convention.
+
+The two Lorentz scalars built from the electromagnetic field are
+\[
+    F_{\mu\nu}F^{\mu\nu}=2(|\vect{B}|^2-|\vect{E}|^2),
+\]
+and
+\[
+    F_{\mu\nu}\widetilde{F}^{\mu\nu}=-4\vect{E}\cdot\vect{B},
+\]
+where the dual field strength is
+\[
+    \widetilde{F}^{\mu\nu}=\frac{1}{2}\epsilon^{\mu\nu\rho\sigma}F_{\rho\sigma}.
+\]
+These invariants show that \(\vect{E}\) and \(\vect{B}\) are frame-dependent
+parts of one field, while certain combinations are Lorentz invariant.
+
+\begin{definitionbox}
+The electromagnetic field strength tensor \(F_{\mu\nu}\) is gauge invariant and
+antisymmetric. It is the curvature associated with the gauge potential \(A_\mu\).
+\end{definitionbox}
+
+In differential-form notation, the potential is a one-form
+\[
+    A=A_\mu dx^\mu,
+\]
+and the field strength is the two-form
+\[
+    F=dA.
+\]
+Gauge transformations are
+\[
+    A\longrightarrow A+d\chi,
+\]
+and the identity \(d^2=0\) gives
+\[
+    dF=0.
+\]
+
 \section{Maxwell Equations in Covariant Form}
+
+The inhomogeneous Maxwell equations are
+\[
+    \partial_\mu F^{\mu\nu}=J^\nu.
+\]
+The homogeneous Maxwell equations are encoded by the Bianchi identity
+\[
+    \partial_{[\lambda}F_{\mu\nu]}=0.
+\]
+Equivalently,
+\[
+    \partial_\lambda F_{\mu\nu}
+    +\partial_\mu F_{\nu\lambda}
+    +\partial_\nu F_{\lambda\mu}=0.
+\]
+In differential-form notation this is simply
+\[
+    dF=0.
+\]
+
+The covariant equations are therefore
+\[
+    dF=0,
+    \qquad
+    \partial_\mu F^{\mu\nu}=J^\nu.
+\]
+In four-dimensional differential-form notation, the second equation can be
+written schematically as
+\[
+    d\star F=\star J,
+\]
+where \(\star\) is the Hodge dual.
+
+Charge conservation follows immediately from the inhomogeneous equation:
+\[
+    \partial_\nu J^\nu=\partial_\nu\partial_\mu F^{\mu\nu}=0,
+\]
+because \(F^{\mu\nu}\) is antisymmetric while \(\partial_\nu\partial_\mu\) is
+symmetric.
+
+\begin{summarybox}
+Maxwell's four vector equations are compactly expressed as one Bianchi identity
+and one sourced field equation:
+\[
+    \partial_{[\lambda}F_{\mu\nu]}=0,
+    \qquad
+    \partial_\mu F^{\mu\nu}=J^\nu.
+\]
+The first follows from \(F=dA\); the second follows from the Maxwell action.
+\end{summarybox}
+
 \section{Coupling to Charged Matter}
+
+Electromagnetism couples to charged matter through a conserved current. At the
+level of the action, the coupling is
+\[
+    S_{\mathrm{int}}=-\int d^{d+1}x\,J_\mu A^\mu.
+\]
+Gauge invariance requires
+\[
+    \partial_\mu J^\mu=0.
+\]
+This statement is not optional: a nonconserved external current would make the
+gauge coupling inconsistent.
+
+For a charged complex scalar field, the current is not imposed externally but is
+constructed from the matter field. Using the covariant derivative
+\[
+    D_\mu\phi=(\partial_\mu+iqA_\mu)\phi,
+\]
+the scalar electrodynamics Lagrangian is
+\[
+    \mathcal{L}
+    =-\frac{1}{4}F_{\mu\nu}F^{\mu\nu}
+     +(D_\mu\phi)^*D^\mu\phi-m^2\phi^*\phi.
+\]
+Varying with respect to \(A_\mu\) gives a Maxwell equation with a matter current.
+The current is covariantly built from \(\phi\), \(\phi^*\), and their gauge
+covariant derivatives.
+
+\begin{remarkbox}
+The electromagnetic field does not couple to arbitrary matter variables. It
+couples to a conserved \(U(1)\) current. This is why the previous chapter on the
+complex scalar field is the natural bridge into Maxwell theory.
+\end{remarkbox}
+
+When matter is dynamical, conservation of the current is a consequence of the
+matter field equations and gauge symmetry. When matter is external, conservation
+must be imposed as a consistency condition.
+
 \section{Lorenz Gauge and Coulomb Gauge}
+
+Gauge freedom allows one to impose convenient conditions on \(A_\mu\). The
+Lorenz gauge condition is
+\[
+    \partial_\mu A^\mu=0.
+\]
+It is Lorentz covariant and simplifies the Maxwell equation. Since
+\[
+    \partial_\mu F^{\mu\nu}
+    =\partial_\mu(\partial^\mu A^\nu-\partial^\nu A^\mu)
+    =\Box A^\nu-\partial^\nu(\partial_\mu A^\mu),
+\]
+the Lorenz gauge reduces the sourced equation to
+\[
+    \Box A^\nu=J^\nu.
+\]
+In vacuum,
+\[
+    \Box A^\nu=0.
+\]
+
+The Coulomb gauge condition is
+\[
+    \nabla\cdot\vect{A}=0.
+\]
+It is not manifestly Lorentz covariant, but it is useful for separating
+constraint-like and propagating parts of the electromagnetic field. In Coulomb
+gauge, the scalar potential is determined by the instantaneous Poisson equation
+\[
+    -\nabla^2\Phi=\rho,
+\]
+while the transverse part of \(\vect{A}\) contains the radiative degrees of
+freedom.
+
+\begin{definitionbox}
+The \emph{Lorenz gauge} is \(\partial_\mu A^\mu=0\). The \emph{Coulomb gauge} is
+\(\nabla\cdot\vect{A}=0\). They are gauge choices, not physical restrictions on
+\(\vect{E}\) and \(\vect{B}\).
+\end{definitionbox}
+
+A gauge condition does not remove the physical electromagnetic field. It removes
+redundancy in the potential description. Residual gauge transformations may
+remain even after a gauge condition is imposed.
+
 \section{Electromagnetic Stress-Energy Tensor}
+
+The electromagnetic stress-energy tensor is
+\[
+    T^{\mu\nu}
+    =-F^{\mu\rho}F^\nu{}_{\rho}
+     +\frac{1}{4}\eta^{\mu\nu}F_{\rho\sigma}F^{\rho\sigma}.
+\]
+With the mostly-minus convention, this tensor gives the standard positive energy
+density
+\[
+    T^{00}=\frac{1}{2}(|\vect{E}|^2+|\vect{B}|^2).
+\]
+It is symmetric, gauge invariant, and conserved in vacuum:
+\[
+    \partial_\mu T^{\mu\nu}=0.
+\]
+In the presence of matter, the electromagnetic stress-energy tensor alone is
+not conserved; energy and momentum are exchanged between field and matter.
+
+The trace of the electromagnetic stress-energy tensor in four spacetime
+dimensions is zero:
+\[
+    T^\mu{}_{\mu}=0.
+\]
+This reflects the classical scale invariance of source-free Maxwell theory in
+four dimensions.
+
+\begin{definitionbox}
+The electromagnetic stress-energy tensor is the local density and flux tensor of
+energy and momentum carried by the electromagnetic field. It is constructed from
+\(F_{\mu\nu}\), not directly from the gauge potential \(A_\mu\), and is therefore
+gauge invariant.
+\end{definitionbox}
+
+The stress-energy tensor is the object that couples to gravity. In general
+relativity, electromagnetic fields curve spacetime through their stress-energy,
+not merely through their energy density.
+
 \section{Energy, Momentum, and Poynting Vector}
+
+The electromagnetic energy density is
+\[
+    u=\frac{1}{2}(|\vect{E}|^2+|\vect{B}|^2).
+\]
+The energy flux is the Poynting vector
+\[
+    \vect{S}=\vect{E}\times\vect{B}.
+\]
+The local energy conservation law is Poynting's theorem:
+\[
+    \partial_t u+\nabla\cdot\vect{S}=-\vect{J}\cdot\vect{E}.
+\]
+The right-hand side is the rate at which electromagnetic energy is transferred
+to charged matter.
+
+In vacuum, \(\vect{J}=0\), so
+\[
+    \partial_t u+\nabla\cdot\vect{S}=0.
+\]
+Thus electromagnetic energy is locally conserved and flows with flux
+\(\vect{S}\).
+
+The electromagnetic momentum density is
+\[
+    \vect{g}=\vect{E}\times\vect{B}
+\]
+in the same units. Thus the Poynting vector is also the momentum density in
+relativistic units. This is consistent with the fact that electromagnetic waves
+carry both energy and momentum.
+
+\begin{examplebox}
+For a plane electromagnetic wave in vacuum, \(\vect{E}\), \(\vect{B}\), and the
+propagation direction are mutually orthogonal. The energy flux points in the
+direction of propagation:
+\[
+    \vect{S}=\vect{E}\times\vect{B}.
+\]
+\end{examplebox}
+
+The conservation laws of electromagnetism are not separate from Maxwell's
+equations. They follow from the field equations and the stress-energy tensor,
+just as Noether's theorem predicts from spacetime translation invariance.
+
 \section{Electromagnetic Waves}
+
+In vacuum, Maxwell's equations imply wave equations for both \(\vect{E}\) and
+\(\vect{B}\). Taking the curl of Faraday's law gives
+\[
+    \nabla\times(\nabla\times\vect{E})
+    +\partial_t(\nabla\times\vect{B})=0.
+\]
+Using \(\nabla\cdot\vect{E}=0\), the vector identity
+\[
+    \nabla\times(\nabla\times\vect{E})
+    =\nabla(\nabla\cdot\vect{E})-\nabla^2\vect{E}
+\]
+and \(\nabla\times\vect{B}=\partial_t\vect{E}\), one obtains
+\[
+    \partial_t^2\vect{E}-\nabla^2\vect{E}=0.
+\]
+Similarly,
+\[
+    \partial_t^2\vect{B}-\nabla^2\vect{B}=0.
+\]
+Thus electromagnetic disturbances propagate at the speed of light in these
+units.
+
+A plane wave solution has the form
+\[
+    \vect{E}(t,\vect{x})=\vect{E}_0 e^{-i\omega t+i\vect{k}\cdot\vect{x}},
+\]
+\[
+    \vect{B}(t,\vect{x})=\vect{B}_0 e^{-i\omega t+i\vect{k}\cdot\vect{x}}.
+\]
+Maxwell's equations imply
+\[
+    \omega^2=|\vect{k}|^2,
+\]
+\[
+    \vect{k}\cdot\vect{E}_0=0,
+    \qquad
+    \vect{k}\cdot\vect{B}_0=0,
+\]
+and
+\[
+    \vect{B}_0=\frac{1}{\omega}\vect{k}\times\vect{E}_0.
+\]
+Therefore electromagnetic waves are transverse.
+
+\begin{definitionbox}
+A free electromagnetic wave has two transverse physical polarizations. The
+longitudinal and time-like components of the potential are removed by gauge
+freedom and constraints.
+\end{definitionbox}
+
+The transversality of electromagnetic radiation is one of the clearest physical
+signatures of gauge theory. The potential has four components, but the free
+massless electromagnetic field propagates only two local physical degrees of
+freedom.
+
 \section{Retarded Potentials and Radiation}
+
+In Lorenz gauge, the sourced Maxwell equation becomes
+\[
+    \Box A^\mu=J^\mu.
+\]
+This equation can be solved using a retarded Green's function:
+\[
+    A^\mu(x)=\int d^{d+1}y\,G_{\mathrm{ret}}(x-y)J^\mu(y).
+\]
+The retarded prescription enforces causality: the potential at \(x\) depends
+only on sources in the past light cone of \(x\).
+
+For localized time-dependent sources, the far field contains radiation. The
+radiative part falls off with distance in such a way that the energy flux
+through a large sphere remains finite. Physically, radiation is the part of the
+electromagnetic field that carries energy and momentum away to infinity.
+
+\begin{remarkbox}
+Static fields store energy around sources, but radiation transports energy to
+large distances. The distinction is tied to boundary behavior: radiation is
+identified by its flux through surfaces at infinity.
+\end{remarkbox}
+
+A complete treatment of radiation requires more detailed analysis of retarded
+solutions, multipole expansion, and asymptotic fields. For the present course,
+the key point is structural: hyperbolic field equations plus retarded boundary
+conditions give causal propagation from sources to fields.
+
 \section{Physical Degrees of Freedom of the Electromagnetic Field}
+
+The four-potential \(A_\mu\) has four components. However, not all four describe
+physical degrees of freedom. Gauge transformations
+\[
+    A_\mu\longrightarrow A_\mu+\partial_\mu\chi
+\]
+identify potentials that describe the same electromagnetic field. In addition,
+not all components of Maxwell's equations are evolution equations; Gauss's law
+acts as a constraint on initial data.
+
+In vacuum, after accounting for gauge freedom and constraints, the electromagnetic
+field has two propagating degrees of freedom at each spatial momentum. These are
+the two transverse polarizations of light.
+
+This counting is easiest to see for a plane wave. The condition
+\[
+    \vect{k}\cdot\vect{E}_0=0
+\]
+forces the electric field to be perpendicular to the propagation direction. A
+vector perpendicular to \(\vect{k}\) in three-dimensional space has two
+independent components. The magnetic field is then determined by
+\[
+    \vect{B}_0=\frac{1}{\omega}\vect{k}\times\vect{E}_0.
+\]
+Thus the independent radiative data consist of two polarizations.
+
+\begin{summarybox}
+Electromagnetism is the fundamental Abelian gauge theory. The gauge potential
+\(A_\mu\) is redundant, while the field strength
+\(F_{\mu\nu}=\partial_\mu A_\nu-\partial_\nu A_\mu\) is gauge invariant. Maxwell's
+equations follow from the action \(-\frac{1}{4}F_{\mu\nu}F^{\mu\nu}\), coupling to
+matter requires a conserved current, and the free electromagnetic field
+propagates two transverse physical polarizations.
+\end{summarybox}
