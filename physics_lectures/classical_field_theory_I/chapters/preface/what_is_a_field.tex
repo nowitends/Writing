@@ -1,33 +1,37 @@
-\section{What Is a Field? From Particles to Continuous Degrees of Freedom}
+\section{What Is a Field?}
 
-A particle model assigns a finite amount of data to each particle: position,
-velocity, momentum, charge, spin, or other variables. A field model assigns data
-to each point of a continuous domain. For example, a temperature field assigns a
-number to each point in a body, while an electromagnetic field assigns electric
-and magnetic vectors to each point of space and time.
+A field is a physical quantity spread over a continuous domain. The value of the
+field may be a number, a vector, a tensor, a spinor, or a more general geometric
+object. What matters is not the name of the object, but the fact that it assigns
+some data to every point of space, spacetime, or another continuous background.
 
-The move from particles to fields is a move from finitely many degrees of
-freedom to continuously many degrees of freedom. This is why field theory is
-mathematically richer than point-particle mechanics. It involves functions,
-partial differential equations, boundary conditions, and local conservation
-laws.
+A temperature distribution in a solid is a scalar field: each point has a
+number. The velocity of a fluid is a vector field: each point has a vector. The
+electromagnetic field is richer: electric and magnetic fields are observed in a
+chosen frame, while the relativistic theory packages them into the field strength
+of a gauge potential. In gravity, the metric itself is a field; it tells us how
+spacetime intervals are measured.
 
-The basic question is always:
-\[
-    \text{What physical quantity is assigned to each point?}
-\]
-For a scalar field, the answer is one number. For a vector field, it is a
-vector. For a tensor field, it is a multilinear object whose components depend
-on coordinates but whose meaning should not depend on the chosen coordinate
-system.
+This is the conceptual move from particles to fields. A point particle has a
+position. A field has a value everywhere. A particle trajectory is a curve. A
+field history is an extended pattern in spacetime. A particle may move through a
+region; a field may oscillate, radiate, form waves, carry energy, satisfy
+constraints, or approach different boundary values at infinity.
+
+The word ``field'' should therefore not be reduced to a formula. A formula such
+as \(\phi(t,\vect{x})\) is only notation. The physical question is: what does
+\(\phi\) measure? Is it a displacement, density, potential, phase, component of a
+connection, or something else? The same mathematical type can represent very
+different physics.
 
 \begin{definitionbox}
-A \emph{classical field} is a physical quantity represented by an assignment of
-mathematical data to each point of space, spacetime, or another continuous
-domain. The value assigned at a point may be a scalar, vector, tensor, spinor,
-or more general geometric object.
+A \emph{classical field} is a physical quantity represented by data assigned to
+each point of a continuous domain. The field is classical when it is treated as a
+definite object rather than as an operator or quantum state.
 \end{definitionbox}
 
-The word \emph{classical} means that the field is treated as a definite object,
-not as an operator or quantum state. Classical field theory studies equations
-for such fields before quantization.
+The simplest fields are scalar fields, but they are not the end of the story.
+Vector fields lead naturally to electromagnetism. Lie-algebra-valued fields lead
+to Yang--Mills theory. Spinor fields are needed for spin-one-half matter. The
+course begins with the simplest examples because they teach the grammar; later
+examples show why the grammar is powerful.
