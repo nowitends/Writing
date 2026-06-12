@@ -1,13 +1,587 @@
 \chapter{The Real Scalar Field}
 
+\begin{remarkbox}
+The real scalar field is the simplest relativistic field theory with local
+degrees of freedom. It is simple enough to solve explicitly in the free case,
+but rich enough to introduce the essential structures of classical field theory:
+a Lorentz-invariant action, a wave equation, a dispersion relation, conserved
+energy-momentum, Green's functions, sources, interactions, stability, and small
+fluctuations around backgrounds.
+\end{remarkbox}
+
 \section{Klein--Gordon Field}
+
+A real scalar field is a real-valued function on spacetime,
+\[
+    \phi : M \to \mathbb{R}.
+\]
+In flat Minkowski spacetime, with coordinates \(x^\mu=(t,\vect{x})\), the
+standard free massive scalar-field action is
+\[
+    S[\phi]=\int d^{d+1}x\,\mathcal{L},
+\]
+where
+\[
+    \mathcal{L}
+    =\frac{1}{2}\partial_\mu\phi\partial^\mu\phi
+     -\frac{1}{2}m^2\phi^2.
+\]
+With the mostly-minus convention,
+\[
+    \partial_\mu\phi\partial^\mu\phi
+    =(\partial_t\phi)^2-|\nabla\phi|^2.
+\]
+Thus the Lagrangian density can also be written as
+\[
+    \mathcal{L}
+    =\frac{1}{2}(\partial_t\phi)^2
+     -\frac{1}{2}|\nabla\phi|^2
+     -\frac{1}{2}m^2\phi^2.
+\]
+The first term is the kinetic term, the second is the spatial-gradient term,
+and the third is the mass term.
+
+Varying the action gives
+\[
+    \delta S
+    =\int d^{d+1}x\left(
+        \partial_\mu\phi\partial^\mu\delta\phi
+        -m^2\phi\delta\phi
+    \right).
+\]
+Integrating the first term by parts and assuming that the boundary term
+vanishes, we obtain
+\[
+    \delta S
+    =-\int d^{d+1}x\left(\partial_\mu\partial^\mu\phi+m^2\phi\right)\delta\phi.
+\]
+The stationarity condition \(\delta S=0\) for arbitrary \(\delta\phi\) gives
+\[
+    (\Box+m^2)\phi=0,
+\]
+where
+\[
+    \Box=\partial_\mu\partial^\mu=\partial_t^2-\nabla^2.
+\]
+This is the Klein--Gordon equation.
+
+\begin{definitionbox}
+The \emph{Klein--Gordon field} is a real scalar field satisfying
+\[
+    (\Box+m^2)\phi=0.
+\]
+It is the relativistic field equation associated with the invariant mass
+parameter \(m\).
+\end{definitionbox}
+
+The equation is linear. Therefore, if \(\phi_1\) and \(\phi_2\) are solutions,
+then any linear combination
+\[
+    a\phi_1+b\phi_2
+\]
+is also a solution. This superposition property will fail once nonlinear
+interactions are added.
+
 \section{Massless and Massive Scalar Fields}
+
+The parameter \(m\) controls the relation between frequency and wavelength, the
+range of static response, and the interpretation of excitations. When
+\(m=0\), the equation becomes
+\[
+    \Box\phi=0,
+\]
+the relativistic wave equation. Disturbances propagate at the speed of light in
+flat spacetime.
+
+When \(m\neq0\), the equation is
+\[
+    \partial_t^2\phi-\nabla^2\phi+m^2\phi=0.
+\]
+The mass term acts as a local restoring term: even a spatially homogeneous field
+oscillates,
+\[
+    \ddot\phi+m^2\phi=0.
+\]
+Thus a massive scalar field combines wave propagation with local oscillation.
+
+The mass parameter also defines a length scale,
+\[
+    \ell_m=\frac{1}{m}
+\]
+in units \(\hbar=c=1\). In classical static problems, this length scale controls
+the decay of the response to localized sources. The larger the mass, the shorter
+the range of the field.
+
+\begin{remarkbox}
+The word ``mass'' has a relativistic meaning: the plane-wave excitations of the
+field satisfy the invariant relation \(p_\mu p^\mu=m^2\). Classically, the same
+parameter also controls oscillation frequency and static screening length.
+\end{remarkbox}
+
+The massless case has additional infrared subtleties, especially in low spatial
+dimensions or in the presence of long-range sources. The massive case is often
+technically cleaner because the mass term suppresses long-distance response.
+
 \section{Plane-Wave Solutions}
+
+Because the free Klein--Gordon equation has constant coefficients, it is natural
+to look for plane-wave solutions. Let
+\[
+    \phi(x)=A e^{-ik_\mu x^\mu},
+\]
+where
+\[
+    k_\mu x^\mu=\omega t-\vect{k}\cdot\vect{x}
+\]
+with our conventions. Acting with the d'Alembert operator gives
+\[
+    \Box e^{-ik_\mu x^\mu}=-k_\mu k^\mu e^{-ik_\mu x^\mu}.
+\]
+The Klein--Gordon equation therefore requires
+\[
+    -k_\mu k^\mu+m^2=0,
+\]
+or
+\[
+    k_\mu k^\mu=m^2.
+\]
+Since
+\[
+    k_\mu k^\mu=\omega^2-|\vect{k}|^2,
+\]
+we get
+\[
+    \omega^2=|\vect{k}|^2+m^2.
+\]
+
+A real scalar field cannot be a single complex exponential unless one takes the
+real part. A general real solution can be written as a superposition of modes,
+for example
+\[
+    \phi(t,\vect{x})
+    =\int \frac{d^d k}{(2\pi)^d}\left[
+        a(\vect{k})e^{-i\omega_{\vect{k}}t+i\vect{k}\cdot\vect{x}}
+        +a^*(\vect{k})e^{i\omega_{\vect{k}}t-i\vect{k}\cdot\vect{x}}
+    \right],
+\]
+where
+\[
+    \omega_{\vect{k}}=\sqrt{|\vect{k}|^2+m^2}.
+\]
+The complex conjugate term ensures that \(\phi\) is real.
+
+\begin{examplebox}
+In one spatial dimension, a real standing-wave solution of the massive equation
+is
+\[
+    \phi(t,x)=A\cos(kx)\cos(\omega t),
+    \qquad
+    \omega^2=k^2+m^2.
+\]
+For \(m=0\), this reduces to the familiar wave relation \(\omega=|k|\).
+\end{examplebox}
+
+Plane waves are not localized. They are idealized basis solutions. Localized
+wave packets are constructed by superposing many plane waves with different
+wave vectors.
+
 \section{Dispersion Relation}
+
+The dispersion relation of the free massive scalar field is
+\[
+    \omega^2=|\vect{k}|^2+m^2.
+\]
+This relation determines how different Fourier modes oscillate. It is the field
+theory version of the relativistic energy-momentum relation
+\[
+    E^2=|\vect{p}|^2+m^2.
+\]
+The analogy becomes exact in quantum field theory, where field modes are
+quantized and interpreted in terms of particles. In the present classical
+context, it is already useful: it tells us how frequency depends on spatial
+wave number.
+
+The phase velocity is
+\[
+    v_{\mathrm{ph}}=\frac{\omega}{|\vect{k}|}
+    =\sqrt{1+\frac{m^2}{|\vect{k}|^2}}.
+\]
+For \(m\neq0\), this is larger than one. This does not violate relativity,
+because phase velocity is not the signal velocity. The group velocity is
+\[
+    v_{\mathrm{g}}=\frac{d\omega}{d|\vect{k}|}
+    =\frac{|\vect{k}|}{\sqrt{|\vect{k}|^2+m^2}}.
+\]
+For massive modes,
+\[
+    v_{\mathrm{g}}<1.
+\]
+In the high-momentum limit \(|\vect{k}|\gg m\), the group velocity approaches
+one. In the low-momentum limit \(|\vect{k}|\ll m\), the group velocity is small.
+
+\begin{remarkbox}
+The massive Klein--Gordon field is dispersive: different wavelengths propagate
+with different group velocities. The massless field in flat spacetime has
+\(\omega=|\vect{k}|\), so wave packets propagate without this mass-induced
+dispersion.
+\end{remarkbox}
+
+Dispersion is a crucial qualitative feature. A localized massive wave packet
+spreads because its Fourier components travel with different velocities. This
+is already visible at the classical level, before quantization.
+
 \section{Energy and Momentum of the Scalar Field}
+
+The canonical stress-energy tensor for the scalar field is
+\[
+    T^{\mu\nu}=\partial^\mu\phi\partial^\nu\phi-\eta^{\mu\nu}\mathcal{L}.
+\]
+For the Lagrangian density
+\[
+    \mathcal{L}=\frac{1}{2}\partial_\rho\phi\partial^\rho\phi-V(\phi),
+\]
+the energy density is
+\[
+    T^{00}
+    =\frac{1}{2}(\partial_t\phi)^2
+     +\frac{1}{2}|\nabla\phi|^2
+     +V(\phi).
+\]
+For the free massive field,
+\[
+    V(\phi)=\frac{1}{2}m^2\phi^2,
+\]
+so
+\[
+    T^{00}
+    =\frac{1}{2}\dot\phi^2
+     +\frac{1}{2}|\nabla\phi|^2
+     +\frac{1}{2}m^2\phi^2.
+\]
+This is positive definite for real \(\phi\) and \(m^2>0\).
+
+The total energy is
+\[
+    E=\int d^d x\,T^{00}.
+\]
+The momentum density is
+\[
+    T^{0i}=\partial^0\phi\partial^i\phi.
+\]
+Since \(\partial^0=\partial_t\) and \(\partial^i=-\partial_i\), signs depend on
+index placement. A commonly used spatial momentum is
+\[
+    P^i=\int d^d x\,\dot\phi\,\partial_i\phi
+\]
+up to the convention for raising or lowering the spatial index. The important
+structural statement is that spacetime translation invariance gives a conserved
+stress-energy tensor:
+\[
+    \partial_\mu T^{\mu\nu}=0.
+\]
+
+\begin{definitionbox}
+For a scalar field with potential \(V(\phi)\), the energy density is
+\[
+    \mathcal{E}=\frac{1}{2}\dot\phi^2+rac{1}{2}|\nabla\phi|^2+V(\phi).
+\]
+Finite-energy configurations must usually approach minima of \(V\) sufficiently
+rapidly at spatial infinity.
+\end{definitionbox}
+
+The condition of finite energy is physically important. If space is noncompact,
+one cannot allow arbitrary field behavior at infinity. For finite total energy,
+\(\nabla\phi\) and \(V(\phi)\) must be integrable over space. This often forces
+the field to approach a vacuum value at infinity.
+
 \section{Green's Functions for the Klein--Gordon Operator}
+
+The Klein--Gordon operator is
+\[
+    \Box+m^2.
+\]
+A Green's function for this operator is a distribution \(G(x-y)\) satisfying
+\[
+    (\Box_x+m^2)G(x-y)=\delta^{(d+1)}(x-y).
+\]
+Green's functions allow one to solve inhomogeneous equations of the form
+\[
+    (\Box+m^2)\phi(x)=J(x),
+\]
+where \(J(x)\) is a source.
+
+Formally, a solution is
+\[
+    \phi(x)=\int d^{d+1}y\,G(x-y)J(y),
+\]
+provided the Green's function and boundary conditions are chosen appropriately.
+There is not just one Green's function. The operator admits different inverses
+corresponding to different causal or boundary prescriptions.
+
+The retarded Green's function \(G_{\mathrm{ret}}\) satisfies
+\[
+    G_{\mathrm{ret}}(x-y)=0
+    \quad\text{unless }x\text{ lies in or on the future light cone of }y.
+\]
+It describes causal response: the field at \(x\) depends only on sources in its
+past. The advanced Green's function has support in the opposite direction and is
+usually not used for causal initial-value problems.
+
+\begin{definitionbox}
+A \emph{retarded Green's function} is a Green's function whose support enforces
+causal propagation from source to response. It gives the solution determined by
+past sources, not future ones.
+\end{definitionbox}
+
+In Fourier representation, one formally writes
+\[
+    G(x)=\int \frac{d^{d+1}k}{(2\pi)^{d+1}}\,
+    \frac{e^{-ik_\mu x^\mu}}{-k_\mu k^\mu+m^2}
+\]
+with a prescription for how to treat the poles. Different pole prescriptions
+produce different Green's functions. This issue becomes central in quantum field
+theory, where the Feynman propagator appears.
+
 \section{Sources and Response}
+
+A scalar field can be coupled linearly to an external source \(J(x)\) by adding
+a source term to the Lagrangian density:
+\[
+    \mathcal{L}
+    =\frac{1}{2}\partial_\mu\phi\partial^\mu\phi
+     -\frac{1}{2}m^2\phi^2
+     +J\phi.
+\]
+Varying the action gives
+\[
+    (\Box+m^2)\phi=J.
+\]
+The sign of the source term is a convention; what matters is consistency between
+the Lagrangian and the resulting field equation.
+
+For a static source, the equation becomes
+\[
+    (-\nabla^2+m^2)\phi(\vect{x})=J(\vect{x}).
+\]
+For a point source in three spatial dimensions,
+\[
+    J(\vect{x})=q\delta^{(3)}(\vect{x}),
+\]
+the solution is proportional to the Yukawa potential,
+\[
+    \phi(r)\propto \frac{e^{-mr}}{r}.
+\]
+This shows explicitly that the massive scalar field mediates a short-range
+response with characteristic length \(1/m\). In the massless limit, the response
+becomes Coulomb-like:
+\[
+    \phi(r)\propto \frac{1}{r}.
+\]
+
+\begin{examplebox}
+The massive scalar Green's function in the static three-dimensional problem
+shows the physical meaning of mass: mass suppresses long-distance response.
+The field sourced at one point decays exponentially rather than purely as
+\(1/r\).
+\end{examplebox}
+
+The source formalism is useful even when the source is not physical. It lets us
+probe the response of a field theory and define Green's functions operationally:
+the Green's function is the response to a point source.
+
 \section{Interacting Scalar Fields}
-\section{\texorpdfstring{\(\phi^4\)}{phi^4} Theory as a Classical Model}
+
+The free scalar field is linear. Interactions are introduced by replacing the
+quadratic potential with a more general potential:
+\[
+    \mathcal{L}=\frac{1}{2}\partial_\mu\phi\partial^\mu\phi - V(\phi).
+\]
+The field equation is
+\[
+    \Box\phi+\frac{dV}{d\phi}=0.
+\]
+If \(V\) is not purely quadratic, the equation is nonlinear.
+
+Nonlinearity changes the structure of the theory dramatically. Superposition no
+longer holds: if \(\phi_1\) and \(\phi_2\) are solutions, their sum is generally
+not a solution. Interactions allow energy transfer between modes, nonlinear wave
+phenomena, solitons in some models, spontaneous symmetry breaking in suitable
+potentials, and nontrivial perturbation theory.
+
+A common polynomial potential is
+\[
+    V(\phi)=\frac{1}{2}m^2\phi^2+\frac{\lambda}{4}\phi^4.
+\]
+The equation of motion is then
+\[
+    \Box\phi+m^2\phi+\lambda\phi^3=0.
+\]
+This is the classical \(\phi^4\) equation with a single-well potential when
+\(m^2>0\) and \(\lambda>0\).
+
+\begin{remarkbox}
+The free theory is exactly solvable because Fourier modes evolve independently.
+Interactions couple modes to each other. This mode coupling is the classical
+ancestor of interaction vertices in quantum field theory.
+\end{remarkbox}
+
+Interactions must be chosen with care. A formally Lorentz-invariant equation may
+still define an unstable theory if its potential is unbounded below.
+
+\section{\texorpdfstring{\(\phi^4\)}{phi4} Theory as a Classical Model}
+
+The name \(\phi^4\) theory refers to scalar field models with a quartic
+self-interaction. A standard Lagrangian density is
+\[
+    \mathcal{L}
+    =\frac{1}{2}\partial_\mu\phi\partial^\mu\phi
+     -\left(\frac{1}{2}m^2\phi^2+\frac{\lambda}{4}\phi^4\right).
+\]
+The field equation is
+\[
+    \Box\phi+m^2\phi+\lambda\phi^3=0.
+\]
+For \(m^2>0\) and \(\lambda>0\), the potential has a single minimum at
+\(\phi=0\). Small oscillations around \(\phi=0\) behave approximately like a free
+massive scalar field.
+
+Another important form is the double-well potential
+\[
+    V(\phi)=\frac{\lambda}{4}(\phi^2-v^2)^2,
+    \qquad \lambda>0.
+\]
+This potential has two minima,
+\[
+    \phi=\pm v.
+\]
+The equation of motion is
+\[
+    \Box\phi+\lambda\phi(\phi^2-v^2)=0.
+\]
+This model has degenerate vacua and supports nontrivial classical structures in
+one spatial dimension, such as kink solutions.
+
+\begin{examplebox}
+For the double-well potential, finite-energy configurations in one spatial
+dimension may approach different vacua at opposite infinities:
+\[
+    \phi(x\to-\infty)=-v,
+    \qquad
+    \phi(x\to+\infty)=v.
+\]
+Such configurations cannot be continuously deformed to the trivial vacuum while
+preserving finite energy and boundary behavior.
+\end{examplebox}
+
+Even when this course does not solve kink equations in detail, the lesson is
+important: nonlinear scalar fields can have qualitatively different sectors of
+solutions distinguished by boundary conditions.
+
 \section{Stability of the Potential}
+
+The energy density of a scalar field with potential \(V\) is
+\[
+    \mathcal{E}=\frac{1}{2}\dot\phi^2+rac{1}{2}|\nabla\phi|^2+V(\phi).
+\]
+For the theory to have a stable ground state, the potential should be bounded
+below. If \(V(\phi)\to-\infty\) as \(|\phi|\to\infty\), the energy can decrease
+without bound, and the classical theory has no stable vacuum.
+
+For example,
+\[
+    V(\phi)=\frac{1}{2}m^2\phi^2+\frac{\lambda}{4}\phi^4
+\]
+is bounded below when \(\lambda>0\). If \(\lambda<0\), it is unbounded below at
+large \(|\phi|\), even if \(m^2>0\). Thus the sign of the highest-power term is
+crucial.
+
+A vacuum is a constant field configuration \(\phi_0\) minimizing the potential:
+\[
+    V'(\phi_0)=0,
+    \qquad
+    V''(\phi_0)>0.
+\]
+The value of \(V(\phi_0)\) is the vacuum energy density in this classical model.
+Often one shifts the potential by a constant so that the minimum has zero
+energy:
+\[
+    V(\phi_0)=0.
+\]
+This shift does not affect the scalar equation of motion in flat spacetime,
+because the equation depends on \(V'\), not on the absolute value of \(V\).
+
+\begin{definitionbox}
+A \emph{classical vacuum} of a scalar field model is a constant field value
+\(\phi_0\) at which the potential is minimized. Small disturbances around a
+stable vacuum have positive squared mass \(V''(\phi_0)>0\).
+\end{definitionbox}
+
+In gravity, absolute vacuum energy matters because it contributes to the
+stress-energy tensor. In nongravitational flat-spacetime field theory, only
+differences in potential energy usually affect the classical scalar equation.
+
 \section{Small Fluctuations Around a Background Solution}
+
+Let \(\bar\phi(x)\) be a background solution of the interacting scalar equation
+\[
+    \Box\bar\phi+V'(\bar\phi)=0.
+\]
+Now consider a small fluctuation \(\eta(x)\) around this background:
+\[
+    \phi(x)=\bar\phi(x)+\eta(x),
+\]
+where \(\eta\) is assumed small. Substituting into the field equation gives
+\[
+    \Box(\bar\phi+\eta)+V'(\bar\phi+\eta)=0.
+\]
+Expanding the potential derivative to first order,
+\[
+    V'(\bar\phi+\eta)=V'(\bar\phi)+V''(\bar\phi)\eta+O(\eta^2).
+\]
+Using the background equation, the linearized equation becomes
+\[
+    \left[\Box+V''(\bar\phi(x))\right]\eta=0.
+\]
+Thus small fluctuations see an effective spacetime-dependent mass squared
+\[
+    m_{\mathrm{eff}}^2(x)=V''(\bar\phi(x)).
+\]
+
+For a constant vacuum \(\bar\phi=\phi_0\), this reduces to
+\[
+    (\Box+m_{\mathrm{eff}}^2)\eta=0,
+    \qquad
+    m_{\mathrm{eff}}^2=V''(\phi_0).
+\]
+This formula is central: the mass of small excitations around a vacuum is the
+curvature of the potential at that vacuum.
+
+\begin{examplebox}
+For
+\[
+    V(\phi)=\frac{\lambda}{4}(\phi^2-v^2)^2,
+\]
+one has
+\[
+    V''(\phi)=\lambda(3\phi^2-v^2).
+\]
+At the vacua \(\phi_0=\pm v\),
+\[
+    m_{\mathrm{eff}}^2=V''(\pm v)=2\lambda v^2.
+\]
+Thus fluctuations around either vacuum are massive.
+\end{examplebox}
+
+Linearization is not just an approximation technique. It is how one reads the
+local particle-like content of a classical field model, identifies stability,
+and studies propagation on nontrivial backgrounds.
+
+\begin{summarybox}
+The real scalar field is the simplest relativistic field model. The free theory
+is governed by the Klein--Gordon equation, has plane-wave solutions with
+\(\omega^2=|\vect{k}|^2+m^2\), and carries positive energy when the potential is
+bounded below. Sources are handled using Green's functions, while interactions
+come from nonlinear potentials. Around a vacuum \(\phi_0\), the mass of small
+fluctuations is determined by the curvature of the potential:
+\(m_{\mathrm{eff}}^2=V''(\phi_0)\).
+\end{summarybox}
