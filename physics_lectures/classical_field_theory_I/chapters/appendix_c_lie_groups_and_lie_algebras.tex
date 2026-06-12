@@ -1,9 +1,251 @@
 \chapter{Lie Groups and Lie Algebras}
 
+\begin{remarkbox}
+Gauge theory is written in the language of Lie groups and Lie algebras. This
+appendix gives only the minimal toolkit needed for the main text: generators,
+structure constants, representations, adjoint action, the exponential map, and
+basic examples.
+\end{remarkbox}
+
 \section{Groups, Algebras, and Generators}
+
+A group is a set with multiplication, an identity element, and inverses. A Lie
+group is a group that is also a smooth manifold, with smooth multiplication and
+inversion. Examples include
+\[
+    U(1),\qquad SU(2),\qquad SU(3),\qquad SO(3),\qquad SO(1,3).
+\]
+
+The Lie algebra \(\mathfrak{g}\) of a Lie group \(G\) is the tangent space at the
+identity element, equipped with a bracket. For matrix groups, the bracket is the
+commutator:
+\[
+    [X,Y]=XY-YX.
+\]
+A basis of the Lie algebra is denoted
+\[
+    T_a,\qquad a=1,\ldots,\dim\mathfrak{g}.
+\]
+A general Lie-algebra element is
+\[
+    X=X^aT_a.
+\]
+
+In gauge theory, the gauge potential is Lie-algebra-valued:
+\[
+    A_\mu=A_\mu^aT_a.
+\]
+This means that for each spacetime index \(\mu\), the object \(A_\mu\) is an
+internal-space generator-valued field.
+
+\begin{definitionbox}
+The Lie algebra of a matrix Lie group is the vector space of infinitesimal group
+generators, equipped with the commutator bracket.
+\end{definitionbox}
+
+The normalization of generators is conventional. Some texts use Hermitian
+generators, others use anti-Hermitian generators. In these notes, the Yang--Mills
+chapter uses anti-Hermitian generators unless stated otherwise.
+
 \section{Structure Constants}
+
+The Lie bracket of basis generators is written
+\[
+    [T_a,T_b]=f_{ab}{}^cT_c.
+\]
+The coefficients \(f_{ab}{}^c\) are the structure constants of the algebra. They
+are antisymmetric in the lower indices:
+\[
+    f_{ab}{}^c=-f_{ba}{}^c.
+\]
+The Jacobi identity is
+\[
+    [T_a,[T_b,T_c]]+[T_b,[T_c,T_a]]+[T_c,[T_a,T_b]]=0.
+\]
+In terms of structure constants,
+\[
+    f_{ab}{}^d f_{dc}{}^e
+    +f_{bc}{}^d f_{da}{}^e
+    +f_{ca}{}^d f_{db}{}^e=0.
+\]
+
+For an Abelian Lie algebra, all commutators vanish:
+\[
+    [T_a,T_b]=0.
+\]
+Therefore
+\[
+    f_{ab}{}^c=0.
+\]
+The Lie algebra of \(U(1)\) is Abelian. The Lie algebras of \(SU(2)\) and
+\(SU(3)\) are non-Abelian.
+
+\begin{remarkbox}
+The nonzero structure constants are the algebraic source of the commutator term
+in the Yang--Mills field strength:
+\[
+    F_{\mu\nu}^a=\partial_\mu A_\nu^a-\partial_\nu A_\mu^a
+    +g f_{bc}{}^a A_\mu^bA_\nu^c.
+\]
+\end{remarkbox}
+
 \section{Representations}
+
+A representation of a Lie group \(G\) is a way of realizing its elements as
+linear transformations on a vector space. If a matter field \(\psi\) takes values
+in such a vector space, a group element \(U\in G\) acts by
+\[
+    \psi\longrightarrow U\psi.
+\]
+At the Lie-algebra level, generators act as matrices:
+\[
+    T_a\longrightarrow R(T_a).
+\]
+The representation must preserve the bracket:
+\[
+    [R(T_a),R(T_b)]=f_{ab}{}^cR(T_c).
+\]
+
+The covariant derivative acting on matter in a representation \(R\) is
+\[
+    D_\mu\psi=\partial_\mu\psi+gA_\mu^aR(T_a)\psi.
+\]
+Different matter fields may transform in different representations of the same
+gauge group.
+
+\begin{definitionbox}
+A representation tells us how abstract group or algebra elements act on actual
+field components. Gauge fields transform in the adjoint representation, while
+matter fields may transform in fundamental, adjoint, or other representations.
+\end{definitionbox}
+
 \section{Adjoint Representation}
+
+The adjoint representation is the representation of a Lie algebra on itself. A
+Lie-algebra element \(X\) acts on another element \(Y\) by commutation:
+\[
+    \operatorname{ad}_X(Y)=[X,Y].
+\]
+For a basis generator,
+\[
+    \operatorname{ad}_{T_a}(T_b)=f_{ab}{}^cT_c.
+\]
+Thus the matrices of the adjoint representation are
+\[
+    (\operatorname{ad}_{T_a})_b{}^c=f_{ab}{}^c.
+\]
+
+Lie-algebra-valued fields such as \(F_{\mu\nu}\) transform in the adjoint
+representation:
+\[
+    F_{\mu\nu}\longrightarrow UF_{\mu\nu}U^{-1}.
+\]
+Infinitesimally,
+\[
+    \delta_\alpha F_{\mu\nu}=[\alpha,F_{\mu\nu}].
+\]
+The adjoint covariant derivative is
+\[
+    D_\mu X=\partial_\mu X+g[A_\mu,X].
+\]
+
 \section{Exponential Map}
+
+The exponential map connects Lie-algebra elements to Lie-group elements. For a
+matrix Lie group,
+\[
+    U=\exp(\alpha^aT_a).
+\]
+For infinitesimal \(\alpha^a\),
+\[
+    U=1+\alpha^aT_a+O(\alpha^2).
+\]
+The exponential map allows us to move between finite and infinitesimal
+transformations.
+
+For \(U(1)\), the group element is
+\[
+    e^{i\alpha}.
+\]
+For non-Abelian groups, the exponential is matrix-valued, and the order of
+multiplication matters. In general,
+\[
+    e^X e^Y\neq e^{X+Y}
+\]
+when \([X,Y]\neq0\). The Baker--Campbell--Hausdorff formula starts as
+\[
+    e^X e^Y=\exp\left(X+Y+\frac{1}{2}[X,Y]+\cdots\right).
+\]
+
 \section{Gauge Transformations}
+
+A local gauge transformation is a spacetime-dependent group element
+\[
+    U=U(x).
+\]
+Matter fields transform as
+\[
+    \psi\longrightarrow \psi'=U\psi.
+\]
+The connection transforms as
+\[
+    A'_\mu=U A_\mu U^{-1}-\frac{1}{g}(\partial_\mu U)U^{-1}.
+\]
+The field strength transforms covariantly:
+\[
+    F'_{\mu\nu}=UF_{\mu\nu}U^{-1}.
+\]
+Therefore \(F_{\mu\nu}\) itself is not gauge invariant in a non-Abelian theory,
+but traces such as
+\[
+    \operatorname{tr}(F_{\mu\nu}F^{\mu\nu})
+\]
+are gauge invariant.
+
+For an infinitesimal gauge parameter
+\[
+    \alpha=\alpha^aT_a,
+\]
+one obtains
+\[
+    \delta_\alpha A_\mu=-\frac{1}{g}\partial_\mu\alpha+[\alpha,A_\mu]
+    =-\frac{1}{g}D_\mu\alpha.
+\]
+The exact sign depends on the convention chosen for the covariant derivative and
+finite transformation law.
+
 \section{Examples: \texorpdfstring{\(U(1)\), \(SU(2)\), \(SU(3)\), \(SO(3)\), \(SO(1,3)\)}{U(1), SU(2), SU(3), SO(3), SO(1,3)}}
+
+The group \(U(1)\) consists of phases
+\[
+    e^{i\alpha}.
+\]
+Its Lie algebra is one-dimensional and Abelian. This is the gauge group of
+electromagnetism.
+
+The group \(SU(2)\) consists of unitary \(2\times2\) matrices with determinant
+one. Its Lie algebra is three-dimensional. In a Hermitian-generator convention,
+one often uses Pauli matrices; in an anti-Hermitian convention, one uses
+multiples of \(i\sigma_a\). The structure constants are proportional to
+\(\epsilon_{ab}{}^c\).
+
+The group \(SU(3)\) consists of unitary \(3\times3\) matrices with determinant
+one. Its Lie algebra is eight-dimensional. It is the gauge group of the strong
+interaction in quantum chromodynamics.
+
+The group \(SO(3)\) describes rotations of Euclidean three-dimensional space.
+Its Lie algebra is closely related to \(\mathfrak{su}(2)\), but the global group
+structure differs: \(SU(2)\) is the double cover of \(SO(3)\).
+
+The proper orthochronous Lorentz group \(SO^+(1,3)\) preserves the Minkowski
+metric and the orientation of time. Its double cover is \(SL(2,\mathbb{C})\),
+which is why spinors naturally transform under \(SL(2,\mathbb{C})\) rather than
+directly under \(SO^+(1,3)\).
+
+\begin{summarybox}
+Lie groups describe continuous symmetries; Lie algebras describe their
+infinitesimal generators. In gauge theory, potentials are Lie-algebra-valued,
+curvatures contain structure constants, matter fields transform in
+representations, and gauge-invariant quantities are built by contracting internal
+indices using invariant structures such as traces.
+\end{summarybox}
