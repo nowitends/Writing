@@ -1,14 +1,195 @@
 \chapter{Atom wodoru}
 
+\begin{summarybox}
+Atom wodoru jest najważniejszym dokładnie rozwiązywalnym układem trójwymiarowej
+mechaniki kwantowej. Łączy potencjał Coulomba, separację zmiennych we
+współrzędnych sferycznych, moment pędu, harmoniki sferyczne i wielomiany
+Laguerre'a. Ten rozdział pokazuje, jak z równania Schrödingera wynikają liczby
+kwantowe \(n,l,m\), dyskretne energie oraz kształty orbitali atomowych.
+\end{summarybox}
+
 \section{Hamiltonian atomu wodoru}
+
+Atom wodoru składa się z protonu i elektronu związanych oddziaływaniem elektrostatycznym. W najprostszym modelu nierelatywistycznym traktujemy ruch względny elektronu względem jądra. Hamiltonian ma postać
+\begin{equation}
+    \hat{H}= -\frac{\hbar^2}{2\mu}\nabla^2
+    -\frac{e^2}{4\pi\varepsilon_0 r},
+\end{equation}
+gdzie \(r\) jest odległością elektronu od protonu, a \(\mu\) jest masą zredukowaną układu:
+\begin{equation}
+    \mu=\frac{m_e m_p}{m_e+m_p}.
+\end{equation}
+W wielu prostych rachunkach przyjmuje się \(\mu\approx m_e\), ponieważ proton jest dużo cięższy od elektronu.
+
+Potencjał zależy tylko od odległości \(r\):
+\begin{equation}
+    V(r)=-\frac{e^2}{4\pi\varepsilon_0 r}.
+\end{equation}
+Jest to potencjał centralny. Właśnie dlatego naturalne są współrzędne sferyczne i moment pędu.
+
 \section{Separacja zmiennych we współrzędnych sferycznych}
+
+Ponieważ potencjał zależy tylko od \(r\), szukamy funkcji falowej w postaci iloczynu części radialnej i kątowej:
+\begin{equation}
+    \psi(r,\theta,\phi)=R(r)Y(\theta,\phi).
+\end{equation}
+Część kątowa jest opisana harmonikami sferycznymi, czyli wspólnymi funkcjami własnymi operatorów \(\hat{L}^2\) i \(\hat{L}_z\):
+\begin{equation}
+    Y(\theta,\phi)=Y_l^m(\theta,\phi).
+\end{equation}
+
+Taka separacja nie jest sztuczką formalną. Wynika z symetrii sferycznej problemu. Jeśli potencjał nie wyróżnia żadnego kierunku, to naturalne jest klasyfikowanie stanów przez całkowity moment pędu oraz jego rzut na wybraną oś.
+
 \section{Równanie radialne i równanie kątowe}
+
+Po separacji zmiennych część kątowa prowadzi do równań własnych momentu pędu:
+\begin{align}
+    \hat{L}^2Y_l^m &= \hbar^2 l(l+1)Y_l^m,\\
+    \hat{L}_zY_l^m &= \hbar mY_l^m.
+\end{align}
+Część radialna spełnia równanie zawierające potencjał Coulomba oraz wkład od momentu pędu. Wygodnie wprowadzić funkcję
+\begin{equation}
+    u(r)=rR(r).
+\end{equation}
+Wtedy równanie radialne można zapisać jako jednowymiarowe równanie z efektywnym potencjałem:
+\begin{equation}
+    -\frac{\hbar^2}{2\mu}\frac{d^2u}{dr^2}
+    +\left[-\frac{e^2}{4\pi\varepsilon_0 r}
+    +\frac{\hbar^2l(l+1)}{2\mu r^2}\right]u=Eu.
+\end{equation}
+Drugi składnik w nawiasie to bariera odśrodkowa. Pochodzi z momentu pędu i utrudnia znalezienie cząstki blisko \(r=0\) dla \(l>0\).
+
 \section{Liczby kwantowe \texorpdfstring{\(n,l,m\)}{n,l,m}}
+
+Stany atomu wodoru opisujemy trzema liczbami kwantowymi:
+\begin{align}
+    n&=1,2,3,\ldots,\\
+    l&=0,1,2,\ldots,n-1,\\
+    m&=-l,-l+1,\ldots,l.
+\end{align}
+Liczba \(n\) nazywa się główną liczbą kwantową i decyduje o energii w nierelatywistycznym modelu Coulomba. Liczba \(l\) określa orbitalny moment pędu, a \(m\) jego rzut na oś \(z\).
+
+Dla danego \(n\) możliwe są różne wartości \(l\). Dla każdego \(l\) możliwe jest \(2l+1\) wartości \(m\). To prowadzi do degeneracji poziomów energetycznych atomu wodoru.
+
 \section{Energia atomu wodoru}
+
+Energie stanów związanych atomu wodoru zależą tylko od głównej liczby kwantowej \(n\):
+\begin{equation}
+    E_n=-\frac{\mu e^4}{2(4\pi\varepsilon_0)^2\hbar^2}\frac{1}{n^2}.
+\end{equation}
+W praktyce zapisuje się to jako
+\begin{equation}
+    E_n=-\frac{13.6\,\mathrm{eV}}{n^2},
+\end{equation}
+jeśli używamy przybliżenia z masą elektronu.
+
+Znak minus oznacza stan związany. Energia zerowa odpowiada elektronowi i protonowi oddalonym od siebie nieskończenie daleko. Im bardziej ujemna energia, tym silniej związany stan. Stan podstawowy ma
+\begin{equation}
+    E_1=-13.6\,\mathrm{eV}.
+\end{equation}
+
+\begin{summarybox}
+W prostym nierelatywistycznym atomie wodoru energia zależy tylko od \(n\), nie od \(l\) ani \(m\). To szczególna cecha potencjału Coulomba.
+\end{summarybox}
+
 \section{Serie widmowe: Lyman, Balmer, Paschen}
+
+Gdy elektron przechodzi z poziomu \(n_i\) na niższy poziom \(n_f\), atom emituje foton o energii
+\begin{equation}
+    h\nu=E_{n_i}-E_{n_f}.
+\end{equation}
+Ponieważ energie zależą od \(1/n^2\), długości fal spełniają wzór Rydberga:
+\begin{equation}
+    \frac{1}{\lambda}=R_H\left(\frac{1}{n_f^2}-\frac{1}{n_i^2}\right),
+    \qquad n_i>n_f.
+\end{equation}
+
+Serie widmowe odpowiadają ustalonej wartości \(n_f\):
+\begin{itemize}
+    \item seria Lymana: przejścia do \(n_f=1\),
+    \item seria Balmera: przejścia do \(n_f=2\),
+    \item seria Paschena: przejścia do \(n_f=3\).
+\end{itemize}
+Seria Balmera leży częściowo w zakresie widzialnym i historycznie odegrała ogromną rolę w rozwoju teorii atomu.
+
 \section{Część radialna i wielomiany Laguerre'a}
+
+Funkcja falowa atomu wodoru ma postać
+\begin{equation}
+    \psi_{nlm}(r,\theta,\phi)=R_{nl}(r)Y_l^m(\theta,\phi).
+\end{equation}
+Część radialna zawiera czynnik wykładniczy, potęgę \(r\) oraz stowarzyszone wielomiany Laguerre'a. Schematycznie:
+\begin{equation}
+    R_{nl}(r)=\text{normalizacja}\times e^{-r/(na_0)}
+    \left(\frac{r}{a_0}\right)^l
+    L_{n-l-1}^{2l+1}\left(\frac{2r}{na_0}\right),
+\end{equation}
+gdzie \(a_0\) jest promieniem Bohra:
+\begin{equation}
+    a_0=\frac{4\pi\varepsilon_0\hbar^2}{\mu e^2}.
+\end{equation}
+
+Czynnik wykładniczy zapewnia zanik funkcji falowej dla dużych \(r\). Potęga \(r^l\) kontroluje zachowanie przy początku układu. Wielomian Laguerre'a odpowiada za węzły radialne. Liczba węzłów radialnych wynosi
+\begin{equation}
+    n-l-1.
+\end{equation}
+
 \section{Część kątowa i harmoniki sferyczne}
+
+Część kątowa funkcji falowej jest harmoniką sferyczną:
+\begin{equation}
+    Y_l^m(\theta,\phi).
+\end{equation}
+To ona określa kształt kątowy orbitalu. Dla \(l=0\) rozkład jest sferycznie symetryczny. Dla \(l=1\) pojawiają się orbitale typu \(p\), dla \(l=2\) orbitale typu \(d\), a dla \(l=3\) orbitale typu \(f\).
+
+Część kątowa jest związana z momentem pędu:
+\begin{align}
+    \hat{L}^2Y_l^m &= \hbar^2l(l+1)Y_l^m,\\
+    \hat{L}_zY_l^m &= \hbar mY_l^m.
+\end{align}
+Dlatego orbital nie jest tylko „kształtem chmury elektronowej”. Jest jednocześnie stanem o określonym całkowitym momencie pędu i określonym rzucie na oś.
+
 \section{Jawne funkcje falowe dla \texorpdfstring{\(n=1,2,3\)}{n=1,2,3}}
+
+Stan podstawowy atomu wodoru ma \(n=1,l=0,m=0\). Jego funkcja falowa jest sferycznie symetryczna:
+\begin{equation}
+    \psi_{100}(r,\theta,\phi)=\frac{1}{\sqrt{\pi a_0^3}}e^{-r/a_0}.
+\end{equation}
+Dla \(n=2\) mamy stany \(2s\), czyli \(l=0\), oraz \(2p\), czyli \(l=1\). Przykładowo:
+\begin{equation}
+    \psi_{200}\propto \left(2-\frac{r}{a_0}\right)e^{-r/(2a_0)}.
+\end{equation}
+Stany \(2p\) zawierają czynnik kątowy odpowiadający \(Y_1^m\).
+
+Dla \(n=3\) pojawiają się stany \(3s\), \(3p\) oraz \(3d\). Wraz ze wzrostem \(n\) rośnie liczba możliwych wartości \(l\), liczba węzłów i przestrzenny zasięg funkcji falowej.
+
 \section{Orbitale atomowe: przekroje 2D}
+
+Orbital można wizualizować przez przekrój gęstości prawdopodobieństwa:
+\begin{equation}
+    |\psi_{nlm}(r,\theta,\phi)|^2.
+\end{equation}
+W przekrojach 2D często pokazuje się płaszczyznę przechodzącą przez jądro, na przykład płaszczyznę \(xz\). Taki wykres pozwala zobaczyć węzły, symetrię i obszary największego prawdopodobieństwa.
+
+W Mathematice najpierw można zdefiniować funkcję falową w układzie sferycznym, a potem podstawić zależności między współrzędnymi kartezjańskimi i sferycznymi. Dla prostych wizualizacji często wystarczy skorzystać z gotowych funkcji \texttt{SphericalHarmonicY} oraz \texttt{LaguerreL}.
+
 \section{Orbitale atomowe: wizualizacje 3D}
+
+Wizualizacje 3D orbitali zwykle pokazują powierzchnie stałej gęstości prawdopodobieństwa albo część rzeczywistą funkcji falowej. Trzeba zawsze powiedzieć, co dokładnie przedstawia rysunek:
+\begin{itemize}
+    \item \(|\psi|^2\): gęstość prawdopodobieństwa,
+    \item \(\operatorname{Re}\psi\): część rzeczywista amplitudy,
+    \item znak albo kolor: faza funkcji falowej.
+\end{itemize}
+
+Popularne obrazki orbitali typu \(p\) i \(d\) często pokazują powierzchnie odpowiadające wartościom funkcji falowej albo gęstości, a kolor służy do oznaczenia znaku fazy. Nie są to trajektorie elektronu.
+
 \section{Co naprawdę przedstawia orbital?}
+
+Orbital atomowy nie jest orbitą w sensie planetarnym. Elektron w stanie stacjonarnym nie krąży po klasycznej ścieżce wokół jądra. Orbital jest funkcją falową albo, w praktyce wizualizacyjnej, obrazem gęstości prawdopodobieństwa wynikającej z tej funkcji.
+
+Jeśli rysujemy \(|\psi|^2\), pokazujemy, gdzie najczęściej wykrylibyśmy elektron po wielu identycznych przygotowaniach atomu. Jeśli rysujemy \(\operatorname{Re}\psi\), pokazujemy amplitudę z informacją o fazie, ale nie bezpośrednie prawdopodobieństwo. To rozróżnienie jest kluczowe przy interpretacji kształtów orbitali.
+
+\begin{summarybox}
+Atom wodoru scala wiele elementów kursu: równanie Schrödingera, potencjał centralny, moment pędu, harmoniki sferyczne, wielomiany Laguerre'a i interpretację funkcji falowej. Orbital jest stanem kwantowym, nie klasyczną orbitą elektronu.
+\end{summarybox}
