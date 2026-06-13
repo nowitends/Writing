@@ -3,19 +3,22 @@
 \begin{summarybox}
 Ten dodatek zbiera błędy, które najczęściej psują obliczenia, wykresy i raporty z
 praktycznej mechaniki kwantowej. Większość z nich nie wynika z braku inteligencji,
-lecz z braku kontroli jednostek, normalizacji, warunków brzegowych i interpretacji
-fizycznej wyniku.
+lecz z braku kontroli jednostek, normalizacji, warunków brzegowych, składni
+Mathematiki i interpretacji fizycznej wyniku.
 \end{summarybox}
 
 \section{Wykres w dżulach zamiast w eV}
 
-Bardzo częsty błąd polega na policzeniu energii w dżulach i narysowaniu wykresu bez konwersji na eV. Liczby są wtedy ekstremalnie małe, wykres wygląda dziwnie, a student zaczyna poprawiać fizykę zamiast jednostek.
+Bardzo częsty błąd polega na policzeniu energii w dżulach i narysowaniu wykresu
+bez konwersji na eV. Liczby są wtedy ekstremalnie małe, wykres wygląda dziwnie, a
+student zaczyna poprawiać fizykę zamiast jednostek.
 
 Jeżeli energia została policzona w SI, należy wykonać
 \begin{equation}
     E_{\mathrm{eV}}=\frac{E_{\mathrm{J}}}{1.602176634\times10^{-19}}.
 \end{equation}
-Na osiach wykresu trzeba zawsze podać jednostkę. Opis osi „Energy” bez jednostki jest niepełny.
+Na osiach wykresu trzeba zawsze podać jednostkę. Opis osi „Energy” bez jednostki
+jest niepełny.
 
 \section{Szerokość w metrach zamiast w nm}
 
@@ -23,7 +26,9 @@ Jeśli szerokość studni wynosi \(L=10\,\mathrm{nm}\), to w jednostkach SI jest
 \begin{equation}
     L=10^{-8}\,\mathrm{m}.
 \end{equation}
-Podstawienie \(L=10\) do wzoru SI jest dramatycznym błędem. Ponieważ energia w studni zależy od \(1/L^2\), błąd długości o czynnik \(10^9\) daje błąd energii o czynnik \(10^{18}\).
+Podstawienie \(L=10\) do wzoru SI jest dramatycznym błędem. Ponieważ energia w
+studni zależy od \(1/L^2\), błąd długości o czynnik \(10^9\) daje błąd energii o
+czynnik \(10^{18}\).
 
 W kodzie warto pisać:
 \begin{verbatim}
@@ -38,7 +43,8 @@ Funkcja falowa musi być znormalizowana:
 \begin{equation}
     \int |\psi(x)|^2\,dx=1.
 \end{equation}
-Jeśli funkcja nie jest znormalizowana, wartości oczekiwane i prawdopodobieństwa będą błędne. W Mathematice warto zawsze sprawdzić:
+Jeśli funkcja nie jest znormalizowana, wartości oczekiwane i prawdopodobieństwa
+będą błędne. W Mathematice warto zawsze sprawdzić:
 \begin{verbatim}
 Integrate[Conjugate[psi[x]] psi[x], {x, xmin, xmax}]
 \end{verbatim}
@@ -49,33 +55,92 @@ NIntegrate[Abs[psi[x]]^2, {x, xmin, xmax}]
 
 \section{Mylenie \texorpdfstring{\(\psi\)}{psi} i \texorpdfstring{\(|\psi|^2\)}{|psi|^2}}
 
-Funkcja \(\psi\) jest amplitudą, a \(|\psi|^2\) jest gęstością prawdopodobieństwa. To nie są te same obiekty. Amplituda może być dodatnia, ujemna albo zespolona. Gęstość prawdopodobieństwa jest nieujemna.
+Funkcja \(\psi\) jest amplitudą, a \(|\psi|^2\) jest gęstością
+prawdopodobieństwa. To nie są te same obiekty. Amplituda może być dodatnia,
+ujemna albo zespolona. Gęstość prawdopodobieństwa jest nieujemna.
 
-Na wykresach trzeba jasno opisywać, co jest rysowane. Jeśli rysujesz część rzeczywistą funkcji falowej, podpisz \(\operatorname{Re}\psi\). Jeśli rysujesz gęstość, podpisz \(|\psi|^2\). Nie należy opisywać obu jako „wave function”.
+Na wykresach trzeba jasno opisywać, co jest rysowane. Jeśli rysujesz część
+rzeczywistą funkcji falowej, podpisz \(\operatorname{Re}\psi\). Jeśli rysujesz
+gęstość, podpisz \(|\psi|^2\). Nie należy opisywać obu jako „wave function”.
 
 \section{Brak warunków brzegowych}
 
-Równanie Schrödingera bez warunków brzegowych zwykle nie definiuje pełnego problemu własnego. Dla studni nieskończonej trzeba narzucić znikanie funkcji falowej na ścianach. Dla stanów związanych na całej osi trzeba wymagać normalizowalności. Dla problemów rozproszeniowych trzeba określić falę padającą, odbitą i transmitowaną.
+Równanie Schrödingera bez warunków brzegowych zwykle nie definiuje pełnego
+problemu własnego. Dla studni nieskończonej trzeba narzucić znikanie funkcji
+falowej na ścianach. Dla stanów związanych na całej osi trzeba wymagać
+normalizowalności. Dla problemów rozproszeniowych trzeba określić falę padającą,
+odbitą i transmitowaną.
 
-Brak warunków brzegowych prowadzi do rozwiązań matematycznych, które nie są fizycznym rozwiązaniem konkretnego zadania.
+Brak warunków brzegowych prowadzi do rozwiązań matematycznych, które nie są
+fizycznym rozwiązaniem konkretnego zadania.
 
 \section{Złe założenia w \texttt{Simplify}}
 
-Mathematica nie wie automatycznie, że masa, długość albo liczba kwantowa są dodatnie. Bez założeń może nie uprościć wyrażeń albo uprościć je w sposób trudny do interpretacji. Dlatego należy używać:
+Mathematica nie wie automatycznie, że masa, długość albo liczba kwantowa są
+dodatnie. Bez założeń może nie uprościć wyrażeń albo uprościć je w sposób trudny
+do interpretacji. Dlatego należy używać:
 \begin{verbatim}
 Simplify[expr, Assumptions -> {a > 0, m > 0, n \[Element] Integers}]
 \end{verbatim}
-Dla całek kwantowych założenia są często konieczne. Dotyczy to szczególnie parametrów takich jak \(L>0\), \(n\in\mathbb{N}\), \(m>0\), \(\hbar>0\).
+Dla całek kwantowych założenia są często konieczne. Dotyczy to szczególnie
+parametrów takich jak \(L>0\), \(n\in\mathbb{N}\), \(m>0\), \(\hbar>0\).
 
 \section{Nieodróżnianie przypadku \texorpdfstring{\(E<V_0\)}{E<V0} od \texorpdfstring{\(E>V_0\)}{E>V0}}
 
-W barierze potencjału charakter rozwiązania zależy od znaku \(E-V_0\). Jeśli \(E>V_0\), rozwiązanie w obszarze bariery jest oscylacyjne. Jeśli \(E<V_0\), jest wykładniczo zanikające albo narastające.
+W barierze potencjału charakter rozwiązania zależy od znaku \(E-V_0\). Jeśli
+\(E>V_0\), rozwiązanie w obszarze bariery jest oscylacyjne. Jeśli \(E<V_0\), jest
+wykładniczo zanikające albo narastające.
 
-Mylenie tych przypadków prowadzi do błędnych wzorów na transmisję i błędnych wykresów. Przed rozpoczęciem rachunku trzeba zawsze napisać, w którym reżimie pracujemy.
+Mylenie tych przypadków prowadzi do błędnych wzorów na transmisję i błędnych
+wykresów. Przed rozpoczęciem rachunku trzeba zawsze napisać, w którym reżimie
+pracujemy.
+
+\section{Błędne użycie \texttt{=} zamiast \texttt{:=}}
+
+W Mathematice znak \texttt{=} oblicza prawą stronę od razu, a \texttt{:=} oblicza ją
+dopiero przy wywołaniu. Dla funkcji zależnych od parametrów i zmiennych zwykle
+bezpieczniejsze jest \texttt{:=}:
+\begin{verbatim}
+f[x_] := x^2 + a
+\end{verbatim}
+Błąd wyboru definicji może prowadzić do sytuacji, w której zmiana parametru nie
+zmienia wyniku, bo wyrażenie zostało obliczone wcześniej.
+
+\section{Stare definicje w notebooku}
+
+Notebook Mathematiki pamięta wcześniejsze definicje. Jeśli student zmienił nazwę
+zmiennej albo usunął komórkę, stara definicja może dalej istnieć w jądrze.
+Dlatego przed oddaniem projektu warto uruchomić notebook od początku po komendzie:
+\begin{verbatim}
+ClearAll["Global`*"]
+\end{verbatim}
+Jeśli notebook działa tylko po przypadkowej historii wcześniejszych uruchomień,
+nie jest poprawnym projektem.
+
+\section{Mylenie \texttt{E} i \texttt{I} w Mathematice}
+
+W Mathematice \texttt{E} oznacza liczbę Eulera, a \texttt{I} oznacza jednostkę
+urojoną. Nie należy używać \texttt{E} jako nazwy energii ani \texttt{I} jako indeksu.
+Lepiej pisać na przykład:
+\begin{verbatim}
+energy[n_] := n^2 Pi^2 hbar^2/(2 m L^2)
+\end{verbatim}
+zamiast ryzykować konflikt z wbudowanymi symbolami.
+
+\section{Brak \texttt{Evaluate} przy wykresach rozwiązań numerycznych}
+
+Po użyciu \texttt{NDSolve} wynik często ma postać reguły podstawienia. Przy rysowaniu
+rozwiązania przydatne jest \texttt{Evaluate}:
+\begin{verbatim}
+Plot[Evaluate[y[t] /. sol], {t, 0, tmax}]
+\end{verbatim}
+Bez tego wykres może działać wolniej, generować ostrzeżenia albo nie pokazywać
+tego, czego student oczekuje.
 
 \section{Zbyt brzydkie i nieczytelne wykresy}
 
-Wykres jest częścią argumentu fizycznego. Powinien mieć podpisane osie, jednostki, legendę i rozsądny zakres. Wykres bez jednostek jest prawie zawsze niekompletny.
+Wykres jest częścią argumentu fizycznego. Powinien mieć podpisane osie, jednostki,
+legendę i rozsądny zakres. Wykres bez jednostek jest prawie zawsze niekompletny.
 
 Dobre minimum to:
 \begin{itemize}
@@ -88,16 +153,32 @@ Dobre minimum to:
 
 \section{Wynik numeryczny bez interpretacji}
 
-Sama liczba albo wykres nie jest jeszcze odpowiedzią fizyczną. Trzeba napisać, co oznacza wynik. Czy energia rośnie przy zmniejszaniu szerokości studni? Czy transmisja maleje przy poszerzaniu bariery? Czy norma jest zachowana? Czy wynik ma właściwy rząd wielkości?
+Sama liczba albo wykres nie jest jeszcze odpowiedzią fizyczną. Trzeba napisać, co
+oznacza wynik. Czy energia rośnie przy zmniejszaniu szerokości studni? Czy
+transmisja maleje przy poszerzaniu bariery? Czy norma jest zachowana? Czy wynik
+ma właściwy rząd wielkości?
 
 Raport bez interpretacji wygląda jak zrzut z programu, a nie jak praca z fizyki.
 
 \section{Kod, którego autor sam nie rozumie}
 
-Najgorszy kod to kod skopiowany bez zrozumienia. W raporcie student powinien umieć wyjaśnić każdą ważną linię: co oznaczają parametry, co liczy funkcja, jakie są jednostki i dlaczego taki zakres wykresu został wybrany.
+Najgorszy kod to kod skopiowany bez zrozumienia. W raporcie student powinien umieć
+wyjaśnić każdą ważną linię: co oznaczają parametry, co liczy funkcja, jakie są
+jednostki i dlaczego taki zakres wykresu został wybrany.
 
-Jeśli kod jest długi, warto podzielić go na bloki: definicja stałych, definicja funkcji, obliczenia, wykresy, kontrola wyniku. Kod powinien być narzędziem myślenia, nie zasłoną dymną.
+Jeśli kod jest długi, warto podzielić go na bloki: definicja stałych, definicja
+funkcji, obliczenia, wykresy, kontrola wyniku. Kod powinien być narzędziem
+myślenia, nie zasłoną dymną.
+
+\section{Zbyt duże zaufanie do AI}
+
+Narzędzia AI mogą pomóc w pisaniu kodu, szukaniu błędów i redagowaniu raportu,
+ale nie gwarantują poprawności fizycznej. Student musi sprawdzić jednostki,
+warunki brzegowe, normalizację i sens wyniku. Kod wygenerowany przez AI, którego
+autor nie rozumie, jest tak samo problematyczny jak kod skopiowany z internetu.
 
 \begin{summarybox}
-Większość błędów w praktycznej mechanice kwantowej można wykryć przez pięć pytań: czy jednostki są poprawne, czy funkcja jest znormalizowana, czy warunki brzegowe są jasne, czy wykres jest opisany i czy wynik ma sens fizyczny.
+Większość błędów w praktycznej mechanice kwantowej można wykryć przez pięć pytań:
+czy jednostki są poprawne, czy funkcja jest znormalizowana, czy warunki brzegowe
+są jasne, czy wykres jest opisany i czy wynik ma sens fizyczny.
 \end{summarybox}
