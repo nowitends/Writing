@@ -1,9 +1,330 @@
 \chapter{\texorpdfstring{\(\phi^4\) Theory as the First Interacting QFT}{phi4 Theory as the First Interacting QFT}}
 
 \begin{remarkbox}
-Placeholder chapter from the QFT course plan in \texttt{ideas\_Quantum\_Field\_Theory.md}. Detailed lecture text will be added later.
+The previous chapters built the general machinery: canonical quantization,
+propagators, perturbation theory, scattering, and path integrals. The theory
+with interaction \(\lambda\phi^4/4!\) is the simplest laboratory where all of
+these ideas become concrete.
 \end{remarkbox}
 
-\section{Planned Role}
+\section{Why Start with \texorpdfstring{\(\phi^4\)}{phi4} Theory?}
 
-This chapter will introduce the first interacting scalar quantum field theory and the basic structure of perturbative Feynman rules, loop corrections, counterterms, and renormalized parameters.
+The free scalar field is exactly solvable because it is a collection of
+independent oscillators. To study genuine quantum field theory, we need an
+interaction. The simplest Lorentz-invariant self-interaction of a real scalar
+field in four dimensions is \(\phi^4\).
+
+The theory is simple enough to compute with, but rich enough to display the main
+features of perturbative QFT:
+\begin{itemize}
+    \item interaction vertices;
+    \item scattering amplitudes;
+    \item loop corrections;
+    \item ultraviolet divergences;
+    \item counterterms;
+    \item renormalized masses and couplings.
+\end{itemize}
+For this reason, \(\phi^4\) theory is the standard first interacting quantum
+field theory.
+
+\section{The Lagrangian}
+
+The classical Lagrangian density is
+\[
+    \mathcal{L}
+    = \frac{1}{2}\partial_\mu\phi\partial^\mu\phi
+      -\frac{1}{2}m^2\phi^2
+      -\frac{\lambda}{4!}\phi^4.
+\]
+The free part is
+\[
+    \mathcal{L}_0
+    = \frac{1}{2}\partial_\mu\phi\partial^\mu\phi
+      -\frac{1}{2}m^2\phi^2,
+\]
+and the interaction part is
+\[
+    \mathcal{L}_{\mathrm{int}}
+    = -\frac{\lambda}{4!}\phi^4.
+\]
+The factor \(4!\) is conventional. It cancels the number of permutations of four
+identical scalar fields at a vertex, giving a simple Feynman rule.
+
+The classical equation of motion is
+\[
+    (\Box+m^2)\phi+\frac{\lambda}{3!}\phi^3=0.
+\]
+Unlike the free Klein--Gordon equation, this equation is nonlinear. The
+nonlinearity is the classical shadow of particle interactions in the quantum
+theory.
+
+\section{Dimensional Analysis}
+
+In four spacetime dimensions, the action is dimensionless in units
+\(\hbar=c=1\). Since
+\[
+    S=\int\dd^4x\,\mathcal{L},
+\]
+the Lagrangian density has mass dimension four. From the kinetic term one finds
+\[
+    [\phi]=1.
+\]
+Therefore
+\[
+    [\lambda]=0.
+\]
+The coupling \(\lambda\) is dimensionless in four dimensions. This is one reason
+\(\phi^4\) theory is important: it is power-counting renormalizable in four
+dimensions.
+
+In dimensions other than four, the mass dimension of \(\lambda\) changes. This
+will become important in the discussion of renormalization and effective field
+theory.
+
+\section{Path-Integral Generating Functional}
+
+The generating functional is
+\[
+    Z[J]
+    = \int\mathcal{D}\phi\,
+      \exp\left(i\int\dd^4x\,
+      \left[\frac{1}{2}\partial_\mu\phi\partial^\mu\phi
+      -\frac{1}{2}m^2\phi^2
+      -\frac{\lambda}{4!}\phi^4
+      +J\phi\right]\right).
+\]
+It can be written in terms of the free generating functional as
+\[
+    Z[J]
+    = \exp\left[-i\frac{\lambda}{4!}\int\dd^4x\,
+      \left(\frac{1}{i}\frac{\delta}{\delta J(x)}\right)^4\right]Z_0[J].
+\]
+Expanding the exponential in powers of \(\lambda\) generates perturbation theory.
+The free functional \(Z_0[J]\) supplies propagators; the derivative operator
+supplies interaction vertices.
+
+This is the functional-integral version of the Dyson expansion and Wick's
+theorem.
+
+\section{Feynman Rules in Position Space}
+
+The basic ingredients are simple. The free propagator is
+\[
+    D_F(x-y)
+    = \int\frac{\dd^4k}{(2\pi)^4}\,
+      \frac{i}{k^2-m^2+i\epsilon}e^{-ik\cdot(x-y)}.
+\]
+Each interaction vertex contributes
+\[
+    -i\lambda\int\dd^4x.
+\]
+Four scalar lines meet at each vertex. Correlation functions are obtained by
+summing over all contractions, or equivalently all diagrams, with the appropriate
+symmetry factors.
+
+Position-space diagrams are useful conceptually because they show that each
+vertex is integrated over spacetime. Momentum-space diagrams are usually more
+convenient for scattering amplitudes because translation invariance turns those
+integrals into momentum-conserving delta functions.
+
+\section{Feynman Rules in Momentum Space}
+
+In momentum space, the propagator is
+\[
+    \frac{i}{k^2-m^2+i\epsilon}.
+\]
+The four-point vertex contributes
+\[
+    -i\lambda.
+\]
+At each vertex, four-momentum is conserved. For each undetermined internal
+momentum, one integrates
+\[
+    \int\frac{\dd^4\ell}{(2\pi)^4}.
+\]
+Finally, one includes the symmetry factor of the diagram.
+
+These rules compute contributions to correlation functions and, after LSZ
+reduction, to scattering amplitudes.
+
+\section{Tree-Level \texorpdfstring{\(2\to2\)}{2 to 2} Scattering}
+
+The simplest nontrivial process is
+\[
+    \phi\phi\longrightarrow\phi\phi.
+\]
+At lowest order there is one four-point vertex. The amplitude is
+\[
+    i\mathcal{M}_{\mathrm{tree}}=-i\lambda,
+    \qquad
+    \mathcal{M}_{\mathrm{tree}}=-\lambda.
+\]
+This is a contact interaction. There is no internal propagator at this order.
+
+The full matrix element contains the momentum-conserving delta function:
+\[
+    \langle p_3,p_4|i\hat T|p_1,p_2\rangle
+    = i(2\pi)^4\delta^{(4)}(p_1+p_2-p_3-p_4)\mathcal{M}_{\mathrm{tree}}.
+\]
+This is the same structure introduced in scattering theory, now obtained from a
+specific interacting Lagrangian.
+
+\section{First Loop Correction: The Tadpole}
+
+The two-point function receives a one-loop correction from the tadpole diagram.
+In momentum space, the loop integral has the form
+\[
+    \int\frac{\dd^4\ell}{(2\pi)^4}\,
+    \frac{i}{\ell^2-m^2+i\epsilon}.
+\]
+This integral diverges at large \(|\ell|\). The divergence is ultraviolet: it
+comes from arbitrarily short-distance fluctuations.
+
+The tadpole correction shifts the mass parameter. This is the first appearance
+of an important lesson: the parameters in the Lagrangian are not automatically
+the physical measured parameters. Quantum fluctuations correct them.
+
+\section{One-Loop Four-Point Correction}
+
+The four-point function receives one-loop corrections from diagrams with two
+vertices and two internal lines. A typical loop integral has the schematic form
+\[
+    \int\frac{\dd^4\ell}{(2\pi)^4}\,
+    \frac{i}{\ell^2-m^2+i\epsilon}
+    \frac{i}{(\ell+p)^2-m^2+i\epsilon}.
+\]
+There are contributions in the \(s\)-, \(t\)-, and \(u\)-channels, corresponding
+to different ways of routing the external momenta through the loop.
+
+These loop corrections modify the effective strength of the four-point
+interaction. In other words, they correct the coupling \(\lambda\).
+
+\section{Ultraviolet Divergences}
+
+The loop integrals of \(\phi^4\) theory are typically divergent. This does not
+mean the theory is useless. It means that the parameters appearing in the
+Lagrangian must be related carefully to measured quantities.
+
+A regulator is introduced to make integrals finite. Examples include a momentum
+cutoff \(\Lambda\) or dimensional regularization. A regulated divergent integral
+might depend on \(\Lambda\), or contain poles in \(4-d\) when computed in
+\(d\) dimensions.
+
+The goal is not to keep the regulator as a physical object. The goal is to
+absorb regulator dependence into redefinitions of parameters and then express
+predictions in terms of finite measured quantities.
+
+\section{Counterterms}
+
+To renormalize the theory, write the Lagrangian in terms of renormalized
+parameters plus counterterms:
+\[
+    \mathcal{L}
+    = \frac{1}{2}Z_\phi\partial_\mu\phi\partial^\mu\phi
+      -\frac{1}{2}Z_m m^2\phi^2
+      -\frac{Z_\lambda\lambda}{4!}\phi^4.
+\]
+Equivalently, one may write
+\[
+    \mathcal{L}
+    = \mathcal{L}_{\mathrm{ren}}+\mathcal{L}_{\mathrm{ct}},
+\]
+where
+\[
+    \mathcal{L}_{\mathrm{ct}}
+    = \frac{1}{2}\delta Z\,\partial_\mu\phi\partial^\mu\phi
+      -\frac{1}{2}\delta m^2\phi^2
+      -\frac{\delta\lambda}{4!}\phi^4.
+\]
+The counterterms are chosen to cancel the divergences from loop diagrams.
+
+In \(\phi^4\) theory in four dimensions, the required counterterms have the same
+form as terms already present in the Lagrangian. This is the practical meaning
+of perturbative renormalizability.
+
+\section{Renormalized Parameters}
+
+The mass and coupling in the Lagrangian are not directly observable until a
+renormalization prescription is chosen. A renormalization condition defines the
+parameters in terms of physical or reference quantities.
+
+For example, one may define the physical mass by the pole of the full propagator.
+The renormalized coupling may be defined by the value of the four-point amplitude
+at a chosen reference momentum scale.
+
+Different schemes define parameters differently, but physical predictions agree
+when expressed in terms of measured quantities. The scheme dependence of
+intermediate parameters is the beginning of the renormalization group story.
+
+\section{Connected and One-Particle-Irreducible Functions}
+
+The generating functional \(Z[J]\) produces all diagrams. The functional
+\(W[J]=-i\ln Z[J]\) produces connected diagrams. The effective action
+\(\Gamma[\phi_c]\) produces one-particle-irreducible diagrams.
+
+In \(\phi^4\) theory:
+\begin{itemize}
+    \item the connected two-point function gives the full propagator;
+    \item the 1PI two-point function gives the self-energy;
+    \item the 1PI four-point function gives the quantum-corrected vertex;
+    \item counterterms are fixed by imposing conditions on these functions.
+\end{itemize}
+This is the language used systematically in renormalization.
+
+\section{Perturbative Expansion and Its Meaning}
+
+A typical observable is computed as a formal power series:
+\[
+    \mathcal{M}
+    = \mathcal{M}^{(0)}
+      +\lambda\mathcal{M}^{(1)}
+      +\lambda^2\mathcal{M}^{(2)}+\cdots.
+\]
+The superscript does not always count loops directly, but higher powers of
+\(\lambda\) generally correspond to more vertices and more complicated diagrams.
+
+Perturbation theory is useful when \(\lambda\) is small enough that the first few
+terms give a good approximation. It is not a complete nonperturbative definition
+of the theory. Nevertheless, it is the main calculational tool for weakly
+coupled QFT.
+
+\section{Physical Lessons from \texorpdfstring{\(\phi^4\)}{phi4} Theory}
+
+The theory teaches several lessons that recur throughout QFT:
+\begin{itemize}
+    \item interactions are represented by vertices;
+    \item amplitudes are built from propagators and vertices;
+    \item loop diagrams express virtual quantum fluctuations;
+    \item loop integrals can diverge at high momentum;
+    \item counterterms absorb divergences into parameter definitions;
+    \item measured masses and couplings are renormalized quantities.
+\end{itemize}
+These ideas reappear in QED, non-Abelian gauge theory, the Standard Model, and
+effective field theory.
+
+\begin{summarybox}
+The \(\phi^4\) model is the first complete interacting QFT laboratory. Its
+single four-scalar vertex gives tree-level scattering. Its loop diagrams produce
+ultraviolet divergences that require regularization and counterterms. The theory
+introduces the distinction between bare and renormalized parameters and shows why
+physical predictions must be expressed in terms of measured quantities rather
+than unrenormalized Lagrangian parameters.
+\end{summarybox}
+
+\section{Chapter Checklist}
+
+After reading this chapter, one should be able to:
+\begin{itemize}
+    \item write the \(\phi^4\) Lagrangian and identify free and interacting
+    parts;
+    \item explain why the factor \(4!\) is included;
+    \item derive the basic propagator and vertex Feynman rules;
+    \item compute the tree-level \(2\to2\) amplitude;
+    \item identify the tadpole as a one-loop mass correction;
+    \item describe the one-loop correction to the four-point function;
+    \item explain what an ultraviolet divergence is;
+    \item state why counterterms are introduced;
+    \item distinguish bare and renormalized parameters;
+    \item explain why \(\phi^4\) theory is the first useful laboratory for
+    renormalization.
+\end{itemize}
