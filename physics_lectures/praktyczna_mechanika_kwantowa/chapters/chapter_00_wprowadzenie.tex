@@ -1,26 +1,110 @@
-\chapter*{Wprowadzenie: po co są te notatki?}
-\addcontentsline{toc}{chapter}{Wprowadzenie: po co są te notatki?}
+\chapter*{Wprowadzenie: jak korzystać z tych notatek?}
+\addcontentsline{toc}{chapter}{Wprowadzenie: jak korzystać z tych notatek?}
 \setcounter{section}{0}
+
+\begin{summarybox}
+Te notatki są skryptem pomocniczym do zajęć laboratoryjnych z praktycznej
+mechaniki kwantowej. Nie są pełnym podręcznikiem aksjomatycznej mechaniki
+kwantowej i nie zastępują przygotowanych list zadań. Ich celem jest pomóc
+studentom przejść od treści ćwiczenia laboratoryjnego do modelu, obliczeń
+symbolicznych i numerycznych, wizualizacji, symulacji oraz interpretacji wyniku.
+\end{summarybox}
+
+\section{Czym te notatki są, a czym nie są?}
+
+Te notatki są przewodnikiem po praktycznej stronie mechaniki kwantowej. Mają
+wspierać zajęcia, na których student wykonuje obliczenia w Mathematice, a w
+wybranych miejscach także w Pythonie. Punktem wyjścia są przygotowane listy
+zadań laboratoryjnych. Notatki mają pomóc w zrozumieniu, jak takie zadania
+rozwiązywać, jak kontrolować wynik i jak opisać fizykę stojącą za wykresem albo
+symulacją.
+
+Nie jest to kurs oparty na pełnym aksjomatycznym wykładzie mechaniki kwantowej.
+Nie jest to również zbiór gotowych odpowiedzi do zadań. Student powinien używać
+tego skryptu jako mapy: gdzie pojawia się dany model, jakie równania są
+potrzebne, jakie są typowe pułapki i jak sprawdzić, czy obliczenie ma sens.
 
 \section{Mechanika kwantowa jako teoria modeli, nie katalog wzorów}
 
 Mechanika kwantowa w tych notatkach będzie traktowana jako język budowania
 modeli. Wzory są ważne, ale nie są celem samym w sobie. Każdy wzór powinien
-odpowiadać na pytanie: jaki układ opisujemy, jakie przyjmujemy założenia i co
-możemy sprawdzić obliczeniowo?
+odpowiadać na pytanie: jaki układ opisujemy, jakie przyjmujemy założenia, jakie
+wielkości liczymy i co możemy sprawdzić obliczeniowo?
+
+Dlatego w wielu rozdziałach pojawia się ten sam schemat: najpierw sytuacja
+fizyczna, potem równanie, następnie rozwiązanie analityczne albo numeryczne,
+później wykres, kontrola wyniku i interpretacja. Taki schemat jest ważniejszy niż
+pamięciowe opanowanie pojedynczego wzoru.
 
 \section{Co znaczy „praktyczna” mechanika kwantowa?}
 
 Słowo praktyczna oznacza tutaj umiejętność przejścia od sytuacji fizycznej do
 równania, od równania do obliczenia, od obliczenia do wykresu, a od wykresu do
-interpretacji. Student powinien umieć nie tylko rozwiązać model, ale także
-rozpoznać, czy wynik ma sens.
+interpretacji. Student powinien umieć nie tylko uruchomić kod, ale także
+rozpoznać, czy wynik ma sens fizyczny.
 
-\section{Rola Mathematiki: rachunek symboliczny, obliczenia numeryczne, wizualizacja}
+W praktyce oznacza to między innymi:
+\begin{itemize}
+    \item zapisanie Hamiltonianu dla danego modelu,
+    \item określenie dziedziny i warunków brzegowych,
+    \item dobranie jednostek i parametrów,
+    \item wykonanie obliczeń symbolicznych albo numerycznych,
+    \item przygotowanie czytelnego wykresu,
+    \item sprawdzenie normalizacji, energii, transmisji albo normy,
+    \item sformułowanie krótkiej interpretacji fizycznej.
+\end{itemize}
+
+\section{Rola Mathematiki i Pythona}
 
 Mathematica jest w tym kursie traktowana jako laboratorium. Używamy jej do
 rachunku symbolicznego, obliczeń numerycznych, szukania pierwiastków,
 rozwiązywania równań różniczkowych oraz tworzenia czytelnych wykresów.
+
+Python może pełnić podobną rolę, zwłaszcza w obliczeniach numerycznych i
+wizualizacji. Jednak głównym narzędziem tych notatek jest Mathematica, ponieważ
+pozwala wygodnie łączyć rachunek symboliczny, numerykę i prezentację wyniku w
+jednym środowisku.
+
+\begin{warningbox}
+Program komputerowy nie rozumie fizyki za studenta. Mathematica może rozwiązać
+równanie, ale nie powie automatycznie, czy użyto dobrych jednostek, czy warunki
+brzegowe są fizyczne i czy wykres przedstawia \(\psi\), \(|\psi|\), czy
+\(|\psi|^2\).
+\end{warningbox}
+
+\section{Mapa kursu}
+
+Materiał jest ułożony tak, aby stopniowo przechodzić od prostych modeli do
+bardziej złożonych symulacji:
+\begin{equation}
+\text{funkcja falowa}
+\rightarrow
+\text{studnie i bariery}
+\rightarrow
+\text{metody numeryczne}
+\rightarrow
+\text{oscylator}
+\rightarrow
+\text{atom wodoru}
+\rightarrow
+\text{komutatory i interferencja}
+\rightarrow
+\text{kubit}
+\rightarrow
+\text{dynamika czasowa}
+\rightarrow
+\text{ciało stałe}
+\rightarrow
+\text{układy 3D i projekty}.
+\end{equation}
+
+W pierwszej części uczymy się, jak normalizować funkcje falowe, rozwiązywać
+proste równania własne i interpretować gęstości prawdopodobieństwa. Następnie
+przechodzimy do tunelowania, macierzy przejścia i równań transcendentalnych.
+Dalej pojawiają się oscylator harmoniczny, atom wodoru, moment pędu,
+komutatory, przestrzeń Hilberta, kubity i układy złożone. Końcowe rozdziały
+pokazują dynamikę zależną od czasu, pola magnetyczne, rachunek zaburzeń, sieci
+krystaliczne, grafen i kropki kwantowe.
 
 \section{Jak czytać równanie Schrödingera?}
 
@@ -28,17 +112,34 @@ Równanie Schrödingera należy czytać jako równanie modelu. Trzeba wskazać
 Hamiltonian, potencjał, dziedzinę, warunki brzegowe, jednostki oraz szukane
 stany. Dopiero wtedy równanie staje się zadaniem fizycznym.
 
+Samo zapisanie równania
+\begin{equation}
+    \hat{H}\psi=E\psi
+\end{equation}
+nie wystarcza. Trzeba jeszcze wiedzieć, czym jest \(\hat{H}\), na jakiej
+dziedzinie działa, jakie warunki brzegowe narzucamy i jaka wielkość ma zostać
+porównana z wynikiem numerycznym albo wykresem.
+
 \section{Jak czytać wykres funkcji falowej?}
 
 Wykres funkcji falowej nie jest zwykłym wykresem położenia cząstki. Należy
 odróżniać \(\psi\), jej część rzeczywistą i urojoną, moduł \(|\psi|\) oraz
 gęstość prawdopodobieństwa \(|\psi|^2\).
 
-\section{Jednostki, skale i sanity checks: eV, nm, masa efektywna}
+Jeżeli wykres pokazuje \(|\psi(x)|^2\), powinien być interpretowany jako gęstość
+prawdopodobieństwa. Jeżeli pokazuje \(\operatorname{Re}\psi(x)\), to pokazuje
+część amplitudy, która może przyjmować wartości ujemne. Dobry raport musi jasno
+podpisywać, co jest rysowane.
 
-W problemach nanostruktur często miesza się skale SI, elektronowolty,
-nanometry i masę efektywną. Każde obliczenie powinno zawierać kontrolę
-jednostek oraz ocenę rzędu wielkości wyniku.
+\section{Jednostki, skale i sanity checks}
+
+W problemach nanostruktur często miesza się skale SI, elektronowolty, nanometry
+i masę efektywną. Każde obliczenie powinno zawierać kontrolę jednostek oraz ocenę
+rzędu wielkości wyniku.
+
+Dla przykładu, energia w studni kwantowej zależy od \(1/L^2\). Pomylenie
+nanometrów z metrami może zniszczyć wynik o czynnik \(10^{18}\). Dlatego w
+notatkach często wracamy do pytania: czy wynik ma sens liczbowy?
 
 \section{Stały schemat pracy laboratoryjnej}
 
@@ -53,14 +154,37 @@ Standardowy schemat pracy brzmi:
 \rightarrow
 \text{narysuj}
 \rightarrow
-\text{sprawdź jednostki}
+\text{sprawdź jednostki i normę}
 \rightarrow
 \text{zinterpretuj}.
 \]
 \end{summarybox}
 
-\section{Typowy raport z ćwiczenia: teoria, model, kod, wynik, interpretacja}
+Ten schemat jest wspólny dla prawie wszystkich ćwiczeń. Zmienia się model i
+narzędzie obliczeniowe, ale logika pracy pozostaje taka sama.
+
+\section{Mini-przykład: jeden problem w czterech językach}
+
+Rozważmy cząstkę w nieskończonej studni potencjału. Słownie: cząstka jest
+uwięziona między dwiema idealnie nieprzenikalnymi ścianami. Matematycznie:
+\begin{equation}
+    V(x)=0\quad 0<x<L,
+    \qquad
+    \psi(0)=\psi(L)=0.
+\end{equation}
+Równanie własne prowadzi do energii
+\begin{equation}
+    E_n=\frac{n^2\pi^2\hbar^2}{2mL^2}.
+\end{equation}
+Komputerowo można narysować funkcje własne i gęstości prawdopodobieństwa.
+Fizycznie trzeba zauważyć, że zwężenie studni zwiększa energie jak \(1/L^2\), a
+stan podstawowy ma energię większą od zera.
+
+\section{Typowy raport z ćwiczenia}
 
 Raport powinien zawierać krótki opis teorii, definicję modelu i założeń,
-równania, kod w Mathematice, wykresy, kontrolę wyniku oraz interpretację
-fizyczną. Sam kod bez komentarza nie jest jeszcze raportem.
+równania, kod w Mathematice albo Pythonie, wykresy, kontrolę wyniku oraz
+interpretację fizyczną. Sam kod bez komentarza nie jest jeszcze raportem.
+
+Szczegółowy szablon raportu znajduje się w dodatku D. Warto traktować go jako
+minimalny standard pracy laboratoryjnej.
