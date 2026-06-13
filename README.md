@@ -1,6 +1,6 @@
 # Lectures Notes!
 
-This repository contains eight separate LaTeX lecture-note projects.
+This repository contains nine separate LaTeX lecture-note projects.
 
 ## Projects
 
@@ -13,6 +13,7 @@ physics_lectures/general_notes_experiments
 physics_lectures/classical_field_theory_I
 physics_lectures/classical_field_theory_II
 physics_lectures/praktyczna_mechanika_kwantowa
+physics_lectures/quantum_field_theory
 ```
 
 Each project has its own `main.tex` source file and compiled `main.pdf` output.
