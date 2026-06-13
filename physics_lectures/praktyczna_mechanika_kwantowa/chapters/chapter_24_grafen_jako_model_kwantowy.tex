@@ -1,12 +1,134 @@
 \chapter{Grafen jako praktyczny model kwantowy}
 
+\begin{summarybox}
+Grafen jest dwuwymiarową siecią atomów węgla, ale z punktu widzenia mechaniki
+kwantowej jest przede wszystkim znakomitym modelem pasmowym. Prosty model ciasnego
+wiązania prowadzi do dwóch podsieci, funkcji falowej o dwóch składowych, punktów
+Diraca i liniowej dyspersji. Dzięki temu grafen łączy fizykę ciała stałego,
+algebrę macierzy i idee podobne do równania Diraca.
+\end{summarybox}
+
 \section{Sieć plastra miodu}
+
+Grafen tworzy dwuwymiarową strukturę przypominającą plaster miodu. Na pierwszy rzut oka można sądzić, że jest to zwykła sieć heksagonalna. Dokładniej jednak sieć grafenu nie jest prostą siecią Bravais'go z jednym atomem w komórce elementarnej. Jest to sieć trójkątna z bazą złożoną z dwóch atomów.
+
+Te dwa atomy w komórce elementarnej należą do dwóch podsieci, które zwykle oznacza się jako \(A\) i \(B\). Ta pozornie mała różnica ma ogromne konsekwencje: funkcja falowa elektronu w grafenie ma dwie amplitudy, jedną na podsieci \(A\), drugą na podsieci \(B\).
+
 \section{Dwie podsieci grafenu}
+
+Stan elektronu w prostym modelu grafenu można zapisać jako dwuskładnikowy wektor:
+\begin{equation}
+    |\psi\rangle=\begin{pmatrix}\psi_A\\\psi_B\end{pmatrix}.
+\end{equation}
+Nie jest to spin elektronu. Jest to stopień swobody związany z dwiema podsieciami. Czasem nazywa się go pseudospinem.
+
+Właśnie dlatego Hamiltonian grafenu w pobliżu punktów Diraca ma postać macierzową podobną do Hamiltonianu cząstki Diraca. Macierze działają na przestrzeń podsieci, a nie na zwykły spin.
+
 \section{Wektory sieciowe}
+
+Dla grafenu można wybrać dwa wektory bazowe sieci Bravais'go, na przykład
+\begin{equation}
+    \mathbf{a}_1=a\left(\frac{1}{2},\frac{\sqrt{3}}{2}\right),
+    \qquad
+    \mathbf{a}_2=a\left(-\frac{1}{2},\frac{\sqrt{3}}{2}\right),
+\end{equation}
+gdzie \(a\) jest stałą sieciową. Wektory do najbliższych sąsiadów łączą atom z podsieci \(A\) z trzema atomami podsieci \(B\). Można je oznaczyć jako \(\boldsymbol{\delta}_1,\boldsymbol{\delta}_2,\boldsymbol{\delta}_3\).
+
+Dokładny wybór konwencji nie jest najważniejszy. Ważne jest, że każdy atom \(A\) ma trzech najbliższych sąsiadów typu \(B\), a każdy atom \(B\) ma trzech najbliższych sąsiadów typu \(A\).
+
 \section{Model ciasnego wiązania}
+
+W najprostszym modelu ciasnego wiązania zakładamy, że elektron może przeskakiwać tylko między najbliższymi sąsiadami. Hamiltonian ma schematyczną postać
+\begin{equation}
+    \hat{H}=-t\sum_{\langle i,j\rangle}\left(|i\rangle\langle j|+|j\rangle\langle i|\right),
+\end{equation}
+gdzie \(t\) jest amplitudą przeskoku, a suma biegnie po parach najbliższych sąsiadów.
+
+Po przejściu do przestrzeni \(\mathbf{k}\) Hamiltonian ma postać macierzy \(2\times2\):
+\begin{equation}
+    H(\mathbf{k})=
+    \begin{pmatrix}
+    0 & -t f(\mathbf{k})\\
+    -t f^*(\mathbf{k}) & 0
+    \end{pmatrix},
+\end{equation}
+gdzie
+\begin{equation}
+    f(\mathbf{k})=\sum_{j=1}^{3}e^{i\mathbf{k}\cdot\boldsymbol{\delta}_j}.
+\end{equation}
+
 \section{Relacja dyspersji}
+
+Energie otrzymujemy przez diagonalizację macierzy \(H(\mathbf{k})\). Wynik ma postać
+\begin{equation}
+    E_\pm(\mathbf{k})=\pm t|f(\mathbf{k})|.
+\end{equation}
+Są dwa pasma: dolne \(E_-\) i górne \(E_+\). Ich symetria względem zera energii wynika z uproszczonego modelu z samymi przeskokami między podsieciami.
+
+Pasma stykają się w szczególnych punktach strefy Brillouina. Te punkty nazywamy punktami Diraca. W pobliżu nich dyspersja jest liniowa, a nie kwadratowa jak dla zwykłej cząstki swobodnej nierelatywistycznej.
+
 \section{Punkty Diraca}
+
+Punkty Diraca są miejscami, w których
+\begin{equation}
+    f(\mathbf{K})=0.
+\end{equation}
+Wtedy
+\begin{equation}
+    E_+(\mathbf{K})=E_-(\mathbf{K})=0.
+\end{equation}
+W grafenie istnieją nierównoważne punkty Diraca, zwykle oznaczane \(K\) i \(K'\). Są one związane z geometrią heksagonalnej strefy Brillouina.
+
+W pobliżu punktu Diraca rozwijamy \(\mathbf{k}=\mathbf{K}+\mathbf{q}\), gdzie \(\mathbf{q}\) jest małe. Hamiltonian przyjmuje wtedy postać liniową w \(\mathbf{q}\).
+
 \section{Liniowa dyspersja w pobliżu punktów Diraca}
+
+W pobliżu punktu Diraca energia ma postać
+\begin{equation}
+    E_\pm(\mathbf{q})=\pm \hbar v_F |\mathbf{q}|,
+\end{equation}
+gdzie \(v_F\) jest prędkością Fermiego. To przypomina relację dyspersji cząstki relatywistycznej bezmasowej:
+\begin{equation}
+    E=pc.
+\end{equation}
+W grafenie rolę prędkości światła pełni \(v_F\), dużo mniejsza od \(c\), ale matematyczna struktura jest podobna.
+
+Ta liniowa dyspersja odpowiada za wiele niezwykłych własności grafenu: wysoką ruchliwość nośników, szczególne zachowanie w polu magnetycznym i nietypowy kwantowy efekt Halla.
+
 \section{Elektrony jako efektywne bezmasowe fermiony Diraca}
+
+W pobliżu punktów Diraca Hamiltonian można zapisać w przybliżeniu jako
+\begin{equation}
+    H=\hbar v_F\left(q_x\sigma_x+q_y\sigma_y\right),
+\end{equation}
+gdzie \(\sigma_x\) i \(\sigma_y\) są macierzami Pauliego działającymi na stopień swobody podsieci. To jest równanie typu Diraca w dwóch wymiarach.
+
+Słowo „efektywne” jest tutaj bardzo ważne. Elektrony w grafenie nie stają się naprawdę bezmasowymi cząstkami relatywistycznymi. Ich dynamika niskoenergetyczna jest opisywana równaniem o podobnej strukturze matematycznej.
+
 \section{Wizualizacja struktury pasmowej grafenu}
+
+W Mathematice można zdefiniować funkcję \(f(\mathbf{k})\) i narysować powierzchnie \(E_+(k_x,k_y)\) oraz \(E_-(k_x,k_y)\). Schematycznie:
+\begin{verbatim}
+delta1 = {0, 1};
+delta2 = {Sqrt[3]/2, -1/2};
+delta3 = {-Sqrt[3]/2, -1/2};
+
+f[kx_, ky_] := Exp[I {kx, ky}.delta1] +
+  Exp[I {kx, ky}.delta2] + Exp[I {kx, ky}.delta3]
+
+Eplus[kx_, ky_] := Abs[f[kx, ky]]
+Eminus[kx_, ky_] := -Abs[f[kx, ky]]
+
+Plot3D[{Eplus[kx, ky], Eminus[kx, ky]}, {kx, -4, 4}, {ky, -4, 4}]
+\end{verbatim}
+Na wykresie powinny być widoczne stożki Diraca, czyli miejsca liniowego stykania pasm.
+
 \section{Granice modelu}
+
+Najprostszy model ciasnego wiązania grafenu jest bardzo pouczający, ale ma granice. Pomija dalszych sąsiadów, oddziaływania elektron-elektron, spin, sprzężenie spin-orbita, deformacje sieci, wpływ podłoża i nieporządek.
+
+Mimo to model jest znakomity dydaktycznie, bo pokazuje, jak z samej geometrii sieci i dwóch podsieci wynika macierzowy Hamiltonian, punkty Diraca i liniowa dyspersja. To jeden z najładniejszych przykładów, gdzie algebra liniowa, geometria sieci i mechanika kwantowa spotykają się w jednym prostym modelu.
+
+\begin{summarybox}
+Grafen pokazuje, że struktura sieci może radykalnie zmienić efektywną fizykę elektronu. Dwie podsieci prowadzą do dwuskładnikowej funkcji falowej, model ciasnego wiązania do pasm \(\pm t|f(\mathbf{k})|\), a punkty Diraca do liniowej dyspersji i efektywnego Hamiltonianu typu Diraca.
+\end{summarybox}
