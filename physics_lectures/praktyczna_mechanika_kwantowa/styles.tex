@@ -1,1 +1,22 @@
 \input{../../shared/styles}
+
+% Project-specific styling for code examples.
+% The notes use many standard verbatim blocks for Mathematica code.
+% Redefine verbatim through fvextra so code is not printed on a stark white background.
+\usepackage{fvextra}
+
+\definecolor{CodeGrayBack}{HTML}{F7F7F7}
+\definecolor{CodeGrayFrame}{HTML}{E2E2E2}
+
+\DefineVerbatimEnvironment{verbatim}{Verbatim}{
+    breaklines=true,
+    breakanywhere=true,
+    fontsize=\small,
+    frame=single,
+    framerule=0.25pt,
+    rulecolor=\color{CodeGrayFrame},
+    framesep=3mm,
+    xleftmargin=0pt,
+    xrightmargin=0pt,
+    bgcolor=CodeGrayBack
+}
