@@ -1,22 +1,306 @@
-\chapter{Scattering Theory and the \(S\)-Matrix}
+\chapter{Scattering Theory and the \texorpdfstring{\(S\)-Matrix}{S-Matrix}}
 
 \begin{remarkbox}
-This chapter is reserved by the course plan in \texttt{ideas\_Quantum\_Field\_Theory.md}. It will be developed in small increments.
+The previous chapters built the machinery of perturbative QFT: free fields,
+propagators, the interaction picture, Wick's theorem, and Feynman diagrams.
+Scattering theory explains how this machinery becomes physics. It connects
+correlation functions and diagrams to transition amplitudes, cross sections, and
+decay rates.
 \end{remarkbox}
 
-\section{Planned Sections}
+\section{In-States and Out-States}
 
+Scattering theory compares what comes in from the far past with what goes out in
+the far future. The basic idealization is that particles are well separated at
+very early and very late times, so that they may be described by free Fock
+states.
+
+An initial state is called an in-state and is denoted
+\[
+    |\alpha,\mathrm{in}\rangle.
+\]
+A final state is called an out-state and is denoted
+\[
+    |\beta,\mathrm{out}\rangle.
+\]
+For example, a two-particle initial state may be labelled by momenta and other
+quantum numbers,
+\[
+    |p_1,p_2,\mathrm{in}\rangle,
+\]
+while a final state may contain different momenta or even a different number of
+particles.
+
+The central physical question is: what is the amplitude for the initial state
+\(\alpha\) to become the final state \(\beta\)?
+
+\section{The \texorpdfstring{\(S\)-Matrix}{S-Matrix}}
+
+The scattering matrix is defined by the overlap
+\[
+    S_{\beta\alpha}
+    = \langle\beta,\mathrm{out}|\alpha,\mathrm{in}\rangle.
+\]
+Equivalently, one introduces an operator \(\hat S\) acting on free asymptotic
+states:
+\[
+    S_{\beta\alpha}
+    = \langle\beta|\hat S|\alpha\rangle.
+\]
+In the interaction picture,
+\[
+    \hat S
+    = T\exp\left(-i\int_{-\infty}^{\infty}\dd t\,\hat H_I(t)\right).
+\]
+This is the same operator introduced at the end of Chapter 7. The novelty here
+is that its matrix elements are interpreted as scattering amplitudes.
+
+It is useful to separate the identity contribution from the interacting part:
+\[
+    \hat S = 1+i\hat T.
+\]
+The identity term describes no scattering. The operator \(\hat T\) contains the
+nontrivial transition information.
+
+\section{Transition Amplitudes}
+
+For relativistic scattering, momentum conservation is factored out. One writes
+\[
+    \langle\beta|i\hat T|\alpha\rangle
+    = i(2\pi)^4\delta^{(4)}(P_\beta-P_\alpha)\mathcal{M}_{\beta\alpha}.
+\]
+The quantity \(\mathcal{M}_{\beta\alpha}\) is the invariant matrix element, or
+scattering amplitude. It is what Feynman rules are designed to compute.
+
+The delta function expresses conservation of total four-momentum. The amplitude
+\(\mathcal{M}\) contains the dynamical information: coupling constants,
+propagators, spinor factors, polarization vectors, and momentum dependence.
+
+For example, in a tree-level scalar process, \(\mathcal{M}\) may be a simple
+polynomial in the coupling. In QED it includes spinor bilinears and photon
+propagators. In loop calculations it includes integrals over internal momenta.
+
+\section{Matrix Elements and Momentum Conservation}
+
+Translation invariance implies four-momentum conservation. If the theory is
+invariant under spacetime translations, then the total four-momentum operator
+commutes with the scattering operator:
+\[
+    [\hat P^\mu,\hat S]=0.
+\]
+Therefore only transitions satisfying
+\[
+    P_\alpha^\mu=P_\beta^\mu
+\]
+can have nonzero amplitude.
+
+This is why every Feynman diagram in momentum space carries a momentum-conserving
+delta function at each vertex. After all internal vertex integrations are done,
+one overall delta function remains. It expresses total energy-momentum
+conservation for the full scattering process.
+
+\section{Lorentz-Invariant Phase Space}
+
+Probabilities are obtained by squaring amplitudes and summing or integrating
+over final states. The Lorentz-invariant one-particle phase-space measure is
+\[
+    \frac{\dd^3p}{(2\pi)^3}\frac{1}{2E_{\vect{p}}}.
+\]
+For an \(n\)-particle final state with total incoming momentum \(P\), the
+Lorentz-invariant phase space is
+\[
+    \dd\Pi_n(P;p_1,\ldots,p_n)
+    = (2\pi)^4\delta^{(4)}\left(P-\sum_{i=1}^{n}p_i\right)
+      \prod_{i=1}^{n}\frac{\dd^3p_i}{(2\pi)^3 2E_i}.
+\]
+This measure combines the on-shell conditions for final particles with total
+four-momentum conservation.
+
+The same measure appears in cross sections and decay rates. It is one of the
+standard bridges between amplitudes and measurable predictions.
+
+\section{Cross Sections}
+
+For a two-particle scattering process
+\[
+    a+b\longrightarrow 1+2+\cdots+n,
+\]
+the differential cross section has the schematic form
+\[
+    \dd\sigma
+    = \frac{1}{\text{flux}}\,|\mathcal{M}|^2\,\dd\Pi_n.
+\]
+The flux factor depends on the normalization of the incoming states. In a
+Lorentz-invariant form for two incoming particles with momenta \(p_a,p_b\), it
+is built from
+\[
+    4\sqrt{(p_a\cdot p_b)^2-m_a^2m_b^2}.
+\]
+Thus
+\[
+    \dd\sigma
+    = \frac{|\mathcal{M}|^2}{4\sqrt{(p_a\cdot p_b)^2-m_a^2m_b^2}}\,\dd\Pi_n.
+\]
+For massless or center-of-mass examples this expression simplifies, but the
+structure is always the same: amplitude squared times phase space divided by
+incoming flux.
+
+\section{Decay Rates}
+
+For a decay process
+\[
+    A\longrightarrow 1+2+\cdots+n,
+\]
+there is only one initial particle. The differential decay rate is
+\[
+    \dd\Gamma
+    = \frac{1}{2M_A}|\mathcal{M}|^2\,\dd\Pi_n,
+\]
+where \(M_A\) is the mass of the decaying particle. The total decay rate is
+obtained by integrating over final-state phase space:
+\[
+    \Gamma = \int \dd\Gamma.
+\]
+The lifetime is
+\[
+    \tau = \frac{1}{\Gamma}.
+\]
+The same invariant amplitude technology therefore describes both scattering
+experiments and unstable-particle decays.
+
+\section{The LSZ Reduction Formula}
+
+Perturbation theory naturally computes time-ordered correlation functions. The
+LSZ reduction formula explains how to extract scattering amplitudes from those
+correlators.
+
+For a scalar field, the rough idea is this: external particles correspond to
+poles of the Fourier-transformed correlation function. To obtain an amplitude,
+one multiplies by inverse propagator factors and takes the external momenta on
+shell. Schematically,
+\[
+    \mathcal{M}
+    \sim \prod_{i}\left(p_i^2-m^2\right)
+    \widetilde G(p_1,\ldots,p_n)\bigg|_{p_i^2=m^2},
+\]
+with normalization factors suppressed.
+
+The exact LSZ formula includes wave-function renormalization factors and signs
+that depend on conventions. Its conceptual message is more important at this
+stage: scattering amplitudes are obtained from the pole structure of
+correlation functions.
+
+\section{From Correlation Functions to Scattering Amplitudes}
+
+The chain of ideas is now complete:
+\[
+    \text{Lagrangian}
+    \longrightarrow
+    \text{interaction Hamiltonian}
+    \longrightarrow
+    \text{Dyson series}
+    \longrightarrow
+    \text{Wick contractions}
+    \longrightarrow
+    \text{Feynman diagrams}
+    \longrightarrow
+    \mathcal{M}
+    \longrightarrow
+    \text{observables}.
+\]
+The first part of the chain is formal and operator-theoretic. The middle part is
+diagrammatic. The last part converts amplitudes into cross sections and decay
+rates.
+
+This is why propagators and vertices are not merely mathematical decorations.
+They are the intermediate objects that connect a Lagrangian to measurable
+numbers.
+
+\section{Tree-Level \texorpdfstring{\(2\to2\)}{2 to 2} Scattering}
+
+A simple example is tree-level \(2\to2\) scattering in \(\phi^4\) theory. The
+interaction is
+\[
+    \mathcal{L}_{\mathrm{int}}
+    = -\frac{\lambda}{4!}\phi^4.
+\]
+At lowest order, there is one four-point vertex and no internal propagator. The
+amplitude is
+\[
+    i\mathcal{M}=-i\lambda,
+    \qquad
+    \mathcal{M}=-\lambda.
+\]
+This example is deliberately simple. It shows that a contact interaction gives a
+constant tree-level amplitude. More complicated theories produce amplitudes with
+propagators, spinor factors, and polarization vectors.
+
+In momentum space, the full matrix element is
+\[
+    \langle p_3,p_4|i\hat T|p_1,p_2\rangle
+    = i(2\pi)^4\delta^{(4)}(p_1+p_2-p_3-p_4)\mathcal{M}.
+\]
+The delta function enforces momentum conservation; \(\mathcal{M}\) is the part
+used in the cross-section formula.
+
+\section{Decay of an Unstable Particle}
+
+Suppose a particle \(A\) can decay into two particles \(1\) and \(2\). If the
+amplitude is \(\mathcal{M}(A\to1+2)\), then
+\[
+    \dd\Gamma
+    = \frac{1}{2M_A}|\mathcal{M}|^2
+      (2\pi)^4\delta^{(4)}(p_A-p_1-p_2)
+      \frac{\dd^3p_1}{(2\pi)^3 2E_1}
+      \frac{\dd^3p_2}{(2\pi)^3 2E_2}.
+\]
+This formula is the decay analogue of the scattering cross section. It says that
+rates are determined by amplitude squared times available phase space.
+
+The phase space can strongly affect the physical rate. A large amplitude may
+produce a small rate if very little phase space is available, while a modest
+amplitude can produce a large rate if many final states are accessible.
+
+\section{From Amplitudes to Measurable Predictions}
+
+Experiments do not measure Feynman diagrams directly. They measure cross
+sections, angular distributions, branching ratios, decay widths, and event
+rates. QFT predicts these quantities by computing amplitudes and integrating them
+over the appropriate phase space.
+
+A realistic prediction usually requires additional steps: spin sums, averages
+over initial polarizations, sums over final polarizations, symmetry factors for
+identical particles, detector cuts, and sometimes radiative corrections. The
+basic structure, however, is already visible:
+\[
+    \text{theory} \longrightarrow \mathcal{M}
+    \longrightarrow |\mathcal{M}|^2
+    \longrightarrow \text{phase-space integral}
+    \longrightarrow \text{observable}.
+\]
+
+\begin{summarybox}
+Scattering theory turns the operator and diagrammatic machinery of perturbative
+QFT into measurable predictions. The \(S\)-matrix connects in-states to
+out-states. Momentum conservation is factored out to define the invariant
+amplitude \(\mathcal{M}\). Cross sections and decay rates are obtained from
+\(|\mathcal{M}|^2\) integrated over Lorentz-invariant phase space. LSZ explains
+why scattering amplitudes are encoded in the pole structure of time-ordered
+correlation functions.
+\end{summarybox}
+
+\section{Chapter Checklist}
+
+After reading this chapter, one should be able to:
 \begin{itemize}
-    \item In-states and out-states.
-    \item The \(S\)-matrix.
-    \item Transition amplitudes.
-    \item Matrix elements and momentum conservation.
-    \item Cross sections.
-    \item Decay rates.
-    \item Lorentz-invariant phase space.
-    \item The LSZ reduction formula.
-    \item From correlation functions to scattering amplitudes.
-    \item Tree-level \(2\to2\) scattering.
-    \item Decay of an unstable particle.
-    \item From amplitudes to measurable predictions.
+    \item define in-states, out-states, and the \(S\)-matrix;
+    \item distinguish \(S\), \(T\), and the invariant amplitude \(\mathcal{M}\);
+    \item explain the origin of the momentum-conserving delta function;
+    \item write the Lorentz-invariant phase-space measure;
+    \item state the schematic cross-section formula;
+    \item state the decay-rate formula;
+    \item explain the conceptual role of LSZ reduction;
+    \item describe how correlation functions lead to amplitudes;
+    \item compute the tree-level \(\phi^4\) amplitude at lowest order;
+    \item explain how amplitudes become measurable predictions.
 \end{itemize}
