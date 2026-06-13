@@ -1,12 +1,181 @@
 \chapter{Cząstka w polu magnetycznym}
 
+\begin{summarybox}
+Pole magnetyczne w mechanice kwantowej wchodzi do równania Schrödingera przez
+potencjał wektorowy i sprzężenie minimalne. To prowadzi do rozróżnienia między
+pędem kanonicznym i kinematycznym, do pojęcia cechowania oraz do poziomów
+Landaua dla cząstki na płaszczyźnie w jednorodnym polu magnetycznym. Ten rozdział
+pokazuje, jak problem pola magnetycznego redukuje się do oscylatora harmonicznego.
+\end{summarybox}
+
 \section{Sprzężenie minimalne}
+
+Dla cząstki o ładunku \(q\) w polu elektromagnetycznym podstawowa reguła wprowadzenia pola do Hamiltonianu nazywa się sprzężeniem minimalnym. W miejsce pędu \(\mathbf{p}\) podstawiamy
+\begin{equation}
+    \mathbf{p}\longrightarrow \mathbf{p}-q\mathbf{A},
+\end{equation}
+gdzie \(\mathbf{A}\) jest potencjałem wektorowym. Hamiltonian ma postać
+\begin{equation}
+    \hat{H}=\frac{1}{2m}\left(\hat{\mathbf{p}}-q\mathbf{A}\right)^2+q\Phi,
+\end{equation}
+gdzie \(\Phi\) jest potencjałem skalarnym.
+
+Dla samego pola magnetycznego często przyjmujemy \(\Phi=0\), więc
+\begin{equation}
+    \hat{H}=\frac{1}{2m}\left(\hat{\mathbf{p}}-q\mathbf{A}\right)^2.
+\end{equation}
+Ten zapis jest zwarty, ale trzeba pamiętać, że \(\hat{\mathbf{p}}\) jest operatorem różniczkowym, a \(\mathbf{A}\) może zależeć od położenia.
+
 \section{Potencjał wektorowy}
+
+Pole magnetyczne opisujemy przez rotację potencjału wektorowego:
+\begin{equation}
+    \mathbf{B}=\nabla\times\mathbf{A}.
+\end{equation}
+To oznacza, że potencjał wektorowy nie jest jednoznaczny. Różne potencjały \(\mathbf{A}\) mogą dawać to samo pole \(\mathbf{B}\).
+
+Dla jednorodnego pola magnetycznego skierowanego wzdłuż osi \(z\):
+\begin{equation}
+    \mathbf{B}=B\hat{\mathbf{z}},
+\end{equation}
+można wybrać na przykład cechowanie Landaua
+\begin{equation}
+    \mathbf{A}=(-By,0,0)
+\end{equation}
+albo
+\begin{equation}
+    \mathbf{A}=(0,Bx,0).
+\end{equation}
+Można też użyć cechowania symetrycznego:
+\begin{equation}
+    \mathbf{A}=\frac{1}{2}\mathbf{B}\times\mathbf{r}
+    =\left(-\frac{By}{2},\frac{Bx}{2},0\right).
+\end{equation}
+
 \section{Cechowanie}
+
+Transformacja cechowania ma postać
+\begin{equation}
+    \mathbf{A}\longrightarrow \mathbf{A}'=\mathbf{A}+\nabla\chi,
+\end{equation}
+gdzie \(\chi\) jest dowolną dostatecznie regularną funkcją. Pole magnetyczne pozostaje takie samo, ponieważ
+\begin{equation}
+    \nabla\times\nabla\chi=0.
+\end{equation}
+
+W mechanice kwantowej zmiana potencjału wektorowego wiąże się także ze zmianą fazy funkcji falowej. Obserwowalne wielkości fizyczne nie mogą zależeć od wyboru cechowania. To jest ważna lekcja: potencjał wektorowy pojawia się w równaniu, ale sama fizyka musi być cechowo niezmiennicza.
+
+\begin{remarkbox}
+W polu magnetycznym potencjał wektorowy nie jest tylko technicznym dodatkiem. W mechanice kwantowej ma bezpośredni wpływ na fazę funkcji falowej, co prowadzi między innymi do efektu Aharonova--Bohma.
+\end{remarkbox}
+
 \section{Pęd kanoniczny i pęd kinematyczny}
+
+W obecności pola magnetycznego trzeba odróżnić pęd kanoniczny od pędu kinematycznego. Pęd kanoniczny to operator
+\begin{equation}
+    \hat{\mathbf{p}}=-i\hbar\nabla.
+\end{equation}
+Pęd kinematyczny, związany z ruchem cząstki, ma postać
+\begin{equation}
+    \hat{\boldsymbol{\pi}}=\hat{\mathbf{p}}-q\mathbf{A}.
+\end{equation}
+Hamiltonian zapisuje się wtedy jako
+\begin{equation}
+    \hat{H}=\frac{\hat{\boldsymbol{\pi}}^2}{2m}.
+\end{equation}
+
+Składowe pędu kinematycznego nie komutują w polu magnetycznym. Dla pola wzdłuż osi \(z\) zachodzi
+\begin{equation}
+    [\hat{\pi}_x,\hat{\pi}_y]=i\hbar qB.
+\end{equation}
+To niekomutowanie jest algebraicznym źródłem poziomów Landaua.
+
 \section{Jednorodne pole magnetyczne}
+
+Rozważmy cząstkę na płaszczyźnie \((x,y)\) w jednorodnym polu magnetycznym
+\begin{equation}
+    \mathbf{B}=B\hat{\mathbf{z}}.
+\end{equation}
+Wybierzmy cechowanie Landaua
+\begin{equation}
+    \mathbf{A}=(0,Bx,0).
+\end{equation}
+Hamiltonian wynosi wtedy
+\begin{equation}
+    \hat{H}=\frac{1}{2m}\left[\hat{p}_x^2+(\hat{p}_y-qBx)^2\right].
+\end{equation}
+Ponieważ Hamiltonian nie zależy jawnie od \(y\), możemy szukać rozwiązań w postaci
+\begin{equation}
+    \Psi(x,y)=e^{iky}f(x).
+\end{equation}
+Wtedy \(\hat{p}_y\) działa jak liczba \(\hbar k\).
+
 \section{Problem Landaua}
+
+Po podstawieniu \(\Psi(x,y)=e^{iky}f(x)\) otrzymujemy równanie dla \(f(x)\):
+\begin{equation}
+    \hat{H}f(x)=\left[\frac{\hat{p}_x^2}{2m}+\frac{1}{2m}(\hbar k-qBx)^2\right]f(x).
+\end{equation}
+To jest równanie oscylatora harmonicznego przesuniętego w przestrzeni. Środek oscylatora zależy od \(k\):
+\begin{equation}
+    x_0=\frac{\hbar k}{qB}.
+\end{equation}
+
+Częstość cyklotronowa wynosi
+\begin{equation}
+    \omega_c=\frac{|q|B}{m}.
+\end{equation}
+Energie będą więc takie jak energie oscylatora harmonicznego, ale z częstością \(\omega_c\).
+
 \section{Redukcja do oscylatora harmonicznego}
+
+Przekształćmy wyrażenie
+\begin{equation}
+    \frac{1}{2m}(\hbar k-qBx)^2.
+\end{equation}
+Można je zapisać jako potencjał harmoniczny względem punktu \(x_0\):
+\begin{equation}
+    \frac{1}{2}m\omega_c^2(x-x_0)^2.
+\end{equation}
+Wtedy problem Landaua sprowadza się do jednowymiarowego oscylatora harmonicznego:
+\begin{equation}
+    \hat{H}=\frac{\hat{p}_x^2}{2m}+\frac{1}{2}m\omega_c^2(x-x_0)^2.
+\end{equation}
+
+To jest piękny przykład powrotu wcześniejszego modelu w nowym kontekście. Oscylator harmoniczny nie pojawia się tutaj jako sprężyna, lecz jako efekt ruchu ładunku w jednorodnym polu magnetycznym.
+
 \section{Poziomy Landaua}
+
+Energie mają postać
+\begin{equation}
+    E_n=\hbar\omega_c\left(n+\frac{1}{2}\right),
+    \qquad
+    n=0,1,2,\ldots
+\end{equation}
+Są to poziomy Landaua. W idealnym układzie energia nie zależy od \(k\), mimo że \(k\) przesuwa środek funkcji falowej. Ta niezależność prowadzi do dużej degeneracji poziomów.
+
+Poziomy Landaua są podstawą wielu zjawisk w fizyce materii skondensowanej, w tym kwantowego efektu Halla. Pokazują, że pole magnetyczne może kwantować ruch orbitalny cząstki.
+
 \section{Degeneracja poziomów}
+
+W cechowaniu Landaua parametr \(k\) przesuwa środek oscylatora \(x_0\). Jeśli próbka ma skończoną szerokość, dozwolone wartości \(k\) są ograniczone warunkiem, aby środek oscylatora leżał w próbce.
+
+Liczba stanów w jednym poziomie Landaua jest proporcjonalna do strumienia magnetycznego przez próbkę:
+\begin{equation}
+    N\sim \frac{BA}{\Phi_0},
+\end{equation}
+gdzie
+\begin{equation}
+    \Phi_0=\frac{h}{|q|}
+\end{equation}
+jest kwantem strumienia. Dokładne czynniki zależą od konwencji i warunków brzegowych, ale sens jest prosty: silniejsze pole magnetyczne daje większą degenerację.
+
 \section{Interpretacja fizyczna ruchu cyklotronowego}
+
+Klasycznie ładunek w jednorodnym polu magnetycznym porusza się po okręgu z częstością cyklotronową. Kwantowo energia tego ruchu jest skwantowana. Zamiast dowolnych promieni i energii mamy dyskretne poziomy Landaua.
+
+Nie należy jednak wyobrażać sobie, że elektron w stanie Landaua jest małą kulką krążącą po ostrej orbicie. Funkcja falowa opisuje rozkład amplitudy, a różne cechowania dają różne wygodne reprezentacje tego samego zjawiska. Fizyczne są energie, degeneracje i wielkości niezmiennicze cechowo.
+
+\begin{summarybox}
+Cząstka w jednorodnym polu magnetycznym pokazuje, jak potencjał wektorowy i sprzężenie minimalne zmieniają mechanikę kwantową. Problem Landaua redukuje się do oscylatora harmonicznego, a jego energie tworzą poziomy Landaua. To jeden z najważniejszych mostów między mechaniką kwantową a fizyką ciała stałego.
+\end{summarybox}
