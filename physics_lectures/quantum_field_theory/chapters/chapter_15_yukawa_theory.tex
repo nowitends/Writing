@@ -1,9 +1,335 @@
 \chapter{Yukawa Theory}
 
 \begin{remarkbox}
-Placeholder chapter from the QFT course plan in \texttt{ideas\_Quantum\_Field\_Theory.md}. Detailed lecture text will be added later.
+Yukawa theory is the simplest model in which a scalar field interacts with a
+fermion field. It introduces the basic scalar--fermion vertex, shows how scalar
+exchange generates an effective force, and provides a bridge between \(\phi^4\)
+theory and QED.
 \end{remarkbox}
 
-\section{Planned Role}
+\section{Why Yukawa Theory Comes Next}
 
-This chapter will study a scalar field coupled to fermions, Yukawa vertices, simple scattering and decay processes, and the low-energy interpretation of scalar exchange.
+The \(\phi^4\) model introduced self-interactions of a scalar field. The next
+natural step is to let different kinds of fields interact. Yukawa theory couples
+a real scalar field \(\phi\) to a Dirac field \(\psi\). The basic interaction has
+the form
+\[
+    \bar\psi\psi\phi.
+\]
+This is the simplest Lorentz-invariant coupling between a scalar and a fermion
+bilinear.
+
+Historically, Yukawa introduced scalar exchange as a model for nuclear forces.
+In modern QFT, Yukawa interactions also appear in the Standard Model, where the
+Higgs field couples to fermions and gives them masses after electroweak symmetry
+breaking.
+
+For us, Yukawa theory is useful because it combines several structures already
+introduced:
+\begin{itemize}
+    \item scalar propagators;
+    \item Dirac propagators;
+    \item fermionic signs;
+    \item vertices involving different fields;
+    \item scattering and decay amplitudes.
+\end{itemize}
+
+\section{The Lagrangian}
+
+A simple Yukawa theory has Lagrangian density
+\[
+    \mathcal{L}
+    = \frac{1}{2}\partial_\mu\phi\partial^\mu\phi
+      -\frac{1}{2}m_\phi^2\phi^2
+      +\bar\psi(i\gamma^\mu\partial_\mu-m_\psi)\psi
+      -g\phi\bar\psi\psi.
+\]
+The parameter \(g\) is the Yukawa coupling. In four spacetime dimensions,
+\[
+    [\phi]=1,
+    \qquad
+    [\psi]=\frac{3}{2},
+    \qquad
+    [g]=0.
+\]
+Thus the Yukawa coupling is dimensionless in four dimensions, just like the
+\(\phi^4\) coupling.
+
+The interaction term is
+\[
+    \mathcal{L}_{\mathrm{int}}=-g\phi\bar\psi\psi.
+\]
+Equivalently, in the interaction Hamiltonian one uses
+\[
+    \mathcal{H}_{\mathrm{int}}=g\phi\bar\psi\psi,
+\]
+up to the usual relation between Lagrangian and Hamiltonian conventions for
+nonderivative interactions.
+
+\section{Lorentz Structure of the Interaction}
+
+The scalar field \(\phi\) is a Lorentz scalar. The bilinear
+\[
+    \bar\psi\psi
+\]
+is also a Lorentz scalar. Therefore
+\[
+    \phi\bar\psi\psi
+\]
+is Lorentz invariant.
+
+This matters because not every product of spinor fields is a scalar. Other
+bilinears have different transformation properties:
+\[
+    \bar\psi\gamma^\mu\psi
+    \quad \text{is a vector},
+    \qquad
+    \bar\psi i\gamma^5\psi
+    \quad \text{is a pseudoscalar}.
+\]
+Yukawa theory in this chapter uses the scalar bilinear \(\bar\psi\psi\). Later,
+pseudoscalar and chiral Yukawa couplings will appear in more advanced theories.
+
+\section{Feynman Rules}
+
+The free propagators are the scalar propagator
+\[
+    \frac{i}{k^2-m_\phi^2+i\epsilon}
+\]
+and the Dirac propagator
+\[
+    \frac{i(\gamma^\mu p_\mu+m_\psi)}{p^2-m_\psi^2+i\epsilon}.
+\]
+The Yukawa vertex connects one scalar line and two fermion lines. With the
+interaction convention above, the vertex factor is
+\[
+    -ig.
+\]
+Fermion lines carry spinor indices and arrows indicating fermion-number flow.
+External fermions are represented by spinors \(u_s(p)\), \(\bar u_s(p)\),
+\(v_s(p)\), and \(\bar v_s(p)\), depending on whether the external particle is a
+fermion or antifermion and whether it is incoming or outgoing.
+
+The basic diagrammatic fact is:
+\[
+    \text{one Yukawa vertex} = \text{one scalar leg plus two fermion legs}.
+\]
+
+\section{Scalar Decay into a Fermion Pair}
+
+If the scalar is heavy enough,
+\[
+    m_\phi>2m_\psi,
+\]
+it can decay into a fermion--antifermion pair:
+\[
+    \phi\longrightarrow \psi+\bar\psi.
+\]
+At tree level, the amplitude is
+\[
+    i\mathcal{M}=-ig\,\bar u_s(p_1)v_r(p_2),
+\]
+so
+\[
+    \mathcal{M}=-g\,\bar u_s(p_1)v_r(p_2).
+\]
+The decay rate is obtained from
+\[
+    \dd\Gamma
+    = \frac{1}{2m_\phi}|\mathcal{M}|^2\dd\Pi_2.
+\]
+Spin sums convert products of spinors into traces of gamma matrices. This is the
+first example where spinor algebra directly enters a measurable rate.
+
+\section{Fermion Scattering by Scalar Exchange}
+
+Consider fermion--fermion scattering mediated by scalar exchange:
+\[
+    \psi\psi\longrightarrow\psi\psi.
+\]
+At tree level, one contribution contains an internal scalar propagator. If the
+momentum transfer is \(q\), the propagator contributes
+\[
+    \frac{i}{q^2-m_\phi^2+i\epsilon}.
+\]
+The amplitude contains two Yukawa vertices and two fermion bilinears. A typical
+factor has the form
+\[
+    (-ig)^2
+    \frac{i}{q^2-m_\phi^2+i\epsilon}
+    [\bar u(p_3)u(p_1)]
+    [\bar u(p_4)u(p_2)].
+\]
+For identical fermions, one must also include the exchange diagram and the
+relative minus sign required by fermionic statistics.
+
+This example illustrates how an exchanged field mediates an effective force
+between matter particles.
+
+\section{The Yukawa Potential}
+
+The low-energy, nonrelativistic limit of scalar exchange gives the Yukawa
+potential. In this limit, the energy transfer is small and the scalar propagator
+is approximately
+\[
+    \frac{-i}{\vect{q}^{\,2}+m_\phi^2}.
+\]
+The Fourier transform gives
+\[
+    V(r)=-\frac{g^2}{4\pi}\frac{e^{-m_\phi r}}{r}.
+\]
+The range of the force is set by the inverse scalar mass:
+\[
+    R\sim \frac{1}{m_\phi}.
+\]
+A massless exchanged scalar would give a long-range \(1/r\) potential. A massive
+exchanged scalar gives a short-range force.
+
+This result is a useful physical interpretation of a propagator: in an
+appropriate limit, exchange of a virtual quantum produces an effective
+potential.
+
+\section{Fermion Self-Energy}
+
+Yukawa theory also produces loop corrections. The fermion propagator receives a
+one-loop correction from emitting and reabsorbing a scalar. The corresponding
+self-energy has schematic form
+\[
+    \Sigma(p)
+    \sim g^2\int\frac{\dd^4\ell}{(2\pi)^4}\,
+    \frac{i}{\ell^2-m_\phi^2+i\epsilon}
+    \frac{i(\gamma^\mu(p_\mu-\ell_\mu)+m_\psi)}{(p-\ell)^2-m_\psi^2+i\epsilon}.
+\]
+This correction modifies the fermion propagator. The full propagator has the
+schematic form
+\[
+    S(p)=\frac{i}{\gamma^\mu p_\mu-m_\psi-\Sigma(p)}.
+\]
+The pole of the full propagator determines the physical fermion mass. Thus loop
+corrections shift the mass parameter, just as in \(\phi^4\) theory.
+
+\section{Scalar Self-Energy}
+
+The scalar propagator receives a one-loop correction from a closed fermion loop.
+Schematically,
+\[
+    \Pi(p^2)
+    \sim -g^2\int\frac{\dd^4\ell}{(2\pi)^4}\,
+    \operatorname{tr}\left[
+      \frac{i(\gamma^\mu\ell_\mu+m_\psi)}{\ell^2-m_\psi^2+i\epsilon}
+      \frac{i(\gamma^\mu(\ell_\mu+p_\mu)+m_\psi)}{(\ell+p)^2-m_\psi^2+i\epsilon}
+    \right].
+\]
+The minus sign is the closed-fermion-loop sign. The trace is over spinor
+indices.
+
+This diagram illustrates a new feature compared with pure scalar theory:
+fermions can appear virtually in loops and modify bosonic propagation. In the
+path-integral language, the same effect is encoded in the fermion determinant.
+
+\section{Vertex Correction}
+
+The Yukawa vertex itself receives loop corrections. The full interaction is not
+just the tree-level coupling \(g\); quantum fluctuations modify the effective
+vertex. The corrected vertex depends on external momenta and on the
+renormalization scale.
+
+This leads to the need for a coupling counterterm. One writes
+\[
+    g_0=Z_g g,
+\]
+or equivalently introduces a counterterm interaction
+\[
+    -\delta g\,\phi\bar\psi\psi.
+\]
+The renormalized coupling is fixed by a chosen renormalization condition, such
+as the value of a three-point function at a reference momentum configuration.
+
+\section{Counterterms and Renormalization}
+
+A renormalized Yukawa theory contains counterterms for both fields, both masses,
+and the coupling:
+\[
+    \mathcal{L}_{\mathrm{ct}}
+    = \frac{1}{2}\delta Z_\phi\partial_\mu\phi\partial^\mu\phi
+      -\frac{1}{2}\delta m_\phi^2\phi^2
+      +\delta Z_\psi\bar\psi i\gamma^\mu\partial_\mu\psi
+      -\delta m_\psi\bar\psi\psi
+      -\delta g\,\phi\bar\psi\psi.
+\]
+These counterterms cancel divergences in the scalar propagator, fermion
+propagator, and Yukawa vertex.
+
+The structure is more complex than in \(\phi^4\) theory because there are now
+several kinds of fields and several parameters. Nevertheless, the principle is
+the same: divergences are absorbed into redefinitions of fields, masses, and
+couplings.
+
+\section{Symmetries}
+
+The simplest Yukawa theory with a real scalar and one Dirac fermion has limited
+symmetry. It preserves Lorentz invariance and, if \(\psi\) carries a conserved
+fermion number, the global transformation
+\[
+    \psi\longrightarrow e^{i\alpha}\psi,
+    \qquad
+    \bar\psi\longrightarrow \bar\psi e^{-i\alpha}
+\]
+leaves \(\bar\psi\psi\) invariant.
+
+If the scalar is assigned transformation properties under a discrete symmetry,
+additional constraints are possible. For example, a transformation
+\[
+    \phi\longrightarrow -\phi
+\]
+would forbid the term \(\phi\bar\psi\psi\) unless the fermions also transform in
+a compensating way.
+
+In chiral theories, Yukawa couplings can connect left- and right-handed fermions.
+This is the structural origin of fermion mass generation in the Standard Model.
+
+\section{Relation to the Standard Model}
+
+In the Standard Model, Yukawa couplings connect fermions to the Higgs field.
+After electroweak symmetry breaking, the Higgs field develops a vacuum
+expectation value. A Yukawa term then produces a fermion mass.
+
+Schematically,
+\[
+    -y\bar\psi_L H\psi_R+\mathrm{h.c.}
+    \quad\longrightarrow\quad
+    -m_f\bar\psi\psi
+      -\frac{m_f}{v}h\bar\psi\psi.
+\]
+Here \(h\) is the physical Higgs excitation and \(v\) is the Higgs vacuum
+expectation value. The same coupling that gives the fermion a mass also controls
+its interaction with the Higgs boson.
+
+Thus the simple Yukawa model studied here is not only a toy model. It is the
+prototype for one of the central mechanisms of the Standard Model.
+
+\begin{summarybox}
+Yukawa theory couples a scalar field to a Dirac fermion through
+\(g\phi\bar\psi\psi\). It introduces the scalar--fermion--fermion vertex,
+fermion spinor chains, scalar-mediated forces, and loop corrections involving
+both bosons and fermions. It is the simplest setting in which fermion self-energy,
+scalar self-energy, vertex renormalization, and closed-fermion-loop signs all
+appear together.
+\end{summarybox}
+
+\section{Chapter Checklist}
+
+After reading this chapter, one should be able to:
+\begin{itemize}
+    \item write the Yukawa Lagrangian;
+    \item explain why \(\phi\bar\psi\psi\) is Lorentz invariant;
+    \item state the scalar, fermion, and Yukawa-vertex Feynman rules;
+    \item compute the structure of \(\phi\to\psi\bar\psi\) at tree level;
+    \item describe fermion scattering by scalar exchange;
+    \item derive the qualitative Yukawa potential;
+    \item identify fermion and scalar self-energy diagrams;
+    \item explain the closed-fermion-loop minus sign;
+    \item list the counterterms needed in Yukawa theory;
+    \item explain how Yukawa couplings are related to fermion masses in the
+    Standard Model.
+\end{itemize}
