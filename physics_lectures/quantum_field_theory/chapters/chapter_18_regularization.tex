@@ -1,9 +1,296 @@
 \chapter{Regularization}
 
 \begin{remarkbox}
-Placeholder chapter from the QFT course plan in \texttt{ideas\_Quantum\_Field\_Theory.md}. Detailed lecture text will be added later.
+Loop integrals in QFT are often divergent before they are given a precise
+meaning. Regularization is the temporary procedure that makes such expressions
+well defined. It does not by itself solve the physical problem; it prepares the
+calculation for renormalization.
 \end{remarkbox}
 
-\section{Planned Role}
+\section{Why Divergent Integrals Appear}
 
-This chapter will explain why divergent loop integrals appear and how cutoff, Pauli--Villars, dimensional regularization, and subtraction schemes organize intermediate infinities.
+Loop diagrams require integration over internal momenta. A typical one-loop
+integral has the form
+\[
+    \int\frac{\dd^4k}{(2\pi)^4}\,
+    \frac{1}{k^2-m^2+i\epsilon}.
+\]
+At large \(|k|\), this behaves too slowly to give a finite answer. The integral
+is ultraviolet divergent. Other integrals may diverge at small momentum, giving
+infrared divergences.
+
+Divergences arise because field theory has degrees of freedom at arbitrarily
+short distances and, for massless particles, arbitrarily long distances. A loop
+integral sums over all virtual momenta. Without further definition, this sum may
+not exist as an ordinary integral.
+
+Regularization modifies the calculation so that every intermediate expression is
+finite or at least well defined. Only then can one isolate divergent pieces and
+renormalize them.
+
+\section{Regularization Versus Renormalization}
+
+Regularization and renormalization are related but distinct.
+
+Regularization answers the question:
+\[
+    \text{How do we make divergent expressions mathematically well defined?}
+\]
+Renormalization answers the question:
+\[
+    \text{How do we express predictions in terms of finite measured parameters?}
+\]
+A regulator is temporary. Physical predictions should not depend on the details
+of the regulator after renormalization. If they did, the regulator would be a new
+physical assumption rather than a calculational device.
+
+A good regulator should preserve as many symmetries as possible. In gauge
+theories, this is especially important because a regulator that violates gauge
+invariance can obscure Ward identities and require additional care.
+
+\section{Momentum Cutoff}
+
+The most intuitive regulator is a momentum cutoff. One restricts loop momenta to
+satisfy
+\[
+    |k|<\Lambda.
+\]
+For example,
+\[
+    \int\frac{\dd^4k}{(2\pi)^4}\,f(k)
+    \quad\longrightarrow\quad
+    \int_{|k|<\Lambda}\frac{\dd^4k}{(2\pi)^4}\,f(k).
+\]
+The cutoff \(\Lambda\) represents a maximum momentum or minimum distance scale.
+Divergences then appear as powers or logarithms of \(\Lambda\), such as
+\[
+    \Lambda^2,
+    \qquad
+    \ln\Lambda.
+\]
+
+The advantage of a cutoff is physical transparency. The disadvantage is that a
+simple cutoff can break Lorentz invariance or gauge invariance unless it is
+implemented carefully.
+
+\section{Power Divergences and Logarithmic Divergences}
+
+A cutoff makes the degree of divergence visible. An integral may behave as
+\[
+    I(\Lambda)\sim \Lambda^2
+\]
+for a quadratic divergence, or
+\[
+    I(\Lambda)\sim \ln\Lambda
+\]
+for a logarithmic divergence.
+
+Power divergences are sensitive to the highest momentum scales. Logarithmic
+divergences are milder but especially important because they lead directly to
+scale dependence and renormalization group running.
+
+For example, a logarithm often appears in the form
+\[
+    \ln\frac{\Lambda}{\mu},
+\]
+where \(\mu\) is a reference scale. After renormalization, dependence on \(\mu\)
+becomes the scale dependence of renormalized parameters.
+
+\section{Pauli--Villars Regularization}
+
+Pauli--Villars regularization modifies propagators by subtracting fictitious
+heavy fields. A scalar propagator may be replaced schematically by
+\[
+    \frac{i}{k^2-m^2+i\epsilon}
+    \quad\longrightarrow\quad
+    \frac{i}{k^2-m^2+i\epsilon}
+    -\frac{i}{k^2-M^2+i\epsilon},
+\]
+where \(M\) is a large regulator mass. At large \(k\), the two terms cancel the
+leading ultraviolet behavior.
+
+The regulator field is not physical. One takes
+\[
+    M\to\infty
+\]
+after renormalization. Pauli--Villars is useful conceptually because it shows
+how high-momentum behavior can be softened while preserving Lorentz covariance.
+
+However, Pauli--Villars can be awkward in non-Abelian gauge theories and chiral
+theories. It is no longer the most common regulator for modern perturbative
+calculations.
+
+\section{Dimensional Regularization}
+
+Dimensional regularization changes the number of spacetime dimensions from four
+to
+\[
+    d=4-\epsilon.
+\]
+Loop integrals are evaluated as analytic functions of \(d\). Divergences appear
+as poles in \(\epsilon\):
+\[
+    \frac{1}{\epsilon}.
+\]
+A typical integral becomes
+\[
+    \int\frac{\dd^4k}{(2\pi)^4}
+    \quad\longrightarrow\quad
+    \mu^{4-d}\int\frac{\dd^dk}{(2\pi)^d}.
+\]
+The scale \(\mu\) is introduced so that couplings keep their usual mass
+dimensions.
+
+Dimensional regularization is widely used because it preserves Lorentz
+invariance and is especially compatible with gauge invariance. It also sets many
+power divergences to zero, leaving logarithmic divergences as poles in
+\(\epsilon\).
+
+\section{A Standard Dimensionally Regularized Integral}
+
+A common Euclidean-type integral has the form
+\[
+    \int\frac{\dd^dk}{(2\pi)^d}\,
+    \frac{1}{(k^2+\Delta)^\alpha}
+    = \frac{1}{(4\pi)^{d/2}}\frac{\Gamma(\alpha-d/2)}{\Gamma(\alpha)}
+      \Delta^{d/2-\alpha}.
+\]
+Divergences appear when the gamma function has a pole. Near \(d=4\), one often
+finds terms such as
+\[
+    \frac{1}{\epsilon}-\gamma_E+\ln(4\pi)-\ln\frac{\Delta}{\mu^2}.
+\]
+Different subtraction schemes decide which combination of constants is removed.
+
+The most common schemes are minimal subtraction, abbreviated MS, and modified
+minimal subtraction, abbreviated \(\overline{\mathrm{MS}}\). In
+\(\overline{\mathrm{MS}}\), one subtracts not only \(1/\epsilon\) but also the
+standard constants \(-\gamma_E+\ln4\pi\).
+
+\section{Feynman Parameters}
+
+Loop integrals often contain products of denominators. Feynman parameters combine
+them. The basic identity is
+\[
+    \frac{1}{AB}
+    = \int_0^1\dd x\,\frac{1}{[xA+(1-x)B]^2}.
+\]
+More generally,
+\[
+    \frac{1}{A_1\cdots A_n}
+    = (n-1)!\int_0^1\dd x_1\cdots\dd x_n\,
+      \delta\left(1-\sum_i x_i\right)
+      \frac{1}{(x_1A_1+\cdots+x_nA_n)^n}.
+\]
+After combining denominators, one shifts the loop momentum and evaluates a
+standard Gaussian-type integral.
+
+Feynman parameters are not a regulator by themselves. They are an algebraic tool
+that makes regulated loop integrals easier to compute.
+
+\section{Infrared Regularization}
+
+Not all divergences are ultraviolet. In theories with massless particles,
+integrals may diverge when loop momentum becomes small. To regulate infrared
+divergences, one may introduce a small photon mass \(m_\gamma\), work in
+\(d\neq4\) dimensions, or impose an energy resolution for soft radiation.
+
+For example, a soft divergence may appear as
+\[
+    \ln m_\gamma
+\]
+if a small photon mass is used. This mass is not physical; it is only an infrared
+regulator. Physical inclusive observables must be finite when
+\[
+    m_\gamma\to0.
+\]
+
+Ultraviolet and infrared divergences can appear in the same calculation, but
+they have different physical meanings and are removed in different ways.
+
+\section{Regulators and Symmetries}
+
+A regulator can preserve or violate symmetries. This matters. If a regulator
+breaks a symmetry that the quantum theory should preserve, additional work is
+needed to restore the symmetry in renormalized quantities.
+
+Dimensional regularization is popular because it usually preserves gauge
+invariance. A hard momentum cutoff is intuitive but may break gauge invariance if
+applied naively. Pauli--Villars can preserve some symmetries but may struggle
+with chiral gauge theories.
+
+Sometimes a symmetry cannot be preserved by any regulator. Then the symmetry is
+anomalous. Anomalies will be discussed later. For now, the lesson is that the
+choice of regulator is not only technical; it can reveal or obscure important
+symmetry structure.
+
+\section{Subtraction Schemes}
+
+After regularizing, one subtracts divergent pieces. A subtraction scheme defines
+what is removed and what finite parts are included in the definition of
+renormalized parameters.
+
+In minimal subtraction, one removes only pole terms such as
+\[
+    \frac{1}{\epsilon}.
+\]
+In \(\overline{\mathrm{MS}}\), one removes
+\[
+    \frac{1}{\epsilon}-\gamma_E+\ln4\pi.
+\]
+In an on-shell scheme, parameters are fixed by physical pole masses and physical
+charges. Different schemes give different numerical values for renormalized
+parameters at intermediate stages, but physical predictions agree when computed
+consistently.
+
+Scheme dependence is not a contradiction. It reflects the freedom to choose how
+finite pieces are assigned between loop corrections and parameter definitions.
+
+\section{What Regularization Does Not Do}
+
+Regularization does not make a theory predictive by itself. A cutoff can make an
+integral finite, but the result may depend on the cutoff. Predictivity comes only
+after one shows that cutoff dependence can be absorbed into a finite number of
+measured parameters, or else interprets the theory as an effective field theory
+with cutoff-suppressed corrections.
+
+Regularization also does not mean that infinities are physical. Divergent terms
+usually indicate that the parameters in the Lagrangian are not yet related to
+physical observables. Renormalization provides that relation.
+
+Thus the correct sequence is
+\[
+    \text{divergent expression}
+    \longrightarrow
+    \text{regularized expression}
+    \longrightarrow
+    \text{renormalized prediction}.
+\]
+
+\begin{summarybox}
+Regularization is the temporary step that makes divergent loop integrals well
+defined. Momentum cutoffs are intuitive but can obscure symmetries.
+Pauli--Villars softens high-momentum behavior with heavy regulator fields.
+Dimensional regularization evaluates integrals in \(d=4-\epsilon\) dimensions and
+represents divergences as poles in \(\epsilon\). Subtraction schemes define which
+pieces are absorbed into renormalized parameters. Physical predictions should not
+depend on the regulator.
+\end{summarybox}
+
+\section{Chapter Checklist}
+
+After reading this chapter, one should be able to:
+\begin{itemize}
+    \item explain why loop integrals diverge;
+    \item distinguish regularization from renormalization;
+    \item describe a momentum cutoff;
+    \item distinguish power and logarithmic divergences;
+    \item explain Pauli--Villars regularization;
+    \item explain dimensional regularization and the role of \(d=4-\epsilon\);
+    \item use the basic idea of Feynman parameters;
+    \item distinguish ultraviolet and infrared regularization;
+    \item explain why preserving symmetries matters;
+    \item distinguish MS, \(\overline{\mathrm{MS}}\), and on-shell subtraction
+    ideas;
+    \item state why a regulator is not itself a physical prediction.
+\end{itemize}
