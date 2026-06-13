@@ -1,9 +1,109 @@
 \chapter{Stałe fizyczne i jednostki}
 
+\begin{summarybox}
+W zadaniach z mechaniki kwantowej bardzo łatwo zgubić czynniki \(10^{-9}\),
+\(10^{-19}\), \(\hbar\) albo masę efektywną. Ten dodatek zbiera najważniejsze
+stałe, jednostki i praktyczne konwersje między układem SI, elektronowoltami i
+nanometrami.
+\end{summarybox}
+
 \section{Stała Plancka i zredukowana stała Plancka}
+
+Stała Plancka wynosi
+\begin{equation}
+    h=6.62607015\times 10^{-34}\,\mathrm{J\,s}.
+\end{equation}
+Zredukowana stała Plancka to
+\begin{equation}
+    \hbar=\frac{h}{2\pi}\approx 1.054571817\times 10^{-34}\,\mathrm{J\,s}.
+\end{equation}
+W elektronowoltosekundach:
+\begin{equation}
+    \hbar\approx 6.582119569\times 10^{-16}\,\mathrm{eV\,s}.
+\end{equation}
+W większości wzorów mechaniki kwantowej używamy \(\hbar\), nie \(h\).
+
 \section{Masa elektronu}
+
+Masa elektronu wynosi
+\begin{equation}
+    m_e=9.1093837\times 10^{-31}\,\mathrm{kg}.
+\end{equation}
+W wielu zadaniach z półprzewodników zamiast \(m_e\) używa się masy efektywnej:
+\begin{equation}
+    m^*=\alpha m_e.
+\end{equation}
+Na przykład \(m^*=0.067m_e\) jest często używanym przybliżeniem dla elektronu w arsenku galu.
+
 \section{Elektronowolt}
+
+Elektronowolt jest energią, jaką zyskuje cząstka o ładunku elementarnym po przejściu przez różnicę potencjałów jednego wolta:
+\begin{equation}
+    1\,\mathrm{eV}=1.602176634\times10^{-19}\,\mathrm{J}.
+\end{equation}
+Dlatego
+\begin{equation}
+    1\,\mathrm{J}=\frac{1}{1.602176634\times10^{-19}}\,\mathrm{eV}.
+\end{equation}
+W nanostrukturach energie często są podawane w meV:
+\begin{equation}
+    1\,\mathrm{meV}=10^{-3}\,\mathrm{eV}.
+\end{equation}
+
 \section{Nanometr}
+
+Nanometr to
+\begin{equation}
+    1\,\mathrm{nm}=10^{-9}\,\mathrm{m}.
+\end{equation}
+W problemach studni kwantowych szerokości są często rzędu kilku lub kilkunastu nanometrów. Jeśli szerokość \(L\) podstawiamy do wzoru SI, trzeba pamiętać:
+\begin{equation}
+    L=10\,\mathrm{nm}=10\times10^{-9}\,\mathrm{m}=10^{-8}\,\mathrm{m}.
+\end{equation}
+
+Błąd o czynnik \(10^9\) w długości daje błąd o czynnik \(10^{18}\) w energii, jeśli energia zawiera \(1/L^2\). To jest jedna z najczęstszych katastrof rachunkowych.
+
 \section{Masa efektywna}
+
+W półprzewodniku elektron nie zachowuje się dokładnie jak elektron swobodny. W pobliżu minimum pasma można często opisać go przez masę efektywną \(m^*\). Wzór na energię w studni przyjmuje wtedy postać
+\begin{equation}
+    E_n=\frac{n^2\pi^2\hbar^2}{2m^*L^2}.
+\end{equation}
+Mniejsza masa efektywna oznacza większe odstępy energetyczne.
+
+Trzeba zawsze sprawdzić, czy w zadaniu podano \(m\), \(m_e\), czy \(m^*\). Pominięcie masy efektywnej może zmienić wynik wielokrotnie.
+
 \section{Konwersje między SI, eV i nm}
+
+Typowy algorytm bezpiecznego liczenia jest następujący:
+\begin{enumerate}
+    \item zamień wszystkie długości na metry,
+    \item zamień masę efektywną na kilogramy,
+    \item policz energię w dżulach,
+    \item zamień dżule na elektronowolty.
+\end{enumerate}
+
+Przykład dla studni nieskończonej:
+\begin{equation}
+    E_1=\frac{\pi^2\hbar^2}{2mL^2}.
+\end{equation}
+Jeśli \(L\) jest w nanometrach, nie wolno podstawiać liczby \(10\) zamiast \(10^{-8}\,\mathrm{m}\), chyba że cały wzór został wcześniej przeskalowany do jednostek eV i nm.
+
 \section{Jak nie zgubić czynników \texorpdfstring{\(10^{-9}\)}{10^-9} i \texorpdfstring{\(10^{-19}\)}{10^-19}}
+
+Najprostsza metoda kontroli to pisanie jednostek w komentarzach i wykonywanie konwersji w osobnych liniach. W Mathematice można zdefiniować:
+\begin{verbatim}
+eV = 1.602176634*10^-19;
+nm = 10^-9;
+hbar = 1.054571817*10^-34;
+me = 9.1093837*10^-31;
+L = 10 nm;
+Ejoule = Pi^2 hbar^2/(2 me L^2);
+EeV = Ejoule/eV
+\end{verbatim}
+
+Dobrą praktyką jest również sprawdzenie rzędu wielkości. Dla elektronu w studni o szerokości kilku nanometrów energie zwykle wychodzą w eV albo dziesiątkach meV, nie w milionach eV i nie w \(10^{-30}\,\mathrm{eV}\).
+
+\begin{summarybox}
+W mechanice kwantowej błędy jednostek są brutalne, bo energie często zależą od \(\hbar^2/(mL^2)\). Zawsze kontroluj długości, masę efektywną i konwersję dżuli na elektronowolty.
+\end{summarybox}
