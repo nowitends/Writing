@@ -573,6 +573,8 @@
 ./physics_lectures/quantum_field_theory/chapters/chapter_11_path_integral_for_scalar_fields.tex
 ./physics_lectures/quantum_field_theory/chapters/chapter_12_fermionic_path_integrals.tex
 ./physics_lectures/quantum_field_theory/chapters/chapter_13_gauge_fields_in_the_path_integral.tex
+./physics_lectures/quantum_field_theory/chapters/chapter_14_phi4_theory_as_the_first_interacting_qft.tex
+./physics_lectures/quantum_field_theory/chapters/chapter_15_yukawa_theory.tex
 ./physics_lectures/quantum_field_theory/figures
 ./physics_lectures/quantum_field_theory/figures/README.md
 ./physics_lectures/quantum_field_theory/ideas_Quantum_Field_Theory.md
