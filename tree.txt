@@ -557,7 +557,9 @@
 ./physics_lectures/praktyczna_mechanika_kwantowa/titlepage.tex
 ./physics_lectures/quantum_field_theory
 ./physics_lectures/quantum_field_theory/macros.tex
+./physics_lectures/quantum_field_theory/main.tex
 ./physics_lectures/quantum_field_theory/preamble.tex
+./physics_lectures/quantum_field_theory/styles.tex
 ./requirements-docs.txt
 ./shared
 ./shared/macros.tex
