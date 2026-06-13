@@ -1,21 +1,370 @@
 \chapter{Quantization of the Dirac Field}
 
 \begin{remarkbox}
-This chapter is reserved by the course plan in \texttt{ideas\_Quantum\_Field\_Theory.md}. It will be developed in small increments.
+Scalar fields describe spin-zero quanta and are quantized with commutators. The
+Dirac field describes spin-\(1/2\) quanta. Its consistent quantization requires
+anticommutators, and its mode expansion naturally contains particle and
+antiparticle operators with spin labels.
 \end{remarkbox}
 
-\section{Planned Sections}
+\section{Why Fermionic Quantization Is Different}
 
+Chapters 2 and 3 quantized bosonic scalar fields. The ladder operators obeyed
+commutation relations, and many-particle states were symmetric under exchange.
+The Dirac field is different because its quanta are fermions. Fermionic states
+must be antisymmetric under exchange, and no two identical fermions can occupy
+the same one-particle state.
+
+This difference is implemented algebraically by replacing commutators with
+anticommutators. For operators \(\hat A\) and \(\hat B\), the anticommutator is
+\[
+    \{\hat A,\hat B\}
+    = \hat A\hat B+\hat B\hat A.
+\]
+The quantized Dirac field will be built from creation and annihilation operators
+whose anticommutation relations enforce Fermi statistics.
+
+There is also a second important difference. The Dirac equation is first order
+in time derivatives, unlike the Klein--Gordon equation. This changes the
+canonical structure and makes the Dirac field look less like a collection of
+ordinary oscillator coordinates. Nevertheless, the final Fock-space structure is
+parallel to the scalar case: there are annihilation operators, creation
+operators, a vacuum, particles, antiparticles, and number operators.
+
+\section{Classical Dirac Field}
+
+The Dirac field is a spinor field \(\psi(x)\). Its Dirac adjoint is
+\[
+    \bar\psi = \psi^\dagger\gamma^0.
+\]
+The free Dirac Lagrangian density is
+\[
+    \mathcal{L}
+    = \bar\psi(i\gamma^\mu\partial_\mu-m)\psi.
+\]
+The equation of motion is the Dirac equation,
+\[
+    (i\gamma^\mu\partial_\mu-m)\psi(x)=0.
+\]
+The adjoint field satisfies
+\[
+    \bar\psi(x)(i\overleftarrow{\partial}_\mu\gamma^\mu+m)=0,
+\]
+where the arrow indicates that the derivative acts to the left.
+
+The matrices \(\gamma^\mu\) obey the Clifford algebra
+\[
+    \{\gamma^\mu,\gamma^\nu\}=2\eta^{\mu\nu}.
+\]
+This algebra is what makes the Dirac equation compatible with the relativistic
+mass-shell relation \(p^2=m^2\).
+
+\section{Canonical Structure and Anticommutation Relations}
+
+Because the Lagrangian is first order in \(\dot\psi\), the momentum conjugate to
+\(\psi\) is proportional to \(\psi^\dagger\):
+\[
+    \pi_\psi
+    = \frac{\partial\mathcal{L}}{\partial\dot\psi}
+    = i\psi^\dagger.
+\]
+The quantum theory is defined by equal-time anticommutation relations,
+\[
+    \{\hat\psi_\alpha(t,\vect{x}),
+      \hat\psi_\beta^\dagger(t,\vect{y})\}
+    = \delta_{\alpha\beta}\delta^{(3)}(\vect{x}-\vect{y}),
+\]
+with
+\[
+    \{\hat\psi_\alpha(t,\vect{x}),
+      \hat\psi_\beta(t,\vect{y})\}=0,
+    \qquad
+    \{\hat\psi_\alpha^\dagger(t,\vect{x}),
+      \hat\psi_\beta^\dagger(t,\vect{y})\}=0.
+\]
+The spinor indices \(\alpha,\beta\) label the components of the Dirac spinor.
+
+\begin{remarkbox}
+The replacement of commutators by anticommutators is not a cosmetic change. It
+is what produces fermionic Fock space, positive-energy particle interpretation,
+and the Pauli exclusion principle.
+\end{remarkbox}
+
+\section{Mode Expansion of the Dirac Field}
+
+The free Dirac equation has positive-energy spinor solutions \(u_s(\vect{p})\)
+and negative-frequency spinor solutions \(v_s(\vect{p})\), where
+\(s\) labels spin. A standard expansion is
+\[
+    \hat\psi(x)
+    = \sum_s\int\frac{\dd^3p}{(2\pi)^3}
+      \frac{1}{\sqrt{2E_{\vect{p}}}}
+      \left(
+          \hat b_s(\vect{p})u_s(\vect{p})e^{-iE_{\vect{p}}t+i\vect{p}\cdot\vect{x}}
+          +
+          \hat d_s^\dagger(\vect{p})v_s(\vect{p})e^{iE_{\vect{p}}t-i\vect{p}\cdot\vect{x}}
+      \right),
+\]
+where
+\[
+    E_{\vect{p}}=\sqrt{\vect{p}^{\,2}+m^2}.
+\]
+The adjoint field is
+\[
+    \hat{\bar\psi}(x)
+    = \sum_s\int\frac{\dd^3p}{(2\pi)^3}
+      \frac{1}{\sqrt{2E_{\vect{p}}}}
+      \left(
+          \hat b_s^\dagger(\vect{p})\bar u_s(\vect{p})e^{iE_{\vect{p}}t-i\vect{p}\cdot\vect{x}}
+          +
+          \hat d_s(\vect{p})\bar v_s(\vect{p})e^{-iE_{\vect{p}}t+i\vect{p}\cdot\vect{x}}
+      \right).
+\]
+The structure is analogous to the complex scalar field:
+\[
+    \hat\psi \sim \hat b + \hat d^\dagger,
+    \qquad
+    \hat{\bar\psi} \sim \hat b^\dagger + \hat d.
+\]
+The operators \(\hat b^\dagger\) create particles, while
+\(\hat d^\dagger\) create antiparticles.
+
+\section{Spinor Creation and Annihilation Operators}
+
+The nonzero anticommutators are
+\[
+    \{\hat b_s(\vect{p}),\hat b_r^\dagger(\vect{q})\}
+    = (2\pi)^3\delta_{sr}\delta^{(3)}(\vect{p}-\vect{q}),
+\]
+and
+\[
+    \{\hat d_s(\vect{p}),\hat d_r^\dagger(\vect{q})\}
+    = (2\pi)^3\delta_{sr}\delta^{(3)}(\vect{p}-\vect{q}).
+\]
+All other anticommutators vanish. In particular,
+\[
+    \{\hat b_s(\vect{p}),\hat d_r(\vect{q})\}=0,
+    \qquad
+    \{\hat b_s(\vect{p}),\hat d_r^\dagger(\vect{q})\}=0.
+\]
+The label \(s\) is the spin label. For a massive Dirac particle there are two
+spin states for the particle and two spin states for the antiparticle.
+
+Because the creation operators anticommute, applying the same creation operator
+twice gives zero:
+\[
+    \left(\hat b_s^\dagger(\vect{p})\right)^2=0,
+    \qquad
+    \left(\hat d_s^\dagger(\vect{p})\right)^2=0.
+\]
+This is the algebraic form of the Pauli exclusion principle.
+
+\section{Particle and Antiparticle States}
+
+The vacuum is defined by
+\[
+    \hat b_s(\vect{p})|0\rangle=0,
+    \qquad
+    \hat d_s(\vect{p})|0\rangle=0
+    \qquad \text{for all }\vect{p},s.
+\]
+A one-particle state is
+\[
+    |\vect{p},s;b\rangle
+    = \hat b_s^\dagger(\vect{p})|0\rangle.
+\]
+A one-antiparticle state is
+\[
+    |\vect{p},s;d\rangle
+    = \hat d_s^\dagger(\vect{p})|0\rangle.
+\]
+For the electron field, the \(b^\dagger\)-states are electron states and the
+\(d^\dagger\)-states are positron states. More generally, a Dirac field creates
+and annihilates a charged fermion and its antiparticle.
+
+A two-fermion state changes sign when the order of the creation operators is
+exchanged:
+\[
+    \hat b_s^\dagger(\vect{p})\hat b_r^\dagger(\vect{q})|0\rangle
+    = -\hat b_r^\dagger(\vect{q})\hat b_s^\dagger(\vect{p})|0\rangle.
+\]
+This antisymmetry is the defining feature of fermionic Fock space.
+
+\section{Hamiltonian, Momentum, and Charge}
+
+After normal ordering, the free Dirac Hamiltonian is
+\[
+    :\hat H:
+    = \sum_s\int\frac{\dd^3p}{(2\pi)^3}\,
+      E_{\vect{p}}
+      \left(
+          \hat b_s^\dagger(\vect{p})\hat b_s(\vect{p})
+          +
+          \hat d_s^\dagger(\vect{p})\hat d_s(\vect{p})
+      \right).
+\]
+The momentum operator is
+\[
+    :\hat{\vect{P}}:
+    = \sum_s\int\frac{\dd^3p}{(2\pi)^3}\,
+      \vect{p}
+      \left(
+          \hat b_s^\dagger(\vect{p})\hat b_s(\vect{p})
+          +
+          \hat d_s^\dagger(\vect{p})\hat d_s(\vect{p})
+      \right).
+\]
+Both particles and antiparticles carry positive energy.
+
+For a Dirac field with unit charge convention, the normal-ordered charge has the
+form
+\[
+    \hat Q
+    = \sum_s\int\frac{\dd^3p}{(2\pi)^3}
+      \left(
+          \hat b_s^\dagger(\vect{p})\hat b_s(\vect{p})
+          -
+          \hat d_s^\dagger(\vect{p})\hat d_s(\vect{p})
+      \right).
+\]
+For the electron field one often multiplies this operator by \(-e\), so that
+particles created by \(\hat b^\dagger\) have charge \(-e\), and antiparticles
+created by \(\hat d^\dagger\) have charge \(+e\).
+
+\section{Why Anticommutators Give the Correct Energy Spectrum}
+
+The negative-frequency part of the Dirac field is not interpreted as a tower of
+negative-energy particles. After quantization, it is reinterpreted as the
+creation of antiparticles with positive energy. The anticommutation relations are
+essential for this reinterpretation to give a Hamiltonian bounded below.
+
+Schematically, the Dirac Hamiltonian before normal ordering contains terms of
+the form
+\[
+    \hat b^\dagger\hat b
+    - \hat d\hat d^\dagger.
+\]
+Using anticommutators,
+\[
+    \hat d\hat d^\dagger
+    = 1-\hat d^\dagger\hat d,
+\]
+so, up to an infinite constant that is removed by normal ordering, the
+antiparticle contribution becomes positive:
+\[
+    \hat d^\dagger\hat d.
+\]
+This is the algebraic reason the free Dirac Hamiltonian counts both particles
+and antiparticles with positive energy.
+
+\section{Spinor Sums and Completeness}
+
+The spinor wave functions are normalized so that they satisfy completeness
+relations. A common convention is
+\[
+    \sum_s u_s(\vect{p})\bar u_s(\vect{p})
+    = \gamma^\mu p_\mu + m,
+\]
+and
+\[
+    \sum_s v_s(\vect{p})\bar v_s(\vect{p})
+    = \gamma^\mu p_\mu - m,
+\]
+where \(p^0=E_{\vect{p}}\). These identities are used constantly when computing
+fermion propagators and scattering amplitudes.
+
+The spinor sums play for the Dirac field a role analogous to polarization sums
+for vector fields. They allow spin labels on internal lines to be summed in a
+Lorentz-covariant way.
+
+\section{The Dirac Propagator}
+
+The Feynman propagator of the Dirac field is
+\[
+    S_F(x-y)
+    = \langle0|T\hat\psi(x)\hat{\bar\psi}(y)|0\rangle.
+\]
+In momentum space it is
+\[
+    S_F(x-y)
+    = \int\frac{\dd^4p}{(2\pi)^4}\,
+      \frac{i(\gamma^\mu p_\mu+m)}{p^2-m^2+i\epsilon}
+      e^{-ip\cdot(x-y)}.
+\]
+Equivalently, the propagator is the Green function of the Dirac operator:
+\[
+    (i\gamma^\mu\partial_\mu-m)S_F(x-y)
+    = i\delta^{(4)}(x-y).
+\]
+Compared with the scalar propagator, the denominator is the same mass-shell
+factor, but the numerator carries spinor structure.
+
+\section{Chirality, Helicity, and the Massless Limit}
+
+The Dirac field contains spin degrees of freedom. For massive fermions, the spin
+label may be chosen in several equivalent ways. For massless fermions, helicity
+and chirality become especially important.
+
+The chirality matrix \(\gamma^5\) defines projection operators
+\[
+    P_L=\frac{1}{2}(1-\gamma^5),
+    \qquad
+    P_R=\frac{1}{2}(1+\gamma^5).
+\]
+They split a Dirac field into left- and right-chiral components:
+\[
+    \psi_L=P_L\psi,
+    \qquad
+    \psi_R=P_R\psi.
+\]
+For a massless Dirac field, the left- and right-chiral parts decouple. This will
+be essential later in the electroweak theory, where left- and right-handed
+fermions transform differently under gauge symmetries.
+
+\section{Majorana Fields: Conceptual Overview}
+
+A Dirac field describes a charged fermion and a distinct antiparticle. A
+Majorana field is different: it is a fermionic field that is equal to its charge
+conjugate in an appropriate sense. Informally, a Majorana fermion is its own
+antiparticle.
+
+The Majorana idea is possible for neutral fermions, not for fields carrying an
+ordinary conserved electric charge. The full construction requires charge
+conjugation matrices and reality conditions on spinors. For now, the important
+contrast is simple:
+\[
+    \text{Dirac field: particle and antiparticle are distinct},
+\]
+while
+\[
+    \text{Majorana field: particle and antiparticle are identified}.
+\]
+Majorana fields will become relevant when discussing neutrino masses and
+extensions of the Standard Model.
+
+\begin{summarybox}
+The Dirac field is the first fermionic quantum field in the course. Its
+quantization uses anticommutators rather than commutators. The mode expansion
+contains particle annihilation operators and antiparticle creation operators,
+now with spin labels. Anticommutation gives fermionic Fock space, the Pauli
+exclusion principle, and a Hamiltonian with positive particle and antiparticle
+energies after normal ordering.
+\end{summarybox}
+
+\section{Chapter Checklist}
+
+After reading this chapter, one should be able to:
 \begin{itemize}
-    \item Why fermionic quantization is different.
-    \item Mode expansion of the Dirac field.
-    \item Anticommutation relations.
-    \item Spinor creation and annihilation operators.
-    \item Electron and positron states.
-    \item Charge, momentum, and Hamiltonian operators.
-    \item Positivity of energy and the role of anticommutators.
-    \item Dirac propagator.
-    \item Spin sums and completeness relations.
-    \item Chirality, helicity, and massless fermions in QFT.
-    \item Majorana quantization: conceptual overview.
+    \item write the free Dirac Lagrangian and Dirac equation;
+    \item explain why fermionic fields are quantized with anticommutators;
+    \item write the mode expansion of \(\hat\psi\) and \(\hat{\bar\psi}\);
+    \item state the anticommutation relations of \(\hat b,\hat b^\dagger\) and
+    \(\hat d,\hat d^\dagger\);
+    \item construct fermion and antifermion states;
+    \item explain how the Hamiltonian counts positive-energy particles and
+    antiparticles;
+    \item write the charge operator and interpret the sign convention;
+    \item state the standard spinor completeness relations;
+    \item write the Dirac propagator;
+    \item distinguish Dirac and Majorana fermions at the conceptual level.
 \end{itemize}
