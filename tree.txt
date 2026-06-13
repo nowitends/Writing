@@ -590,6 +590,8 @@
 ./physics_lectures/quantum_field_theory/chapters/chapter_28_the_quantum_electroweak_theory.tex
 ./physics_lectures/quantum_field_theory/chapters/chapter_29_the_standard_model_lagrangian_as_a_quantum_theory.tex
 ./physics_lectures/quantum_field_theory/chapters/chapter_30_selected_standard_model_processes.tex
+./physics_lectures/quantum_field_theory/chapters/chapter_31_euclidean_quantum_field_theory.tex
+./physics_lectures/quantum_field_theory/chapters/chapter_32_lattice_field_theory.tex
 ./physics_lectures/quantum_field_theory/figures
 ./physics_lectures/quantum_field_theory/figures/README.md
 ./physics_lectures/quantum_field_theory/ideas_Quantum_Field_Theory.md
