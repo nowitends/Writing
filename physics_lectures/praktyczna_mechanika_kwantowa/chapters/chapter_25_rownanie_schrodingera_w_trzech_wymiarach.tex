@@ -1,10 +1,161 @@
 \chapter{Równanie Schrödingera w trzech wymiarach}
 
+\begin{summarybox}
+Jednowymiarowe modele uczą podstaw, ale rzeczywiste układy kwantowe są zwykle
+trójwymiarowe. W trzech wymiarach pojawia się laplasjan, geometria sferyczna,
+moment pędu oraz radialna gęstość prawdopodobieństwa. Ten rozdział pokazuje, jak
+przejść od równania 1D do równania Schrödingera w 3D i jak rozumieć separację
+zmiennych w potencjałach centralnych.
+\end{summarybox}
+
 \section{Od problemu 1D do problemu 3D}
+
+W jednym wymiarze stacjonarne równanie Schrödingera ma postać
+\begin{equation}
+    -\frac{\hbar^2}{2m}\frac{d^2\psi}{dx^2}+V(x)\psi=E\psi.
+\end{equation}
+W trzech wymiarach funkcja falowa zależy od trzech współrzędnych:
+\begin{equation}
+    \psi=\psi(x,y,z),
+\end{equation}
+a druga pochodna po \(x\) zostaje zastąpiona przez laplasjan:
+\begin{equation}
+    \nabla^2=\frac{\partial^2}{\partial x^2}+\frac{\partial^2}{\partial y^2}+\frac{\partial^2}{\partial z^2}.
+\end{equation}
+Równanie stacjonarne brzmi więc
+\begin{equation}
+    -\frac{\hbar^2}{2m}\nabla^2\psi(\mathbf{r})+V(\mathbf{r})\psi(\mathbf{r})=E\psi(\mathbf{r}).
+\end{equation}
+
+Interpretacja probabilistyczna też się zmienia. Prawdopodobieństwo znalezienia cząstki w objętości \(dV\) wynosi
+\begin{equation}
+    |\psi(\mathbf{r})|^2\,dV.
+\end{equation}
+Warunek normalizacji ma postać
+\begin{equation}
+    \int |\psi(\mathbf{r})|^2\,d^3r=1.
+\end{equation}
+
 \section{Współrzędne kartezjańskie i sferyczne}
+
+Współrzędne kartezjańskie \((x,y,z)\) są naturalne dla potencjałów o prostych ścianach, pudełek i siatek numerycznych. Współrzędne sferyczne \((r,\theta,\phi)\) są naturalne dla potencjałów centralnych, czyli takich, które zależą tylko od odległości od początku układu:
+\begin{equation}
+    V(\mathbf{r})=V(r).
+\end{equation}
+
+Związek między współrzędnymi jest następujący:
+\begin{align}
+    x&=r\sin\theta\cos\phi,\\
+    y&=r\sin\theta\sin\phi,\\
+    z&=r\cos\theta.
+\end{align}
+Element objętości we współrzędnych sferycznych wynosi
+\begin{equation}
+    d^3r=r^2\sin\theta\,dr\,d\theta\,d\phi.
+\end{equation}
+Ten czynnik \(r^2\sin\theta\) jest bardzo ważny przy normalizacji i interpretacji radialnej gęstości prawdopodobieństwa.
+
 \section{Laplasjan we współrzędnych sferycznych}
+
+Laplasjan w układzie sferycznym ma postać
+\begin{equation}
+    \nabla^2=\frac{1}{r^2}\frac{\partial}{\partial r}\left(r^2\frac{\partial}{\partial r}\right)
+    +\frac{1}{r^2\sin\theta}\frac{\partial}{\partial\theta}\left(\sin\theta\frac{\partial}{\partial\theta}\right)
+    +\frac{1}{r^2\sin^2\theta}\frac{\partial^2}{\partial\phi^2}.
+\end{equation}
+Część kątową można zapisać za pomocą operatora momentu pędu:
+\begin{equation}
+    \hat{L}^2=-\hbar^2\left[
+    \frac{1}{\sin\theta}\frac{\partial}{\partial\theta}\left(\sin\theta\frac{\partial}{\partial\theta}\right)
+    +\frac{1}{\sin^2\theta}\frac{\partial^2}{\partial\phi^2}
+    \right].
+\end{equation}
+Dlatego Hamiltonian dla potencjału centralnego można zapisać jako
+\begin{equation}
+    \hat{H}=-\frac{\hbar^2}{2m}\frac{1}{r^2}\frac{\partial}{\partial r}\left(r^2\frac{\partial}{\partial r}\right)
+    +\frac{\hat{L}^2}{2mr^2}+V(r).
+\end{equation}
+
 \section{Separacja zmiennych}
+
+Dla potencjału centralnego szukamy rozwiązań w postaci
+\begin{equation}
+    \psi(r,\theta,\phi)=R(r)Y_l^m(\theta,\phi).
+\end{equation}
+Część kątowa jest harmoniką sferyczną, ponieważ spełnia równanie własne
+\begin{equation}
+    \hat{L}^2Y_l^m=\hbar^2l(l+1)Y_l^m.
+\end{equation}
+Wtedy problem trójwymiarowy redukuje się do równania radialnego dla \(R(r)\).
+
+Separacja zmiennych działa dzięki symetrii. Jeśli potencjał zależy tylko od \(r\), to kierunki w przestrzeni są równoważne, a moment pędu jest dobrym narzędziem klasyfikacji stanów.
+
 \section{Część radialna i część kątowa}
+
+Po podstawieniu \(\psi=RY\) dostajemy równanie radialne. Wygodnie wprowadzić funkcję
+\begin{equation}
+    u(r)=rR(r).
+\end{equation}
+Wtedy równanie radialne przyjmuje postać podobną do jednowymiarowego równania Schrödingera:
+\begin{equation}
+    -\frac{\hbar^2}{2m}\frac{d^2u}{dr^2}
+    +\left[V(r)+\frac{\hbar^2l(l+1)}{2mr^2}\right]u=Eu.
+\end{equation}
+Drugi składnik w nawiasie to bariera odśrodkowa. Dla \(l>0\) utrudnia ona znalezienie cząstki blisko środka układu.
+
+Część kątowa opisuje rozkład kierunkowy, a część radialna opisuje zależność od odległości. Pełna gęstość prawdopodobieństwa wynosi
+\begin{equation}
+    |\psi(r,\theta,\phi)|^2=|R(r)|^2|Y_l^m(\theta,\phi)|^2.
+\end{equation}
+
 \section{Warunki regularności w początku układu}
+
+Funkcja falowa musi być skończona i fizycznie dopuszczalna w punkcie \(r=0\). Dla funkcji \(u(r)=rR(r)\) warunek regularności zwykle oznacza
+\begin{equation}
+    u(0)=0.
+\end{equation}
+Jeśli \(u(0)\neq0\), to \(R(r)=u(r)/r\) byłoby osobliwe jak \(1/r\). W wielu problemach taka osobliwość jest niedopuszczalna.
+
+Dla małych \(r\), rozwiązania radialne zachowują się typowo jak
+\begin{equation}
+    R(r)\sim r^l.
+\end{equation}
+Oznacza to, że dla większego \(l\) funkcja falowa jest silniej tłumiona w pobliżu środka.
+
 \section{Warunki brzegowe na skończonym promieniu}
+
+Jeżeli cząstka jest zamknięta w sferycznej studni o promieniu \(R\), często stosujemy warunek
+\begin{equation}
+    \psi(R,\theta,\phi)=0.
+\end{equation}
+Dla części radialnej oznacza to
+\begin{equation}
+    R(R)=0
+\end{equation}
+albo równoważnie
+\begin{equation}
+    u(R)=0.
+\end{equation}
+Warunek ten prowadzi do kwantowania energii, podobnie jak warunki brzegowe w jednowymiarowej studni.
+
+Dla potencjałów zanikających w nieskończoności, jak w atomie wodoru, zamiast warunku na skończonym promieniu wymagamy normalizowalności:
+\begin{equation}
+    \int_0^\infty |R(r)|^2r^2\,dr<\infty.
+\end{equation}
+
 \section{Interpretacja radialnej gęstości prawdopodobieństwa}
+
+Gęstość \(|\psi|^2\) jest gęstością na jednostkę objętości. Jeśli pytamy o prawdopodobieństwo znalezienia cząstki między \(r\) i \(r+dr\), musimy uwzględnić objętość powłoki sferycznej. Dla znormalizowanych harmonik sferycznych radialna gęstość prawdopodobieństwa wynosi
+\begin{equation}
+    P(r)=r^2|R(r)|^2.
+\end{equation}
+W ujęciu przez \(u(r)=rR(r)\) mamy po prostu
+\begin{equation}
+    P(r)=|u(r)|^2.
+\end{equation}
+
+To wyjaśnia częsty błąd interpretacyjny: maksimum \(|R(r)|^2\) nie musi oznaczać najbardziej prawdopodobnego promienia. Najbardziej prawdopodobny promień wyznacza maksimum \(r^2|R(r)|^2\).
+
+\begin{summarybox}
+W trzech wymiarach funkcja falowa zależy od geometrii przestrzeni. Dla potencjałów centralnych naturalny jest rozkład na część radialną i kątową. Moment pędu opisuje część kątową, a radialna gęstość prawdopodobieństwa wymaga czynnika \(r^2\).
+\end{summarybox}

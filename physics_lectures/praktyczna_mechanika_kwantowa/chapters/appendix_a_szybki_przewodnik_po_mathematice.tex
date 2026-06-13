@@ -1,12 +1,162 @@
 \chapter{Szybki przewodnik po Mathematice}
 
+\begin{summarybox}
+Ten dodatek jest praktycznym skrótem poleceń Mathematiki potrzebnych w całych
+notatkach. Nie zastępuje dokumentacji programu, ale zbiera najczęściej używane
+konstrukcje: definicje funkcji, listy, wykresy, upraszczanie, rozwiązywanie
+równań, całkowanie, równania różniczkowe, animacje i eksport wyników.
+\end{summarybox}
+
 \section{Definiowanie funkcji}
+
+Funkcję definiujemy najczęściej z użyciem wzorca podkreślenia:
+\begin{verbatim}
+f[x_] := x^2 + 1
+f[3]
+\end{verbatim}
+Znak \texttt{:=} oznacza definicję opóźnioną: prawa strona jest obliczana dopiero wtedy, gdy funkcja zostanie wywołana. Znak \texttt{=} wykonuje obliczenie od razu.
+
+Dla funkcji wielu zmiennych:
+\begin{verbatim}
+psi[x_, t_] := Exp[-(x - t)^2]
+\end{verbatim}
+Warto pilnować, aby argumenty funkcji zawsze miały podkreślenia w definicji. Bez nich Mathematica definiuje wartość tylko dla konkretnego symbolu.
+
 \section{Zmienne lokalne i globalne}
+
+Do zmiennych lokalnych używamy \texttt{Module}:
+\begin{verbatim}
+g[a_] := Module[{x}, x = a + 1; x^2]
+\end{verbatim}
+To chroni przed przypadkowym użyciem globalnej wartości \texttt{x}. W większych obliczeniach jest to bardzo ważne, bo wiele błędów wynika z pozostawionych wcześniej definicji.
+
+Do czyszczenia symboli używamy:
+\begin{verbatim}
+Clear[x, y, psi]
+ClearAll["Global`*"]
+\end{verbatim}
+Druga komenda czyści wszystkie symbole w bieżącym kontekście i jest przydatna na początku notebooka.
+
 \section{Listy, tabele i mapowanie}
+
+Lista w Mathematice ma postać:
+\begin{verbatim}
+{1, 2, 3, 4}
+\end{verbatim}
+Tabele generujemy przez \texttt{Table}:
+\begin{verbatim}
+Table[n^2, {n, 1, 10}]
+Table[Sin[n x], {n, 1, 5}]
+\end{verbatim}
+Mapowanie funkcji po liście zapisujemy jako:
+\begin{verbatim}
+f /@ {1, 2, 3}
+\end{verbatim}
+Albo pełniej:
+\begin{verbatim}
+Map[f, {1, 2, 3}]
+\end{verbatim}
+
 \section{Funkcje czyste}
+
+Funkcja czysta to szybka funkcja anonimowa. Na przykład:
+\begin{verbatim}
+(#^2 + 1) & /@ {1, 2, 3}
+\end{verbatim}
+Symbol \texttt{#} oznacza argument, a \texttt{\&} kończy definicję funkcji. Dla dwóch argumentów używamy \texttt{#1}, \texttt{#2}:
+\begin{verbatim}
+(#1 + #2) &[3, 4]
+\end{verbatim}
+
+Funkcje czyste są bardzo wygodne w krótkich operacjach na listach, ale w dydaktycznych notebookach czasem lepiej pisać funkcje nazwane, bo są czytelniejsze dla studentów.
+
 \section{\texttt{Plot}, \texttt{ListPlot}, \texttt{DensityPlot}, \texttt{DensityPlot3D}}
+
+Podstawowy wykres funkcji jednej zmiennej:
+\begin{verbatim}
+Plot[Sin[x], {x, 0, 2 Pi}]
+\end{verbatim}
+Kilka funkcji na jednym wykresie:
+\begin{verbatim}
+Plot[{Sin[x], Cos[x]}, {x, 0, 2 Pi}, PlotLegends -> Automatic]
+\end{verbatim}
+Wykres punktowy:
+\begin{verbatim}
+ListPlot[Table[{x, Sin[x]}, {x, 0, 10, 0.2}]]
+\end{verbatim}
+Mapa gęstości 2D:
+\begin{verbatim}
+DensityPlot[Sin[x y], {x, -3, 3}, {y, -3, 3}]
+\end{verbatim}
+Trójwymiarowa mapa gęstości:
+\begin{verbatim}
+DensityPlot3D[Exp[-x^2 - y^2 - z^2], {x, -2, 2}, {y, -2, 2}, {z, -2, 2}]
+\end{verbatim}
+
 \section{\texttt{Simplify}, \texttt{FullSimplify}, \texttt{Assumptions}}
+
+Upraszczanie bez założeń bywa niewystarczające:
+\begin{verbatim}
+Simplify[Sqrt[a^2]]
+\end{verbatim}
+Mathematica nie wie, czy \(a\) jest dodatnie. Dlatego używamy założeń:
+\begin{verbatim}
+Simplify[Sqrt[a^2], Assumptions -> a > 0]
+\end{verbatim}
+Dla bardziej agresywnego upraszczania:
+\begin{verbatim}
+FullSimplify[expr, Assumptions -> {a > 0, n \[Element] Integers}]
+\end{verbatim}
+
+Założenia są szczególnie ważne przy całkach, pierwiastkach, funkcjach trygonometrycznych i parametrach fizycznych.
+
 \section{\texttt{Solve}, \texttt{NSolve}, \texttt{FindRoot}}
+
+Równania symboliczne rozwiązujemy przez:
+\begin{verbatim}
+Solve[x^2 - 1 == 0, x]
+\end{verbatim}
+Numeryczne rozwiązywanie wielomianów:
+\begin{verbatim}
+NSolve[x^5 - x + 1 == 0, x]
+\end{verbatim}
+Równania transcendentalne często wymagają \texttt{FindRoot}:
+\begin{verbatim}
+FindRoot[Cos[x] == x, {x, 1}]
+\end{verbatim}
+W \texttt{FindRoot} punkt startowy ma znaczenie. Różne punkty startowe mogą prowadzić do różnych pierwiastków.
+
 \section{\texttt{NDSolve}}
+
+Równania różniczkowe numerycznie rozwiązujemy przez \texttt{NDSolve}. Przykład równania zwyczajnego:
+\begin{verbatim}
+sol = NDSolve[{y'[t] == -y[t], y[0] == 1}, y, {t, 0, 5}]
+Plot[Evaluate[y[t] /. sol], {t, 0, 5}]
+\end{verbatim}
+Dla równań cząstkowych, jak TDSE, składnia jest podobna, ale trzeba podać zakresy dla \(x\) i \(t\), warunki początkowe oraz brzegowe.
+
 \section{\texttt{Manipulate} i \texttt{Animate}}
+
+Interaktywny suwak:
+\begin{verbatim}
+Manipulate[Plot[Sin[a x], {x, 0, 2 Pi}], {a, 1, 10}]
+\end{verbatim}
+Animacja po czasie:
+\begin{verbatim}
+Animate[Plot[Sin[x - t], {x, 0, 2 Pi}], {t, 0, 2 Pi}]
+\end{verbatim}
+W raportach końcowych animacja powinna być uzupełniona statycznymi wykresami i komentarzem fizycznym.
+
 \section{Eksport wykresów}
+
+Wykres można zapisać do pliku:
+\begin{verbatim}
+plt = Plot[Sin[x], {x, 0, 2 Pi}];
+Export["wykres.pdf", plt]
+Export["wykres.png", plt, ImageResolution -> 300]
+\end{verbatim}
+Do dokumentów najlepiej używać PDF dla wykresów wektorowych i PNG dla map gęstości albo obrazów rastrowych.
+
+\begin{summarybox}
+Najważniejsza zasada pracy w Mathematice: nie ufać samemu obrazkowi. Trzeba kontrolować założenia, zakresy, jednostki, normalizację i sens fizyczny wyniku.
+\end{summarybox}
