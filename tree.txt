@@ -560,6 +560,7 @@
 ./physics_lectures/quantum_field_theory/main.tex
 ./physics_lectures/quantum_field_theory/preamble.tex
 ./physics_lectures/quantum_field_theory/styles.tex
+./physics_lectures/quantum_field_theory/titlepage.tex
 ./requirements-docs.txt
 ./shared
 ./shared/macros.tex
