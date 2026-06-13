@@ -1,5 +1,65 @@
 \input{../../shared/styles}
 
+% Project-specific Polish box titles and practical-lab environments.
+\renewtcolorbox{definitionbox}{
+    breakable,
+    colback=AccentBlue!28,
+    colframe=SectionBlue,
+    title=Definicja,
+    fonttitle=\bfseries
+}
+
+\renewtcolorbox{theorembox}{
+    breakable,
+    colback=TheoremOrangeBack,
+    colframe=TheoremOrange,
+    title=Twierdzenie,
+    fonttitle=\bfseries
+}
+
+\renewtcolorbox{examplebox}{
+    breakable,
+    colback=ExampleGreenBack,
+    colframe=ExampleGreen,
+    title=Przykład,
+    fonttitle=\bfseries
+}
+
+\renewtcolorbox{remarkbox}{
+    breakable,
+    colback=gray!4,
+    colframe=SubsectionBlue!75,
+    title=Uwaga,
+    fonttitle=\bfseries
+}
+
+\renewtcolorbox{summarybox}{
+    breakable,
+    colback=gray!5,
+    colframe=ChapterBlue,
+    title=Podsumowanie,
+    fonttitle=\bfseries
+}
+
+\definecolor{WarningRed}{HTML}{A33A3A}
+\definecolor{WarningRedBack}{HTML}{FFF2F2}
+
+\newtcolorbox{warningbox}{
+    breakable,
+    colback=WarningRedBack,
+    colframe=WarningRed,
+    title=Typowy błąd,
+    fonttitle=\bfseries
+}
+
+\newtcolorbox{exercisebox}{
+    breakable,
+    colback=AccentBlue!18,
+    colframe=SectionBlue!85,
+    title=Ćwiczenie laboratoryjne,
+    fonttitle=\bfseries
+}
+
 % Project-specific styling for code examples.
 % The notes use many standard verbatim blocks for Mathematica code.
 % Redefine verbatim through fvextra so code is not printed on a stark white background.
