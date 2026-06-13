@@ -53,16 +53,14 @@ for \(n>0\). This is why normal ordering is useful in perturbation theory.
 For two scalar fields, the contraction is defined as the difference between the
 time-ordered product and the normal-ordered product:
 \[
-    \contraction{}{\hat\phi}{(x)}{\hat\phi}
-    \hat\phi(x)\hat\phi(y)
+    \operatorname{contr}\!\bigl(\hat\phi(x),\hat\phi(y)\bigr)
     \equiv
     T\{\hat\phi(x)\hat\phi(y)\}
     - :\hat\phi(x)\hat\phi(y):.
 \]
 For a free real scalar field, this contraction is the Feynman propagator:
 \[
-    \contraction{}{\hat\phi}{(x)}{\hat\phi}
-    \hat\phi(x)\hat\phi(y)
+    \operatorname{contr}\!\bigl(\hat\phi(x),\hat\phi(y)\bigr)
     = D_F(x-y).
 \]
 Equivalently,
@@ -132,8 +130,7 @@ insertions, and Wick's theorem pairs those insertions into propagators.
 For fermionic fields, Wick's theorem has the same structure but includes signs.
 The basic fermion contraction is
 \[
-    \contraction{}{\hat\psi}{(x)}{\hat{\bar\psi}}
-    \hat\psi(x)\hat{\bar\psi}(y)
+    \operatorname{contr}\!\bigl(\hat\psi(x),\hat{\bar\psi}(y)\bigr)
     = S_F(x-y),
 \]
 where \(S_F\) is the Dirac propagator. Time ordering of fermions includes a
