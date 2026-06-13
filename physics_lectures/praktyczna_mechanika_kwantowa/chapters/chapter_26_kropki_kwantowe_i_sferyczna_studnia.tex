@@ -1,11 +1,149 @@
 \chapter{Kropki kwantowe i sferyczna studnia potencjału}
 
+\begin{summarybox}
+Kropka kwantowa jest nanostrukturą, w której nośnik ładunku jest uwięziony w
+trzech wymiarach. Dlatego często nazywa się ją sztucznym atomem. Najprostszy
+model teoretyczny to cząstka w sferycznej studni potencjału. Ten rozdział
+pokazuje, jak pojawiają się funkcje Bessela sferyczne, kwantowanie energii,
+degeneracje oraz wizualizacje stanów w 3D.
+\end{summarybox}
+
 \section{Kropka kwantowa jako sztuczny atom}
+
+Kropka kwantowa to układ, w którym elektron albo dziura jest ograniczona w małym obszarze przestrzeni. Ograniczenie w trzech wymiarach powoduje dyskretne poziomy energii, podobnie jak w atomie. Różnica polega na tym, że potencjał uwięzienia nie pochodzi od jądra Coulombowskiego, lecz od struktury materiałowej.
+
+W praktyce kropki kwantowe mogą mieć różne kształty i profile potencjału. Sferyczna studnia potencjału jest modelem idealizowanym, ale bardzo użytecznym dydaktycznie. Pozwala zobaczyć, jak warunki brzegowe i symetria sferyczna prowadzą do kwantowania w 3D.
+
 \section{Sferyczna studnia potencjału}
+
+Najprostszy model to nieskończona sferyczna studnia potencjału:
+\begin{equation}
+    V(r)=
+    \begin{cases}
+    0, & r<R,\\
+    \infty, & r\geq R.
+    \end{cases}
+\end{equation}
+Funkcja falowa musi znikać na brzegu:
+\begin{equation}
+    \psi(R,\theta,\phi)=0.
+\end{equation}
+Dzięki symetrii sferycznej zapisujemy
+\begin{equation}
+    \psi(r,\theta,\phi)=R_{nl}(r)Y_l^m(\theta,\phi).
+\end{equation}
+Część kątowa jest taka sama jak w atomie wodoru: harmoniki sferyczne. Różni się część radialna, bo potencjał jest inny.
+
 \section{Funkcje Bessela sferyczne}
+
+Wewnątrz studni, gdzie \(V=0\), równanie radialne prowadzi do funkcji Bessela sferycznych. Rozwiązania regularne w początku mają postać
+\begin{equation}
+    R_{l}(r)=A j_l(kr),
+\end{equation}
+gdzie \(j_l\) jest funkcją Bessela sferyczną, a
+\begin{equation}
+    k=\frac{\sqrt{2mE}}{\hbar}.
+\end{equation}
+Funkcje drugiego rodzaju są osobliwe w \(r=0\), dlatego odrzucamy je dla stanów fizycznych.
+
+Dla \(l=0\) mamy
+\begin{equation}
+    j_0(x)=\frac{\sin x}{x}.
+\end{equation}
+Widzimy więc, że sferyczna studnia zawiera jako szczególny przypadek strukturę podobną do sinusów, ale z dodatkową geometrią radialną.
+
 \section{Kwantowanie energii w 3D}
+
+Warunek brzegowy \(R_l(R)=0\) daje
+\begin{equation}
+    j_l(kR)=0.
+\end{equation}
+Niech \(\alpha_{nl}\) oznacza \(n\)-te zero funkcji \(j_l\). Wtedy
+\begin{equation}
+    k_{nl}=\frac{\alpha_{nl}}{R}.
+\end{equation}
+Energie wynoszą
+\begin{equation}
+    E_{nl}=\frac{\hbar^2\alpha_{nl}^2}{2mR^2}.
+\end{equation}
+Energia zależy od dwóch liczb: radialnego numeru zera oraz orbitalnej liczby kwantowej \(l\). Dla każdego \(l\) istnieje dodatkowa degeneracja względem \(m\).
+
 \section{Numeryczne szukanie zer funkcji specjalnych}
+
+W Mathematice zera funkcji Bessela sferycznych można znajdować numerycznie. Ponieważ Mathematica ma funkcje Bessela zwykłe, można użyć relacji
+\begin{equation}
+    j_l(x)=\sqrt{\frac{\pi}{2x}}J_{l+1/2}(x).
+\end{equation}
+Przykładowy kod:
+\begin{verbatim}
+sphBesselJ[l_, x_] := Sqrt[Pi/(2 x)] BesselJ[l + 1/2, x]
+FindRoot[sphBesselJ[0, x] == 0, {x, Pi}]
+FindRoot[sphBesselJ[1, x] == 0, {x, 4.5}]
+\end{verbatim}
+Dla \(l=0\) zera są szczególnie proste:
+\begin{equation}
+    \alpha_{n0}=n\pi.
+\end{equation}
+Dla większych \(l\) zera trzeba zwykle wyznaczać numerycznie.
+
 \section{Degeneracje poziomów}
+
+Dla ustalonego \(l\) magnetyczna liczba kwantowa przyjmuje wartości
+\begin{equation}
+    m=-l,-l+1,\ldots,l.
+\end{equation}
+Dlatego każdy poziom o danym \(n,l\) ma degenerację
+\begin{equation}
+    2l+1.
+\end{equation}
+Ta degeneracja wynika z symetrii sferycznej. Jeśli kropka nie jest idealnie sferyczna albo jeśli pojawia się zewnętrzne pole, degeneracja może zostać częściowo zniesiona.
+
+W rzeczywistych kropkach kwantowych degeneracje zależą także od spinów, materiału, masy efektywnej i szczegółów potencjału. Model sferycznej studni daje czysty punkt odniesienia.
+
 \section{Wizualizacja stanów w 3D}
+
+Stan w sferycznej studni ma postać
+\begin{equation}
+    \psi_{nlm}(r,\theta,\phi)=A j_l\left(\frac{\alpha_{nl}}{R}r\right)Y_l^m(\theta,\phi).
+\end{equation}
+Wizualizować można \(|\psi|^2\), część rzeczywistą \(\operatorname{Re}\psi\) albo przekroje przez płaszczyzny. Dla interpretacji probabilistycznej najważniejsze jest \(|\psi|^2\).
+
+Przykładowy schemat w Mathematice:
+\begin{verbatim}
+psi[x_, y_, z_] := Module[{r, theta, phi},
+  r = Sqrt[x^2 + y^2 + z^2];
+  theta = ArcCos[z/r];
+  phi = ArcTan[x, y];
+  sphBesselJ[l, alpha r/R] SphericalHarmonicY[l, m, theta, phi]
+]
+DensityPlot[Abs[psi[x, 0, z]]^2, {x, -R, R}, {z, -R, R}]
+\end{verbatim}
+Przy \(r=0\) trzeba uważać na definicję kątów, ale dla wykresów numerycznych można obsłużyć ten punkt osobno.
+
 \section{Porównanie: atom wodoru, oscylator 3D, kropka kwantowa}
+
+Atom wodoru ma potencjał Coulomba:
+\begin{equation}
+    V(r)=-\frac{e^2}{4\pi\varepsilon_0 r}.
+\end{equation}
+Oscylator 3D ma potencjał paraboliczny:
+\begin{equation}
+    V(r)=\frac{1}{2}m\omega^2r^2.
+\end{equation}
+Sferyczna kropka kwantowa ma potencjał studniowy. Wszystkie trzy problemy wykorzystują symetrię sferyczną, harmoniki sferyczne i liczby \(l,m\), ale różnią się częścią radialną i widmem energii.
+
+To porównanie jest bardzo pouczające. Część kątowa wynika z geometrii obrotów, a część radialna z konkretnego potencjału. Dlatego te same harmoniki sferyczne pojawiają się w różnych układach fizycznych.
+
 \section{Interpretacja fizyczna wyników}
+
+Dyskretne energie kropki kwantowej wynikają z uwięzienia w skończonym obszarze przestrzeni. Im mniejszy promień \(R\), tym większe energie poziomów:
+\begin{equation}
+    E_{nl}\sim \frac{1}{R^2}.
+\end{equation}
+To jest podstawowy efekt kwantowego ograniczenia. Zmniejszając rozmiar kropki, zwiększamy odstępy energetyczne.
+
+W rzeczywistych półprzewodnikowych kropkach kwantowych zamiast masy elektronu często używa się masy efektywnej, a potencjał ma skończoną wysokość. Mimo to idealna sferyczna studnia dobrze pokazuje mechanizm: geometria plus warunki brzegowe prowadzą do poziomów przypominających atomowe.
+
+\begin{summarybox}
+Sferyczna kropka kwantowa jest prostym modelem sztucznego atomu. Część kątowa stanów jest opisana harmonikami sferycznymi, a część radialna funkcjami Bessela sferycznymi. Kwantowanie energii wynika z zer tych funkcji i z warunku brzegowego na promieniu kropki.
+\end{summarybox}
