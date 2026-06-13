@@ -1,0 +1,180 @@
+\chapter{From Classical Normal Modes to Quantum Oscillators}
+
+\begin{remarkbox}
+The first bridge from classical field theory to quantum field theory is the
+normal-mode decomposition of a free field. A free field is not quantized as one
+object at once. It is decomposed into independent oscillating modes, and each
+mode is quantized as a harmonic oscillator.
+\end{remarkbox}
+
+\section{Starting Point: A Classical Field Decomposed into Modes}
+
+Consider a real classical field in a box of volume \(V\), with boundary
+conditions chosen so that the allowed spatial momenta are discrete. A typical
+free-field solution can be expanded as a sum of normal modes,
+\[
+    \phi(t,\vect{x})
+    = \sum_{\vect{k}} q_{\vect{k}}(t) u_{\vect{k}}(\vect{x}),
+\]
+where \(u_{\vect{k}}(\vect{x})\) are spatial mode functions and
+\(q_{\vect{k}}(t)\) are time-dependent mode amplitudes.
+
+For a free theory, the modes decouple. After inserting the mode expansion into
+the classical action, the field theory becomes a sum of independent mechanical
+systems,
+\[
+    L = \sum_{\vect{k}}
+    \left(
+        \frac{1}{2}\dot q_{\vect{k}}^{\,2}
+        - \frac{1}{2}\omega_{\vect{k}}^2 q_{\vect{k}}^{\,2}
+    \right),
+\]
+up to conventional normalization factors. The frequency is determined by the
+field equation. For a relativistic scalar field of mass \(m\),
+\[
+    \omega_{\vect{k}} = \sqrt{\vect{k}^{\,2}+m^2}
+\]
+in units with \(c=\hbar=1\).
+
+\section{Each Mode as a Harmonic Oscillator}
+
+The expression above is the Lagrangian of a collection of independent harmonic
+oscillators. Each momentum label \(\vect{k}\) names one oscillator. The
+canonical momentum conjugate to \(q_{\vect{k}}\) is
+\[
+    p_{\vect{k}} = \dot q_{\vect{k}},
+\]
+and the Hamiltonian takes the schematic form
+\[
+    H = \sum_{\vect{k}}
+    \left(
+        \frac{1}{2}p_{\vect{k}}^{\,2}
+        + \frac{1}{2}\omega_{\vect{k}}^2 q_{\vect{k}}^{\,2}
+    \right).
+\]
+
+\begin{examplebox}
+The field is infinite-dimensional, but the free field is not mysterious at this
+stage. It is a very large, eventually infinite, collection of uncoupled harmonic
+oscillators. The conceptual leap is that we quantize all of these oscillators
+and reinterpret their excitations as particles.
+\end{examplebox}
+
+\section{Quantizing a Single Oscillator}
+
+Before quantizing the field, recall the single harmonic oscillator. Its
+canonical variables \(q\) and \(p\) satisfy the commutation relation
+\[
+    [\hat q,\hat p]=i.
+\]
+The Hamiltonian is
+\[
+    \hat H = \frac{1}{2}\hat p^2 + \frac{1}{2}\omega^2 \hat q^2.
+\]
+It is useful to introduce creation and annihilation operators,
+\[
+    \hat a = \sqrt{\frac{\omega}{2}}\,\hat q
+        + \frac{i}{\sqrt{2\omega}}\,\hat p,
+    \qquad
+    \hat a^\dagger = \sqrt{\frac{\omega}{2}}\,\hat q
+        - \frac{i}{\sqrt{2\omega}}\,\hat p.
+\]
+They satisfy
+\[
+    [\hat a,\hat a^\dagger]=1.
+\]
+In terms of them, the Hamiltonian becomes
+\[
+    \hat H = \omega\left(\hat a^\dagger \hat a + \frac{1}{2}\right).
+\]
+
+\section{Creation and Annihilation Operators}
+
+The operator \(\hat a^\dagger\) raises the oscillator excitation number, while
+\(\hat a\) lowers it. If \(|0\rangle\) is the oscillator vacuum, then
+\[
+    \hat a |0\rangle = 0,
+\]
+and the normalized \(n\)-th excited state is obtained by applying
+\(\hat a^\dagger\) repeatedly,
+\[
+    |n\rangle = \frac{(\hat a^\dagger)^n}{\sqrt{n!}}|0\rangle.
+\]
+The number operator is
+\[
+    \hat N = \hat a^\dagger \hat a,
+\]
+with eigenvalues \(0,1,2,\ldots\).
+
+\section{From One Oscillator to Infinitely Many Oscillators}
+
+For a field, every mode receives its own ladder operators,
+\[
+    \hat a_{\vect{k}},\qquad \hat a_{\vect{k}}^\dagger.
+\]
+The canonical commutation relations become
+\[
+    [\hat a_{\vect{k}},\hat a_{\vect{k}'}^\dagger]
+    = \delta_{\vect{k}\vect{k}'},
+    \qquad
+    [\hat a_{\vect{k}},\hat a_{\vect{k}'}]=0,
+    \qquad
+    [\hat a_{\vect{k}}^\dagger,\hat a_{\vect{k}'}^\dagger]=0.
+\]
+The vacuum of the free field is the state annihilated by all annihilation
+operators,
+\[
+    \hat a_{\vect{k}}|0\rangle=0
+    \qquad \text{for all } \vect{k}.
+\]
+A one-particle state of momentum \(\vect{k}\) is
+\[
+    |\vect{k}\rangle = \hat a_{\vect{k}}^\dagger |0\rangle.
+\]
+A many-particle state is obtained by applying several creation operators.
+
+\begin{definitionbox}
+The \emph{Fock space} of a free quantum field is the Hilbert space generated
+from the vacuum by applying creation operators for all allowed modes. It is the
+natural Hilbert space for states with variable particle number.
+\end{definitionbox}
+
+\section{Field Quanta as Mode Excitations}
+
+The word ``particle'' in free quantum field theory means an excitation of a
+field mode. This is a precise statement in the free theory: the Hamiltonian is a
+sum of number operators,
+\[
+    \hat H = \sum_{\vect{k}} \omega_{\vect{k}}
+    \left(\hat a_{\vect{k}}^\dagger \hat a_{\vect{k}} + \frac{1}{2}\right).
+\]
+The state \(\hat a_{\vect{k}}^\dagger|0\rangle\) has one quantum of energy
+\(\omega_{\vect{k}}\) above the vacuum, and momentum \(\vect{k}\).
+
+This interpretation becomes more subtle in interacting theories. Interactions
+mix modes, dress particles, shift masses, generate unstable resonances, and make
+the vacuum itself nontrivial. Nevertheless, the free-field construction is the
+starting point for perturbative QFT.
+
+\section{What Is New Compared with Classical Field Theory?}
+
+Classical field theory assigns numbers to field configurations. Quantum field
+theory assigns operators to fields and vectors to states. The basic object is no
+longer a definite field profile \(\phi(x)\), but an operator \(\hat\phi(x)\)
+acting on a Hilbert space.
+
+The same classical equation may still appear, but with a different role. For a
+free scalar field, the Klein--Gordon equation becomes an equation satisfied by
+the field operator,
+\[
+    (\Box + m^2)\hat\phi(x)=0.
+\]
+This does not mean that the field has one definite classical value. It means
+that the operator-valued distribution evolves according to the free field
+equation.
+
+\begin{remarkbox}
+The first lesson of QFT is therefore not that particles are little balls. It is
+that particle states are organized excitations of quantum fields. The oscillator
+algebra is the mechanism that turns a classical mode into a quantum excitation.
+\end{remarkbox}

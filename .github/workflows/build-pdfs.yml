@@ -49,6 +49,7 @@ jobs:
             "physics_lectures/classical_field_theory_I"
             "physics_lectures/classical_field_theory_II"
             "physics_lectures/praktyczna_mechanika_kwantowa"
+            "physics_lectures/quantum_field_theory"
           )
 
           if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
@@ -118,11 +119,11 @@ jobs:
 
             for project in "${projects[@]}"; do
               echo "::group::Building ${project}"
-              if [[ ! -x "${project}/build.sh" ]]; then
-                echo "Missing executable build script: ${project}/build.sh" >&2
+              if [[ ! -f "${project}/build.sh" ]]; then
+                echo "Missing build script: ${project}/build.sh" >&2
                 exit 1
               fi
-              "${project}/build.sh"
+              bash "${project}/build.sh"
               pdf="${project}/main.pdf"
               if [[ ! -s "${pdf}" ]]; then
                 echo "Expected PDF was not generated or is empty: ${pdf}" >&2

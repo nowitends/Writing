@@ -1,0 +1,62 @@
+\chapter{Quantization Dictionary}
+
+\begin{remarkbox}
+This appendix records the translation rules that are used repeatedly in the
+main text. They should not be treated as mechanical replacements valid in every
+context. They are starting points that must be checked against constraints,
+symmetries, domains of operators, and gauge redundancies.
+\end{remarkbox}
+
+\section{Classical Mode to Quantum Oscillator}
+
+A classical normal mode with amplitude \(q_{\vect{k}}(t)\) and frequency
+\(\omega_{\vect{k}}\) is quantized like a harmonic oscillator. Schematically,
+\[
+    q_{\vect{k}},p_{\vect{k}}
+    \quad \longrightarrow \quad
+    \hat q_{\vect{k}},\hat p_{\vect{k}},
+    \qquad
+    [\hat q_{\vect{k}},\hat p_{\vect{k}'}]=i\delta_{\vect{k}\vect{k}'}.
+\]
+The oscillator is then rewritten in terms of ladder operators
+\(\hat a_{\vect{k}}\) and \(\hat a_{\vect{k}}^\dagger\).
+
+\section{Poisson Bracket to Commutator}
+
+The canonical rule is
+\[
+    \{A,B\}_{\mathrm{PB}}
+    \quad \longrightarrow \quad
+    \frac{1}{i}[\hat A,\hat B].
+\]
+For fields, the equal-time canonical relation is
+\[
+    [\hat\phi(t,\vect{x}),\hat\pi(t,\vect{y})]
+    = i\delta^{(3)}(\vect{x}-\vect{y}).
+\]
+
+\section{Classical Field to Field Operator}
+
+A classical field \(\phi(x)\) becomes an operator-valued distribution
+\(\hat\phi(x)\). The word ``distribution'' is important: products of field
+operators at the same spacetime point are generally singular and require a
+careful definition.
+
+\section{Classical Green's Function to Propagator}
+
+A classical Green's function solves a differential equation with a delta-function
+source. A quantum propagator is a vacuum expectation value of a time-ordered
+product,
+\[
+    \Delta_F(x-y)
+    = \langle 0|T\{\hat\phi(x)\hat\phi(y)\}|0\rangle.
+\]
+It is related to Green's functions, but its physical meaning is quantum
+correlation, not merely classical signal propagation.
+
+\section{Classical Symmetry to Quantum Ward Identity}
+
+A classical continuous symmetry gives a conserved current. In the quantum
+theory, the same symmetry constrains correlation functions and scattering
+amplitudes through Ward identities. If the symmetry fails after quantization,
+the failure is called an anomaly.
