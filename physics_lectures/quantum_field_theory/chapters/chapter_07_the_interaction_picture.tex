@@ -1,20 +1,275 @@
 \chapter{The Interaction Picture}
 
 \begin{remarkbox}
-This chapter is reserved by the course plan in \texttt{ideas\_Quantum\_Field\_Theory.md}. It will be developed in small increments.
+The previous chapter introduced propagators of free fields. Perturbation theory
+uses those free fields as the starting point and treats interactions as a
+controlled deformation. The interaction picture is the framework that makes this
+separation precise.
 \end{remarkbox}
 
-\section{Planned Sections}
+\section{Why We Need a New Picture}
 
+In quantum mechanics one may describe time evolution in several equivalent ways.
+The Schroedinger picture puts time dependence in the states. The Heisenberg
+picture puts time dependence in the operators. The interaction picture splits
+the time dependence between them.
+
+This split is useful when the Hamiltonian has the form
+\[
+    \hat H = \hat H_0 + \hat H_{\mathrm{int}}.
+\]
+Here \(\hat H_0\) is the exactly solvable free Hamiltonian, and
+\(\hat H_{\mathrm{int}}\) contains interactions. In QFT, \(\hat H_0\) is built
+from the free scalar, spinor, or photon fields of the previous chapters. The
+interaction part describes processes such as scattering, decay, emission, and
+absorption.
+
+The guiding idea is simple:
+\[
+    \text{solve the free theory exactly, then expand in the interaction}.
+\]
+The interaction picture is the operator language in which this idea becomes a
+systematic perturbation theory.
+
+\section{Schroedinger, Heisenberg, and Interaction Pictures}
+
+Let \(|\Psi_S(t)\rangle\) be a Schroedinger-picture state. It satisfies
+\[
+    i\frac{\dd}{\dd t}|\Psi_S(t)\rangle
+    = \hat H|\Psi_S(t)\rangle.
+\]
+Operators in this picture are usually time independent unless they have explicit
+time dependence.
+
+In the Heisenberg picture, the state is fixed and operators evolve according to
+\[
+    \hat O_H(t)
+    = e^{i\hat H t}\hat O_S e^{-i\hat H t}.
+\]
+This picture is elegant but difficult for interacting QFT because exact
+interacting operators are rarely known.
+
+In the interaction picture, free time evolution is assigned to the operators:
+\[
+    \hat O_I(t)
+    = e^{i\hat H_0 t}\hat O_S e^{-i\hat H_0 t}.
+\]
+The states evolve only with the interaction. Thus interaction-picture fields are
+free fields, even though the states know about the interaction.
+
+\section{Free Fields as the Starting Point}
+
+The scalar interaction-picture field satisfies the free Klein--Gordon equation,
+\[
+    (\Box+m^2)\hat\phi_I(x)=0.
+\]
+Its mode expansion is the same free expansion used in Chapter 2:
+\[
+    \hat\phi_I(x)
+    = \int\frac{\dd^3k}{(2\pi)^3}\frac{1}{\sqrt{2\omega_{\vect{k}}}}
+      \left(
+          \hat a_{\vect{k}}e^{-ik\cdot x}
+          +\hat a_{\vect{k}}^\dagger e^{ik\cdot x}
+      \right),
+\]
+where \(k^0=\omega_{\vect{k}}\). Similarly, interaction-picture Dirac and
+photon fields are free Dirac and free photon fields.
+
+This is why the propagators of Chapter 6 are the basic building blocks of
+perturbation theory. The fields appearing inside the perturbative expansion are
+free fields, so their time-ordered products can be evaluated using free-field
+correlation functions.
+
+\section{The Interaction Hamiltonian}
+
+The interaction Hamiltonian in the interaction picture is
+\[
+    \hat H_I(t)
+    = e^{i\hat H_0 t}\hat H_{\mathrm{int}}e^{-i\hat H_0 t}.
+\]
+It is written in terms of interaction-picture fields. For example, a scalar
+\(\phi^4\) interaction is described by
+\[
+    \mathcal{L}_{\mathrm{int}}
+    = -\frac{\lambda}{4!}\phi^4.
+\]
+For this case, the interaction Hamiltonian density is
+\[
+    \mathcal{H}_{\mathrm{int}}
+    = \frac{\lambda}{4!}\phi_I^4,
+\]
+and
+\[
+    \hat H_I(t)
+    = \int\dd^3x\,\frac{\lambda}{4!}\hat\phi_I(t,\vect{x})^4.
+\]
+The subscript \(I\) reminds us that the fields evolve freely. The coupling
+\(\lambda\) measures the strength of the interaction.
+
+For QED, the interaction Lagrangian is
+\[
+    \mathcal{L}_{\mathrm{int}}
+    = -e\bar\psi\gamma^\mu\psi A_\mu,
+\]
+so the interaction Hamiltonian is commonly written as
+\[
+    \hat H_I(t)
+    = e\int\dd^3x\,
+      \hat{\bar\psi}_I\gamma^\mu\hat\psi_I\hat A_{I\mu}.
+\]
+This term is responsible for the elementary QED vertex.
+
+\section{Time Evolution Operator}
+
+Interaction-picture states satisfy
+\[
+    i\frac{\dd}{\dd t}|\Psi_I(t)\rangle
+    = \hat H_I(t)|\Psi_I(t)\rangle.
+\]
+Define the time evolution operator \(\hat U_I(t,t_0)\) by
+\[
+    |\Psi_I(t)\rangle
+    = \hat U_I(t,t_0)|\Psi_I(t_0)\rangle.
+\]
+Then \(\hat U_I(t,t_0)\) obeys
+\[
+    i\frac{\partial}{\partial t}\hat U_I(t,t_0)
+    = \hat H_I(t)\hat U_I(t,t_0),
+    \qquad
+    \hat U_I(t_0,t_0)=1.
+\]
+Formally, this is solved by a time-ordered exponential:
+\[
+    \hat U_I(t,t_0)
+    = T\exp\left(-i\int_{t_0}^{t}\dd t'\,\hat H_I(t')\right).
+\]
+The time-ordering symbol is essential because \(\hat H_I(t_1)\) and
+\(\hat H_I(t_2)\) need not commute at different times.
+
+\section{The Dyson Series}
+
+Expanding the time-ordered exponential gives the Dyson series:
+\[
+    \hat U_I(t,t_0)
+    = 1
+      -i\int_{t_0}^{t}\dd t_1\,\hat H_I(t_1)
+      +\frac{(-i)^2}{2!}\int_{t_0}^{t}\dd t_1\dd t_2\,
+      T\{\hat H_I(t_1)\hat H_I(t_2)\}
+      +\cdots.
+\]
+Equivalently,
+\[
+    \hat U_I(t,t_0)
+    = \sum_{n=0}^{\infty}\frac{(-i)^n}{n!}
+      \int_{t_0}^{t}\dd t_1\cdots\dd t_n\,
+      T\{\hat H_I(t_1)\cdots\hat H_I(t_n)\}.
+\]
+Each power of \(\hat H_I\) brings one power of the coupling. In \(\phi^4\)
+theory, the \(n\)-th order term contains \(\lambda^n\). In QED, the \(n\)-th
+order term contains \(e^n\).
+
+This is the algebraic origin of perturbation theory: physical quantities are
+computed as series in coupling constants.
+
+\section{Perturbation Theory and Time-Ordered Correlators}
+
+Suppose we want the interacting time-ordered two-point function of a scalar
+field. In the interaction picture it is expressed as
+\[
+    \langle\Omega|T\hat\phi_H(x)\hat\phi_H(y)|\Omega\rangle
+    = \frac{
+      \langle0|T\left\{\hat\phi_I(x)\hat\phi_I(y)
+      \exp\left[-i\int\dd^4z\,\mathcal{H}_{\mathrm{int}}(z)\right]\right\}|0\rangle
+    }{
+      \langle0|T\exp\left[-i\int\dd^4z\,\mathcal{H}_{\mathrm{int}}(z)\right]|0\rangle
+    }.
+\]
+Here \(|0\rangle\) is the free vacuum and \(|\Omega\rangle\) is the interacting
+vacuum. The denominator removes disconnected vacuum factors. This formula is a
+central bridge between operator quantization and Feynman diagrams.
+
+The fields inside the expectation value are free fields. Therefore Wick's
+theorem can reduce the time-ordered products to sums of propagators. This will
+be the subject of the next chapter.
+
+\section{Vacuum Persistence Amplitude}
+
+The vacuum persistence amplitude is
+\[
+    \langle0|\hat U_I(\infty,-\infty)|0\rangle.
+\]
+It is the amplitude for the free vacuum in the far past to become the free
+vacuum in the far future in the presence of interactions. Its perturbative
+expansion contains vacuum bubble diagrams: diagrams with no external legs.
+
+These vacuum bubbles multiply correlation functions by an overall factor. In
+normalized expectation values, they cancel against the denominator. This is why
+connected diagrams, rather than all diagrams, carry the main physical content of
+scattering amplitudes.
+
+\section{Adiabatic Switching and In/Out States}
+
+Scattering theory compares states in the far past with states in the far future.
+The idealization is that interactions are effectively switched off at early and
+late times, so that asymptotic states can be described by free particles. This
+is expressed schematically by replacing the interaction with
+\[
+    \hat H_I(t)\longrightarrow e^{-\epsilon |t|}\hat H_I(t),
+\]
+and taking \(\epsilon\to0^+\) at the end.
+
+This adiabatic switching is a mathematical device. It helps define the
+connection between free Fock states and interacting scattering amplitudes. The
+states in the far past are called in-states, and those in the far future are
+called out-states.
+
+The scattering operator is
+\[
+    \hat S
+    = \hat U_I(\infty,-\infty)
+    = T\exp\left(-i\int_{-\infty}^{\infty}\dd t\,\hat H_I(t)\right).
+\]
+Matrix elements of \(\hat S\) between in- and out-states are the basic objects
+of perturbative scattering theory.
+
+\section{Why Exact Interacting QFT Is Difficult}
+
+The free theory is exactly solvable because it is a collection of independent
+oscillators. Interactions couple those oscillators. Once interactions are
+present, particle number may change, the vacuum may differ from the free vacuum,
+and exact operator solutions are usually unavailable.
+
+Perturbation theory avoids solving the interacting theory exactly. It expands
+around the free theory and organizes corrections in powers of the coupling.
+This strategy is extremely powerful when the coupling is small and the relevant
+states are close to free asymptotic particle states.
+
+However, perturbation theory has limits. Strong coupling, bound states,
+confinement, and nonperturbative vacuum effects require additional methods. The
+interaction picture is therefore not the whole of QFT, but it is the standard
+entry point into calculational quantum field theory.
+
+\begin{summarybox}
+The interaction picture separates the exactly solvable free Hamiltonian from the
+interaction Hamiltonian. Interaction-picture fields are free fields, while
+states evolve with \(\hat H_I(t)\). The time evolution operator is a
+time-ordered exponential, and its expansion gives the Dyson series. This is the
+operator foundation of perturbation theory and the starting point for Wick's
+theorem and Feynman diagrams.
+\end{summarybox}
+
+\section{Chapter Checklist}
+
+After reading this chapter, one should be able to:
 \begin{itemize}
-    \item Schrödinger, Heisenberg, and interaction pictures.
-    \item Free fields as the starting point.
-    \item Interaction Hamiltonian.
-    \item Time evolution operator.
-    \item Dyson series.
-    \item Time-ordered exponential.
-    \item Perturbation theory as an expansion in couplings.
-    \item Vacuum persistence amplitude.
-    \item Adiabatic switching and the meaning of in/out states.
-    \item Why exact interacting QFT is difficult.
+    \item distinguish the Schroedinger, Heisenberg, and interaction pictures;
+    \item explain why interaction-picture fields are free fields;
+    \item write the interaction Hamiltonian for \(\phi^4\) theory and QED;
+    \item define the interaction-picture time evolution operator;
+    \item expand the time-ordered exponential as the Dyson series;
+    \item explain perturbation theory as an expansion in couplings;
+    \item describe the role of the vacuum persistence amplitude;
+    \item explain why vacuum bubbles cancel in normalized correlators;
+    \item define in-states, out-states, and the scattering operator;
+    \item explain why exact interacting QFT is difficult.
 \end{itemize}
