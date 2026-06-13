@@ -1,12 +1,160 @@
 \chapter{Zależne od czasu równanie Schrödingera}
 
+\begin{summarybox}
+Do tej pory często rozwiązywaliśmy równanie stacjonarne, szukając energii i
+stanów własnych. Pełna mechanika kwantowa opisuje jednak także ewolucję stanu w
+czasie. Zależne od czasu równanie Schrödingera pokazuje, jak zmienia się funkcja
+falowa, jak rozmywa się paczka Gaussa, jak fala odbija się od bariery i jak
+interpretować transmisję oraz tunelowanie jako proces dynamiczny.
+\end{summarybox}
+
 \section{Od stanów stacjonarnych do ewolucji w czasie}
+
+Stany stacjonarne mają postać
+\begin{equation}
+    \Psi(x,t)=\psi_E(x)e^{-iEt/\hbar}.
+\end{equation}
+Ich gęstość prawdopodobieństwa nie zależy od czasu:
+\begin{equation}
+    |\Psi(x,t)|^2=|\psi_E(x)|^2.
+\end{equation}
+To jest bardzo wygodne, ale nie opisuje wszystkich sytuacji fizycznych. Jeżeli przygotujemy cząstkę jako zlokalizowaną paczkę falową, to jej rozkład prawdopodobieństwa może przesuwać się, rozmywać, odbijać i tunelować.
+
+Ogólny stan można rozłożyć w bazie stanów własnych Hamiltonianu:
+\begin{equation}
+    |\Psi(t)\rangle=\sum_n c_n e^{-iE_n t/\hbar}|n\rangle.
+\end{equation}
+Dla widma ciągłego suma przechodzi w całkę. Dynamika polega na tym, że różne składowe energetyczne nabywają różne fazy. To prowadzi do zmiany kształtu paczki falowej.
+
 \section{Równanie Schrödingera zależne od czasu}
+
+Podstawowe równanie ewolucji ma postać
+\begin{equation}
+    i\hbar\frac{\partial}{\partial t}\Psi(x,t)=\hat{H}\Psi(x,t).
+\end{equation}
+Dla jednej cząstki w potencjale \(V(x)\) Hamiltonian wynosi
+\begin{equation}
+    \hat{H}=-\frac{\hbar^2}{2m}\frac{\partial^2}{\partial x^2}+V(x),
+\end{equation}
+więc równanie przyjmuje postać
+\begin{equation}
+    i\hbar\frac{\partial\Psi}{\partial t}
+    =-\frac{\hbar^2}{2m}\frac{\partial^2\Psi}{\partial x^2}+V(x)\Psi.
+\end{equation}
+
+Jeśli Hamiltonian nie zależy jawnie od czasu, ewolucję formalnie zapisujemy jako
+\begin{equation}
+    |\Psi(t)\rangle=e^{-i\hat{H}t/\hbar}|\Psi(0)\rangle.
+\end{equation}
+Operator \(e^{-i\hat{H}t/\hbar}\) jest unitarny, więc zachowuje normę stanu.
+
 \section{Ewolucja swobodnej paczki falowej}
+
+Dla cząstki swobodnej \(V(x)=0\). Równanie ma postać
+\begin{equation}
+    i\hbar\frac{\partial\Psi}{\partial t}
+    =-\frac{\hbar^2}{2m}\frac{\partial^2\Psi}{\partial x^2}.
+\end{equation}
+Rozwiązania o określonym pędzie są falami płaskimi:
+\begin{equation}
+    \Psi_k(x,t)=Ae^{i(kx-\omega t)},
+\end{equation}
+gdzie
+\begin{equation}
+    E=\hbar\omega=\frac{\hbar^2k^2}{2m}.
+\end{equation}
+
+Pojedyncza fala płaska nie jest zlokalizowana. Aby opisać cząstkę w pewnym obszarze przestrzeni, budujemy paczkę falową jako superpozycję wielu fal płaskich:
+\begin{equation}
+    \Psi(x,t)=\int A(k)e^{i(kx-\omega(k)t)}\,dk.
+\end{equation}
+Grupa fal przesuwa się z prędkością grupową
+\begin{equation}
+    v_g=\frac{d\omega}{dk}=\frac{\hbar k}{m}.
+\end{equation}
+
 \section{Paczka Gaussa}
+
+Najczęściej używaną paczką falową jest paczka Gaussa. W chwili początkowej można ją zapisać jako
+\begin{equation}
+    \Psi(x,0)=N\exp\left[-\frac{(x-x_0)^2}{4\sigma^2}\right]e^{ik_0x}.
+\end{equation}
+Parametr \(x_0\) określa początkowe położenie środka paczki, \(\sigma\) jej szerokość, a \(k_0\) średnią liczbę falową.
+
+Czynnik gaussowski lokalizuje paczkę w przestrzeni. Czynnik \(e^{ik_0x}\) nadaje jej średni pęd
+\begin{equation}
+    p_0=\hbar k_0.
+\end{equation}
+Im mniejsza szerokość \(\sigma\), tym większy rozrzut pędu. Jest to bezpośredni przykład zasady nieoznaczoności.
+
 \section{Rozmywanie paczki falowej}
+
+Swobodna paczka Gaussa nie tylko przesuwa się, ale także rozmywa. Dzieje się tak, ponieważ różne składowe \(k\) mają różne prędkości grupowe. Energia zależy kwadratowo od \(k\):
+\begin{equation}
+    E(k)=\frac{\hbar^2k^2}{2m}.
+\end{equation}
+Dlatego składowe paczki z różnymi pędami rozchodzą się w czasie.
+
+Szerokość paczki rośnie zgodnie ze schematem
+\begin{equation}
+    \sigma(t)=\sigma\sqrt{1+\left(\frac{\hbar t}{2m\sigma^2}\right)^2}.
+\end{equation}
+Ten wzór pokazuje, że lekkie cząstki rozmywają się szybciej, a szerokie paczki wolniej. W granicy klasycznej rozmywanie może być bardzo małe w praktycznej skali czasu.
+
 \section{Zderzenie paczki z barierą}
+
+Jeżeli wprowadzimy barierę potencjału, paczka falowa może częściowo się odbić i częściowo przejść na drugą stronę. W przeciwieństwie do stacjonarnego rachunku transmisji, tutaj widzimy proces w czasie.
+
+Początkowo paczka zbliża się do bariery. Następnie część amplitudy zaczyna odbijać się, a część wnika w obszar bariery. Po pewnym czasie obserwujemy dwie paczki: odbitą i transmitowaną. W przypadku \(E<V_0\) transmitowana część jest efektem tunelowania.
+
+Warto pamiętać, że paczka ma rozrzut energii. Nie ma jednej dokładnej energii \(E\), lecz rozkład składowych energetycznych. Dlatego transmisja paczki jest średnią po składowych, a nie dokładnie jedną wartością \(T(E_0)\).
+
 \section{Odbicie, transmisja i tunelowanie w czasie}
+
+Po zderzeniu z barierą można obliczyć prawdopodobieństwo odbicia i transmisji przez całkowanie gęstości prawdopodobieństwa po odpowiednich obszarach:
+\begin{equation}
+    R(t)=\int_{x<x_L}|\Psi(x,t)|^2\,dx,
+\end{equation}
+\begin{equation}
+    T(t)=\int_{x>x_R}|\Psi(x,t)|^2\,dx.
+\end{equation}
+Punkty \(x_L\) i \(x_R\) wybieramy daleko od bariery, tak aby oddzielić paczkę odbitą i transmitowaną od obszaru oddziaływania.
+
+Dla dużych czasów, gdy paczki są już rozdzielone, suma \(R+T\) powinna być bliska jedności, o ile całe prawdopodobieństwo pozostaje w domenie obliczeń. To jest ważny test numeryczny.
+
 \section{Animacje \texorpdfstring{\(|\psi(x,t)|^2\)}{|psi(x,t)|^2}}
+
+Animacja gęstości prawdopodobieństwa jest bardzo użyteczna dydaktycznie. Pokazuje ruch środka paczki, rozmywanie, interferencję części padającej i odbitej oraz tunelowanie przez barierę.
+
+W Mathematice typowy schemat wygląda następująco:
+\begin{verbatim}
+Animate[
+ Plot[Abs[psi[x, t]]^2, {x, xmin, xmax}, PlotRange -> All],
+ {t, 0, tmax}
+]
+\end{verbatim}
+Jeżeli rozwiązanie jest numeryczne, \(\texttt{psi}\) może pochodzić z \texttt{NDSolve}. Ważne jest, aby animacja nie była tylko „ładnym filmem”. Trzeba patrzeć na normę, odbicie, transmisję i zgodność z intuicją fizyczną.
+
 \section{Zachowanie normy jako test poprawności}
+
+Dla ewolucji unitarnej norma stanu powinna być zachowana:
+\begin{equation}
+    \int |\Psi(x,t)|^2\,dx=1.
+\end{equation}
+Jeśli w obliczeniach numerycznych norma wyraźnie rośnie albo maleje, to prawdopodobnie mamy problem z metodą numeryczną, krokiem czasowym, warunkami brzegowymi albo zakresem przestrzeni.
+
+W praktyce warto rysować
+\begin{equation}
+    N(t)=\int |\Psi(x,t)|^2\,dx
+\end{equation}
+razem z animacją. To prosta kontrola, która często wykrywa błędy wcześniej niż analiza samego obrazka.
+
 \section{Fizyka wyniku, nie tylko filmik}
+
+Animacja paczki falowej może być bardzo efektowna, ale celem nie jest wyprodukowanie filmu. Celem jest zrozumienie fizyki: jak szybko porusza się paczka, jak się rozmywa, jaka część odbija się od bariery, jaka przechodzi i czy wynik zachowuje normę.
+
+Dobre omówienie wyniku powinno zawierać co najmniej: parametry paczki, parametry potencjału, wykres normy, oszacowanie transmisji i interpretację jakościową. Bez tego animacja jest tylko wizualizacją, a nie obliczeniem fizycznym.
+
+\begin{summarybox}
+Zależne od czasu równanie Schrödingera pokazuje mechanikę kwantową jako dynamikę amplitudy. Paczki falowe przesuwają się, rozmywają, odbijają i tunelują. Poprawność obliczeń trzeba kontrolować przez normę, rozdział prawdopodobieństwa i zgodność z fizyczną interpretacją.
+\end{summarybox}
