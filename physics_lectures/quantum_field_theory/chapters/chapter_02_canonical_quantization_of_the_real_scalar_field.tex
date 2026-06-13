@@ -1,16 +1,43 @@
 \chapter{Canonical Quantization of the Real Scalar Field}
 
 \begin{remarkbox}
-This chapter turns the oscillator picture of Chapter 1 into the standard
-canonical quantization of the free real scalar field. The main new object is not
-one oscillator coordinate, but a field operator \(\hat{\phi}(t,\vect{x})\)
-with one canonical commutation relation at every point of space.
+Chapter 1 explained why a free field should be thought of as a collection of
+oscillators. This chapter makes that statement precise. We impose canonical
+commutation relations on the field and its conjugate momentum, derive the
+standard mode expansion, and recover the Fock-space interpretation from the
+field algebra itself.
 \end{remarkbox}
 
-\section{Equal-Time Commutation Relations}
+\section{From the Oscillator Picture to Field Operators}
 
-We work with a real scalar field in units \(c=\hbar=1\). With metric convention
-\((+,-,-,-)\), the free Lagrangian density is
+The previous chapter started from normal modes. It argued that a free scalar
+field is a collection of harmonic oscillators labelled by momentum. That is the
+right intuition, but it is not yet the full canonical quantization of a field.
+
+The full canonical construction begins before the normal-mode expansion. It
+starts with the classical field \(\phi(t,\vect{x})\), its conjugate momentum
+\(\pi(t,\vect{x})\), and their Poisson brackets. Quantization then promotes
+\(\phi\) and \(\pi\) to operators and replaces the Poisson brackets by
+commutators.
+
+The logic of this chapter is therefore
+\[
+    \text{classical field variables}
+    \longrightarrow
+    \text{equal-time commutators}
+    \longrightarrow
+    \text{operator mode expansion}
+    \longrightarrow
+    \text{creation and annihilation operators}
+    \longrightarrow
+    \text{Fock space}.
+\]
+This is the formal version of the oscillator picture developed in Chapter 1.
+
+\section{Classical Starting Point}
+
+We use units \(c=\hbar=1\) and the metric convention \((+,-,-,-)\). The free
+real scalar field is described by the Lagrangian density
 \[
     \mathcal{L}
     = \frac{1}{2}\partial_\mu\phi\,\partial^\mu\phi
@@ -19,85 +46,98 @@ We work with a real scalar field in units \(c=\hbar=1\). With metric convention
       - \frac{1}{2}(\nabla\phi)^2
       - \frac{1}{2}m^2\phi^2.
 \]
-The canonical momentum conjugate to \(\phi\) is
+The conjugate momentum is
 \[
     \pi(t,\vect{x})
     = \frac{\partial\mathcal{L}}{\partial\dot\phi(t,\vect{x})}
     = \dot\phi(t,\vect{x}).
 \]
-Classically, the canonical Poisson bracket is
+The Euler--Lagrange equation is the Klein--Gordon equation,
 \[
-    \{\phi(t,\vect{x}),\pi(t,\vect{y})\}_{\mathrm{PB}}
-    = \delta^{(3)}(\vect{x}-\vect{y}).
+    (\Box+m^2)\phi(x)=0,
 \]
-Canonical quantization replaces the fields by operators and the Poisson bracket
-by a commutator:
+where \(x=(t,\vect{x})\). In components this reads
 \[
-    [\hat{\phi}(t,\vect{x}),\hat{\pi}(t,\vect{y})]
-    = i\delta^{(3)}(\vect{x}-\vect{y}).
+    (\partial_t^2-\nabla^2+m^2)\phi(t,\vect{x})=0.
 \]
-The remaining equal-time commutators are
-\[
-    [\hat{\phi}(t,\vect{x}),\hat{\phi}(t,\vect{y})]=0,
-    \qquad
-    [\hat{\pi}(t,\vect{x}),\hat{\pi}(t,\vect{y})]=0.
-\]
-These are the field-theoretic version of the oscillator relation
-\([\hat q,\hat p]=i\). Instead of one coordinate and one momentum, there is one
-canonical pair at every spatial point.
 
-\begin{definitionbox}
-The \emph{equal-time canonical commutation relations} are the commutators
-between field and momentum operators evaluated at the same time. They are the
-canonical starting point of the operator quantization of a bosonic field.
-\end{definitionbox}
-
-\section{Field Operator and Momentum Operator}
-
-The field operator \(\hat{\phi}(t,\vect{x})\) is the quantum object corresponding
-to the classical field \(\phi(t,\vect{x})\). Its conjugate momentum operator is
-\[
-    \hat{\pi}(t,\vect{x})=\partial_t\hat{\phi}(t,\vect{x}).
-\]
-The free equation of motion is the Klein--Gordon equation,
-\[
-    (\Box+m^2)\hat{\phi}(x)=0,
-\]
-where \(x=(t,\vect{x})\). This equation has the same form as the classical field
-equation, but its meaning is different: it is an equation for an operator-valued
-object.
-
-The Hamiltonian density of the free field is
+The classical Hamiltonian density is
 \[
     \mathcal{H}
     = \frac{1}{2}\pi^2
       + \frac{1}{2}(\nabla\phi)^2
-      + \frac{1}{2}m^2\phi^2.
+      + \frac{1}{2}m^2\phi^2,
 \]
-After quantization one writes formally
+so the Hamiltonian is
 \[
-    \hat H
+    H
     = \int \dd^3x\,
     \left(
-        \frac{1}{2}\hat{\pi}^2
-        + \frac{1}{2}(\nabla\hat{\phi})^2
-        + \frac{1}{2}m^2\hat{\phi}^{\,2}
+        \frac{1}{2}\pi^2
+        + \frac{1}{2}(\nabla\phi)^2
+        + \frac{1}{2}m^2\phi^2
     \right).
 \]
-The word ``formally'' is important. Products such as
-\(\hat{\phi}(x)^2\) at the same point require care. This issue will return when
-we discuss normal ordering and renormalization.
+This is the continuum field-theoretic analogue of the oscillator Hamiltonian
+\(p^2/2+\omega^2q^2/2\).
+
+\section{Equal-Time Commutation Relations}
+
+The classical canonical Poisson bracket is
+\[
+    \{\phi(t,\vect{x}),\pi(t,\vect{y})\}_{\mathrm{PB}}
+    = \delta^{(3)}(\vect{x}-\vect{y}).
+\]
+Canonical quantization promotes \(\phi\) and \(\pi\) to operators
+\(\hat\phi\) and \(\hat\pi\), and imposes
+\[
+    [\hat\phi(t,\vect{x}),\hat\pi(t,\vect{y})]
+    = i\delta^{(3)}(\vect{x}-\vect{y}).
+\]
+The remaining equal-time commutators vanish:
+\[
+    [\hat\phi(t,\vect{x}),\hat\phi(t,\vect{y})]=0,
+    \qquad
+    [\hat\pi(t,\vect{x}),\hat\pi(t,\vect{y})]=0.
+\]
+These relations are the field version of
+\[
+    [\hat q,\hat p]=i.
+\]
+Instead of one coordinate and one momentum, there is one canonical pair at every
+point of space.
+
+\begin{definitionbox}
+The \emph{equal-time canonical commutation relations} are the basic operator
+relations between \(\hat\phi\) and \(\hat\pi\) at a fixed time. For bosonic
+fields they are commutators; for fermionic fields they will be replaced by
+anticommutators.
+\end{definitionbox}
+
+\section{Finite Box and Continuum Normalization}
+
+Chapter 1 used a finite box to keep the momentum labels discrete. In a finite
+box, one writes sums over momenta and Kronecker deltas. In infinite volume, one
+uses integrals and Dirac deltas. The replacement rules are schematically
+\[
+    \frac{1}{V}\sum_{\vect{k}}
+    \longrightarrow
+    \int\frac{\dd^3k}{(2\pi)^3},
+    \qquad
+    V\delta_{\vect{k},\vect{p}}
+    \longrightarrow
+    (2\pi)^3\delta^{(3)}(\vect{k}-\vect{p}).
+\]
+The continuum formulas below use the second convention. They look slightly more
+complicated than finite-box formulas, but they are the standard relativistic
+normalization used in scattering theory.
 
 \section{Mode Expansion of the Field Operator}
 
-The free Klein--Gordon equation admits plane-wave solutions. The relativistic
-energy of a mode with spatial momentum \(\vect{k}\) is
+The quantum field operator is expanded in positive- and negative-frequency
+solutions of the Klein--Gordon equation:
 \[
-    \omega_{\vect{k}}=\sqrt{\vect{k}^{\,2}+m^2}.
-\]
-A convenient expansion of the real scalar field operator is
-\[
-    \hat{\phi}(t,\vect{x})
+    \hat\phi(t,\vect{x})
     = \int \frac{\dd^3k}{(2\pi)^3}
       \frac{1}{\sqrt{2\omega_{\vect{k}}}}
       \left(
@@ -106,12 +146,28 @@ A convenient expansion of the real scalar field operator is
           +
           \hat a_{\vect{k}}^\dagger
           e^{i\omega_{\vect{k}}t-i\vect{k}\cdot\vect{x}}
-      \right).
+      \right),
 \]
-The corresponding momentum operator is obtained by differentiating with respect
-to time:
+where
 \[
-    \hat{\pi}(t,\vect{x})
+    \omega_{\vect{k}}=\sqrt{\vect{k}^{\,2}+m^2}.
+\]
+Since the field is real, \(\hat\phi\) is Hermitian:
+\[
+    \hat\phi(t,\vect{x})^\dagger=\hat\phi(t,\vect{x}).
+\]
+The appearance of both \(\hat a_{\vect{k}}\) and
+\(\hat a_{\vect{k}}^\dagger\) is the operator version of the reality condition
+on a classical real field.
+
+The conjugate momentum operator is
+\[
+    \hat\pi(t,\vect{x})
+    = \partial_t\hat\phi(t,\vect{x}),
+\]
+therefore
+\[
+    \hat\pi(t,\vect{x})
     = -i\int \frac{\dd^3k}{(2\pi)^3}
       \sqrt{\frac{\omega_{\vect{k}}}{2}}
       \left(
@@ -122,20 +178,12 @@ to time:
           e^{i\omega_{\vect{k}}t-i\vect{k}\cdot\vect{x}}
       \right).
 \]
-The normalization factors are chosen so that the canonical equal-time
-commutation relations take their standard form.
+The normalization factors are chosen so that the equal-time field commutators
+are satisfied.
 
-Because the field is real, the operator \(\hat{\phi}\) is Hermitian:
-\[
-    \hat{\phi}(t,\vect{x})^\dagger=\hat{\phi}(t,\vect{x}).
-\]
-This is why the expansion contains both \(\hat a_{\vect{k}}\) and
-\(\hat a_{\vect{k}}^\dagger\). The negative-frequency part is the Hermitian
-conjugate of the positive-frequency part.
+\section{Ladder-Operator Algebra}
 
-\section{Creation and Annihilation Operators for Momentum Modes}
-
-The operators \(\hat a_{\vect{k}}\) and \(\hat a_{\vect{k}}^\dagger\) satisfy
+The canonical field commutators imply
 \[
     [\hat a_{\vect{k}},\hat a_{\vect{p}}^\dagger]
     = (2\pi)^3\delta^{(3)}(\vect{k}-\vect{p}),
@@ -146,31 +194,22 @@ with
     \qquad
     [\hat a_{\vect{k}}^\dagger,\hat a_{\vect{p}}^\dagger]=0.
 \]
-These relations are the continuum analogue of
-\([\hat a_{\vect{k}},\hat a_{\vect{p}}^\dagger]
-=\delta_{\vect{k},\vect{p}}\) in a finite box.
+Conversely, these ladder-operator relations imply the equal-time commutators of
+\(\hat\phi\) and \(\hat\pi\). This is the precise connection between the
+canonical field algebra and the oscillator algebra of Chapter 1.
 
-The interpretation is inherited from the harmonic oscillator. The operator
-\(\hat a_{\vect{k}}^\dagger\) creates one quantum of momentum \(\vect{k}\), while
-\(\hat a_{\vect{k}}\) annihilates one such quantum. The word ``quantum'' here
-means an excitation of the free scalar field mode labelled by \(\vect{k}\).
+The operator \(\hat a_{\vect{k}}^\dagger\) creates a quantum in the momentum
+mode \(\vect{k}\), while \(\hat a_{\vect{k}}\) annihilates such a quantum. For
+the real scalar field there is only one kind of neutral scalar quantum.
 
-\begin{examplebox}
-If the field is placed in a finite box, the momentum labels are discrete and the
-commutator is \([\hat a_{\vect{k}},\hat a_{\vect{p}}^\dagger]
-=\delta_{\vect{k},\vect{p}}\). In infinite volume, the Kronecker delta is
-replaced by \((2\pi)^3\delta^{(3)}(\vect{k}-\vect{p})\).
-\end{examplebox}
-
-\section{Fock Space}
+\section{Fock Space Revisited}
 
 The free-field vacuum is defined by
 \[
     \hat a_{\vect{k}}|0\rangle=0
-    \qquad \text{for every } \vect{k}.
+    \qquad \text{for every }\vect{k}.
 \]
-The Fock space is built by acting on this vacuum with creation operators. A
-one-particle state is
+A one-particle momentum eigenstate is
 \[
     |\vect{k}\rangle
     = \hat a_{\vect{k}}^\dagger|0\rangle.
@@ -181,52 +220,34 @@ A two-particle state is
     = \hat a_{\vect{k}_1}^\dagger
       \hat a_{\vect{k}_2}^\dagger|0\rangle,
 \]
-and similarly for higher particle numbers.
+up to normalization. Since the creation operators commute, the scalar quanta are
+bosons.
 
-For a real scalar field the quanta are neutral bosons. The creation operators
-commute with one another, so exchanging two creation operators does not change
-the state. This is the operator origin of Bose symmetry in the free scalar
-field.
-
-\begin{definitionbox}
-The \emph{Fock space} of the free real scalar field is the direct sum of sectors
-with zero, one, two, and more scalar quanta. It is generated from the vacuum by
-all finite products of creation operators.
-\end{definitionbox}
-
-\section{Vacuum, One-Particle States, and Many-Particle States}
-
-The vacuum \(|0\rangle\) is not a classical field configuration. It is a vector
-in Hilbert space. It is characterized by the absence of free quanta, not by the
-absence of operators or fluctuations.
-
-A one-particle state \(|\vect{k}\rangle\) is an eigenstate of momentum and
-energy in the free theory. A general one-particle wave packet is a superposition
-of momentum eigenstates,
+A realistic one-particle state is usually a wave packet rather than a single
+momentum eigenstate:
 \[
     |f\rangle
-    = \int \frac{\dd^3k}{(2\pi)^3}\,f(\vect{k})
+    = \int\frac{\dd^3k}{(2\pi)^3}\,f(\vect{k})
       \hat a_{\vect{k}}^\dagger|0\rangle.
 \]
-The function \(f(\vect{k})\) controls the momentum profile of the state. A
-localized particle-like state is not a single momentum eigenstate, but a wave
-packet built from many momenta.
-
-Many-particle states are obtained by applying several creation operators. For
-example,
-\[
-    |f,g\rangle
-    = \int \frac{\dd^3k}{(2\pi)^3}
-      \int \frac{\dd^3p}{(2\pi)^3}
-      f(\vect{k})g(\vect{p})
-      \hat a_{\vect{k}}^\dagger\hat a_{\vect{p}}^\dagger|0\rangle.
-\]
-Because the field is bosonic, the state is symmetric under exchange of the two
-created quanta.
+The function \(f(\vect{k})\) describes the momentum profile of the state. This
+is the first place where the particle idea becomes more refined than the simple
+phrase ``one quantum of one mode.''
 
 \section{Hamiltonian and Momentum Operators}
 
-Substituting the mode expansion into the free Hamiltonian gives
+The quantum Hamiltonian is obtained from the classical Hamiltonian by replacing
+\(\phi\) and \(\pi\) by field operators:
+\[
+    \hat H
+    = \int \dd^3x\,
+    \left(
+        \frac{1}{2}\hat\pi^2
+        + \frac{1}{2}(\nabla\hat\phi)^2
+        + \frac{1}{2}m^2\hat\phi^{\,2}
+    \right).
+\]
+Substituting the mode expansion gives the formal expression
 \[
     \hat H
     = \int \frac{\dd^3k}{(2\pi)^3}\,
@@ -236,152 +257,153 @@ Substituting the mode expansion into the free Hamiltonian gives
           + \frac{1}{2}(2\pi)^3\delta^{(3)}(0)
       \right).
 \]
-The term proportional to \(\delta^{(3)}(0)\) is the infinite-volume version of
-the zero-point energy. In a finite box, the same expression appears as
-\[
-    E_0=\frac{1}{2}\sum_{\vect{k}}\omega_{\vect{k}}.
-\]
+The first term counts excitations; the second term is the continuum notation for
+the sum of oscillator zero-point energies.
 
 The spatial momentum operator is
 \[
     \hat{\vect{P}}
-    = \int \dd^3x\,\hat{\pi}\nabla\hat{\phi}.
+    = \int \dd^3x\,\hat\pi\nabla\hat\phi.
 \]
-In terms of the ladder operators it becomes, after the usual ordering convention,
+With the same ordering convention, it becomes
 \[
     \hat{\vect{P}}
     = \int \frac{\dd^3k}{(2\pi)^3}\,
       \vect{k}\,\hat a_{\vect{k}}^\dagger\hat a_{\vect{k}}.
 \]
-Thus the state \(\hat a_{\vect{k}}^\dagger|0\rangle\) has momentum \(\vect{k}\)
-and energy \(\omega_{\vect{k}}\), exactly as required by the relativistic
-relation
+Thus
+\[
+    \hat H\,\hat a_{\vect{k}}^\dagger|0\rangle
+    = \omega_{\vect{k}}\hat a_{\vect{k}}^\dagger|0\rangle
+    \quad \text{above the vacuum energy},
+\]
+and
+\[
+    \hat{\vect{P}}\,\hat a_{\vect{k}}^\dagger|0\rangle
+    = \vect{k}\,\hat a_{\vect{k}}^\dagger|0\rangle.
+\]
+The dispersion relation is
 \[
     \omega_{\vect{k}}^2=\vect{k}^{\,2}+m^2.
 \]
+This is why \(m\) is interpreted as the mass of the scalar quantum.
 
 \section{Normal Ordering}
 
-The infinite constant in the Hamiltonian motivates a useful convention. The
-normal-ordered form of an operator is obtained by moving all creation operators
-to the left of all annihilation operators. For the oscillator product one writes
+The vacuum-energy term in \(\hat H\) is infinite in the continuum limit. For the
+free theory, it is common to define the normal-ordered Hamiltonian by moving all
+creation operators to the left of all annihilation operators:
 \[
     :\hat a_{\vect{k}}\hat a_{\vect{p}}^\dagger:
     = \hat a_{\vect{p}}^\dagger\hat a_{\vect{k}}.
 \]
-The normal-ordered Hamiltonian of the free scalar field is
+Then
 \[
     :\hat H:
     = \int \frac{\dd^3k}{(2\pi)^3}\,
-      \omega_{\vect{k}}
-      \hat a_{\vect{k}}^\dagger\hat a_{\vect{k}}.
+      \omega_{\vect{k}}\hat a_{\vect{k}}^\dagger\hat a_{\vect{k}},
 \]
-It satisfies
+and
 \[
-    \langle 0|:\hat H:|0\rangle=0.
+    \langle0|:\hat H:|0\rangle=0.
 \]
+Normal ordering removes the constant free vacuum energy from this Hamiltonian.
+It does not remove all divergences of interacting quantum field theory. It is a
+useful convention at the free-field level, not a substitute for
+renormalization.
 
-Normal ordering is not a universal cure for all infinities. It is a clean way
-to remove the constant vacuum energy of a free field when only energy
-differences above the free vacuum are relevant. Interacting theories require a
-more systematic renormalization procedure.
+\section{Zero-Point Energy}
 
-\section{Zero-Point Energy and Its Interpretation}
-
-Every harmonic oscillator contributes \(\omega/2\) to its ground-state energy.
-A field has one oscillator for every momentum mode, so the formal zero-point
-energy is
+In a finite box, the vacuum energy of the free scalar field is
 \[
-    E_0=\frac{1}{2}\sum_{\vect{k}}\omega_{\vect{k}}
+    E_0
+    = \frac{1}{2}\sum_{\vect{k}}\omega_{\vect{k}}.
 \]
-in a finite box, or
+In infinite-volume notation this becomes
 \[
-    E_0=\frac{V}{2}\int\frac{\dd^3k}{(2\pi)^3}\,\omega_{\vect{k}}
+    E_0
+    = \frac{V}{2}\int\frac{\dd^3k}{(2\pi)^3}\,\omega_{\vect{k}}.
 \]
-in infinite-volume notation. This expression diverges at large
-\(|\vect{k}|\).
+The integral diverges at large momentum. The divergence is a reminder that a
+field has infinitely many short-distance degrees of freedom.
 
-In non-gravitational scattering calculations, a constant shift of the energy is
-usually unobservable, so normal ordering is often sufficient at the free-field
-level. Conceptually, however, the divergence is important. It shows that a field
-has infinitely many short-distance degrees of freedom. Later chapters will treat
-such divergences by regularization and renormalization rather than by simply
-ignoring them.
+For many non-gravitational scattering problems, only energy differences above
+the free vacuum matter, and normal ordering is sufficient. In contexts where
+vacuum energy gravitates, or where the vacuum itself changes, the issue becomes
+more subtle. The present course will return to this point when discussing
+renormalization and vacuum structure.
 
-\section{Field Operators as Operator-Valued Distributions}
+\section{Fields as Operator-Valued Distributions}
 
-The notation \(\hat{\phi}(x)\) suggests an operator at a spacetime point. This
-is useful notation, but it hides a subtle fact: quantum fields are really
-operator-valued distributions. They become well-defined operators only after
-being smeared with suitable test functions.
+The notation \(\hat\phi(x)\) suggests an operator at a point. This notation is
+useful, but local quantum fields are more accurately understood as
+operator-valued distributions. They become well-defined only after smearing with
+test functions.
 
-Given a smooth function \(f(\vect{x})\), define a smeared field at fixed time by
+At fixed time, a smeared field is
 \[
-    \hat{\phi}(f)
-    = \int \dd^3x\, f(\vect{x})\hat{\phi}(t,\vect{x}).
+    \hat\phi(f)
+    = \int\dd^3x\,f(\vect{x})\hat\phi(t,\vect{x}).
 \]
-This object is better behaved than the formal point operator
-\(\hat{\phi}(t,\vect{x})\). Products of fields at the same point, such as
-\(\hat{\phi}(x)^2\), are generally singular and require definition by a
-limiting or renormalization procedure.
+Products such as \(\hat\phi(x)^2\) at the same spacetime point are generally
+singular and require a prescription. This is one of the structural reasons why
+renormalization appears in interacting field theory.
 
-This is not merely a mathematical technicality. The singular behavior of local
-products is one of the reasons renormalization is unavoidable in interacting
-quantum field theory.
+This point also clarifies the role of the mode expansion. The formula for
+\(\hat\phi(t,\vect{x})\) is a compact way to encode how the field acts after it
+has been smeared. It should not be treated as an ordinary function with operator
+coefficients.
 
-\section{Causality and Spacelike Commutators}
+\section{Microcausality}
 
-Relativistic QFT must respect the causal structure of spacetime. For a scalar
-field, the basic causality condition is that field operators commute at
-spacelike separation:
+Relativistic quantum field theory must respect the causal structure of
+spacetime. For a scalar field, the basic local causality condition is
 \[
-    [\hat{\phi}(x),\hat{\phi}(y)]=0
+    [\hat\phi(x),\hat\phi(y)]=0
     \qquad \text{if}\qquad (x-y)^2<0.
 \]
-This property is called microcausality. It means that measurements associated
-with spacelike separated regions cannot influence one another through the order
-in which the corresponding operators are applied.
+This condition is called \emph{microcausality}. It says that field observables
+associated with spacelike separated regions commute.
 
-The equal-time commutator
+For the free scalar field one can write
 \[
-    [\hat{\phi}(t,\vect{x}),\hat{\phi}(t,\vect{y})]=0
+    [\hat\phi(x),\hat\phi(y)]
+    = i\Delta(x-y),
 \]
-is the simplest special case. The nontrivial statement is that the commutator
-also vanishes for all spacelike separations, not only for equal times.
-
-For the free scalar field, the commutator can be written as a c-number function,
+where \(\Delta\) is the Pauli--Jordan commutator function. This function
+vanishes outside the light cone. The equal-time relation
 \[
-    [\hat{\phi}(x),\hat{\phi}(y)] = i\Delta(x-y),
+    [\hat\phi(t,\vect{x}),\hat\phi(t,\vect{y})]=0
 \]
-where \(\Delta\) is the Pauli--Jordan commutator function. Lorentz invariance
-and the mass-shell condition imply that \(\Delta(x-y)=0\) outside the light cone.
-This is the operator statement that the quantized scalar field is compatible
-with relativistic causality.
+is therefore only the simplest special case of the full spacetime causality
+condition.
 
 \begin{summarybox}
-Canonical quantization of the real scalar field begins with equal-time
-commutators for \(\hat{\phi}\) and \(\hat{\pi}\). The free field is expanded in
-momentum modes with creation and annihilation operators. Acting with creation
-operators on the vacuum builds Fock space, while the Hamiltonian and momentum
-operators assign energy \(\omega_{\vect{k}}\) and momentum \(\vect{k}\) to each
-one-particle state. Normal ordering removes the free vacuum constant, but the
-deeper lesson is that local quantum fields are operator-valued distributions and
-must satisfy microcausality at spacelike separation.
+Canonical quantization begins with \(\hat\phi\) and \(\hat\pi\), not directly
+with particles. The equal-time commutation relations determine the ladder
+operator algebra in the mode expansion. The free-field vacuum and Fock space are
+then recovered from that algebra, matching the oscillator picture of Chapter 1.
+The new lessons are the precise continuum normalization, the Hamiltonian and
+momentum operators, normal ordering, the distributional nature of fields, and
+microcausality.
 \end{summarybox}
 
 \section{Chapter Checklist}
 
 After reading this chapter, one should be able to:
 \begin{itemize}
-    \item write the equal-time commutation relations of the real scalar field;
-    \item derive the canonical momentum from the free scalar Lagrangian;
-    \item explain the mode expansion of \(\hat{\phi}\) and \(\hat{\pi}\);
-    \item state the commutators of \(\hat a_{\vect{k}}\) and
-    \(\hat a_{\vect{k}}^\dagger\);
-    \item construct vacuum, one-particle, and many-particle states;
-    \item identify the Hamiltonian and momentum operators in terms of number
+    \item write the classical Lagrangian and Hamiltonian of the free real scalar
+    field;
+    \item derive the conjugate momentum \(\pi=\dot\phi\);
+    \item state the equal-time canonical commutation relations;
+    \item write the mode expansions of \(\hat\phi\) and \(\hat\pi\);
+    \item derive the ladder-operator commutators from the canonical field
+    algebra;
+    \item construct the vacuum, one-particle states, wave packets, and
+    many-particle states;
+    \item express \(\hat H\) and \(\hat{\vect{P}}\) in terms of ladder
     operators;
-    \item explain what normal ordering does and what it does not do;
-    \item explain why local fields should be treated as distributions;
-    \item state the microcausality condition for a relativistic scalar field.
+    \item explain what normal ordering removes and what it does not remove;
+    \item explain why fields are operator-valued distributions;
+    \item state the microcausality condition for a scalar field.
 \end{itemize}
