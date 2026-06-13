@@ -1,19 +1,324 @@
 \chapter{The Complex Scalar Field and Antiparticles}
 
 \begin{remarkbox}
-This chapter is reserved by the course plan in \texttt{ideas\_Quantum\_Field\_Theory.md}. It will be developed in small increments.
+The real scalar field has one neutral quantum for each momentum mode. The
+complex scalar field is the next step: the field is no longer Hermitian, and its
+quantization produces two independent kinds of quanta. They are naturally
+interpreted as particles and antiparticles.
 \end{remarkbox}
 
-\section{Planned Sections}
+\section{From a Real Field to a Complex Field}
 
+Chapter 2 quantized a real scalar field. The reality condition
+\(\hat\phi^\dagger=\hat\phi\) forced the same field operator to contain both
+annihilation and creation operators. A complex scalar field is different. The
+field \(\phi\) and its Hermitian conjugate \(\phi^\dagger\) are independent
+classical variables before quantization.
+
+One may think of a complex scalar field as two real scalar fields packaged into
+one object:
+\[
+    \phi
+    = \frac{1}{\sqrt{2}}(\phi_1+i\phi_2),
+    \qquad
+    \phi^\dagger
+    = \frac{1}{\sqrt{2}}(\phi_1-i\phi_2).
+\]
+The important new feature is that the theory has a global phase symmetry. The
+field may be rotated by a constant phase,
+\[
+    \phi\longrightarrow e^{-i\alpha}\phi,
+    \qquad
+    \phi^\dagger\longrightarrow e^{i\alpha}\phi^\dagger.
+\]
+By Noether's theorem this symmetry gives a conserved charge. In the quantum
+theory, that charge will distinguish particles from antiparticles.
+
+\section{Classical Lagrangian and Canonical Momenta}
+
+The free complex scalar field is described by
+\[
+    \mathcal{L}
+    = \partial_\mu\phi^\dagger\partial^\mu\phi
+      - m^2\phi^\dagger\phi.
+\]
+In terms of time and space derivatives,
+\[
+    \mathcal{L}
+    = \dot\phi^\dagger\dot\phi
+      - \nabla\phi^\dagger\cdot\nabla\phi
+      - m^2\phi^\dagger\phi.
+\]
+The conjugate momenta are
+\[
+    \pi
+    = \frac{\partial\mathcal{L}}{\partial\dot\phi}
+    = \dot\phi^\dagger,
+    \qquad
+    \pi^\dagger
+    = \frac{\partial\mathcal{L}}{\partial\dot\phi^\dagger}
+    = \dot\phi.
+\]
+Thus \(\pi\) is conjugate to \(\phi\), while \(\pi^\dagger\) is conjugate to
+\(\phi^\dagger\).
+
+The equations of motion are
+\[
+    (\Box+m^2)\phi=0,
+    \qquad
+    (\Box+m^2)\phi^\dagger=0.
+\]
+Both components satisfy the Klein--Gordon equation, but the quantum
+interpretation will be richer than in the real case.
+
+\section{Canonical Commutation Relations}
+
+Canonical quantization promotes
+\(\phi,\phi^\dagger,\pi,\pi^\dagger\) to operators. The nonzero equal-time
+commutators are
+\[
+    [\hat\phi(t,\vect{x}),\hat\pi(t,\vect{y})]
+    = i\delta^{(3)}(\vect{x}-\vect{y}),
+\]
+and
+\[
+    [\hat\phi^\dagger(t,\vect{x}),\hat\pi^\dagger(t,\vect{y})]
+    = i\delta^{(3)}(\vect{x}-\vect{y}).
+\]
+All other equal-time commutators vanish. In particular,
+\[
+    [\hat\phi(t,\vect{x}),\hat\pi^\dagger(t,\vect{y})]=0,
+    \qquad
+    [\hat\phi^\dagger(t,\vect{x}),\hat\pi(t,\vect{y})]=0.
+\]
+This is the canonical field algebra for a charged bosonic scalar field.
+
+\section{Mode Expansion}
+
+The complex field is not Hermitian, so its mode expansion cannot be the same as
+the real scalar expansion. The standard continuum expansion is
+\[
+    \hat\phi(t,\vect{x})
+    = \int\frac{\dd^3k}{(2\pi)^3}
+      \frac{1}{\sqrt{2\omega_{\vect{k}}}}
+      \left(
+          \hat a_{\vect{k}}
+          e^{-i\omega_{\vect{k}}t+i\vect{k}\cdot\vect{x}}
+          +
+          \hat b_{\vect{k}}^\dagger
+          e^{i\omega_{\vect{k}}t-i\vect{k}\cdot\vect{x}}
+      \right),
+\]
+where
+\[
+    \omega_{\vect{k}}=\sqrt{\vect{k}^{\,2}+m^2}.
+\]
+The Hermitian conjugate field is
+\[
+    \hat\phi^\dagger(t,\vect{x})
+    = \int\frac{\dd^3k}{(2\pi)^3}
+      \frac{1}{\sqrt{2\omega_{\vect{k}}}}
+      \left(
+          \hat a_{\vect{k}}^\dagger
+          e^{i\omega_{\vect{k}}t-i\vect{k}\cdot\vect{x}}
+          +
+          \hat b_{\vect{k}}
+          e^{-i\omega_{\vect{k}}t+i\vect{k}\cdot\vect{x}}
+      \right).
+\]
+There are now two independent sets of ladder operators: the \(a\)-operators and
+the \(b\)-operators. This is the algebraic origin of antiparticles in the
+complex scalar theory.
+
+\section{Two Independent Oscillator Families}
+
+The nonzero ladder-operator commutators are
+\[
+    [\hat a_{\vect{k}},\hat a_{\vect{p}}^\dagger]
+    = (2\pi)^3\delta^{(3)}(\vect{k}-\vect{p}),
+\]
+and
+\[
+    [\hat b_{\vect{k}},\hat b_{\vect{p}}^\dagger]
+    = (2\pi)^3\delta^{(3)}(\vect{k}-\vect{p}).
+\]
+The two families commute with each other:
+\[
+    [\hat a_{\vect{k}},\hat b_{\vect{p}}]=0,
+    \qquad
+    [\hat a_{\vect{k}},\hat b_{\vect{p}}^\dagger]=0,
+\]
+with similar relations for their Hermitian conjugates.
+
+The vacuum is defined by
+\[
+    \hat a_{\vect{k}}|0\rangle=0,
+    \qquad
+    \hat b_{\vect{k}}|0\rangle=0
+    \qquad \text{for every }\vect{k}.
+\]
+There are two basic one-particle states:
+\[
+    |\vect{k};a\rangle
+    = \hat a_{\vect{k}}^\dagger|0\rangle,
+    \qquad
+    |\vect{k};b\rangle
+    = \hat b_{\vect{k}}^\dagger|0\rangle.
+\]
+They have the same mass and the same energy-momentum relation, but opposite
+charges.
+
+\section{Hamiltonian and Momentum}
+
+After normal ordering, the Hamiltonian of the free complex scalar field is
+\[
+    :\hat H:
+    = \int\frac{\dd^3k}{(2\pi)^3}\,
+      \omega_{\vect{k}}
+      \left(
+          \hat a_{\vect{k}}^\dagger\hat a_{\vect{k}}
+          +
+          \hat b_{\vect{k}}^\dagger\hat b_{\vect{k}}
+      \right).
+\]
+The momentum operator is
+\[
+    :\hat{\vect{P}}:
+    = \int\frac{\dd^3k}{(2\pi)^3}\,
+      \vect{k}
+      \left(
+          \hat a_{\vect{k}}^\dagger\hat a_{\vect{k}}
+          +
+          \hat b_{\vect{k}}^\dagger\hat b_{\vect{k}}
+      \right).
+\]
+Both kinds of quanta carry positive energy. The difference between them is not
+energy or mass, but charge.
+
+\section{The Charge Operator}
+
+The global phase symmetry gives a conserved current. With the convention
+\(\phi\to e^{-i\alpha}\phi\), the corresponding quantum charge may be written,
+after normal ordering, as
+\[
+    \hat Q
+    = \int\frac{\dd^3k}{(2\pi)^3}
+      \left(
+          \hat a_{\vect{k}}^\dagger\hat a_{\vect{k}}
+          -
+          \hat b_{\vect{k}}^\dagger\hat b_{\vect{k}}
+      \right).
+\]
+This convention gives
+\[
+    \hat Q\,\hat a_{\vect{k}}^\dagger|0\rangle
+    = +\hat a_{\vect{k}}^\dagger|0\rangle,
+    \qquad
+    \hat Q\,\hat b_{\vect{k}}^\dagger|0\rangle
+    = -\hat b_{\vect{k}}^\dagger|0\rangle.
+\]
+Thus the \(a\)-quanta have charge \(+1\), while the \(b\)-quanta have charge
+\(-1\). They are particle and antiparticle excitations of the same complex
+field.
+
+The charge operator also generates the phase transformation of the field:
+\[
+    [\hat Q,\hat\phi(x)] = -\hat\phi(x),
+    \qquad
+    [\hat Q,\hat\phi^\dagger(x)] = +\hat\phi^\dagger(x).
+\]
+This is the operator statement that \(\hat\phi\) carries charge \(-1\) as an
+operator, even though \(\hat a^\dagger\) creates a charge \(+1\) state in the
+chosen convention.
+
+\section{Positive and Negative Frequency Revisited}
+
+In the real scalar field, the negative-frequency part was simply the Hermitian
+conjugate of the positive-frequency part of the same field. In the complex
+field, the negative-frequency part of \(\hat\phi\) contains
+\(\hat b^\dagger\), not \(\hat a^\dagger\). This is the crucial difference.
+
+The field \(\hat\phi\) can annihilate an \(a\)-particle or create a
+\(b\)-antiparticle. The conjugate field \(\hat\phi^\dagger\) can create an
+\(a\)-particle or annihilate a \(b\)-antiparticle. Symbolically,
+\[
+    \hat\phi \sim \hat a + \hat b^\dagger,
+    \qquad
+    \hat\phi^\dagger \sim \hat a^\dagger + \hat b.
+\]
+This is one of the cleanest ways to see why relativistic quantum fields contain
+antiparticles.
+
+\section{Why Antiparticles Appear Naturally}
+
+The appearance of antiparticles is not an optional addition. It follows from
+combining three requirements:
 \begin{itemize}
-    \item Quantizing the complex scalar field.
-    \item Two independent sets of ladder operators.
-    \item Particles and antiparticles.
-    \item Charge operator.
-    \item Positive and negative frequency modes revisited.
-    \item Why antiparticles appear naturally.
-    \item Complex scalar propagator.
-    \item Charged quanta and global symmetry.
-    \item Physical interpretation of the Fock space.
+    \item relativistic positive-energy modes;
+    \item canonical quantization;
+    \item a complex field with a conserved charge.
+\end{itemize}
+The field must contain both positive- and negative-frequency solutions in order
+to be local and to satisfy the canonical commutation relations. For a charged
+field, those two frequency sectors are associated with two independent oscillator
+families. The quanta created by the second family have the opposite charge and
+are interpreted as antiparticles.
+
+\section{Complex Scalar Propagator}
+
+The natural two-point function of the complex scalar field is
+\[
+    D_F(x-y)
+    = \langle0|T\hat\phi(x)\hat\phi^\dagger(y)|0\rangle.
+\]
+It has the same momentum-space denominator as the real scalar propagator:
+\[
+    D_F(x-y)
+    = \int\frac{\dd^4k}{(2\pi)^4}\,
+      \frac{i}{k^2-m^2+i\epsilon}
+      e^{-ik\cdot(x-y)}.
+\]
+The difference is in the charge flow. The propagator connects \(\phi\) with
+\(\phi^\dagger\), because charge must be conserved. Correlators such as
+\(\langle0|T\hat\phi(x)\hat\phi(y)|0\rangle\) vanish in the free theory when the
+vacuum has zero charge.
+
+\section{Physical Interpretation of the Fock Space}
+
+The Fock space of the complex scalar field contains particles, antiparticles,
+and arbitrary multiparticle states. Examples are
+\[
+    \hat a_{\vect{k}}^\dagger|0\rangle,
+    \qquad
+    \hat b_{\vect{p}}^\dagger|0\rangle,
+    \qquad
+    \hat a_{\vect{k}}^\dagger\hat b_{\vect{p}}^\dagger|0\rangle.
+\]
+The last state contains one particle and one antiparticle. Its total charge is
+zero, but it is not the vacuum. Charge conservation restricts which transitions
+are possible once interactions are introduced.
+
+\begin{summarybox}
+A complex scalar field is equivalent to two real scalar degrees of freedom, but
+its global phase symmetry gives a conserved charge. Quantization produces two
+independent oscillator families. One creates particles and the other creates
+antiparticles, with equal mass and opposite charge. The field \(\hat\phi\)
+contains an annihilation operator for particles and a creation operator for
+antiparticles, while \(\hat\phi^\dagger\) does the reverse.
+\end{summarybox}
+
+\section{Chapter Checklist}
+
+After reading this chapter, one should be able to:
+\begin{itemize}
+    \item explain why \(\phi\) and \(\phi^\dagger\) are independent field
+    variables before quantization;
+    \item write the canonical momenta of the complex scalar field;
+    \item state the equal-time commutation relations;
+    \item write the mode expansions of \(\hat\phi\) and \(\hat\phi^\dagger\);
+    \item explain why two independent ladder-operator families appear;
+    \item construct particle and antiparticle states;
+    \item write the charge operator and interpret its eigenvalues;
+    \item explain why antiparticles are required in a relativistic charged field;
+    \item identify the charge structure of the complex scalar propagator.
 \end{itemize}
