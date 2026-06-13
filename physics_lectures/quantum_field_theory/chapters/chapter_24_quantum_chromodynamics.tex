@@ -1,9 +1,365 @@
 \chapter{Quantum Chromodynamics}
 
 \begin{remarkbox}
-Placeholder chapter from the QFT course plan. Detailed lecture text will be added later.
+Quantum chromodynamics is the non-Abelian gauge theory of the strong
+interaction. Its gauge group is \(SU(3)\), its matter fields are quarks, and its
+gauge bosons are gluons. QCD is weakly coupled at short distances and strongly
+coupled at long distances.
 \end{remarkbox}
 
-\section{Planned Role}
+\section{QCD as an \texorpdfstring{\(SU(3)\)}{SU(3)} Gauge Theory}
 
-This chapter will introduce QCD field content, color charge, QCD Feynman rules, gluon self-interactions, asymptotic freedom, confinement, jets, and perturbative versus nonperturbative regimes.
+QCD is a Yang--Mills theory with gauge group
+\[
+    SU(3)_{\mathrm{color}}.
+\]
+The fundamental charges are called color charges. Quarks transform in the
+fundamental representation of \(SU(3)\), while gluons transform in the adjoint
+representation.
+
+The QCD Lagrangian is
+\[
+    \mathcal{L}_{\mathrm{QCD}}
+    = -\frac{1}{4}G_{\mu\nu}^aG^{a\mu\nu}
+      +\sum_f \bar q_f(i\gamma^\mu D_\mu-m_f)q_f.
+\]
+Here \(f\) labels quark flavors, such as \(u,d,s,c,b,t\). The covariant
+derivative is
+\[
+    D_\mu=\partial_\mu+ig_s G_\mu^a T^a,
+\]
+where \(g_s\) is the strong coupling, \(G_\mu^a\) are the gluon fields, and
+\(T^a\) are \(SU(3)\) generators in the fundamental representation.
+
+\section{Color Charge}
+
+Color is the charge of the strong interaction. A quark field carries a color
+index:
+\[
+    q_i,
+    \qquad
+    i=1,2,3.
+\]
+The three values are often called red, green, and blue, but these names are only
+labels for basis vectors in an internal vector space.
+
+Gluons carry adjoint color indices:
+\[
+    G_\mu^a,
+    \qquad
+    a=1,\ldots,8.
+\]
+There are eight gluons because the dimension of the adjoint representation of
+\(SU(3)\) is eight.
+
+Physical isolated states are color singlets. Examples include mesons,
+\[
+    \bar q_i q_i,
+\]
+and baryons,
+\[
+    \epsilon^{ijk}q_i q_j q_k.
+\]
+This singlet structure is closely related to confinement.
+
+\section{The Gluon Field Strength}
+
+The QCD field strength is
+\[
+    G_{\mu\nu}^a
+    = \partial_\mu G_\nu^a-\partial_\nu G_\mu^a
+      -g_s f^{abc}G_\mu^bG_\nu^c,
+\]
+up to sign conventions for the covariant derivative. The nonlinear term is the
+source of gluon self-interactions.
+
+The pure gauge part of the Lagrangian,
+\[
+    -\frac{1}{4}G_{\mu\nu}^aG^{a\mu\nu},
+\]
+contains both three-gluon and four-gluon vertices. This is the main structural
+difference between QCD and QED. Photons do not carry electric charge, but gluons
+carry color charge.
+
+\section{Gauge Fixing and Ghosts}
+
+Perturbative QCD requires gauge fixing. In a covariant gauge, one adds
+\[
+    \mathcal{L}_{\mathrm{gf}}
+    = -\frac{1}{2\xi}(\partial^\mu G_\mu^a)^2.
+\]
+The Faddeev--Popov ghost Lagrangian is
+\[
+    \mathcal{L}_{\mathrm{gh}}
+    = -\bar c^a\partial^\mu D_\mu^{ab}c^b,
+\]
+where
+\[
+    D_\mu^{ab}=\delta^{ab}\partial_\mu+g_s f^{acb}G_\mu^c.
+\]
+Unlike in QED, ghosts do not decouple. They interact with gluons and are needed
+for consistency of loop calculations.
+
+BRST symmetry organizes the gauge-fixed QCD action and ensures that physical
+observables are gauge independent.
+
+\section{Basic QCD Feynman Rules}
+
+The quark propagator is
+\[
+    \frac{i(\gamma^\mu p_\mu+m_f)}{p^2-m_f^2+i\epsilon}\delta_{ij}.
+\]
+The gluon propagator in Feynman gauge is
+\[
+    \frac{-i\eta_{\mu\nu}\delta^{ab}}{k^2+i\epsilon}.
+\]
+The quark--gluon vertex is
+\[
+    -ig_s\gamma^\mu T^a_{ij}.
+\]
+In addition, QCD has three-gluon, four-gluon, and ghost--gluon vertices.
+
+Every QCD diagram has a Lorentz part, a spinor part if quarks are present, and a
+color part. The color algebra is as important as the momentum and spinor algebra.
+Useful identities include
+\[
+    \operatorname{tr}(T^aT^b)=\frac{1}{2}\delta^{ab}
+\]
+and
+\[
+    [T^a,T^b]=if^{abc}T^c.
+\]
+
+\section{Quark--Quark Scattering}
+
+At high energies, quark scattering can be treated perturbatively. A basic process
+is quark--quark scattering through one-gluon exchange:
+\[
+    q q \longrightarrow q q.
+\]
+The amplitude contains the structure
+\[
+    [\bar u(p_3)(-ig_s\gamma^\mu T^a)u(p_1)]
+    \frac{-i\eta_{\mu\nu}}{q^2+i\epsilon}
+    [\bar u(p_4)(-ig_s\gamma^\nu T^a)u(p_2)].
+\]
+This resembles electron--muon scattering in QED, but with color matrices and the
+strong coupling replacing electric charge.
+
+For identical quarks, exchange diagrams and fermionic signs must be included.
+For physical hadrons, quarks are confined, so this partonic calculation is only
+one ingredient in a full prediction.
+
+\section{Gluon Self-Interactions}
+
+Gluon self-interactions are responsible for much of QCD's distinctive behavior.
+The three-gluon vertex is proportional to
+\[
+    g_s f^{abc},
+\]
+and the four-gluon vertex is proportional to
+\[
+    g_s^2 f^{abe}f^{cde}
+\]
+with permutations of Lorentz and color indices.
+
+Because gluons carry color charge, they interact with other gluons. This creates
+nonlinear field dynamics even in the absence of quarks.
+
+The same self-interactions that complicate calculations also drive asymptotic
+freedom and confinement. They make QCD qualitatively different from QED.
+
+\section{Asymptotic Freedom}
+
+For QCD with \(N_c=3\) colors and \(n_f\) active quark flavors, the leading beta
+function is
+\[
+    \beta(g_s)
+    = -\frac{g_s^3}{16\pi^2}
+      \left(11-\frac{2}{3}n_f\right)+\cdots.
+\]
+For \(n_f<17\), the coefficient is positive inside the parentheses, so the beta
+function is negative. Therefore the strong coupling decreases at high energies.
+
+In terms of
+\[
+    \alpha_s(\mu)=\frac{g_s(\mu)^2}{4\pi},
+\]
+one finds approximately
+\[
+    \alpha_s(\mu)\sim \frac{1}{\ln(\mu^2/\Lambda_{\mathrm{QCD}}^2)}.
+\]
+At large \(\mu\), the coupling is small. This is why perturbative QCD works for
+high-energy processes.
+
+\section{Dimensional Transmutation in QCD}
+
+Classically, massless QCD has a dimensionless coupling. Quantum mechanically,
+the running coupling introduces a scale
+\[
+    \Lambda_{\mathrm{QCD}}.
+\]
+This is dimensional transmutation. Instead of specifying a dimensionless bare
+coupling, the low-energy theory is characterized by a physical scale.
+
+The scale \(\Lambda_{\mathrm{QCD}}\) sets the order of hadronic masses and the
+onset of strong coupling. It is not the mass of a single particle. It is the
+scale at which the perturbative coupling becomes large and nonperturbative
+physics becomes important.
+
+\section{Confinement}
+
+At long distances, QCD becomes strongly coupled. Isolated colored particles are
+not observed. Instead, physical states are color singlets: mesons, baryons,
+glueballs, and more complicated hadronic states.
+
+A qualitative picture is that the potential between heavy quarks grows roughly
+linearly at large separation:
+\[
+    V(r)\sim \sigma r,
+\]
+where \(\sigma\) is the string tension. Pulling quarks apart stores energy in the
+color flux tube until it becomes energetically favorable to produce new quark--
+antiquark pairs.
+
+Confinement is not derived by ordinary weak-coupling perturbation theory. It is a
+nonperturbative phenomenon, studied with lattice QCD and other methods.
+
+\section{Chiral Symmetry and Its Breaking}
+
+For light quarks, QCD has approximate chiral symmetries. If the quark masses are
+neglected, left- and right-handed quarks can transform independently:
+\[
+    q_L\longrightarrow L q_L,
+    \qquad
+    q_R\longrightarrow R q_R.
+\]
+The QCD vacuum does not preserve the full chiral symmetry. Instead, it develops a
+quark condensate,
+\[
+    \langle\bar q q\rangle\neq0,
+\]
+which breaks chiral symmetry spontaneously.
+
+The associated light pseudoscalar mesons, such as pions, are interpreted as
+pseudo-Goldstone bosons. Their small masses reflect the fact that light quark
+masses explicitly but weakly break chiral symmetry.
+
+\section{Jets and Partons}
+
+At high energies, asymptotic freedom allows quarks and gluons to behave like
+weakly interacting partons during short-distance scattering. However, colored
+partons cannot appear as isolated final particles. They hadronize into jets:
+collimated sprays of color-singlet hadrons.
+
+A collider event with jets is therefore interpreted in two stages:
+\[
+    \text{short-distance parton process}
+    \longrightarrow
+    \text{parton shower}
+    \longrightarrow
+    \text{hadronization into jets}.
+\]
+The short-distance process can often be computed perturbatively. The shower is
+partly perturbative. Hadronization is nonperturbative and must be modeled or
+extracted from data.
+
+\section{Factorization}
+
+Hadron collisions involve bound states, not free quarks and gluons. The
+factorization idea separates short-distance partonic scattering from long-
+distance hadronic structure.
+
+A schematic factorized cross section is
+\[
+    \sigma(pp\to X)
+    = \sum_{i,j}\int\dd x_1\dd x_2\,
+      f_{i/p}(x_1,\mu)f_{j/p}(x_2,\mu)
+      \hat\sigma_{ij\to X}(x_1,x_2,\mu).
+\]
+The functions \(f_{i/p}(x,\mu)\) are parton distribution functions. They encode
+the probability of finding a parton \(i\) carrying a fraction \(x\) of the
+proton momentum at scale \(\mu\). The short-distance cross section
+\(\hat\sigma\) is computed perturbatively.
+
+Factorization is one of the reasons QCD can make predictions for hadron
+colliders despite confinement.
+
+\section{Perturbative and Nonperturbative Regimes}
+
+QCD has two faces. At high momentum transfer,
+\[
+    Q\gg \Lambda_{\mathrm{QCD}},
+\]
+the coupling is small and perturbation theory is useful. At low momentum
+transfer,
+\[
+    Q\sim \Lambda_{\mathrm{QCD}},
+\]
+the coupling is large and perturbation theory fails.
+
+Nonperturbative QCD includes confinement, hadron masses, chiral symmetry
+breaking, and the detailed structure of hadrons. Perturbative QCD describes
+short-distance scattering, high-energy jets, hard emissions, and the scale
+evolution of parton distributions.
+
+A realistic QCD prediction often combines both regimes through factorization,
+phenomenological inputs, and numerical methods.
+
+\section{Lattice QCD}
+
+Lattice QCD defines the theory nonperturbatively by discretizing spacetime. Gauge
+fields are represented by group-valued link variables, and the path integral is
+evaluated numerically in Euclidean signature.
+
+The lattice spacing \(a\) acts as a UV regulator. The continuum theory is
+recovered by taking
+\[
+    a\to0
+\]
+while tuning parameters appropriately. Lattice QCD can compute hadron masses,
+decay constants, matrix elements, and other nonperturbative quantities.
+
+Although lattice QCD is technically demanding, it provides the most direct
+nonperturbative definition of QCD currently used in practice.
+
+\section{QCD and the Standard Model}
+
+QCD is one of the three gauge sectors of the Standard Model. Its gauge group is
+part of
+\[
+    SU(3)_c\times SU(2)_L\times U(1)_Y.
+\]
+The \(SU(3)_c\) factor is color. Quarks carry color charge; leptons do not.
+Gluons couple only to colored particles.
+
+The strength and structure of QCD shape much of observed matter. Most of the
+mass of protons and neutrons comes not from the bare quark masses, but from QCD
+binding energy and dynamics.
+
+\begin{summarybox}
+QCD is the \(SU(3)\) non-Abelian gauge theory of quarks and gluons. Quarks carry
+fundamental color charge, gluons carry adjoint color charge, and physical
+isolated states are color singlets. Gluon self-interactions make the theory
+asymptotically free at short distances and strongly coupled at long distances.
+Confinement, chiral symmetry breaking, jets, factorization, and lattice QCD are
+central features of the theory.
+\end{summarybox}
+
+\section{Chapter Checklist}
+
+After reading this chapter, one should be able to:
+\begin{itemize}
+    \item write the QCD Lagrangian;
+    \item explain color charge and the role of \(SU(3)\);
+    \item distinguish quarks and gluons by representation;
+    \item write the gluon field strength;
+    \item identify the basic QCD Feynman rules;
+    \item explain why gluons self-interact;
+    \item state the leading qualitative form of the QCD beta function;
+    \item explain asymptotic freedom and dimensional transmutation;
+    \item describe confinement and color singlets;
+    \item explain the idea of jets and partons;
+    \item state the basic meaning of factorization;
+    \item distinguish perturbative and nonperturbative QCD regimes.
+\end{itemize}
