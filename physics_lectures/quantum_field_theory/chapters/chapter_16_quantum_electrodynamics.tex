@@ -1,9 +1,345 @@
 \chapter{Quantum Electrodynamics}
 
 \begin{remarkbox}
-Placeholder chapter from the QFT course plan in \texttt{ideas\_Quantum\_Field\_Theory.md}. Detailed lecture text will be added later.
+Quantum electrodynamics is the quantum field theory of charged Dirac matter and
+the electromagnetic field. It combines the Dirac field, gauge invariance,
+photons, fermion spinor chains, and perturbation theory into the first realistic
+relativistic quantum field theory of the course.
 \end{remarkbox}
 
-\section{Planned Role}
+\section{QED as a Gauge Theory}
 
-This chapter will introduce QED as the quantum theory of charged matter and light, including Feynman rules, spinor chains, Ward identities, and standard tree-level processes.
+The free Dirac Lagrangian is
+\[
+    \mathcal{L}_{\mathrm{Dirac}}
+    = \bar\psi(i\gamma^\mu\partial_\mu-m)\psi.
+\]
+It is invariant under the global phase transformation
+\[
+    \psi\longrightarrow e^{i\alpha}\psi.
+\]
+QED is obtained by promoting this symmetry to a local one,
+\[
+    \psi(x)\longrightarrow e^{i\alpha(x)}\psi(x).
+\]
+Ordinary derivatives do not transform covariantly under a local phase rotation,
+so one introduces the covariant derivative
+\[
+    D_\mu=\partial_\mu+ieA_\mu.
+\]
+The gauge field transforms as
+\[
+    A_\mu\longrightarrow A_\mu-\frac{1}{e}\partial_\mu\alpha.
+\]
+The QED Lagrangian is
+\[
+    \mathcal{L}_{\mathrm{QED}}
+    = -\frac{1}{4}F_{\mu\nu}F^{\mu\nu}
+      +\bar\psi(i\gamma^\mu D_\mu-m)\psi.
+\]
+Expanding the covariant derivative gives
+\[
+    \mathcal{L}_{\mathrm{QED}}
+    = -\frac{1}{4}F_{\mu\nu}F^{\mu\nu}
+      +\bar\psi(i\gamma^\mu\partial_\mu-m)\psi
+      -e\bar\psi\gamma^\mu\psi A_\mu.
+\]
+The last term is the interaction between charged matter and photons.
+
+\section{The Electromagnetic Current}
+
+The interaction can be written as
+\[
+    \mathcal{L}_{\mathrm{int}}
+    = -j^\mu A_\mu,
+\]
+where
+\[
+    j^\mu=e\bar\psi\gamma^\mu\psi.
+\]
+The current is conserved:
+\[
+    \partial_\mu j^\mu=0,
+\]
+using the Dirac equation. Current conservation is deeply connected to gauge
+invariance. In perturbation theory it leads to Ward identities, which enforce
+cancellations of unphysical photon polarizations.
+
+The electric charge operator counts electrons and positrons with opposite signs.
+With the convention that the electron has charge \(-e\), one may write
+schematically
+\[
+    \hat Q_{\mathrm{em}}
+    = -e\sum_s\int\frac{\dd^3p}{(2\pi)^3}
+      \left(
+          \hat b_s^\dagger(\vect{p})\hat b_s(\vect{p})
+          -\hat d_s^\dagger(\vect{p})\hat d_s(\vect{p})
+      \right).
+\]
+
+\section{Gauge Fixing and the Photon Propagator}
+
+To define a photon propagator, one must fix a gauge. In covariant gauges, add
+\[
+    \mathcal{L}_{\mathrm{gf}}
+    = -\frac{1}{2\xi}(\partial_\mu A^\mu)^2.
+\]
+The photon propagator is then
+\[
+    D_{\mu\nu}(k)
+    = \frac{-i}{k^2+i\epsilon}
+      \left(\eta_{\mu\nu}-(1-\xi)\frac{k_\mu k_\nu}{k^2+i\epsilon}\right).
+\]
+In Feynman gauge, \(\xi=1\), this becomes
+\[
+    D_{\mu\nu}(k)=\frac{-i\eta_{\mu\nu}}{k^2+i\epsilon}.
+\]
+The gauge parameter \(\xi\) may appear in intermediate expressions, but physical
+observables must be independent of it.
+
+In Abelian QED, the Faddeev--Popov ghosts decouple in linear covariant gauges,
+so they do not appear in ordinary QED Feynman rules. This is special to Abelian
+gauge theory.
+
+\section{QED Feynman Rules}
+
+The basic free propagators are the electron propagator
+\[
+    \frac{i(\gamma^\mu p_\mu+m)}{p^2-m^2+i\epsilon}
+\]
+and the photon propagator, for example in Feynman gauge,
+\[
+    \frac{-i\eta_{\mu\nu}}{k^2+i\epsilon}.
+\]
+The electron--photon vertex is
+\[
+    -ie\gamma^\mu.
+\]
+Momentum is conserved at each vertex. External electron and positron lines are
+represented by spinors \(u,\bar u,v,\bar v\). External photons are represented by
+polarization vectors \(\epsilon_\mu(k)\).
+
+The fine-structure constant is
+\[
+    \alpha=\frac{e^2}{4\pi}.
+\]
+Perturbation theory in QED is an expansion in powers of \(e\), or equivalently
+in powers of \(\alpha\) for probabilities.
+
+\section{Spinor Chains}
+
+QED amplitudes contain spinor chains. A typical factor has the form
+\[
+    \bar u(p')\gamma^\mu u(p).
+\]
+This is the matrix element of the electromagnetic current between electron
+states. For processes with internal fermion propagators, longer chains appear,
+for example
+\[
+    \bar u(p')\gamma^\mu
+    \frac{i(\gamma^\rho q_\rho+m)}{q^2-m^2+i\epsilon}
+    \gamma^\nu u(p).
+\]
+Spinor chains are evaluated using gamma-matrix algebra and spin sums. For
+unpolarized scattering, one averages over initial spins and sums over final
+spins. The completeness relations are
+\[
+    \sum_s u_s(p)\bar u_s(p)=\gamma^\mu p_\mu+m,
+\]
+and
+\[
+    \sum_s v_s(p)\bar v_s(p)=\gamma^\mu p_\mu-m.
+\]
+These identities turn squared amplitudes into traces of gamma matrices.
+
+\section{Ward Identities}
+
+Gauge invariance implies Ward identities. The simplest tree-level statement is
+that replacing an external photon polarization vector by its momentum gives zero
+for a physical amplitude:
+\[
+    \epsilon_\mu(k)\longrightarrow k_\mu
+    \qquad\Longrightarrow\qquad
+    \mathcal{M}\longrightarrow0.
+\]
+This expresses the fact that unphysical longitudinal photon polarizations do not
+contribute to physical processes.
+
+At the level of correlation functions, Ward identities relate current
+conservation to identities among Green functions. At loop level, they constrain
+renormalization constants and protect gauge invariance.
+
+A practical lesson is that gauge invariance is not optional bookkeeping. It is a
+powerful consistency condition on amplitudes.
+
+\section{Electron--Muon Scattering}
+
+A clean tree-level QED process is
+\[
+    e^-\mu^-\longrightarrow e^-\mu^-.
+\]
+At leading order, the particles exchange one virtual photon. If the momentum
+transfer is \(q\), the amplitude in Feynman gauge is
+\[
+    i\mathcal{M}
+    = [\bar u_e(p_3)(-ie\gamma^\mu)u_e(p_1)]
+      \frac{-i\eta_{\mu\nu}}{q^2+i\epsilon}
+      [\bar u_\mu(p_4)(-ie\gamma^\nu)u_\mu(p_2)].
+\]
+This example shows the basic QED structure:
+\[
+    \text{current}\times\text{photon propagator}\times\text{current}.
+\]
+In the nonrelativistic limit, this exchange reproduces the Coulomb interaction.
+The photon propagator is therefore the quantum-field-theoretic origin of the
+electromagnetic force between charged particles.
+
+\section{Electron--Positron Annihilation}
+
+Another fundamental process is
+\[
+    e^-e^+\longrightarrow \mu^-\mu^+.
+\]
+At tree level, the electron and positron annihilate into a virtual photon, which
+then creates a muon pair. The amplitude has the form
+\[
+    i\mathcal{M}
+    = [\bar v_e(p_2)(-ie\gamma^\mu)u_e(p_1)]
+      \frac{-i\eta_{\mu\nu}}{q^2+i\epsilon}
+      [\bar u_\mu(p_3)(-ie\gamma^\nu)v_\mu(p_4)].
+\]
+Here
+\[
+    q=p_1+p_2=p_3+p_4.
+\]
+This process is a prototype for collider physics: an initial particle--antiparticle
+pair produces an intermediate virtual gauge boson, which then decays into a new
+pair of particles.
+
+\section{Compton Scattering}
+
+Compton scattering is
+\[
+    e^-\gamma\longrightarrow e^-\gamma.
+\]
+At tree level, two diagrams contribute. They correspond to the two possible
+orderings of photon absorption and emission along the electron line. The amplitude
+contains two electron propagators in different channels.
+
+This example is important because gauge invariance requires the sum of both
+diagrams. Replacing an external photon polarization by its momentum gives a
+cancellation only after both diagrams are included. A single diagram by itself is
+not gauge invariant.
+
+Compton scattering therefore illustrates a recurring lesson: physical amplitudes
+are often gauge invariant only after summing all diagrams required at a given
+order.
+
+\section{Pair Creation and Crossing}
+
+QED processes are related by crossing symmetry. A particle moved from the initial
+state to the final state is reinterpreted as an antiparticle with reversed
+momentum, and vice versa. For example, electron--positron annihilation and pair
+creation by a virtual photon are crossing-related.
+
+Crossing symmetry is not a new Feynman rule. It follows from the analytic
+structure of relativistic amplitudes and from the fact that fields contain both
+particle annihilation and antiparticle creation operators.
+
+This idea was already visible in the mode expansion of the Dirac field:
+\[
+    \hat\psi\sim \hat b+\hat d^\dagger.
+\]
+QED makes this structure operational in scattering calculations.
+
+\section{Loop Corrections in QED}
+
+Beyond tree level, QED has several important loop corrections:
+\begin{itemize}
+    \item electron self-energy corrections to the fermion propagator;
+    \item photon self-energy corrections from fermion loops;
+    \item vertex corrections to the electron--photon interaction.
+\end{itemize}
+These corrections are ultraviolet divergent and require renormalization. They
+also produce finite physical effects, such as anomalous magnetic moments and the
+running of the electromagnetic coupling.
+
+The next chapter studies loop effects in QED in more detail. For now, the key
+point is that QED is not just tree-level photon exchange. Quantum fluctuations of
+electrons, positrons, and photons modify the parameters and predictions of the
+theory.
+
+\section{Renormalization in QED}
+
+The renormalized QED Lagrangian is written with field and parameter
+renormalization constants:
+\[
+    \mathcal{L}
+    = -\frac{1}{4}Z_3 F_{\mu\nu}F^{\mu\nu}
+      +Z_2\bar\psi i\gamma^\mu\partial_\mu\psi
+      -Z_m m\bar\psi\psi
+      -Z_1 e\bar\psi\gamma^\mu\psi A_\mu.
+\]
+Gauge invariance imposes relations among renormalization constants. In
+particular, Ward identities imply a relation between the vertex and fermion
+wave-function renormalization.
+
+The physical electric charge is defined by a renormalization condition. At
+higher orders, the effective strength of the electromagnetic interaction depends
+on the energy scale. This scale dependence is the running of the coupling.
+
+\section{Infrared Issues}
+
+Because the photon is massless, QED also has infrared subtleties. Soft photons
+with very small energy can be emitted at little energy cost. As a result,
+exclusive amplitudes with a fixed number of photons can contain infrared
+divergences.
+
+Physical detectors have finite energy resolution. Observable cross sections must
+include processes with unresolved soft photons. When this is done correctly,
+infrared divergences cancel between virtual and real soft-photon contributions.
+
+This is one reason the particle interpretation in QED is more subtle than in a
+massive scalar theory. Charged particles are accompanied by long-range
+electromagnetic fields and soft photon clouds.
+
+\section{What QED Teaches}
+
+QED is the first fully realistic QFT in the course. It teaches several general
+lessons:
+\begin{itemize}
+    \item local gauge symmetry determines the interaction;
+    \item photons couple to conserved currents;
+    \item amplitudes are built from spinor chains and photon propagators;
+    \item gauge invariance appears as Ward identities;
+    \item loop corrections require renormalization;
+    \item massless gauge bosons create infrared subtleties.
+\end{itemize}
+These lessons reappear in non-Abelian gauge theory and the Standard Model.
+
+\begin{summarybox}
+QED describes charged Dirac matter interacting with the electromagnetic gauge
+field. Local \(U(1)\) gauge invariance requires the covariant derivative and
+produces the vertex \(-ie\gamma^\mu\). Tree-level amplitudes are built from
+spinor currents and photon propagators. Ward identities enforce gauge invariance
+and remove unphysical photon polarizations. Loop corrections lead to
+renormalization and infrared effects, making QED the first realistic example of
+perturbative quantum field theory.
+\end{summarybox}
+
+\section{Chapter Checklist}
+
+After reading this chapter, one should be able to:
+\begin{itemize}
+    \item derive QED from local \(U(1)\) gauge invariance;
+    \item write the QED Lagrangian and identify the interaction term;
+    \item state the photon and electron propagators;
+    \item state the QED vertex rule;
+    \item construct spinor chains for simple amplitudes;
+    \item explain the meaning of Ward identities;
+    \item write the tree-level structure of electron--muon scattering;
+    \item write the tree-level structure of electron--positron annihilation;
+    \item explain why Compton scattering requires a sum of diagrams;
+    \item describe the main loop corrections and renormalization issues in QED;
+    \item explain why massless photons produce infrared subtleties.
+\end{itemize}
