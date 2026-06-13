@@ -1,11 +1,222 @@
 \chapter{Przestrzeń Hilberta i notacja Diraca}
 
+\begin{summarybox}
+Dotychczas opisywaliśmy stany głównie za pomocą funkcji falowych \(\psi(x)\).
+Formalizm Diraca pokazuje, że funkcja falowa jest tylko jedną reprezentacją
+bardziej ogólnego obiektu: wektora stanu \(|\psi\rangle\) w przestrzeni Hilberta.
+Ten rozdział wprowadza ket, bra, iloczyn skalarny, bazy ortonormalne, operatory,
+projektory i związek między algebrą liniową a wcześniejszym opisem falowym.
+\end{summarybox}
+
 \section{Od funkcji falowej do wektora stanu}
+
+W poprzednich rozdziałach stan cząstki opisywaliśmy najczęściej funkcją falową \(\psi(x)\). Taki opis jest bardzo konkretny: mówi, jak amplituda prawdopodobieństwa zależy od położenia. Nie jest jednak najbardziej ogólną postacią mechaniki kwantowej.
+
+Bardziej podstawowym obiektem jest wektor stanu. Oznaczamy go symbolem Diraca:
+\begin{equation}
+    |\psi\rangle.
+\end{equation}
+Funkcja falowa jest reprezentacją tego wektora w bazie położeniowej:
+\begin{equation}
+    \psi(x)=\langle x|\psi\rangle.
+\end{equation}
+To równanie jest bardzo ważne. Mówi, że \(\psi(x)\) nie jest „rzeczą samą w sobie”, lecz współrzędną wektora stanu w konkretnej bazie.
+
+Podobnie, reprezentacja pędowa ma postać
+\begin{equation}
+    \phi(p)=\langle p|\psi\rangle.
+\end{equation}
+Ten sam stan może więc mieć różne reprezentacje, tak jak ten sam wektor geometryczny może mieć różne współrzędne w różnych bazach.
+
 \section{Ket \texorpdfstring{\(|\psi\rangle\)}{|psi>} i bra \texorpdfstring{\(\langle\psi|\)}{<psi|}}
+
+W notacji Diraca wektor stanu zapisujemy jako ket:
+\begin{equation}
+    |\psi\rangle.
+\end{equation}
+Odpowiadający mu obiekt dualny zapisujemy jako bra:
+\begin{equation}
+    \langle\psi|.
+\end{equation}
+Jeżeli ket potraktujemy jak kolumnę, to bra jest sprzężonym hermitowsko wierszem. Dla wektora skończenie wymiarowego
+\begin{equation}
+    |\psi\rangle=\begin{pmatrix}c_1\\ c_2\\ \vdots\\ c_n\end{pmatrix},
+\end{equation}
+bra ma postać
+\begin{equation}
+    \langle\psi|=\begin{pmatrix}c_1^* & c_2^* & \cdots & c_n^*\end{pmatrix}.
+\end{equation}
+
+Zapis bra-ket jest wygodny, ponieważ od razu rozróżnia wektor, jego dual oraz iloczyn skalarny. Wyrażenie
+\begin{equation}
+    \langle\phi|\psi\rangle
+\end{equation}
+jest liczbą zespoloną, natomiast
+\begin{equation}
+    |\phi\rangle\langle\psi|
+\end{equation}
+jest operatorem.
+
 \section{Iloczyn skalarny}
+
+Iloczyn skalarny dwóch stanów zapisujemy jako
+\begin{equation}
+    \langle\phi|\psi\rangle.
+\end{equation}
+W przestrzeni funkcji falowych odpowiada mu całka
+\begin{equation}
+    \langle\phi|\psi\rangle=\int \phi^*(x)\psi(x)\,dx.
+\end{equation}
+Norma stanu wynosi
+\begin{equation}
+    \langle\psi|\psi\rangle.
+\end{equation}
+Stan znormalizowany spełnia
+\begin{equation}
+    \langle\psi|\psi\rangle=1.
+\end{equation}
+
+Iloczyn skalarny ma interpretację amplitudy przejścia. Liczba \(\langle\phi|\psi\rangle\) mówi, jaka jest amplituda znalezienia stanu \(|\psi\rangle\) w kierunku stanu \(|\phi\rangle\). Prawdopodobieństwo wynosi
+\begin{equation}
+    P_{\phi}=|\langle\phi|\psi\rangle|^2.
+\end{equation}
+
+\begin{remarkbox}
+Kolejność w iloczynie skalarnym ma znaczenie. Zwykle \(\langle\phi|\psi\rangle\) jest sprzężeniem zespolonym \(\langle\psi|\phi\rangle\).
+\end{remarkbox}
+
 \section{Baza ortonormalna}
+
+Baza ortonormalna to zbiór stanów \(|n\rangle\), które spełniają warunek
+\begin{equation}
+    \langle m|n\rangle=\delta_{mn}.
+\end{equation}
+Każdy stan można wtedy rozwinąć w tej bazie:
+\begin{equation}
+    |\psi\rangle=\sum_n c_n|n\rangle.
+\end{equation}
+Współczynniki rozwinięcia otrzymujemy przez rzutowanie:
+\begin{equation}
+    c_n=\langle n|\psi\rangle.
+\end{equation}
+
+Warunek zupełności bazy zapisujemy jako
+\begin{equation}
+    \sum_n |n\rangle\langle n|=\hat{I}.
+\end{equation}
+To jest wersja operatorowa stwierdzenia, że baza obejmuje całą przestrzeń stanów.
+
+Dla zmiennej ciągłej, na przykład położenia, zamiast sumy mamy całkę:
+\begin{equation}
+    \int |x\rangle\langle x|\,dx=\hat{I}.
+\end{equation}
+Wtedy funkcja falowa \(\psi(x)=\langle x|\psi\rangle\) jest współczynnikiem rozwinięcia stanu w bazie położeniowej.
+
 \section{Rozkład stanu w bazie}
+
+Jeżeli stan jest rozwinięty jako
+\begin{equation}
+    |\psi\rangle=\sum_n c_n|n\rangle,
+\end{equation}
+to normalizacja oznacza
+\begin{equation}
+    \sum_n |c_n|^2=1.
+\end{equation}
+Liczba \(|c_n|^2\) jest prawdopodobieństwem otrzymania wyniku związanego ze stanem bazowym \(|n\rangle\), jeśli baza jest bazą stanów własnych mierzonej obserwabli.
+
+Dla układu dwupoziomowego, na przykład kubitu, stan ma postać
+\begin{equation}
+    |\psi\rangle=\alpha|0\rangle+\beta|1\rangle,
+\end{equation}
+przy warunku
+\begin{equation}
+    |\alpha|^2+|\beta|^2=1.
+\end{equation}
+Ten przykład stanie się podstawą następnego rozdziału.
+
 \section{Operatory jako macierze}
+
+Operator \(\hat{A}\) działa na ket i zwraca nowy ket:
+\begin{equation}
+    \hat{A}|\psi\rangle=|\phi\rangle.
+\end{equation}
+W danej bazie operator ma reprezentację macierzową. Elementy macierzy są dane wzorem
+\begin{equation}
+    A_{mn}=\langle m|\hat{A}|n\rangle.
+\end{equation}
+Jeżeli
+\begin{equation}
+    |\psi\rangle=\sum_n c_n|n\rangle,
+\end{equation}
+to współczynniki stanu \(\hat{A}|\psi\rangle\) otrzymujemy przez zwykłe mnożenie macierzy przez wektor.
+
+Wartość oczekiwana obserwabli \(A\) ma w notacji Diraca postać
+\begin{equation}
+    \langle\hat{A}\rangle=\langle\psi|\hat{A}|\psi\rangle.
+\end{equation}
+To jest ten sam wzór, który wcześniej zapisywaliśmy jako całkę
+\begin{equation}
+    \int \psi^*(x)\hat{A}\psi(x)\,dx.
+\end{equation}
+
 \section{Projektory i pomiar}
+
+Projektor na stan \(|a\rangle\) definiujemy jako
+\begin{equation}
+    \hat{P}_a=|a\rangle\langle a|.
+\end{equation}
+Jeżeli stan \(|\psi\rangle\) jest znormalizowany, to prawdopodobieństwo otrzymania wyniku odpowiadającego \(|a\rangle\) wynosi
+\begin{equation}
+    p(a)=\langle\psi|\hat{P}_a|\psi\rangle=|\langle a|\psi\rangle|^2.
+\end{equation}
+Po idealnym pomiarze, który dał wynik \(a\), stan zostaje związany z odpowiednim podprzestrzennym projektorem. Dla nieosobliwego przypadku jednowymiarowego oznacza to przejście do stanu \(|a\rangle\), z dokładnością do fazy.
+
+Projektory są bardzo wygodne, bo łączą algebrę liniową z regułą Borna. Pomiar nie jest wtedy osobnym, tajemniczym dodatkiem do formalizmu, lecz operacją rzutowania na odpowiednie podprzestrzenie.
+
 \section{Związek z wcześniejszymi funkcjami falowymi}
+
+Funkcja falowa w położeniu jest po prostu reprezentacją ketu w bazie \(|x\rangle\):
+\begin{equation}
+    \psi(x)=\langle x|\psi\rangle.
+\end{equation}
+Normalizacja
+\begin{equation}
+    \int |\psi(x)|^2\,dx=1
+\end{equation}
+jest tym samym co
+\begin{equation}
+    \langle\psi|\psi\rangle=1.
+\end{equation}
+Wartość oczekiwana położenia
+\begin{equation}
+    \langle x\rangle=\int x|\psi(x)|^2\,dx
+\end{equation}
+jest reprezentacją wzoru Diraca
+\begin{equation}
+    \langle\hat{x}\rangle=\langle\psi|\hat{x}|\psi\rangle.
+\end{equation}
+
+Notacja Diraca nie zastępuje funkcji falowych, lecz pokazuje, że są one jednym z wielu możliwych zapisów tego samego stanu.
+
 \section{Mathematica jako algebra liniowa mechaniki kwantowej}
+
+W skończenie wymiarowych przykładach Mathematica może traktować stany jako wektory, a operatory jako macierze. Przykładowo:
+\begin{verbatim}
+psi = {alpha, beta};
+A = {{a11, a12}, {a21, a22}};
+Conjugate[psi].psi
+Conjugate[psi].A.psi
+\end{verbatim}
+Dla wektorów zespolonych lepiej używać sprzężenia hermitowskiego:
+\begin{verbatim}
+ConjugateTranspose[{psi}].A.{psi}
+\end{verbatim}
+W praktyce trzeba pilnować kształtu obiektów: czy wektor jest listą, kolumną, czy macierzą jednowierszową. Dla celów dydaktycznych często najczytelniej jest pisać małe funkcje pomocnicze:
+\begin{verbatim}
+bra[v_] := Conjugate[v]
+expect[A_, v_] := bra[v].A.v
+\end{verbatim}
+
+\begin{summarybox}
+Notacja Diraca porządkuje mechanikę kwantową jako algebrę liniową. Ket jest stanem, bra jest obiektem dualnym, iloczyn bra-ket jest amplitudą, operator działa na stan, a funkcja falowa jest reprezentacją ketu w wybranej bazie.
+\end{summarybox}
