@@ -1,13 +1,221 @@
 \chapter{Kubity i proste układy kwantowe}
 
+\begin{summarybox}
+Kubit jest najprostszym nietrywialnym układem kwantowym. Ma dwuwymiarową
+przestrzeń stanów, ale już zawiera najważniejsze idee: superpozycję, amplitudy
+zespolone, pomiar probabilistyczny, operatory jako macierze, iloczyn tensorowy i
+splątanie. Ten rozdział wprowadza kubity jako praktyczne laboratorium formalizmu
+Diraca.
+\end{summarybox}
+
 \section{Kubit jako najprostszy układ kwantowy}
+
+Klasyczny bit ma dwie możliwe wartości: \(0\) albo \(1\). Kubit ma dwie stany bazowe, ale jego ogólny stan może być ich superpozycją. Oznaczamy bazę standardową jako
+\begin{equation}
+    |0\rangle,
+    \qquad
+    |1\rangle.
+\end{equation}
+Ogólny stan kubitu ma postać
+\begin{equation}
+    |\psi\rangle=\alpha|0\rangle+\beta|1\rangle,
+\end{equation}
+gdzie \(\alpha\) i \(\beta\) są liczbami zespolonymi spełniającymi warunek normalizacji
+\begin{equation}
+    |\alpha|^2+|\beta|^2=1.
+\end{equation}
+
+To nie oznacza, że kubit „jest trochę zerem i trochę jedynką” w klasycznym sensie. Oznacza, że amplitudy \(\alpha\) i \(\beta\) określają prawdopodobieństwa wyników pomiaru oraz fazę względną, która może wpływać na interferencję.
+
 \section{Stany \texorpdfstring{\(|0\rangle\)}{|0>} i \texorpdfstring{\(|1\rangle\)}{|1>}}
+
+W reprezentacji macierzowej wygodnie zapisać
+\begin{equation}
+    |0\rangle=\begin{pmatrix}1\\0\end{pmatrix},
+    \qquad
+    |1\rangle=\begin{pmatrix}0\\1\end{pmatrix}.
+\end{equation}
+Wtedy ogólny stan kubitu jest kolumną
+\begin{equation}
+    |\psi\rangle=\begin{pmatrix}\alpha\\\beta\end{pmatrix}.
+\end{equation}
+Odpowiadający bra ma postać
+\begin{equation}
+    \langle\psi|=\begin{pmatrix}\alpha^* & \beta^*\end{pmatrix}.
+\end{equation}
+Normalizacja to zwykły iloczyn skalarny:
+\begin{equation}
+    \langle\psi|\psi\rangle=|\alpha|^2+|\beta|^2=1.
+\end{equation}
+
 \section{Superpozycja}
+
+Superpozycja jest liniową kombinacją stanów. Przykładowo stan
+\begin{equation}
+    |+\rangle=\frac{1}{\sqrt{2}}\left(|0\rangle+|1\rangle\right)
+\end{equation}
+ma równe prawdopodobieństwa otrzymania \(0\) i \(1\) przy pomiarze w bazie standardowej. Stan
+\begin{equation}
+    |-\rangle=\frac{1}{\sqrt{2}}\left(|0\rangle-|1\rangle\right)
+\end{equation}
+ma te same prawdopodobieństwa w bazie \(|0\rangle,|1\rangle\), ale inną fazę względną. Ta faza jest fizycznie istotna, bo może wpływać na wynik kolejnych operacji.
+
+\begin{remarkbox}
+Dwa stany mogą dawać te same prawdopodobieństwa w jednej bazie, ale różnić się fazą. Mechanika kwantowa nie jest teorią samych prawdopodobieństw, lecz amplitud.
+\end{remarkbox}
+
 \section{Macierze Pauliego}
+
+Podstawowe operatory działające na kubit to macierze Pauliego:
+\begin{equation}
+    \sigma_x=\begin{pmatrix}0&1\\1&0\end{pmatrix},
+    \qquad
+    \sigma_y=\begin{pmatrix}0&-i\\i&0\end{pmatrix},
+    \qquad
+    \sigma_z=\begin{pmatrix}1&0\\0&-1\end{pmatrix}.
+\end{equation}
+Macierz \(\sigma_x\) zamienia stany bazowe:
+\begin{equation}
+    \sigma_x|0\rangle=|1\rangle,
+    \qquad
+    \sigma_x|1\rangle=|0\rangle.
+\end{equation}
+Macierz \(\sigma_z\) zostawia \(|0\rangle\) bez zmiany, ale zmienia znak \(|1\rangle\):
+\begin{equation}
+    \sigma_z|0\rangle=|0\rangle,
+    \qquad
+    \sigma_z|1\rangle=-|1\rangle.
+\end{equation}
+
+Macierze Pauliego spełniają relacje komutacyjne
+\begin{equation}
+    [\sigma_i,\sigma_j]=2i\sum_k\varepsilon_{ijk}\sigma_k.
+\end{equation}
+Widać tu tę samą strukturę algebraiczną, która pojawiła się przy momencie pędu.
+
 \section{Bramki kwantowe}
+
+Bramka kwantowa to operator unitarny działający na stan kubitu. Unitarność oznacza zachowanie normy:
+\begin{equation}
+    U^\dagger U=I.
+\end{equation}
+Najprostsze bramki to identyczność, bramka \(X\), bramka \(Z\) i bramka Hadamarda. Bramka \(X\) jest po prostu \(\sigma_x\). Bramka Hadamarda ma postać
+\begin{equation}
+    H=\frac{1}{\sqrt{2}}\begin{pmatrix}1&1\\1&-1\end{pmatrix}.
+\end{equation}
+Działa ona tak:
+\begin{equation}
+    H|0\rangle=\frac{|0\rangle+|1\rangle}{\sqrt{2}}=|+\rangle,
+\end{equation}
+\begin{equation}
+    H|1\rangle=\frac{|0\rangle-|1\rangle}{\sqrt{2}}=|-\rangle.
+\end{equation}
+
+W Mathematice można to zapisać następująco:
+\begin{verbatim}
+ket0 = {1, 0};
+ket1 = {0, 1};
+H = 1/Sqrt[2] {{1, 1}, {1, -1}};
+H.ket0
+H.ket1
+\end{verbatim}
+
 \section{Iloczyn tensorowy}
+
+Dwa kubity opisujemy nie przez zwykłą parę wektorów, lecz przez iloczyn tensorowy przestrzeni stanów. Jeśli pierwszy kubit jest w stanie \(|a\rangle\), a drugi w stanie \(|b\rangle\), to stan złożony zapisujemy jako
+\begin{equation}
+    |a\rangle\otimes|b\rangle.
+\end{equation}
+Często skracamy zapis:
+\begin{equation}
+    |a\rangle|b\rangle=|ab\rangle.
+\end{equation}
+Baza dwóch kubitów ma cztery elementy:
+\begin{equation}
+    |00\rangle,
+    |01\rangle,
+    |10\rangle,
+    |11\rangle.
+\end{equation}
+
+W reprezentacji macierzowej:
+\begin{equation}
+    |00\rangle=\begin{pmatrix}1\\0\\0\\0\end{pmatrix},
+    \quad
+    |01\rangle=\begin{pmatrix}0\\1\\0\\0\end{pmatrix},
+    \quad
+    |10\rangle=\begin{pmatrix}0\\0\\1\\0\end{pmatrix},
+    \quad
+    |11\rangle=\begin{pmatrix}0\\0\\0\\1\end{pmatrix}.
+\end{equation}
+
 \section{Stany dwukubitowe}
+
+Ogólny stan dwóch kubitów ma postać
+\begin{equation}
+    |\psi\rangle
+    =c_{00}|00\rangle+c_{01}|01\rangle+c_{10}|10\rangle+c_{11}|11\rangle.
+\end{equation}
+Warunek normalizacji to
+\begin{equation}
+    |c_{00}|^2+|c_{01}|^2+|c_{10}|^2+|c_{11}|^2=1.
+\end{equation}
+Jeżeli stan można zapisać jako iloczyn dwóch stanów pojedynczych kubitów, nazywamy go stanem separowalnym:
+\begin{equation}
+    |\psi\rangle=|a\rangle\otimes|b\rangle.
+\end{equation}
+Nie każdy stan dwóch kubitów ma taką postać. To prowadzi do pojęcia splątania.
+
 \section{Splątanie}
+
+Stan splątany to stan złożony, którego nie da się zapisać jako iloczynu stanów podukładów. Splątanie nie oznacza zwykłej korelacji wynikającej z niewiedzy. Oznacza, że opis całości jest bardziej podstawowy niż opis części osobno.
+
+Najprostszy przykład to stan
+\begin{equation}
+    |\Phi^+\rangle=\frac{1}{\sqrt{2}}\left(|00\rangle+|11\rangle\right).
+\end{equation}
+Nie da się go zapisać jako
+\begin{equation}
+    (\alpha|0\rangle+\beta|1\rangle)\otimes(\gamma|0\rangle+\delta|1\rangle)
+\end{equation}
+przy odpowiednim doborze \(\alpha,\beta,\gamma,\delta\). Korelacje pomiarów dwóch kubitów są tutaj wbudowane w stan.
+
 \section{Stan Bella}
+
+Cztery standardowe stany Bella to
+\begin{align}
+    |\Phi^+\rangle &=\frac{1}{\sqrt{2}}(|00\rangle+|11\rangle),\\
+    |\Phi^-\rangle &=\frac{1}{\sqrt{2}}(|00\rangle-|11\rangle),\\
+    |\Psi^+\rangle &=\frac{1}{\sqrt{2}}(|01\rangle+|10\rangle),\\
+    |\Psi^-\rangle &=\frac{1}{\sqrt{2}}(|01\rangle-|10\rangle).
+\end{align}
+Są to maksymalnie splątane stany dwóch kubitów. Tworzą ortonormalną bazę przestrzeni dwukubitowej.
+
+W stanie \(|\Phi^+\rangle\), jeśli zmierzymy pierwszy kubit w bazie standardowej i otrzymamy \(0\), drugi też będzie \(0\). Jeśli otrzymamy \(1\), drugi też będzie \(1\). Przed pomiarem nie przypisujemy jednak każdemu kubitowi ukrytej klasycznej wartości. Stan opisuje korelację kwantową całości.
+
 \section{Pomiar częściowy}
+
+Pomiar jednego kubitu w stanie dwukubitowym zmienia opis całego układu. Dla stanu
+\begin{equation}
+    |\Phi^+\rangle=\frac{1}{\sqrt{2}}(|00\rangle+|11\rangle)
+\end{equation}
+pomiar pierwszego kubitu daje \(0\) z prawdopodobieństwem \(1/2\) i \(1\) z prawdopodobieństwem \(1/2\). Jeśli wynik to \(0\), stan po pomiarze jest zgodny z \(|00\rangle\). Jeśli wynik to \(1\), stan po pomiarze jest zgodny z \(|11\rangle\).
+
+W formalnym opisie pomiar częściowy wymaga projektorów działających tylko na jeden czynnik iloczynu tensorowego, na przykład
+\begin{equation}
+    P_0\otimes I,
+\end{equation}
+gdzie
+\begin{equation}
+    P_0=|0\rangle\langle0|.
+\end{equation}
+
 \section{Interpretacja: czego splątanie nie oznacza?}
+
+Splątanie nie oznacza wysyłania sygnału szybszego od światła. Nie oznacza też, że pomiar pierwszego kubitu klasycznie „popycha” drugi kubit przez przestrzeń. Oznacza, że stan złożony nie jest iloczynem stanów części, a wyniki pomiarów wykazują korelacje, których nie da się wyjaśnić prostym klasycznym modelem lokalnych ukrytych wartości.
+
+Splątanie jest zasobem informatyki kwantowej, ale nie jest magiczną komunikacją. Żeby porównać wyniki pomiarów dwóch stron, nadal potrzebny jest klasyczny kanał komunikacji. Kwantowość leży w strukturze korelacji i w niemożliwości opisania całości jako zwykłej mieszaniny niezależnych stanów części.
+
+\begin{summarybox}
+Kubit pokazuje mechanikę kwantową w najczystszej postaci: stan jest wektorem w dwuwymiarowej przestrzeni Hilberta, operacje są macierzami unitarnymi, pomiar daje wyniki probabilistyczne, a układy złożone wymagają iloczynu tensorowego. Splątanie pojawia się wtedy, gdy stan całości nie rozkłada się na stany części.
+\end{summarybox}
