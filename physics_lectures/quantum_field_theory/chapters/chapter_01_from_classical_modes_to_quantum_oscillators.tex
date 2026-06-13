@@ -1,72 +1,105 @@
 \chapter{From Classical Normal Modes to Quantum Oscillators}
 
 \begin{remarkbox}
-This chapter follows the structure of the course plan in
-\texttt{ideas\_Quantum\_Field\_Theory.md}. Its purpose is to turn the first
-entry of the table of contents into a readable lecture: a free classical field
-is decomposed into normal modes, each mode is recognized as a harmonic
-oscillator, and the oscillator excitations become the first particle states of
-quantum field theory.
+A free field is the continuum limit of a system with many coupled degrees of
+freedom. Its normal modes behave like independent harmonic oscillators. The
+first idea of quantum field theory is to quantize these oscillators and to
+interpret their excitations as field quanta.
 \end{remarkbox}
 
-\section{Starting Point: A Classical Field Decomposed into Modes}
+\section{The Purpose of the First Step}
 
-Classical field theory describes a field by a function such as
-\(\phi(t,\vect{x})\). For a free field, this function can be decomposed into
-normal modes. This is the same idea that appears in mechanics when a system of
-coupled oscillators is rewritten in terms of independent normal coordinates.
+The transition from classical field theory to quantum field theory can look too
+large if one begins immediately with operator-valued distributions, Fock spaces,
+and relativistic commutators. This chapter takes a slower route. It explains why
+the harmonic oscillator algebra appears at the beginning of quantum field
+theory.
 
-Begin with a finite chain of \(N\) identical masses connected by springs. If
-\(q_j(t)\) is the displacement of the \(j\)-th mass, a typical quadratic
-Lagrangian is
+The guiding chain of ideas is
 \[
-    L = \sum_{j=1}^{N}\frac{m}{2}\dot q_j^2
-        - \sum_{j=1}^{N}\frac{\kappa}{2}(q_{j+1}-q_j)^2.
+    \text{classical field}
+    \longrightarrow
+    \text{normal modes}
+    \longrightarrow
+    \text{classical oscillators}
+    \longrightarrow
+    \text{quantum oscillators}
+    \longrightarrow
+    \text{field quanta}.
 \]
-The variables \(q_j\) are coupled. After introducing normal coordinates
-\(Q_r(t)\), one obtains the diagonal form
+The goal is not yet to construct the full canonical field algebra. That will be
+done in the next chapter. Here we only identify the mechanical structure hidden
+inside a free field.
+
+\section{A Finite System of Coupled Oscillators}
+
+Consider a finite chain of \(N\) identical masses connected by springs. Let
+\(q_j(t)\) be the displacement of the \(j\)-th mass from equilibrium. A typical
+quadratic Lagrangian has the form
 \[
-    L = \sum_r
+    L
+    = \sum_{j=1}^{N}\frac{m}{2}\dot q_j^{\,2}
+      - \sum_{j=1}^{N}\frac{\kappa}{2}(q_{j+1}-q_j)^2,
+\]
+with boundary conditions chosen so that the notation is meaningful. The
+coordinates \(q_j\) are coupled because the potential energy depends on
+differences between neighbouring displacements.
+
+The normal-mode method replaces the original coordinates by new coordinates
+\(Q_r(t)\),
+\[
+    q_j(t)=\sum_r Q_r(t)u_r(j),
+\]
+where \(u_r(j)\) are spatial mode functions. With an appropriate normalization,
+the Lagrangian becomes diagonal:
+\[
+    L
+    = \sum_r
     \left(
         \frac{1}{2}\dot Q_r^{\,2}
-        - \frac{1}{2}\omega_r^2 Q_r^2
+        - \frac{1}{2}\omega_r^2 Q_r^{\,2}
     \right).
 \]
-The coupled chain is therefore equivalent to a collection of independent
+Thus the coupled system is equivalent to a collection of independent harmonic
 oscillators.
 
-A field is the continuum version of this situation. In a one-dimensional chain
-with spacing \(a\), one may view
-\[
-    q_j(t) \approx \phi(t,x_j),
-    \qquad x_j=ja.
-\]
-In the continuum limit, sums over sites become integrals over space, and the
-normal-mode decomposition becomes a Fourier decomposition.
+\begin{examplebox}
+The original variables \(q_j\) describe local displacements of the masses. The
+normal coordinates \(Q_r\) describe collective oscillation patterns of the whole
+chain. Quantization is easiest in the normal coordinates because the modes are
+independent.
+\end{examplebox}
 
-For a real scalar field in a box of volume \(V\), with periodic boundary
-conditions, write schematically
+\section{The Field as a Continuum Limit}
+
+A field is the continuum analogue of a system with one degree of freedom at each
+spatial point. In a one-dimensional chain with lattice spacing \(a\), the site
+position is \(x_j=ja\), and one may think schematically of
+\[
+    q_j(t) \approx \phi(t,x_j).
+\]
+As \(a\to0\), sums over sites become spatial integrals, and discrete normal
+modes become Fourier modes.
+
+For a real scalar field in a finite box of volume \(V\), periodic boundary
+conditions make the allowed momenta discrete. A schematic Fourier expansion is
 \[
     \phi(t,\vect{x})
     = \frac{1}{\sqrt{V}}\sum_{\vect{k}}q_{\vect{k}}(t)
-      e^{i\vect{k}\cdot\vect{x}},
+      e^{i\vect{k}\cdot\vect{x}}.
 \]
-with the appropriate reality condition for a real field. The allowed momenta are
-discrete because the field is placed in a finite box. This is a temporary
-technical convenience; the continuum limit is obtained later by replacing sums
-with integrals.
+For a real field the complex coefficients are not all independent; one must
+impose the appropriate reality condition. Equivalently, one may use real sine
+and cosine modes. The important point is independent of this choice: after the
+free field is decomposed into normal modes, each independent mode behaves like a
+classical oscillator.
 
-\begin{remarkbox}
-The field is infinite-dimensional, but the free field is not mysterious at this
-stage. The normal-mode decomposition rewrites it as a collection of independent
-oscillating degrees of freedom.
-\end{remarkbox}
+\section{Each Free Mode Is a Harmonic Oscillator}
 
-\section{Each Mode as a Harmonic Oscillator}
-
-For the free real scalar field, the classical Lagrangian is
+The free real scalar field has Lagrangian
 \[
-    L = \int \dd^3x\,
+    L
+    = \int \dd^3x\,
     \left(
         \frac{1}{2}\dot\phi^2
         - \frac{1}{2}(\nabla\phi)^2
@@ -77,253 +110,194 @@ Its equation of motion is the Klein--Gordon equation,
 \[
     (\partial_t^2-\nabla^2+m^2)\phi(t,\vect{x})=0.
 \]
-After inserting the normal-mode expansion into the free Lagrangian and choosing
-standard normalizations, the field decomposes into independent oscillator modes,
+After the free field is diagonalized into normal modes, the Lagrangian takes the
+schematic oscillator form
 \[
-    L = \sum_{\vect{k}}
+    L
+    = \sum_{\vect{k}}
     \left(
         \frac{1}{2}\dot q_{\vect{k}}^{\,2}
-        - \frac{1}{2}\omega_{\vect{k}}^2 q_{\vect{k}}^{\,2}
+        - \frac{1}{2}\omega_{\vect{k}}^2q_{\vect{k}}^{\,2}
     \right),
 \]
 where
 \[
-    \omega_{\vect{k}}=\sqrt{\vect{k}^{\,2}+m^2}
+    \omega_{\vect{k}}=\sqrt{\vect{k}^{\,2}+m^2}.
 \]
-in units with \(c=\hbar=1\).
-
-The canonical momentum of the mode \(q_{\vect{k}}\) is
+The canonical momentum of a mode is
 \[
     p_{\vect{k}}=\dot q_{\vect{k}},
 \]
-and the Hamiltonian becomes
+and the Hamiltonian is
 \[
-    H=\sum_{\vect{k}}H_{\vect{k}},
+    H
+    = \sum_{\vect{k}}H_{\vect{k}},
     \qquad
     H_{\vect{k}}
-    =\frac{1}{2}p_{\vect{k}}^{\,2}
-     +\frac{1}{2}\omega_{\vect{k}}^2q_{\vect{k}}^{\,2}.
+    = \frac{1}{2}p_{\vect{k}}^{\,2}
+      + \frac{1}{2}\omega_{\vect{k}}^2q_{\vect{k}}^{\,2}.
 \]
-Thus each mode \(\vect{k}\) is a harmonic oscillator of frequency
-\(\omega_{\vect{k}}\).
+A free scalar field is therefore a collection of independent harmonic
+oscillators, one for each independent normal mode.
 
-\begin{examplebox}
-The classical field is not quantized all at once. First, the free classical
-field is diagonalized into modes. Then each mode is quantized using the same
-oscillator algebra known from elementary quantum mechanics.
-\end{examplebox}
+\begin{remarkbox}
+Interactions destroy this simple diagonal form. Perturbative QFT begins by
+quantizing the free oscillators exactly and then treating interactions as
+corrections to the free theory.
+\end{remarkbox}
 
-\section{Quantizing a Single Oscillator}
+\section{Quantizing One Harmonic Oscillator}
 
-For one harmonic oscillator, the classical variables \(q\) and \(p\) become
-operators \(\hat q\) and \(\hat p\) satisfying
+Before quantizing all field modes, recall the single harmonic oscillator. The
+classical variables \(q\) and \(p\) become operators \(\hat q\) and \(\hat p\)
+satisfying
 \[
     [\hat q,\hat p]=i.
 \]
 The Hamiltonian is
 \[
     \hat H
-    =\frac{1}{2}\hat p^2
-     +\frac{1}{2}\omega^2\hat q^2.
+    = \frac{1}{2}\hat p^2
+      + \frac{1}{2}\omega^2\hat q^2.
 \]
 Introduce the annihilation and creation operators
 \[
     \hat a
-    =\sqrt{\frac{\omega}{2}}\,\hat q
-     +\frac{i}{\sqrt{2\omega}}\,\hat p,
+    = \sqrt{\frac{\omega}{2}}\,\hat q
+      + \frac{i}{\sqrt{2\omega}}\,\hat p,
     \qquad
     \hat a^\dagger
-    =\sqrt{\frac{\omega}{2}}\,\hat q
-     -\frac{i}{\sqrt{2\omega}}\,\hat p.
+    = \sqrt{\frac{\omega}{2}}\,\hat q
+      - \frac{i}{\sqrt{2\omega}}\,\hat p.
 \]
-Equivalently,
+Then
 \[
-    \hat q=\frac{1}{\sqrt{2\omega}}(\hat a+\hat a^\dagger),
-    \qquad
-    \hat p=-i\sqrt{\frac{\omega}{2}}(\hat a-\hat a^\dagger).
+    [\hat a,\hat a^\dagger]=1,
 \]
-The canonical commutator implies
+and
 \[
-    [\hat a,\hat a^\dagger]=1.
+    \hat H
+    = \omega\left(\hat a^\dagger\hat a+\frac{1}{2}\right).
 \]
-The Hamiltonian becomes
-\[
-    \hat H=\omega\left(\hat a^\dagger\hat a+\frac{1}{2}\right).
-\]
-This is the algebraic form that will be copied for every field mode.
+The operator \(\hat a^\dagger\hat a\) counts oscillator excitations.
 
-\section{Creation and Annihilation Operators}
+\section{Number States and the Oscillator Vacuum}
 
-The operator \(\hat a^\dagger\) raises the excitation number of the oscillator,
-while \(\hat a\) lowers it. If \(|0\rangle\) is the oscillator ground state,
-then
+The oscillator vacuum is defined by
 \[
     \hat a|0\rangle=0.
 \]
-Repeated action of \(\hat a^\dagger\) produces excited states,
+The excited states are
 \[
-    |n\rangle=\frac{(\hat a^\dagger)^n}{\sqrt{n!}}|0\rangle,
+    |n\rangle
+    = \frac{(\hat a^\dagger)^n}{\sqrt{n!}}|0\rangle,
     \qquad n=0,1,2,\ldots.
 \]
-In a single oscillator problem, this is a convenient way to organize the energy
-spectrum. In a field theory, the same algebra acquires a new interpretation:
-creation operators create field quanta.
-
-\section{Number Operator and Energy Spectrum}
-
-The number operator is
+If
 \[
-    \hat N=\hat a^\dagger\hat a.
+    \hat N=\hat a^\dagger\hat a,
 \]
-It satisfies
+then
 \[
-    \hat N|n\rangle=n|n\rangle.
-\]
-The Hamiltonian eigenvalue equation is
-\[
+    \hat N|n\rangle=n|n\rangle,
+    \qquad
     \hat H|n\rangle
-    =\omega\left(n+\frac{1}{2}\right)|n\rangle.
+    = \omega\left(n+\frac{1}{2}\right)|n\rangle.
 \]
-The integer \(n\) counts oscillator excitations. The term
-\(\omega/2\) is the zero-point energy.
+The vacuum is not a state of zero energy. It has the zero-point energy
+\(\omega/2\). This fact becomes more delicate for fields because a field has
+infinitely many oscillator modes.
 
-For a field, there will be one number operator for each mode,
-\[
-    \hat N_{\vect{k}}
-    =\hat a_{\vect{k}}^\dagger\hat a_{\vect{k}}.
-\]
-The eigenvalue of \(\hat N_{\vect{k}}\) counts how many quanta occupy the mode
-\(\vect{k}\).
+\section{From One Oscillator to Many Field Modes}
 
-\section{The Vacuum State of One Oscillator}
-
-The oscillator vacuum is defined algebraically by
-\[
-    \hat a|0\rangle=0.
-\]
-It is not the state of zero energy; its energy is
-\[
-    E_0=\frac{1}{2}\omega.
-\]
-This small fact becomes conceptually important in field theory. A free field has
-one oscillator for every allowed momentum mode, so the formal vacuum energy is
-\[
-    E_{\mathrm{vac}}
-    =\frac{1}{2}\sum_{\vect{k}}\omega_{\vect{k}}.
-\]
-In the continuum limit this expression diverges. Later chapters will explain
-normal ordering, regularization, renormalization, and the physical meaning of
-vacuum energy. At this stage the important lesson is simpler: the quantum vacuum
-is a state with no excitations, not a state with no structure.
-
-\section{From One Oscillator to Infinitely Many Oscillators}
-
-For the scalar field, each normal mode receives its own creation and
-annihilation operators,
+For a free field, every independent mode is quantized as an oscillator. Thus one
+introduces a pair of operators for each mode,
 \[
     \hat a_{\vect{k}},
     \qquad
     \hat a_{\vect{k}}^\dagger.
 \]
-They satisfy
+In a finite box their algebra is
 \[
-    [\hat a_{\vect{k}},\hat a_{\vect{k}'}^\dagger]
-    =\delta_{\vect{k},\vect{k}'},
+    [\hat a_{\vect{k}},\hat a_{\vect{p}}^\dagger]
+    = \delta_{\vect{k},\vect{p}},
     \qquad
-    [\hat a_{\vect{k}},\hat a_{\vect{k}'}]=0,
+    [\hat a_{\vect{k}},\hat a_{\vect{p}}]=0,
     \qquad
-    [\hat a_{\vect{k}}^\dagger,\hat a_{\vect{k}'}^\dagger]=0.
+    [\hat a_{\vect{k}}^\dagger,\hat a_{\vect{p}}^\dagger]=0.
 \]
-The free-field vacuum is the state annihilated by every annihilation operator,
+The free-field vacuum is the state annihilated by all annihilation operators,
 \[
     \hat a_{\vect{k}}|0\rangle=0
-    \qquad \text{for every }\quad \vect{k}.
+    \qquad \text{for all }\vect{k}.
 \]
-A one-particle state of momentum \(\vect{k}\) is
+A one-quantum state is obtained by applying one creation operator:
 \[
     |\vect{k}\rangle
-    =\hat a_{\vect{k}}^\dagger|0\rangle.
+    = \hat a_{\vect{k}}^\dagger|0\rangle.
 \]
-A two-particle state may be written as
-\[
-    |\vect{k}_1,\vect{k}_2\rangle
-    =\hat a_{\vect{k}_1}^\dagger
-     \hat a_{\vect{k}_2}^\dagger|0\rangle,
-\]
-up to normalization conventions.
+A many-quantum state is obtained by applying several creation operators.
 
 \begin{definitionbox}
-The \emph{Fock space} of a free quantum field is the Hilbert space generated
-from the vacuum by applying creation operators for all allowed modes. It is the
-natural state space for a theory in which the number of particles is not fixed.
+The \emph{Fock space} of the free field is the Hilbert space generated from the
+vacuum by applying creation operators for all modes. It naturally contains
+states with zero, one, two, and more field quanta.
 \end{definitionbox}
 
 \section{Field Quanta as Mode Excitations}
 
-In the free theory, the Hamiltonian can be written as
+For the free theory, the Hamiltonian has the schematic form
 \[
     \hat H
-    =\sum_{\vect{k}}\omega_{\vect{k}}
+    = \sum_{\vect{k}}\omega_{\vect{k}}
     \left(
         \hat a_{\vect{k}}^\dagger\hat a_{\vect{k}}
-        +\frac{1}{2}
+        + \frac{1}{2}
     \right).
 \]
-The first term counts excitations of each mode. The state
-\(\hat a_{\vect{k}}^\dagger|0\rangle\) has energy \(\omega_{\vect{k}}\) above
-the free vacuum and momentum \(\vect{k}\). It is interpreted as a one-particle
-state.
+The operator \(\hat a_{\vect{k}}^\dagger\hat a_{\vect{k}}\) counts how many
+quanta occupy the mode \(\vect{k}\). The state
+\(\hat a_{\vect{k}}^\dagger|0\rangle\) has one quantum of energy
+\(\omega_{\vect{k}}\) above the free vacuum and momentum \(\vect{k}\). In the
+free theory, this is what one means by a one-particle state.
 
-The field operator itself is reconstructed from the same mode operators. In a
-standard continuum normalization,
-\[
-    \hat\phi(t,\vect{x})
-    =\int \frac{\dd^3k}{(2\pi)^3}
-      \frac{1}{\sqrt{2\omega_{\vect{k}}}}
-      \left(
-          \hat a_{\vect{k}}e^{-i\omega_{\vect{k}}t+i\vect{k}\cdot\vect{x}}
-          +\hat a_{\vect{k}}^\dagger
-           e^{i\omega_{\vect{k}}t-i\vect{k}\cdot\vect{x}}
-      \right).
-\]
-The coefficients of the classical mode expansion have become operators. The
-field operator can annihilate and create quanta because it contains both
-\(\hat a_{\vect{k}}\) and \(\hat a_{\vect{k}}^\dagger\).
+This interpretation is precise for a free field. In interacting QFT, particles
+can be dressed by interactions, unstable particles appear as resonances, and the
+vacuum itself can be nontrivial. Nevertheless, the free Fock-space picture is
+the starting point for perturbation theory and scattering.
 
-\begin{remarkbox}
-A field quantum is not a tiny localized lump of classical field. In the free
-theory, it is a mode excitation created by a creation operator. Localization,
-wave packets, interactions, and particle detection require additional steps.
-\end{remarkbox}
+\section{What Is Still Missing?}
 
-\section{What Is New Compared with Classical Field Theory?}
+The oscillator construction explains why creation and annihilation operators
+appear, but it is not yet the full canonical quantization of a field. We have
+not yet imposed commutation relations directly on
+\(\hat\phi(t,\vect{x})\) and its conjugate momentum
+\(\hat\pi(t,\vect{x})\). We have also not fixed the continuum normalization of
+the mode expansion, nor have we discussed fields as operator-valued
+distributions.
 
-Classical field theory assigns numbers to field configurations. Quantum field
-theory assigns operators to fields and vectors to states. The basic object is no
-longer a definite field profile \(\phi(x)\), but an operator \(\hat\phi(x)\)
-acting on a Hilbert space.
-
-The free quantum field still satisfies the free equation of motion,
-\[
-    (\Box+m^2)\hat\phi(x)=0,
-\]
-but the meaning has changed. This is now an equation for an operator-valued
-distribution, not for a classical function.
-
-The conceptual dictionary of the chapter is:
-\[
-\begin{array}{ccl}
-\text{classical normal mode} & \longrightarrow & \text{quantum oscillator},\\[0.25em]
-\text{oscillator excitation} & \longrightarrow & \text{field quantum},\\[0.25em]
-\text{many oscillator excitations} & \longrightarrow & \text{Fock-space state},\\[0.25em]
-\text{classical field} & \longrightarrow & \text{field operator}.
-\end{array}
-\]
+These are the tasks of the next chapter. Chapter 2 turns the oscillator picture
+into the canonical quantization of the real scalar field.
 
 \begin{summarybox}
-A free classical field can be decomposed into independent normal modes. Each
-mode is a harmonic oscillator. Quantizing all of these oscillators produces
-creation and annihilation operators, a vacuum state, number operators, and Fock
-space. In the free theory, particles are mode excitations of quantum fields.
-This is the starting point for propagators, perturbation theory, and scattering.
+A free classical field can be diagonalized into independent normal modes. Each
+mode is a harmonic oscillator. Quantizing those oscillators gives creation and
+annihilation operators. Acting with creation operators on the vacuum builds Fock
+space, and the resulting mode excitations are interpreted as free particles.
+This oscillator picture is the conceptual bridge to canonical field
+quantization.
 \end{summarybox}
+
+\section{Chapter Checklist}
+
+After reading this chapter, one should be able to:
+\begin{itemize}
+    \item explain why a free field decomposes into normal modes;
+    \item explain why each independent mode behaves as a harmonic oscillator;
+    \item quantize a single harmonic oscillator using \(\hat a\) and
+    \(\hat a^\dagger\);
+    \item define the oscillator vacuum and number states;
+    \item describe the free-field vacuum and one-particle states;
+    \item explain why free particles are mode excitations;
+    \item state what remains to be done in canonical field quantization.
+\end{itemize}
