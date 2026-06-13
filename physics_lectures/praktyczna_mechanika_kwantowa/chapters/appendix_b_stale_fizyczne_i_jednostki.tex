@@ -1,53 +1,62 @@
 \chapter{Stałe fizyczne i jednostki}
 
 \begin{summarybox}
-W zadaniach z mechaniki kwantowej bardzo łatwo zgubić czynniki \(10^{-9}\),
-\(10^{-19}\), \(\hbar\) albo masę efektywną. Ten dodatek zbiera najważniejsze
-stałe, jednostki i praktyczne konwersje między układem SI, elektronowoltami i
-nanometrami.
+W zadaniach z praktycznej mechaniki kwantowej bardzo łatwo zgubić czynniki
+\(10^{-9}\), \(10^{-19}\), \(\hbar\) albo masę efektywną. Ten dodatek zbiera
+najważniejsze stałe, jednostki i praktyczne konwersje między układem SI,
+elektronowoltami i nanometrami.
 \end{summarybox}
+
+\section{Tabela najważniejszych stałych}
+
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+Wielkość & Symbol & Wartość \\
+\midrule
+Stała Plancka & \(h\) & \(6.62607015\times10^{-34}\,\mathrm{J\,s}\) \\
+Zredukowana stała Plancka & \(\hbar\) & \(1.054571817\times10^{-34}\,\mathrm{J\,s}\) \\
+Zredukowana stała Plancka & \(\hbar\) & \(6.582119569\times10^{-16}\,\mathrm{eV\,s}\) \\
+Masa elektronu & \(m_e\) & \(9.1093837\times10^{-31}\,\mathrm{kg}\) \\
+Ładunek elementarny & \(e\) & \(1.602176634\times10^{-19}\,\mathrm{C}\) \\
+Elektronowolt & \(1\,\mathrm{eV}\) & \(1.602176634\times10^{-19}\,\mathrm{J}\) \\
+Nanometr & \(1\,\mathrm{nm}\) & \(10^{-9}\,\mathrm{m}\) \\
+\bottomrule
+\end{tabular}
+\end{center}
 
 \section{Stała Plancka i zredukowana stała Plancka}
 
-Stała Plancka wynosi
+W większości wzorów mechaniki kwantowej używamy \(\hbar\), nie \(h\):
 \begin{equation}
-    h=6.62607015\times 10^{-34}\,\mathrm{J\,s}.
+    \hbar=\frac{h}{2\pi}.
 \end{equation}
-Zredukowana stała Plancka to
-\begin{equation}
-    \hbar=\frac{h}{2\pi}\approx 1.054571817\times 10^{-34}\,\mathrm{J\,s}.
-\end{equation}
-W elektronowoltosekundach:
-\begin{equation}
-    \hbar\approx 6.582119569\times 10^{-16}\,\mathrm{eV\,s}.
-\end{equation}
-W większości wzorów mechaniki kwantowej używamy \(\hbar\), nie \(h\).
+W równaniu Schrödingera, wzorach na energie studni, oscylatorze harmonicznym i
+operatorze pędu prawie zawsze pojawia się właśnie \(\hbar\).
 
-\section{Masa elektronu}
+\section{Masa elektronu i masa efektywna}
 
 Masa elektronu wynosi
 \begin{equation}
-    m_e=9.1093837\times 10^{-31}\,\mathrm{kg}.
+    m_e=9.1093837\times10^{-31}\,\mathrm{kg}.
 \end{equation}
-W wielu zadaniach z półprzewodników zamiast \(m_e\) używa się masy efektywnej:
+W półprzewodnikach często używa się masy efektywnej
 \begin{equation}
     m^*=\alpha m_e.
 \end{equation}
-Na przykład \(m^*=0.067m_e\) jest często używanym przybliżeniem dla elektronu w arsenku galu.
+Jeśli \(m^*=0.067m_e\), to energia kwantowania w studni jest większa niż dla
+elektronu swobodnego o czynnik około \(1/0.067\).
 
 \section{Elektronowolt}
 
-Elektronowolt jest energią, jaką zyskuje cząstka o ładunku elementarnym po przejściu przez różnicę potencjałów jednego wolta:
+Elektronowolt jest energią wygodną dla skali atomowej, molekularnej i
+nanostrukturalnej:
 \begin{equation}
     1\,\mathrm{eV}=1.602176634\times10^{-19}\,\mathrm{J}.
 \end{equation}
-Dlatego
+Jeśli energia została policzona w dżulach, to
 \begin{equation}
-    1\,\mathrm{J}=\frac{1}{1.602176634\times10^{-19}}\,\mathrm{eV}.
-\end{equation}
-W nanostrukturach energie często są podawane w meV:
-\begin{equation}
-    1\,\mathrm{meV}=10^{-3}\,\mathrm{eV}.
+    E[\mathrm{eV}]=\frac{E[\mathrm{J}]}{1.602176634\times10^{-19}}.
 \end{equation}
 
 \section{Nanometr}
@@ -56,42 +65,56 @@ Nanometr to
 \begin{equation}
     1\,\mathrm{nm}=10^{-9}\,\mathrm{m}.
 \end{equation}
-W problemach studni kwantowych szerokości są często rzędu kilku lub kilkunastu nanometrów. Jeśli szerokość \(L\) podstawiamy do wzoru SI, trzeba pamiętać:
+Dla szerokości \(L=10\,\mathrm{nm}\) do wzorów SI podstawiamy
 \begin{equation}
-    L=10\,\mathrm{nm}=10\times10^{-9}\,\mathrm{m}=10^{-8}\,\mathrm{m}.
+    L=10^{-8}\,\mathrm{m}.
+\end{equation}
+Błąd o czynnik \(10^9\) w długości daje błąd o czynnik \(10^{18}\) w energii,
+jeśli energia zawiera \(1/L^2\).
+
+\section{Praktyczny przelicznik dla studni kwantowej}
+
+Dla elektronu swobodnego w nieskończonej studni jednowymiarowej
+\begin{equation}
+    E_n=\frac{n^2\pi^2\hbar^2}{2m_eL^2}.
+\end{equation}
+Jeśli \(L\) podajemy w nanometrach, a energię chcemy w eV, można użyć
+przybliżenia
+\begin{equation}
+    E_n[\mathrm{eV}]\approx\frac{0.376\,n^2}{(L[\mathrm{nm}])^2}.
+\end{equation}
+Dla masy efektywnej \(m^*=\alpha m_e\) wzór przyjmuje postać
+\begin{equation}
+    E_n[\mathrm{eV}]\approx\frac{0.376\,n^2}{\alpha\,(L[\mathrm{nm}])^2}.
 \end{equation}
 
-Błąd o czynnik \(10^9\) w długości daje błąd o czynnik \(10^{18}\) w energii, jeśli energia zawiera \(1/L^2\). To jest jedna z najczęstszych katastrof rachunkowych.
-
-\section{Masa efektywna}
-
-W półprzewodniku elektron nie zachowuje się dokładnie jak elektron swobodny. W pobliżu minimum pasma można często opisać go przez masę efektywną \(m^*\). Wzór na energię w studni przyjmuje wtedy postać
+\begin{examplebox}
+Dla elektronu swobodnego w studni o szerokości \(L=10\,\mathrm{nm}\):
 \begin{equation}
-    E_n=\frac{n^2\pi^2\hbar^2}{2m^*L^2}.
+    E_1\approx\frac{0.376}{100}\,\mathrm{eV}=3.76\,\mathrm{meV}.
 \end{equation}
-Mniejsza masa efektywna oznacza większe odstępy energetyczne.
-
-Trzeba zawsze sprawdzić, czy w zadaniu podano \(m\), \(m_e\), czy \(m^*\). Pominięcie masy efektywnej może zmienić wynik wielokrotnie.
-
-\section{Konwersje między SI, eV i nm}
-
-Typowy algorytm bezpiecznego liczenia jest następujący:
-\begin{enumerate}
-    \item zamień wszystkie długości na metry,
-    \item zamień masę efektywną na kilogramy,
-    \item policz energię w dżulach,
-    \item zamień dżule na elektronowolty.
-\end{enumerate}
-
-Przykład dla studni nieskończonej:
+Dla \(m^*=0.067m_e\) energia wynosi około
 \begin{equation}
-    E_1=\frac{\pi^2\hbar^2}{2mL^2}.
+    E_1\approx\frac{3.76\,\mathrm{meV}}{0.067}\approx56\,\mathrm{meV}.
 \end{equation}
-Jeśli \(L\) jest w nanometrach, nie wolno podstawiać liczby \(10\) zamiast \(10^{-8}\,\mathrm{m}\), chyba że cały wzór został wcześniej przeskalowany do jednostek eV i nm.
+\end{examplebox}
+
+\section{Pole magnetyczne i częstość cyklotronowa}
+
+Dla cząstki o ładunku \(q\) w jednorodnym polu magnetycznym częstość cyklotronowa
+wynosi
+\begin{equation}
+    \omega_c=\frac{|q|B}{m}.
+\end{equation}
+Odstęp poziomów Landaua to
+\begin{equation}
+    \Delta E=\hbar\omega_c.
+\end{equation}
+Tu również trzeba pilnować, czy używana jest masa elektronu, czy masa efektywna.
 
 \section{Jak nie zgubić czynników \texorpdfstring{\(10^{-9}\)}{10^-9} i \texorpdfstring{\(10^{-19}\)}{10^-19}}
 
-Najprostsza metoda kontroli to pisanie jednostek w komentarzach i wykonywanie konwersji w osobnych liniach. W Mathematice można zdefiniować:
+Najprostsza metoda kontroli to pisanie jednostek w komentarzach i wykonywanie konwersji w osobnych liniach:
 \begin{verbatim}
 eV = 1.602176634*10^-19;
 nm = 10^-9;
@@ -102,8 +125,19 @@ Ejoule = Pi^2 hbar^2/(2 me L^2);
 EeV = Ejoule/eV
 \end{verbatim}
 
-Dobrą praktyką jest również sprawdzenie rzędu wielkości. Dla elektronu w studni o szerokości kilku nanometrów energie zwykle wychodzą w eV albo dziesiątkach meV, nie w milionach eV i nie w \(10^{-30}\,\mathrm{eV}\).
+\section{Sanity checks}
+
+Warto zapamiętać kilka kontroli rzędu wielkości:
+\begin{itemize}
+    \item dla elektronu w studni kilku nanometrów energie są zwykle w meV albo eV,
+    \item zwężenie studni dwa razy zwiększa energię cztery razy,
+    \item mniejsza masa efektywna zwiększa energię kwantowania,
+    \item wynik w milionach eV dla nanostruktury prawie na pewno oznacza błąd jednostek,
+    \item wynik rzędu \(10^{-30}\,\mathrm{eV}\) dla studni nanometrowej również jest podejrzany.
+\end{itemize}
 
 \begin{summarybox}
-W mechanice kwantowej błędy jednostek są brutalne, bo energie często zależą od \(\hbar^2/(mL^2)\). Zawsze kontroluj długości, masę efektywną i konwersję dżuli na elektronowolty.
+W mechanice kwantowej błędy jednostek są brutalne, bo energie często zależą od
+\(\hbar^2/(mL^2)\). Zawsze kontroluj długości, masę efektywną i konwersję dżuli na
+elektronowolty.
 \end{summarybox}
