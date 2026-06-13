@@ -1,18 +1,236 @@
 \chapter{Path Integral for Quantum Mechanics}
 
 \begin{remarkbox}
-This chapter is reserved by the course plan in \texttt{ideas\_Quantum\_Field\_Theory.md}. It will be developed in small increments.
+The operator formalism led from fields to propagators, diagrams, and scattering
+amplitudes. The path integral gives a different but equivalent viewpoint: a
+transition amplitude is computed as a sum over histories, weighted by
+\(e^{iS}\). We first develop this idea in ordinary quantum mechanics before
+extending it to fields.
 \end{remarkbox}
 
-\section{Planned Sections}
+\section{Transition Amplitudes as Sums Over Histories}
 
+In the operator formulation of quantum mechanics, the transition amplitude from
+position \(q_i\) at time \(t_i\) to position \(q_f\) at time \(t_f\) is
+\[
+    \langle q_f,t_f|q_i,t_i\rangle
+    = \langle q_f|e^{-i\hat H(t_f-t_i)}|q_i\rangle.
+\]
+The path-integral idea is that the same amplitude can be written as a sum over
+all paths connecting the endpoints:
+\[
+    \langle q_f,t_f|q_i,t_i\rangle
+    = \int_{q(t_i)=q_i}^{q(t_f)=q_f}\mathcal{D}q(t)\,
+      e^{iS[q]}.
+\]
+Here
+\[
+    S[q]=\int_{t_i}^{t_f}\dd t\,L(q,\dot q)
+\]
+is the classical action evaluated on the path \(q(t)\). The notation
+\(\mathcal{D}q(t)\) means integration over all intermediate paths.
+
+This formula should not be interpreted as saying that the particle secretly
+chooses one path. Rather, the transition amplitude is built by coherently
+summing contributions from all paths.
+
+\section{Time Slicing}
+
+The path integral can be derived by dividing the time interval into many small
+steps. Let
+\[
+    t_f-t_i=N\epsilon.
+\]
+Insert resolutions of the identity in the position basis:
+\[
+    1=\int\dd q_j\,|q_j\rangle\langle q_j|.
+\]
+Then
+\[
+    \langle q_f|e^{-i\hat H(t_f-t_i)}|q_i\rangle
+    = \int\prod_{j=1}^{N-1}\dd q_j\,
+      \prod_{j=0}^{N-1}\langle q_{j+1}|e^{-i\epsilon\hat H}|q_j\rangle.
+\]
+For a Hamiltonian
+\[
+    H=\frac{p^2}{2m}+V(q),
+\]
+one also inserts momentum states and evaluates the short-time matrix element.
+In the limit \(N\to\infty\), this produces
+\[
+    \int\mathcal{D}q\,e^{i\int\dd t\,[\frac{1}{2}m\dot q^2-V(q)]}.
+\]
+Thus the path integral is not a new postulate here; it is a reorganization of
+operator time evolution.
+
+\section{Classical Limit and Stationary Phase}
+
+The factor \(e^{iS[q]}\) oscillates rapidly when the action is large compared
+with \(\hbar\). Restoring \(\hbar\), the weight is
+\[
+    e^{iS[q]/\hbar}.
+\]
+In the limit \(\hbar\to0\), most paths interfere destructively. The dominant
+contribution comes from paths for which the action is stationary:
+\[
+    \delta S=0.
+\]
+This condition gives the classical equations of motion.
+
+Thus the classical path is not the only path included in the quantum amplitude.
+It is the path around which neighbouring contributions add coherently in the
+classical limit. Quantum mechanics is the sum over all histories; classical
+mechanics is the stationary-phase approximation.
+
+\section{Gaussian Integrals}
+
+Gaussian integrals are the technical backbone of free path integrals. The
+ordinary one-dimensional formula is
+\[
+    \int_{-\infty}^{\infty}\dd x\,
+    e^{-\frac{1}{2}ax^2+Jx}
+    = \sqrt{\frac{2\pi}{a}}\,
+      e^{\frac{J^2}{2a}},
+\]
+for \(a>0\). In oscillatory form one uses an \(i\epsilon\) prescription to make
+the integral well defined.
+
+The multidimensional version is
+\[
+    \int \dd^n x\,
+    \exp\left[-\frac{1}{2}x^TAx+J^Tx\right]
+    = \left(\frac{(2\pi)^n}{\det A}\right)^{1/2}
+      \exp\left(\frac{1}{2}J^TA^{-1}J\right).
+\]
+Free quantum theories lead to infinite-dimensional versions of this formula.
+The inverse operator \(A^{-1}\) becomes the propagator.
+
+\section{The Free Particle}
+
+For a free particle,
+\[
+    L=\frac{1}{2}m\dot q^2.
+\]
+The path integral is Gaussian. The result is
+\[
+    K(q_f,t_f;q_i,t_i)
+    = \left(\frac{m}{2\pi iT}\right)^{1/2}
+      \exp\left[\frac{im(q_f-q_i)^2}{2T}\right],
+\]
+where \(T=t_f-t_i\). The exponent is the classical action evaluated on the
+straight-line path connecting the endpoints.
+
+This example illustrates a common pattern. For a quadratic action, the path
+integral can be evaluated exactly. The answer is a normalization determinant
+multiplying \(e^{iS_{\mathrm{cl}}}\).
+
+\section{The Harmonic Oscillator}
+
+For the harmonic oscillator,
+\[
+    L=\frac{1}{2}m\dot q^2-\frac{1}{2}m\omega^2q^2.
+\]
+The action is still quadratic, so the path integral remains Gaussian. The
+transition amplitude again has the form
+\[
+    K(q_f,t_f;q_i,t_i)
+    = \mathcal{N}(T)e^{iS_{\mathrm{cl}}(q_f,t_f;q_i,t_i)}.
+\]
+The exact normalization \(\mathcal{N}(T)\) comes from the determinant of the
+quadratic fluctuation operator.
+
+The oscillator is important because a free field is a collection of oscillators.
+The free-field path integral will therefore be an infinite product of Gaussian
+oscillator path integrals.
+
+\section{Generating Functionals in Quantum Mechanics}
+
+To compute correlation functions, introduce a source \(J(t)\) coupled to
+\(q(t)\):
+\[
+    Z[J]
+    = \int\mathcal{D}q\,
+      \exp\left(iS[q]+i\int\dd t\,J(t)q(t)\right).
+\]
+The source is an auxiliary function. It is set to zero after differentiating.
+Correlation functions are obtained by functional derivatives:
+\[
+    \langle T q(t_1)q(t_2)\rangle
+    = \frac{1}{Z[0]}
+      \left.\frac{1}{i^2}\frac{\delta^2 Z[J]}{\delta J(t_1)\delta J(t_2)}\right|_{J=0}.
+\]
+This is the prototype of the generating functional method used in QFT.
+
+\section{Sources and Correlation Functions}
+
+The source term keeps track of insertions. Differentiating once gives
+\[
+    \frac{1}{i}\frac{\delta Z[J]}{\delta J(t)}
+    = \int\mathcal{D}q\,q(t)
+      \exp\left(iS[q]+i\int\dd t'\,J(t')q(t')\right).
+\]
+Differentiating twice inserts two factors of \(q\), and so on. Therefore
+\[
+    \left.\frac{1}{i^n}\frac{\delta^n Z[J]}{\delta J(t_1)\cdots\delta J(t_n)}\right|_{J=0}
+\]
+generates the \(n\)-point time-ordered correlation function.
+
+In operator language these are vacuum expectation values of time-ordered
+products. In the path-integral language they are moments of a functional
+integral with an oscillatory weight.
+
+\section{Why the Path Integral Is Useful for QFT}
+
+The path integral is especially useful in field theory for several reasons.
+First, it makes spacetime symmetries more visible because the action appears
+directly. Second, it gives a compact way to derive Feynman rules. Third, it
+handles correlation functions and sources naturally. Fourth, it generalizes to
+gauge fixing, ghosts, effective actions, and nonperturbative approximations.
+
+For a field, the single coordinate \(q(t)\) is replaced by a field configuration
+\(\phi(x)\). The ordinary source \(J(t)\) is replaced by a spacetime source
+\(J(x)\). The path integral becomes
+\[
+    \int\mathcal{D}\phi\,e^{iS[\phi]}.
+\]
+This is the subject of the next chapter.
+
+\section{Relation to Canonical Quantization}
+
+The path integral and canonical quantization are not separate quantum theories.
+They are two formulations of the same theory. Canonical quantization emphasizes
+Hilbert spaces, operators, commutators, and states. The path integral emphasizes
+action functionals, histories, sources, and correlation functions.
+
+The connection can be summarized as
+\[
+    \langle q_f|e^{-i\hat H T}|q_i\rangle
+    = \int_{q_i}^{q_f}\mathcal{D}q\,e^{iS[q]}.
+\]
+The left-hand side is canonical. The right-hand side is the path integral. In
+field theory, this equivalence underlies the use of functional integrals to
+compute the same time-ordered correlators that appear in the operator formalism.
+
+\begin{summarybox}
+The path integral expresses a transition amplitude as a sum over histories
+weighted by \(e^{iS}\). Time slicing connects this formula to operator evolution.
+The classical equations arise by stationary phase. Quadratic actions lead to
+Gaussian integrals, whose inverses become propagators. Adding sources produces a
+generating functional whose derivatives give time-ordered correlation functions.
+\end{summarybox}
+
+\section{Chapter Checklist}
+
+After reading this chapter, one should be able to:
 \begin{itemize}
-    \item Transition amplitudes as sums over histories.
-    \item Time slicing.
-    \item Classical limit and stationary phase.
-    \item Gaussian integrals.
-    \item Generating functionals in ordinary quantum mechanics.
-    \item Sources and correlation functions.
-    \item Why the path integral is useful for QFT.
-    \item Relation to canonical quantization.
+    \item write a transition amplitude as a path integral over histories;
+    \item explain the time-slicing derivation;
+    \item explain how the classical limit follows from stationary phase;
+    \item evaluate the role of Gaussian integrals in free theories;
+    \item state the path integral for the free particle and harmonic oscillator;
+    \item define a generating functional with a source;
+    \item obtain correlation functions by differentiating with respect to the
+    source;
+    \item explain why the path integral is useful for QFT;
+    \item relate the path integral to canonical quantization.
 \end{itemize}
