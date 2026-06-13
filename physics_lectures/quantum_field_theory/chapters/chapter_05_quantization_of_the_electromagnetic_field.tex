@@ -1,21 +1,315 @@
 \chapter{Quantization of the Electromagnetic Field}
 
 \begin{remarkbox}
-This chapter is reserved by the course plan in \texttt{ideas\_Quantum\_Field\_Theory.md}. It will be developed in small increments.
+The scalar and Dirac fields taught us how particles and antiparticles arise from
+mode expansions. The electromagnetic field adds a new feature: gauge redundancy.
+A photon is not an excitation of four independent components of \(A_\mu\), but
+of the physical transverse degrees of freedom of a gauge field.
 \end{remarkbox}
 
-\section{Planned Sections}
+\section{Why Gauge Fields Are Harder to Quantize}
 
+The real scalar, complex scalar, and Dirac fields all had independent field
+components that could be quantized after imposing the appropriate commutation or
+anticommutation relations. The electromagnetic field is different. It is
+described by a vector potential \(A_\mu\), but not all components of
+\(A_\mu\) represent physical degrees of freedom.
+
+The field strength is
+\[
+    F_{\mu\nu}=\partial_\mu A_\nu-\partial_\nu A_\mu.
+\]
+The free electromagnetic Lagrangian is
+\[
+    \mathcal{L}
+    = -\frac{1}{4}F_{\mu\nu}F^{\mu\nu}.
+\]
+It is invariant under the gauge transformation
+\[
+    A_\mu\longrightarrow A_\mu+\partial_\mu\Lambda.
+\]
+The potentials \(A_\mu\) and \(A_\mu+\partial_\mu\Lambda\) describe the same
+physical electromagnetic field. Therefore quantizing every component of
+\(A_\mu\) as if it were an independent scalar field would overcount states.
+
+\section{Physical and Redundant Degrees of Freedom}
+
+A massless vector field in four spacetime dimensions has two physical
+polarizations. This is already suggested classically by electromagnetic waves:
+the electric and magnetic fields of a plane wave are transverse to the direction
+of propagation.
+
+The four components of \(A_\mu\) contain redundant information. Gauge freedom
+removes one part, and the equations of motion impose a constraint. The result is
+that only two transverse photon polarizations are physical.
+
+This distinction is central:
+\[
+    \text{four components of } A_\mu
+    \neq
+    \text{four physical photon polarizations}.
+\]
+The task of quantization is to keep Lorentz covariance and locality under
+control while ensuring that only the physical states contribute to observable
+processes.
+
+\section{Canonical Obstruction}
+
+The canonical momentum conjugate to \(A_\mu\) is
+\[
+    \Pi^\mu
+    = \frac{\partial\mathcal{L}}{\partial(\partial_0 A_\mu)}.
+\]
+For the time component one finds
+\[
+    \Pi^0=0.
+\]
+This means that \(A_0\) has no independent time derivative in the Lagrangian.
+It is not an ordinary dynamical coordinate. Instead, it acts as a Lagrange
+multiplier imposing Gauss's law.
+
+This is the first signal that gauge fields require constraints or gauge fixing.
+One cannot simply impose four independent canonical commutation relations for
+all components of \(A_\mu\).
+
+\section{Coulomb Gauge Quantization}
+
+A physically transparent gauge choice is Coulomb gauge,
+\[
+    \nabla\cdot\vect{A}=0.
+\]
+For the free electromagnetic field, one may also set the nondynamical scalar
+potential to zero after solving the constraint. The remaining field is the
+transverse vector potential \(\vect{A}_T\).
+
+The transverse field may be expanded as
+\[
+    \hat{\vect{A}}(t,\vect{x})
+    = \sum_{\lambda=1}^{2}
+      \int\frac{\dd^3k}{(2\pi)^3}
+      \frac{1}{\sqrt{2|\vect{k}|}}
+      \left(
+          \vect{\epsilon}_{\lambda}(\vect{k})
+          \hat a_{\lambda}(\vect{k})
+          e^{-i|\vect{k}|t+i\vect{k}\cdot\vect{x}}
+          +
+          \vect{\epsilon}_{\lambda}^{\,*}(\vect{k})
+          \hat a_{\lambda}^{\dagger}(\vect{k})
+          e^{i|\vect{k}|t-i\vect{k}\cdot\vect{x}}
+      \right).
+\]
+The polarization vectors are transverse:
+\[
+    \vect{k}\cdot\vect{\epsilon}_{\lambda}(\vect{k})=0.
+\]
+The index \(\lambda=1,2\) labels the two physical polarizations.
+
+\section{Photon Creation and Annihilation Operators}
+
+The photon ladder operators satisfy
+\[
+    [\hat a_{\lambda}(\vect{k}),
+     \hat a_{\sigma}^{\dagger}(\vect{p})]
+    = (2\pi)^3\delta_{\lambda\sigma}
+      \delta^{(3)}(\vect{k}-\vect{p}),
+\]
+with all other commutators vanishing. The vacuum is defined by
+\[
+    \hat a_{\lambda}(\vect{k})|0\rangle=0
+    \qquad \text{for all }\vect{k},\lambda.
+\]
+A one-photon state is
+\[
+    |\vect{k},\lambda\rangle
+    = \hat a_{\lambda}^{\dagger}(\vect{k})|0\rangle.
+\]
+Its energy is
+\[
+    \omega_{\vect{k}}=|\vect{k}|,
+\]
+which is the massless dispersion relation.
+
+The normal-ordered Hamiltonian is
+\[
+    :\hat H:
+    = \sum_{\lambda=1}^{2}
+      \int\frac{\dd^3k}{(2\pi)^3}\,
+      |\vect{k}|\,
+      \hat a_{\lambda}^{\dagger}(\vect{k})
+      \hat a_{\lambda}(\vect{k}).
+\]
+The momentum operator is
+\[
+    :\hat{\vect{P}}:
+    = \sum_{\lambda=1}^{2}
+      \int\frac{\dd^3k}{(2\pi)^3}\,
+      \vect{k}\,
+      \hat a_{\lambda}^{\dagger}(\vect{k})
+      \hat a_{\lambda}(\vect{k}).
+\]
+
+\section{Polarization Vectors}
+
+For each nonzero momentum \(\vect{k}\), one chooses two transverse polarization
+vectors. They obey
+\[
+    \vect{k}\cdot\vect{\epsilon}_{\lambda}(\vect{k})=0,
+    \qquad
+    \vect{\epsilon}_{\lambda}^{\,*}(\vect{k})
+    \cdot
+    \vect{\epsilon}_{\sigma}(\vect{k})
+    = \delta_{\lambda\sigma}.
+\]
+Linear polarizations are useful for many classical comparisons. Circular
+polarizations are useful for describing helicity. They are built from two linear
+polarizations by
+\[
+    \vect{\epsilon}_{\pm}
+    = \frac{1}{\sqrt{2}}
+      \left(\vect{\epsilon}_1\pm i\vect{\epsilon}_2\right).
+\]
+The labels \(+\) and \(-\) correspond to the two helicity states of the photon.
+
+\section{Photon States and Helicity}
+
+A massive spin-one particle would have three spin polarizations. A photon is
+massless and gauge invariant, so only two physical helicities remain. A
+one-photon state may be labelled as
+\[
+    |\vect{k},+\rangle,
+    \qquad
+    |\vect{k},-\rangle.
+\]
+These are helicity eigenstates. Helicity is the projection of angular momentum
+onto the direction of motion. For a massless particle, helicity is Lorentz
+invariant under proper orthochronous Lorentz transformations.
+
+The absence of a longitudinal physical photon is not an accident. The
+longitudinal component of \(\vect{A}\) is gauge redundancy, not a separate
+particle.
+
+\section{Covariant Quantization}
+
+Coulomb gauge makes the physical degrees of freedom visible, but it hides
+manifest Lorentz covariance. For perturbative QFT it is often more convenient to
+use a covariant gauge-fixing term,
+\[
+    \mathcal{L}_{\mathrm{gf}}
+    = -\frac{1}{2\xi}(\partial_\mu A^\mu)^2.
+\]
+The gauge-fixed Lagrangian is
+\[
+    \mathcal{L}
+    = -\frac{1}{4}F_{\mu\nu}F^{\mu\nu}
+      -\frac{1}{2\xi}(\partial_\mu A^\mu)^2.
+\]
+The parameter \(\xi\) labels a family of gauges. The choice \(\xi=1\) is called
+Feynman gauge.
+
+Covariant quantization introduces unphysical components into intermediate
+calculations. These components must not appear in physical observables. In QED,
+current conservation ensures that unphysical polarizations cancel from
+scattering amplitudes. In non-Abelian gauge theory, the corresponding statement
+requires ghosts and BRST symmetry, which will be developed later.
+
+\section{Gauge Fixing and the Photon Propagator}
+
+In covariant gauges, the momentum-space photon propagator is
+\[
+    D_{\mu\nu}(k)
+    = \frac{-i}{k^2+i\epsilon}
+      \left(
+          \eta_{\mu\nu}
+          - (1-\xi)\frac{k_\mu k_\nu}{k^2+i\epsilon}
+      \right).
+\]
+In Feynman gauge, this simplifies to
+\[
+    D_{\mu\nu}(k)
+    = \frac{-i\eta_{\mu\nu}}{k^2+i\epsilon}.
+\]
+The pole at \(k^2=0\) reflects the masslessness of the photon. The numerator
+carries the vector structure of the field.
+
+The gauge-dependent part proportional to \(k_\mu k_\nu\) does not change
+physical QED amplitudes coupled to conserved currents. This is the practical
+reason covariant gauges are useful: they simplify calculations without changing
+observable predictions.
+
+\section{Unphysical Polarizations}
+
+Covariant quantization treats \(A_\mu\) as a four-component field during
+intermediate steps. This introduces time-like and longitudinal polarizations
+that are not physical photon states. The physical Hilbert space is obtained only
+after imposing the appropriate condition that removes the unphysical sector.
+
+In elementary QED calculations, this removal is often hidden inside Ward
+identities and current conservation. If an external photon polarization vector is
+shifted by a multiple of its momentum,
+\[
+    \epsilon_\mu(k)\longrightarrow \epsilon_\mu(k)+c\,k_\mu,
+\]
+physical amplitudes are unchanged. This is the amplitude-level expression of
+gauge redundancy.
+
+\section{Gauge-Invariant Observables}
+
+The potential \(A_\mu\) is not gauge invariant. The field strength
+\(F_{\mu\nu}\) is gauge invariant, and so are the electric and magnetic fields.
+Observables must ultimately be built from gauge-invariant quantities or from
+gauge-invariant combinations of charged fields and gauge fields.
+
+Examples include
+\[
+    F_{\mu\nu}(x),
+    \qquad
+    F_{\mu\nu}(x)F^{\mu\nu}(x),
+\]
+and, in more advanced settings, Wilson line and Wilson loop operators. The
+important lesson at this stage is that the photon is described by a gauge
+potential, but physical information cannot depend on the redundant gauge choice.
+
+\section{What Is a Photon?}
+
+In free QED, a photon is a one-quantum excitation of a transverse mode of the
+electromagnetic field:
+\[
+    |\vect{k},\lambda\rangle
+    = \hat a_{\lambda}^{\dagger}(\vect{k})|0\rangle,
+    \qquad
+    \lambda=1,2.
+\]
+Equivalently, one may label the two states by helicity \(\lambda=\pm\). The
+photon is massless, has energy \(|\vect{k}|\), and carries no electric charge.
+
+This definition is sharp in the free theory and in scattering theory with
+asymptotic photon states. In interacting QED, soft photons and infrared effects
+make the exact particle interpretation more subtle. Those subtleties will be
+revisited when discussing scattering and loop corrections.
+
+\begin{summarybox}
+The electromagnetic field is the first gauge field in the course. Gauge
+redundancy means that not all components of \(A_\mu\) are physical. In Coulomb
+gauge the two transverse photon polarizations are explicit. In covariant gauges
+one keeps Lorentz covariance at the cost of introducing unphysical components,
+which cancel from physical observables. A photon is a transverse, massless
+quantum of the electromagnetic field.
+\end{summarybox}
+
+\section{Chapter Checklist}
+
+After reading this chapter, one should be able to:
 \begin{itemize}
-    \item Why gauge fields are harder to quantize.
-    \item Physical and redundant degrees of freedom.
-    \item Coulomb gauge quantization.
-    \item Photon creation and annihilation operators.
-    \item Polarization vectors.
-    \item Photon states and helicity.
-    \item Covariant quantization.
-    \item Gauge fixing and the photon propagator.
-    \item Unphysical polarizations and their removal.
-    \item Gauge-invariant observables.
-    \item What is a photon?
+    \item explain why gauge fields are harder to quantize than scalar fields;
+    \item state the gauge redundancy of \(A_\mu\);
+    \item explain why the photon has two physical polarizations;
+    \item write the Coulomb-gauge mode expansion of the transverse vector
+    potential;
+    \item construct one-photon states;
+    \item distinguish linear polarization from helicity;
+    \item write the covariant gauge-fixing term;
+    \item write the photon propagator in a covariant gauge;
+    \item explain why unphysical polarizations do not appear as external photon
+    states;
+    \item identify gauge-invariant electromagnetic observables.
 \end{itemize}
