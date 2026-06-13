@@ -1,9 +1,271 @@
 \chapter{Renormalization}
 
 \begin{remarkbox}
-Placeholder chapter from the QFT course plan. Detailed lecture text will be added later.
+Regularization makes divergent expressions well defined. Renormalization turns
+regularized expressions into finite predictions by relating the parameters in the
+Lagrangian to measured quantities. It is not just a trick for removing infinities;
+it is the statement that physics depends on scale.
 \end{remarkbox}
 
-\section{Planned Role}
+\section{The Basic Problem}
 
-This chapter will develop the standard QFT treatment of renormalized masses, fields, couplings, counterterms, and physical predictions.
+Perturbative loop calculations produce divergent expressions. After introducing a
+regulator, these expressions depend on an auxiliary scale or cutoff. For example,
+a one-loop correction may contain
+\[
+    \ln\frac{\Lambda}{m}
+\]
+with a cutoff regulator, or
+\[
+    \frac{1}{\epsilon}
+\]
+in dimensional regularization.
+
+A physical prediction cannot depend on an arbitrary regulator. The way out is to
+recognize that the parameters in the original Lagrangian are not directly the
+measured parameters. Bare masses, fields, and couplings must be related to
+renormalized quantities.
+
+Renormalization is the systematic procedure for making this relation precise.
+
+\section{Bare and Renormalized Quantities}
+
+Start with a scalar theory. The bare Lagrangian may be written as
+\[
+    \mathcal{L}_0
+    = \frac{1}{2}\partial_\mu\phi_0\partial^\mu\phi_0
+      -\frac{1}{2}m_0^2\phi_0^2
+      -\frac{\lambda_0}{4!}\phi_0^4.
+\]
+The subscript \(0\) denotes bare quantities. Introduce renormalized quantities by
+\[
+    \phi_0=Z_\phi^{1/2}\phi,
+    \qquad
+    m_0^2=m^2+\delta m^2,
+    \qquad
+    \lambda_0=\lambda+\delta\lambda
+\]
+with the precise form depending on convention.
+
+The Lagrangian is rewritten as
+\[
+    \mathcal{L}_0=\mathcal{L}_{\mathrm{ren}}+\mathcal{L}_{\mathrm{ct}}.
+\]
+The renormalized part contains finite parameters \(m,\lambda\). The counterterm
+part contains \(\delta Z_\phi,\delta m^2,\delta\lambda\), chosen to cancel loop
+divergences.
+
+\section{Counterterm Lagrangian}
+
+For \(\phi^4\) theory, a common counterterm Lagrangian is
+\[
+    \mathcal{L}_{\mathrm{ct}}
+    = \frac{1}{2}\delta Z_\phi\partial_\mu\phi\partial^\mu\phi
+      -\frac{1}{2}\delta m^2\phi^2
+      -\frac{\delta\lambda}{4!}\phi^4.
+\]
+Each counterterm gives an additional Feynman rule. For example:
+\begin{itemize}
+    \item \(\delta m^2\) gives a two-point insertion;
+    \item \(\delta Z_\phi\) gives a momentum-dependent two-point insertion;
+    \item \(\delta\lambda\) gives a four-point counterterm vertex.
+\end{itemize}
+The counterterm diagrams are included together with loop diagrams. Their role is
+to cancel regulator-dependent divergent pieces.
+
+This may look artificial at first, but it expresses a physical fact: the
+parameters we write in a Lagrangian must be calibrated by measurements.
+
+\section{Renormalization Conditions}
+
+Counterterms are fixed by renormalization conditions. In an on-shell scheme for a
+scalar field, one may require that the full propagator has a pole at the physical
+mass:
+\[
+    p^2=m_{\mathrm{phys}}^2,
+\]
+and that the residue of the pole is one. These conditions define the physical
+mass and the normalization of the field.
+
+For the coupling, one may impose a condition on the four-point amplitude at a
+chosen kinematic point. Schematically,
+\[
+    \mathcal{M}(s_0,t_0,u_0)=-\lambda_{\mathrm{ren}}.
+\]
+This equation defines the renormalized coupling at that reference point.
+
+Different renormalization schemes impose different conditions. The numerical
+values of renormalized parameters may differ from scheme to scheme, but physical
+predictions agree when expressed consistently in terms of measured inputs.
+
+\section{Two-Point Function and Self-Energy}
+
+The full scalar propagator can be written as
+\[
+    G(p)=\frac{i}{p^2-m^2-\Pi(p^2)+i\epsilon},
+\]
+where \(\Pi(p^2)\) is the self-energy. The pole of the propagator is determined
+by
+\[
+    p^2-m^2-\Pi(p^2)=0.
+\]
+The self-energy contains loop contributions and counterterm contributions.
+Renormalization conditions fix the counterterms so that the pole occurs at the
+chosen physical mass and with the chosen residue.
+
+In perturbation theory, one expands \(\Pi\) order by order. At each order,
+divergences are canceled by the counterterms allowed by the Lagrangian.
+
+\section{Four-Point Function and Coupling Renormalization}
+
+The four-point function determines the interaction strength. In \(\phi^4\)
+theory, the tree-level amplitude is
+\[
+    \mathcal{M}_{\mathrm{tree}}=-\lambda.
+\]
+Loop corrections modify this amplitude. The renormalized four-point function has
+schematic form
+\[
+    \mathcal{M}
+    = -\lambda+\mathcal{M}_{\mathrm{loop}}+\mathcal{M}_{\mathrm{ct}}.
+\]
+The loop contribution is divergent before renormalization. The counterterm
+contribution \(\mathcal{M}_{\mathrm{ct}}\) cancels the divergent part and fixes
+how \(\lambda\) is related to a measured scattering amplitude.
+
+This is coupling renormalization. It is the reason the coupling appearing in the
+Lagrangian must be associated with a scale or a physical renormalization
+condition.
+
+\section{Field-Strength Renormalization}
+
+The field-strength renormalization \(Z_\phi\) is fixed by the residue of the full
+propagator. Near the physical pole,
+\[
+    G(p)\sim \frac{iZ}{p^2-m_{\mathrm{phys}}^2+i\epsilon}.
+\]
+In an on-shell scheme, one often chooses the renormalized field so that
+\[
+    Z=1.
+\]
+This condition determines \(\delta Z_\phi\).
+
+Field-strength renormalization affects external legs in scattering amplitudes.
+In LSZ reduction, the residue of the pole controls the normalization of
+one-particle states. Thus \(Z_\phi\) is not merely a formal coefficient; it is
+connected to how fields create physical particles from the vacuum.
+
+\section{Minimal Subtraction}
+
+In minimal subtraction, counterterms are chosen to remove only divergent pole
+terms in dimensional regularization. For example, a counterterm may contain
+\[
+    \delta\lambda = \frac{a_1(\lambda)}{\epsilon}+\frac{a_2(\lambda)}{\epsilon^2}+\cdots.
+\]
+In the \(\overline{\mathrm{MS}}\) scheme, one also subtracts the standard
+combination
+\[
+    -\gamma_E+\ln4\pi.
+\]
+Minimal subtraction schemes are not defined directly by physical pole masses or
+scattering amplitudes. Instead, they define parameters at a renormalization scale
+\(\mu\).
+
+This makes them especially convenient for high-energy calculations and for the
+renormalization group.
+
+\section{Renormalization Scale}
+
+Dimensional regularization introduces a scale \(\mu\). Renormalized parameters
+therefore depend on \(\mu\):
+\[
+    m=m(\mu),
+    \qquad
+    \lambda=\lambda(\mu),
+    \qquad
+    e=e(\mu).
+\]
+Physical quantities cannot depend on the arbitrary scale \(\mu\). Therefore the
+explicit \(\mu\)-dependence of loop corrections must cancel the implicit
+\(\mu\)-dependence of renormalized parameters.
+
+This requirement leads to renormalization group equations. For a coupling
+\(g(\mu)\), one defines
+\[
+    \beta(g)=\mu\frac{\dd g}{\dd\mu}.
+\]
+The beta function tells us how the coupling changes with scale. The next chapter
+will develop this idea systematically.
+
+\section{Renormalizable and Nonrenormalizable Interactions}
+
+A theory is perturbatively renormalizable if all divergences can be absorbed
+into a finite number of counterterms already present in the Lagrangian. In four
+dimensions, \(\phi^4\), Yukawa theory, and QED are renormalizable in this sense.
+
+Interactions with couplings of negative mass dimension generate infinitely many
+new counterterms at higher orders. Such theories are called nonrenormalizable in
+the traditional sense. This does not mean they are useless. It means they should
+be interpreted as effective field theories valid below some scale.
+
+The modern viewpoint is that renormalizability is not simply a yes-or-no mark of
+validity. It tells us how predictive a theory is at a given energy scale and how
+many parameters are needed to reach a chosen accuracy.
+
+\section{Physical Predictions}
+
+A renormalized calculation follows a clear pattern:
+\begin{enumerate}
+    \item choose a regulator;
+    \item compute loop diagrams and counterterm diagrams;
+    \item impose renormalization conditions or choose a subtraction scheme;
+    \item express bare parameters in terms of renormalized parameters;
+    \item compute observables in terms of measured inputs.
+\end{enumerate}
+The final observable must be finite and independent of the regulator.
+
+For example, a scattering cross section should not depend on \(1/\epsilon\) or on
+a cutoff \(\Lambda\). It may depend on physical masses, physical charges,
+external momenta, and the chosen renormalization scale in a way compensated by
+running parameters.
+
+\section{What Renormalization Means Physically}
+
+Renormalization teaches that parameters are scale-dependent summaries of physics.
+A mass or coupling in a Lagrangian is not an isolated number with meaning at all
+scales. It is defined by a measurement procedure or a subtraction convention.
+
+Short-distance fluctuations affect long-distance parameters. Instead of trying
+to remove this fact, renormalization organizes it. The same theory can be
+described at different scales with different parameter values while predicting
+the same physical observables.
+
+This is why renormalization is central to modern QFT. It is not merely a repair
+of infinities; it is a theory of how physics changes with scale.
+
+\begin{summarybox}
+Renormalization relates bare Lagrangian parameters to finite measured quantities.
+Loop divergences are canceled by counterterms, whose finite parts are fixed by a
+renormalization scheme or physical conditions. Two-point functions determine mass
+and field-strength renormalization, while four-point functions determine coupling
+renormalization. The dependence of renormalized parameters on the scale \(\mu\)
+leads to the renormalization group.
+\end{summarybox}
+
+\section{Chapter Checklist}
+
+After reading this chapter, one should be able to:
+\begin{itemize}
+    \item distinguish bare and renormalized quantities;
+    \item write a counterterm Lagrangian for \(\phi^4\) theory;
+    \item explain how renormalization conditions fix counterterms;
+    \item relate the two-point function to mass renormalization;
+    \item relate the pole residue to field-strength renormalization;
+    \item explain coupling renormalization through the four-point function;
+    \item distinguish on-shell and minimal subtraction schemes;
+    \item explain the role of the renormalization scale \(\mu\);
+    \item define the beta function qualitatively;
+    \item distinguish renormalizable interactions from effective interactions;
+    \item explain why renormalization is about scale dependence, not only about
+    removing infinities.
+\end{itemize}
