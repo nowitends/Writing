@@ -1,12 +1,135 @@
 \chapter{Minimalny szablon raportu laboratoryjnego}
 
+\begin{summarybox}
+Dobry raport laboratoryjny nie jest zbiorem przypadkowych wykresów i kodu. Ma
+pokazać, jaki problem fizyczny był badany, jaki model zastosowano, jakie równania
+rozwiązano, jak wykonano obliczenia, jak skontrolowano wynik i jaka jest
+interpretacja fizyczna. Ten dodatek podaje minimalną strukturę raportu.
+\end{summarybox}
+
 \section{Temat}
+
+Na początku raportu należy jasno podać temat. Tytuł powinien być konkretny, na przykład:
+\begin{quote}
+    Tunelowanie paczki Gaussa przez prostokątną barierę potencjału.
+\end{quote}
+Zły tytuł to na przykład „Projekt z mechaniki kwantowej”, bo nie mówi, co faktycznie zostało zrobione.
+
+Warto dodać jedno lub dwa zdania celu pracy:
+\begin{quote}
+    Celem raportu jest numeryczne rozwiązanie zależnego od czasu równania Schrödingera dla paczki falowej padającej na barierę oraz oszacowanie prawdopodobieństwa transmisji.
+\end{quote}
+
 \section{Sytuacja fizyczna}
+
+Należy opisać układ fizyczny prostym językiem. Co jest cząstką? W jakim potencjale się porusza? Czy problem jest jedno-, dwu- czy trójwymiarowy? Czy badamy stany związane, rozpraszanie, ewolucję czasową czy strukturę pasmową?
+
+Ten fragment powinien być zrozumiały przed kodem i przed wzorami. Jeśli student nie potrafi opisać sytuacji fizycznej bez Mathematiki, to znaczy, że jeszcze nie rozumie problemu.
+
 \section{Model i założenia}
+
+Trzeba jawnie wymienić założenia. Przykłady:
+\begin{itemize}
+    \item cząstka nierelatywistyczna,
+    \item jeden wymiar przestrzenny,
+    \item masa efektywna stała,
+    \item potencjał prostokątny,
+    \item brak oddziaływań z innymi cząstkami,
+    \item idealne warunki brzegowe.
+\end{itemize}
+Założenia nie są formalnością. To one mówią, co zostało pominięte i gdzie model przestaje być wiarygodny.
+
 \section{Równania}
+
+W raporcie muszą pojawić się równania rozwiązywanego problemu. Dla stacjonarnego równania Schrödingera:
+\begin{equation}
+    -\frac{\hbar^2}{2m}\frac{d^2\psi}{dx^2}+V(x)\psi=E\psi.
+\end{equation}
+Dla równania zależnego od czasu:
+\begin{equation}
+    i\hbar\frac{\partial\Psi}{\partial t}=\hat{H}\Psi.
+\end{equation}
+Należy zdefiniować wszystkie symbole i podać warunki brzegowe albo początkowe.
+
 \section{Implementacja w Mathematice}
+
+Kod powinien być krótko opisany. Nie wystarczy wkleić blok kodu. Trzeba napisać, które fragmenty definiują stałe, które potencjał, które rozwiązują równanie, a które generują wykresy.
+
+Minimalny układ kodu:
+\begin{verbatim}
+(* constants and units *)
+(* potential definition *)
+(* equation *)
+(* numerical solution *)
+(* plots *)
+(* checks *)
+\end{verbatim}
+Kod powinien być możliwy do uruchomienia od początku w czystym notebooku.
+
 \section{Wykresy}
+
+Każdy wykres powinien mieć opisane osie i jednostki. Jeśli rysujemy funkcję falową, trzeba powiedzieć, czy jest to \(\psi\), \(\operatorname{Re}\psi\), \(|\psi|^2\), potencjał \(V(x)\), energia, transmisja czy norma.
+
+Dobry podpis pod wykresem odpowiada na pytania:
+\begin{itemize}
+    \item co pokazuje wykres,
+    \item jakie są jednostki,
+    \item jakie parametry zostały użyte,
+    \item co jest najważniejszym wnioskiem z wykresu.
+\end{itemize}
+
 \section{Kontrola wyniku}
+
+Każdy raport powinien zawierać kontrolę wyniku. W zależności od problemu może to być:
+\begin{itemize}
+    \item normalizacja funkcji falowej,
+    \item zachowanie normy w czasie,
+    \item zgodność z rozwiązaniem analitycznym w prostym przypadku,
+    \item zbieżność przy zagęszczaniu siatki,
+    \item kontrola jednostek,
+    \item sprawdzenie warunków brzegowych.
+\end{itemize}
+
+Bez kontroli wynik jest tylko deklaracją. Kontrola pokazuje, że autor nie tylko uruchomił program, ale rozumie, czy wynik jest wiarygodny.
+
 \section{Interpretacja}
+
+Interpretacja jest najważniejszą częścią raportu. Trzeba odpowiedzieć na pytanie: co wynik mówi o fizyce? Przykładowe zdania interpretacyjne:
+\begin{itemize}
+    \item Zwiększenie szerokości bariery zmniejsza transmisję, ponieważ fala dłużej zanika w obszarze klasycznie zabronionym.
+    \item Energia stanu podstawowego rośnie jak \(1/L^2\), więc zwężenie studni zwiększa energię kwantowania.
+    \item Norma pozostaje bliska jedności, więc ewolucja numeryczna jest stabilna w badanym zakresie czasu.
+\end{itemize}
+
+Interpretacja nie powinna być tylko powtórzeniem wykresu. Ma wyjaśnić mechanizm.
+
 \section{Wnioski}
+
+Wnioski powinny być krótkie i konkretne. Najlepiej trzy do pięciu punktów. Każdy punkt powinien wynikać z obliczeń, a nie być ogólnym zdaniem z podręcznika.
+
+Przykład dobrego wniosku:
+\begin{quote}
+    Dla bariery o wysokości większej od średniej energii paczki obserwujemy niezerową transmisję, co potwierdza tunelowanie kwantowe. Transmisja maleje po zwiększeniu szerokości bariery.
+\end{quote}
+
+Przykład słabego wniosku:
+\begin{quote}
+    Mechanika kwantowa jest ciekawa i wykresy wyszły poprawnie.
+\end{quote}
+
 \section{Kod źródłowy}
+
+Pełny kod powinien znaleźć się na końcu raportu albo w osobnym pliku. Kod musi być uporządkowany, skomentowany i możliwy do uruchomienia. Jeżeli raport zawiera tylko zrzuty ekranu, trudno ocenić poprawność obliczeń.
+
+Minimalne wymagania dla kodu:
+\begin{itemize}
+    \item brak ukrytych definicji z wcześniejszych komórek,
+    \item jawne wartości parametrów,
+    \item komentarze przy ważnych blokach,
+    \item czytelne nazwy zmiennych,
+    \item kod generujący dokładnie te wykresy, które są w raporcie.
+\end{itemize}
+
+\begin{summarybox}
+Minimalny raport powinien zawierać: temat, sytuację fizyczną, model i założenia, równania, implementację, wykresy, kontrolę wyniku, interpretację, wnioski i kod źródłowy. Jeśli brakuje kontroli lub interpretacji, raport nie jest kompletny.
+\end{summarybox}
