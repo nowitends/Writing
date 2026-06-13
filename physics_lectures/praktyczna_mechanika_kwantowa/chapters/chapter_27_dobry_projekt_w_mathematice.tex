@@ -1,0 +1,152 @@
+\chapter{Dobry projekt w Mathematice}
+
+\begin{summarybox}
+Projekt końcowy w ramach zajęć z praktycznej mechaniki kwantowej nie polega na
+wklejeniu długiego kodu ani wygenerowaniu efektownej animacji. Dobry projekt ma
+pokazać, że student rozumie model fizyczny, potrafi wykonać obliczenie
+symboliczne albo numeryczne, umie skontrolować wynik i potrafi jasno wyjaśnić,
+co z obliczenia wynika.
+\end{summarybox}
+
+\section{Co znaczy „dobry projekt”?}
+
+Dobry projekt ma cztery warstwy. Pierwsza to warstwa fizyczna: trzeba wiedzieć,
+jaki układ jest badany i jakie przyjmujemy założenia. Druga to warstwa
+matematyczna: trzeba zapisać równania, warunki brzegowe, wielkości mierzone i
+jednostki. Trzecia to warstwa obliczeniowa: trzeba przygotować kod, który daje
+wynik i który można uruchomić od początku. Czwarta to warstwa interpretacyjna:
+trzeba powiedzieć, co wynik oznacza.
+
+Projekt nie musi być długi. Musi być kontrolowany. Lepiej zrobić prostszy model i
+porządnie go przeanalizować niż zbudować skomplikowany notebook, którego autor
+nie potrafi obronić.
+
+\section{Minimalny standard projektu}
+
+Minimalny projekt powinien zawierać:
+\begin{itemize}
+    \item jasny tytuł,
+    \item opis sytuacji fizycznej,
+    \item definicję modelu i założeń,
+    \item równania użyte w obliczeniu,
+    \item kod w Mathematice albo Pythonie,
+    \item wykresy z podpisanymi osiami i jednostkami,
+    \item kontrolę wyniku,
+    \item interpretację fizyczną,
+    \item krótkie wnioski.
+\end{itemize}
+
+\begin{warningbox}
+Kod nie jest projektem. Kod jest narzędziem projektu. Jeśli raport nie wyjaśnia,
+co kod liczy i dlaczego wynik ma sens, projekt jest niekompletny.
+\end{warningbox}
+
+\section{Model fizyczny}
+
+Każdy projekt powinien zaczynać się od pytania: jaki układ opisujemy? Przykłady:
+cząstka w studni, paczka falowa padająca na barierę, elektron w potencjale
+periodycznym, stan atomu wodoru, kubit poddany działaniu bramek albo elektron w
+modelu grafenu.
+
+Po wyborze układu trzeba określić założenia. Czy problem jest jednowymiarowy?
+Czy masa jest masą elektronu, czy masą efektywną? Czy potencjał jest nieskończony
+czy skończony? Czy badamy stan stacjonarny, czy ewolucję w czasie?
+
+\section{Równania i jednostki}
+
+W projekcie muszą pojawić się równania, z których korzysta kod. Dla przykładu,
+jeśli badamy studnię kwantową, trzeba podać Hamiltonian, warunki brzegowe i wzór
+na energie albo równanie numeryczne, które jest rozwiązywane.
+
+Jednostki powinny być jawne. Jeżeli długość jest podana w nanometrach, a wzór
+liczony jest w SI, trzeba wykonać konwersję. Jeżeli energia jest prezentowana w
+eV, trzeba pokazać, gdzie następuje przejście z dżuli na eV.
+
+\section{Kod jako część argumentu}
+
+Kod powinien być czytelny i podzielony na bloki:
+\begin{verbatim}
+(* 1. Czyszczenie i definicje stałych *)
+(* 2. Parametry modelu *)
+(* 3. Równania *)
+(* 4. Rozwiązanie symboliczne albo numeryczne *)
+(* 5. Wykresy *)
+(* 6. Kontrole wyniku *)
+\end{verbatim}
+
+Notebook powinien działać po uruchomieniu od początku. Jeśli wynik zależy od
+ukrytych definicji z wcześniejszej sesji, projekt jest technicznie wadliwy.
+
+\section{Wykresy i wizualizacje}
+
+Dobry wykres powinien mieć podpisane osie, jednostki i jasny zakres. Jeżeli na
+jednym wykresie jest kilka krzywych, potrzebna jest legenda. Wykres musi
+odpowiadać pytaniu fizycznemu, a nie tylko wyglądać atrakcyjnie.
+
+W mechanice kwantowej trzeba szczególnie pilnować, czy rysujemy
+\(\psi\), \(\operatorname{Re}\psi\), \(|\psi|\), \(|\psi|^2\), energię,
+potencjał czy transmisję. Każda z tych wielkości ma inną interpretację.
+
+\section{Kontrola wyniku}
+
+Projekt bez kontroli wyniku jest niewiarygodny. W zależności od tematu można
+sprawdzać:
+\begin{itemize}
+    \item normalizację funkcji falowej,
+    \item zachowanie normy w czasie,
+    \item warunek \(R+T\approx1\),
+    \item zgodność z przypadkiem analitycznym,
+    \item zbieżność przy zagęszczaniu siatki,
+    \item poprawny rząd wielkości energii,
+    \item wpływ zmiany parametru modelu.
+\end{itemize}
+
+Kontrola wyniku powinna być pokazana w raporcie, a nie tylko wykonana prywatnie.
+
+\section{Interpretacja fizyczna}
+
+Interpretacja powinna odpowiadać na pytania: co widać na wykresie, dlaczego tak
+się dzieje, czy wynik jest zgodny z intuicją i jakie ograniczenia ma model.
+
+Przykład dobrej interpretacji:
+\begin{quote}
+Zwiększenie szerokości bariery zmniejsza transmisję, ponieważ w obszarze
+klasycznie zabronionym amplituda zanika wykładniczo. Wynik jest zgodny z
+oczekiwaniem tunelowania kwantowego.
+\end{quote}
+
+Przykład słabej interpretacji:
+\begin{quote}
+Wykres został narysowany i wygląda dobrze.
+\end{quote}
+
+\section{Użycie AI i narzędzi pomocniczych}
+
+Jeżeli student korzystał z narzędzi AI, dokumentacji, cudzych fragmentów kodu albo
+pomocy koleżeńskiej, powinien umieć wyjaśnić użyty kod i wynik. Narzędzia
+pomocnicze mogą przyspieszyć pracę, ale nie zwalniają z odpowiedzialności za
+poprawność fizyczną i matematyczną.
+
+Dobrą praktyką jest dopisanie krótkiej deklaracji: jakie narzędzia zostały użyte
+i w jakim zakresie. Najważniejsze pozostaje to, czy autor rozumie projekt i
+potrafi go obronić.
+
+\section{Checklist przed oddaniem}
+
+Przed oddaniem projektu warto sprawdzić:
+\begin{itemize}
+    \item czy raport ma jasny cel,
+    \item czy wszystkie symbole są zdefiniowane,
+    \item czy jednostki są podane,
+    \item czy notebook uruchamia się od początku,
+    \item czy wykresy mają opisane osie,
+    \item czy wykonano kontrolę wyniku,
+    \item czy wnioski wynikają z obliczeń,
+    \item czy kod jest czytelny i skomentowany.
+\end{itemize}
+
+\begin{summarybox}
+Dobry projekt w Mathematice jest małym raportem naukowym: model, równania, kod,
+wykresy, kontrola, interpretacja. Najważniejsze nie jest to, aby projekt był
+skomplikowany, lecz aby był zrozumiały, sprawdzony i fizycznie sensowny.
+\end{summarybox}
