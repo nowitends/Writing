@@ -568,6 +568,8 @@
 ./physics_lectures/quantum_field_theory/chapters/chapter_06_propagators_as_quantum_correlation_functions.tex
 ./physics_lectures/quantum_field_theory/chapters/chapter_07_the_interaction_picture.tex
 ./physics_lectures/quantum_field_theory/chapters/chapter_08_wick_theorem_and_diagrammatics.tex
+./physics_lectures/quantum_field_theory/chapters/chapter_09_scattering_theory_and_the_s_matrix.tex
+./physics_lectures/quantum_field_theory/chapters/chapter_10_path_integral_for_quantum_mechanics.tex
 ./physics_lectures/quantum_field_theory/figures
 ./physics_lectures/quantum_field_theory/figures/README.md
 ./physics_lectures/quantum_field_theory/ideas_Quantum_Field_Theory.md
