@@ -1,9 +1,297 @@
 \chapter{Loop Effects in QED}
 
 \begin{remarkbox}
-Placeholder chapter from the QFT course plan in \texttt{ideas\_Quantum\_Field\_Theory.md}. Detailed lecture text will be added later.
+Tree-level QED describes photon exchange, annihilation, and emission. Loop
+corrections reveal the genuinely quantum structure of the theory: particles
+interact with their own fields, the vacuum is polarizable, charges run with
+scale, and infrared physics forces us to define inclusive observables.
 \end{remarkbox}
 
-\section{Planned Role}
+\section{Why Loop Effects Matter}
 
-This chapter will cover radiative corrections in QED, including self-energies, vacuum polarization, vertex corrections, charge renormalization, infrared divergences, and inclusive observables.
+The previous chapter introduced QED at tree level. Tree diagrams already explain
+many qualitative features of electromagnetic scattering, but they are not the
+whole theory. The perturbative expansion of QED contains loop diagrams, and
+these diagrams have two important roles.
+
+First, loops produce finite measurable corrections. Examples include the
+anomalous magnetic moment of the electron and radiative corrections to
+scattering cross sections. Second, loops produce ultraviolet divergences. These
+are not ignored; they are absorbed into the definitions of physical masses,
+fields, and charges through renormalization.
+
+The main one-loop structures in QED are
+\begin{itemize}
+    \item the electron self-energy;
+    \item the photon self-energy, also called vacuum polarization;
+    \item the vertex correction;
+    \item real and virtual soft-photon effects.
+\end{itemize}
+Together they show why QED is both highly predictive and conceptually subtle.
+
+\section{Electron Self-Energy}
+
+The electron self-energy is the correction to the electron propagator from the
+emission and reabsorption of a virtual photon. The one-loop diagram has an
+internal photon line and an internal electron line. Its contribution is written
+schematically as
+\[
+    -i\Sigma(p)
+    = (-ie)^2\int\frac{\dd^4k}{(2\pi)^4}\,
+      \gamma^\mu
+      \frac{i(\gamma^\rho(p_\rho-k_\rho)+m)}{(p-k)^2-m^2+i\epsilon}
+      \gamma^\nu
+      \frac{-i\eta_{\mu\nu}}{k^2+i\epsilon}
+\]
+in Feynman gauge.
+
+The full electron propagator is then formally
+\[
+    S(p)
+    = \frac{i}{\gamma^\mu p_\mu-m-\Sigma(p)}.
+\]
+The self-energy shifts the location and residue of the propagator pole. The pole
+position is used to define the physical electron mass, while the residue is
+related to field-strength renormalization.
+
+\section{Mass and Wave-Function Renormalization}
+
+The bare mass appearing in the Lagrangian is not directly the measured mass. The
+measured mass is associated with the pole of the full propagator. One imposes a
+renormalization condition such as
+\[
+    \gamma^\mu p_\mu-m-\Sigma(p)=0
+    \qquad \text{at} \qquad p^2=m_{\mathrm{phys}}^2.
+\]
+This condition fixes the relation between the bare mass and the physical mass.
+
+The residue of the pole defines the wave-function renormalization. Near the
+physical pole, the full propagator has the form
+\[
+    S(p)\sim \frac{iZ_2}{\gamma^\mu p_\mu-m_{\mathrm{phys}}}
+    +\text{regular terms}.
+\]
+The constant \(Z_2\) is the electron field-strength renormalization. It tells us
+how the field in the Lagrangian is normalized relative to the one-particle pole
+of the full propagator.
+
+\section{Vacuum Polarization}
+
+The photon self-energy arises from a fermion loop with two external photon legs.
+It is called vacuum polarization because it describes how virtual charged pairs
+modify the propagation of the electromagnetic field.
+
+The one-loop tensor has the structure
+\[
+    i\Pi^{\mu\nu}(q)
+    = -(-ie)^2\int\frac{\dd^4k}{(2\pi)^4}\,
+      \operatorname{tr}\left[
+      \gamma^\mu\frac{i(\gamma^\rho k_\rho+m)}{k^2-m^2+i\epsilon}
+      \gamma^\nu\frac{i(\gamma^\sigma(k_\sigma+q_\sigma)+m)}{(k+q)^2-m^2+i\epsilon}
+      \right].
+\]
+The initial minus sign is the closed-fermion-loop sign.
+
+Gauge invariance constrains this tensor. It must be transverse:
+\[
+    q_\mu\Pi^{\mu\nu}(q)=0.
+\]
+Therefore it has the form
+\[
+    \Pi^{\mu\nu}(q)
+    = (q^\mu q^\nu-q^2\eta^{\mu\nu})\Pi(q^2).
+\]
+This transversality is a direct consequence of current conservation and the Ward
+identity.
+
+\section{Charge Renormalization and the Running Coupling}
+
+Vacuum polarization modifies the photon propagator. In effect, the electric
+charge measured at one momentum scale differs from the charge measured at
+another scale. The physical picture is that the vacuum contains virtual charged
+pairs that screen or antiscreen charges depending on the theory.
+
+In QED, the effective electromagnetic coupling increases slowly with energy. One
+writes a scale-dependent coupling
+\[
+    \alpha(\mu)=\frac{e(\mu)^2}{4\pi}.
+\]
+At leading order with one charged fermion, the beta function has the form
+\[
+    \beta(e)=\mu\frac{\dd e}{\dd\mu}
+    = \frac{e^3}{12\pi^2}+\cdots.
+\]
+The positive sign means that the coupling grows at shorter distances.
+
+This running is usually tiny at ordinary energies, but conceptually it is one of
+the central discoveries of renormalized QFT: coupling constants depend on the
+scale at which they are defined.
+
+\section{Vertex Correction}
+
+The QED vertex also receives a one-loop correction. Instead of the tree-level
+factor
+\[
+    -ie\gamma^\mu,
+\]
+the full vertex has the form
+\[
+    -ie\Gamma^\mu(p',p),
+\]
+where
+\[
+    \Gamma^\mu(p',p)=\gamma^\mu+\Lambda^\mu(p',p).
+\]
+Here \(\Lambda^\mu\) denotes loop corrections.
+
+The most general on-shell vertex for a spin-\(1/2\) particle can be decomposed
+into form factors:
+\[
+    \bar u(p')\Gamma^\mu u(p)
+    = \bar u(p')\left[
+      \gamma^\mu F_1(q^2)
+      +\frac{i\sigma^{\mu\nu}q_\nu}{2m}F_2(q^2)
+      \right]u(p),
+\]
+where \(q=p'-p\). The function \(F_1\) is related to electric charge, while
+\(F_2(0)\) gives the anomalous magnetic moment.
+
+\section{The Anomalous Magnetic Moment}
+
+For a Dirac particle at tree level, the gyromagnetic factor is
+\[
+    g=2.
+\]
+Loop corrections modify this. The anomalous magnetic moment is defined by
+\[
+    a_e=\frac{g-2}{2}.
+\]
+At one loop in QED,
+\[
+    a_e=\frac{\alpha}{2\pi}+\cdots.
+\]
+This finite prediction is one of the most famous successes of perturbative QFT.
+It comes from the vertex correction after renormalization.
+
+The important conceptual point is that loops are not merely divergent nuisances.
+They also contain finite physical effects that can be measured with extraordinary
+precision.
+
+\section{Ward Identity}
+
+Gauge invariance relates the electron self-energy and the vertex correction. The
+Ward--Takahashi identity is
+\[
+    q_\mu\Gamma^\mu(p+q,p)
+    = S^{-1}(p+q)-S^{-1}(p).
+\]
+In the limit \(q\to0\), this implies a relation between the vertex
+renormalization and the electron wave-function renormalization. In common
+notation,
+\[
+    Z_1=Z_2.
+\]
+Here \(Z_1\) renormalizes the electron--photon vertex, while \(Z_2\) renormalizes
+the electron field.
+
+This relation is a powerful consequence of gauge invariance. It ensures that
+charge renormalization is controlled by the photon field renormalization rather
+than by independent vertex and electron-field effects.
+
+\section{Ultraviolet and Infrared Divergences}
+
+QED loop integrals can diverge in two different regimes. Ultraviolet divergences
+come from large loop momentum:
+\[
+    |k|\to\infty.
+\]
+They reflect sensitivity to short-distance physics and are handled by
+renormalization.
+
+Infrared divergences come from small photon momentum:
+\[
+    |k|\to0.
+\]
+They occur because the photon is massless. Soft virtual photons can produce
+divergent loop corrections, while real photons of arbitrarily low energy can be
+emitted without being experimentally resolved.
+
+The physical treatment of these two kinds of divergences is different.
+Ultraviolet divergences are absorbed into parameters. Infrared divergences
+cancel only after defining observables inclusively enough.
+
+\section{Soft Photon Emission}
+
+Consider a process involving charged particles. In addition to the process with
+no extra photons, there is a process with an additional soft photon:
+\[
+    \text{charged process}\longrightarrow \text{same process}+\gamma_{\mathrm{soft}}.
+\]
+If the photon energy is below detector resolution, the two outcomes cannot be
+experimentally distinguished.
+
+The amplitude for soft photon emission factorizes in a universal way. For
+external charged particles with momenta \(p_i\), the soft factor has the form
+\[
+    e\sum_i \eta_i\frac{p_i\cdot\epsilon(k)}{p_i\cdot k},
+\]
+where \(\eta_i\) depends on whether the charged particle is incoming or outgoing
+and on the sign of its charge.
+
+The denominator \(p_i\cdot k\) becomes singular as the photon momentum \(k\) goes
+to zero. This is the source of soft divergences in real emission.
+
+\section{Inclusive Observables}
+
+Virtual soft-photon loops and real soft-photon emission produce divergences with
+opposite signs. Physical cross sections must include all experimentally
+indistinguishable final states. Therefore one computes inclusive quantities such
+as
+\[
+    \sigma_{\mathrm{inclusive}}
+    = \sigma_{0}+\sigma_{\mathrm{virtual}}+\sigma_{\mathrm{soft\ real}}+\cdots.
+\]
+The infrared divergences cancel in this inclusive sum.
+
+This cancellation is an example of a general principle: the mathematical object
+that is finite is not always the exclusive amplitude for a fixed number of
+massless particles. It is the observable that matches what a detector can
+actually distinguish.
+
+\section{Physical Meaning of Radiative Corrections}
+
+Radiative corrections change how charged particles interact. They shift masses,
+renormalize fields, modify the effective charge, correct magnetic moments, and
+alter cross sections. They also teach us that the vacuum is not empty in a
+classical sense: it supports virtual fluctuations that affect observable
+processes.
+
+In QED these effects are small because \(\alpha\) is small at low energies. This
+makes QED one of the most precise theories in physics. The same logic applies in
+other quantum field theories, although the coupling may be larger and the
+calculations more difficult.
+
+\begin{summarybox}
+Loop effects in QED include electron self-energy, vacuum polarization, and vertex
+corrections. They produce ultraviolet divergences that require renormalization
+and finite effects such as the anomalous magnetic moment. Gauge invariance gives
+Ward identities, including the relation \(Z_1=Z_2\). Because the photon is
+massless, QED also has infrared divergences, which cancel only in inclusive
+observables that include unresolved soft radiation.
+\end{summarybox}
+
+\section{Chapter Checklist}
+
+After reading this chapter, one should be able to:
+\begin{itemize}
+    \item identify the main one-loop diagrams in QED;
+    \item explain electron self-energy and its relation to mass renormalization;
+    \item explain vacuum polarization and transversality;
+    \item describe charge renormalization and the running coupling;
+    \item write the form-factor decomposition of the QED vertex;
+    \item state the one-loop result \(a_e=\alpha/(2\pi)+\cdots\);
+    \item state the Ward--Takahashi identity and the implication \(Z_1=Z_2\);
+    \item distinguish ultraviolet and infrared divergences;
+    \item explain why real soft-photon emission must be included;
+    \item explain why inclusive observables are infrared finite.
+\end{itemize}
