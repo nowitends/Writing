@@ -1,12 +1,130 @@
 \chapter{Rachunek zaburzeń}
 
+\begin{summarybox}
+Rachunek zaburzeń jest metodą przybliżoną używaną wtedy, gdy znamy dokładne
+rozwiązanie prostszego problemu, a rzeczywisty Hamiltonian różni się od niego
+niewielkim dodatkiem. Zamiast rozwiązywać cały problem od zera, obliczamy poprawki
+do energii i stanów własnych. Ten rozdział wprowadza przypadek niezdegenerowany,
+ostrzega przed degeneracją i pokazuje prosty przykład efektu Starka w studni
+kwantowej.
+\end{summarybox}
+
 \section{Po co stosujemy rachunek zaburzeń?}
+
+Dokładnie rozwiązywalne modele są wyjątkami. Nieskończona studnia, oscylator harmoniczny, atom wodoru i kilka innych układów są bardzo ważne, ale większość realistycznych Hamiltonianów nie daje się rozwiązać analitycznie. Rachunek zaburzeń pozwala wykorzystać znane rozwiązanie jako punkt startowy.
+
+Idea jest prosta: jeśli układ rzeczywisty jest bliski układowi, który umiemy rozwiązać, to energia i funkcja falowa powinny być bliskie energii i funkcji falowej układu prostszego. Zamiast szukać pełnego rozwiązania, rozwijamy wynik w potęgach małego parametru.
+
 \section{Hamiltonian niezaburzony i zaburzenie}
+
+Zakładamy, że Hamiltonian można zapisać jako
+\begin{equation}
+    \hat{H}=\hat{H}_0+\lambda \hat{V},
+\end{equation}
+gdzie \(\hat{H}_0\) jest Hamiltonianem niezaburzonym, \(\hat{V}\) jest zaburzeniem, a \(\lambda\) jest formalnym małym parametrem. Na końcu rachunku często przyjmujemy \(\lambda=1\), ale obecność \(\lambda\) pozwala porządkować kolejne rzędy przybliżenia.
+
+Dla problemu niezaburzonego znamy równanie własne:
+\begin{equation}
+    \hat{H}_0|n^{(0)}\rangle=E_n^{(0)}|n^{(0)}\rangle.
+\end{equation}
+Szukamy energii i stanu w postaci rozwinięcia:
+\begin{align}
+    E_n &= E_n^{(0)}+\lambda E_n^{(1)}+\lambda^2E_n^{(2)}+\ldots,\\
+    |n\rangle &= |n^{(0)}\rangle+\lambda |n^{(1)}\rangle+\lambda^2|n^{(2)}\rangle+\ldots .
+\end{align}
+
 \section{Poprawki do energii pierwszego rzędu}
+
+Dla niezdegenerowanego poziomu energii poprawka pierwszego rzędu ma bardzo prostą postać:
+\begin{equation}
+    E_n^{(1)}=\langle n^{(0)}|\hat{V}|n^{(0)}\rangle.
+\end{equation}
+To jest wartość oczekiwana zaburzenia w niezaburzonym stanie. Interpretacja jest naturalna: jeśli stan prawie się nie zmienił, to pierwszą poprawką do energii jest średnia wartość dodatkowego potencjału w tym stanie.
+
+W reprezentacji funkcji falowych wzór ma postać
+\begin{equation}
+    E_n^{(1)}=\int \psi_n^{(0)*}(x)V(x)\psi_n^{(0)}(x)\,dx.
+\end{equation}
+Ten wzór jest często najłatwiejszy do zastosowania w prostych modelach jednowymiarowych.
+
 \section{Poprawki do energii drugiego rzędu}
+
+Poprawka drugiego rzędu dla poziomu niezdegenerowanego wynosi
+\begin{equation}
+    E_n^{(2)}=\sum_{m\neq n}\frac{|\langle m^{(0)}|\hat{V}|n^{(0)}\rangle|^2}{E_n^{(0)}-E_m^{(0)}}.
+\end{equation}
+Widzimy, że drugi rząd zależy nie tylko od wartości zaburzenia w stanie \(n\), ale także od tego, jak zaburzenie miesza stan \(n\) z innymi stanami niezaburzonymi.
+
+Mianownik jest bardzo ważny. Jeśli dwa poziomy są blisko siebie, wkład może być duży. Jeśli poziomy są zdegenerowane, czyli \(E_n^{(0)}=E_m^{(0)}\), wzór przestaje mieć sens i trzeba użyć rachunku zaburzeń zdegenerowanych.
+
 \section{Poprawki do stanów własnych}
+
+Pierwsza poprawka do stanu ma postać
+\begin{equation}
+    |n^{(1)}\rangle=\sum_{m\neq n}
+    \frac{\langle m^{(0)}|\hat{V}|n^{(0)}\rangle}{E_n^{(0)}-E_m^{(0)}}|m^{(0)}\rangle.
+\end{equation}
+Oznacza to, że zaburzony stan jest mieszaniną stanu początkowego i innych stanów niezaburzonych. Współczynnik mieszania jest duży, jeśli element macierzowy zaburzenia jest duży albo jeśli poziomy energii są blisko siebie.
+
+Ten wzór ma bardzo dobrą interpretację fizyczną: zaburzenie nie tylko przesuwa energie, ale również zmienia strukturę stanów. W wielu problemach właśnie zmiana stanu jest ważniejsza niż sama poprawka do energii.
+
 \section{Przypadek niezdegenerowany}
+
+Powyższe wzory działają wtedy, gdy poziom \(E_n^{(0)}\) jest izolowany i niezdegenerowany. Oznacza to, że nie ma innego stanu niezaburzonego o tej samej energii. Wtedy małe zaburzenie powoduje małe, kontrolowane poprawki.
+
+Warunek praktyczny jest mocniejszy: poziom powinien być nie tylko niezdegenerowany, ale też dostatecznie oddalony od innych poziomów. Jeśli mianowniki w rachunku drugiego rzędu są bardzo małe, rozwinięcie może być złe nawet bez dokładnej degeneracji.
+
 \section{Przypadek zdegenerowany -- uwaga koncepcyjna}
+
+Jeśli kilka stanów niezaburzonych ma tę samą energię, zwykły wzór na poprawkę do stanu zawiera dzielenie przez zero. Wtedy trzeba najpierw ograniczyć zaburzenie do podprzestrzeni zdegenerowanej i zdiagonalizować macierz
+\begin{equation}
+    V_{ab}=\langle a^{(0)}|\hat{V}|b^{(0)}\rangle.
+\end{equation}
+Dopiero właściwe kombinacje liniowe stanów zdegenerowanych mają dobrze określone poprawki pierwszego rzędu.
+
+To jest ważne na przykład w atomach, w polach zewnętrznych i przy łamaniu symetrii. Zaburzenie często wybiera z przestrzeni zdegenerowanej „właściwą” bazę stanów.
+
 \section{Efekt Starka w studni kwantowej}
+
+Jako prosty model efektu pola elektrycznego rozważmy cząstkę w nieskończonej studni \(0<x<a\) i dodajmy zaburzenie liniowe
+\begin{equation}
+    V(x)=q\mathcal{E}x,
+\end{equation}
+gdzie \(\mathcal{E}\) jest natężeniem pola elektrycznego. Poprawka pierwszego rzędu do energii wynosi
+\begin{equation}
+    E_n^{(1)}=q\mathcal{E}\langle x\rangle.
+\end{equation}
+Dla stanów studni \(0<x<a\) mamy
+\begin{equation}
+    \langle x\rangle=\frac{a}{2},
+\end{equation}
+więc
+\begin{equation}
+    E_n^{(1)}=q\mathcal{E}\frac{a}{2}.
+\end{equation}
+W tej konwencji wszystkie poziomy są przesunięte o tę samą wartość. Jeśli natomiast wybierzemy studnię symetryczną \(-a/2<x<a/2\), pierwszy rząd dla zaburzenia proporcjonalnego do \(x\) może znikać przez parzystość.
+
 \section{Porównanie rachunku zaburzeń z rozwiązaniem numerycznym}
+
+Rachunek zaburzeń warto porównywać z dokładną diagonalizacją numeryczną. Można zbudować macierz Hamiltonianu w bazie stanów niezaburzonych:
+\begin{equation}
+    H_{mn}=E_n^{(0)}\delta_{mn}+\lambda V_{mn}.
+\end{equation}
+Następnie diagonalizujemy macierz i porównujemy otrzymane energie z przybliżeniem perturbacyjnym.
+
+W Mathematice schematycznie:
+\begin{verbatim}
+Hmat[lambda_] := H0mat + lambda Vmat
+Eigenvalues[Hmat[lambda]]
+\end{verbatim}
+Jeśli \(\lambda\) jest małe, wyniki powinny zgadzać się z rachunkiem zaburzeń. Jeśli zaczynają się rozjeżdżać, to znak, że zaburzenie nie jest już małe w sensie fizycznym.
+
 \section{Zakres stosowalności metody}
+
+Rachunek zaburzeń działa, gdy zaburzenie jest małe w porównaniu z istotnymi różnicami energii układu niezaburzonego. Nie wystarczy, że współczynnik przy zaburzeniu wygląda mały. Trzeba porównać elementy macierzowe zaburzenia z odstępami poziomów.
+
+Metoda zawodzi przy silnych zaburzeniach, bliskich degeneracjach, zmianach jakościowych widma oraz w problemach, gdzie mały parametr formalny nie daje zbieżnego szeregu. Dlatego rachunek zaburzeń jest narzędziem, nie dogmatem.
+
+\begin{summarybox}
+Rachunek zaburzeń pozwala obliczać poprawki do energii i stanów, gdy Hamiltonian jest bliski dokładnie rozwiązywalnego. Pierwszy rząd energii to wartość oczekiwana zaburzenia, drugi rząd opisuje mieszanie z innymi stanami, a degeneracje wymagają osobnego traktowania.
+\end{summarybox}
