@@ -1,9 +1,277 @@
 \chapter{Effective Field Theory}
 
 \begin{remarkbox}
-Placeholder chapter from the QFT course plan. Detailed lecture text will be added later.
+Effective field theory is the modern language of QFT at finite resolution. It
+accepts that a theory may be valid only below some scale and organizes all
+allowed interactions as an expansion in powers of energy over that scale.
 \end{remarkbox}
 
-\section{Planned Role}
+\section{The Effective Field Theory Viewpoint}
 
-This chapter will introduce effective field theory, separation of scales, matching, power counting, symmetries, operator bases, decoupling, and naturalness.
+The renormalization group teaches that physics changes with scale. Effective
+field theory, or EFT, turns this lesson into a practical method. Instead of
+requiring a theory to be fundamental at all distances, one asks what degrees of
+freedom and symmetries are relevant at the energies being studied.
+
+An EFT is valid below a cutoff scale \(\Lambda\). It contains the fields that are
+light compared with \(\Lambda\), and it includes every interaction compatible
+with the symmetries:
+\[
+    \mathcal{L}_{\mathrm{EFT}}
+    = \mathcal{L}_{\mathrm{ren}}
+      +\sum_i \frac{c_i}{\Lambda^{\Delta_i-4}}\mathcal{O}_i.
+\]
+Here \(\mathcal{O}_i\) are local operators of dimension \(\Delta_i>4\), and
+\(c_i\) are dimensionless coefficients.
+
+The expansion parameter is usually
+\[
+    \frac{E}{\Lambda},
+\]
+where \(E\) is the characteristic energy of the process.
+
+\section{Separation of Scales}
+
+EFT works when there is a hierarchy of scales. Suppose a theory contains a heavy
+particle of mass \(M\) and we study processes with
+\[
+    E\ll M.
+\]
+At such energies, the heavy particle cannot be produced on shell. Its effects
+are still present, but they appear indirectly through local interactions among
+the light fields.
+
+The heavy propagator illustrates the idea. For momentum transfer \(p^2\ll M^2\),
+\[
+    \frac{i}{p^2-M^2}
+    = -\frac{i}{M^2}\left(1+\frac{p^2}{M^2}+\frac{p^4}{M^4}+\cdots\right).
+\]
+The nonlocal exchange of a heavy particle becomes a series of local operators
+suppressed by powers of \(M\).
+
+This is the basic mechanism behind effective interactions.
+
+\section{Integrating Out Heavy Fields}
+
+To integrate out a heavy field means to remove it as an explicit degree of
+freedom while keeping its low-energy effects. In the path integral, if \(H\) is a
+heavy field and \(\ell\) denotes light fields, one writes schematically
+\[
+    e^{iS_{\mathrm{eff}}[\ell]}
+    = \int\mathcal{D}H\,e^{iS[\ell,H]}.
+\]
+The result is an effective action for the light fields only.
+
+At tree level, integrating out a heavy field often amounts to solving its
+classical equation of motion and substituting back. At loop level, it also
+produces determinants and quantum corrections.
+
+The effective action is generally nonlocal if written exactly. At low energies,
+it is expanded in local operators with increasing numbers of derivatives or
+fields.
+
+\section{Matching}
+
+Matching determines the coefficients of the EFT operators. One computes the same
+low-energy quantity in the full theory and in the EFT, then chooses the EFT
+coefficients so that the two agree at the matching scale.
+
+Schematically,
+\[
+    \mathcal{A}_{\mathrm{full}}(E\ll M)
+    = \mathcal{A}_{\mathrm{EFT}}(E\ll M).
+\]
+This equality fixes the Wilson coefficients \(c_i\).
+
+Matching can be done at tree level or loop level. Tree-level matching captures
+classical heavy-particle exchange. Loop-level matching captures virtual heavy
+particle effects.
+
+The matching scale is usually chosen near the heavy mass:
+\[
+    \mu\sim M.
+\]
+Then large logarithms are avoided at the matching step. Renormalization group
+evolution can then run the EFT coefficients down to lower scales.
+
+\section{Power Counting}
+
+Power counting tells us which operators matter at a given accuracy. If an
+operator has dimension \(\Delta\), its contribution scales roughly as
+\[
+    \left(\frac{E}{\Lambda}\right)^{\Delta-4}.
+\]
+Operators of higher dimension are more suppressed at low energies.
+
+This means that EFT can be predictive even though it contains infinitely many
+operators. To compute to a fixed order in \(E/\Lambda\), only finitely many
+operators are needed.
+
+For example, if one works up to order \(1/\Lambda^2\), only dimension-six
+operators are needed beyond the renormalizable terms. Dimension-eight operators
+enter at order \(1/\Lambda^4\).
+
+\section{Symmetries and Operator Bases}
+
+The EFT Lagrangian must include all operators allowed by the symmetries. It must
+exclude operators forbidden by symmetries. Symmetries therefore organize the
+operator basis.
+
+Operators related by integration by parts, equations of motion, or algebraic
+identities are not independent. An operator basis is a minimal independent set of
+operators after these redundancies are removed.
+
+The construction follows a clear logic:
+\begin{enumerate}
+    \item choose the light fields;
+    \item choose the symmetries;
+    \item list local operators ordered by dimension;
+    \item remove redundant operators;
+    \item assign Wilson coefficients;
+    \item match coefficients to data or to a UV theory.
+\end{enumerate}
+The result is the most general low-energy theory compatible with the chosen
+assumptions.
+
+\section{Wilson Coefficients}
+
+The coefficients \(c_i\) multiplying EFT operators are called Wilson
+coefficients. They summarize short-distance physics not resolved explicitly in
+the EFT.
+
+A Wilson coefficient may be computed from a known high-energy theory by
+matching. If the high-energy theory is unknown, the coefficients are treated as
+parameters to be measured or bounded experimentally.
+
+The separation is
+\[
+    \text{long-distance physics} \longrightarrow \text{matrix elements of EFT operators},
+\]
+\[
+    \text{short-distance physics} \longrightarrow \text{Wilson coefficients}.
+\]
+Renormalization group evolution moves information between scales by changing the
+coefficients as \(\mu\) changes.
+
+\section{Decoupling}
+
+The decoupling principle says that heavy particles have suppressed effects at low
+energies. If a heavy particle has mass \(M\), its virtual effects often appear as
+powers of \(1/M\).
+
+However, decoupling must be interpreted carefully. Heavy particles can also
+modify renormalized parameters of lower-dimensional operators. Such effects are
+not necessarily suppressed by powers of \(1/M\); they may appear as threshold
+corrections to masses, couplings, or kinetic terms.
+
+After these parameters are matched, genuinely new low-energy effects from heavy
+physics are organized by higher-dimensional operators.
+
+\section{Naturalness}
+
+Naturalness asks whether small parameters remain small under quantum corrections.
+Suppose a scalar mass receives a correction of order
+\[
+    \delta m^2\sim \frac{\lambda}{16\pi^2}\Lambda^2.
+\]
+If the physical mass is much smaller than \(\Lambda\), a cancellation between the
+bare mass and the correction may be required. This is called fine-tuning.
+
+Fermion masses and gauge boson masses can be protected by symmetries. Scalar
+masses are less protected in generic theories. This is the origin of naturalness
+questions surrounding scalar fields, including the Higgs boson.
+
+Naturalness is not a theorem. It is a diagnostic about sensitivity to short-
+distance physics.
+
+\section{The Fermi Theory of Weak Interactions}
+
+A classic EFT example is Fermi's four-fermion theory. At energies much below the
+\(W\)-boson mass, weak interactions can be described by a local operator:
+\[
+    \mathcal{L}_{\mathrm{Fermi}}
+    \sim -\frac{G_F}{\sqrt{2}}(\bar\psi\gamma^\mu(1-\gamma^5)\psi)
+    (\bar\psi\gamma_\mu(1-\gamma^5)\psi).
+\]
+The coefficient scales as
+\[
+    G_F\sim \frac{1}{M_W^2}.
+\]
+The full electroweak theory contains \(W\)-boson exchange. At low energies,
+that exchange becomes a local four-fermion interaction.
+
+This example shows how an EFT can be extremely successful while not being
+fundamental at arbitrarily high energies.
+
+\section{Euler--Heisenberg as a Photon EFT}
+
+Another example is the low-energy effective theory of photons after integrating
+out the electron. At energies much smaller than the electron mass, virtual
+electron loops generate photon self-interactions:
+\[
+    \mathcal{L}_{\mathrm{EH}}
+    = -\frac{1}{4}F_{\mu\nu}F^{\mu\nu}
+      + c_1\frac{(F_{\mu\nu}F^{\mu\nu})^2}{m_e^4}
+      + c_2\frac{(F_{\mu\nu}\widetilde F^{\mu\nu})^2}{m_e^4}
+      +\cdots.
+\]
+These terms describe light-by-light scattering at energies below the electron
+mass. They are strongly suppressed by powers of \(1/m_e^4\).
+
+The EFT makes clear why photon self-interactions are tiny at low energies even
+though they are allowed quantum mechanically.
+
+\section{EFT and Renormalization}
+
+EFTs are renormalized like any other quantum field theory. Loop diagrams
+involving higher-dimensional operators generate divergences, which are absorbed
+into coefficients of operators allowed by the symmetries.
+
+Because infinitely many operators are present, the theory is not renormalizable
+in the old finite-counterterm sense. But it is renormalizable order by order in
+\(E/\Lambda\). At any fixed order, only finitely many counterterms are needed.
+
+This is the modern meaning of predictivity in EFT: choose an accuracy, include
+all operators up to the required dimension, renormalize them, and estimate the
+size of neglected terms.
+
+\section{EFT as the Default View of QFT}
+
+Modern QFT often treats every theory as effective unless proven otherwise. The
+Standard Model itself may be an EFT below a much higher scale. Gravity is also
+successfully described as an EFT at energies far below the Planck scale.
+
+This viewpoint changes the meaning of nonrenormalizable interactions. They are
+not automatically forbidden. They are suppressed by a high scale and become
+important when experiments reach enough precision or energy.
+
+The EFT attitude is therefore practical and humble:
+\[
+    \text{write what is allowed, organize by scale, measure what is unknown}.
+\]
+
+\begin{summarybox}
+Effective field theory describes physics below a cutoff scale \(\Lambda\) using
+light fields, symmetries, and a systematic expansion in \(E/\Lambda\). Heavy
+fields are integrated out, leaving local operators with Wilson coefficients.
+Matching fixes those coefficients, power counting determines which operators are
+needed, and renormalization group evolution moves the theory between scales. EFT
+is predictive order by order even when infinitely many operators are allowed.
+\end{summarybox}
+
+\section{Chapter Checklist}
+
+After reading this chapter, one should be able to:
+\begin{itemize}
+    \item explain the EFT viewpoint;
+    \item describe separation of scales;
+    \item explain what it means to integrate out a heavy field;
+    \item define matching;
+    \item use power counting to rank operators;
+    \item explain the role of symmetries in building an operator basis;
+    \item define Wilson coefficients;
+    \item explain decoupling and threshold effects;
+    \item describe naturalness as sensitivity to high scales;
+    \item explain the Fermi theory as an EFT;
+    \item state why EFTs are predictive order by order.
+\end{itemize}
