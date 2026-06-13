@@ -563,6 +563,7 @@
 ./physics_lectures/quantum_field_theory/chapters/chapter_01_from_classical_modes_to_quantum_oscillators.tex
 ./physics_lectures/quantum_field_theory/figures
 ./physics_lectures/quantum_field_theory/figures/README.md
+./physics_lectures/quantum_field_theory/ideas_Quantum_Field_Theory.md
 ./physics_lectures/quantum_field_theory/macros.tex
 ./physics_lectures/quantum_field_theory/main.tex
 ./physics_lectures/quantum_field_theory/preamble.tex
