@@ -545,6 +545,7 @@
 ./physics_lectures/praktyczna_mechanika_kwantowa/chapters/chapter_24_grafen_jako_model_kwantowy.tex
 ./physics_lectures/praktyczna_mechanika_kwantowa/chapters/chapter_25_rownanie_schrodingera_w_trzech_wymiarach.tex
 ./physics_lectures/praktyczna_mechanika_kwantowa/chapters/chapter_26_kropki_kwantowe_i_sferyczna_studnia.tex
+./physics_lectures/praktyczna_mechanika_kwantowa/chapters/chapter_27_dobry_projekt_w_mathematice.tex
 ./physics_lectures/praktyczna_mechanika_kwantowa/figures
 ./physics_lectures/praktyczna_mechanika_kwantowa/figures/README.md
 ./physics_lectures/praktyczna_mechanika_kwantowa/macros.tex
