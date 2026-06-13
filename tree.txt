@@ -1,10 +1,19 @@
-﻿.
+.
+./.github
+./.github/workflows
+./.github/workflows/build-pdfs.yml
+./.github/workflows/deploy-pages.yml
+./.github/workflows/update-tree.yml
+./.gitignore
 ./.memory
 ./.memory/chatgpt_github_connector_instructions.md
 ./.python-version
 ./.vscode
+./.vscode/extensions.json
 ./.vscode/settings.json
+./.vscode/tasks.json
 ./AGENTS.md
+./README.md
 ./connector_write_read_test.md
 ./docs
 ./docs/index.md
@@ -185,15 +194,15 @@
 ./mathematical_lectures/general_notes_experiments
 ./mathematical_lectures/general_notes_experiments/build.sh
 ./mathematical_lectures/general_notes_experiments/chapters
+./mathematical_lectures/general_notes_experiments/chapters/README.md
 ./mathematical_lectures/general_notes_experiments/chapters/chapter_000_template_note.tex
 ./mathematical_lectures/general_notes_experiments/chapters/chapter_001_peano_axioms.tex
 ./mathematical_lectures/general_notes_experiments/chapters/independent_notes
 ./mathematical_lectures/general_notes_experiments/chapters/independent_notes/.gitkeep
-./mathematical_lectures/general_notes_experiments/chapters/README.md
 ./mathematical_lectures/general_notes_experiments/figures
+./mathematical_lectures/general_notes_experiments/figures/README.md
 ./mathematical_lectures/general_notes_experiments/figures/independent_notes
 ./mathematical_lectures/general_notes_experiments/figures/independent_notes/.gitkeep
-./mathematical_lectures/general_notes_experiments/figures/README.md
 ./mathematical_lectures/general_notes_experiments/macros.tex
 ./mathematical_lectures/general_notes_experiments/main.pdf
 ./mathematical_lectures/general_notes_experiments/main.tex
@@ -321,6 +330,7 @@
 ./physics_lectures/classical_field_theory_I/chapters/appendix_d_differential_forms_and_geometry.tex
 ./physics_lectures/classical_field_theory_I/chapters/appendix_e_greens_functions.tex
 ./physics_lectures/classical_field_theory_I/chapters/appendix_f_suggested_problems.tex
+./physics_lectures/classical_field_theory_I/chapters/appendix_g_worked_examples_and_common_pitfalls.tex
 ./physics_lectures/classical_field_theory_I/chapters/chapter_00_preface.tex
 ./physics_lectures/classical_field_theory_I/chapters/chapter_01_from_mechanics_to_fields.tex
 ./physics_lectures/classical_field_theory_I/chapters/chapter_02_mathematical_preliminaries.tex
@@ -333,8 +343,6 @@
 ./physics_lectures/classical_field_theory_I/chapters/chapter_09_electromagnetic_field.tex
 ./physics_lectures/classical_field_theory_I/chapters/chapter_10_gauge_fields_and_yang_mills.tex
 ./physics_lectures/classical_field_theory_I/chapters/chapter_11_spinor_fields_and_dirac_equation.tex
-./physics_lectures/classical_field_theory_I/chapters/fields_as_physical_objects
-./physics_lectures/classical_field_theory_I/chapters/lagrangian_field_theory
 ./physics_lectures/classical_field_theory_I/chapters/preface
 ./physics_lectures/classical_field_theory_I/chapters/preface/classical_field_theory_as_a_bridge.tex
 ./physics_lectures/classical_field_theory_I/chapters/preface/how_to_read_a_field_equation.tex
@@ -343,9 +351,7 @@
 ./physics_lectures/classical_field_theory_I/chapters/preface/recommended_mathematical_background.tex
 ./physics_lectures/classical_field_theory_I/chapters/preface/structure_of_the_course.tex
 ./physics_lectures/classical_field_theory_I/chapters/preface/what_is_a_field.tex
-./physics_lectures/classical_field_theory_I/chapters/symmetries_and_conservation_laws
 ./physics_lectures/classical_field_theory_I/figures
-./physics_lectures/classical_field_theory_I/figures/fields
 ./physics_lectures/classical_field_theory_I/figures/README.md
 ./physics_lectures/classical_field_theory_I/ideas_Classical_Field_Theory_I.md
 ./physics_lectures/classical_field_theory_I/macros.tex
@@ -392,6 +398,7 @@
 ./physics_lectures/general_notes_experiments
 ./physics_lectures/general_notes_experiments/build.sh
 ./physics_lectures/general_notes_experiments/chapters
+./physics_lectures/general_notes_experiments/chapters/README.md
 ./physics_lectures/general_notes_experiments/chapters/chapter_000_template_note.tex
 ./physics_lectures/general_notes_experiments/chapters/chapter_001_projectile_motion.tex
 ./physics_lectures/general_notes_experiments/chapters/chapter_002_differential_geometry_for_relativity.tex
@@ -399,8 +406,8 @@
 ./physics_lectures/general_notes_experiments/chapters/chapter_004_special_relativity_diagrams.tex
 ./physics_lectures/general_notes_experiments/chapters/independent_notes
 ./physics_lectures/general_notes_experiments/chapters/independent_notes/.gitkeep
-./physics_lectures/general_notes_experiments/chapters/README.md
 ./physics_lectures/general_notes_experiments/figures
+./physics_lectures/general_notes_experiments/figures/README.md
 ./physics_lectures/general_notes_experiments/figures/independent_notes
 ./physics_lectures/general_notes_experiments/figures/independent_notes/.gitkeep
 ./physics_lectures/general_notes_experiments/figures/independent_notes/projectile_motion_geometry.tex
@@ -410,7 +417,6 @@
 ./physics_lectures/general_notes_experiments/figures/independent_notes/sr_muon_lifetime_geometry.tex
 ./physics_lectures/general_notes_experiments/figures/independent_notes/sr_relativity_of_simultaneity.tex
 ./physics_lectures/general_notes_experiments/figures/independent_notes/sr_time_dilation_clock.tex
-./physics_lectures/general_notes_experiments/figures/README.md
 ./physics_lectures/general_notes_experiments/macros.tex
 ./physics_lectures/general_notes_experiments/main.pdf
 ./physics_lectures/general_notes_experiments/main.tex
@@ -475,6 +481,7 @@
 ./physics_lectures/physics_basics/chapters/statistics_and_measurements
 ./physics_lectures/physics_basics/chapters/statistics_and_measurements/introduction.tex
 ./physics_lectures/physics_basics/figures
+./physics_lectures/physics_basics/figures/README.md
 ./physics_lectures/physics_basics/figures/kinematics
 ./physics_lectures/physics_basics/figures/kinematics/circular_velocity_tangent.tex
 ./physics_lectures/physics_basics/figures/kinematics/displacement_between_positions.tex
@@ -485,7 +492,6 @@
 ./physics_lectures/physics_basics/figures/mathematical_foundations/function_graphs.tex
 ./physics_lectures/physics_basics/figures/mathematical_foundations/parametric_unit_circle.tex
 ./physics_lectures/physics_basics/figures/mathematical_foundations/vector_components.tex
-./physics_lectures/physics_basics/figures/README.md
 ./physics_lectures/physics_basics/macros.tex
 ./physics_lectures/physics_basics/main.lof
 ./physics_lectures/physics_basics/main.pdf
@@ -543,7 +549,6 @@
 ./physics_lectures/praktyczna_mechanika_kwantowa/chapters/chapter_28_proponowane_tematy_projektow.tex
 ./physics_lectures/praktyczna_mechanika_kwantowa/figures
 ./physics_lectures/praktyczna_mechanika_kwantowa/figures/README.md
-./physics_lectures/praktyczna_mechanika_kwantowa/figures/wprowadzenie
 ./physics_lectures/praktyczna_mechanika_kwantowa/macros.tex
 ./physics_lectures/praktyczna_mechanika_kwantowa/main.pdf
 ./physics_lectures/praktyczna_mechanika_kwantowa/main.tex
@@ -552,7 +557,6 @@
 ./physics_lectures/praktyczna_mechanika_kwantowa/problems/README.md
 ./physics_lectures/praktyczna_mechanika_kwantowa/styles.tex
 ./physics_lectures/praktyczna_mechanika_kwantowa/titlepage.tex
-./README.md
 ./requirements-docs.txt
 ./shared
 ./shared/macros.tex
