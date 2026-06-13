@@ -1,9 +1,289 @@
 \chapter{Non-Abelian Gauge Theory as a Quantum Theory}
 
 \begin{remarkbox}
-Placeholder chapter from the QFT course plan. Detailed lecture text will be added later.
+QED is based on an Abelian gauge group. Non-Abelian gauge theory is richer: the
+gauge fields themselves carry charge and interact with one another. This chapter
+introduces the quantum structure behind Yang--Mills theory, preparing the way for
+BRST symmetry and QCD.
 \end{remarkbox}
 
-\section{Planned Role}
+\section{From Abelian to Non-Abelian Gauge Symmetry}
 
-This chapter will develop quantum non-Abelian gauge fields, self-interactions, gauge-fixed Feynman rules, ghosts, Ward-type identities, and unitarity checks.
+In QED, the gauge group is \(U(1)\). The gauge field is neutral, and the field
+strength is linear in \(A_\mu\):
+\[
+    F_{\mu\nu}=\partial_\mu A_\nu-\partial_\nu A_\mu.
+\]
+In a non-Abelian gauge theory, the gauge group has noncommuting generators
+\(T^a\):
+\[
+    [T^a,T^b]=if^{abc}T^c.
+\]
+The constants \(f^{abc}\) are the structure constants of the Lie algebra.
+
+The gauge field carries an adjoint index:
+\[
+    A_\mu=A_\mu^aT^a.
+\]
+The covariant derivative is
+\[
+    D_\mu=\partial_\mu+igA_\mu^aT^a.
+\]
+Because the generators do not commute, the gauge field becomes self-interacting.
+
+\section{Field Strength and Yang--Mills Action}
+
+The non-Abelian field strength is defined by the commutator of covariant
+derivatives:
+\[
+    [D_\mu,D_\nu]=igF_{\mu\nu}^aT^a.
+\]
+In components,
+\[
+    F_{\mu\nu}^a
+    =\partial_\mu A_\nu^a-\partial_\nu A_\mu^a
+      -g f^{abc}A_\mu^bA_\nu^c,
+\]
+up to sign conventions for the covariant derivative.
+
+The Yang--Mills Lagrangian is
+\[
+    \mathcal{L}_{\mathrm{YM}}
+    = -\frac{1}{4}F_{\mu\nu}^aF^{a\mu\nu}.
+\]
+Unlike the Maxwell Lagrangian, this contains interaction terms even without
+matter. Expanding \(F_{\mu\nu}^aF^{a\mu\nu}\) gives cubic and quartic powers of
+\(A_\mu^a\). Therefore gauge bosons interact with each other.
+
+\section{Gauge Transformations}
+
+A finite gauge transformation is
+\[
+    U(x)=e^{i\alpha^a(x)T^a}.
+\]
+Matter fields transform as
+\[
+    \psi(x)\longrightarrow U(x)\psi(x).
+\]
+The gauge field transforms as
+\[
+    A_\mu\longrightarrow U A_\mu U^{-1}+\frac{i}{g}U\partial_\mu U^{-1},
+\]
+with the precise sign depending on the convention for \(D_\mu\).
+
+Infinitesimally, the gauge field changes by
+\[
+    \delta A_\mu^a = -D_\mu^{ab}\alpha^b,
+\]
+where the adjoint covariant derivative is
+\[
+    D_\mu^{ab}=\delta^{ab}\partial_\mu+g f^{acb}A_\mu^c.
+\]
+The nonlinearity of this transformation is another sign that non-Abelian gauge
+theory is structurally different from QED.
+
+\section{Gauge Fixing}
+
+The path integral over \(A_\mu^a\) overcounts gauge-equivalent configurations.
+As in the Abelian case, one must fix a gauge. A common covariant gauge-fixing
+term is
+\[
+    \mathcal{L}_{\mathrm{gf}}
+    = -\frac{1}{2\xi}(\partial_\mu A^{a\mu})^2.
+\]
+The gauge-fixed quadratic part of the action gives the gauge-boson propagator
+\[
+    D_{\mu\nu}^{ab}(k)
+    = \frac{-i\delta^{ab}}{k^2+i\epsilon}
+      \left(\eta_{\mu\nu}-(1-\xi)\frac{k_\mu k_\nu}{k^2+i\epsilon}\right).
+\]
+In Feynman gauge,
+\[
+    D_{\mu\nu}^{ab}(k)=\frac{-i\delta^{ab}\eta_{\mu\nu}}{k^2+i\epsilon}.
+\]
+The color index \(a\) is conserved along a free gauge-boson propagator.
+
+\section{Faddeev--Popov Ghosts}
+
+For non-Abelian gauge theory, the Faddeev--Popov determinant depends on the
+gauge field. It is represented using ghost fields \(c^a,\bar c^a\). The ghost
+Lagrangian in covariant gauge is
+\[
+    \mathcal{L}_{\mathrm{gh}}
+    = \bar c^a\partial^\mu D_\mu^{ab}c^b.
+\]
+Expanding the covariant derivative gives a free ghost kinetic term and a
+ghost--gauge-boson interaction.
+
+Ghosts are anticommuting scalar fields. They are not physical particles and do
+not appear as external states. They are required in covariant gauges to preserve
+unitarity and gauge independence of physical amplitudes.
+
+In Abelian QED, ghosts decouple in linear gauges. In non-Abelian theories, they
+do not decouple because the determinant depends on \(A_\mu^a\).
+
+\section{Gauge-Boson Self-Interactions}
+
+The Yang--Mills field strength contains the nonlinear term
+\[
+    -g f^{abc}A_\mu^bA_\nu^c.
+\]
+Therefore the action contains cubic and quartic gauge-field interactions.
+Diagrammatically, there are two new types of vertices:
+\begin{itemize}
+    \item a three-gauge-boson vertex proportional to \(g f^{abc}\);
+    \item a four-gauge-boson vertex proportional to \(g^2\) and products of
+    structure constants.
+\end{itemize}
+These vertices have no analogue in QED. They are responsible for many of the
+special features of non-Abelian gauge theories, including asymptotic freedom.
+
+The physical meaning is simple but profound: gauge bosons themselves carry the
+charge associated with the gauge group.
+
+\section{Matter Couplings}
+
+Matter fields couple through the covariant derivative. For a Dirac fermion in a
+representation \(R\), the Lagrangian is
+\[
+    \mathcal{L}_{\mathrm{matter}}
+    = \bar\psi(i\gamma^\mu D_\mu-m)\psi.
+\]
+Expanding the derivative gives the interaction
+\[
+    \mathcal{L}_{\mathrm{int}}
+    = -g\bar\psi\gamma^\mu T_R^a\psi A_\mu^a,
+\]
+up to sign conventions. The corresponding vertex factor is
+\[
+    -ig\gamma^\mu T_R^a.
+\]
+This is the non-Abelian analogue of the QED vertex \(-ie\gamma^\mu\), with the
+charge \(e\) replaced by a matrix \(gT^a\).
+
+The group generators track how matter transforms under the gauge group. In QCD,
+quarks transform in the fundamental representation of \(SU(3)\), and gluons
+transform in the adjoint representation.
+
+\section{Feynman Rules: The Basic Set}
+
+In a covariant gauge, the basic perturbative ingredients are:
+\begin{itemize}
+    \item gauge-boson propagator \(D_{\mu\nu}^{ab}(k)\);
+    \item ghost propagator;
+    \item fermion propagator, if matter is present;
+    \item fermion--gauge-boson vertex;
+    \item ghost--gauge-boson vertex;
+    \item three-gauge-boson vertex;
+    \item four-gauge-boson vertex.
+\end{itemize}
+Every diagram carries both Lorentz structure and group-theory structure.
+Momentum conservation holds at each vertex, while group indices are contracted
+according to the generators and structure constants.
+
+The algebra is more complex than QED, but the logic is the same: propagators come
+from quadratic terms, and vertices come from interaction terms in the
+gauge-fixed action.
+
+\section{Ward Identities and Slavnov--Taylor Identities}
+
+In QED, gauge invariance leads to Ward identities. In non-Abelian gauge theory,
+the corresponding identities are more complicated because gauge transformations
+are nonlinear and ghosts are present. They are called Slavnov--Taylor identities.
+
+These identities relate Green functions and ensure that unphysical polarizations
+and ghosts cancel from physical observables. They also constrain
+renormalization, ensuring that the gauge-fixed quantum theory preserves the
+content of the original gauge symmetry.
+
+BRST symmetry provides the most efficient modern derivation of these identities.
+The next chapter develops BRST symmetry more systematically.
+
+\section{Unitarity and Physical States}
+
+Covariant quantization introduces unphysical gauge-field polarizations and ghost
+fields. The full gauge-fixed state space is larger than the physical Hilbert
+space. Physical states must be selected so that negative-norm and ghost degrees
+of freedom do not appear as observable particles.
+
+The cancellation of unphysical contributions is not diagram-by-diagram obvious.
+It follows from the gauge symmetry encoded after gauge fixing, especially through
+BRST symmetry. This is why ghosts, although unphysical, are essential in loop
+calculations.
+
+The physical \(S\)-matrix is unitary when restricted to the physical subspace.
+This statement is one of the central consistency requirements of quantum gauge
+theory.
+
+\section{One-Loop Beta Function}
+
+Non-Abelian gauge theories have a remarkable one-loop beta function. For an
+\(SU(N)\) gauge theory with \(n_f\) Dirac fermions in the fundamental
+representation, the leading beta function has the form
+\[
+    \beta(g)
+    = -\frac{g^3}{16\pi^2}
+      \left(\frac{11}{3}N-\frac{2}{3}n_f\right)+\cdots.
+\]
+The gauge-boson self-interactions give the positive \(11N/3\) contribution
+inside the parentheses, leading to a negative beta function when \(n_f\) is not
+too large.
+
+This is the origin of asymptotic freedom. At high energies, the coupling becomes
+small. At low energies, it grows, leading toward strong-coupling physics.
+
+\section{Comparison with QED}
+
+The contrast with QED is sharp. In QED, photons do not carry electric charge and
+there are no photon self-interactions at the fundamental level. The leading beta
+function is positive, and the coupling grows at high energies.
+
+In non-Abelian gauge theory, gauge bosons carry the gauge charge and interact
+with one another. Their contribution to the beta function can dominate over
+matter screening and make the theory asymptotically free.
+
+This difference is not a technical detail. It explains why QCD behaves very
+differently from QED: quarks and gluons are weakly coupled at short distances but
+strongly coupled at long distances.
+
+\section{Toward QCD}
+
+Quantum chromodynamics is the non-Abelian gauge theory with gauge group
+\(SU(3)\). Its gauge bosons are gluons, and its matter fields are quarks. The
+gluons carry color charge because they transform in the adjoint representation.
+
+The Yang--Mills structure introduced in this chapter provides the foundation of
+QCD:
+\[
+    \mathcal{L}_{\mathrm{QCD}}
+    = -\frac{1}{4}G_{\mu\nu}^aG^{a\mu\nu}
+      +\sum_f\bar q_f(i\gamma^\mu D_\mu-m_f)q_f.
+\]
+The later QCD chapter will build on this structure to discuss color, asymptotic
+freedom, confinement, jets, and hadrons.
+
+\begin{summarybox}
+Non-Abelian gauge theories are quantum theories of gauge fields whose symmetry
+generators do not commute. Their gauge bosons self-interact, ghosts do not
+decouple in covariant gauges, and physical consistency is encoded in
+Slavnov--Taylor identities and BRST symmetry. The one-loop beta function can be
+negative, producing asymptotic freedom. This structure is the foundation of QCD
+and of the gauge sector of the Standard Model.
+\end{summarybox}
+
+\section{Chapter Checklist}
+
+After reading this chapter, one should be able to:
+\begin{itemize}
+    \item distinguish Abelian and non-Abelian gauge symmetry;
+    \item write the non-Abelian field strength;
+    \item explain why Yang--Mills theory contains gauge-boson self-interactions;
+    \item write the covariant gauge-fixing term;
+    \item explain why ghosts do not decouple in non-Abelian theories;
+    \item identify the basic non-Abelian Feynman rules;
+    \item write the matter--gauge-boson vertex;
+    \item explain the role of Slavnov--Taylor identities;
+    \item explain why BRST symmetry is needed for physical-state selection;
+    \item state the qualitative origin of asymptotic freedom;
+    \item connect non-Abelian gauge theory to QCD.
+\end{itemize}
