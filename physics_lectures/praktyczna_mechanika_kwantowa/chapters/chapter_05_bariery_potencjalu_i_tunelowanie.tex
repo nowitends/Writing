@@ -154,7 +154,7 @@ albo, jeśli \(t\) jest już wartością numeryczną,
 T = Abs[t]^2
 \end{verbatim}
 
-Przy wyrażeniach symbolicznych \texttt{Abs[t]^2} nie zawsze uprości się tak, jak oczekujemy, bo Mathematica nie wie automatycznie, które parametry są rzeczywiste i dodatnie. Wtedy pomagają założenia:
+Przy wyrażeniach symbolicznych \texttt{Abs[t]\textasciicircum{}2} nie zawsze uprości się tak, jak oczekujemy, bo Mathematica nie wie automatycznie, które parametry są rzeczywiste i dodatnie. Wtedy pomagają założenia:
 \begin{verbatim}
 Simplify[expr, Assumptions -> {E > 0, V0 > E, a > 0, m > 0}]
 \end{verbatim}
