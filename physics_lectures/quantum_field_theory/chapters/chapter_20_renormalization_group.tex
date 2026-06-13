@@ -1,9 +1,275 @@
 \chapter{Renormalization Group}
 
 \begin{remarkbox}
-Placeholder chapter from the QFT course plan. Detailed lecture text will be added later.
+Renormalization introduced a scale \(\mu\). The renormalization group explains
+how physics remains independent of this arbitrary scale while renormalized
+parameters run with it. It is the language of scale dependence in quantum field
+theory.
 \end{remarkbox}
 
-\section{Planned Role}
+\section{Why a Group of Scale Transformations?}
 
-This chapter will organize the scale dependence of quantum field theories and introduce running couplings, beta functions, fixed points, and effective descriptions.
+In the previous chapter, renormalized parameters were defined at a scale
+\(\mu\). A coupling written as \(g(\mu)\) is not a fixed number independent of
+context. It depends on the scale at which it is measured or defined.
+
+This does not mean that physical predictions depend on an arbitrary convention.
+A physical observable \(\mathcal{O}\) may depend explicitly on \(\mu\) through
+loop logarithms, and implicitly on \(\mu\) through the running parameters:
+\[
+    \mathcal{O}=\mathcal{O}(p_i,m(\mu),g(\mu),\mu).
+\]
+The total dependence on \(\mu\) must cancel:
+\[
+    \mu\frac{\dd}{\dd\mu}\mathcal{O}=0.
+\]
+The renormalization group is the formalism that organizes this cancellation.
+
+The word ``group'' reflects the fact that changing from one scale to another can
+be composed: running from \(\mu_1\) to \(\mu_2\), and then from \(\mu_2\) to
+\(\mu_3\), is equivalent to running directly from \(\mu_1\) to \(\mu_3\).
+
+\section{Running Couplings}
+
+A running coupling satisfies an equation of the form
+\[
+    \mu\frac{\dd g}{\dd\mu}=\beta(g).
+\]
+The function \(\beta(g)\) is the beta function. It is determined by quantum loop
+corrections and depends on the theory and renormalization scheme.
+
+If \(\beta(g)>0\), the coupling grows as the scale increases. If
+\(\beta(g)<0\), the coupling decreases as the scale increases. The sign and
+zeros of the beta function therefore encode important physical information.
+
+For QED with one charged fermion, the leading beta function is
+\[
+    \beta(e)=\frac{e^3}{12\pi^2}+\cdots.
+\]
+The positive sign means that the effective electric charge grows slowly at short
+distances.
+
+\section{Solving a Simple RG Equation}
+
+Suppose the beta function has the form
+\[
+    \mu\frac{\dd g}{\dd\mu}=b g^3.
+\]
+Then
+\[
+    \frac{\dd g}{g^3}=b\frac{\dd\mu}{\mu}.
+\]
+Integrating between \(\mu_0\) and \(\mu\) gives
+\[
+    \frac{1}{g(\mu)^2}
+    = \frac{1}{g(\mu_0)^2}-2b\ln\frac{\mu}{\mu_0}.
+\]
+This equation shows how logarithms are reorganized into scale-dependent
+couplings.
+
+If \(b>0\), the coupling grows with \(\mu\). If \(b<0\), the coupling becomes
+weaker at high energies. The latter behavior is called asymptotic freedom.
+
+\section{The Callan--Symanzik Equation}
+
+Correlation functions also satisfy renormalization group equations. For an
+\(n\)-point renormalized correlation function \(G^{(n)}\), the
+Callan--Symanzik equation has the schematic form
+\[
+    \left[
+      \mu\frac{\partial}{\partial\mu}
+      +\beta(g)\frac{\partial}{\partial g}
+      +m\gamma_m(g)\frac{\partial}{\partial m}
+      +n\gamma_\phi(g)
+    \right]G^{(n)}=0.
+\]
+Here \(\gamma_\phi\) is the anomalous dimension of the field, and
+\(\gamma_m\) is the anomalous dimension of the mass.
+
+The equation says that explicit scale dependence is compensated by the running
+of couplings, masses, and field normalizations. It is a precise version of the
+statement that physics does not depend on the arbitrary renormalization scale.
+
+\section{Anomalous Dimensions}
+
+Classically, a field has an engineering dimension determined by dimensional
+analysis. For a scalar field in four dimensions,
+\[
+    [\phi]_{\mathrm{classical}}=1.
+\]
+Quantum corrections can modify scaling behavior. The correction is called an
+anomalous dimension.
+
+If \(Z_\phi\) is the field-strength renormalization, the anomalous dimension is
+schematically
+\[
+    \gamma_\phi(g)=\frac{1}{2}\mu\frac{\dd}{\dd\mu}\ln Z_\phi.
+\]
+The full scaling dimension is then
+\[
+    \Delta_\phi=\Delta_{\mathrm{classical}}+\gamma_\phi.
+\]
+Anomalous dimensions are especially important near fixed points, where they give
+universal critical exponents.
+
+\section{Fixed Points}
+
+A fixed point is a value \(g_*\) for which
+\[
+    \beta(g_*)=0.
+\]
+At a fixed point, the coupling no longer runs. The theory may become scale
+invariant, and often conformally invariant under additional assumptions.
+
+The Gaussian fixed point is
+\[
+    g_*=0.
+\]
+It describes a free theory. Interacting fixed points, if they exist, describe
+scale-invariant interacting quantum field theories.
+
+The behavior near a fixed point is determined by linearizing the beta function:
+\[
+    \beta(g)\approx \beta'(g_*)(g-g_*).
+\]
+If perturbations grow as one moves to low energies, they are relevant. If they
+shrink, they are irrelevant. If they remain of comparable size, they are
+marginal.
+
+\section{Relevant, Irrelevant, and Marginal Operators}
+
+Operators are classified by how their couplings scale. In four dimensions, an
+operator \(\mathcal{O}\) of dimension \(\Delta\) appears as
+\[
+    \mathcal{L}\supset c\,\mathcal{O}.
+\]
+The coupling has dimension
+\[
+    [c]=4-\Delta.
+\]
+If \(\Delta<4\), the operator is relevant. If \(\Delta=4\), it is marginal. If
+\(\Delta>4\), it is irrelevant.
+
+Relevant operators become more important in the infrared. Irrelevant operators
+are suppressed at low energies by powers of a high scale. Marginal operators
+require quantum analysis: their beta functions decide whether they are marginally
+relevant, marginally irrelevant, or exactly marginal.
+
+This classification is the bridge between renormalization group and effective
+field theory.
+
+\section{Dimensional Transmutation}
+
+A theory may begin with a dimensionless coupling but generate a physical mass
+scale through running. This phenomenon is called dimensional transmutation.
+
+Suppose
+\[
+    \mu\frac{\dd g}{\dd\mu}=-b g^3,
+    \qquad b>0.
+\]
+Then the running coupling can be written in terms of a scale \(\Lambda\):
+\[
+    g(\mu)^2\sim \frac{1}{2b\ln(\mu/\Lambda)}.
+\]
+The dimensionless coupling has been exchanged for a dimensionful scale
+\(\Lambda\). This idea is central in non-Abelian gauge theories and QCD, where a
+strong-coupling scale emerges from a classically scale-invariant gauge coupling.
+
+\section{Asymptotic Freedom}
+
+A theory is asymptotically free if its coupling becomes small at high energies:
+\[
+    g(\mu)\longrightarrow0
+    \qquad \text{as} \qquad \mu\to\infty.
+\]
+This occurs when the beta function is negative at small coupling:
+\[
+    \beta(g)=-b g^3+\cdots,
+    \qquad b>0.
+\]
+Non-Abelian gauge theories can have this property. It is the reason quarks and
+gluons behave approximately as weakly interacting particles at very short
+distances, even though they are confined at long distances.
+
+QED is not asymptotically free. Its coupling grows slowly at short distances.
+This contrast between Abelian and non-Abelian gauge theories is one of the most
+important lessons of the renormalization group.
+
+\section{Landau Poles}
+
+If a coupling grows without bound at a finite scale in perturbation theory, the
+scale is called a Landau pole. In a simple running equation with positive
+\(b\),
+\[
+    \frac{1}{g(\mu)^2}
+    = \frac{1}{g(\mu_0)^2}-2b\ln\frac{\mu}{\mu_0},
+\]
+the denominator can vanish at finite \(\mu\). Perturbation theory then breaks
+down.
+
+A Landau pole may signal that the theory cannot be extended to arbitrarily high
+energies without new physics, or that perturbation theory is no longer reliable.
+In effective field theory, this is not necessarily a problem; it simply indicates
+the scale at which the description must be replaced or completed.
+
+\section{RG Improvement of Perturbation Theory}
+
+Perturbative calculations often contain large logarithms such as
+\[
+    \lambda\ln\frac{E}{\mu}.
+\]
+If \(E\) is very different from \(\mu\), these logarithms can spoil the
+convergence of perturbation theory even when \(\lambda\) is small.
+
+The renormalization group improves perturbation theory by choosing \(\mu\) near
+the physical scale and using running couplings. This resums towers of logarithms
+into scale-dependent parameters.
+
+The practical rule is:
+\[
+    \text{choose } \mu \text{ of order the characteristic energy scale}.
+\]
+Then the explicit logarithms are small, and the running coupling carries the
+large-scale dependence.
+
+\section{Physical Meaning of Running}
+
+Running couplings do not mean that charge or interaction strength changes with
+time. They mean that different experiments probe the theory at different length
+or momentum scales. A coupling is an effective parameter summarizing the response
+of the quantum vacuum at a chosen scale.
+
+At long distances, high-energy fluctuations have already been integrated into
+the parameters. At short distances, more fluctuations are resolved explicitly.
+The renormalization group describes how the description changes as the resolution
+changes.
+
+This is the conceptual heart of modern QFT: the same physics can be described at
+many scales, but the parameters and relevant degrees of freedom may change.
+
+\begin{summarybox}
+The renormalization group organizes the dependence of renormalized quantities on
+the scale \(\mu\). Couplings run according to beta functions, fields and masses
+acquire anomalous dimensions, and physical observables remain independent of the
+arbitrary renormalization scale. Fixed points, relevant and irrelevant operators,
+dimensional transmutation, asymptotic freedom, and RG improvement are all
+consequences of scale-dependent quantum fluctuations.
+\end{summarybox}
+
+\section{Chapter Checklist}
+
+After reading this chapter, one should be able to:
+\begin{itemize}
+    \item explain why renormalized parameters depend on \(\mu\);
+    \item define a beta function;
+    \item solve a simple one-coupling RG equation;
+    \item state the meaning of the Callan--Symanzik equation;
+    \item explain anomalous dimensions;
+    \item define fixed points;
+    \item classify relevant, irrelevant, and marginal operators;
+    \item explain dimensional transmutation;
+    \item distinguish asymptotic freedom from Landau-pole behavior;
+    \item explain how RG improvement resums large logarithms;
+    \item describe the physical meaning of running couplings.
+\end{itemize}
