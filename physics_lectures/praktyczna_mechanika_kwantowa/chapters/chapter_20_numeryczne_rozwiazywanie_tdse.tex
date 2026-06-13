@@ -1,10 +1,144 @@
 \chapter{Numeryczne rozwiązywanie TDSE}
 
+\begin{summarybox}
+Zależne od czasu równanie Schrödingera rzadko daje się rozwiązać analitycznie dla
+realistycznych potencjałów i paczek falowych. Dlatego trzeba umieć rozwiązywać je
+numerycznie, kontrolując dyskretyzację, warunki brzegowe, stabilność, normę i
+interpretację wyniku. Ten rozdział pokazuje praktyczny schemat pracy z TDSE w
+Mathematice oraz typowe pułapki numeryczne.
+\end{summarybox}
+
 \section{Dyskretyzacja przestrzeni i czasu}
+
+Zależne od czasu równanie Schrödingera w jednym wymiarze ma postać
+\begin{equation}
+    i\hbar\frac{\partial\Psi}{\partial t}
+    =-\frac{\hbar^2}{2m}\frac{\partial^2\Psi}{\partial x^2}+V(x)\Psi.
+\end{equation}
+Aby rozwiązać je numerycznie, wybieramy skończony przedział przestrzenny
+\begin{equation}
+    x_{\min}\leq x\leq x_{\max}
+\end{equation}
+oraz zakres czasu
+\begin{equation}
+    0\leq t\leq t_{\max}.
+\end{equation}
+W praktyce komputer nie zna ciągłej osi rzeczywistej. Pracuje na siatce punktów, dlatego wybór zakresu i gęstości siatki jest częścią modelu fizycznego.
+
+Zbyt mały przedział przestrzenny prowadzi do sztucznych odbić od brzegów. Zbyt rzadka siatka nie rozdziela szybkich oscylacji funkcji falowej. Zbyt duży krok czasowy może powodować utratę stabilności albo normy.
+
 \section{Warunki początkowe}
+
+Do rozwiązania TDSE potrzebujemy warunku początkowego:
+\begin{equation}
+    \Psi(x,0)=\Psi_0(x).
+\end{equation}
+Typowym wyborem jest paczka Gaussa:
+\begin{equation}
+    \Psi_0(x)=N\exp\left[-\frac{(x-x_0)^2}{4\sigma^2}\right]e^{ik_0x}.
+\end{equation}
+Przed rozpoczęciem obliczeń trzeba ją znormalizować:
+\begin{equation}
+    \int_{x_{\min}}^{x_{\max}}|\Psi_0(x)|^2\,dx\approx 1.
+\end{equation}
+Jeśli paczka jest zbyt blisko brzegu, od razu pojawią się artefakty. Jeśli jest zbyt szeroka względem domeny, obcięcie ogonów zaburzy wynik.
+
 \section{Warunki brzegowe}
+
+Najprostsze warunki brzegowe to zerowanie funkcji falowej na końcach przedziału:
+\begin{equation}
+    \Psi(x_{\min},t)=0,
+    \qquad
+    \Psi(x_{\max},t)=0.
+\end{equation}
+Są one łatwe, ale fizycznie oznaczają twarde ściany. Jeśli paczka dojdzie do brzegu, odbije się od niego sztucznie.
+
+Aby tego uniknąć, można wybrać bardzo dużą domenę albo dodać warstwę pochłaniającą przy brzegach. W prostych ćwiczeniach często wystarczy dobrać zakres tak, aby w badanym czasie paczka nie dotarła do końców przedziału.
+
+Warunki okresowe są wygodne numerycznie, ale fizycznie oznaczają, że paczka wychodząca z jednej strony wraca z drugiej. Trzeba ich używać świadomie.
+
 \section{Stabilność obliczeń}
+
+Stabilność oznacza, że małe błędy numeryczne nie rosną gwałtownie w czasie. W równaniu Schrödingera szczególnie ważne jest zachowanie normy:
+\begin{equation}
+    N(t)=\int |\Psi(x,t)|^2\,dx.
+\end{equation}
+Dla poprawnej ewolucji unitarnej \(N(t)\) powinno być stałe.
+
+Jeśli norma zaczyna rosnąć, rozwiązanie może być niestabilne. Jeśli maleje, przyczyną może być sztuczne pochłanianie, ucieczka poza domenę albo błąd metody. Nie zawsze zmiana normy jest zła, ale zawsze musi być rozumiana.
+
+Dobrą praktyką jest wykonywanie testu z różnymi siatkami. Jeżeli zmniejszenie kroku przestrzennego i czasowego nie zmienia istotnie wyniku, rozwiązanie jest bardziej wiarygodne.
+
 \section{\texttt{NDSolve} w problemach kwantowych}
+
+W Mathematice można użyć \texttt{NDSolve} do bezpośredniego rozwiązania równania różniczkowego cząstkowego. Schematycznie:
+\begin{verbatim}
+sol = NDSolve[
+  {
+   I hbar D[psi[x, t], t] ==
+     -hbar^2/(2 m) D[psi[x, t], {x, 2}] + V[x] psi[x, t],
+   psi[x, 0] == psi0[x],
+   psi[xmin, t] == 0,
+   psi[xmax, t] == 0
+  },
+  psi,
+  {x, xmin, xmax}, {t, 0, tmax}
+]
+\end{verbatim}
+W praktyce często trzeba doprecyzować metodę, zwiększyć dokładność lub ograniczyć zakres. Mathematica potrafi rozwiązać wiele problemów automatycznie, ale nie zwalnia to z kontroli fizycznej.
+
+Warto osobno zdefiniować potencjał:
+\begin{verbatim}
+V[x_] := V0 Exp[-x^2/a^2]
+\end{verbatim}
+albo barierę prostokątną:
+\begin{verbatim}
+V[x_] := Piecewise[{{V0, Abs[x] < a/2}}, 0]
+\end{verbatim}
+
 \section{Animacje przez \texttt{Animate} i \texttt{Manipulate}}
+
+Po uzyskaniu rozwiązania można rysować gęstość prawdopodobieństwa:
+\begin{verbatim}
+Animate[
+ Plot[Evaluate[Abs[psi[x, t] /. sol[[1]]]^2], {x, xmin, xmax},
+  PlotRange -> All],
+ {t, 0, tmax}
+]
+\end{verbatim}
+Jeśli chcemy porównywać kilka parametrów, użyteczny jest \texttt{Manipulate}. Można na przykład zmieniać wysokość bariery, szerokość paczki albo średni pęd.
+
+Animacja powinna być uzupełniona wykresami liczbowymi: normy, transmisji, odbicia i położenia średniego. Sama animacja nie wystarcza jako wynik naukowy.
+
 \section{Porównanie rozwiązań numerycznych z analitycznymi}
+
+Każdą metodę numeryczną trzeba testować na problemie, dla którego znamy rozwiązanie. Dla TDSE najprostszym testem jest cząstka swobodna albo stacjonarny stan w nieskończonej studni.
+
+Dla stanu własnego Hamiltonianu gęstość prawdopodobieństwa nie powinna zależeć od czasu:
+\begin{equation}
+    |\Psi(x,t)|^2=|\psi_E(x)|^2.
+\end{equation}
+Jeśli rozwiązanie numeryczne pokazuje zmianę gęstości dla dokładnego stanu własnego, to mamy błąd numeryczny albo niepoprawne warunki brzegowe.
+
+Dla swobodnej paczki Gaussa można porównać prędkość środka paczki i tempo rozmywania z rozwiązaniem analitycznym. Taki test daje zaufanie do późniejszych symulacji z barierami.
+
 \section{Kontrola normy, energii i zakresu obliczeń}
+
+Najważniejsze kontrole numeryczne to:
+\begin{itemize}
+    \item norma \(N(t)=\int |\Psi|^2dx\),
+    \item energia średnia \(\langle H\rangle\), jeśli Hamiltonian nie zależy od czasu,
+    \item brak sztucznych odbić od brzegów,
+    \item zbieżność wyniku przy zagęszczaniu siatki,
+    \item zgodność z przypadkami analitycznymi.
+\end{itemize}
+
+Energię średnią można formalnie zapisać jako
+\begin{equation}
+    \langle H\rangle=\int \Psi^*(x,t)\hat{H}\Psi(x,t)\,dx.
+\end{equation}
+Dla Hamiltonianu niezależnego od czasu powinna być stała. W numeryce małe odchylenia są normalne, ale duże dryfy oznaczają problem.
+
+\begin{summarybox}
+Numeryczne rozwiązanie TDSE musi być jednocześnie obliczeniem i eksperymentem kontrolnym. Trzeba nie tylko wygenerować animację, lecz także sprawdzić normę, energię, brzeg domeny, stabilność i zgodność z przypadkami analitycznymi.
+\end{summarybox}
