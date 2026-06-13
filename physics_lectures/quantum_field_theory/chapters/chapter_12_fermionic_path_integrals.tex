@@ -1,19 +1,296 @@
 \chapter{Fermionic Path Integrals}
 
 \begin{remarkbox}
-Placeholder chapter from the QFT course plan. Detailed lecture text will be added later.
+Scalar path integrals integrate over ordinary commuting fields. Fermionic path
+integrals require anticommuting variables. The price is algebraic unfamiliarity;
+the reward is a compact functional-integral description of Dirac fields,
+fermion propagators, fermion loops, and determinants.
 \end{remarkbox}
 
-\section{Planned Sections}
+\section{Why Fermions Need a Different Integral}
 
+The scalar path integral sums over ordinary field configurations:
+\[
+    Z[J]=\int\mathcal{D}\phi\,e^{iS[\phi]+i\int J\phi}.
+\]
+This works because scalar fields are bosonic. Their quantum operators obey
+commutation relations, and the corresponding functional variables commute.
+
+Dirac fields are different. Their operators obey anticommutation relations, and
+fermionic many-particle states are antisymmetric. A path integral for fermions
+must reproduce this algebra. The appropriate variables are therefore not
+ordinary complex numbers, but Grassmann variables: objects that anticommute.
+
+The transition is
+\[
+    \text{bosons} \longrightarrow \text{commuting variables},
+    \qquad
+    \text{fermions} \longrightarrow \text{anticommuting variables}.
+\]
+This chapter develops the basic calculus needed for fermionic functional
+integrals.
+
+\section{Grassmann Variables}
+
+A Grassmann variable \(\theta\) anticommutes with another Grassmann variable
+\(\chi\):
+\[
+    \theta\chi=-\chi\theta.
+\]
+In particular,
+\[
+    \theta^2=0.
+\]
+This nilpotency makes every function of a single Grassmann variable finite:
+\[
+    f(\theta)=a+b\theta.
+\]
+For several Grassmann variables, polynomials terminate because each variable can
+appear at most once.
+
+Grassmann variables also anticommute with fermionic sources and fermionic fields,
+but commute with ordinary numbers and bosonic variables. They are bookkeeping
+objects that encode fermionic antisymmetry inside a functional integral.
+
+\section{Berezin Integration}
+
+Integration over Grassmann variables is called Berezin integration. It is defined
+by the rules
+\[
+    \int\dd\theta\,1=0,
+    \qquad
+    \int\dd\theta\,\theta=1.
+\]
+Thus Grassmann integration behaves like differentiation. For a function
+\(f(\theta)=a+b\theta\),
+\[
+    \int\dd\theta\,f(\theta)=b.
+\]
+For two variables, the order matters:
+\[
+    \int\dd\theta_2\dd\theta_1\,\theta_1\theta_2=1.
+\]
+Changing the order of variables or integration measures can introduce minus
+signs. This is the algebraic origin of many sign factors in fermionic path
+integrals.
+
+\section{Gaussian Integrals for Grassmann Variables}
+
+For one pair of independent Grassmann variables \(\bar\theta,\theta\),
+\[
+    \int\dd\bar\theta\dd\theta\,
+    e^{-\bar\theta a\theta}=a.
+\]
+For many variables, the general formula is
+\[
+    \int\prod_i\dd\bar\theta_i\dd\theta_i\,
+    \exp\left(-\bar\theta_i A_{ij}\theta_j\right)
+    = \det A.
+\]
+This differs from the bosonic Gaussian integral, which produces
+\((\det A)^{-1/2}\) for real variables or \((\det A)^{-1}\) for complex
+commuting variables. Fermions produce determinants in the numerator.
+
+With sources, one has
+\[
+    \int\dd\bar\theta\dd\theta\,
+    \exp\left(-\bar\theta A\theta+\bar\eta\theta+\bar\theta\eta\right)
+    = \det A\,\exp\left(\bar\eta A^{-1}\eta\right),
+\]
+up to conventions for signs and ordering. The inverse matrix \(A^{-1}\) will
+become the fermion propagator.
+
+\section{The Dirac Generating Functional}
+
+The free Dirac action is
+\[
+    S_0[\bar\psi,\psi]
+    = \int\dd^4x\,\bar\psi(i\gamma^\mu\partial_\mu-m)\psi.
+\]
+In the path integral, \(\psi\) and \(\bar\psi\) are independent Grassmann-valued
+fields. Introduce Grassmann-valued sources \(\eta\) and \(\bar\eta\):
+\[
+    Z_0[\bar\eta,\eta]
+    = \int\mathcal{D}\bar\psi\mathcal{D}\psi\,
+      \exp\left(iS_0[\bar\psi,\psi]
+      +i\int\dd^4x\,[\bar\eta\psi+\bar\psi\eta]\right).
+\]
+This is a Gaussian Grassmann functional integral. It gives
+\[
+    Z_0[\bar\eta,\eta]
+    = Z_0[0,0]\exp\left(
+        -i\int\dd^4x\dd^4y\,
+        \bar\eta(x)S_F(x-y)\eta(y)
+      \right),
+\]
+where \(S_F\) is the Dirac Feynman propagator.
+
+The sign in the exponent depends on source-ordering conventions. The essential
+point is invariant: differentiating with respect to fermionic sources produces
+Dirac propagators and fermionic correlation functions.
+
+\section{Dirac Propagator from the Path Integral}
+
+The Dirac propagator is the inverse of the Dirac operator:
+\[
+    (i\gamma^\mu\partial_\mu-m)S_F(x-y)=i\delta^{(4)}(x-y).
+\]
+In momentum space,
+\[
+    S_F(p)=\frac{i(\gamma^\mu p_\mu+m)}{p^2-m^2+i\epsilon}.
+\]
+From the generating functional,
+\[
+    \langle0|T\hat\psi_\alpha(x)\hat{\bar\psi}_\beta(y)|0\rangle
+    = S_{F,\alpha\beta}(x-y).
+\]
+Thus the same propagator obtained by canonical quantization appears as the
+inverse operator in the fermionic Gaussian integral.
+
+The path-integral perspective makes the parallel with scalar fields clear:
+\[
+    \text{quadratic operator in the action}^{-1}
+    = \text{free propagator}.
+\]
+For scalars the operator is Klein--Gordon. For fermions it is Dirac.
+
+\section{Generating Fermionic Correlation Functions}
+
+Fermionic correlation functions are generated by differentiating with respect to
+Grassmann sources. Schematically,
+\[
+    \langle T\psi(x_1)\bar\psi(y_1)\cdots\psi(x_n)\bar\psi(y_n)\rangle
+\]
+is obtained by applying derivatives with respect to \(\bar\eta(x_i)\) and
+\(\eta(y_i)\) to \(Z[\bar\eta,\eta]\), then setting the sources to zero.
+
+The order of the derivatives matters. Since the sources anticommute, exchanging
+two source derivatives can produce a minus sign. These signs are the
+path-integral version of the fermionic signs in Wick's theorem.
+
+A useful practical rule is that the path integral automatically keeps track of
+fermionic antisymmetry if the source ordering is used consistently.
+
+\section{Interactions with Fermions}
+
+For QED, the interaction term is
+\[
+    S_{\mathrm{int}}
+    = -e\int\dd^4x\,\bar\psi\gamma^\mu\psi A_\mu.
+\]
+The full generating functional is
+\[
+    Z[\bar\eta,\eta,J]
+    = \int\mathcal{D}A\mathcal{D}\bar\psi\mathcal{D}\psi\,
+      \exp\left(iS[A,\bar\psi,\psi]
+      +i\int\dd^4x\,[J_\mu A^\mu+\bar\eta\psi+\bar\psi\eta]\right).
+\]
+Perturbation theory is obtained by expanding the interaction exponential or by
+rewriting interactions as functional derivatives with respect to sources.
+
+The QED vertex contains one photon field, one \(\psi\), and one \(\bar\psi\).
+Therefore each vertex joins one photon line and two fermion lines. This is the
+path-integral origin of the usual QED diagrammatic vertex.
+
+\section{Fermion Loops and Minus Signs}
+
+Closed fermion loops carry an extra minus sign. In the operator formalism this
+comes from permuting fermionic operators in Wick contractions. In the path
+integral it comes from the algebra of Grassmann variables and the determinant
+produced by integrating out fermions.
+
+A closed fermion loop is associated with a trace over spinor indices and an
+integral over loop momentum. The additional sign is part of the Feynman rule:
+\[
+    \text{each closed fermion loop contributes a factor } -1.
+\]
+This rule is not an arbitrary convention. It is a direct consequence of
+fermionic anticommutation.
+
+\section{Determinants from Integrating Out Fermions}
+
+Because the fermionic path integral is Gaussian when the action is quadratic in
+\(\psi,\bar\psi\), one can formally integrate out fermions. For a Dirac operator
+\(D\),
+\[
+    \int\mathcal{D}\bar\psi\mathcal{D}\psi\,
+    e^{i\int\bar\psi D\psi}
+    \propto \det D.
+\]
+If the Dirac operator depends on a background gauge field, the determinant also
+depends on that background:
+\[
+    \det(i\gamma^\mu D_\mu-m).
+\]
+This determinant encodes the effect of virtual fermion loops on the gauge-field
+dynamics.
+
+For bosonic Gaussian integrals, one typically gets inverse determinants. This
+difference between bosonic and fermionic determinants is one of the key
+structural distinctions between commuting and anticommuting fields.
+
+\section{Majorana Fermions in the Path Integral}
+
+A Majorana fermion is constrained to be related to its charge conjugate. In the
+path integral this means that the independent fermionic variables are reduced
+relative to a Dirac field. The Gaussian integral no longer gives an ordinary
+determinant in the same way; it gives a Pfaffian.
+
+Schematically, for an antisymmetric operator \(A\),
+\[
+    \int\mathcal{D}\chi\,e^{-\frac{1}{2}\chi A\chi}
+    \propto \operatorname{Pf}(A),
+\]
+and
+\[
+    \operatorname{Pf}(A)^2=\det A.
+\]
+The details require a careful treatment of charge conjugation and spinor
+conventions. At this stage, the main lesson is that Majorana path integrals are
+fermionic Gaussian integrals with fewer independent variables than Dirac path
+integrals.
+
+\section{Physical Interpretation and Common Pitfalls}
+
+Grassmann variables are not classical values of a fermion field. They are
+anticommuting integration variables designed to reproduce fermionic quantum
+statistics. One should not imagine a fermionic path integral as a sum over
+ordinary classical spinor configurations.
+
+Another common pitfall is to treat \(\psi\) and \(\bar\psi\) as complex
+conjugates inside the functional integral. In the fermionic path integral they
+are independent Grassmann variables. Their relation as adjoint operators belongs
+to the canonical operator formulation, while the functional integral uses an
+independent-variable representation.
+
+Finally, fermionic determinants and loop signs are not optional decorations.
+They are the mechanism by which the Pauli principle and virtual fermion effects
+enter the path-integral formalism.
+
+\begin{summarybox}
+Fermionic path integrals use Grassmann variables. Berezin integration turns
+fermionic Gaussian integrals into determinants, and source derivatives generate
+fermionic time-ordered correlation functions. The inverse Dirac operator is the
+Dirac propagator. Fermion loops acquire minus signs, and integrating out
+fermions produces determinants that encode virtual fermion effects. Majorana
+fermions require a related Pfaffian structure.
+\end{summarybox}
+
+\section{Chapter Checklist}
+
+After reading this chapter, one should be able to:
 \begin{itemize}
-    \item Grassmann variables.
-    \item Berezin integration.
-    \item Gaussian integrals for Grassmann variables.
-    \item Fermionic generating functional.
-    \item Dirac propagator from the path integral.
-    \item Fermion loops and minus signs.
-    \item Determinants from integrating out fermions.
-    \item Majorana fermions in the path integral.
-    \item Physical interpretation and common pitfalls.
+    \item define Grassmann variables and state their anticommutation property;
+    \item state the basic rules of Berezin integration;
+    \item evaluate the structure of a Gaussian Grassmann integral;
+    \item write the free Dirac generating functional with Grassmann sources;
+    \item identify the Dirac propagator as the inverse Dirac operator;
+    \item explain how fermionic correlation functions are generated by source
+    derivatives;
+    \item explain why closed fermion loops carry a minus sign;
+    \item describe how integrating out fermions produces determinants;
+    \item explain the basic path-integral difference between Dirac and Majorana
+    fermions;
+    \item avoid interpreting Grassmann fields as ordinary classical spinor
+    configurations.
 \end{itemize}
