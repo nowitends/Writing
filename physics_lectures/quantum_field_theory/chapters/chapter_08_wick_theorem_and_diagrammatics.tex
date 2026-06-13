@@ -1,21 +1,297 @@
 \chapter{Wick Theorem and Diagrammatics}
 
 \begin{remarkbox}
-This chapter follows the planned QFT table of contents. It is a placeholder to be developed in small increments.
+The Dyson series expresses interacting quantities as time-ordered products of
+free fields. Wick's theorem is the algebraic tool that evaluates those products.
+It reduces them to normal-ordered products plus contractions, and each
+contraction is a propagator.
 \end{remarkbox}
 
-\section{Planned Sections}
+\section{Why Wick's Theorem Appears}
 
+In Chapter 7, perturbation theory led to expressions of the form
+\[
+    \langle0|T\{\hat\phi_I(x_1)\cdots\hat\phi_I(x_n)\}|0\rangle.
+\]
+The fields are free interaction-picture fields, but there may be many of them.
+To compute perturbative corrections, one needs a systematic way to evaluate such
+vacuum expectation values.
+
+Wick's theorem provides exactly this. It says that a time-ordered product of
+free fields can be rewritten as a sum of normal-ordered products multiplied by
+contractions. In vacuum expectation values, the normal-ordered parts vanish
+unless all fields are contracted. Thus vacuum expectation values reduce to sums
+of products of propagators.
+
+This is the algebraic origin of Feynman diagrams.
+
+\section{Normal Ordering Revisited}
+
+Normal ordering places all creation operators to the left of all annihilation
+operators. For a scalar field, we write
+\[
+    :\hat a_{\vect{k}}\hat a_{\vect{p}}^\dagger:
+    = \hat a_{\vect{p}}^\dagger\hat a_{\vect{k}}.
+\]
+For fields, normal ordering means applying this rule after expanding the field
+into creation and annihilation parts. Schematically,
+\[
+    \hat\phi(x)=\hat\phi^{(+)}(x)+\hat\phi^{(-)}(x),
+\]
+where \(\hat\phi^{(+)}\) contains annihilation operators and
+\(\hat\phi^{(-)}\) contains creation operators.
+
+A normal-ordered product has zero vacuum expectation value unless it is just a
+number:
+\[
+    \langle0|:\hat\phi(x_1)\cdots\hat\phi(x_n):|0\rangle=0
+\]
+for \(n>0\). This is why normal ordering is useful in perturbation theory.
+
+\section{Contractions}
+
+For two scalar fields, the contraction is defined as the difference between the
+time-ordered product and the normal-ordered product:
+\[
+    \contraction{}{\hat\phi}{(x)}{\hat\phi}
+    \hat\phi(x)\hat\phi(y)
+    \equiv
+    T\{\hat\phi(x)\hat\phi(y)\}
+    - :\hat\phi(x)\hat\phi(y):.
+\]
+For a free real scalar field, this contraction is the Feynman propagator:
+\[
+    \contraction{}{\hat\phi}{(x)}{\hat\phi}
+    \hat\phi(x)\hat\phi(y)
+    = D_F(x-y).
+\]
+Equivalently,
+\[
+    \langle0|T\{\hat\phi(x)\hat\phi(y)\}|0\rangle
+    = D_F(x-y).
+\]
+A contraction is therefore not a new physical object. It is the propagator
+written as an algebraic operation inside a time-ordered product.
+
+\section{Wick Theorem for Scalar Fields}
+
+For free scalar fields, Wick's theorem states that
+\[
+    T\{\hat\phi_1\hat\phi_2\cdots\hat\phi_n\}
+    = :\hat\phi_1\hat\phi_2\cdots\hat\phi_n:
+      + \text{all single contractions}
+      + \text{all double contractions}
+      + \cdots,
+\]
+where \(\hat\phi_i=\hat\phi(x_i)\). The expansion continues until all possible
+contractions have been included.
+
+For two fields,
+\[
+    T\{\hat\phi_1\hat\phi_2\}
+    = :\hat\phi_1\hat\phi_2:
+      + D_F(x_1-x_2).
+\]
+For four fields,
+\[
+\begin{aligned}
+    \langle0|T\{\hat\phi_1\hat\phi_2\hat\phi_3\hat\phi_4\}|0\rangle
+    ={}& D_F(x_1-x_2)D_F(x_3-x_4)\\
+       &+D_F(x_1-x_3)D_F(x_2-x_4)\\
+       &+D_F(x_1-x_4)D_F(x_2-x_3).
+\end{aligned}
+\]
+Only fully contracted terms survive between vacuum states.
+
+\begin{examplebox}
+The vacuum expectation value of an odd number of free real scalar fields
+vanishes. There is no way to pair all fields into contractions.
+\end{examplebox}
+
+\section{Application to the Dyson Series}
+
+Consider \(\phi^4\) theory with
+\[
+    \mathcal{H}_{\mathrm{int}}(x)
+    = \frac{\lambda}{4!}\hat\phi_I(x)^4.
+\]
+The first-order correction to a two-point function contains
+\[
+    \frac{-i\lambda}{4!}\int\dd^4z\,
+    \langle0|T\{\hat\phi(x)\hat\phi(y)\hat\phi(z)^4\}|0\rangle.
+\]
+Wick's theorem reduces this six-field expectation value to a sum of products of
+three propagators. Some contractions connect \(x\) and \(y\) to the interaction
+point \(z\); others form vacuum bubbles or tadpole factors.
+
+This example illustrates the general rule: interaction terms add field
+insertions, and Wick's theorem pairs those insertions into propagators.
+
+\section{Wick Theorem for Fermions}
+
+For fermionic fields, Wick's theorem has the same structure but includes signs.
+The basic fermion contraction is
+\[
+    \contraction{}{\hat\psi}{(x)}{\hat{\bar\psi}}
+    \hat\psi(x)\hat{\bar\psi}(y)
+    = S_F(x-y),
+\]
+where \(S_F\) is the Dirac propagator. Time ordering of fermions includes a
+minus sign when two fermionic operators are exchanged.
+
+For example,
+\[
+    T\{\hat\psi(x)\hat{\bar\psi}(y)\}
+    = \theta(x^0-y^0)\hat\psi(x)\hat{\bar\psi}(y)
+      -\theta(y^0-x^0)\hat{\bar\psi}(y)\hat\psi(x).
+\]
+The minus sign is not optional. It is required by the anticommutation relations
+of fermionic fields.
+
+In diagrammatic language, every closed fermion loop contributes an additional
+minus sign. This sign has its origin in the permutations required to contract
+fermionic operators.
+
+\section{Fermionic Sign Factors}
+
+When applying Wick's theorem to fermions, one must count how many exchanges of
+fermionic operators are needed to bring the contracted fields next to each
+other. Each exchange contributes a minus sign.
+
+A useful rule is:
+\[
+    \text{fermionic sign} = (-1)^{N_{\mathrm{exchanges}}}.
+\]
+For practical Feynman rules, these signs are packaged into standard rules:
+closed fermion loops give a minus sign, and external fermion lines must be
+ordered consistently with the chosen amplitude convention.
+
+The sign bookkeeping is one of the main reasons diagrammatic notation is useful.
+It turns long operator manipulations into a structured set of graphical and
+algebraic rules.
+
+\section{From Algebra to Diagrams}
+
+Each term produced by Wick's theorem can be represented graphically. The rules
+are:
 \begin{itemize}
-    \item Normal ordering revisited.
-    \item Contractions.
-    \item Wick theorem for scalar fields.
-    \item Wick theorem for fermions.
-    \item Fermionic sign factors.
-    \item From algebra to diagrams.
-    \item External lines, internal lines, and vertices.
-    \item Connected and disconnected diagrams.
-    \item Vacuum bubbles.
-    \item Symmetry factors.
-    \item Interpretation limits of Feynman diagrams.
+    \item each field insertion is represented by a point or an external leg;
+    \item each contraction is represented by a line;
+    \item each interaction Hamiltonian insertion is represented by a vertex;
+    \item each vertex is integrated over spacetime;
+    \item each line contributes the propagator of the corresponding field.
+\end{itemize}
+For \(\phi^4\) theory, each interaction vertex has four scalar lines attached to
+it. For QED, the interaction
+\[
+    e\bar\psi\gamma^\mu\psi A_\mu
+\]
+has one photon line and two fermion lines attached to the vertex.
+
+A Feynman diagram is therefore a picture of a term in the Wick expansion of the
+Dyson series. It is not a literal photograph of particles moving in spacetime.
+
+\section{External Lines, Internal Lines, and Vertices}
+
+External lines represent field insertions associated with initial or final
+states, or with operators whose correlation function is being computed. Internal
+lines represent contractions between fields inside the perturbative expansion.
+They carry propagators.
+
+Vertices represent interaction terms. In \(\phi^4\) theory, the vertex factor is
+related to \(-i\lambda\). In QED, the vertex factor is related to
+\(-ie\gamma^\mu\), with conventions depending on the sign chosen for the
+interaction Lagrangian.
+
+In momentum space, each internal line carries a momentum variable. Momentum is
+conserved at each vertex. Integrations over undetermined internal momenta become
+loop integrals.
+
+\section{Connected and Disconnected Diagrams}
+
+A diagram is connected if every part of it is linked to every other part by
+lines and vertices. A disconnected diagram factorizes into independent pieces.
+
+In correlation functions, disconnected pieces often include vacuum bubbles,
+which are diagrams with no external lines. The normalized generating formulas of
+Chapter 7 divide by the vacuum persistence amplitude, causing pure vacuum
+bubbles to cancel.
+
+Connected diagrams are the ones that carry the essential correlation between
+external insertions. Later, when we construct scattering amplitudes, connected
+amputated diagrams will play the central role.
+
+\section{Vacuum Bubbles}
+
+Vacuum bubbles arise from contractions among fields belonging only to interaction
+vertices, with no connection to external fields. For example, in \(\phi^4\)
+theory, a first-order vacuum bubble comes from contracting the four fields at a
+single interaction point among themselves.
+
+Vacuum bubbles contribute to
+\[
+    \langle0|T\exp\left[-i\int\dd^4x\,\mathcal{H}_{\mathrm{int}}(x)\right]|0\rangle.
+\]
+They affect the vacuum persistence amplitude but cancel from normalized
+correlation functions. This cancellation is why one often focuses on connected
+diagrams attached to the external points.
+
+\section{Symmetry Factors}
+
+The same diagram can arise from many equivalent Wick contractions. The symmetry
+factor accounts for this overcounting. In a perturbative expansion, the factors
+\(1/n!\) from the Dyson series and factors such as \(1/4!\) in the interaction
+Lagrangian combine with the number of contractions to produce the final
+coefficient of a diagram.
+
+A symmetry factor is the inverse of the number of graph automorphisms that leave
+the diagram unchanged while preserving its external structure. In practice, one
+often learns symmetry factors by examples.
+
+For instance, in \(\phi^4\) theory, the factor \(1/4!\) is chosen so that the
+basic four-point vertex has a simple Feynman rule. Without this factorial, every
+vertex would carry extra combinatorial factors from permuting identical scalar
+fields.
+
+\section{Interpretation Limits of Feynman Diagrams}
+
+Feynman diagrams are extraordinarily useful, but they should be interpreted
+carefully. A diagram represents a term in a perturbative expansion, not a unique
+classical history. Internal lines do not represent directly observed particles.
+They represent propagators, or equivalently contractions of free fields.
+
+This distinction matters especially for virtual particles. A virtual particle is
+not a particle detected in an experiment. It is a feature of a diagrammatic
+representation of a correlation function or amplitude. Different gauges or field
+variables can reorganize the same physical amplitude into different sets of
+intermediate diagrammatic terms.
+
+The physical content lies in gauge-invariant amplitudes, cross sections, decay
+rates, and correlation functions, not in any single diagram by itself.
+
+\begin{summarybox}
+Wick's theorem converts time-ordered products of free fields into sums of
+normal-ordered products and contractions. Vacuum expectation values keep only
+fully contracted terms, and each contraction is a propagator. Applying Wick's
+theorem to the Dyson series produces Feynman diagrams: vertices come from
+interactions, internal lines from propagators, external lines from field
+insertions, and symmetry factors from combinatorics.
+\end{summarybox}
+
+\section{Chapter Checklist}
+
+After reading this chapter, one should be able to:
+\begin{itemize}
+    \item explain why Wick's theorem is needed in perturbation theory;
+    \item define normal ordering and contractions;
+    \item state Wick's theorem for free scalar fields;
+    \item evaluate a four-point free scalar vacuum expectation value;
+    \item explain how contractions become propagators;
+    \item state the fermionic version of Wick's theorem qualitatively;
+    \item explain the origin of fermionic sign factors;
+    \item translate Wick contractions into Feynman diagrams;
+    \item distinguish external lines, internal lines, and vertices;
+    \item explain connected diagrams, vacuum bubbles, and symmetry factors;
+    \item state why Feynman diagrams should not be interpreted as literal
+    particle trajectories.
 \end{itemize}
