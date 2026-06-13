@@ -1,0 +1,59 @@
+\chapter{Glosariusz pojęć i dalsza lektura}
+
+\begin{summarybox}
+Ten dodatek zbiera najważniejsze pojęcia pojawiające się w notatkach. Nie jest
+encyklopedią mechaniki kwantowej, lecz szybkim słownikiem roboczym dla studentów
+wykonujących ćwiczenia laboratoryjne.
+\end{summarybox}
+
+\section{Glosariusz podstawowy}
+
+\begin{description}
+    \item[Amplituda prawdopodobieństwa] Liczba zespolona, której moduł kwadratowy daje prawdopodobieństwo albo gęstość prawdopodobieństwa.
+    \item[Funkcja falowa] Reprezentacja stanu kwantowego w wybranej bazie, najczęściej położeniowej. W 1D zapisujemy ją jako \(\psi(x)\).
+    \item[Gęstość prawdopodobieństwa] Wielkość \(|\psi(x)|^2\) w 1D albo \(|\psi(\mathbf{r})|^2\) w 3D. Jej całka po obszarze daje prawdopodobieństwo znalezienia cząstki w tym obszarze.
+    \item[Hamiltonian] Operator energii całkowitej układu. W równaniu Schrödingera wyznacza energie stanów stacjonarnych albo ewolucję w czasie.
+    \item[Operator] Obiekt działający na stan kwantowy. Obserwable fizyczne reprezentujemy operatorami hermitowskimi.
+    \item[Stan własny] Stan, na który operator działa przez pomnożenie przez liczbę. Dla Hamiltonianu stany własne mają określoną energię.
+    \item[Wartość własna] Liczba otrzymana w równaniu własnym operatora. Dla Hamiltonianu jest energią.
+    \item[Normalizacja] Warunek, że całkowite prawdopodobieństwo wynosi jeden.
+    \item[Wartość oczekiwana] Średnia wartość obserwabli w danym stanie, zapisywana jako \(\langle A\rangle=\langle\psi|\hat{A}|\psi\rangle\).
+    \item[Niepewność] Odchylenie standardowe wyniku pomiaru obserwabli w danym stanie: \(\Delta A=\sqrt{\langle A^2\rangle-\langle A\rangle^2}\).
+    \item[Komutator] Wielkość \([A,B]=AB-BA\), mierząca zależność wyniku działania operatorów od kolejności.
+    \item[Degeneracja] Sytuacja, w której różne stany własne mają tę samą wartość energii.
+    \item[Orbital] Stan jednoelektronowy w atomie albo modelu atomopodobnym. Nie jest klasyczną orbitą.
+    \item[Tunelowanie] Przejście przez obszar klasycznie zabroniony, w którym energia cząstki jest mniejsza od potencjału.
+    \item[Pakiet falowy] Superpozycja fal o różnych wektorach falowych, dająca stan częściowo zlokalizowany w przestrzeni.
+    \item[Przestrzeń Hilberta] Przestrzeń stanów mechaniki kwantowej z iloczynem skalarnym.
+    \item[Ket i bra] Elementy notacji Diraca: \(|\psi\rangle\) oznacza stan, a \(\langle\psi|\) obiekt dualny.
+    \item[Kubit] Dwupoziomowy układ kwantowy, którego stan ma postać \(\alpha|0\rangle+\beta|1\rangle\).
+    \item[Splątanie] Własność stanu złożonego, którego nie można zapisać jako iloczynu stanów części.
+    \item[Pasmo energetyczne] Zakres energii dozwolonych dla elektronu w potencjale periodycznym.
+    \item[Przerwa energetyczna] Zakres energii niedozwolonych w strukturze pasmowej.
+    \item[Sieć odwrotna] Sieć w przestrzeni wektorów falowych, naturalna dla opisu fal Blocha i dyfrakcji.
+    \item[Strefa Brillouina] Komórka Wignera--Seitza sieci odwrotnej; podstawowy obszar analizy wektora \(\mathbf{k}\).
+    \item[Punkt Diraca] Punkt w przestrzeni odwrotnej grafenu, w którym stykają się pasma i pojawia się liniowa dyspersja.
+\end{description}
+
+\section{Dalsza lektura}
+
+Do pogłębienia teorii mechaniki kwantowej warto sięgnąć do klasycznych podręczników:
+\begin{itemize}
+    \item David J. Griffiths, \emph{Introduction to Quantum Mechanics},
+    \item R. Shankar, \emph{Principles of Quantum Mechanics},
+    \item J. J. Sakurai, J. Napolitano, \emph{Modern Quantum Mechanics},
+    \item B. H. Bransden, C. J. Joachain, \emph{Quantum Mechanics}.
+\end{itemize}
+
+Do tematów ciała stałego i nanostruktur przydatne są:
+\begin{itemize}
+    \item N. W. Ashcroft, N. D. Mermin, \emph{Solid State Physics},
+    \item Charles Kittel, \emph{Introduction to Solid State Physics},
+    \item Supriyo Datta, \emph{Quantum Transport: Atom to Transistor}.
+\end{itemize}
+
+Do pracy technicznej należy także korzystać z dokumentacji Mathematiki oraz z dokumentacji używanych bibliotek Pythona, takich jak NumPy, SciPy i Matplotlib.
+
+\begin{summarybox}
+Glosariusz warto czytać roboczo: jeśli w zadaniu pojawia się pojęcie, którego znaczenie jest niejasne, najpierw należy ustalić jego sens fizyczny, a dopiero potem pisać kod.
+\end{summarybox}
