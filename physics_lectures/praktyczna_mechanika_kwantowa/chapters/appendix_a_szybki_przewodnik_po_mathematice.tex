@@ -61,10 +61,10 @@ Map[f, {1, 2, 3}]
 
 Funkcja czysta to szybka funkcja anonimowa. Na przykład:
 \begin{verbatim}
+(#^2 + 1) & /@ {1, 2, 3}
 (#1 + #2) &[3, 4]
 \end{verbatim}
-
-Funkcje czyste są bardzo wygodne w krótkich operacjach na listach, ale w dydaktycznych notebookach czasem lepiej pisać funkcje nazwane, bo są czytelniejsze dla studentów.
+Symbol \texttt{\#} oznacza argument, a \texttt{\&} kończy definicję funkcji.
 
 \section{\texttt{Plot}, \texttt{ListPlot}, \texttt{DensityPlot}, \texttt{DensityPlot3D}}
 
@@ -89,6 +89,14 @@ Trójwymiarowa mapa gęstości:
 DensityPlot3D[Exp[-x^2 - y^2 - z^2], {x, -2, 2}, {y, -2, 2}, {z, -2, 2}]
 \end{verbatim}
 
+\section{\texttt{Evaluate} w wykresach}
+
+Przy wykresach rozwiązań symbolicznych albo numerycznych często warto wymusić wcześniejsze podstawienie wyniku:
+\begin{verbatim}
+Plot[Evaluate[y[t] /. sol], {t, 0, 5}]
+\end{verbatim}
+Bez \texttt{Evaluate} Mathematica czasem próbuje analizować wyrażenie zbyt późno, co może spowolnić wykres albo wygenerować ostrzeżenia.
+
 \section{\texttt{Simplify}, \texttt{FullSimplify}, \texttt{Assumptions}}
 
 Upraszczanie bez założeń bywa niewystarczające:
@@ -104,7 +112,10 @@ Dla bardziej agresywnego upraszczania:
 FullSimplify[expr, Assumptions -> {a > 0, n \[Element] Integers}]
 \end{verbatim}
 
-Założenia są szczególnie ważne przy całkach, pierwiastkach, funkcjach trygonometrycznych i parametrach fizycznych.
+Można także użyć konstrukcji \texttt{Assuming}:
+\begin{verbatim}
+Assuming[a > 0, FullSimplify[Sqrt[a^2]]]
+\end{verbatim}
 
 \section{\texttt{Solve}, \texttt{NSolve}, \texttt{FindRoot}}
 
@@ -122,14 +133,35 @@ FindRoot[Cos[x] == x, {x, 1}]
 \end{verbatim}
 W \texttt{FindRoot} punkt startowy ma znaczenie. Różne punkty startowe mogą prowadzić do różnych pierwiastków.
 
-\section{\texttt{NDSolve}}
+\section{\texttt{NIntegrate}}
+
+Całki numeryczne liczymy przez:
+\begin{verbatim}
+NIntegrate[Abs[psi[x]]^2, {x, xmin, xmax}]
+\end{verbatim}
+To jest szczególnie przydatne przy sprawdzaniu normalizacji. Jeśli \texttt{NIntegrate} zgłasza problemy, trzeba sprawdzić osobliwości funkcji, zakres całkowania i założenia numeryczne.
+
+\section{\texttt{NDSolve} i \texttt{InterpolatingFunction}}
 
 Równania różniczkowe numerycznie rozwiązujemy przez \texttt{NDSolve}. Przykład równania zwyczajnego:
 \begin{verbatim}
 sol = NDSolve[{y'[t] == -y[t], y[0] == 1}, y, {t, 0, 5}]
 Plot[Evaluate[y[t] /. sol], {t, 0, 5}]
 \end{verbatim}
-Dla równań cząstkowych, jak TDSE, składnia jest podobna, ale trzeba podać zakresy dla \(x\) i \(t\), warunki początkowe oraz brzegowe.
+Wynik \texttt{NDSolve} często zawiera obiekt \texttt{InterpolatingFunction}. Oznacza to, że rozwiązanie jest znane numerycznie jako interpolacja na określonym zakresie. Nie należy używać go poza zakresem, dla którego zostało policzone.
+
+\section{\texttt{Chop}, \texttt{WorkingPrecision} i drobne błędy numeryczne}
+
+W obliczeniach numerycznych mogą pojawiać się bardzo małe liczby, które są tylko szumem numerycznym:
+\begin{verbatim}
+Chop[{1, 10^-16, -10^-14}]
+\end{verbatim}
+Jeżeli problem jest czuły numerycznie, można zwiększyć precyzję:
+\begin{verbatim}
+N[expr, 30]
+FindRoot[eqn, {x, x0}, WorkingPrecision -> 40]
+\end{verbatim}
+Większa precyzja nie naprawia złego modelu, ale pomaga przy trudnych równaniach transcendentalnych.
 
 \section{\texttt{Manipulate} i \texttt{Animate}}
 
@@ -143,7 +175,7 @@ Animate[Plot[Sin[x - t], {x, 0, 2 Pi}], {t, 0, 2 Pi}]
 \end{verbatim}
 W raportach końcowych animacja powinna być uzupełniona statycznymi wykresami i komentarzem fizycznym.
 
-\section{Eksport wykresów}
+\section{Eksport wykresów i animacji}
 
 Wykres można zapisać do pliku:
 \begin{verbatim}
@@ -153,6 +185,23 @@ Export["wykres.png", plt, ImageResolution -> 300]
 \end{verbatim}
 Do dokumentów najlepiej używać PDF dla wykresów wektorowych i PNG dla map gęstości albo obrazów rastrowych.
 
+Animację można wyeksportować na przykład jako GIF:
+\begin{verbatim}
+Export["animacja.gif", frames]
+\end{verbatim}
+W raporcie często wystarczy kilka wybranych klatek animacji i opis, co zmienia się w czasie.
+
+\section{Typowe komunikaty błędów}
+
+Nie należy ignorować czerwonych komunikatów. Najczęstsze problemy to:
+\begin{itemize}
+    \item brak wartości numerycznej funkcji w \texttt{Plot} albo \texttt{NIntegrate},
+    \item zły zakres zmiennej,
+    \item osobliwość w całce,
+    \item brak warunku początkowego albo brzegowego w \texttt{NDSolve},
+    \item próba użycia rozwiązania numerycznego poza zakresem interpolacji.
+\end{itemize}
+
 \begin{summarybox}
-Najważniejsza zasada pracy w Mathematice: nie ufać samemu obrazkowi. Trzeba kontrolować założenia, zakresy, jednostki, normalizację i sens fizyczny wyniku.
+Najważniejsza zasada pracy w Mathematice: nie ufać samemu obrazkowi. Trzeba kontrolować założenia, zakresy, jednostki, normalizację, komunikaty błędów i sens fizyczny wyniku.
 \end{summarybox}
