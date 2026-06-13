@@ -581,6 +581,8 @@
 ./physics_lectures/quantum_field_theory/chapters/chapter_19_renormalization.tex
 ./physics_lectures/quantum_field_theory/chapters/chapter_20_renormalization_group.tex
 ./physics_lectures/quantum_field_theory/chapters/chapter_21_effective_field_theory.tex
+./physics_lectures/quantum_field_theory/chapters/chapter_22_non_abelian_gauge_theory_as_a_quantum_theory.tex
+./physics_lectures/quantum_field_theory/chapters/chapter_23_brst_symmetry.tex
 ./physics_lectures/quantum_field_theory/figures
 ./physics_lectures/quantum_field_theory/figures/README.md
 ./physics_lectures/quantum_field_theory/ideas_Quantum_Field_Theory.md
