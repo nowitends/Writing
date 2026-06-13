@@ -561,9 +561,13 @@
 ./physics_lectures/quantum_field_theory/chapters/appendix_a_quantization_dictionary.tex
 ./physics_lectures/quantum_field_theory/chapters/chapter_00_preface.tex
 ./physics_lectures/quantum_field_theory/chapters/chapter_01_from_classical_modes_to_quantum_oscillators.tex
+./physics_lectures/quantum_field_theory/figures
+./physics_lectures/quantum_field_theory/figures/README.md
 ./physics_lectures/quantum_field_theory/macros.tex
 ./physics_lectures/quantum_field_theory/main.tex
 ./physics_lectures/quantum_field_theory/preamble.tex
+./physics_lectures/quantum_field_theory/problems
+./physics_lectures/quantum_field_theory/problems/README.md
 ./physics_lectures/quantum_field_theory/styles.tex
 ./physics_lectures/quantum_field_theory/titlepage.tex
 ./requirements-docs.txt
