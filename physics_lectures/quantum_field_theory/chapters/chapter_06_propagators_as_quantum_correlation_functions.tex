@@ -1,20 +1,302 @@
 \chapter{Propagators as Quantum Correlation Functions}
 
 \begin{remarkbox}
-This chapter is reserved by the course plan in \texttt{ideas\_Quantum\_Field\_Theory.md}. It will be developed in small increments.
+The previous chapters constructed free quantum fields and their particle states.
+This chapter introduces the next central object: the propagator. A propagator is
+not merely a line in a Feynman diagram. It is a vacuum correlation function of
+quantum fields, and it encodes both the equation of motion and the particle
+content of the theory.
 \end{remarkbox}
 
-\section{Planned Sections}
+\section{From Classical Green Functions to Quantum Correlators}
 
+In classical field theory, a Green function solves an inhomogeneous differential
+equation. For the Klein--Gordon operator, one writes
+\[
+    (\Box_x+m^2)G(x-y)=\delta^{(4)}(x-y).
+\]
+Different boundary conditions give different Green functions: retarded,
+advanced, or other choices.
+
+In quantum field theory, a closely related object appears, but with a different
+interpretation. The basic two-point function is a vacuum expectation value of a
+product of field operators. For a real scalar field, the simplest one is
+\[
+    \langle0|\hat\phi(x)\hat\phi(y)|0\rangle.
+\]
+This is not the value of a classical field at two points. It is a quantum
+correlation between two field operators in the vacuum.
+
+\section{Wightman Functions}
+
+The positive-frequency Wightman function of the real scalar field is
+\[
+    \Delta^+(x-y)
+    = \langle0|\hat\phi(x)\hat\phi(y)|0\rangle.
+\]
+Using the mode expansion, one finds
+\[
+    \Delta^+(x-y)
+    = \int\frac{\dd^3k}{(2\pi)^3}\,
+      \frac{1}{2\omega_{\vect{k}}}
+      e^{-i\omega_{\vect{k}}(x^0-y^0)+i\vect{k}\cdot(\vect{x}-\vect{y})}.
+\]
+The reversed ordering gives
+\[
+    \Delta^-(x-y)
+    = \langle0|\hat\phi(y)\hat\phi(x)|0\rangle.
+\]
+These functions measure vacuum correlations. Even in the vacuum, field
+operators at different spacetime points are correlated.
+
+The commutator function is the difference
+\[
+    [\hat\phi(x),\hat\phi(y)]
+    = \Delta^+(x-y)-\Delta^-(x-y)
+    = i\Delta(x-y).
+\]
+Microcausality says that this commutator vanishes for spacelike separation.
+
+\section{Time-Ordered Products}
+
+Scattering theory is built from time-ordered products. For two bosonic field
+operators, the time-ordered product is defined by
+\[
+    T\hat\phi(x)\hat\phi(y)
+    =
+    \begin{cases}
+        \hat\phi(x)\hat\phi(y), & x^0>y^0,\\
+        \hat\phi(y)\hat\phi(x), & y^0>x^0.
+    \end{cases}
+\]
+Equivalently,
+\[
+    T\hat\phi(x)\hat\phi(y)
+    = \theta(x^0-y^0)\hat\phi(x)\hat\phi(y)
+      +\theta(y^0-x^0)\hat\phi(y)\hat\phi(x).
+\]
+For fermionic fields, time ordering includes a minus sign when two fermion
+operators are exchanged. This sign is one of the first places where fermionic
+statistics enters perturbation theory.
+
+\section{The Feynman Propagator}
+
+The scalar Feynman propagator is the vacuum expectation value of the time-ordered
+two-point function:
+\[
+    D_F(x-y)
+    = \langle0|T\hat\phi(x)\hat\phi(y)|0\rangle.
+\]
+Using the Wightman functions, this may be written as
+\[
+    D_F(x-y)
+    = \theta(x^0-y^0)\Delta^+(x-y)
+      +\theta(y^0-x^0)\Delta^+(y-x).
+\]
+It has the four-dimensional momentum-space representation
+\[
+    D_F(x-y)
+    = \int\frac{\dd^4k}{(2\pi)^4}\,
+      \frac{i}{k^2-m^2+i\epsilon}
+      e^{-ik\cdot(x-y)}.
+\]
+The small \(i\epsilon\) prescription specifies how the poles are passed in the
+complex \(k^0\)-plane. This prescription is what makes the propagator the
+vacuum time-ordered correlation function rather than some other Green function.
+
+\section{The Propagator as a Green Function}
+
+The Feynman propagator satisfies
+\[
+    (\Box_x+m^2)D_F(x-y)
+    = -i\delta^{(4)}(x-y),
+\]
+with the sign convention following from the definition above. Thus the Feynman
+propagator is also a Green function of the Klein--Gordon operator, but with a
+specific quantum boundary condition.
+
+This dual nature is important:
+\[
+    \text{propagator}
+    = \text{Green function}
+    = \text{vacuum two-point correlation function}.
+\]
+The first viewpoint emphasizes equations of motion. The second emphasizes
+quantum states and operator expectation values.
+
+\section{Retarded and Advanced Propagators}
+
+The retarded propagator is built from the commutator:
+\[
+    D_R(x-y)
+    = i\theta(x^0-y^0)[\hat\phi(x),\hat\phi(y)].
+\]
+It vanishes when \(x^0<y^0\), so it describes causal response to a disturbance
+in the past. The advanced propagator is
+\[
+    D_A(x-y)
+    = -i\theta(y^0-x^0)[\hat\phi(x),\hat\phi(y)].
+\]
+It vanishes when \(x^0>y^0\).
+
+Retarded and advanced propagators are especially natural in classical response
+problems and nonequilibrium physics. The Feynman propagator is the object that
+appears in ordinary perturbative scattering theory.
+
+\section{The \texorpdfstring{\(i\epsilon\)}{i-epsilon} Prescription}
+
+The expression
+\[
+    \frac{i}{k^2-m^2+i\epsilon}
+\]
+contains more information than the algebraic denominator. The poles are located
+near
+\[
+    k^0=\pm\omega_{\vect{k}}.
+\]
+The \(i\epsilon\) prescription tells us how to deform the integration contour
+around these poles. It is the momentum-space encoding of time ordering.
+
+For positive time separation, the contour picks up the positive-energy pole. For
+negative time separation, it picks up the negative-energy pole in the way
+appropriate to a time-ordered vacuum expectation value. This is how the compact
+four-dimensional expression reproduces the two time orderings in position
+space.
+
+\section{Momentum-Space Propagators for Free Fields}
+
+For the real scalar field,
+\[
+    D_F(k)=\frac{i}{k^2-m^2+i\epsilon}.
+\]
+For the complex scalar field,
+\[
+    \langle0|T\hat\phi(x)\hat\phi^\dagger(y)|0\rangle
+\]
+has the same momentum-space denominator. The difference is that the complex
+scalar propagator carries charge flow from \(\phi^\dagger\) to \(\phi\).
+
+For the Dirac field,
+\[
+    S_F(k)=\frac{i(\gamma^\mu k_\mu+m)}{k^2-m^2+i\epsilon}.
+\]
+The denominator is the same mass-shell structure, while the numerator carries
+spinor information.
+
+For the photon in Feynman gauge,
+\[
+    D_{\mu\nu}(k)=\frac{-i\eta_{\mu\nu}}{k^2+i\epsilon}.
+\]
+In a general covariant gauge, the numerator changes by gauge-dependent terms.
+Physical amplitudes do not depend on that gauge choice.
+
+\section{Pole Structure and Particle Interpretation}
+
+The location of poles in a propagator reveals the particle content of the free
+theory. The scalar propagator has poles at
+\[
+    k^2=m^2,
+\]
+which is the relativistic mass shell. This is the analytic trace of a particle
+of mass \(m\).
+
+For a massless photon, the pole is at
+\[
+    k^2=0.
+\]
+For a free Dirac field, the denominator again has poles at \(k^2=m^2\), while
+the numerator encodes spinor structure.
+
+In an interacting theory, the pole structure becomes even more informative. A
+shift in the pole position corresponds to a mass correction. A pole with an
+imaginary part corresponds to an unstable resonance. Branch cuts correspond to
+multiparticle thresholds. These ideas will be developed later, but the free
+propagator already contains the basic principle: particles appear as singular
+structures of correlation functions.
+
+\section{Propagation Versus Correlation}
+
+The word ``propagator'' can be misleading. It suggests that a particle literally
+travels from \(y\) to \(x\). In QFT the primary object is a correlation function
+of fields. It measures the amplitude associated with inserting one field at
+\(y\) and another at \(x\), with the vacuum in between.
+
+For spacelike separation, the Feynman propagator need not vanish. This does not
+violate causality, because the commutator vanishes outside the light cone. The
+causal statement is not that all vacuum correlations vanish at spacelike
+separation, but that spacelike separated observables commute.
+
+Thus one should distinguish
+\[
+    \text{vacuum correlation}
+    \neq
+    \text{signal propagation}.
+\]
+The propagator is a correlation function used in the computation of amplitudes;
+it is not by itself a directly observable signal.
+
+\section{What a Propagator Means in Perturbation Theory}
+
+In perturbation theory, propagators connect field insertions. Wick's theorem
+will show that time-ordered products of free fields can be reduced to sums of
+contractions, and each contraction is a Feynman propagator.
+
+This is why propagators become internal lines in Feynman diagrams. A diagram is
+a compact bookkeeping device for a term in the perturbative expansion. The line
+stands for a two-point function of the corresponding free field.
+
+For example, a scalar internal line carries
+\[
+    \frac{i}{k^2-m^2+i\epsilon},
+\]
+a fermion internal line carries
+\[
+    \frac{i(\gamma^\mu k_\mu+m)}{k^2-m^2+i\epsilon},
+\]
+and a photon internal line in Feynman gauge carries
+\[
+    \frac{-i\eta_{\mu\nu}}{k^2+i\epsilon}.
+\]
+The diagrammatic rules are therefore not arbitrary. They are built from the
+free-field correlation functions developed in this chapter.
+
+\section{Summary of the Main Propagators}
+
+The most important free propagators introduced so far are
+\[
+\begin{array}{ccl}
+\text{real scalar} &:& \displaystyle \frac{i}{k^2-m^2+i\epsilon},\\[1.0em]
+\text{complex scalar} &:& \displaystyle \frac{i}{k^2-m^2+i\epsilon}
+\text{ with charge flow},\\[1.0em]
+\text{Dirac field} &:& \displaystyle
+\frac{i(\gamma^\mu k_\mu+m)}{k^2-m^2+i\epsilon},\\[1.0em]
+\text{photon, Feynman gauge} &:& \displaystyle
+\frac{-i\eta_{\mu\nu}}{k^2+i\epsilon}.
+\end{array}
+\]
+The denominators encode the mass shell. The numerators encode spin, vector, or
+gauge structure.
+
+\begin{summarybox}
+A propagator is a time-ordered vacuum two-point function. It is also a Green
+function with a specific quantum boundary condition. Its poles encode particle
+content, while its numerator encodes spin and gauge structure. Propagators are
+the building blocks of perturbative QFT because Wick's theorem turns
+contractions of free fields into propagators.
+\end{summarybox}
+
+\section{Chapter Checklist}
+
+After reading this chapter, one should be able to:
 \begin{itemize}
-    \item From classical Green's functions to quantum two-point functions.
-    \item Wightman functions.
-    \item Time-ordered products.
-    \item Feynman propagator.
-    \item Retarded and advanced propagators in QFT.
-    \item The \(i\epsilon\) prescription.
-    \item Momentum-space propagators.
-    \item Pole structure and particle interpretation.
-    \item Propagation vs correlation.
-    \item What a propagator actually means.
+    \item distinguish classical Green functions from quantum two-point functions;
+    \item define Wightman functions;
+    \item define the time-ordered product;
+    \item write the scalar Feynman propagator in position and momentum space;
+    \item explain the role of the \(i\epsilon\) prescription;
+    \item distinguish Feynman, retarded, and advanced propagators;
+    \item write the free scalar, Dirac, and photon propagators;
+    \item explain how pole structure encodes particle content;
+    \item explain why vacuum correlation is not the same as signal propagation;
+    \item explain why propagators become internal lines in Feynman diagrams.
 \end{itemize}
