@@ -1,20 +1,251 @@
 \chapter{Gauge Fields in the Path Integral}
 
 \begin{remarkbox}
-Placeholder chapter from the QFT course plan. Detailed lecture text will be added later.
+Gauge fields require special care in the path integral because the functional
+integral over \(A_\mu\) overcounts physically equivalent configurations. Gauge
+fixing removes this overcounting. In non-Abelian theories, the gauge-fixing
+procedure introduces ghost fields and leads naturally to BRST symmetry.
 \end{remarkbox}
 
-\section{Planned Sections}
+\section{Overcounting Gauge-Equivalent Configurations}
 
+For electromagnetism, the gauge potential transforms as
+\[
+    A_\mu\longrightarrow A_\mu+\partial_\mu\Lambda.
+\]
+The two potentials describe the same physical electromagnetic field. Therefore a
+naive path integral
+\[
+    \int\mathcal{D}A_\mu\,e^{iS[A]}
+\]
+integrates over infinitely many copies of the same physical configuration.
+
+This is not merely an aesthetic problem. The redundancy makes the quadratic
+operator non-invertible, so the propagator of \(A_\mu\) is not defined until one
+chooses a gauge. In operator language this was the statement that not all
+components of \(A_\mu\) are physical. In the path-integral language it becomes a
+problem of dividing by the volume of the gauge group.
+
+\section{Gauge Fixing in the Functional Integral}
+
+A gauge condition is a function \(G[A]\) imposed on gauge fields. A common
+covariant choice is
+\[
+    G[A]=\partial_\mu A^\mu.
+\]
+Instead of integrating over all representatives of each gauge orbit, one wants
+to integrate once over each physical configuration. Formally,
+\[
+    \int\mathcal{D}A_\mu
+    \quad\longrightarrow\quad
+    \int\mathcal{D}A_\mu\,\delta(G[A])\,\Delta[A],
+\]
+where \(\Delta[A]\) is a determinant that compensates for the change of
+variables from gauge orbits to gauge-fixed representatives.
+
+In practice, one often replaces the sharp delta-function condition by a Gaussian
+average over gauges. This leads to the covariant gauge-fixing term
+\[
+    \mathcal{L}_{\mathrm{gf}}
+    = -\frac{1}{2\xi}(\partial_\mu A^\mu)^2.
+\]
+The parameter \(\xi\) labels the gauge. The choice \(\xi=1\) is Feynman gauge.
+
+\section{The Faddeev--Popov Method}
+
+The Faddeev--Popov method inserts a carefully chosen form of unity into the path
+integral:
+\[
+    1=\Delta_{\mathrm{FP}}[A]
+      \int\mathcal{D}\alpha\,\delta(G[A^\alpha]).
+\]
+Here \(A^\alpha\) denotes the gauge transform of \(A\), and
+\(\Delta_{\mathrm{FP}}[A]\) is the Faddeev--Popov determinant.
+
+The determinant is given formally by
+\[
+    \Delta_{\mathrm{FP}}[A]
+    = \det\left(\frac{\delta G[A^\alpha]}{\delta\alpha}\right).
+\]
+This factor tells us how the gauge condition changes as one moves along a gauge
+orbit. It is the Jacobian associated with gauge fixing.
+
+For Abelian gauge theory in a linear covariant gauge, this determinant is
+field-independent. It contributes only an overall constant and is usually
+ignored. For non-Abelian gauge theory, the determinant depends on the gauge
+field and has dynamical consequences.
+
+\section{Ghost Fields}
+
+A determinant can be represented as a Grassmann integral. For an operator \(M\),
+\[
+    \det M
+    = \int\mathcal{D}\bar c\mathcal{D}c\,
+      \exp\left(i\int\dd^4x\,\bar c M c\right),
+\]
+with appropriate conventions. The Grassmann fields \(c\) and \(\bar c\) are
+called ghost fields.
+
+Ghosts are anticommuting scalar fields. This phrase sounds paradoxical: they
+have scalar Lorentz transformation properties but fermionic statistics. They are
+not introduced because the theory has new physical particles. They are
+introduced because the gauge-fixing determinant must be represented inside the
+functional integral.
+
+For non-Abelian gauge theory, ghosts interact with gauge fields. Their diagrams
+are essential for unitarity and gauge invariance in covariant gauges.
+
+\section{Why Ghosts Are Not Physical Particles}
+
+Ghost fields appear as internal lines in Feynman diagrams, but they do not
+appear as physical external states. They are artifacts of gauge fixing, not
+quanta in the physical Hilbert space.
+
+This is analogous to the unphysical photon polarizations discussed in Chapter 5.
+Covariant quantization introduces redundant components for calculational
+convenience. The formalism must then ensure that unphysical states do not appear
+in physical observables.
+
+Ghosts are part of that mechanism. Their contributions cancel gauge-dependent
+and unphysical pieces of gauge-field loops. Removing them would spoil the
+consistency of non-Abelian perturbation theory.
+
+\section{Gauge-Fixed Photon Path Integral}
+
+For QED, the gauge-fixed action is
+\[
+    S[A]
+    = \int\dd^4x\,
+      \left[-\frac{1}{4}F_{\mu\nu}F^{\mu\nu}
+      -\frac{1}{2\xi}(\partial_\mu A^\mu)^2\right].
+\]
+The corresponding generating functional is
+\[
+    Z[J]
+    = \int\mathcal{D}A\,
+      \exp\left(iS[A]+i\int\dd^4x\,J_\mu A^\mu\right).
+\]
+Because the Abelian Faddeev--Popov determinant is field-independent in this
+gauge, ghosts decouple from ordinary QED in covariant gauges.
+
+The photon propagator in momentum space is
+\[
+    D_{\mu\nu}(k)
+    = \frac{-i}{k^2+i\epsilon}
+      \left(\eta_{\mu\nu}-(1-\xi)\frac{k_\mu k_\nu}{k^2+i\epsilon}\right).
+\]
+This is the same propagator introduced in Chapter 5, now derived as the inverse
+of the gauge-fixed quadratic operator.
+
+\section{Gauge-Fixed Yang--Mills Path Integral}
+
+For a non-Abelian gauge field \(A_\mu^a\), the field strength is
+\[
+    F_{\mu\nu}^a
+    = \partial_\mu A_\nu^a-\partial_\nu A_\mu^a
+      +g f^{abc}A_\mu^b A_\nu^c.
+\]
+The Yang--Mills action is
+\[
+    S_{\mathrm{YM}}
+    = -\frac{1}{4}\int\dd^4x\,F_{\mu\nu}^aF^{a\mu\nu}.
+\]
+A covariant gauge-fixing term is
+\[
+    \mathcal{L}_{\mathrm{gf}}
+    = -\frac{1}{2\xi}(\partial_\mu A^{a\mu})^2.
+\]
+The Faddeev--Popov ghost Lagrangian is
+\[
+    \mathcal{L}_{\mathrm{gh}}
+    = \bar c^a\,\partial^\mu D_\mu^{ab}c^b,
+\]
+where
+\[
+    D_\mu^{ab}=\delta^{ab}\partial_\mu+g f^{acb}A_\mu^c
+\]
+is the covariant derivative in the adjoint representation.
+
+The full gauge-fixed path integral is schematically
+\[
+    Z[J]
+    = \int\mathcal{D}A\mathcal{D}\bar c\mathcal{D}c\,
+      e^{i\int\dd^4x(\mathcal{L}_{\mathrm{YM}}+\mathcal{L}_{\mathrm{gf}}+\mathcal{L}_{\mathrm{gh}}+J\cdot A)}.
+\]
+Unlike QED, the ghosts do not decouple. They interact with the gauge field.
+
+\section{First Introduction to BRST Symmetry}
+
+Gauge fixing seems to break gauge invariance because a particular gauge
+condition has been chosen. However, the gauge-fixed theory has a remnant symmetry
+called BRST symmetry. It mixes gauge fields, ghosts, and auxiliary fields.
+
+At this stage, the details are less important than the role of the symmetry.
+BRST symmetry keeps track of the original gauge redundancy after gauge fixing. It
+ensures that physical observables are gauge independent and that unphysical
+states decouple from the physical spectrum.
+
+The physical state space can be characterized in terms of BRST cohomology:
+physical states are BRST-closed, and states differing by BRST-exact terms are
+identified. This language will become more important in the later chapter on
+BRST symmetry.
+
+\section{Gauge Independence of Physical Observables}
+
+Intermediate quantities can depend on the gauge parameter \(\xi\). Propagators,
+individual diagrams, and off-shell Green functions may change when \(\xi\)
+changes. Physical observables should not.
+
+Examples of physical observables include \(S\)-matrix elements between physical
+states, cross sections, decay rates, and expectation values of gauge-invariant
+operators. Gauge independence of these quantities is a consistency requirement
+of the theory.
+
+In perturbation theory, gauge independence may involve cancellations among many
+diagrams, including ghost diagrams. Therefore it is generally wrong to assign
+physical meaning to a single gauge-dependent diagram in isolation.
+
+\section{Meaning of Gauge Fixing in Quantum Theory}
+
+Gauge fixing is not the selection of a physically preferred gauge. It is a
+method for coordinatizing the space of physically distinct configurations. Just
+as one may choose coordinates on an ordinary manifold without changing the
+geometry, one may choose a gauge without changing physical predictions.
+
+The path integral makes this especially clear. The original integral over
+\(A_\mu\) includes redundant gauge copies. Gauge fixing removes the redundancy
+and supplies the correct determinant. Different gauges are different ways of
+performing the same physical integral.
+
+This point is crucial for non-Abelian theories. Without gauge fixing and ghosts,
+the perturbative expansion would not correctly represent the quantum gauge
+system.
+
+\begin{summarybox}
+Gauge fields cannot be integrated naively because gauge-equivalent
+configurations are overcounted. Gauge fixing inserts a condition selecting one
+representative per gauge orbit, together with the Faddeev--Popov determinant. In
+Abelian covariant gauges the determinant decouples, while in non-Abelian gauge
+theory it becomes a ghost-field action. Ghosts are not physical particles; they
+are the functional-integral mechanism that preserves consistency of covariant
+quantization. BRST symmetry records the original gauge redundancy after gauge
+fixing.
+\end{summarybox}
+
+\section{Chapter Checklist}
+
+After reading this chapter, one should be able to:
 \begin{itemize}
-    \item Overcounting gauge-equivalent configurations.
-    \item Gauge fixing in the functional integral.
-    \item Faddeev--Popov method.
-    \item Ghost fields.
-    \item Why ghosts are not physical particles.
-    \item Gauge-fixed photon path integral.
-    \item Gauge-fixed Yang--Mills path integral.
-    \item First introduction to BRST symmetry.
-    \item Gauge independence of physical observables.
-    \item Meaning of gauge fixing in quantum theory.
+    \item explain why the naive gauge-field path integral overcounts
+    configurations;
+    \item describe the role of a gauge-fixing condition;
+    \item state the basic Faddeev--Popov identity;
+    \item explain why determinants can be represented by ghost fields;
+    \item distinguish ghosts from physical particles;
+    \item write the gauge-fixed photon path integral;
+    \item write the schematic gauge-fixed Yang--Mills path integral;
+    \item explain why ghosts decouple in Abelian theory but not in non-Abelian
+    theory;
+    \item state the conceptual role of BRST symmetry;
+    \item explain why physical observables must be gauge independent.
 \end{itemize}
